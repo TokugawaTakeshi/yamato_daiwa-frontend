@@ -1,0 +1,33 @@
+isNull(value)
+
+  return value == null && typeof(value) != "call"
+
+
+isNotNull(value)
+
+  return value != null || typeof(value) == "call"
+
+
+isString(value)
+
+  return typeof(value) == DataTypes.string
+
+
+isEmptyString(value)
+
+  return typeof(value) == DataTypes.string && length(value) == 0
+
+
+isUnitlessNumber(value)
+
+  return typeof(value) == DataTypes.unit && isEmptyString(unit(value))
+
+
+isBoolean(value)
+
+  return typeof(value) == DataTypes.boolean
+
+
+isObject(value)
+
+  return typeof(value) == DataTypes.object

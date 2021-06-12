@@ -1,0 +1,19 @@
+{
+  "name": "@yamato-daiwa/frontend",
+  "version": "0.0.1",
+  "description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
+  "keywords": [
+    "frontend",
+    "pug",
+    "stylus"
+  ],
+  "author": {
+    "name": "Takesi Tokugawa",
+    "email": "tokugawa.takesi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TokugawaTakesi/yamato_daiwa-frontend.git"
+  }
+}
