@@ -46,4 +46,4 @@ Please refer to this documentation during the official documentation is under de
     * [📖 `getFirstNonNullArrayElement`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/getFirstNonNullElement/getFirstNonNullArrayElement.md)
       Returns first non-null element for array or null if no such elements.
     * [📖 `getStringsOrNumbersArrayLength`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/getStringsOrNumbersArrayLength/getStringsOrNumbersArrayLength.md)
-      Returns the elements count 
+      Returns the elements count of array of strings of numbers.
