@@ -1,0 +1,19 @@
+// === Execution =======================================================================================================
+// stylus Tests/Source/Styles/02-Kernel/02-Functions/03-Arrays/getStringsOrNumbersArrayLength.test.styl --out Tests/Output/Styles/02-Kernel/02-Functions/03-Arrays/getStringsOrNumbersArrayLength.test.css --include Styles
+
+
+@require "01-Assets.styl"
+@require "02-Kernel/02-Functions/01-ValueCheckers.styl"
+@require "02-Kernel/02-Functions/02-ValueConverters.styl"
+@require "02-Kernel/02-Functions/03-Arrays.styl"
+
+
+sample = "ALPHA"
+
+p(length(sample)); // => 5 (For V0.54.8)
+p(getStringsOrNumbersArrayLength(sample)); // => 1
+
+sample2 = "ALPHA" "BRAVO"
+
+p(length(sample2)); // => 2 (For V0.54.8)
+p(getStringsOrNumbersArrayLength(sample2)); // => 2

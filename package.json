@@ -1,10 +1,9 @@
 {
   "name": "@yamato-daiwa/frontend",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
   "keywords": [
     "frontend",
-    "pug",
     "stylus"
   ],
   "author": {
