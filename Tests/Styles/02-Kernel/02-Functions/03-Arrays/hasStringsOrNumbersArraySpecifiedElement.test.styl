@@ -1,0 +1,31 @@
+// === Execution =======================================================================================================
+// stylus Tests/Styles/02-Kernel/02-Functions/03-Arrays/hasStringsOrNumbersArraySpecifiedElement.test.styl --out Tests/Output/Styles/02-Kernel/02-Functions/03-Arrays/hasStringsOrNumbersArraySpecifiedElement.test.css --include Styles
+
+
+@require "01-Assets.styl"
+@require "02-Kernel/02-Functions/01-ValueCheckers.styl"
+@require "02-Kernel/02-Functions/02-ValueConverters.styl"
+@require "02-Kernel/02-Functions/03-Arrays.styl"
+
+
+sample1 = "ALPHA" "BRAVO" "CHARLIE"
+
+if isTrue(hasStringsOrNumbersArraySpecifiedElement(sample1, "BRAVO")) && isFalse(hasStringsOrNumbersArraySpecifiedElement(sample1, "DELTA"))
+
+  p("✓ Basic functionality")
+
+else
+
+  error("✖ Basic functionality")
+
+
+sample2 = "ALPHA"
+
+if isTrue(hasStringsOrNumbersArraySpecifiedElement(sample2, "ALPHA")) && isFalse(hasStringsOrNumbersArraySpecifiedElement(sample2, "BRAVO"))
+
+  p("✓ Single-element arrays support")
+
+else
+
+  error("✖ Single-element arrays support")
+

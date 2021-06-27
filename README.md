@@ -47,3 +47,72 @@ Please refer to this documentation during the official documentation is under de
       Returns first non-null element for array or null if no such elements.
     * [📖 `getStringsOrNumbersArrayLength`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/getStringsOrNumbersArrayLength/getStringsOrNumbersArrayLength.md)
       Returns the elements count of array of strings of numbers.
+    * [📖 `hasStringsOrNumbersArraySpecifiedElement`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/hasStringsOrNumbersArraySpecifiedElement/hasStringsOrNumbersArraySpecifiedElement.md)
+      Checks has certain array of strings of numbers the specified element.
+    * [📖 `iterate2DimensionalArray`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/iterate2DimensionalArray/iterate2DimensionalArray.md)
+      Iterate the 2-dimensional array supporting single-element case.
+    * [📖 `iterateAssociativeArray`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/iterateAssociativeArray/iterateAssociativeArray.md)
+      Iterates associative array supporting single-element case.
+
+
+#### Motivation
+
+It is considered that the programming in the overkill for creating of stylesheets.
+Maybe is so until writing the flexible and customizable UI framework.
+
+The `@yamato-daiwa/frontend` synthetically improving the programming functionality of Stylus pre-processor
+allows flexibly work with unknown at-advance data, namely the customization data from the framework users.
+
+
+#### Roadmap
+
+##### Functions
+
+The functions are the utilities for the future flexible UI-kit.
+
+###### Objects
+
+* `getObjectValueByDotSeparatedPathSafely` (next realize)
+* `deeplyCloneObject` (next realize)
+* `overrideObject` (next realize)
+* `deeplyCloneAndOverrideObject` (next realize)
+* `getNonNullObjectValuesCount`
+* `iterateObjectSkippingNullValues`
+
+
+###### Parameters validation
+
+The parameters validation is important for the mixins with flexible customization therefore a lot of parameters/propertes.
+
+
+##### Mixins
+###### Common
+
+* `applyIfNotNull`
+* `applyIfNotZero`
+* `TextTruncation`
+
+
+###### Width sizing
+
+* `specifyWidthSizing` helper function
+* `WidthSizing` mixin 
+* `fillViewportWidthIgnoringParentPaddings`
+* `TableCellSizing`
+
+
+###### Height sizing
+
+* `specifyHeightSizing` helper function
+* `computeHeightByHeightSizingSpecification` helper function
+* `HeightSizing` mixin
+
+
+###### Borders
+
+* `specifyBorderRadius`
+* `applyBorderRadiusSpecification`
+* `specifyBorders` helper function
+* `applyBordersSpecification`
+* `BorderTopFilletsRadius`/`BorderBottomFilletsRadius`/`BorderLeftFilletsRadius`/`BorderRightFilletsRadius`
+
