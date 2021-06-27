@@ -20,15 +20,13 @@ npm i @yamato-daiwa/frontend -E
 Please refer to this documentation during the official documentation is under development.
 
 
-### Stylus
-
-#### Get functionality
+### Get functionality
 
 ```stylus
 @require "PATH_TO_NODE_MODULES/@yamato-daiwa/frontend/Functionality.styl"
 ```
 
-#### Table of contents
+### Table of contents
 
 * Assets
   * [📖 Basic constants](Documentation/Styles/01-Assets/01-BasicConstants/BasicConstants.md)
@@ -55,7 +53,7 @@ Please refer to this documentation during the official documentation is under de
       Iterates associative array supporting single-element case.
 
 
-#### Motivation
+### Motivation
 
 It is considered that the programming in the overkill for creating of stylesheets.
 Maybe is so until writing the flexible and customizable UI framework.
@@ -64,13 +62,13 @@ The `@yamato-daiwa/frontend` synthetically improving the programming functionali
 allows flexibly work with unknown at-advance data, namely the customization data from the framework users.
 
 
-#### Roadmap
+### Roadmap
 
-##### Functions
+#### Functions
 
 The functions are the utilities for the future flexible UI-kit.
 
-###### Objects
+##### Objects
 
 * `getObjectValueByDotSeparatedPathSafely` (next realize)
 * `deeplyCloneObject` (next realize)
@@ -80,20 +78,20 @@ The functions are the utilities for the future flexible UI-kit.
 * `iterateObjectSkippingNullValues`
 
 
-###### Parameters validation
+##### Parameters validation
 
 The parameters validation is important for the mixins with flexible customization therefore a lot of parameters/propertes.
 
 
-##### Mixins
-###### Common
+#### Mixins
+##### Common
 
 * `applyIfNotNull`
 * `applyIfNotZero`
 * `TextTruncation`
 
 
-###### Width sizing
+##### Width sizing
 
 * `specifyWidthSizing` helper function
 * `WidthSizing` mixin 
@@ -101,18 +99,17 @@ The parameters validation is important for the mixins with flexible customizatio
 * `TableCellSizing`
 
 
-###### Height sizing
+##### Height sizing
 
 * `specifyHeightSizing` helper function
 * `computeHeightByHeightSizingSpecification` helper function
 * `HeightSizing` mixin
 
 
-###### Borders
+##### Borders
 
 * `specifyBorderRadius`
 * `applyBorderRadiusSpecification`
 * `specifyBorders` helper function
 * `applyBordersSpecification`
 * `BorderTopFilletsRadius`/`BorderBottomFilletsRadius`/`BorderLeftFilletsRadius`/`BorderRightFilletsRadius`
-
