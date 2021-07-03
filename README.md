@@ -36,8 +36,10 @@ Please refer to this documentation during the official documentation is under de
 * [📖 Basic variables](Documentation/Styles/02-Kernel/01-BasicVariables/BasicVariables.md)
 
 * Functions
+  
   * [📖 Value checkers](Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers/ValueCheckers.md) 
-  * [📖 Value converters](Documentation/Styles/02-Kernel/02-Functions/02-ValueConverters/ValueConverters.md) 
+  * [📖 Value converters](Documentation/Styles/02-Kernel/02-Functions/02-ValueConverters/ValueConverters.md)
+    
   * Arrays
     * [📖 `arrayConstructor__POLYFILL`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/arrayConstructor__POLYFILL/arrayConstructor__POLYFILL.md)
       Fixes the [Unsolicited two-dimensional array when trying to declare the plain one-dimensional array](https://github.com/stylus/stylus/issues/2582) issue.
@@ -51,6 +53,12 @@ Please refer to this documentation during the official documentation is under de
       Iterate the 2-dimensional array supporting single-element case.
     * [📖 `iterateAssociativeArray`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/iterateAssociativeArray/iterateAssociativeArray.md)
       Iterates associative array supporting single-element case.
+      
+  * Objects (hashes)
+    * [📖 `getObjectValueByDotSeparatedPathSafely`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely/getObjectValueByDotSeparatedPathSafely.md)
+      Accesses to nested object (hash) without risk being throw the error when some property does not exist. 
+    * [📖 `deeplyCloneObject`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject/deeplyCloneObject.md)
+      Creates the autonomous clone of the object. 
 
 
 ### Motivation
@@ -70,8 +78,6 @@ The functions are the utilities for the future flexible UI-kit.
 
 ##### Objects
 
-* `getObjectValueByDotSeparatedPathSafely` (next realize)
-* `deeplyCloneObject` (next realize)
 * `overrideObject` (next realize)
 * `deeplyCloneAndOverrideObject` (next realize)
 * `getNonNullObjectValuesCount`
@@ -80,10 +86,11 @@ The functions are the utilities for the future flexible UI-kit.
 
 ##### Parameters validation
 
-The parameters validation is important for the mixins with flexible customization therefore a lot of parameters/propertes.
+The parameters validation is important for the mixins with flexible customization therefore a lot of parameters/properties.
 
 
-#### Mixins
+#### Utility mixins
+
 ##### Common
 
 * `applyIfNotNull`
@@ -106,10 +113,45 @@ The parameters validation is important for the mixins with flexible customizatio
 * `HeightSizing` mixin
 
 
-##### Borders
+##### Borders and padding
+
+
+For the none-library projects, just `padding` and `border` properties could be enough, but this functionality is targeting to
+component development 
 
 * `specifyBorderRadius`
 * `applyBorderRadiusSpecification`
 * `specifyBorders` helper function
 * `applyBordersSpecification`
 * `BorderTopFilletsRadius`/`BorderBottomFilletsRadius`/`BorderLeftFilletsRadius`/`BorderRightFilletsRadius`
+* `specifyPaddings` helper function
+* `applyPaddingsSpecification`
+* `EqualLeftAndRightPaddings`
+* `EqualTopAndBottomPaddings`
+
+
+#### Positioning
+
+Horizontal and vertical centering, placing to right without wrappers.
+
+* `HorizontalCenteringWithoutWrapper`
+* `CenteredContentWithComputedSidePaddings`
+* `VerticallyCenteredAbsolutelyPositionedBlock`
+* `placeToRight`
+
+
+#### Positional relationship
+
+The `margin-top` and `margin-bottom` are being frequently set to the elements like `p`, `h1`, `h2` etc. in UI frameworks.
+However, we can not know at advance it which environment those elements will be used, which element will precede and which
+element will be after.
+
+Below mixins will allow to define which element must to retire from other element selectively.
+
+* `PositionalRelationship`
+* `retireFrom`
+* `pushTargetFromSelf`
+* `pushTargetWithSameSelectorFromSelf`
+* `whenItJustAfter`
+* `whenTargetGoingJustAfterIt`
+* `whenTargetWithSameSelectorGoingJustAfterIt`

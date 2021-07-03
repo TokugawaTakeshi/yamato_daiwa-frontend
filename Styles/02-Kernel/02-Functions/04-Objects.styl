@@ -1,0 +1,28 @@
+getObjectValueByDotSeparatedPathSafely(targetObject, dotSeparatedPath)
+
+  objectNamePathSegments = split(".", dotSeparatedPath)
+  lastIterationNumber = getStringsOrNumbersArrayLength(objectNamePathSegments) - 1
+  valueOfCurrentDepth = targetObject
+
+  for pathSegment, index in objectNamePathSegments
+
+    valueOfCurrentDepth = valueOfCurrentDepth[pathSegment]
+
+    if index == lastIterationNumber
+
+      return valueOfCurrentDepth
+
+    else if isNull(valueOfCurrentDepth)
+
+      return null
+
+
+deeplyCloneObject(targetObject)
+
+  workpieceClone = {}
+
+  for key, value in targetObject
+
+    workpieceClone[key] = typeof(value) == "object" ? deeplyCloneObject(value) : value
+
+  return workpieceClone

@@ -1,0 +1,20 @@
+// === Execution =======================================================================================================
+// stylus Tests/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely.test.styl --out Tests/Output/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely.test.css --include Styles
+
+@require "01-Assets.styl"
+@require "02-Kernel/02-Functions/01-ValueCheckers.styl"
+@require "02-Kernel/02-Functions/02-ValueConverters.styl"
+@require "02-Kernel/02-Functions/03-Arrays.styl"
+@require "02-Kernel/02-Functions/04-Objects.styl"
+
+
+sample = {
+  alpha: "FOO",
+  bravo: {
+    charlie: "BAR"
+  }
+}
+
+
+//p(sample.bravo.delta.golf)
+p(getObjectValueByDotSeparatedPathSafely(sample, "bravo.delta.golf"))
