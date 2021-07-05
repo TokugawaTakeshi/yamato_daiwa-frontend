@@ -1,0 +1,36 @@
+// === Execution
+// stylus Tests/Styles/02-Kernel/02-Functions/00-Logging/formatObject.test.styl --out Tests/Output/Styles/02-Kernel/02-Functions/00-Logging/formatObject.test.css --include Styles
+
+
+@require "01-Assets.styl"
+@require "02-Kernel/02-Functions/00-BasicFunctions"
+@require "02-Kernel/02-Functions/01-ValueCheckers"
+
+log({
+  alpha: "FOO",
+  bravo: 1,
+  charlie: {
+    delta: "BAR",
+    echo: 2
+  }
+})
+
+log({
+  alpha: "FOO",
+  bravo: 1,
+  charlie: {
+    delta: "BAR",
+    echo: 2
+  },
+  hotel: "BAZ"
+})
+
+log({
+  alpha: "FOO",
+  bravo: 1,
+  charlie: {
+    delta: ("asdf" 1) ("QWER" 3),
+    echo: 2
+  },
+  hotel: "FUGA"
+})

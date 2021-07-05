@@ -26,3 +26,46 @@ deeplyCloneObject(targetObject)
     workpieceClone[key] = typeof(value) == "object" ? deeplyCloneObject(value) : value
 
   return workpieceClone
+
+
+// It was detected some problems with 'merge' function for nested objects case in the past, but currently it's unclear
+// where is the difference. However this function could be removed only if will be proved that it's completely equivalent
+// to 'merge'
+overrideObject(targetObject, overridings)
+
+  if targetObject == null
+
+    return overridings
+
+  for key, value in overridings
+
+    targetObject[key] = typeof(value) == "object" ? overrideObject(targetObject[key], value) : value
+
+  return targetObject
+
+
+deeplyCloneAndOverrideObject(targetObject, overridings)
+
+  return overrideObject(deeplyCloneObject(targetObject), overridings)
+
+
+getObjectNonNullValuesCount(targetObject)
+
+  nonNullObjectValuesCount = 0
+
+  for key, value in targetObject
+
+    if isNotNull(value)
+
+      nonNullObjectValuesCount = nonNullObjectValuesCount + 1
+
+  return nonNullObjectValuesCount
+
+
+iterateObjectSkippingNullValues(targetObject, iterator)
+
+  for key, value in targetObject
+
+    if isNotNull(value)
+
+      iterator(key, value)

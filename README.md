@@ -55,10 +55,16 @@ Please refer to this documentation during the official documentation is under de
       Iterates associative array supporting single-element case.
       
   * Objects (hashes)
+    * [📖 `deeplyCloneAndOverrideObject`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject/deeplyCloneAndOverrideObject.md)
+      Allows to clone and immediately override the object without affecting to initial object.
+    * [📖 `deeplyCloneObject`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject/deeplyCloneObject.md)
+      Creates the deep copy object the object.
+    * [📖 `getObjectNonNullValuesCount`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectNonNullValuesCount/getObjectNonNullValuesCount.md)
+      Returns the count of non-null values of specified object.
     * [📖 `getObjectValueByDotSeparatedPathSafely`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely/getObjectValueByDotSeparatedPathSafely.md)
       Accesses to nested object (hash) without risk being throw the error when some property does not exist. 
-    * [📖 `deeplyCloneObject`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject/deeplyCloneObject.md)
-      Creates the autonomous clone of the object. 
+    * [📖 `iterateObjectSkippingNullValues`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues/iterateObjectSkippingNullValues.md)
+      Iterates the object's keys and values skipping entries with `null` value. 
 
 
 ### Motivation
@@ -75,13 +81,6 @@ allows flexibly work with unknown at-advance data, namely the customization data
 #### Functions
 
 The functions are the utilities for the future flexible UI-kit.
-
-##### Objects
-
-* `overrideObject` (next realize)
-* `deeplyCloneAndOverrideObject` (next realize)
-* `getNonNullObjectValuesCount`
-* `iterateObjectSkippingNullValues`
 
 
 ##### Parameters validation
@@ -114,7 +113,6 @@ The parameters validation is important for the mixins with flexible customizatio
 
 
 ##### Borders and padding
-
 
 For the none-library projects, just `padding` and `border` properties could be enough, but this functionality is targeting to
 component development 
