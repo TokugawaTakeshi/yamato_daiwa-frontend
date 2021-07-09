@@ -37,6 +37,12 @@ Please refer to this documentation during the official documentation is under de
 
 * Functions
   
+  * Logging
+  
+    * [📖 `log`](Documentation/Styles/02-Kernel/02-Functions/00-Logging/log/log.md) 
+      Makes log output to console. Unlike native similar `p` function formats the objects. 
+    * `formatObject` Stringifies and formats object for logging
+
   * [📖 Value checkers](Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers/ValueCheckers.md) 
   * [📖 Value converters](Documentation/Styles/02-Kernel/02-Functions/02-ValueConverters/ValueConverters.md)
     

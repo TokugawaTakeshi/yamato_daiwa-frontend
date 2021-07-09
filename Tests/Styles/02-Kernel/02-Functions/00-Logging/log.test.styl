@@ -1,19 +1,23 @@
 // === Execution
-// stylus Tests/Styles/02-Kernel/02-Functions/00-Logging/formatObject.test.styl --out Tests/Output/Styles/02-Kernel/02-Functions/00-Logging/formatObject.test.css --include Styles
+// stylus Tests/Styles/02-Kernel/02-Functions/00-Logging/log.test.styl --out Tests/Output/Styles/02-Kernel/02-Functions/00-Logging/log.test.css --include Styles
 
 
 @require "01-Assets.styl"
-@require "02-Kernel/02-Functions/00-BasicFunctions"
+@require "02-Kernel/02-Functions/00-Logging"
 @require "02-Kernel/02-Functions/01-ValueCheckers"
 
-log({
+
+sample1 = {
   alpha: "FOO",
   bravo: 1,
   charlie: {
     delta: "BAR",
     echo: 2
   }
-})
+}
+
+p(sample1)
+log(sample1)
 
 log({
   alpha: "FOO",
