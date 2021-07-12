@@ -1,0 +1,9 @@
+buildString(template, variables)
+
+  workpiece = template
+
+  for variableName, variableValue in variables
+
+    workpiece = replace("\${" + variableName + "}", variableValue, workpiece)
+
+  return workpiece

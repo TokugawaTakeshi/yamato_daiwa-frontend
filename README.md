@@ -36,31 +36,17 @@ Please refer to this documentation during the official documentation is under de
 * [📖 Basic variables](Documentation/Styles/02-Kernel/01-BasicVariables/BasicVariables.md)
 
 * Functions
-  
-  * Logging
-  
-    * [📖 `log`](Documentation/Styles/02-Kernel/02-Functions/00-Logging/log/log.md) 
-      Makes log output to console. Unlike native similar `p` function formats the objects. 
-    * `formatObject` Stringifies and formats object for logging
 
   * [📖 Value checkers](Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers/ValueCheckers.md) 
   * [📖 Value converters](Documentation/Styles/02-Kernel/02-Functions/02-ValueConverters/ValueConverters.md)
     
-  * Arrays
-    * [📖 `arrayConstructor__POLYFILL`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/arrayConstructor__POLYFILL/arrayConstructor__POLYFILL.md)
-      Fixes the [Unsolicited two-dimensional array when trying to declare the plain one-dimensional array](https://github.com/stylus/stylus/issues/2582) issue.
-    * [📖 `getFirstNonNullArrayElement`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/getFirstNonNullElement/getFirstNonNullArrayElement.md)
-      Returns first non-null element for array or null if no such elements.
-    * [📖 `getStringsOrNumbersArrayLength`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/getStringsOrNumbersArrayLength/getStringsOrNumbersArrayLength.md)
-      Returns the elements count of array of strings of numbers.
-    * [📖 `hasStringsOrNumbersArraySpecifiedElement`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/hasStringsOrNumbersArraySpecifiedElement/hasStringsOrNumbersArraySpecifiedElement.md)
-      Checks has certain array of strings of numbers the specified element.
-    * [📖 `iterate2DimensionalArray`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/iterate2DimensionalArray/iterate2DimensionalArray.md)
-      Iterate the 2-dimensional array supporting single-element case.
-    * [📖 `iterateAssociativeArray`](Documentation/Styles/02-Kernel/02-Functions/03-Arrays/iterateAssociativeArray/iterateAssociativeArray.md)
-      Iterates associative array supporting single-element case.
-      
+  * Strings
+    
+    * [📖 `buildString`](Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString/buildString.md)
+      Allows to create the dynamic strings using the [ES6 Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).  
+
   * Objects (hashes)
+    
     * [📖 `deeplyCloneAndOverrideObject`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject/deeplyCloneAndOverrideObject.md)
       Allows to clone and immediately override the object without affecting to initial object.
     * [📖 `deeplyCloneObject`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject/deeplyCloneObject.md)
@@ -68,9 +54,30 @@ Please refer to this documentation during the official documentation is under de
     * [📖 `getObjectNonNullValuesCount`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectNonNullValuesCount/getObjectNonNullValuesCount.md)
       Returns the count of non-null values of specified object.
     * [📖 `getObjectValueByDotSeparatedPathSafely`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely/getObjectValueByDotSeparatedPathSafely.md)
-      Accesses to nested object (hash) without risk being throw the error when some property does not exist. 
+      Accesses to nested object (hash) without risk being throw the error when some property does not exist.
     * [📖 `iterateObjectSkippingNullValues`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues/iterateObjectSkippingNullValues.md)
-      Iterates the object's keys and values skipping entries with `null` value. 
+      Iterates the object's keys and values skipping entries with `null` value.
+    * `formatObject` Stringifies and formats object for logging
+
+  * Arrays
+    
+    * [📖 `arrayConstructor__POLYFILL`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/arrayConstructor__POLYFILL/arrayConstructor__POLYFILL.md)
+      Fixes the [Unsolicited two-dimensional array when trying to declare the plain one-dimensional array](https://github.com/stylus/stylus/issues/2582) issue.
+    * [📖 `getFirstNonNullArrayElement`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getFirstNonNullElement/getFirstNonNullArrayElement.md)
+      Returns first non-null element for array or null if no such elements.
+    * [📖 `getStringsOrNumbersArrayLength`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getStringsOrNumbersArrayLength/getStringsOrNumbersArrayLength.md)
+      Returns the elements count of array of strings of numbers.
+    * [📖 `hasStringsOrNumbersArraySpecifiedElement`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/hasStringsOrNumbersArraySpecifiedElement/hasStringsOrNumbersArraySpecifiedElement.md)
+      Checks has certain array of strings of numbers the specified element.
+    * [📖 `iterate2DimensionalArray`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterate2DimensionalArray/iterate2DimensionalArray.md)
+      Iterate the 2-dimensional array supporting single-element case.
+    * [📖 `iterateAssociativeArray`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterateAssociativeArray/iterateAssociativeArray.md)
+      Iterates associative array supporting single-element case.
+
+  * Logging
+
+    * [📖 `log`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/log/log.md)
+      Makes log output to console. Unlike native similar `p` function formats the objects.
 
 
 ### Motivation
