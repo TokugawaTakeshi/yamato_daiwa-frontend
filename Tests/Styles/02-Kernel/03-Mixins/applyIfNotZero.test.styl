@@ -1,0 +1,18 @@
+// === Execution
+// stylus Tests/Styles/02-Kernel/03-Mixins/applyIfNotZero.test.styl --out Tests/Output/Styles/02-Kernel/03-Mixins/applyIfNotZero.test.css --include Styles
+
+
+@require "01-Assets.styl"
+@require "02-Kernel.styl"
+
+
+EXAMPLE_ELEMENT_PADDINGS = 0
+EXAMPLE_ELEMENT_MARGINS = 12px
+
+
+.Example
+
+  applyIfNotZero({
+    padding: EXAMPLE_ELEMENT_PADDINGS,
+    margin: EXAMPLE_ELEMENT_MARGINS
+  })

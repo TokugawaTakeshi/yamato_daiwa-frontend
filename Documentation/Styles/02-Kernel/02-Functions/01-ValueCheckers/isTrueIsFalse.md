@@ -1,6 +1,4 @@
-# Value checkers
-
-## `isTrue`/`isFalse`
+# `isTrue`/`isFalse` value checkers
 
 ```stylus
 if definedVariable
@@ -39,17 +37,3 @@ inspect: "Obviously, it will be printed to console."
 inspect: "It will be printed too because 'typeof(undefinedVariable)' is 'ident' it means not falsy."
 inspect: "It will be printed if 'undefinedVariable' is neither true nor false"
 ```
-
-
-## Others
-
-The names of below functions has been developed such as everything must be obvious without explanations.
-If it not such as, please open the issue with title "[FunctionName]: Unclear name".
-
-* `isNull(value)`
-* `isNotNull(value)`
-* `isString(value)`
-* `isEmptyString(value)`
-* `isUnitlessNumber(value)`
-* `isBoolean(value)`
-* `isObject(value)`

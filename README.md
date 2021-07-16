@@ -37,7 +37,15 @@ Please refer to this documentation during the official documentation is under de
 
 * Functions
 
-  * [📖 Value checkers](Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers/ValueCheckers.md) 
+  * Value checkers
+    
+    * [`isTrue`/`isFalse`](Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers/isTrueIsFalse.md)
+    * [`isString(value)`](Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers/isNullIsNotNull.md)
+    * `isEmptyString(value)`
+    * `isUnitlessNumber(value)`
+    * `isBoolean(value)`
+    * `isObject(value)`
+
   * [📖 Value converters](Documentation/Styles/02-Kernel/02-Functions/02-ValueConverters/ValueConverters.md)
     
   * Strings
@@ -78,6 +86,23 @@ Please refer to this documentation during the official documentation is under de
 
     * [📖 `log`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/log/log.md)
       Makes log output to console. Unlike native similar `p` function formats the objects.
+      
+
+  * Other
+
+    * [`buildBEM_Class`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildBEM_Class.md) 
+      builds BEM class according specified block, element and modifier.
+    * [`substituteWhenNull`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/substituteWhenNull.md) 
+      Substitutes the second argument's value when first one is `null`
+  
+* Mixins
+
+  * [`applyIfNotNull`](Documentation/Styles/02-Kernel/03-Mixins/applyIfNotNull.md) 
+    adds each specified CSS property to target ruleset when if it's not null. Intended to be used in cases when CSS values 
+    are unknown in advance.
+  * [`applyIfNotZero`](Documentation/Styles/02-Kernel/03-Mixins/applyIfNotZero.md) 
+    adds each specified CSS property to target ruleset when if it's not zero. Intended to be used in cases when CSS values 
+    are unknown in advance.
 
 
 ### Motivation

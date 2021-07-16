@@ -1,0 +1,128 @@
+validateSingleParametersObject(data)
+
+  targetObject = data.targetObject
+  propertiesSpecification = data.propertiesSpecification
+  restParameters = data.restParameters
+  mixinOrFunctionName = data.mixinOrFunctionName
+
+
+  if !isObject(targetObject)
+
+    error(buildString(
+      "The first and only parameter of function/mixin '${mixinOrFunctionName}' must be the object.\n" +\
+      "Real value: ${formattedTargetObject}\n" +\
+      "Real value's type: ${realValueType}\n" +\
+      "Please check the specification of the parameter's properties:\n${propertiesValidation}",
+      {
+        mixinOrFunctionName: mixinOrFunctionName,
+        formattedTargetObject: targetObject,
+        realValueType: typeof(targetObject),
+        propertiesValidation: formatObject(propertiesSpecification)
+      }
+    ))
+
+
+  if isNotNull(restParameters)
+
+    error(buildString(
+      "The function/mixin '${mixinOrFunctionName}' must have exactly one parameter, of the object type.\n" +\
+      "Please check it's specification:\n${propertiesValidation}",
+      {
+        mixinOrFunctionName: mixinOrFunctionName,
+        propertiesValidation: formatObject(propertiesSpecification)
+      }
+    ))
+
+
+  // [ Warning ] Skipping of burly brackets will cause 'unexpected "else"' error (possible Stylus bug)
+  for propertyName, propertySpecification in propertiesSpecification {
+
+    propertyValue = targetObject[propertyName]
+
+    if (isNull(propertyValue)) {
+
+      if (propertySpecification.required) {
+        error(buildString(
+          "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' is required, " +\
+          "but really it's omited or explicitly set 'null'.",
+          {
+            propertyName: propertyName,
+            mixinOrFunctionName: mixinOrFunctionName
+          }
+        ))
+      }
+
+      if (isNotNull(propertySpecification.defaultValue)) {
+        targetObject[propertyName] = propertySpecification.defaultValue
+      }
+
+      else if (isNotNull(propertySpecification.incompatibleWith)) {
+
+        for incompatiblePropertyName in propertySpecification.incompatibleWith {
+
+          if (isNotNull(targetObject[incompatiblePropertyName])) {
+            error(buildString(
+              "The property '${propertyName}' is incopatible with property '${incompatiblePropertyName}' for the " + \
+              "function/mixin '${mixinOrFunctionName}'",
+              {
+                propertyName: propertyName,
+                incompatiblePropertyName: incompatiblePropertyName,
+                mixinOrFunctionName: mixinOrFunctionName
+              }
+            ))
+          }
+        }
+      }
+    }
+
+    else if (propertySpecification.type == DataTypes.string) {
+
+      if (!isString(propertyValue)) {
+
+        error(buildString(
+          "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' must be a string, " +\
+          "but really it has type '${propertyRealType}' and value: ${propertyValue}",
+          {
+            propertyName: propertyName,
+            mixinOrFunctionName: mixinOrFunctionName,
+            propertyRealType: typeof(propertyValue),
+            propertyValue: propertyValue
+          }
+        ))
+      }
+    }
+
+    else if (propertySpecification.type == DataTypes.unit) {
+
+      if (typeof(propertyValue) != "unit") {
+
+        error(buildString(
+          "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' must be a unit, " +\
+          "but really it has type '${propertyRealType}' and value: ${propertyValue}",
+          {
+            propertyName: propertyName,
+            mixinOrFunctionName: mixinOrFunctionName,
+            propertyRealType: typeof(propertyValue),
+            propertyValue: propertyValue
+          }
+        ))
+      }
+    }
+
+    else if (propertySpecification.type == DataTypes.boolean) {
+
+      if (!isBoolean(propertyValue)) {
+
+        error(buildString(
+          "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' must be a boolean, " +\
+          "but really it has type '${propertyRealType}' and value: ${propertyValue}",
+          {
+            propertyName: propertyName,
+            mixinOrFunctionName: mixinOrFunctionName,
+            propertyRealType: typeof(propertyValue),
+            propertyValue: propertyValue
+          }
+        ))
+      }
+    }
+  }

@@ -1,0 +1,53 @@
+// === Execution
+// stylus Tests/Styles/02-Kernel/02-Functions/07-OtherFunctions/validateSingleParametersObject.test.styl --out Tests/Output/Styles/02-Kernel/02-Functions/07-OtherFunctions/validateSingleParametersObject.test.css --include Styles
+
+
+@require "01-Assets.styl"
+@require "02-Kernel.styl"
+
+
+// --- Wrong parameter type test
+// buildBEM_Class("ALPHA")
+
+// --- Forbid subsequent parameters test
+// buildBEM_Class({}, "ALPHA")
+
+// --- Required property absence
+//buildBEM_Class({})
+
+// --- Required property absence
+//buildBEM_Class({ block: 1 })
+
+// --- Default values
+//p(buildBEM_Class({
+//  block: "Component",
+//  element: "Element",
+//  modifier: "Modifier",
+//  elementSeparator: "--",
+//  modifierSeparator: "_"
+//}))
+//
+//
+//p(buildBEM_Class({
+//  block: "Component",
+//  element: "Element",
+//  modifier: "Modifier"
+//}))
+
+
+//.Test1
+//
+//  TextTruncation()
+//
+//
+//.Test2
+//
+//  TextTruncation({
+//    displayEllipsis: true
+//  })
+//
+//
+//.Test3
+//
+//  TextTruncation({ additionalTopAndBottomEqualGap: 3px })
+//

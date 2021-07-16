@@ -1,11 +1,11 @@
 isNull(value)
 
-  return value == null && typeof(value) != "call"
+  return typeof(value) == "null"
 
 
 isNotNull(value)
 
-  return value != null || typeof(value) == "call"
+  return typeof(value) != "null"
 
 
 isString(value)

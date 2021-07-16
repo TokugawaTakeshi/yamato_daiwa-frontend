@@ -4,6 +4,7 @@ buildString(template, variables)
 
   for variableName, variableValue in variables
 
-    workpiece = replace("\${" + variableName + "}", variableValue, workpiece)
+    // [ Theory ] Before use the 'variableValue' in 'replace' it's required to convert it to string
+    workpiece = replace("\${" + variableName + "}", "" + variableValue, workpiece)
 
   return workpiece

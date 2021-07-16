@@ -1,0 +1,21 @@
+// === Execution
+// stylus Tests/Styles/02-Kernel/03-Mixins/applyIfNotNull.test.styl --out Tests/Output/Styles/02-Kernel/03-Mixins/applyIfNotNull.test.css --include Styles
+
+
+@require "01-Assets.styl"
+@require "02-Kernel.styl"
+
+
+background__assumeThatUnknownAtAdvance = red
+fontColor__assumeThatUnknownAtAdvance = null
+
+
+.Example
+
+  //background background__assumeThatUnknownAtAdvance
+  //color fontColor__assumeThatUnknownAtAdvance
+
+  applyIfNotNull({
+    background: background__assumeThatUnknownAtAdvance,
+    color: fontColor__assumeThatUnknownAtAdvance
+  })
