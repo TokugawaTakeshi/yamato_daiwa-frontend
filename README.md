@@ -116,10 +116,6 @@ allows flexibly work with unknown at-advance data, namely the customization data
 
 ### Roadmap
 
-#### Functions
-
-The functions are the utilities for the future flexible UI-kit.
-
 
 ##### Parameters validation
 
@@ -127,13 +123,6 @@ The parameters validation is important for the mixins with flexible customizatio
 
 
 #### Utility mixins
-
-##### Common
-
-* `applyIfNotNull`
-* `applyIfNotZero`
-* `TextTruncation`
-
 
 ##### Width sizing
 
