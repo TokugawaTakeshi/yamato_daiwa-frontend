@@ -1,0 +1,91 @@
+TextTruncation(parametersObject = {}, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      displayEllipsis: {
+        type: DataTypes.boolean,
+        defaultValue: false
+      },
+      additionalTopAndBottomEqualGap: {
+        type: DataTypes.unit
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "TextTruncation"
+  })
+
+
+  overflow hidden
+  white-space nowrap
+
+
+  if parametersObject.displayEllipsis == true
+
+    text-overflow ellipsis
+
+  else
+
+    text-overflow clip
+
+
+  if parametersObject.additionalTopAndBottomEqualGap
+
+    padding-top: parametersObject.additionalTopAndBottomEqualGap
+    padding-bottom: parametersObject.additionalTopAndBottomEqualGap
+
+
+MultilineTextWithoutExtraSpaceCausedByLineHeight(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      fontSize: {
+        type: DataTypes.unit,
+        required: true
+      },
+      lineHeight: {
+        type: DataTypes.unit,
+        required: true
+      },
+      doNotUsePseudoElements: {
+        type: DataTypes.boolean,
+        required: false
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "MultilineTextWithoutExtraSpaceCausedByLineHeight"
+  })
+
+
+  lineHeight__dimensionalValue = isUnitlessNumber(parametersObject.lineHeight) ?\
+      parametersObject.lineHeight*parametersObject.fontSize : parametersObject.lineHeight
+
+  extraSpaceByLineHeightInTheTopOrBottom = 0.5*(lineHeight__dimensionalValue - parametersObject.fontSize)
+
+
+  font-size: parametersObject.fontSize
+  line-height: parametersObject.lineHeight
+  word-break break-all
+
+
+  if parametersObject.doNotUsePseudoElements
+
+    // [ Theory ] The cause in unknown but unlike "else" branch without colon below margins will be ignored by Stylus
+    margin-top: -(extraSpaceByLineHeightInTheTopOrBottom)
+    margin-bottom: -(extraSpaceByLineHeightInTheTopOrBottom)
+
+  else
+
+    &:before
+
+      content ''
+      display block
+      margin-top -(extraSpaceByLineHeightInTheTopOrBottom)
+
+
+    &:after
+
+      content ''
+      display block
+      margin-bottom -(extraSpaceByLineHeightInTheTopOrBottom)
