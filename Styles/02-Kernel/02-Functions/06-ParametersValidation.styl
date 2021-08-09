@@ -55,14 +55,15 @@ validateSingleParametersObject(data)
       if (isNotNull(propertySpecification.defaultValue)) {
         targetObject[propertyName] = propertySpecification.defaultValue
       }
+    }
 
-      else if (isNotNull(propertySpecification.incompatibleWith)) {
+    else {
 
+      if (isNotNull(propertySpecification.incompatibleWith)) {
         for incompatiblePropertyName in propertySpecification.incompatibleWith {
-
           if (isNotNull(targetObject[incompatiblePropertyName])) {
             error(buildString(
-              "The property '${propertyName}' is incopatible with property '${incompatiblePropertyName}' for the " + \
+              "The property '${propertyName}' is incompatible with property '${incompatiblePropertyName}' for the " + \
               "function/mixin '${mixinOrFunctionName}'",
               {
                 propertyName: propertyName,
@@ -73,56 +74,67 @@ validateSingleParametersObject(data)
           }
         }
       }
-    }
 
-    else if (propertySpecification.type == DataTypes.string) {
+      if (propertySpecification.type == DataTypes.string) {
 
-      if (!isString(propertyValue)) {
+        if (!isString(propertyValue)) {
+          error(buildString(
+            "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' must be a string, " +\
+            "but really it has type '${propertyRealType}' and value: ${propertyValue}",
+            {
+              propertyName: propertyName,
+              mixinOrFunctionName: mixinOrFunctionName,
+              propertyRealType: typeof(propertyValue),
+              propertyValue: propertyValue
+            }
+          ))
+        }
 
-        error(buildString(
-          "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' must be a string, " +\
-          "but really it has type '${propertyRealType}' and value: ${propertyValue}",
-          {
-            propertyName: propertyName,
-            mixinOrFunctionName: mixinOrFunctionName,
-            propertyRealType: typeof(propertyValue),
-            propertyValue: propertyValue
-          }
-        ))
+        if (\
+          isNotNull(propertySpecification.allowedValues) &&\
+          !hasStringsOrNumbersArraySpecifiedElement(propertySpecification.allowedValues, propertyValue)\
+        ) {
+          error(buildString(
+            "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' has value " +\
+            "value: '${propertyValue}' while allowed values are:\n${allowedValue}",
+            {
+              propertyName: propertyName,
+              mixinOrFunctionName: mixinOrFunctionName,
+              allowedValue: propertySpecification.allowedValues,
+              propertyValue: propertyValue
+            }
+          ))
+        }
       }
-    }
 
-    else if (propertySpecification.type == DataTypes.unit) {
-
-      if (typeof(propertyValue) != "unit") {
-
-        error(buildString(
-          "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' must be a unit, " +\
-          "but really it has type '${propertyRealType}' and value: ${propertyValue}",
-          {
-            propertyName: propertyName,
-            mixinOrFunctionName: mixinOrFunctionName,
-            propertyRealType: typeof(propertyValue),
-            propertyValue: propertyValue
-          }
-        ))
+      else if (propertySpecification.type == DataTypes.unit) {
+        if (typeof(propertyValue) != "unit") {
+          error(buildString(
+            "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' must be a unit, " +\
+            "but really it has type '${propertyRealType}' and value: ${propertyValue}",
+            {
+              propertyName: propertyName,
+              mixinOrFunctionName: mixinOrFunctionName,
+              propertyRealType: typeof(propertyValue),
+              propertyValue: propertyValue
+            }
+          ))
+        }
       }
-    }
 
-    else if (propertySpecification.type == DataTypes.boolean) {
-
-      if (!isBoolean(propertyValue)) {
-
-        error(buildString(
-          "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' must be a boolean, " +\
-          "but really it has type '${propertyRealType}' and value: ${propertyValue}",
-          {
-            propertyName: propertyName,
-            mixinOrFunctionName: mixinOrFunctionName,
-            propertyRealType: typeof(propertyValue),
-            propertyValue: propertyValue
-          }
-        ))
+      else if (propertySpecification.type == DataTypes.boolean) {
+        if (!isBoolean(propertyValue)) {
+          error(buildString(
+            "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' must be a boolean, " +\
+            "but really it has type '${propertyRealType}' and value: ${propertyValue}",
+            {
+              propertyName: propertyName,
+              mixinOrFunctionName: mixinOrFunctionName,
+              propertyRealType: typeof(propertyValue),
+              propertyValue: propertyValue
+            }
+          ))
+        }
       }
     }
   }

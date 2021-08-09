@@ -1,4 +1,4 @@
-TextTruncation(parametersObject = {}, restParameters__MUST_NOT_BE...)
+SingleLineElementOverflowTolerance(parametersObject = {}, restParameters__MUST_NOT_BE...)
 
   validateSingleParametersObject({
     targetObject: parametersObject,
@@ -6,13 +6,10 @@ TextTruncation(parametersObject = {}, restParameters__MUST_NOT_BE...)
       displayEllipsis: {
         type: DataTypes.boolean,
         defaultValue: false
-      },
-      additionalTopAndBottomEqualGap: {
-        type: DataTypes.unit
       }
     },
     restParameters: restParameters__MUST_NOT_BE,
-    mixinOrFunctionName: "TextTruncation"
+    mixinOrFunctionName: "SingleLineElementOverflowTolerance"
   })
 
 
@@ -27,12 +24,6 @@ TextTruncation(parametersObject = {}, restParameters__MUST_NOT_BE...)
   else
 
     text-overflow clip
-
-
-  if parametersObject.additionalTopAndBottomEqualGap
-
-    padding-top: parametersObject.additionalTopAndBottomEqualGap
-    padding-bottom: parametersObject.additionalTopAndBottomEqualGap
 
 
 MultilineTextWithoutExtraSpaceCausedByLineHeight(parametersObject, restParameters__MUST_NOT_BE...)

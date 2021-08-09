@@ -61,3 +61,8 @@ buildBEM_Class(parametersObject, restParameters__MUST_NOT_BE...)
 substituteWhenNull(targetValue, defaultValue)
 
   return isNull(targetValue) || typeof(targetValue) == "ident" ? defaultValue : targetValue
+
+
+buildCalcExpression(formula, variables)
+
+  return unquote("calc(" + buildString(formula, variables) + ")")

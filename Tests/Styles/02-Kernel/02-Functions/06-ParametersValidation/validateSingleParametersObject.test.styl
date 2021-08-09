@@ -1,5 +1,5 @@
 // === Execution
-// stylus Tests/Styles/02-Kernel/02-Functions/07-OtherFunctions/validateSingleParametersObject.test.styl --out Tests/Output/Styles/02-Kernel/02-Functions/07-OtherFunctions/validateSingleParametersObject.test.css --include Styles
+// stylus Tests/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateSingleParametersObject.test.styl --out Tests/Output/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateSingleParametersObject.test.css --include Styles
 
 
 @require "01-Assets.styl"
@@ -13,10 +13,7 @@
 // buildBEM_Class({}, "ALPHA")
 
 // --- Required property absence
-//buildBEM_Class({})
-
-// --- Required property absence
-//buildBEM_Class({ block: 1 })
+// buildBEM_Class({ element: "Icon" })
 
 // --- Default values
 //p(buildBEM_Class({
@@ -34,20 +31,12 @@
 //  modifier: "Modifier"
 //}))
 
+// --- Required property absence
+//buildBEM_Class({ block: 1 })
 
-//.Test1
-//
-//  TextTruncation()
-//
-//
-//.Test2
-//
-//  TextTruncation({
-//    displayEllipsis: true
-//  })
-//
-//
-//.Test3
-//
-//  TextTruncation({ additionalTopAndBottomEqualGap: 3px })
-//
+
+// --- Incompatible parameters
+//widthSizing({
+//  fixedWidth: 100px,
+//  minimalWidth: 80px
+//})

@@ -88,17 +88,24 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 
 ##### Logging
 
-  * [📖 `log`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/log/log.md)
-    Makes log output to console. Unlike native similar `p` function formats the objects.
+* [📖 `log`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/log.md)
+  Makes log output to console. Unlike native similar `p` function formats the objects.
+
+##### Parameters validation
+
+* [📖 `validateSingleParametersObject`](Documentation/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateSingleParametersObject.md)
+  Validating of the parameters of function and mixins.
       
 
 ##### Other
 
   * [`buildBEM_Class`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildBEM_Class.md) 
-    builds BEM class according specified block, element and modifier.
+    Builds BEM class according specified block, element and modifier.
   * [`substituteWhenNull`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/substituteWhenNull.md) 
     Substitutes the second argument's value when first one is `null`
-  
+  * [`buildCalcExpression`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildCalcExpression.md)
+    Generates [`calc()`](https://developer.mozilla.org/en-US/docs/Web/CSS/calc()) expression; interpolation
+    is available.
 
 #### Mixins
 
@@ -110,6 +117,14 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 * [📖 `applyIfNotZero`](Documentation/Styles/02-Kernel/03-Mixins/applyIfNotZero.md) 
   adds each specified CSS property to target ruleset when if it's not zero. Intended to be used in cases when CSS values 
   are unknown in advance.
+
+##### Width sizing
+
+* [📖 `widthSizing`](Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/widthSizing.md)
+  Alternative width specifying approach intended to be used in frameworks development.
+* `fillViewportWidthIgnoringParentPaddings` Takes 100% of viewport in spite of parent element's paddings.
+* [📖 `TableCellWidthSizing`](Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/TableCellWidthSizing.md) 
+  Allows to define the width, borders and paddings of table cell by various combinations of parameters.
 
 ##### Typography
 
@@ -135,14 +150,6 @@ The parameters validation is important for the mixins with flexible customizatio
 
 
 #### Utility mixins
-
-##### Width sizing
-
-* `specifyWidthSizing` helper function
-* `WidthSizing` mixin 
-* `fillViewportWidthIgnoringParentPaddings`
-* `TableCellSizing`
-
 
 ##### Height sizing
 
