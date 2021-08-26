@@ -1,0 +1,16 @@
+// === Execution
+// stylus Tests/Styles/02-Kernel/03-Mixins/01-Sizing/02-HeightSizing/textBoxLikeElementsHeightSizing.test.styl --out Tests/Output/Styles/02-Kernel/03-Mixins/01-Sizing/02-HeightSizing/textBoxLikeElementsHeightSizing.test.css --include Styles
+
+@require "01-Assets.styl"
+@require "02-Kernel.styl"
+
+
+// Define fixed height, borders and compute paddings
+.Element1
+
+  textBoxLikeElementsHeightSizing({
+    type: TextBoxLikeElementsHeightSizing.Types.fixed,
+    fixedHeight: 40px,
+    topBorderWidth: 1px,
+    bottomBorderWidth: 2px
+  })

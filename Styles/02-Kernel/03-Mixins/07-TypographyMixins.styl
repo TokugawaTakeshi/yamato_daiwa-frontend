@@ -6,6 +6,10 @@ SingleLineElementOverflowTolerance(parametersObject = {}, restParameters__MUST_N
       displayEllipsis: {
         type: DataTypes.boolean,
         defaultValue: false
+      },
+      supportCrossAxisCenteredFlexChild: {
+        type: DataTypes.boolean,
+        defaultValue: false
       }
     },
     restParameters: restParameters__MUST_NOT_BE,
@@ -17,13 +21,18 @@ SingleLineElementOverflowTolerance(parametersObject = {}, restParameters__MUST_N
   white-space nowrap
 
 
-  if parametersObject.displayEllipsis == true
+  if isTrue(parametersObject.displayEllipsis)
 
     text-overflow ellipsis
 
   else
 
     text-overflow clip
+
+
+  if isTrue(parametersObject.supportCrossAxisCenteredFlexChild)
+
+    max-width 100%
 
 
 MultilineTextWithoutExtraSpaceCausedByLineHeight(parametersObject, restParameters__MUST_NOT_BE...)

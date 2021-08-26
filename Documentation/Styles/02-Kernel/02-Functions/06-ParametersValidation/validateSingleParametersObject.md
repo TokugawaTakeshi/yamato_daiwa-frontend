@@ -119,6 +119,56 @@ The property 'block' in parameters object of mixin/function 'buildBEM_Class' is 
     at buildBEM_Class() (Styles/02-Kernel/02-Functions/07-OtherFunctions.styl:15:1)
 ```
 
+##### Conditional requirement
+
+Set the object `requiredIf` to specify the conditional requirement.
+
+* The anonymous function `predicate` has single parameter - the reference to **single object of parameters** of target 
+  function/mixin and must return the boolean value (`true` means "required").
+* Add `descriptionForLogging` for clear logging what exactly has been violated.
+
+```stylus
+TextBoxLikeElementsHeightSizing = { Types: { fixed: "FIXED", natural: "NATURAL" } }
+TextBoxLikeElementsHeightSizing.singleObjectTypeParameterPropertiesValidation = {
+
+  type: {
+    type: DataTypes.string,
+    required: true,
+    allowedValues: values(TextBoxLikeElementsHeightSizing.Types)
+  },
+  
+  fixedHeight: {
+    type: DataTypes.unit,
+    requiredIf: {
+      predicate: @(heightSpecification) { return heightSpecification.type == TextBoxLikeElementsHeightSizing.Types.fixed },
+      descriptionForLogging: "The 'type' is 'TextBoxLikeElementsHeightSizing.Types.fixed'"
+    }
+  }
+  // ...
+}
+
+
+textBoxLikeElementsHeightSizing(specification, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: specification,
+    propertiesSpecification: TextBoxLikeElementsHeightSizing.singleObjectTypeParameterPropertiesValidation,
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "textBoxLikeElementsHeightSizing"
+  })
+
+  // ...
+```
+
+Now if in above `textBoxLikeElementsHeightSizing` the property `fixedHeight` will be omitted when `type` is 
+`TextBoxLikeElementsHeightSizing.Types.fixed` below error will be thrown:
+
+```
+The requirement condition:
+The 'type' is 'TextBoxLikeElementsHeightSizing.Types.fixed'
+of the property 'fixedHeight' in parameters object of mixin/function 'textBoxLikeElementsHeightSizing'has been satisfied but this property value is null.
+```
+
 
 ##### Default value
 
@@ -257,4 +307,40 @@ the error like below will the thrown:
 
 ```
 The property 'fixedWidth' is incompatible with property 'minimalWidth' for the function/mixin 'widthSizing'
+```
+
+
+##### Allowed values (string properties only)
+
+If the value of string property must the one of restricted values set (enumeration), specify the `allowedValues` property:
+
+```stylus
+TextBoxLikeElementsHeightSizing = { Types: { fixed: "FIXED", natural: "NATURAL" } }
+TextBoxLikeElementsHeightSizing.singleObjectTypeParameterPropertiesValidation = {
+
+  type: {
+    type: DataTypes.string,
+    required: true,
+    allowedValues: values(TextBoxLikeElementsHeightSizing.Types)
+  },
+  // ...
+}
+```
+
+Now, if this rul will be violated like:
+
+```stylus
+.Sample
+
+  textBoxLikeElementsHeightSizing({
+    type: "FOO",
+    fixedHeight: 40px
+  })
+```
+
+the error like below will the thrown:
+
+```
+The property 'type' in parameters object of mixin/function 'textBoxLikeElementsHeightSizing' has value value: 'FOO' while allowed values are:
+FIXED NATURAL
 ```

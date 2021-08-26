@@ -2,7 +2,7 @@ applyIfNotNull(keyAndValuePairs)
 
   for key, value in keyAndValuePairs
 
-    if isNotNull(value)
+    if isNotNull(value) && !isIdentifier(value)
 
       {key}: value
 

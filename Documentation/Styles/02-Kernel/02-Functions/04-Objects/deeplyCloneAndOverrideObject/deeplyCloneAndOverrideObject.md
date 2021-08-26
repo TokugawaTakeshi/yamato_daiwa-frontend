@@ -38,3 +38,33 @@ result.alpha.bravo = "FUGA"
 p(operand1.alpha.bravo)
 p(result.alpha.bravo)
 ```
+
+## Vs. native `merge`/`extend`
+
+The native `merge`/`extend` of two objects causes the mutation of the first one:
+
+```stylus
+sample1 = {
+  foo: "foo"
+  bar: "bar"
+}
+
+sample2 = {
+  baz: "baz"
+}
+
+sample3 = merge(sample1, sample2)
+p(sample3) // => {"foo":"(\"foo\")","bar":"(\"bar\")","baz":"(\"baz\")"} (As expected)
+p(sample1) // => {"foo":"(\"foo\")","bar":"(\"bar\")","baz":"(\"baz\")"} (The sample1 has been mutated)
+```
+
+The `deeplyCloneAndOverrideObject`, as it obvious and must be obvious from the method name, does not touch the operands: 
+
+```stylus
+
+sample3 = deeplyCloneAndOverrideObject(sample1, sample2)
+
+p(sample1) // => {"foo":"(\"foo\")","bar":"(\"bar\")"}
+p(sample2) // => {"baz":"(\"baz\")"}
+p(sample3) // => {"foo":"(\"foo\")","bar":"(\"bar\")","baz":"(\"baz\")"}
+```

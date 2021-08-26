@@ -36,7 +36,7 @@ ParseError: Tests/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildCalcExpre
 expected "indent", got "outdent"
 ```
 
-## `calc` interpolation in stylus
+## `calc` interpolation in Stylus
 
 The native interpolation approach of `calc` expression is [`sprintf`](https://stylus-lang.com/docs/operators.html#sprintf):
 

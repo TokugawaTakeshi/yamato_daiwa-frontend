@@ -128,6 +128,7 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 
 ##### Typography
 
+* [📖 `SingleLineElementOverflowTolerance`](Documentation/Styles/02-Kernel/03-Mixins/07-Typography/SingleLineElementOverflowTolerance.md)
 * [📖 `MultilineTextWithoutExtraSpaceCausedByLineHeight`](Documentation/Styles/02-Kernel/03-Mixins/07-Typography/MultilineTextWithoutExtraSpaceCausedByLineHeight.md)
   Defines the font size and line height, herewith there will not be extra vertical space above first line and below last
   line caused by `line-height`. Prevents overflow.

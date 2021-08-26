@@ -34,7 +34,7 @@ validateSingleParametersObject(data)
     ))
 
 
-  // [ Warning ] Skipping of burly brackets will cause 'unexpected "else"' error (possible Stylus bug)
+  // [ Warning ] Skipping of curly brackets will cause 'unexpected "else"' error (possible Stylus bug)
   for propertyName, propertySpecification in propertiesSpecification {
 
     propertyValue = targetObject[propertyName]
@@ -50,6 +50,25 @@ validateSingleParametersObject(data)
             mixinOrFunctionName: mixinOrFunctionName
           }
         ))
+      }
+
+      if (isNotNull(propertySpecification.requiredIf)) {
+
+        // [ Theory ] In Stylus, functions in objects could be called only when destructured
+        predicate = propertySpecification.requiredIf.predicate
+
+        if (isTrue(predicate(targetObject))) {
+          error(buildString(
+            "The requirement condition:\n${requirementConditionDescription}\n" +\
+            "of the property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}'" +\
+            "has been satisfied but this property value is null.",
+            {
+              requirementConditionDescription: propertySpecification.requiredIf.descriptionForLogging,
+              propertyName: propertyName,
+              mixinOrFunctionName: mixinOrFunctionName
+            }
+          ))
+        }
       }
 
       if (isNotNull(propertySpecification.defaultValue)) {
@@ -96,11 +115,11 @@ validateSingleParametersObject(data)
         ) {
           error(buildString(
             "The property '${propertyName}' in parameters object of mixin/function '${mixinOrFunctionName}' has value " +\
-            "value: '${propertyValue}' while allowed values are:\n${allowedValue}",
+            "value: '${propertyValue}' while allowed values are:\n${allowedValues}",
             {
               propertyName: propertyName,
               mixinOrFunctionName: mixinOrFunctionName,
-              allowedValue: propertySpecification.allowedValues,
+              allowedValues: propertySpecification.allowedValues,
               propertyValue: propertyValue
             }
           ))
