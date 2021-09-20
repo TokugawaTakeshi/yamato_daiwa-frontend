@@ -1,0 +1,25 @@
+/* === Execution
+stylus Tests/Source/Styles/02-Kernel/02-Functions/03-Arrays/arrayConstructor__POLYFILL.test.styl `
+  --out Tests/Output/Styles/02-Kernel/02-Functions/01-ValueCheckers/arrayConstructor__POLYFILL.test.css
+*/
+
+
+@require "../../../../../../Functionality.styl"
+
+
+borderRadiusSpecification = {
+  all: null,
+  topSideFillets: null,
+  leftSideFillets: null,
+}
+
+p(borderRadiusSpecification.all borderRadiusSpecification.topSideFillets borderRadiusSpecification.leftSideFillets)
+
+p(arrayConstructor__POLYFILL(borderRadiusSpecification.all, borderRadiusSpecification.topSideFillets, borderRadiusSpecification.leftSideFillets))
+
+
+sample = ("one" 11 "ALPHA") ("two" 22 "BRAVO") ("three" 33 "CHARLIE")
+
+p(sample)
+p(keys(sample))
+p(values(sample))

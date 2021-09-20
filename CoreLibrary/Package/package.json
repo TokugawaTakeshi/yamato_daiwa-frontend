@@ -1,0 +1,48 @@
+{
+  "name": "@yamato-daiwa/frontend",
+  "version": "0.1.0",
+  "description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
+  "keywords": [
+    "frontend",
+    "stylus"
+  ],
+  "author": {
+    "name": "Takeshi Tokugawa",
+    "email": "tokugawa.takesi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/issues",
+    "email": "tokugawa.takesi@gmail.com"
+  },
+  "files": [
+    "Components",
+    "Styles",
+    "Components.pug",
+    "Components.styl",
+    "Functionality.pug",
+    "Functionality.styl"
+  ],
+  "dependencies": {
+    "@yamato-daiwa/es-extensions": "1.3.0-alpha.2",
+    "@yamato-daiwa/es-extensions-browserjs": "1.3.0-alpha.5",
+    "clipboard": "2.0.8",
+    "prismjs": "1.25.0"
+  },
+  "devDependencies": {
+    "@types/prismjs": "1.16.6",
+    "hikari-automation": "0.0.40",
+    "stylus": "0.54.8",
+    "ts-node": "10.2.1",
+    "yamato-daiwa_code_quality_management": "0.0.17"
+  },
+  "scripts": {
+    "PugExtensions:ProductionBuild": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution PugExtensions --mode PRODUCTION && ts-node Markup/Source/PugExtensionsOutputFileGenerator.ts",
+    "AnywherePageStyles:IncrementalBuild": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution StaticPreviewAnywherePage --mode DEVELOPMENT",
+    "Tests": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution StylesAndComponentsTesting --mode DEVELOPMENT"
+  }
+}

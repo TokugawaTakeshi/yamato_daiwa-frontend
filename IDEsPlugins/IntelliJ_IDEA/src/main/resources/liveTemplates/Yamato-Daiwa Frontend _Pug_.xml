@@ -1,0 +1,7 @@
+<templateSet group="Yamato-Daiwa Frontend (Pug)">
+  <template name="ossll" value="//- Minimal example&#10;+OverflowSafeSingleLineLabel= textOverflowSafetyTest&#10;&#10;//- Full exmaple&#10;+OverflowSafeSingleLineLabel({&#10;&#9;rootElementTag: &quot;h1&quot;&#10;})= textOverflowSafetyTest" description="'OverflowSafeSingleLineLabel' mixin/component" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JADE" value="true" />
+    </context>
+  </template>
+</templateSet>

@@ -1,0 +1,93 @@
+projectBuilding:
+
+  commonSettings:
+
+    selectiveExecutions:
+
+      PugExtensions:
+        subtasksAndSourceFilesSelection:
+          ECMA_ScriptLogicProcessing: [ PugExtensions ]
+
+      StylesAndComponentsTesting:
+
+        subtasksAndSourceFilesSelection:
+          markupProcessing: [ StylesAndComponentsTesting ]
+          stylesProcessing: [ StylesAndComponentsTesting ]
+          ECMA_ScriptLogicProcessing: [ StylesAndComponentsTesting ]
+
+        browserLiveReloadingSetupID: StylesAndComponentsTesting
+
+      StaticPreviewAnywherePage:
+        subtasksAndSourceFilesSelection:
+          stylesProcessing: [ StaticPreviewAnywherePage ]
+
+
+  # === Markup =========================================================================================================
+  markupProcessing:
+    entryPointsGroups:
+
+      StylesAndComponentsTesting:
+        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Source
+        partialsRecognition:
+          partialsNamesPrefixes: "_"
+          prefixesOfSubdirectoriesWithPartials: "_"
+        buildingModeDependent:
+          DEVELOPMENT:
+            outputBaseDirectoryRelativePath: Tests/Output
+
+
+  # === Styles =========================================================================================================
+  stylesProcessing:
+
+    entryPointsGroups:
+
+      StylesAndComponentsTesting:
+        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Source
+        partialsRecognition:
+          partialsNamesPrefixes: "_"
+          prefixesOfSubdirectoriesWithPartials: "_"
+        buildingModeDependent:
+          DEVELOPMENT:
+            outputBaseDirectoryRelativePath: Tests/Output
+
+      StaticPreviewAnywherePage:
+        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.styl
+        buildingModeDependent:
+          DEVELOPMENT:
+            outputBaseDirectoryRelativePath: PagesTemplates/StaticPreviewAnywherePage
+
+
+  # === フロントエンド挙動制御記法事前処理 ======================================================================================
+  ECMA_ScriptLogicProcessing:
+
+    entryPointsGroups:
+
+      StylesAndComponentsTesting:
+        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Source
+        partialsRecognition:
+          partialsNamesPrefixes: "_"
+          prefixesOfSubdirectoriesWithPartials: "_"
+        buildingModeDependent:
+          DEVELOPMENT:
+            outputBaseDirectoryRelativePath: Tests/Output
+
+      PugExtensions:
+
+        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Markup/Source/PugExtensions.ts
+
+        executionContext: NODE_JS
+        exportsFromEntryPointsAreAccessible: true
+        exportsObjectName: __PUG_EXTENSIONS_EXPORTS__
+
+        buildingModeDependent:
+          PRODUCTION:
+            outputBaseDirectoryRelativePath: Markup/Source
+            revisioning: { skip: true }
+
+
+  # === Development server =============================================================================================
+  browserLiveReloading:
+
+    StylesAndComponentsTesting:
+
+      targetFilesRootDirectoryRelativePath: Tests/Output

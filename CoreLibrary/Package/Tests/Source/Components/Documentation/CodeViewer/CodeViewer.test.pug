@@ -1,0 +1,74 @@
+extends ../../../../../PagesTemplates/RegularWebPage.pug
+
+
+block append Metadata
+
+  -
+    HTML_PAGE_TITLE = "CodeViewer component testing";
+    styleSheetsURIs = [ "./CodeViewer.test.css" ]
+    scriptsURIs.endOfBody = [ "./CodeViewer.test.js" ]
+
+
+block append Requirements
+
+  include ../../../../../Components.pug
+
+
+block append PageContent
+
+  .Layout
+
+    +CodeViewer.PrototypeArticle-CodeViewer
+      +CodeViewerListing({ codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript }).
+        import { areStringifiedDigitsOnly } from "hikari-es-extensions";
+
+        console.log(areStringifiedDigitsOnly("123")); // 数字しか含めていないので「true」
+        console.log(areStringifiedDigitsOnly("032")); // 此の関数の場合先に行く"0"は妥当とされているので、「true」
+        console.log(areStringifiedDigitsOnly("03e")); // 「e」はネイピア数？何方にせよ、関数名通り数字だけではない場合、「false」
+        console.log(areStringifiedDigitsOnly("ab1")); // 数字だけではないので「false」
+
+
+    +CodeViewer({ topHeading: "必須HTML用意済みPug初手" })
+
+      +CodeViewerListing({
+        codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.Pug,
+        fileLabel: "源コード"
+      }).
+        extends ../../../../../../node_modules/hikari-frontend/PagesTemplates/RegularWebPage
+
+
+        block append Metadata
+
+          -
+            styleSheetURLs = [ "./Styles.css" ]
+            scriptsURLs.endOfBody = [ "./Main.js" ]
+
+
+        block append PageContent
+
+          h1 ページ見出し
+
+          p 目に見える内容は此方
+
+      +CodeViewerListing({
+        codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.HTML,
+        fileLabel: "出力コード "
+      })
+        :escape-html
+          <!DOCTYPE html>
+          <html lang="ja">
+
+          <head>
+            <title>最小HTMLページ</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <link href="./Styles.css" rel="stylesheet" type="text/css">
+          </head>
+
+          <body>
+            <h1>ページ見出し</h1>
+            <p>目に見える内容は此方</p>
+            <script src="./Main.js"></script>
+          </body>
+
+          </html>

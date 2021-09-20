@@ -1,0 +1,26 @@
+<templateSet group="Yamato-Daiwa Frontend (Stylus)">
+  <template name="nswu" value="NARROWEST_SCREEN_WIDTH_UNIT" description="&quot;NARROWEST_SCREEN_WIDTH_UNIT&quot; constant (320px)" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="cbsr" value="CrossBrowserStylesReset()" description="CrossBrowserStylesReset" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_RULESET_LIST" value="true" />
+    </context>
+  </template>
+  <template name="igcr" value="InitialGlobalCSS_Rules()" description="InitialGlobalCSS_Rules" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_RULESET_LIST" value="true" />
+    </context>
+  </template>
+  <template name="ossll" value="OverflowSafeSingleLineLabel({&#10;  fontSize: $END$,&#10;  displayEllipsis: true&#10;})" description="'OverflowSafeSingleLineLabel' mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+</templateSet>

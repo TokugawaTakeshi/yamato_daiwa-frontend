@@ -1,0 +1,146 @@
+getObjectValueByDotSeparatedPathSafely(targetObject, dotSeparatedPath)
+
+  objectNamePathSegments = split(".", dotSeparatedPath)
+  lastIterationNumber = getStringsOrNumbersArrayLength(objectNamePathSegments) - 1
+  valueOfCurrentDepth = targetObject
+
+  for pathSegment, index in objectNamePathSegments
+
+    valueOfCurrentDepth = valueOfCurrentDepth[pathSegment]
+
+    if index == lastIterationNumber
+
+      return valueOfCurrentDepth
+
+    else if isNull(valueOfCurrentDepth)
+
+      return null
+
+
+deeplyCloneObject(targetObject)
+
+  workpieceClone = {}
+
+  for key, value in targetObject
+
+    workpieceClone[key] = typeof(value) == "object" ? deeplyCloneObject(value) : value
+
+  return workpieceClone
+
+
+// It was detected some problems with 'merge' function for nested objects case in the past, but currently it's unclear
+// where is the difference. However this function could be removed only if will be proved that it's completely equivalent
+// to 'merge'
+overrideObject(targetObject, overridings)
+
+  if targetObject == null
+
+    return overridings
+
+  for key, value in overridings
+
+    targetObject[key] = typeof(value) == "object" ? overrideObject(targetObject[key], value) : value
+
+  return targetObject
+
+
+deeplyCloneAndOverrideObject(targetObject, overridings)
+
+  return overrideObject(deeplyCloneObject(targetObject), overridings)
+
+
+getObjectNonNullValuesCount(targetObject)
+
+  nonNullObjectValuesCount = 0
+
+  for key, value in targetObject
+
+    if isNotNull(value)
+
+      nonNullObjectValuesCount = nonNullObjectValuesCount + 1
+
+  return nonNullObjectValuesCount
+
+
+iterateObjectSkippingNullValues(targetObject, iterator)
+
+  for key, value in targetObject
+
+    if isNotNull(value)
+
+      iterator(key, value)
+
+
+formatObject(targetObject)
+
+  // 〔 Theory 〕 Just 'currentTabbingMultiplier = currentTabbingMultiplier + 1' will be lost once 'incrementTabbing' complete.
+  currentTabbingMultiplier = { value: 1 };
+
+
+  insertTabbing()
+
+    tabbing = ""
+
+    if currentTabbingMultiplier.value == 0
+
+      return tabbing
+
+
+    for loopCounter in (1..currentTabbingMultiplier.value)
+
+      tabbing = tabbing + "  "
+
+
+    return tabbing
+
+
+  incrementTabbing()
+
+    currentTabbingMultiplier.value = currentTabbingMultiplier.value + 1
+
+
+  insertIncrementedTabbing()
+
+    incrementTabbing()
+    return insertTabbing()
+
+
+  decrementTabbing()
+
+    currentTabbingMultiplier.value = currentTabbingMultiplier.value - 1
+
+
+  insertDecrementedTabbing()
+
+    decrementTabbing()
+    return insertTabbing()
+
+
+  formatDepthLevel(targetObject)
+
+    accumulatingString = "{\n";
+
+    lastKey = keys(targetObject)[length(keys(targetObject)) - 1]
+
+    for key, value in targetObject
+
+      if isObject(value)
+
+        accumulatingString = accumulatingString + insertTabbing() + key + ": "
+        incrementTabbing()
+        accumulatingString = accumulatingString + formatDepthLevel(value)
+
+      else
+
+        accumulatingString = accumulatingString + insertTabbing() + key + ": " + value
+
+
+      if key != lastKey
+
+        accumulatingString = accumulatingString + ",\n"
+
+
+    return accumulatingString = accumulatingString + "\n" + insertDecrementedTabbing() + "}"
+
+
+  formatDepthLevel(targetObject)

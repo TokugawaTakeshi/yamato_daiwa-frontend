@@ -1,0 +1,101 @@
+SingleLineElementOverflowTolerance(parametersObject = {}, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      displayEllipsis: {
+        type: DataTypes.boolean,
+        defaultValue: false
+      },
+      supportCrossAxisCenteredFlexChild: {
+        type: DataTypes.boolean,
+        defaultValue: false
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "SingleLineElementOverflowTolerance"
+  })
+
+
+  overflow hidden
+  white-space nowrap
+
+
+  if isTrue(parametersObject.displayEllipsis)
+
+    text-overflow ellipsis
+
+  else
+
+    text-overflow clip
+
+
+  if isTrue(parametersObject.supportCrossAxisCenteredFlexChild)
+
+    max-width 100%
+
+
+MultilineTextWithoutExtraSpaceCausedByLineHeight(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      fontSize: {
+        type: DataTypes.unit,
+        required: true
+      },
+      lineHeight: {
+        type: DataTypes.unit,
+        required: true
+      },
+      doNotUsePseudoElements: {
+        type: DataTypes.boolean,
+        required: false
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "MultilineTextWithoutExtraSpaceCausedByLineHeight"
+  })
+
+
+  fontSize = parametersObject.fontSize
+  lineHeight = parametersObject.lineHeight
+  lineHeight__dimensionalValue = isUnitlessNumber(lineHeight) ? lineHeight * fontSize : lineHeight
+
+  doNotUsePseudoElements = parametersObject.doNotUsePseudoElements
+
+  extraSpaceCausedByLineHeightAtTopOrBottom = buildCalcExpression(
+    "(${lineHeight__dimensionalValue} - ${fontSize}) / 2",
+    { lineHeight__dimensionalValue: lineHeight__dimensionalValue, fontSize: fontSize }
+  )
+
+  topOrBottomMarginValue = buildCalcExpression(
+    "-1 * ${extraSpaceCausedByLineHeightAtTopOrBottom}",
+    { extraSpaceCausedByLineHeightAtTopOrBottom: extraSpaceCausedByLineHeightAtTopOrBottom }
+  )
+
+
+  font-size fontSize
+  line-height lineHeight
+  word-break break-all
+
+
+  if doNotUsePseudoElements
+
+    margin-top topOrBottomMarginValue
+    margin-bottom topOrBottomMarginValue
+
+  else
+
+    &:before
+
+      content ''
+      display block
+      margin-top topOrBottomMarginValue
+
+
+    &:after
+
+      content ''
+      display block
+      margin-bottom topOrBottomMarginValue

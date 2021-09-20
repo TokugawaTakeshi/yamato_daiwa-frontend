@@ -1,0 +1,24 @@
+GRID_MINIMAL_WIDTH ?= NARROWEST_SCREEN_WIDTH_UNIT
+GRID_MAXIMAL_WIDTH ?= 4 * NARROWEST_SCREEN_WIDTH_UNIT
+
+MAIN_FONT_STACK ?= NativeSansSerif--FontsStack
+BASIC_FONT_SIZE ?= 14px
+BASIC_LINE_HEIGHT ?= 1
+
+BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS ?= 14px
+BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS ?= 20px
+
+
+ZIndexes = {
+  floatingNotifications: 60,
+  blockingOverlay: 50,
+  floatingAboveModalsComponents: 40,
+  modalsUnderlay: 30,
+  floatingBelowModalsComponents: 20,
+  drawers: 10,
+  lowermostLayer: 0
+}
+
+
+BEM_ELEMENT_SEPARATOR ?= "-"
+BEM_MODIFIER_SEPARATOR ?= "__"

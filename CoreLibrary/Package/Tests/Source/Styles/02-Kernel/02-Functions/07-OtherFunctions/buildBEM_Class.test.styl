@@ -1,0 +1,14 @@
+// === Execution
+// stylus Tests/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildBEM_Class.test.styl --out Tests/Output/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildBEM_Class.test.css --include Styles
+
+
+@require "../../../../../../Functionality.styl"
+
+
+log(buildBEM_Class({ block: "Button" })) // => "Button"
+
+log(buildBEM_Class({ block: "Button", element: "Icon" })) // => "Button-Icon"
+
+log(buildBEM_Class({ block: "Button", modifier: "BasicTheme" })) // => "Button__BasicTheme"
+
+log(buildBEM_Class({ block: "Header", element: "Icon", modifier: "BasicTheme" })) // => "Header-Icon__BasicTheme"

@@ -1,0 +1,219 @@
+extends RegularWebPage.pug
+
+
+block append Metadata
+
+  -
+
+    const StaticPreviewAnywherePage = {
+
+      PageDevelopmentProgressStatuses: {
+
+        implementationWaiting: "IMPLEMENTATION_WAITING",
+        implementationInProgress: "IMPLEMENTATION_IN_PROGRESS",
+
+        improvementWaiting: "IMPROVEMENT_WAITING",
+        improvementInProgress: "IMPROVEMENT_IN_PROGRESS",
+
+        fixingWaiting: "FIXING_WAITING",
+        fixingInProgress: "FIXING_IN_PROGRESS",
+
+        specificationClarification: "SPECIFICATION_CLARIFICATION",
+
+        reviewWaiting: "REVIEW_WAITING",
+        customerEvaluationWaiting: "CUSTOMER_EVALUATION_WAITING",
+
+        accepted: "ACCEPTED"
+      },
+
+      getPageLinkSpecificCSS_Class: pageDevelopmentProgressStatus => {
+
+        switch (pageDevelopmentProgressStatus) {
+
+          case StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationWaiting:
+            return "AnywherePage-PageLink__ImplementationWaiting";
+          case StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress:
+            return "AnywherePage-PageLink__ImplementationInProgress";
+
+          case StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementWaiting:
+            return "AnywherePage-PageLink__ImprovementWaiting";
+          case StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementInProgress:
+            return "AnywherePage-PageLink__ImprovementInProgress";
+
+          case StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingWaiting:
+            return "AnywherePage-PageLink__FixingWaiting";
+          case StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingInProgress:
+            return "AnywherePage-PageLink__FixingInProgress";
+
+          case StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.specificationClarification:
+            return "AnywherePage-PageLink__SpecificationClarification";
+          case StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.reviewWaiting:
+            return "AnywherePage-PageLink__ReviewWaiting";
+          case StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.customerEvaluationWaiting:
+            return "AnywherePage-PageLink__CustomerEvaluationWaiting";
+          case StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted:
+            return "AnywherePage-PageLink__Accepted";
+        }
+      },
+
+      localization: null,
+      setLocalization(newLocalization) {
+        this.localization = newLocalization;
+      }
+    }
+
+
+  include StaticPreviewAnywherePage/StaticPreviewAnywherePageLocalization__English.pug
+
+  - StaticPreviewAnywherePage.setLocalization(DataRetrievingFailedErrorLocalization__English);
+
+
+  //- --- Single page link ---------------------------------------------------------------------------------------------
+  mixin PageLink(pageDevelopmentProgressStatus, URI)
+
+    a.AnywherePage-PageLink(
+      href= URI
+      class= StaticPreviewAnywherePage.getPageLinkSpecificCSS_Class(pageDevelopmentProgressStatus)
+    )
+      .AnywherePage-PageLink-ProgressBadge
+        | #{StaticPreviewAnywherePage.localization.progressStatusBadgesText[pageDevelopmentProgressStatus]}
+      .AnywherePage-PageLink-Text: block
+
+
+  mixin PageLink__ImplementationWaiting(URI)
+    +PageLink(StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationWaiting, URI)
+      block
+
+  mixin PageLink__ImplementationInProgress(URI)
+    +PageLink(StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress, URI)
+      block
+
+  mixin PageLink__ImprovementWaiting(URI)
+    +PageLink(StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementWaiting, URI)
+      block
+
+  mixin PageLink__ImprovementInProgress(URI)
+    +PageLink(StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementInProgress, URI)
+      block
+
+  mixin PageLink__FixingWaiting(URI)
+    +PageLink(StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingWaiting, URI)
+      block
+
+  mixin PageLink__FixingInProgress(URI)
+    +PageLink(StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingInProgress, URI)
+      block
+
+  mixin PageLink__SpecificationClarification(URI)
+    +PageLink(StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.specificationClarification, URI)
+      block
+
+  mixin PageLink__ReviewWaiting(URI)
+    +PageLink(StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.reviewWaiting, URI)
+      block
+
+  mixin PageLink__CustomerEvaluationWaiting(URI)
+    +PageLink(StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.customerEvaluationWaiting, URI)
+      block
+
+  mixin PageLink__Accepted(URI)
+    +PageLink(StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted, URI)
+      block
+
+
+  //- --- Page links group ---------------------------------------------------------------------------------------------
+  mixin PageLinksGroup(parametersObject)
+
+    .AnywherePage-SinglePageRelatedLinksGroup(
+      class= StaticPreviewAnywherePage.getPageLinkSpecificCSS_Class(parametersObject.progressStatus)
+    )
+      .AnywherePage-SinglePageRelatedLinksGroup-ProgressBadge
+        | #{StaticPreviewAnywherePage.localization.progressStatusBadgesText[parametersObject.progressStatus]}
+
+      .AnywherePage-SinglePageRelatedLinksGroup-MainSection
+        .AnywherePage-SinglePageRelatedLinksGroup-Heading= parametersObject.label
+        each linkData in parametersObject.linksData
+          a.AnywherePage-SinglePageRelatedLinksGroup-Link(href= linkData.URI)= linkData.label
+
+  mixin PagesLinksGroup__ImplementationWaiting(parametersObject)
+    +PageLinksGroup({
+      label: parametersObject.label,
+      linksData: parametersObject.linksData,
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationWaiting
+    })
+
+  mixin PagesLinksGroup__ImplementationInProgress(parametersObject)
+    +PageLinksGroup({
+      label: parametersObject.label,
+      linksData: parametersObject.linksData,
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+    })
+
+  mixin PagesLinksGroup__ImprovementWaiting(parametersObject)
+    +PageLinksGroup({
+      label: parametersObject.label,
+      linksData: parametersObject.linksData,
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementWaiting
+    })
+
+  mixin PagesLinksGroup__ImprovementInProgress(parametersObject)
+    +PageLinksGroup({
+      label: parametersObject.label,
+      linksData: parametersObject.linksData,
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementInProgress
+    })
+
+  mixin PagesLinksGroup__FixingWaiting(parametersObject)
+    +PageLinksGroup({
+      label: parametersObject.label,
+      linksData: parametersObject.linksData,
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingWaiting
+    })
+
+  mixin PagesLinksGroup__FixingInProgress(parametersObject)
+    +PageLinksGroup({
+      label: parametersObject.label,
+      linksData: parametersObject.linksData,
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingInProgress
+    })
+
+  mixin PagesLinksGroup__SpecificationClarification(parametersObject)
+    +PageLinksGroup({
+      label: parametersObject.label,
+      linksData: parametersObject.linksData,
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.specificationClarification
+    })
+
+  mixin PagesLinksGroup__ReviewWaiting(parametersObject)
+    +PageLinksGroup({
+      label: parametersObject.label,
+      linksData: parametersObject.linksData,
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.reviewWaiting
+    })
+
+  mixin PagesLinksGroup__CustomerEvaluationWaiting(parametersObject)
+    +PageLinksGroup({
+      label: parametersObject.label,
+      linksData: parametersObject.linksData,
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.customerEvaluationWaiting
+    })
+
+  mixin PagesLinksGroup__Accepted(parametersObject)
+    +PageLinksGroup({
+      label: parametersObject.label,
+      linksData: parametersObject.linksData,
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
+    })
+
+
+block append StylesLinks
+
+  style
+    include StaticPreviewAnywherePage/StaticPreviewAnywherePage.css
+
+
+block append PageContent
+
+  .AnywherePage
+
+    block TableOfContents

@@ -1,0 +1,48 @@
+isNull(value)
+
+  return typeof(value) == "null"
+
+
+isNotNull(value)
+
+  return typeof(value) != "null"
+
+
+isString(value)
+
+  return typeof(value) == DataTypes.string
+
+
+isEmptyString(value)
+
+  return typeof(value) == DataTypes.string && length(value) == 0
+
+
+isUnitlessNumber(value)
+
+  return typeof(value) == DataTypes.unit && isEmptyString(unit(value))
+
+
+isBoolean(value)
+
+  return typeof(value) == DataTypes.boolean
+
+
+isTrue(value)
+
+  return value == true
+
+
+isFalse(value)
+
+  return value == false
+
+
+isObject(value)
+
+  return typeof(value) == DataTypes.object
+
+
+isIdentifier(value)
+
+  return typeof(value) == "ident"

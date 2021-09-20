@@ -1,0 +1,75 @@
+provideOverflowSafeSingleLineLabelComponent()
+
+  .OverflowSafeSingleLineLabel
+
+    display inline-block
+    max-width 100% // Required when parent has `{ display: flex; align-items: center }` or current element has `{ align-self: center }`
+
+
+    &-TextWithIncreasedLineHeight
+
+      display inline-block
+      max-width 100%
+
+      overflow hidden
+      white-space nowrap
+
+
+OverflowSafeSingleLineLabel(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      fontSize: {
+        type: DataTypes.unit,
+        required: true
+      },
+      lineHeight: {
+        type: DataTypes.unit,
+        defaultValue: 1.4
+      },
+      displayEllipsis: {
+        type: DataTypes.boolean,
+        defaultValue: false
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "OverflowSafeSingleLineLabel"
+  })
+
+
+  fontSize = parametersObject.fontSize
+  lineHeight = parametersObject.lineHeight
+  lineHeight__dimensionalValue = isUnitlessNumber(lineHeight) ? lineHeight * fontSize : lineHeight
+
+
+  extraSpaceCausedByLineHeightAtTopOrBottom = buildCalcExpression(
+    "(${lineHeight__dimensionalValue} - ${fontSize}) / 2",
+    { lineHeight__dimensionalValue: lineHeight__dimensionalValue, fontSize: fontSize }
+  )
+
+  topOrBottomMarginValue = buildCalcExpression(
+    "-1 * ${extraSpaceCausedByLineHeightAtTopOrBottom}",
+    { extraSpaceCausedByLineHeightAtTopOrBottom: extraSpaceCausedByLineHeightAtTopOrBottom }
+  )
+
+
+  height fontSize  // There could be 0.4-0.5px error if don't fixate the height
+
+
+  .OverflowSafeSingleLineLabel-TextWithIncreasedLineHeight
+
+    font-size fontSize
+    line-height lineHeight
+
+    margin-top topOrBottomMarginValue
+    margin-bottom topOrBottomMarginValue
+
+
+    if isTrue(parametersObject.displayEllipsis)
+
+      text-overflow ellipsis
+
+    else
+
+      text-overflow clip

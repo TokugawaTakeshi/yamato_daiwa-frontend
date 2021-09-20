@@ -1,0 +1,7 @@
+<templateSet group="Yamato-Daiwa Frontend (Vue + TypeScript)">
+  <template name="vcp" value="private inputtedUserName: ValidatableControlPayload&lt;string&gt; = generateInitialValidatableControlPayload({&#10;  initialValue: &quot;&quot;&#10;});" description="Single ValidatableControlPayload-type class field" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="TS_CLASS" value="true" />
+    </context>
+  </template>
+</templateSet>
