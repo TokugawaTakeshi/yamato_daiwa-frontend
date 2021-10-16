@@ -22,6 +22,21 @@ npm i @yamato-daiwa/frontend -E
 @require "PATH_TO_NODE_MODULES/@yamato-daiwa/frontend/Functionality.styl"
 ```
 
+### Get components
+
+#### Markup (Pug)
+
+```pug
+include "PATH_TO_NODE_MODULES/@yamato-daiwa/frontend/Components.pug
+```
+
+#### Styles
+
+```stylus
+@require "PATH_TO_NODE_MODULES/@yamato-daiwa/frontend/Components.styl"
+```
+
+
 ### Table of contents
 
 #### Assets
@@ -202,19 +217,3 @@ Horizontal and vertical centering, placing to right without wrappers.
 * `CenteredContentWithComputedSidePaddings`
 * `VerticallyCenteredAbsolutelyPositionedBlock`
 * `placeToRight`
-
-
-#### Positional relationship
-
-The `margin-top` and `margin-bottom` are being frequently set to the elements like `p`, `h1`, `h2` etc. in UI frameworks.
-However, we can not know at advance it which environment those elements will be used, which element will precede and which
-element will be after.
-
-Below mixins will allow to define which element must to retire from other element selectively.
-
-* `retireFrom`
-* `pushTargetFromSelf`
-* `pushTargetWithSameSelectorFromSelf`
-* `whenItJustAfter`
-* `whenTargetGoingJustAfterIt`
-* `whenTargetWithSameSelectorGoingJustAfterIt`
