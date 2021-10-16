@@ -13,18 +13,18 @@ Currently, below live templates are available:
 
 * Styles
   * Constants
-    * `nswu` - [`NARROWEST_SCREEN_WIDTH_UNIT`]() (320px)
+    * `nswu` - [`NARROWEST_SCREEN_WIDTH_UNIT`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-BasicConstants/BasicConstants.md#narrowest-screen-width-unit) (320px)
   * Mixins
-    * `cbsr` - [`CrossBrowserStylesReset`]()
-    * `igcr` - [`InitialGlobalCSS_Rules`]()
+    * `cbsr` - `CrossBrowserStylesReset`
+    * `igcr` - `InitialGlobalCSS_Rules`
     * Positional relationship
-      * `prs` - [`PositionalRelationship`]() mixin
-      * `rf` - [`retireFrom`]() mixin
-      * `ptfs` - [`pushTargetFromSelf`]() mixin
-      * `rfewss` - [`retireFromElementWithSameSelector`]() mixin
+      * `prs` - [`PositionalRelationship`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#positionalrelationship-mixin) mixin
+      * `rf` - [`retireFrom`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#retirefrom-mixin) mixin
+      * `ptfs` - [`pushTargetFromSelf`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#pushtargetfromself-mixin) mixin
+      * `rfewss` - [`retireFromElementWithSameSelector`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#retirefromelementwithsameselector-mixin) mixin
     
 * Components
-  * `ossll` - [`OverflowSafeSingleLineLabel`]() mixin/component (Available for Pug and Stylus contexts)
+  * `ossll` - [`OverflowSafeSingleLineLabel`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md) mixin/component (Available for Pug and Stylus contexts)
 
 <!-- Plugin description end -->
 
