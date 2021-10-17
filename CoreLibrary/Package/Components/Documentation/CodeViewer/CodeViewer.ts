@@ -1,25 +1,21 @@
 import CodeHighlighter from "prismjs";
-// import ClipboardJS from "clipboard";
+import ClipboardAccess from "clipboard";
 import {
   RawObjectDataProcessor,
-  isNotUndefined,
-  isEmptyString,
+  Logger,
   InvalidExternalDataError,
-  Logger
+  isNotUndefined,
+  isEmptyString
 } from "@yamato-daiwa/es-extensions";
-// import {
-//   getChildOfTemplateElementThatMustBeSole,
-//   getElementWhichMustExist
-//   // delegateClickEventHandling
-// } from "hikari-es-extensions/BrowserJS";
 import {
-  getTemplateChildElementThatExpectedToBeSingle,
+  createElement,
   getElementWhichMustExist,
-  createElement
+  delegateClickEventHandling
 } from "@yamato-daiwa/es-extensions-browserjs";
 
 /* --- Temporary ---------------------------------------------------------------------------------------------------- */
 import "prismjs/components/prism-typescript.js";
+import "prismjs/components/prism-pug.js";
 // ---------------------------------------------------------------------------------------------------------------------
 
 import componentTemplate from "./CodeViewer.template.pug";
@@ -27,7 +23,7 @@ import componentTemplate from "./CodeViewer.template.pug";
 
 export class CodeViewer {
 
-  private static componentImage: Element = createElement(componentTemplate);
+  private static readonly componentImage: Element = createElement(componentTemplate);
 
   private readonly rootElement: HTMLElement;
   private readonly codeListings: NodeListOf<HTMLElement>;
@@ -45,8 +41,8 @@ export class CodeViewer {
     const selfInstance: CodeViewer = new CodeViewer(componentRootElement);
 
     selfInstance.initializeTabsAndCodeListings();
-    // selfInstance.initializeActionBar();
-    //
+    selfInstance.initializeActionBar();
+
     CodeHighlighter.highlightAllUnder(componentRootElement);
 
     return selfInstance;
@@ -67,19 +63,17 @@ export class CodeViewer {
 
   private initializeTabsAndCodeListings(): void {
 
-    console.log(CodeViewer.componentImage);
-
     if (this.codeListings.length === 0) {
+      // TODO 警告
       return;
     }
 
 
     if (this.codeListings.length === 1) {
-      this.codeListings[0].removeAttribute("hidden");
+      this.codeListings[0].removeAttribute("hidden"); // TODO スケレトンロード
       this.tabsFlow.remove();
       return;
     }
-
 
 
     const emptyTab: Element = getElementWhichMustExist({
@@ -138,58 +132,58 @@ export class CodeViewer {
         hasAtLeastOneCodeListingBeenSetToActive = true;
       }
 
-      // TODO 再開点
-      // getElementWhichMustExist({ selector: ".CodeViewer-Tab-LanguageValue", context: currentTab }).
-      //     textContent = currentTabData.language;
-      //
-      // if (isNotUndefined(currentTabData.fileLabel)) {
-      //   getElementWhichMustExist({ selector: ".CodeViewer-Tab-FileLabel", context: currentTab }).
-      //       textContent = currentTabData.fileLabel;
-      // } else {
-      //   getElementWhichMustExist({ selector: ".CodeViewer-Tab-FileLabel", context: currentTab }).remove();
-      // }
+      getElementWhichMustExist({ selector: ".CodeViewer-Tab-LanguageValue", context: currentTab }).
+          textContent = currentTabData.language;
+
+      if (isNotUndefined(currentTabData.fileLabel)) {
+        getElementWhichMustExist({ selector: ".CodeViewer-Tab-FileLabel", context: currentTab }).
+            textContent = currentTabData.fileLabel;
+      } else {
+        getElementWhichMustExist({ selector: ".CodeViewer-Tab-FileLabel", context: currentTab }).remove();
+      }
 
       this.tabs.push(currentTab);
     }
-    //
-    //
-    // tabTemplate.replaceWith(...this.tabs);
-    //
-    // if (!hasAtLeastOneCodeListingBeenSetToActive) {
-    //   this.tabs[0].classList.add("CodeViewer-Tab__SelectedState");
-    // }
-    //
-    //
-    // delegateClickEventHandling(
-    //     { container: this.tabsFlow, clickTargetSelector: ".CodeViewer-Tab" }, (event: MouseEvent): void => {
-    //       console.log("~~~~~");
-    //       console.log(event);
-    //     }
-    // );
+
+
+    this.tabsFlow.append(...this.tabs);
+
+    if (!hasAtLeastOneCodeListingBeenSetToActive) {
+      this.tabs[0].classList.add("CodeViewer-Tab__SelectedState");
+      this.codeListings[0].removeAttribute("hidden");
+    }
+
+    // TODO Wrong Selector
+    delegateClickEventHandling(
+      { container: this.tabsFlow, clickTargetSelector: ".CodeViewer-Tab" }, (event: MouseEvent): void => {
+        console.log(event);
+        console.log(event.currentTarget);
+        console.log(event.target);
+      }
+    );
   }
-  //
-  //
-  // private initializeActionBar(): void {
-  //
-  //   const actionBar: HTMLElement = getElementWhichMustExist({
-  //     selector: ".CodeViewer-ActionBar", context: this.rootElement
-  //   });
-  //
-  //   const copyCodeButton: HTMLElement = getElementWhichMustExist({
-  //     selector: ".CodeViewer-ActionBar__CopyCode", context: actionBar
-  //   });
-  //
-  //   const clipboard: ClipboardJS = new ClipboardJS(copyCodeButton, {
-  //     target: (): Element => getElementWhichMustExist({
-  //         selector: ".CodeViewer-CodeListing-CodeContainer",
-  //         context: this.codeListings[0]
-  //       })
-  //   });
-  //
-  //   clipboard.on("success", (): void => {
-  //     // TODO Snackbar
-  //   });
-  // }
+
+  private initializeActionBar(): void {
+
+    const actionBar: HTMLElement = getElementWhichMustExist({
+      selector: ".CodeViewer-ActionBar", context: this.rootElement
+    });
+
+    const copyCodeButton: HTMLElement = getElementWhichMustExist({
+      selector: ".CodeViewer-ActionBar__CopyCode", context: actionBar
+    });
+
+    const clipboard: ClipboardAccess = new ClipboardAccess(copyCodeButton, {
+      target: (): Element => getElementWhichMustExist({
+          selector: ".CodeViewer-CodeListing-CodeContainer",
+          context: this.codeListings[0]
+        })
+    });
+
+    clipboard.on("success", (): void => {
+      // TODO Snackbar
+    });
+  }
 }
 
 
