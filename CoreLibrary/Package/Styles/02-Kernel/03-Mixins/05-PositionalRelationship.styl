@@ -342,11 +342,25 @@ whenTargetWithSameSelectorGoingJustAfterIt(parametersObject = {}, restParameters
     {block}
 
 
-whenItGoingFirst()
+whenItGoingFirst(parametersObject = {}, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      verticalSpaceAbove: {
+        type: DataTypes.unit
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "whenTargetWithSameSelectorGoingJustAfterIt"
+  })
+
 
   &:first-child
 
     {block}
+
+    applyIfNotNull({ margin-top: parametersObject.verticalSpaceAbove })
 
 
 whenItGoingLast()

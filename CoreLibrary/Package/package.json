@@ -36,9 +36,9 @@
   "devDependencies": {
     "@types/prismjs": "1.16.6",
     "hikari-automation": "0.0.40",
-    "stylus": "0.54.8",
-    "ts-node": "10.2.1",
-    "yamato-daiwa_code_quality_management": "0.0.17"
+    "stylus": "0.55.0",
+    "ts-node": "10.3.0",
+    "yamato-daiwa_code_quality_management": "0.0.18"
   },
   "scripts": {
     "PugExtensions:ProductionBuild": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution PugExtensions --mode PRODUCTION && ts-node Markup/Source/PugExtensionsOutputFileGenerator.ts",
