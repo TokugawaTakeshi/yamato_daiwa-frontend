@@ -1,10 +1,13 @@
 export {
 
+  isString,
+  RawObjectDataProcessor
+
   /* === Numbers ==================================================================================================== */
-  formatNumberWith4KetaKanji,
-  isStringifiedNonNegativeIntegerOfRegularNotation,
-  separateEach3DigitsGroupWithComma,
-  separateEach4DigitsGroupWithComma
+  // formatNumberWith4KetaKanji,
+  // isStringifiedNonNegativeIntegerOfRegularNotation,
+  // separateEach3DigitsGroupWithComma,
+  // separateEach4DigitsGroupWithComma
 
   /* === Tools ====================================================================================================== */
   // RawObjectDataProcessor
