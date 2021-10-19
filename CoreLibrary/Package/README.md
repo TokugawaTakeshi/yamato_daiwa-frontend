@@ -154,6 +154,8 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
   Allows to define how much element `B` must push `A` from self by `A`'s top/left margin.
 * [📖 `retireFromElementWithSameSelector` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#retirefromelementwithsameselector-mixin)
   Allows to define how much certain element must retire from other element with same selector.
+* [📖 `whenItGoingFirst` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whenitgoingfirst-mixin)
+  Allows to define CSS property for certain element when it is going first in some container.
 
 
 ##### Typography
@@ -180,40 +182,3 @@ Maybe is so until writing the flexible and customizable UI framework.
 
 The `@yamato-daiwa/frontend` synthetically improving the programming functionality of Stylus pre-processor
 allows flexibly work with unknown at-advance data, namely the customization data from the framework users.
-
-
-### Roadmap
-
-#### Utility mixins
-
-##### Height sizing
-
-* `specifyHeightSizing` helper function
-* `computeHeightByHeightSizingSpecification` helper function
-* `HeightSizing` mixin
-
-
-##### Borders and padding
-
-For the none-library projects, just `padding` and `border` properties could be enough, but this functionality is targeting to
-component development 
-
-* `specifyBorderRadius`
-* `applyBorderRadiusSpecification`
-* `specifyBorders` helper function
-* `applyBordersSpecification`
-* `BorderTopFilletsRadius`/`BorderBottomFilletsRadius`/`BorderLeftFilletsRadius`/`BorderRightFilletsRadius`
-* `specifyPaddings` helper function
-* `applyPaddingsSpecification`
-* `EqualLeftAndRightPaddings`
-* `EqualTopAndBottomPaddings`
-
-
-#### Positioning
-
-Horizontal and vertical centering, placing to right without wrappers.
-
-* `HorizontalCenteringWithoutWrapper`
-* `CenteredContentWithComputedSidePaddings`
-* `VerticallyCenteredAbsolutelyPositionedBlock`
-* `placeToRight`

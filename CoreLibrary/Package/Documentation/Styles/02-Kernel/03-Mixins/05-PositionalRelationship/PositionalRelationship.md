@@ -554,3 +554,39 @@ will be compiled to:
   margin-top: 8px;
 }
 ```
+
+
+## `whenItGoingFirst` mixin
+[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-wigf-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+
+Allows to define `margin-top` and other properties for the case when target element going first in container.
+
+Below example
+
+```stylus
+.Child
+  
+  whenItGoingFirst({ verticalSpaceAbove: 4px })
+```
+
+will be compiled to
+
+```css
+.Child:first-child {
+  border-top: 1px solid #808080;
+}
+```
+
+Note that it may not work because of [margin collapse](https://www.w3schools.com/css/css_margin_collapse.asp),
+but this problem is solvable (for example by flexbox with `flex-direction: column`).
+
+
+You can specify any other CSS properties as content of the [block mixin](https://www.w3schools.com/css/css_margin_collapse.asp),
+just don't forget to append `+` to `whenItGoingFirst()`: 
+
+
+```stylus
++whenItGoingFirst()
+
+  border-top 1px solid gray
+```
