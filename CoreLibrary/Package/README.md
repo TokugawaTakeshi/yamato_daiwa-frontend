@@ -1,10 +1,23 @@
-# @yamato-daiwa/frontend
+# @yamato-daiwa/frontend - [YDF]
 
 [![NPM Version](https://img.shields.io/npm/v/@yamato-daiwa/frontend)](https://www.npmjs.com/package/@yamato-daiwa/frontend)
 [![IntelliJ IDEA plugin](https://img.shields.io/badge/IntelliJ_IDEA-Official_Plugin-088BF8.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
+The toolkit for the frontend development with [Pug](https://pugjs.org/api/getting-started.html) and 
+[Stylus](https://github.com/stylus/stylus/) pre-processors.
 
-Currently the toolkit for the frontend development with [Stylus](https://github.com/stylus/stylus/) pre-processor.
+Currently, most of the functionality has the auxiliary role, but in the future GUI components will be added.
+
+[🛣️ Roadmap](https://yamato-daiwa.myjetbrains.com/youtrack/agiles/121-3/current?tab=general)
+
+## ⚠️ Request to Stack Overflow users with `>=1500` reputation
+
+[My account](https://stackoverflow.com/users/4818123/takeshi-tokugawa-yd) has not enough reputation to create the tag
+for `@yamato-daiwa/frontend` and start to answer the related questions. Please create it instead of me and notify
+me to [tokugawa.takesi@gmail.com](mailto:tokugawa.takesi@gmail.com).
+
+* **Tag name**: `@yamato-daiwa/frontend`
+* **Description**: The toolkit for the frontend development with Pug and Stylus pre-processors.
 
 
 ## Installation

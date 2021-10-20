@@ -352,7 +352,7 @@ whenItGoingFirst(parametersObject = {}, restParameters__MUST_NOT_BE...)
       }
     },
     restParameters: restParameters__MUST_NOT_BE,
-    mixinOrFunctionName: "whenTargetWithSameSelectorGoingJustAfterIt"
+    mixinOrFunctionName: "whenItGoingFirst"
   })
 
 
@@ -363,8 +363,22 @@ whenItGoingFirst(parametersObject = {}, restParameters__MUST_NOT_BE...)
     applyIfNotNull({ margin-top: parametersObject.verticalSpaceAbove })
 
 
-whenItGoingLast()
+whenItGoingLast(parametersObject = {}, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      verticalSpaceBelow: {
+        type: DataTypes.unit
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "whenItGoingLast"
+  })
+
 
   &:last-child
 
     {block}
+
+    applyIfNotNull({ margin-bottom: parametersObject.verticalSpaceBelow })

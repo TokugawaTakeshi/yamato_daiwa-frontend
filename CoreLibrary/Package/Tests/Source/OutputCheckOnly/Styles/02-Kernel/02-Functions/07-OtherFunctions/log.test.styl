@@ -1,0 +1,38 @@
+// === Execution
+// stylus Tests/Styles/02-Kernel/02-Functions/07-OtherFunctions/log.test.styl --out Tests/Output/Styles/02-Kernel/02-Functions/07-OtherFunctions/log.test.css --include Styles
+
+
+@require "../../../../../../../Functionality.styl"
+
+
+sample1 = {
+  alpha: "FOO",
+  bravo: 1,
+  charlie: {
+    delta: "BAR",
+    echo: 2
+  }
+}
+
+p(sample1)
+log(sample1)
+
+log({
+  alpha: "FOO",
+  bravo: 1,
+  charlie: {
+    delta: "BAR",
+    echo: 2
+  },
+  hotel: "BAZ"
+})
+
+log({
+  alpha: "FOO",
+  bravo: 1,
+  charlie: {
+    delta: ("asdf" 1) ("QWER" 3),
+    echo: 2
+  },
+  hotel: "FUGA"
+})

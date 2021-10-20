@@ -1,12 +1,11 @@
 # Yamato-Daiwa Frontend
 
-![Build](https://github.com/TokugawaTakeshi/temp/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/17677.svg)](https://plugins.jetbrains.com/plugin/17677)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/17677.svg)](https://plugins.jetbrains.com/plugin/17677)
 
 
 <!-- Plugin description -->
-Adds [Live Templates](https://www.jetbrains.com/help/idea/using-live-templates.html) for
+Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templates.html) for
 [@yamato-daiwa/frontend](https://www.npmjs.com/package/@yamato-daiwa/frontend) library.
 
 Currently, below live templates are available:
@@ -22,6 +21,7 @@ Currently, below live templates are available:
       * `rf` - [`retireFrom`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#retirefrom-mixin) mixin
       * `ptfs` - [`pushTargetFromSelf`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#pushtargetfromself-mixin) mixin
       * `rfewss` - [`retireFromElementWithSameSelector`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#retirefromelementwithsameselector-mixin) mixin
+      * `wigf` - [`whenItGoingFirst`]() mixin
     
 * Components
   * `ossll` - [`OverflowSafeSingleLineLabel`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md) mixin/component (Available for Pug and Stylus contexts)

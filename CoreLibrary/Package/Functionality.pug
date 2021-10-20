@@ -28,20 +28,17 @@ mixin WideDummy(backgroundColor)
   div(style=`width: 2000px; height: 100px; background: ${backgroundColor};`)
 
 
-include Markup/Source/PugExtensions.pug
+include Markup/PugExtensions.generated.pug
 
 -
 
   const {
 
-    isString,
-    RawObjectDataProcessor
-
     /* === Numbers ================================================================================================== */
-    // formatNumberWith4KetaKanji
-    // isStringifiedNonNegativeIntegerOfRegularNotation,
-    // separateEach3DigitsGroupWithComma,
-    // separateEach4DigitsGroupWithComma,
+    formatNumberWith4KetaKanji,
+    isStringifiedNonNegativeIntegerOfRegularNotation,
+    separateEach3DigitsGroupWithComma,
+    separateEach4DigitsGroupWithComma,
 
     // -----------------------------------------------------------------------------------------------------------------
     /*
@@ -101,4 +98,5 @@ include Markup/Source/PugExtensions.pug
 
   } = global.__PUG_EXTENSIONS_EXPORTS__;
 
-include Markup/PrismJS_Integration.pug
+
+include Markup/BuildInPlugins/PrismJS_Integration.pug

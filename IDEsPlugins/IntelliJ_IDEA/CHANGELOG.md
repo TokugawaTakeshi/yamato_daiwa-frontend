@@ -1,6 +1,12 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# temp Changelog
+# Yamato-Daiwa Frontend IntelliJ IDEA plugin changelog
+
+## [0.0.2]
+## Added 
+
+- `wigf` - live template for [`whenItGoingFirst`]() mixin
+
 
 ## [0.0.1]
 ### Added

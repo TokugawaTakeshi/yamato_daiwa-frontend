@@ -1,0 +1,29 @@
+/* === Execution
+stylus Tests/Source/Styles/02-Kernel/02-Functions/03-Arrays/iterate2DimensionalArray.test.styl `
+  --out Tests/Output/Styles/02-Kernel/02-Functions/03-Arrays/iterate2DimensionalArray.test.css
+*/
+
+
+@require "../../../../../../../Functionality.styl"
+
+
+sample1 = (11 "ALPHA" true { hash: 1 }) ("BRAVO" 22 false)
+
+iterate2DimensionalArray(sample1, @(nestedArray, index){
+  p("Element No. " + index + ":")
+  p(nestedArray)
+})
+
+p("-----------------------------------------------------")
+
+sample2 = (11 "ALPHA" true { hash: 1 })
+
+//for nestedArray, index in sample2
+//
+//  p("Element No. " + index + ":")
+//  p(nestedArray)
+
+iterate2DimensionalArray(sample2, @(nestedArray, index){
+  p("Element No. " + index + ":")
+  p(nestedArray)
+})
