@@ -283,6 +283,10 @@ whenItJustAfter(parametersObject, restParameters__MUST_NOT_BE...)
         type: DataTypes.string,
         required: true
       },
+      contextSelector: {
+        type: DataTypes.string,
+        required: false
+      },
       referenceElementSelector: {
         type: DataTypes.string,
         defaultValue: selector()
@@ -292,8 +296,12 @@ whenItJustAfter(parametersObject, restParameters__MUST_NOT_BE...)
     mixinOrFunctionName: "whenItJustAfter"
   })
 
+  targetElementSelector = isNull(parametersObject.contextSelector) ?\
+      parametersObject.targetElementSelector :\
+      parametersObject.contextSelector + " " + parametersObject.targetElementSelector
 
-  /{parametersObject.targetElementSelector} + {parametersObject.referenceElementSelector}
+
+  /{targetElementSelector} + {parametersObject.referenceElementSelector}
 
     {block}
 
@@ -307,6 +315,10 @@ whenTargetGoingJustAfterIt(parametersObject, restParameters__MUST_NOT_BE...)
         type: DataTypes.string,
         required: true
       },
+      contextSelector: {
+        type: DataTypes.string,
+        required: false
+      },
       referenceElementSelector: {
         type: DataTypes.string,
         defaultValue: selector()
@@ -317,7 +329,12 @@ whenTargetGoingJustAfterIt(parametersObject, restParameters__MUST_NOT_BE...)
   })
 
 
-  /{parametersObject.referenceElementSelector} + {parametersObject.targetElementSelector}
+  referenceElementSelector = isNull(parametersObject.contextSelector) ?\
+      parametersObject.referenceElementSelector :\
+      parametersObject.contextSelector + " " + parametersObject.referenceElementSelector
+
+
+  /{referenceElementSelector} + {parametersObject.targetElementSelector}
 
     {block}
 
@@ -327,17 +344,25 @@ whenTargetWithSameSelectorGoingJustAfterIt(parametersObject = {}, restParameters
   validateSingleParametersObject({
     targetObject: parametersObject,
     propertiesSpecification: {
-      targetElementSelector: {
+      referenceElementSelector: {
         type: DataTypes.string,
         defaultValue: selector()
+      },
+      contextSelector: {
+        type: DataTypes.string,
+        required: false
       }
     },
     restParameters: restParameters__MUST_NOT_BE,
     mixinOrFunctionName: "whenTargetWithSameSelectorGoingJustAfterIt"
   })
 
+  referenceElementSelector = isNotNull(parametersObject.contextSelector) ?\
+      parametersObject.contextSelector + " " + parametersObject.referenceElementSelector :\
+      parametersObject.referenceElementSelector
 
-  /{parametersObject.targetElementSelector} + {parametersObject.targetElementSelector}
+
+  /{referenceElementSelector} + {parametersObject.referenceElementSelector}
 
     {block}
 

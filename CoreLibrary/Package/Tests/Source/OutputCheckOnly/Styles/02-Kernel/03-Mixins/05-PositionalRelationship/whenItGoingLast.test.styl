@@ -23,3 +23,17 @@ stylus Tests/Source/OutputCheckOnly/Styles/02-Kernel/03-Mixins/05-PositionalRela
 .Test3
 
   whenItGoingLast({ verticalSpaceBelow: 4px })
+
+
+.UsersListPage
+
+  &-CardsFlow
+
+    whenItGoingLast({ verticalSpaceBelow: 32px })
+
+
+  &-Pagination
+
+    retireFrom({ targetElementSelector: ".UsersListPage-CardsFlow", y: 12px })
+
+    whenItGoingLast({ verticalSpaceBelow: 28px })
