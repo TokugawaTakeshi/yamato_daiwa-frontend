@@ -1,0 +1,34 @@
+/*  === Execution
+stylus Tests/Source/OutputCheckOnly/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/whenTargetGoingJustAfterIt.test.styl `
+    --out Tests/Build/OutputCheckOnly/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/whenTargetGoingJustAfterIt.test.css
+ */
+
+@require "../../../../../../../Functionality.styl"
+
+
+.Block1
+
+  &-ChildA
+
+    // ...
+
+
+  &-ChildB
+
+    +whenTargetGoingJustAfterIt({ targetElementSelector: ".Block-ChildA" })
+
+      background gold
+
+
+.Block2
+
+  h2
+
+    // ...
+
+
+  p
+
+    +whenTargetGoingJustAfterIt({ targetElementSelector: "h2", contextSelector: ".Block2", referenceElementSelector: "p" })
+
+      background silver

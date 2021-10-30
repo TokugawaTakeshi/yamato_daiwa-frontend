@@ -1,50 +1,85 @@
 <templateSet group="Yamato-Daiwa Frontend (Stylus)">
-  <template name="nswu" value="NARROWEST_SCREEN_WIDTH_UNIT" description="&quot;NARROWEST_SCREEN_WIDTH_UNIT&quot; constant (320px)" toReformat="false" toShortenFQNames="true">
+  <template name="nswu" value="NARROWEST_SCREEN_WIDTH_UNIT" description="`NARROWEST_SCREEN_WIDTH_UNIT` constant (320px)" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="cbsr" value="CrossBrowserStylesReset()" description="CrossBrowserStylesReset" toReformat="false" toShortenFQNames="true">
+  <template name="cbsr" value="CrossBrowserStylesReset()" description="`CrossBrowserStylesReset` mixin" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS_RULESET_LIST" value="true" />
     </context>
   </template>
-  <template name="igcr" value="InitialGlobalCSS_Rules()" description="InitialGlobalCSS_Rules" toReformat="false" toShortenFQNames="true">
+  <template name="igcr" value="InitialGlobalCSS_Rules()" description="`InitialGlobalCSS_Rules` mixin" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS_RULESET_LIST" value="true" />
     </context>
   </template>
-  <template name="ossll" value="OverflowSafeSingleLineLabel({&#10;  fontSize: $END$,&#10;  displayEllipsis: true&#10;})" description="'OverflowSafeSingleLineLabel' mixin/component" toReformat="false" toShortenFQNames="true">
+  <template name="ossll" value="OverflowSafeSingleLineLabel({&#10;  fontSize: $END$,&#10;  displayEllipsis: true&#10;})" description="`OverflowSafeSingleLineLabel` mixin/component" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_PROPERTY_VALUE" value="false" />
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="prs" value="// Minimal example&#10;PositionalRelationship({&#10;  definitions: (&quot;.Article-Paragraph&quot; { retireFromIt: { y: 8px }, pushItFromSelf: { y: 16px } })&#10;})&#10;&#10;// With context&#10;PositionalRelationship({&#10;  definitions: (&quot;h2&quot; { retireFromIt: { y: 8px }, pushItFromSelf: { y: 16px } })&#10;  contextSelector: &quot;.Article&quot;,&#10;  referenceElementSelector: &quot;p&quot;&#10;})&#10;&#10;// All functionality used&#10;PositionalRelationship({&#10;  definitions:\&#10;      (&quot;.ContextSelector-ElementB&quot; { &#10;        retireFromIt: { x: 2px, y: 4px }, &#10;        pushItFromSelf: { x: 6px, y: 8px }, &#10;        usePaddingsInsteadOfMargins: true &#10;      })\&#10;      (&quot;.ContextSelector-ElementC&quot; { retireFromIt: { x: 10px, y: 12px }, pushItFromSelf: { x: 14px, y: 16px } }),&#10;  contextSelector: &quot;.ContextSelector&quot;,&#10;  referenceElementSelector: &quot;.ContextSelector-ElementA&quot;&#10;})&#10;&#10;// TODO Make sure that no whitespaces after backslashes, the line breakers&#10;// TODO Make sure that there are no training commas" description="'PositionalRelationship' mixin" toReformat="false" toShortenFQNames="true">
+  <template name="prs" value="// Minimal example&#10;PositionalRelationship({&#10;  definitions: (&quot;.Article-Paragraph&quot; { retireFromIt: { y: 8px }, pushItFromSelf: { y: 16px } })&#10;})&#10;&#10;&#10;// Scoped definition&#10;PositionalRelationship({&#10;  definitions: (&quot;h2&quot; { retireFromIt: { y: 8px }, pushItFromSelf: { y: 16px } })&#10;  contextSelector: &quot;.Article&quot;,&#10;  referenceElementSelector: &quot;p&quot;&#10;})&#10;&#10;&#10;// All functionality used&#10;PositionalRelationship({&#10;  definitions:\&#10;      (&quot;.ContextSelector-ElementB&quot; { &#10;        retireFromIt: { x: 2px, y: 4px }, &#10;        pushItFromSelf: { x: 6px, y: 8px }, &#10;        usePaddingsInsteadOfMargins: true &#10;      })\&#10;      (&quot;.ContextSelector-ElementC&quot; { retireFromIt: { x: 10px, y: 12px }, pushItFromSelf: { x: 14px, y: 16px } }),&#10;  contextSelector: &quot;.ContextSelector&quot;,&#10;  referenceElementSelector: &quot;.ContextSelector-ElementA&quot;&#10;})&#10;&#10;// TODO Make sure that no whitespaces after backslashes, the line breakers&#10;// TODO Make sure that there are no training commas" description="`PositionalRelationship` mixin" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_PROPERTY_VALUE" value="false" />
     </context>
   </template>
-  <template name="rf" value="// Minimal example&#10;retireFrom({ targetElementSelector: &quot;.BlockName-ElementName&quot;, y: 8px })&#10;&#10;// With context&#10;retireFrom({&#10;  targetElementSelector: &quot;h1&quot;,&#10;  y: 14px,&#10;  referenceElementSelector: &quot;p&quot;,&#10;  contextSelector: &quot;.Article&quot;&#10;})&#10;&#10;// Multiple definitions&#10;retireFrom({&#10;  definitions:\&#10;      (&quot;h1&quot; { x: 2px, y: 4px })\&#10;      (&quot;h2&quot; { x: 6px, y: 8px, usePaddingsInsteadOfMargins: true }),&#10;  referenceElementSelector: &quot;p&quot;,&#10;  contextSelector: &quot;.Article&quot;&#10;})$END$" description="'retireFrom' mixin" toReformat="false" toShortenFQNames="true">
+  <template name="rf" value="// Minimal example&#10;retireFrom({ targetElementSelector: &quot;$TARGET_ELEMENT_SELECTOR$&quot;, y: 8px })&#10;&#10;&#10;// Scoped definition&#10;retireFrom({&#10;  targetElementSelector: &quot;$TARGET_ELEMENT_SELECTOR$&quot;,&#10;  y: 14px,&#10;  referenceElementSelector: &quot;p&quot;,&#10;  contextSelector: &quot;.Article&quot;&#10;})&#10;&#10;&#10;// Multiple definitions&#10;retireFrom({&#10;  definitions:\&#10;      (&quot;h1&quot; { x: 2px, y: 4px })\&#10;      (&quot;h2&quot; { x: 6px, y: 8px, usePaddingsInsteadOfMargins: true }),&#10;  referenceElementSelector: &quot;p&quot;,&#10;  contextSelector: &quot;.Article&quot;&#10;})" description="`retireFrom` mixin" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_ELEMENT_SELECTOR" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_PROPERTY_VALUE" value="false" />
     </context>
   </template>
-  <template name="ptfs" value="// Minimal example&#10;pushTargetFromSelf({ targetElementSelector: &quot;.BlockName-ElementName&quot;, y: 4px })&#10;&#10;// With context&#10;pushTargetFromSelf({&#10;  targetElementSelector: &quot;h2&quot;,&#10;  y: 24px,&#10;  referenceElementSelector: &quot;p&quot;,&#10;  contextSelector: &quot;.Article&quot;&#10;})&#10;&#10;// Multiple definitions&#10;pushTargetFromSelf({&#10;  definitions:\&#10;    (&quot;.Example3-ElementA&quot; { x: 2px, y: 4px })\&#10;    (&quot;.Example3-ElementB&quot; { x: 6px, y: 8px, usePaddingsInsteadOfMargins: true })&#10;})$END$" description="'pushTargetFromSelf' mixin" toReformat="false" toShortenFQNames="true">
+  <template name="ptfs" value="// Minimal example&#10;pushTargetFromSelf({ targetElementSelector: &quot;.BlockName-ElementName&quot;, y: 4px })&#10;&#10;&#10;// Scoped definition&#10;pushTargetFromSelf({&#10;  targetElementSelector: &quot;h2&quot;,&#10;  y: 24px,&#10;  referenceElementSelector: &quot;p&quot;,&#10;  contextSelector: &quot;.Article&quot;&#10;})&#10;&#10;&#10;// Multiple definitions&#10;pushTargetFromSelf({&#10;  definitions:\&#10;    (&quot;.Example3-ElementA&quot; { x: 2px, y: 4px })\&#10;    (&quot;.Example3-ElementB&quot; { x: 6px, y: 8px, usePaddingsInsteadOfMargins: true })&#10;})$END$" description="`pushTargetFromSelf` mixin" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_PROPERTY_VALUE" value="false" />
     </context>
   </template>
-  <template name="rfewss" value="// Minimal example&#10;retireFromElementWithSameSelector({ y: $END$px })&#10;&#10;// With context&#10;retireFromElementWithSameSelector({ y: 8px, contextSelector: &quot;.Block ul&quot;, referenceElementSelector: &quot;li&quot; })&#10;&#10;// All functionality used&#10;retireFromElementWithSameSelector({&#10;  x: 4px,&#10;  y: 8px,&#10;  usePaddingsInsteadOfMargins: true,&#10;  contextSelector: &quot;.Block ol&quot;,&#10;  referenceElementSelector: &quot;li&quot;&#10;})&#10;" description="'retireFromElementWithSameSelector' mixin" toReformat="false" toShortenFQNames="true">
+  <template name="rfewss" value="// Minimal example&#10;retireFromElementWithSameSelector({ y: $END$px })&#10;&#10;&#10;// Scoped definition&#10;retireFromElementWithSameSelector({ y: 8px, contextSelector: &quot;.Block ul&quot;, referenceElementSelector: &quot;li&quot; })&#10;&#10;&#10;// All functionality used&#10;retireFromElementWithSameSelector({&#10;  x: 4px,&#10;  y: 8px,&#10;  usePaddingsInsteadOfMargins: true,&#10;  contextSelector: &quot;.Block ol&quot;,&#10;  referenceElementSelector: &quot;li&quot;&#10;})&#10;" description="`retireFromElementWithSameSelector` mixin" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_PROPERTY_VALUE" value="false" />
+    </context>
+  </template>
+  <template name="wigf" value="// Specify &quot;margin-top&quot; only&#10;whenItGoingFirst({ verticalSpaceAbove: $END$4px })&#10;&#10;&#10;// Specify also other properties (parameters object is optional)&#10;+whenItGoingFirst({ verticalSpaceAbove: 4px })&#10;&#10;  border-top 1px solid gray" description="`whenItGoingFirst` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+    </context>
+  </template>
+  <template name="wigl" value="// Specify &quot;margin-bottom&quot; only&#10;whenItGoingLast({ verticalSpaceBelow: $END$32px })&#10;&#10;&#10;// Specify also other properties (parameters object is optional)&#10;+whenItGoingLast({ verticalSpaceBelow: 36px })&#10;&#10;  border-bottom 2px solid gray" description="`whenItGoingLast` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+    </context>
+  </template>
+  <template name="wija" value="// Minimal example&#10;+whenItJustAfter({ targetElementSelector: &quot;.Block-ChildA1&quot; })&#10;&#10;  background gold&#10;&#10;&#10;// Scoped definition&#10;+whenItJustAfter({ &#10;  targetElementSelector: &quot;h2&quot;, &#10;  contextSelector: &quot;.Block2&quot;, &#10;  referenceElementSelector: &quot;p&quot; &#10;})&#10;&#10;  background silver&#10;" description="`whenItJustAfter` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="wtgjai" value="// Minimal example&#10;+whenTargetGoingJustAfterIt({ targetElementSelector: &quot;.Block-ChildA&quot; })&#10;&#10;  background gold&#10;&#10;&#10;// Scoped definition&#10;+whenTargetGoingJustAfterIt({ &#10;  targetElementSelector: &quot;h2&quot;, &#10;  contextSelector: &quot;.Block2&quot;, &#10;  referenceElementSelector: &quot;p&quot; &#10;})&#10;&#10;  background silver" description="`whenTargetGoingJustAfterIt` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+    </context>
+  </template>
+  <template name="wtwssgjat" value="// Minimal example&#10;+whenTargetWithSameSelectorGoingJustAfterIt()&#10;&#10;  border-top 1px solid black&#10;  &#10;  &#10;// Scoped definition&#10;+whenTargetWithSameSelectorGoingJustAfterIt({ referenceElementSelector: &quot;p&quot;, contextSelector: &quot;.Block&quot; })&#10;&#10;  border-top 1px solid black" description="WhenTargetWithSameSelectorGoingJustAfterIt" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+    </context>
+  </template>
+  <template name="pd" value="// Frequent one-line use cases&#10;Paddings({ all: 3px })$END$&#10;Paddings({ horizontalSymmectic: 4px })&#10;Paddings({ verticalSymmectic: 5px })&#10;&#10;&#10;// Advanced examples&#10;Paddings({&#10;  all: 3px,&#10;  verticalUpwardShifting: 1px&#10;})&#10;&#10;Paddings({&#10;  horizontalSymmectic: 4px,&#10;  verticalSymmectic: 4px,&#10;  verticalUpwardShifting: 1px&#10;})&#10;&#10;Paddings({&#10;  left: 1px,&#10;  right: 2px,&#10;  top: 3px,&#10;  bottom: 4px,&#10;  verticalUpwardShifting: 1px&#10;})" description="`Paddings` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_RULESET_LIST" value="true" />
     </context>
   </template>
 </templateSet>

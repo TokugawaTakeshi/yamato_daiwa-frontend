@@ -554,3 +554,260 @@ will be compiled to:
   margin-top: 8px;
 }
 ```
+
+
+## Applying of arbitrary CSS properties depending on position in order
+
+### `whenItGoingFirst` mixin
+[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-wigf-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+
+Allows to define `margin-top` and other properties for the case when target element going first in container.
+
+Below example:
+
+```stylus
+.Child
+  
+  whenItGoingFirst({ verticalSpaceAbove: 4px })
+```
+
+will be compiled to:
+
+```css
+.Child:first-child {
+  border-top: 1px solid #808080;
+}
+```
+
+Note that it may not work because of [margin collapse](https://www.w3schools.com/css/css_margin_collapse.asp),
+but this problem is solvable (for example by flexbox with `flex-direction: column`).
+
+
+You can specify any other CSS properties as content of the [block mixin](https://www.w3schools.com/css/css_margin_collapse.asp),
+just don't forget to append `+` to `whenItGoingFirst()`: 
+
+
+```stylus
++whenItGoingFirst()
+
+  border-top 1px solid gray
+```
+
+
+### `whenItGoingLast` mixin
+[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-wigl-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+
+Allows to define `margin-bottom` and other properties for the case when target element going last in container.
+
+Below example:
+
+```stylus
+.Child
+
+  whenItGoingLast({ verticalSpaceBelow: 4px })
+```
+
+will be compiled to:
+
+
+```css
+.Test3:last-child {
+  margin-bottom: 4px;
+}
+```
+
+
+You can specify any other CSS properties as content of the [block mixin](https://www.w3schools.com/css/css_margin_collapse.asp),
+just don't forget to append `+` to `whenItGoingFirst()`: 
+
+
+```stylus
++whenItGoingLast({ verticalSpaceBelow: 36px })
+
+  border-bottom 2px solid gray
+```
+
+
+The frequent use case is the list-like view with the pagination: because pagination usually not displaying when pages
+count is only 1, it's required to consider the case when the list view going last:
+
+
+```stylus
+.UsersListPage
+
+  &-CardsFlow
+
+    whenItGoingLast({ verticalSpaceBelow: 32px })
+
+
+  &-Pagination
+
+    retireFrom({ targetElementSelector: ".UsersListPage-CardsFlow", y: 12px })
+
+    whenItGoingLast({ verticalSpaceBelow: 28px })
+```
+
+
+### `whenItJustAfter`
+
+[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-wija-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+
+Allows to specify any CSS properties for element `B` when it is going after element `A`.
+In contrast to this `retireFrom` mixin allows to specfiy `margin-top` (or `padding-top`) only.
+
+
+```stylus
+.Block1
+
+  &-ChildA1
+
+    // ...
+
+
+  &-ChildA2
+
+    // ...
+
+
+  &-ChildB
+
+    +whenItJustAfter({ targetElementSelector: ".Block-ChildA1" })
+
+      background gold
+```
+
+Will be compiled to:
+
+```css
+.Block-ChildA1 + .Block1-ChildB {
+  background: #ffd700;
+}
+```
+
+
+For the scoping, define `contextSelector` and `referenceElementSelector` explicitly:
+
+```stylus
+.Block2
+
+  h2
+
+    // ...
+
+
+  p
+
+    +whenItJustAfter({ targetElementSelector: "h2", contextSelector: ".Block2", referenceElementSelector: "p" })
+
+      background silver
+```
+
+Above example will be compiled to:
+
+```css
+.Block2 h2 + p {
+  background: #c0c0c0;
+}
+```
+
+
+### `whenTargetGoingJustAfterIt` 
+
+[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-wtgjai-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+
+Allows to specify any CSS properties for the target element `X` when it is going after currently being declared element.
+
+```stylus
+.Block1
+
+  &-ChildA
+
+    // ...
+
+
+  &-ChildB
+
+    +whenTargetGoingJustAfterIt({ targetElementSelector: ".Block-ChildA" })
+
+      background gold
+```
+
+Above example will be compiled to:
+
+```css
+.Block1-ChildB + .Block-ChildA {
+  background: #ffd700;
+}
+```
+
+
+For the scoping, define `contextSelector` and `referenceElementSelector` explicitly:
+
+```stylus
+.Block2
+
+  h2
+
+    // ...
+
+
+  p
+
+    +whenTargetGoingJustAfterIt({ targetElementSelector: "h2", contextSelector: ".Block2", referenceElementSelector: "p" })
+
+      background silver
+```
+
+Above example will be compiled to:
+
+```css
+.Block2 p + h2 {
+  background: #c0c0c0;
+}
+```
+
+
+### `whenTargetWithSameSelectorGoingJustAfterIt`
+
+[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-wtwssgjat-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+
+The equivalent of `+whenTargetGoingJustAfterIt({ targetElementSelector: ".X" })` for the case when reference element's
+selector is also `.X`.
+
+```stylus
+.Block
+
+  &-ElementA
+
+    +whenTargetWithSameSelectorGoingJustAfterIt()
+
+      background goldenrod
+```
+
+Above example will be compiled to:
+
+```css
+.Block-ElementA + .Block-ElementA {
+  background: #daa520;
+}
+```
+
+For the scoping, define `referenceElementSelector` and `contextSelector` explicitly:
+
+```stylus
+.Block
+
+  p
+
+    +whenTargetWithSameSelectorGoingJustAfterIt({ referenceElementSelector: "p", contextSelector: ".Block" })
+
+      border-top 1px solid black
+```
+
+Above example will be compiled to:
+
+```css
+.Block p + p {
+  border-top: 1px solid #000;
+}
+```

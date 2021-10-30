@@ -13,7 +13,7 @@ projectBuilding:
         subtasksAndSourceFilesSelection:
           markupProcessing: [ StylesAndComponentsTesting ]
           stylesProcessing: [ StylesAndComponentsTesting ]
-          ECMA_ScriptLogicProcessing: [ StylesAndComponentsTesting ]
+          # ECMA_ScriptLogicProcessing: [ StylesAndComponentsTesting ]
 
         browserLiveReloadingSetupID: StylesAndComponentsTesting
 
@@ -33,7 +33,7 @@ projectBuilding:
           prefixesOfSubdirectoriesWithPartials: "_"
         buildingModeDependent:
           DEVELOPMENT:
-            outputBaseDirectoryRelativePath: Tests/Output
+            outputBaseDirectoryRelativePath: Tests/Build
 
 
   # === Styles =========================================================================================================
@@ -42,16 +42,31 @@ projectBuilding:
     entryPointsGroups:
 
       StylesAndComponentsTesting:
+
         entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Source
+
         partialsRecognition:
           partialsNamesPrefixes: "_"
           prefixesOfSubdirectoriesWithPartials: "_"
+          subdirectoriesWithPartials: [ "OutputCheckOnly" ]
+
         buildingModeDependent:
           DEVELOPMENT:
-            outputBaseDirectoryRelativePath: Tests/Output
+            outputBaseDirectoryRelativePath: Tests/Build
+
+      OutputCheck:
+
+        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Source/OutputCheckOnly
+
+        buildingModeDependent:
+          DEVELOPMENT:
+            outputBaseDirectoryRelativePath: Tests/Build/OutputCheck
+
 
       StaticPreviewAnywherePage:
+
         entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.styl
+
         buildingModeDependent:
           DEVELOPMENT:
             outputBaseDirectoryRelativePath: PagesTemplates/StaticPreviewAnywherePage
@@ -63,13 +78,16 @@ projectBuilding:
     entryPointsGroups:
 
       StylesAndComponentsTesting:
+
         entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Source
+
         partialsRecognition:
           partialsNamesPrefixes: "_"
           prefixesOfSubdirectoriesWithPartials: "_"
+
         buildingModeDependent:
           DEVELOPMENT:
-            outputBaseDirectoryRelativePath: Tests/Output
+            outputBaseDirectoryRelativePath: Tests/Build
 
       PugExtensions:
 
@@ -90,4 +108,4 @@ projectBuilding:
 
     StylesAndComponentsTesting:
 
-      targetFilesRootDirectoryRelativePath: Tests/Output
+      targetFilesRootDirectoryRelativePath: Tests/Build
