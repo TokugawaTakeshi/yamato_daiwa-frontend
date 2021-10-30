@@ -8,7 +8,7 @@ The toolkit for the frontend development with [Pug](https://pugjs.org/api/gettin
 
 Currently, most of the functionality has the auxiliary role, but in the future GUI components will be added.
 
-[🛣️ Roadmap](https://yamato-daiwa.myjetbrains.com/youtrack/agiles/121-3/current?tab=general)
+<!-- [🛣️ Roadmap](https://yamato-daiwa.myjetbrains.com/youtrack/agiles/121-3/current?tab=general) -->
 
 ## ⚠️ Request to Stack Overflow users with `>=1500` reputation
 
