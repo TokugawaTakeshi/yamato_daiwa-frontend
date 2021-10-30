@@ -3,7 +3,7 @@
 # Yamato-Daiwa Frontend IntelliJ IDEA plugin changelog
 
 ## [0.0.2]
-## Added 
+### Added 
 
 - `pd` - live template for [`Paddings`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/03-Paddings.md)
 - `wigf` - live template for [`whenItGoingFirst`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whenitgoingfirst-mixin) mixin
