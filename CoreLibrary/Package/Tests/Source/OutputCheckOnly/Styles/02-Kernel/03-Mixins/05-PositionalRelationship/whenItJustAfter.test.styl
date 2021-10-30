@@ -1,0 +1,39 @@
+/*  === Execution
+stylus Tests/Source/OutputCheckOnly/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/whenItJustAfter.test.styl `
+    --out Tests/Build/OutputCheckOnly/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/whenItJustAfter.test.css
+ */
+
+@require "../../../../../../../Functionality.styl"
+
+
+.Block1
+
+  &-ChildA1
+
+    // ...
+
+
+  &-ChildA2
+
+    // ...
+
+
+  &-ChildB
+
+    +whenItJustAfter({ targetElementSelector: ".Block-ChildA1" })
+
+      background gold
+
+
+.Block2
+
+  h2
+
+    // ...
+
+
+  p
+
+    +whenItJustAfter({ targetElementSelector: "h2", contextSelector: ".Block2", referenceElementSelector: "p" })
+
+      background silver

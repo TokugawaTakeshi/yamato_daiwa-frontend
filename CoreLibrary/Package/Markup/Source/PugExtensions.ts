@@ -6,8 +6,6 @@ export {
   separateEach3DigitsGroupWithComma,
   separateEach4DigitsGroupWithComma
 
-  /* === Tools ====================================================================================================== */
-  // RawObjectDataProcessor
 } from "@yamato-daiwa/es-extensions";
 
 

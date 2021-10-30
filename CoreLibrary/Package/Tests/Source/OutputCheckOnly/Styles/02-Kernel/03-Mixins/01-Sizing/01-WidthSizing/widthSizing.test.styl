@@ -1,0 +1,78 @@
+// === Execution
+// stylus Tests/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/widthSizing.test.styl --out Tests/Output/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/widthSizing.test.css --include Styles
+
+
+@require "../../../../../../../../Functionality.styl"
+
+
+.Element1
+
+  widthSizing({
+    fixedWidth: 120px
+  })
+
+
+.Element2-1
+
+  widthSizing({
+    minimalWidth: 120px,
+    maximalWidth: 240px
+  })
+
+
+.Element2-2
+
+  widthSizing({
+    minimalWidth: 120px,
+    maximalWidth: 240px,
+    takeMaximumSpaceAsPossible: true
+  })
+
+
+.Element3
+
+  widthSizing({
+    leftOrRightEqualBordersWidths: 1px,
+    leftOrRightEqualPaddings: 8px
+  })
+
+
+.Element4
+
+  widthSizing({
+    leftBorderWidth: 1px,
+    rightBorderWidth: 2px,
+    leftPadding: 8px,
+    rightPadding: 12px
+  })
+
+
+.Element5-1
+
+  widthSizing({
+    leftBorderWidth: 1px,
+    rightBorderWidth: 2px,
+    explicitBorderNoneDeclarationRequired: true,
+    leftPadding: 8px,
+    rightPadding: 12px,
+    explicitPaddingZeroDeclarationRequired: true
+  })
+
+
+.Element5-2
+
+  widthSizing({
+    fixedWidth: 200px,
+    explicitBorderNoneDeclarationRequired: true,
+    explicitPaddingZeroDeclarationRequired: true
+  })
+
+
+.Element5-3
+
+  widthSizing({
+    explicitBorderNoneDeclarationRequired: true,
+    leftBorderWidth: 1px,
+    explicitPaddingZeroDeclarationRequired: true,
+    rightPadding: 12px
+  })

@@ -1,10 +1,23 @@
-# @yamato-daiwa/frontend
+# @yamato-daiwa/frontend - [YDF]
 
 [![NPM Version](https://img.shields.io/npm/v/@yamato-daiwa/frontend)](https://www.npmjs.com/package/@yamato-daiwa/frontend)
 [![IntelliJ IDEA plugin](https://img.shields.io/badge/IntelliJ_IDEA-Official_Plugin-088BF8.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
+The toolkit for the frontend development with [Pug](https://pugjs.org/api/getting-started.html) and 
+[Stylus](https://github.com/stylus/stylus/) pre-processors.
 
-Currently the toolkit for the frontend development with [Stylus](https://github.com/stylus/stylus/) pre-processor.
+Currently, most of the functionality has the auxiliary role, but in the future GUI components will be added.
+
+[🛣️ Roadmap](https://yamato-daiwa.myjetbrains.com/youtrack/agiles/121-3/current?tab=general)
+
+## ⚠️ Request to Stack Overflow users with `>=1500` reputation
+
+[My account](https://stackoverflow.com/users/4818123/takeshi-tokugawa-yd) has not enough reputation to create the tag
+for `@yamato-daiwa/frontend` and start to answer the related questions. Please create it instead of me and notify
+me to [tokugawa.takesi@gmail.com](mailto:tokugawa.takesi@gmail.com).
+
+* **Tag name**: `@yamato-daiwa/frontend`
+* **Description**: The toolkit for the frontend development with Pug and Stylus pre-processors.
 
 
 ## Installation
@@ -143,6 +156,12 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 * [📖 `TableCellWidthSizing`](Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/TableCellWidthSizing.md) 
   Allows to define the width, borders and paddings of table cell by various combinations of parameters.
 
+#### Paddings
+
+* [📖 `Paddings` mixin](Documentation/Styles/02-Kernel/03-Mixins/03-Paddings.md)
+  The alternative to native CSS method of defining of the paddings intended to be used in customizable components development.
+
+
 ##### Positional relationship
 
 * [📖 Introduction](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md) 
@@ -154,7 +173,16 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
   Allows to define how much element `B` must push `A` from self by `A`'s top/left margin.
 * [📖 `retireFromElementWithSameSelector` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#retirefromelementwithsameselector-mixin)
   Allows to define how much certain element must retire from other element with same selector.
-
+* [📖 `whenItGoingFirst` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whenitgoingfirst-mixin)
+  Allows to define CSS properties for certain element when it is going first in some container.
+* [📖 `whenItGoingLast` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whenitgoinglast-mixin)
+  Allows to define CSS properties for certain element when it is going last in some container.
+* [📖 `whenItJustAfter` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whenitjustafter)
+  Allows to specify any CSS properties for element `B` when it is going after element `A`.
+* [📖 `whenTargetGoingJustAfterIt` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whentargetgoingjustafterit)
+  Allows to specify any CSS properties for the target element `X` when it is going after currently being declared element.
+* [📖 `whenTargetWithSameSelectorGoingJustAfterIt` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit)
+  The equivalent of `+whenTargetGoingJustAfterIt({ targetElementSelector: ".X" })` for the case when reference element's selector is also `.X`.
 
 ##### Typography
 
@@ -180,40 +208,3 @@ Maybe is so until writing the flexible and customizable UI framework.
 
 The `@yamato-daiwa/frontend` synthetically improving the programming functionality of Stylus pre-processor
 allows flexibly work with unknown at-advance data, namely the customization data from the framework users.
-
-
-### Roadmap
-
-#### Utility mixins
-
-##### Height sizing
-
-* `specifyHeightSizing` helper function
-* `computeHeightByHeightSizingSpecification` helper function
-* `HeightSizing` mixin
-
-
-##### Borders and padding
-
-For the none-library projects, just `padding` and `border` properties could be enough, but this functionality is targeting to
-component development 
-
-* `specifyBorderRadius`
-* `applyBorderRadiusSpecification`
-* `specifyBorders` helper function
-* `applyBordersSpecification`
-* `BorderTopFilletsRadius`/`BorderBottomFilletsRadius`/`BorderLeftFilletsRadius`/`BorderRightFilletsRadius`
-* `specifyPaddings` helper function
-* `applyPaddingsSpecification`
-* `EqualLeftAndRightPaddings`
-* `EqualTopAndBottomPaddings`
-
-
-#### Positioning
-
-Horizontal and vertical centering, placing to right without wrappers.
-
-* `HorizontalCenteringWithoutWrapper`
-* `CenteredContentWithComputedSidePaddings`
-* `VerticallyCenteredAbsolutelyPositionedBlock`
-* `placeToRight`

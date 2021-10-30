@@ -1,0 +1,106 @@
+paddingsSpecificationSchema = {
+
+  all: {
+    type: DataTypes.unit,
+    required: false
+  },
+
+  horizontalSymmectic: {
+    type: DataTypes.unit,
+    required: false,
+    incompatibleWith: "all"
+  },
+  left: {
+    type: DataTypes.unit,
+    required: false,
+    incompatibleWith: "all" "horizontalSymmectic"
+  },
+  right: {
+    type: DataTypes.unit,
+    required: false,
+    incompatibleWith: "all" "horizontalSymmectic"
+  },
+
+  verticalSymmectic: {
+    type: DataTypes.unit,
+    required: false,
+    incompatibleWith: "all"
+  },
+  verticalUpwardShifting: {
+    type: DataTypes.unit,
+    required: false
+  },
+  top: {
+    type: DataTypes.unit,
+    required: false,
+    incompatibleWith: "all" "verticalSymmectic"
+  },
+  bottom: {
+    type: DataTypes.unit,
+    required: false,
+    incompatibleWith: "all" "verticalSymmectic"
+  }
+}
+
+
+overridePaddingsSpecification(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: paddingsSpecificationSchema,
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "overridePaddingsSpecification"
+  })
+
+  return {
+    all: parametersObject.all,
+    horizontalSymmectic: parametersObject.horizontalSymmectic,
+    verticalUpwardShifting: parametersObject.verticalUpwardShifting,
+    verticalSymmectic: parametersObject.verticalSymmectic,
+    top: parametersObject.top,
+    bottom: parametersObject.bottom,
+    left: parametersObject.left,
+    right: parametersObject.right
+  }
+
+
+Paddings(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: paddingsSpecificationSchema,
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "Paddings"
+  })
+
+  leftPadding = getFirstNonNullArrayElement(arrayConstructor__POLYFILL(
+    parametersObject.all, parametersObject.horizontalSymmectic, parametersObject.left
+  ))
+
+  rightPadding = getFirstNonNullArrayElement(arrayConstructor__POLYFILL(
+    parametersObject.all, parametersObject.horizontalSymmectic, parametersObject.right
+  ))
+
+  topPadding = getFirstNonNullArrayElement(arrayConstructor__POLYFILL(
+    parametersObject.all, parametersObject.verticalSymmectic, parametersObject.top
+  ))
+
+  bottomPadding = getFirstNonNullArrayElement(arrayConstructor__POLYFILL(
+    parametersObject.all, parametersObject.verticalSymmectic, parametersObject.bottom
+  ))
+
+
+  if (isNotNull(parametersObject.verticalUpwardShifting) && isNotNull(topPadding)) {
+
+    topPadding = buildCalcExpression(
+      "${topPadding} - ${verticalUpwardShifting}",
+      { topPadding: topPadding, verticalUpwardShifting: parametersObject.verticalUpwardShifting }
+    )
+  }
+
+  applyIfNotNull({
+    padding-left: leftPadding,
+    padding-right: rightPadding,
+    padding-top: topPadding,
+    padding-bottom: bottomPadding
+  })
