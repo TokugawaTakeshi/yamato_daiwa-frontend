@@ -4,6 +4,7 @@ import {
   RawObjectDataProcessor,
   Logger,
   InvalidExternalDataError,
+  DOM_ElementRetrievingFailedError,
   isNotUndefined,
   isEmptyString
 } from "@yamato-daiwa/es-extensions";
@@ -64,24 +65,25 @@ export class CodeViewer {
   private initializeTabsAndCodeListings(): void {
 
     if (this.codeListings.length === 0) {
-      // TODO 警告
+      Logger.logError({
+        errorType: DOM_ElementRetrievingFailedError.NAME,
+        title: DOM_ElementRetrievingFailedError.DEFAULT_TITLE,
+        description: "No code listings ('.CodeViewer-CodeListing') found. The initialization has been terminated.",
+        occurrenceLocation: "CodeViewer.initializeSingleInstance(parametersObject) -> initializeTabsAndCodeListings()"
+      });
       return;
     }
 
 
     if (this.codeListings.length === 1) {
-      this.codeListings[0].removeAttribute("hidden"); // TODO スケレトンロード
+      this.codeListings[0].removeAttribute("hidden");
       this.tabsFlow.remove();
       return;
     }
 
 
-    const emptyTab: Element = getElementWhichMustExist({
-      selector: ".CodeViewer-Tab",
-      context: CodeViewer.componentImage
-    });
+    const emptyTab: Element = getElementWhichMustExist({ selector: ".CodeViewer-Tab", context: CodeViewer.componentImage });
     let hasAtLeastOneCodeListingBeenSetToActive: boolean = false;
-
 
     for (const codeListing of this.codeListings) {
 
@@ -101,8 +103,7 @@ export class CodeViewer {
               },
               is_active: {
                 newName: "isActive",
-                // TODO 始末
-                preValidationModifications: (rawValue: unknown): unknown => (isEmptyString(rawValue) ? true : rawValue),
+                preValidationModifications: (rawValue: unknown): unknown => isEmptyString(rawValue) ? true : rawValue,
                 type: Boolean,
                 defaultValue: false
               }
@@ -113,7 +114,8 @@ export class CodeViewer {
         Logger.logError({
           errorType: InvalidExternalDataError.NAME,
           title: InvalidExternalDataError.DEFAULT_TITLE,
-          description: RawObjectDataProcessor.formatValidationErrorsList(currentTabDataProcessingResult.validationErrorsMessages),
+          description: "Invalid dataset on 'CodeListing' element of 'CodeViewerListing' mixin.\n" +
+              `${RawObjectDataProcessor.formatValidationErrorsList(currentTabDataProcessingResult.validationErrorsMessages)}`,
           occurrenceLocation: "className.methodName(parametersObject)"
         });
         continue;
@@ -121,7 +123,7 @@ export class CodeViewer {
 
 
       const currentTabData: CodeViewer.TabData = currentTabDataProcessingResult.processedData;
-      /* It's the issue: https://github.com/microsoft/TypeScript/issues/283 */
+      /* It is the issue: https://github.com/microsoft/TypeScript/issues/283 */
       const currentTab: HTMLElement = emptyTab.cloneNode(true) as HTMLElement;
 
       if (currentTabData.isActive && !hasAtLeastOneCodeListingBeenSetToActive) {
@@ -132,8 +134,10 @@ export class CodeViewer {
         hasAtLeastOneCodeListingBeenSetToActive = true;
       }
 
-      getElementWhichMustExist({ selector: ".CodeViewer-Tab-LanguageValue", context: currentTab }).
-          textContent = currentTabData.language;
+      getElementWhichMustExist({
+        selector: ".CodeViewer-Tab-LanguageValue",
+        context: currentTab
+      }).textContent = currentTabData.language;
 
       if (isNotUndefined(currentTabData.fileLabel)) {
         getElementWhichMustExist({ selector: ".CodeViewer-Tab-FileLabel", context: currentTab }).

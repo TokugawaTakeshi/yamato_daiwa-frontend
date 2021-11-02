@@ -1,0 +1,32 @@
+@require "../../../../../Functionality.styl"
+@require "../../../../../Components.styl"
+
+
+CrossBrowserStylesReset()
+InitialGlobalCSS_Rules()
+
+
+provideCodeViewerComponent()
+
+
+.SamplesFlow
+
+  display flex
+  flex-direction column
+  row-gap 12px
+
+  width 100%
+  max-width 2*NARROWEST_SCREEN_WIDTH_UNIT
+  Paddings({
+    horizontalSymmectic: 14px,
+    verticalSymmectic: 12px
+  })
+
+  margin 0 auto
+
+
+.Sample
+
+  &-Heading
+
+    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 16px, lineHeight: 20px })
