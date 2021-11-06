@@ -2,6 +2,12 @@
 
 # Yamato-Daiwa Frontend IntelliJ IDEA plugin changelog
 
+## [0.0.3]
+### Added
+
+- `ainn` - live template for [`applyIfNotNull`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/applyIfNotNull.md) mixin
+- `bce` - live template for [`buildCalcExpression`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildCalcExpression.md) function
+
 ## [0.0.2]
 ### Added 
 

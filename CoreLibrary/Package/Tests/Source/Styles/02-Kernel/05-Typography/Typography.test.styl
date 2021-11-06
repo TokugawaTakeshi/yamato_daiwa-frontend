@@ -1,0 +1,49 @@
+@require "../../../../../Functionality.styl"
+@require "../../../../../Components.styl"
+
+
+CrossBrowserStylesReset()
+InitialGlobalCSS_Rules()
+
+
+provideTypography(overridings: { prefix: "TypographyTesting" })
+
+//provideWordWithFuriganaComponent()
+//
+//provideImprovedListComponent({
+//  positionalRelationship: {
+//    withTypographyElements: {
+//      typographyProperties: typographyProperties
+//    }
+//  }
+//})
+
+
+.Layout
+
+  display flex
+  flex-direction column
+  row-gap 24px
+
+  min-width NARROWEST_SCREEN_WIDTH_UNIT
+  max-width 3*NARROWEST_SCREEN_WIDTH_UNIT
+
+  border 2px solid cornflowerblue
+  padding 6px 8px 12px
+
+  margin-left auto
+  margin-right auto
+
+
+.Showcase
+
+  border 1px solid Orange__Opacity75Percents--TemporaryHighlighting
+  padding 2px 4px 6px
+
+
+  &-Subsection
+
+    border 1px solid Orange__Opacity75Percents--TemporaryHighlighting
+    padding 4px 4px 6px
+
+    retireFromElementWithSameSelector({ y: 12px })
