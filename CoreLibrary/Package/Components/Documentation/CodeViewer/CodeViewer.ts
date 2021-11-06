@@ -6,13 +6,13 @@ import {
   InvalidExternalDataError,
   DOM_ElementRetrievingFailedError,
   isNotUndefined,
-  isEmptyString
+  isEmptyString, isNonEmptyString
 } from "@yamato-daiwa/es-extensions";
 import {
   createElement,
-  getElementWhichMustExist,
-  delegateClickEventHandling
+  getElementWhichMustExist
 } from "@yamato-daiwa/es-extensions-browserjs";
+import delegateClickEventHandling from "../../../Utils/delegateClickEventHandling";
 
 /* --- Temporary ---------------------------------------------------------------------------------------------------- */
 import "prismjs/components/prism-typescript.js";
@@ -26,18 +26,18 @@ export class CodeViewer {
 
   private static readonly componentImage: Element = createElement(componentTemplate);
 
-  private readonly rootElement: HTMLElement;
-  private readonly codeListings: NodeListOf<HTMLElement>;
-  private readonly tabsFlow: HTMLElement;
-  private readonly tabs: Array<HTMLElement> = [];
+  private readonly rootElement: HTMLDivElement;
+  private readonly codeListings: NodeListOf<HTMLDivElement>;
+  private readonly tabsFlow: HTMLDivElement;
+  private readonly tabs: Array<HTMLDivElement> = [];
 
 
   public static initializeAllInstances(): Array<CodeViewer> {
-    return Array.from(document.querySelectorAll<HTMLElement>(".CodeViewer")).
-        map((componentRootElement: HTMLElement): CodeViewer => CodeViewer.initializeSingleInstance(componentRootElement));
+    return Array.from(document.querySelectorAll<HTMLDivElement>(".CodeViewer")).
+        map((componentRootElement: HTMLDivElement): CodeViewer => CodeViewer.initializeSingleInstance(componentRootElement));
   }
 
-  public static initializeSingleInstance(componentRootElement: HTMLElement): CodeViewer {
+  public static initializeSingleInstance(componentRootElement: HTMLDivElement): CodeViewer {
 
     const selfInstance: CodeViewer = new CodeViewer(componentRootElement);
 
@@ -50,13 +50,13 @@ export class CodeViewer {
   }
 
 
-  private constructor(componentRootElement: HTMLElement) {
+  private constructor(componentRootElement: HTMLDivElement) {
 
     this.rootElement = componentRootElement;
 
-    this.codeListings = componentRootElement.querySelectorAll<HTMLElement>(".CodeViewer-CodeListing");
+    this.codeListings = componentRootElement.querySelectorAll<HTMLDivElement>(".CodeViewer-CodeListing");
 
-    this.tabsFlow = getElementWhichMustExist<HTMLElement>({
+    this.tabsFlow = getElementWhichMustExist<HTMLDivElement>({
       selector: ".CodeViewer-TabsFlow", context: componentRootElement
     });
   }
@@ -85,7 +85,7 @@ export class CodeViewer {
     const emptyTab: Element = getElementWhichMustExist({ selector: ".CodeViewer-Tab", context: CodeViewer.componentImage });
     let hasAtLeastOneCodeListingBeenSetToActive: boolean = false;
 
-    for (const codeListing of this.codeListings) {
+    for (const [ listingNumber, codeListing ] of this.codeListings.entries()) {
 
       const currentTabDataProcessingResult: RawObjectDataProcessor.ProcessingResult<CodeViewer.TabData> = RawObjectDataProcessor.
           process(codeListing.dataset, {
@@ -125,6 +125,7 @@ export class CodeViewer {
       const currentTabData: CodeViewer.TabData = currentTabDataProcessingResult.processedData;
       /* It is the issue: https://github.com/microsoft/TypeScript/issues/283 */
       const currentTab: HTMLElement = emptyTab.cloneNode(true) as HTMLElement;
+      currentTab.dataset.listingNumber = listingNumber.toString();
 
       if (currentTabData.isActive && !hasAtLeastOneCodeListingBeenSetToActive) {
 
@@ -149,7 +150,6 @@ export class CodeViewer {
       this.tabs.push(currentTab);
     }
 
-
     this.tabsFlow.append(...this.tabs);
 
     if (!hasAtLeastOneCodeListingBeenSetToActive) {
@@ -157,12 +157,27 @@ export class CodeViewer {
       this.codeListings[0].removeAttribute("hidden");
     }
 
-    // TODO Wrong Selector
     delegateClickEventHandling(
-      { container: this.tabsFlow, clickTargetSelector: ".CodeViewer-Tab" }, (event: MouseEvent): void => {
-        console.log(event);
-        console.log(event.currentTarget);
-        console.log(event.target);
+      {
+        container: this.tabsFlow,
+        clickTargetSelector: ".CodeViewer-Tab",
+        clickTargetTypeChecker: (element: Element): element is HTMLDivElement => element instanceof HTMLDivElement
+      }, (clickedTab: HTMLDivElement): void => {
+
+        if (!isNonEmptyString(clickedTab.dataset.listingNumber)) {
+          return;
+        }
+
+        const targetCodeListingNumber: number = Number.parseInt(clickedTab.dataset.listingNumber, 10);
+        const targetCodeListing: HTMLElement = this.codeListings[targetCodeListingNumber];
+
+        for (const [ tabNumber, tab ] of this.tabs.entries()) {
+          tab.classList.remove("CodeViewer-Tab__SelectedState");
+          this.codeListings[tabNumber].setAttribute("hidden", "hidden");
+        }
+
+        targetCodeListing.removeAttribute("hidden");
+        clickedTab.classList.add("CodeViewer-Tab__SelectedState");
       }
     );
   }

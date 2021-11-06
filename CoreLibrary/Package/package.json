@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@types/prismjs": "1.16.6",
-    "hikari-automation": "0.0.40",
+    "hikari-automation": "0.0.44",
     "stylus": "0.55.0",
     "ts-node": "10.4.0",
     "yamato-daiwa_code_quality_management": "0.0.19"
