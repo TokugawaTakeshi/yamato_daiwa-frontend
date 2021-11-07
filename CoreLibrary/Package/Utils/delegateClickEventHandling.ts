@@ -1,7 +1,7 @@
 import { isNotNull } from "@yamato-daiwa/es-extensions";
 
 
-export default function delegateClickEventHandling<ClickTargetElement extends Element = Element>(
+export default function delegateClickEventHandling<ClickTargetElement extends Element>(
   {
     clickTargetSelector,
     clickTargetTypeChecker,
@@ -9,7 +9,7 @@ export default function delegateClickEventHandling<ClickTargetElement extends El
   }: {
     clickTargetSelector: string;
     clickTargetTypeChecker: (element: Element) => element is ClickTargetElement;
-    container: HTMLElement | Document;
+    container?: HTMLElement | Document;
   },
   handler: (clickedElement: ClickTargetElement, event: MouseEvent) => void
 ): void {
@@ -19,6 +19,7 @@ export default function delegateClickEventHandling<ClickTargetElement extends El
     if (!(event instanceof MouseEvent)) {
       return;
     }
+
 
     for (
       let parentElement: Element | null = event.target as Element;

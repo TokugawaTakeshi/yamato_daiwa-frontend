@@ -6,7 +6,8 @@ import {
   InvalidExternalDataError,
   DOM_ElementRetrievingFailedError,
   isNotUndefined,
-  isEmptyString, isNonEmptyString
+  isEmptyString,
+  isNonEmptyString
 } from "@yamato-daiwa/es-extensions";
 import {
   createElement,
@@ -26,18 +27,18 @@ export class CodeViewer {
 
   private static readonly componentImage: Element = createElement(componentTemplate);
 
-  private readonly rootElement: HTMLDivElement;
-  private readonly codeListings: NodeListOf<HTMLDivElement>;
-  private readonly tabsFlow: HTMLDivElement;
-  private readonly tabs: Array<HTMLDivElement> = [];
+  private readonly rootElement: Element;
+  private readonly codeListings: NodeListOf<HTMLElement>;
+  private readonly tabsFlow: HTMLElement;
+  private readonly tabs: Array<Element> = [];
 
 
   public static initializeAllInstances(): Array<CodeViewer> {
-    return Array.from(document.querySelectorAll<HTMLDivElement>(".CodeViewer")).
-        map((componentRootElement: HTMLDivElement): CodeViewer => CodeViewer.initializeSingleInstance(componentRootElement));
+    return Array.from(document.querySelectorAll(".CodeViewer")).
+        map((componentRootElement: Element): CodeViewer => CodeViewer.initializeSingleInstance(componentRootElement));
   }
 
-  public static initializeSingleInstance(componentRootElement: HTMLDivElement): CodeViewer {
+  public static initializeSingleInstance(componentRootElement: Element): CodeViewer {
 
     const selfInstance: CodeViewer = new CodeViewer(componentRootElement);
 
@@ -50,13 +51,13 @@ export class CodeViewer {
   }
 
 
-  private constructor(componentRootElement: HTMLDivElement) {
+  private constructor(componentRootElement: Element) {
 
     this.rootElement = componentRootElement;
 
-    this.codeListings = componentRootElement.querySelectorAll<HTMLDivElement>(".CodeViewer-CodeListing");
+    this.codeListings = componentRootElement.querySelectorAll(".CodeViewer-CodeListing");
 
-    this.tabsFlow = getElementWhichMustExist<HTMLDivElement>({
+    this.tabsFlow = getElementWhichMustExist({
       selector: ".CodeViewer-TabsFlow", context: componentRootElement
     });
   }
@@ -87,8 +88,8 @@ export class CodeViewer {
 
     for (const [ listingNumber, codeListing ] of this.codeListings.entries()) {
 
-      const currentTabDataProcessingResult: RawObjectDataProcessor.ProcessingResult<CodeViewer.TabData> = RawObjectDataProcessor.
-          process(codeListing.dataset, {
+      const currentTabDataProcessingResult: RawObjectDataProcessor.ProcessingResult<CodeViewer.TabData> =
+          RawObjectDataProcessor.process(codeListing.dataset, {
             subtype: RawObjectDataProcessor.ObjectSubtypes.fixedKeyAndValuePairsObject,
             nameForLogging: "TabData",
             properties: {
@@ -103,7 +104,7 @@ export class CodeViewer {
               },
               is_active: {
                 newName: "isActive",
-                preValidationModifications: (rawValue: unknown): unknown => isEmptyString(rawValue) ? true : rawValue,
+                preValidationModifications: (rawValue: unknown): unknown => (isEmptyString(rawValue) ? true : rawValue),
                 type: Boolean,
                 defaultValue: false
               }
@@ -161,25 +162,30 @@ export class CodeViewer {
       {
         container: this.tabsFlow,
         clickTargetSelector: ".CodeViewer-Tab",
-        clickTargetTypeChecker: (element: Element): element is HTMLDivElement => element instanceof HTMLDivElement
-      }, (clickedTab: HTMLDivElement): void => {
+        clickTargetTypeChecker: (element: Element): element is HTMLDivElement => element instanceof HTMLElement
+      }, this.onClickTab.bind(this)
+    );
+  }
 
-        if (!isNonEmptyString(clickedTab.dataset.listingNumber)) {
-          return;
-        }
+  private onClickTab(clickedTab: HTMLElement): void {
 
-        const targetCodeListingNumber: number = Number.parseInt(clickedTab.dataset.listingNumber, 10);
-        const targetCodeListing: HTMLElement = this.codeListings[targetCodeListingNumber];
+    if (!isNonEmptyString(clickedTab.dataset.listingNumber)) {
+      return;
+    }
 
-        for (const [ tabNumber, tab ] of this.tabs.entries()) {
-          tab.classList.remove("CodeViewer-Tab__SelectedState");
-          this.codeListings[tabNumber].setAttribute("hidden", "hidden");
-        }
 
+    const targetCodeListingNumber: number = Number.parseInt(clickedTab.dataset.listingNumber, 10);
+    const targetCodeListing: HTMLElement = this.codeListings[targetCodeListingNumber];
+
+    for (const [ tabNumber, tabElement ] of this.tabs.entries()) {
+      if (tabNumber === targetCodeListingNumber) {
         targetCodeListing.removeAttribute("hidden");
         clickedTab.classList.add("CodeViewer-Tab__SelectedState");
+      } else {
+        tabElement.classList.remove("CodeViewer-Tab__SelectedState");
+        this.codeListings[tabNumber].setAttribute("hidden", "hidden");
       }
-    );
+    }
   }
 
   private initializeActionBar(): void {
