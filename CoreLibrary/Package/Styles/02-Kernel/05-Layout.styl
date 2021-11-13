@@ -1,0 +1,139 @@
+fillBodyVertically(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      verticalScrolling: {
+        required: true,
+        type: DataTypes.boolean
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "fillBodyVertically"
+  })
+
+
+  height 100%
+  max-height 100%
+
+
+  if parametersObject.verticalScrolling
+
+    overflow-y auto
+
+  else
+
+    overflow-y hidden
+
+
+FixedTranslucentDimLayer(parametersObject = {}, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      ZIndex: {
+        type: DataTypes.unit,
+        defaultValue: ZIndexes.blockingOverlay
+      },
+      backgroundColor: {
+        defaultValue: rgba(black, 0.25)
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "FixedTranslucentDimLayer"
+  })
+
+
+  position fixed
+  top 0
+  bottom 0
+  left 0
+  right 0
+  z-index: parametersObject.ZIndex
+
+  background: parametersObject.backgroundColor
+
+
+Centerer(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      minimalWidth: {
+        type: DataTypes.unit,
+        defaultValue: GRID_MINIMAL_WIDTH
+      },
+      maximalWidth: {
+        type: DataTypes.unit,
+        defaultValue: GRID_MAXIMAL_WIDTH
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "Centerer"
+  })
+
+  width 100%
+  min-width: parametersObject.minimalWidth
+  max-width: parametersObject.maximalWidth
+
+  margin-left auto
+  margin-right auto
+
+
+provideClippedBoxShadowVisibility(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      requiredLeftOrRightSpace: {
+          required: false,
+          type: DataTypes.unit
+        },
+        requiredTopSpace: {
+          required: false,
+          type: DataTypes.unit
+        },
+        requiredBottomSpace: {
+          required: false,
+          type: DataTypes.unit
+        }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "provideClippedBoxShadowVisibility"
+  })
+
+
+  requiredLeftOrRightSpace = parametersObject.requiredLeftOrRightSpace
+  requiredTopSpace = parametersObject.requiredTopSpace
+  requiredBottomSpace = parametersObject.requiredBottomSpace
+
+
+  applyIfNotNull({
+
+    padding-top: requiredTopSpace,
+    padding-bottom: requiredBottomSpace,
+
+    margin-left: -(requiredLeftOrRightSpace),
+    padding-left: requiredLeftOrRightSpace,
+
+    margin-right: -(requiredLeftOrRightSpace),
+    padding-right: requiredLeftOrRightSpace
+  })
+
+
+CenteredContentWithComputedHorizontalPaddings(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      contentWidth: {
+        type: DataTypes.unit,
+        required: true
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "CenteredContentWithComputedHorizontalPaddings"
+  })
+
+  padding-left "calc(0.5*(100% - %s))" % parametersObject.contentWidth
+  padding-right "calc(0.5*(100% - %s))" % parametersObject.contentWidth

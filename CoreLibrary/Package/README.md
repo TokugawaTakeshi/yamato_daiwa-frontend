@@ -8,7 +8,11 @@ The toolkit for the frontend development with [Pug](https://pugjs.org/api/gettin
 
 Currently, most of the functionality has the auxiliary role, but in the future GUI components will be added.
 
-<!-- [🛣️ Roadmap](https://yamato-daiwa.myjetbrains.com/youtrack/agiles/121-3/current?tab=general) -->
+[🛣️ Roadmap](https://yamato-daiwa.myjetbrains.com/youtrack/agiles/121-8/current)
+
+**Hint:** Set the unlabeled slider in the top right corner of the screen to `XL` to see the tags and descriptions.
+
+![image](https://user-images.githubusercontent.com/41653501/141427847-a61da481-e9fa-4dce-af3a-fd1d3c0afcde.png)
 
 ## ⚠️ Request to Stack Overflow users with `>=1500` reputation
 
@@ -183,6 +187,13 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
   Allows to specify any CSS properties for the target element `X` when it is going after currently being declared element.
 * [📖 `whenTargetWithSameSelectorGoingJustAfterIt` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit)
   The equivalent of `+whenTargetGoingJustAfterIt({ targetElementSelector: ".X" })` for the case when reference element's selector is also `.X`.
+
+
+##### Layout
+
+* [📖 `fillBodyVertically`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/fillBodyVertically.md)
+  Fills `<body>` when `<body>` and `<html>` takes 100% of viewport's height as minimum with or without vertical scrolling
+  availability.
 
 ##### Typography
 

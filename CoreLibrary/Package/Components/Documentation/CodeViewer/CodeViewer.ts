@@ -13,6 +13,7 @@ import {
   createElement,
   getElementWhichMustExist
 } from "@yamato-daiwa/es-extensions-browserjs";
+// eslint-disable-next-line node/no-unpublished-import
 import delegateClickEventHandling from "../../../Utils/delegateClickEventHandling";
 
 /* --- Temporary ---------------------------------------------------------------------------------------------------- */

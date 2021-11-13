@@ -360,3 +360,38 @@ provideTypography(preset = TypographyDefaultProperties, overridings = {})
     {LINK_SELECTOR}
 
       Link(typographyProperties.link)
+
+
+providePositionalRelationshipWithTypographyElements(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      positionalRelationshipWithTypographyElementsSettings: {
+        required: false
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "providePositionalRelationshipWithTypographyElements"
+  })
+
+  if isNotNull(parametersObject.positionalRelationshipWithTypographyElementsSettings)
+
+    for profileName, profile in parametersObject.positionalRelationshipWithTypographyElementsSettings
+
+      if isNotNull(profile) && isNotNull(profile.typographySpecification)
+
+        keysAndSelectorsMap = generateTypographySelectors(profile.typographySpecification)
+
+        for elementKey, positionalRelationshipDefinition in profile.definitions
+
+          if isNull(keysAndSelectorsMap[elementKey])
+            error("不正相互配置設定：キー：「" + elementKey + "に該当する選択式が発見されず。")
+
+          PositionalRelationship({
+            definitions: (keysAndSelectorsMap[elementKey] {
+              retireFromIt: { y: positionalRelationshipDefinition.whenItJustBefore },
+              pushItFromSelf: { y: positionalRelationshipDefinition.whenItJustAfter }
+            }),
+            referenceElementSelector: parametersObject.componentRootElementSelector
+          })

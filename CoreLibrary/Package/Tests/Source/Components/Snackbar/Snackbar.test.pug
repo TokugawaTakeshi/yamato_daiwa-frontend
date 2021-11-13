@@ -1,0 +1,16 @@
+extends ../../../../PagesTemplates/RegularWebPage.pug
+
+
+block append Metadata
+
+  -
+    HTML_PAGE_TITLE = "Snackbar component testing";
+    styleSheetsURIs = [ "./Snackbar.test.css" ]
+    scriptsURIs.endOfBody = ["./Snackbar.test.js"]
+
+
+block append PageContent
+
+  include ../../../../Components.pug
+
+  .Layout OK!
