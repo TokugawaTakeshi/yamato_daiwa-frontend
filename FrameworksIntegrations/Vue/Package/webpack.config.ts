@@ -51,7 +51,7 @@ const webpackConfig: Webpack.Configuration = {
   },
 
   resolve: {
-    extensions: [ ".ts" ]
+    extensions: [ ".js", ".ts" ]
   },
 
   plugins: [
