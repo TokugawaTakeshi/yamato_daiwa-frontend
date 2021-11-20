@@ -8,19 +8,20 @@ component.OverflowSafeSingleLineLabel(
 
 </template>
 
+
 <script lang="ts">
 
   import {
     Options as VueComponentConfiguration,
     Vue as VueComponent,
-    Prop as VueComponentProperty
+    Prop as VueProperty
   } from "vue-property-decorator";
 
 
   @VueComponentConfiguration({})
   export default class OverflowSafeSingleLineLabel extends VueComponent {
 
-    @VueComponentProperty({ type: String, default: "div" })
+    @VueProperty({ type: String, default: "div" })
     protected readonly rootElementTag!: string;
   }
 
