@@ -23,6 +23,7 @@ provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
     Paddings({ horizontalSymmectic: 8px })
 
     background aliceblue
+    box-shadow 0 2px 8px rgba(black, 0.25)
 
     position fixed
     top 96px
@@ -33,7 +34,21 @@ provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
     &__SuccessDecoration
 
       background: JQueryUI_BaseTheme.success.background
-      box-shadow 0 2px 8px rgba(black, 0.25)
+
+
+    &__InfoDecoration
+
+      background: JQueryUI_BaseTheme.info.background
+
+
+    &__WarningDecoration
+
+      background: JQueryUI_BaseTheme.warning.background
+
+
+    &__ErrorDecoration
+
+      background: JQueryUI_BaseTheme.error.background
 
 
     &-Icon
@@ -46,6 +61,21 @@ provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
       /.Snackbar__SuccessDecoration &
 
         fill: JQueryUI_BaseTheme.success.iconsColor
+
+
+      /.Snackbar__InfoDecoration &
+
+        fill: JQueryUI_BaseTheme.info.iconsColor
+
+
+      /.Snackbar__WarningDecoration &
+
+        fill: JQueryUI_BaseTheme.warning.iconsColor
+
+
+      /.Snackbar__ErrorDecoration &
+
+        fill: JQueryUI_BaseTheme.error.iconsColor
 
 
     &-Text

@@ -166,31 +166,12 @@ mixin Phone__Outlined--Icon
 
 
 //- --- ✖点 ------------------------------------------------------------------------------------------------------------
-mixin MultiplicationSign--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M20 18l-8.01-8.01L20 1.98l-2-2-8.01 8.01L1.98-.02l-2 2 8.01 8.01L-.02 18l2 2 8.01-8.01L18 20l2-2z")
-
-mixin MultiplicationSign__Bold--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12")&attributes(attributes)
-    path(d="M12 10L8 6l4-4-2-2-4 4-4-4-2 2 4 4-4 4 2 2 4-4 4 4 2-2z")
-
-mixin MultiplicationSign__Boxed__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M18 0H2a2 2 0 00-2 2v16a2 2 0 002 2h16a2 2 0 002-2V2a2 2 0 00-2-2zm-4 16l-4-4-4 4-2-2 4-4-4-4 2-2 4 4 4-4 2 2-4 4 4 4z")
-
-mixin MultiplicationSign__Boxed__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M18 2v16H2V2h16m0-2H2a2 2 0 00-2 2v16a2 2 0 002 2h16a2 2 0 002-2V2a2 2 0 00-2-2z")
-    path(d="M14 16l-4-4-4 4-2-2 4-4-4-4 2-2 4 4 4-4 2 2-4 4 4 4-2 2z")
-
-mixin MultiplicationSign__Octagoned__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M14.14 0H5.86L0 5.86v8.28L5.86 20h8.28L20 14.14V5.86zM14 16l-4-4-4 4-2-2 4-4-4-4 2-2 4 4 4-4 2 2-4 4 4 4z")
-
-mixin MultiplicationSign__Octagoned__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M13.31 2L18 6.69v6.62L13.31 18H6.69L2 13.31V6.69L6.69 2h6.62m.83-2H5.86L0 5.86v8.28L5.86 20h8.28L20 14.14V5.86L14.14 0z")
-    path(d="M16 14l-4-4 4-4-2-2-4 4-4-4-2 2 4 4-4 4 2 2 4-4 4 4 2-2z")
+include MultiplicationSign/MultiplicationSignIcon.pug
+include MultiplicationSign/MultiplicationSignIcon__Bold.pug
+include MultiplicationSign/MultiplicationSignIcon__Boxed__Filled.pug
+include MultiplicationSign/MultiplicationSignIcon__Boxed__Outlined.pug
+include MultiplicationSign/MultiplicationSignIcon__Octagoned__Filled.pug
+include MultiplicationSign/MultiplicationSignIcon__Octagoned__Outlined.pug
 
 
 //- --- 塵箱 ------------------------------------------------------------------------------------------------------------
