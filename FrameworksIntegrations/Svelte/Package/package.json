@@ -4,6 +4,9 @@
     "svelte": "3.44.2"
   },
   "devDependencies": {
+    "html-loader": "3.0.1",
+    "pug-html-loader": "1.1.5",
+    "pug-plain-loader": "1.1.0",
     "rimraf": "3.0.2",
     "svelte-loader": "3.1.2",
     "ts-loader": "9.2.6",
