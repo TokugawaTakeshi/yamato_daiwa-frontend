@@ -43,6 +43,7 @@
   "scripts": {
     "PugExtensions:ProductionBuild": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution PugExtensions --mode PRODUCTION & ts-node Markup/Source/PugExtensionsOutputFileGenerator.ts",
     "AnywherePageStyles:IncrementalBuild": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution StaticPreviewAnywherePage --mode DEVELOPMENT",
-    "Tests": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution StylesAndComponentsTesting --mode DEVELOPMENT"
+    "Tests": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution StylesAndComponentsTesting --mode DEVELOPMENT",
+    "Alpha realize": "npm publish --tag alpha"
   }
 }
