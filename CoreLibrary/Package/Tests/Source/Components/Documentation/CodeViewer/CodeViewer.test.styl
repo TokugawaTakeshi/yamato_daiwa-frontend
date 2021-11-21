@@ -1,0 +1,41 @@
+@require "../../../../../Functionality.styl"
+@require "../../../../../Components.styl"
+
+@require "../../../../../node_modules/prismjs/themes/prism-tomorrow.css"
+
+CrossBrowserStylesReset()
+InitialGlobalCSS_Rules()
+
+
+provideCodeViewerComponent()
+
+
+.SamplesFlow
+
+  display flex
+  flex-direction column
+  row-gap 36px
+
+  width 100%
+  max-width 2*NARROWEST_SCREEN_WIDTH_UNIT
+
+  Paddings({
+    horizontalSymmectic: 14px,
+    verticalSymmectic: 12px
+  })
+
+  margin 0 auto
+
+
+.Sample
+
+  &-Heading
+
+    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 24px, lineHeight: 28px })
+    font-weight bold
+
+
+  &-CodeViewer
+
+    retireFrom({ targetElementSelector: ".Sample-Heading", y: 8px })
+

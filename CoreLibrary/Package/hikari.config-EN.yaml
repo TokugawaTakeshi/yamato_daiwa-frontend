@@ -13,7 +13,7 @@ projectBuilding:
         subtasksAndSourceFilesSelection:
           markupProcessing: [ StylesAndComponentsTesting ]
           stylesProcessing: [ StylesAndComponentsTesting ]
-          # ECMA_ScriptLogicProcessing: [ StylesAndComponentsTesting ]
+          ECMA_ScriptLogicProcessing: [ StylesAndComponentsTesting ]
 
         browserLiveReloadingSetupID: StylesAndComponentsTesting
 

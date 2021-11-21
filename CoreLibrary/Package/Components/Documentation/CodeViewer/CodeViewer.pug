@@ -1,0 +1,60 @@
+mixin CodeViewer(propertiesObject)
+
+  include CodeViewerComponentPropertiesSpecification.pug
+
+  -
+
+    propertiesObject = propertiesObject || {}
+
+    const {
+      topHeading,
+      resultViewURI,
+      enableDefaultPaddingsInViewport = false
+    } = propertiesObject
+    // MixinParametersValidator.getValidatedParameters(propertiesObject, CodeViewerComponentPropertiesSpecification)
+
+
+  .CodeViewer&attributes(attributes)
+
+    if topHeading
+
+      .CodeViewer-CommonHeading= topHeading
+
+
+    if resultViewURI
+
+      .CodeViewer-IFrameSizingContainer
+        iframe.CodeViewer-CodeExecutionResultViewport(
+          src= resultViewURI
+          class= enableDefaultPaddingsInViewport && "CodeViewer-CodeExecutionResultViewport__DefaultPaddings"
+          title="Below code rendering result"
+        )
+
+
+    .CodeViewer-ActionBar
+
+      button.CodeViewer-ActionBar__CopyCode(
+        type="button"
+      ) Copy code
+
+
+    .CodeViewer-TabsFlow
+
+    .CodeViewer-Listings
+      block
+
+
+
+mixin CodeViewerListing(propertiesObject)
+
+  .CodeViewer-CodeListing(
+    data-file_label= propertiesObject.fileLabel
+    data-is_active= propertiesObject.isActive
+    data-language= PrismJS_Integration.languageNotationsAndTitlesMap[propertiesObject.codeLanguageNotationByPrismJS]
+    hidden= !propertiesObject.isActive
+  )
+    pre
+      code.CodeViewer-CodeListing-CodeContainer(
+        class=`language-${propertiesObject.codeLanguageNotationByPrismJS}`
+      )
+        block

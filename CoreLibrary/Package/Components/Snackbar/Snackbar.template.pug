@@ -1,0 +1,14 @@
+include ../../Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Circled__Filled.pug
+include ../../Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Octagoned__Filled.pug
+
+
+.Snackbar
+
+  +ExclamationMarkIcon__Circled__Filled.Snackbar-Icon
+
+  .Snackbar-Text AAA
+
+  button.Snackbar-DismissButton(
+    type="button"
+    aria-label= "dismiss"
+  ): +MultiplicationSignIcon__Octagoned__Filled.Snackbar-DismissButton-Icon

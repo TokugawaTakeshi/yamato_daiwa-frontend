@@ -1,0 +1,107 @@
+Snackbar = {
+  defaultProperties: {
+
+  }
+}
+
+
+provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+
+
+  .Snackbar
+
+    WIDTH = 280px
+
+    display flex
+    align-items center
+
+    width WIDTH
+    min-height 40px
+    border-radius: JQueryUI_BaseTheme.basicBorderRadius
+    Paddings({ horizontalSymmectic: 8px })
+
+    background aliceblue
+    box-shadow 0 2px 8px rgba(black, 0.25)
+
+    position fixed
+    top 96px
+    left "calc(50% - 0.5*%s)" % WIDTH
+    z-index: ZIndexes.floatingNotifications
+
+
+    &__SuccessDecoration
+
+      background: JQueryUI_BaseTheme.success.background
+
+
+    &__InfoDecoration
+
+      background: JQueryUI_BaseTheme.info.background
+
+
+    &__WarningDecoration
+
+      background: JQueryUI_BaseTheme.warning.background
+
+
+    &__ErrorDecoration
+
+      background: JQueryUI_BaseTheme.error.background
+
+
+    &-Icon
+
+      width 24px
+
+      flex-shrink 0
+
+
+      /.Snackbar__SuccessDecoration &
+
+        fill: JQueryUI_BaseTheme.success.iconsColor
+
+
+      /.Snackbar__InfoDecoration &
+
+        fill: JQueryUI_BaseTheme.info.iconsColor
+
+
+      /.Snackbar__WarningDecoration &
+
+        fill: JQueryUI_BaseTheme.warning.iconsColor
+
+
+      /.Snackbar__ErrorDecoration &
+
+        fill: JQueryUI_BaseTheme.error.iconsColor
+
+
+    &-Text
+
+      MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineHeight: 17px })
+
+      color: JQueryUI_BaseTheme.success.fontColor
+
+      flex-grow 1
+      retireFrom({ targetElementSelector: ".Snackbar-Icon", x: 8px })
+
+
+    &-DismissButton
+
+      ButtonLikeElementsPrimer()
+
+      retireFrom({ targetElementSelector: ".Snackbar-Text", x: 8px })
+      flex-shrink 0
+
+      cursor pointer
+
+
+      &-Icon
+
+        height 24px
+
+
+  // === Methods =======================================================================================================
+  // --- Basic ---------------------------------------------------------------------------------------------------------

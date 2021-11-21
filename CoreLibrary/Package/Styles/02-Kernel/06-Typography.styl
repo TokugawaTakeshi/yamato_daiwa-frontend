@@ -1,0 +1,397 @@
+@require "05-Typography/01-Headings.styl"
+@require "05-Typography/02-Subheadings.styl"
+@require "05-Typography/03-ParagraphLikeBlocks.styl"
+@require "05-Typography/04-Lists.styl"
+@require "05-Typography/05-InlineElements.styl"
+
+
+TypographyDefaultProperties = {
+
+  prefix: null,
+
+  heading1: deeplyCloneAndOverrideObject(Heading1DefaultProperties, {
+    class: "Heading1",
+    skip: false
+  }),
+  heading2: deeplyCloneAndOverrideObject(Heading2DefaultProperties, {
+    class: "Heading2",
+    skip: false,
+    positionalRelationship: {
+      heading1: { whenItJustBefore: 16px }
+    }
+  }),
+  heading3: deeplyCloneAndOverrideObject(Heading3DefaultProperties, {
+    class: "Heading3",
+    skip: false,
+    positionalRelationship: {
+      heading2: { whenItJustBefore: 12px }
+    }
+  }),
+  heading4: deeplyCloneAndOverrideObject(Heading4DefaultProperties, {
+    class: "Heading4",
+    skip: false,
+    positionalRelationship: {
+      heading3: { whenItJustBefore: 10px }
+    }
+  }),
+  heading5: deeplyCloneAndOverrideObject(Heading5DefaultProperties, {
+    class: "Heading5",
+    skip: false,
+    positionalRelationship: {
+      heading4: { whenItJustBefore: 8px }
+    }
+  }),
+  heading6: deeplyCloneAndOverrideObject(Heading6DefaultProperties, {
+    class: "Heading6",
+    skip: false,
+    positionalRelationship: {
+      heading5: { whenItJustBefore: 6px }
+    }
+  }),
+
+  subheading1: deeplyCloneAndOverrideObject(Subheading1DefaultProperties, {
+    class: "Subheading1",
+    skip: false,
+    positionalRelationship: {
+      heading1: { whenItJustBefore: 4px },
+      heading2: { whenItJustAfter: 12px }
+    }
+  }),
+  subheading2: deeplyCloneAndOverrideObject(Subheading2DefaultProperties, {
+    class: "Subheading2",
+    skip: false,
+    positionalRelationship: {
+      heading2: { whenItJustBefore: 4px },
+      heading3: { whenItJustAfter: 12px }
+    }
+  }),
+  subheading3: deeplyCloneAndOverrideObject(Subheading3DefaultProperties, {
+    class: "Subheading3",
+    skip: false,
+    positionalRelationship: {
+      heading3: { whenItJustBefore: 2px },
+      heading4: { whenItJustAfter: 10px }
+    }
+  }),
+  subheading4: deeplyCloneAndOverrideObject(Subheading4DefaultProperties, {
+    class: "Subheading4",
+    skip: false,
+    positionalRelationship: {
+      heading4: { whenItJustBefore: 4px },
+      heading5: { whenItJustAfter: 10px }
+    }
+  }),
+  subheading5: deeplyCloneAndOverrideObject(Subheading5DefaultProperties, {
+    class: "Subheading5",
+    skip: false,
+    positionalRelationship: {
+      heading5: { whenItJustBefore: 4px },
+      heading6: { whenItJustAfter: 10px }
+    }
+  }),
+  subheading6: deeplyCloneAndOverrideObject(Subheading6DefaultProperties, {
+    class: "Subheading6",
+    skip: false,
+    positionalRelationship: {
+      heading6: { whenItJustBefore: 4px }
+    }
+  }),
+
+  paragraph: deeplyCloneAndOverrideObject(ParagraphDefaultProperties, {
+    class: "Paragraph",
+    skip: false,
+    positionalRelationship: {
+      paragraph: { whenItJustBefore: 8px },
+      heading1: { whenItJustBefore: 12px },
+      subheading1: { whenItJustBefore: 12px },
+      heading2: { whenItJustBefore: 16px, whenItJustAfter: 24px },
+      subheading2: { whenItJustBefore: 16px },
+      heading3: { whenItJustBefore: 16px, whenItJustAfter: 24px },
+      subheading3: { whenItJustBefore: 16px },
+      heading4: { whenItJustBefore: 16px, whenItJustAfter: 24px },
+      subheading4: { whenItJustBefore: 16px },
+      heading5: { whenItJustBefore: 16px, whenItJustAfter: 24px },
+      subheading5: { whenItJustBefore: 16px },
+      heading6: { whenItJustBefore: 16px, whenItJustAfter: 24px },
+      subheading6: { whenItJustBefore: 16px }
+    }
+  }),
+  abstract: deeplyCloneAndOverrideObject(AbstractDefaultProperties, {
+    class: "Abstract",
+    skip: false,
+    positionalRelationship: {
+      heading1: { whenItJustBefore: 12px },
+      subheading1: { whenItJustBefore: 12px },
+      paragraph: { whenItJustAfter: 12px }
+    }
+  }),
+
+  unorderedList: deeplyCloneAndOverrideObject(UnorderedListDefaultProperties, {
+    class: "UnorderedList",
+    skip: false,
+    positionalRelationship: {
+      heading1: { whenItJustBefore: 12px },
+      paragraph: { whenItJustBefore: 12px }
+    }
+  }),
+  orderedList: deeplyCloneAndOverrideObject(OrderedListDefaultProperties, {
+    class: "OrderedList",
+    skip: false,
+    positionalRelationship: {
+      heading1: { whenItJustBefore: 12px },
+      paragraph: { whenItJustBefore: 12px },
+      unorderedList: { whenItJustBefore: 12px }
+    }
+  }),
+
+  link: deeplyCloneAndOverrideObject(LinkDefaultProperties, {
+    class: "Link",
+    skip: false
+  })
+}
+
+
+generateTypographySelectors(preset = TypographyDefaultProperties, overridings = {})
+
+  typographyProperties = deeplyCloneAndOverrideObject(preset, overridings)
+
+  PREFIX_WITH_SEPARATOR = "";
+
+  if (isNotNull(typographyProperties.prefix)) {
+    PREFIX_WITH_SEPARATOR = typographyProperties.prefix + "-";
+  }
+
+  return {
+    heading1: "." + PREFIX_WITH_SEPARATOR + typographyProperties.heading1.class,
+    heading2: "." + PREFIX_WITH_SEPARATOR + typographyProperties.heading2.class,
+    heading3: "." + PREFIX_WITH_SEPARATOR + typographyProperties.heading3.class,
+    heading4: "." + PREFIX_WITH_SEPARATOR + typographyProperties.heading4.class,
+    heading5: "." + PREFIX_WITH_SEPARATOR + typographyProperties.heading5.class,
+    heading6: "." + PREFIX_WITH_SEPARATOR + typographyProperties.heading6.class,
+    subheading1: "." + PREFIX_WITH_SEPARATOR + typographyProperties.subheading1.class,
+    subheading2: "." + PREFIX_WITH_SEPARATOR + typographyProperties.subheading2.class,
+    subheading3: "." + PREFIX_WITH_SEPARATOR + typographyProperties.subheading3.class,
+    subheading4: "." + PREFIX_WITH_SEPARATOR + typographyProperties.subheading4.class,
+    subheading5: "." + PREFIX_WITH_SEPARATOR + typographyProperties.subheading5.class,
+    subheading6: "." + PREFIX_WITH_SEPARATOR + typographyProperties.subheading6.class,
+    paragraph: "." + PREFIX_WITH_SEPARATOR + typographyProperties.paragraph.class,
+    abstract: "." + PREFIX_WITH_SEPARATOR + typographyProperties.abstract.class,
+    unorderedList: "." + PREFIX_WITH_SEPARATOR + typographyProperties.unorderedList.class,
+    orderedList: "." + PREFIX_WITH_SEPARATOR + typographyProperties.orderedList.class,
+    link: "." + PREFIX_WITH_SEPARATOR + typographyProperties.link.class
+  }
+
+
+provideTypography(preset = TypographyDefaultProperties, overridings = {})
+
+  typographyProperties = deeplyCloneAndOverrideObject(preset, overridings)
+  keysAndSelectorsMap = generateTypographySelectors(typographyProperties)
+
+
+  setPositionalRelationship(positionalRelationship)
+    if isNotNull(positionalRelationship)
+      for elementKey, positionalRelationshipParameters in positionalRelationship
+        PositionalRelationship({
+          definitions: (keysAndSelectorsMap[elementKey] {
+            retireFromIt: { y: positionalRelationshipParameters.whenItJustBefore },
+            pushItFromSelf: { y: positionalRelationshipParameters.whenItJustAfter }
+          })
+        })
+
+
+  HEADING_1_SELECTOR = keysAndSelectorsMap.heading1
+  HEADING_2_SELECTOR = keysAndSelectorsMap.heading2
+  HEADING_3_SELECTOR = keysAndSelectorsMap.heading3
+  HEADING_4_SELECTOR = keysAndSelectorsMap.heading4
+  HEADING_5_SELECTOR = keysAndSelectorsMap.heading5
+  HEADING_6_SELECTOR = keysAndSelectorsMap.heading6
+
+  SUBHEADING_1_SELECTOR = keysAndSelectorsMap.subheading1
+  SUBHEADING_2_SELECTOR = keysAndSelectorsMap.subheading2
+  SUBHEADING_3_SELECTOR = keysAndSelectorsMap.subheading3
+  SUBHEADING_4_SELECTOR = keysAndSelectorsMap.subheading4
+  SUBHEADING_5_SELECTOR = keysAndSelectorsMap.subheading5
+  SUBHEADING_6_SELECTOR = keysAndSelectorsMap.subheading6
+
+  PARAGRAPH_SELECTOR = keysAndSelectorsMap.paragraph
+  ABSTRACT_SELECTOR = keysAndSelectorsMap.abstract
+
+  UNORDERED_LIST_SELECTOR = keysAndSelectorsMap.unorderedList
+  ORDERED_LIST_SELECTOR = keysAndSelectorsMap.orderedList
+
+  LINK_SELECTOR = keysAndSelectorsMap.link
+
+
+  // === Headings ======================================================================================================
+  if !typographyProperties.heading1.skip
+
+    {HEADING_1_SELECTOR}
+
+      Heading-Level1(typographyProperties.heading1)
+      setPositionalRelationship(typographyProperties.heading1.positionalRelationship)
+
+
+  if !typographyProperties.heading2.skip
+
+    {HEADING_2_SELECTOR}
+
+      Heading-Level2(typographyProperties.heading2)
+      setPositionalRelationship(typographyProperties.heading2.positionalRelationship)
+
+
+  if !typographyProperties.heading3.skip
+
+    {HEADING_3_SELECTOR}
+
+      Heading-Level3(typographyProperties.heading3)
+      setPositionalRelationship(typographyProperties.heading3.positionalRelationship)
+
+
+  if !typographyProperties.heading4.skip
+
+    {HEADING_4_SELECTOR}
+
+      Heading-Level4(typographyProperties.heading4)
+      setPositionalRelationship(typographyProperties.heading4.positionalRelationship)
+
+
+  if !typographyProperties.heading5.skip
+
+    {HEADING_5_SELECTOR}
+
+      Heading-Level5(typographyProperties.heading5)
+      setPositionalRelationship(typographyProperties.heading5.positionalRelationship)
+
+
+  if !typographyProperties.heading6.skip
+
+    {HEADING_6_SELECTOR}
+
+      Heading-Level6(typographyProperties.heading6)
+      setPositionalRelationship(typographyProperties.heading6.positionalRelationship)
+
+
+  // === Subheadings ===================================================================================================
+  if !typographyProperties.subheading1.skip
+
+    {SUBHEADING_1_SELECTOR}
+
+      Subheading-Level1(typographyProperties.subheading1)
+      setPositionalRelationship(typographyProperties.subheading1.positionalRelationship)
+
+
+  if !typographyProperties.subheading2.skip
+
+    {SUBHEADING_2_SELECTOR}
+
+      Subheading-Level2(typographyProperties.subheading2)
+      setPositionalRelationship(typographyProperties.subheading2.positionalRelationship)
+
+
+  if !typographyProperties.subheading3.skip
+
+    {SUBHEADING_3_SELECTOR}
+
+      Subheading-Level3(typographyProperties.subheading3)
+      setPositionalRelationship(typographyProperties.subheading3.positionalRelationship)
+
+
+  if !typographyProperties.subheading4.skip
+
+    {SUBHEADING_4_SELECTOR}
+
+      Subheading-Level3(typographyProperties.subheading4)
+      setPositionalRelationship(typographyProperties.subheading4.positionalRelationship)
+
+
+  if !typographyProperties.subheading5.skip
+
+    {SUBHEADING_5_SELECTOR}
+
+      Subheading-Level3(typographyProperties.subheading5)
+      setPositionalRelationship(typographyProperties.subheading5.positionalRelationship)
+
+
+  if !typographyProperties.subheading6.skip
+
+    {SUBHEADING_6_SELECTOR}
+
+      Subheading-Level3(typographyProperties.subheading6)
+      setPositionalRelationship(typographyProperties.subheading6.positionalRelationship)
+
+
+  // === Paragraph-like blocks =========================================================================================
+  if !typographyProperties.paragraph.skip
+
+    {PARAGRAPH_SELECTOR}
+
+      Paragraph(typographyProperties.paragraph)
+      setPositionalRelationship(typographyProperties.paragraph.positionalRelationship)
+
+
+  if !typographyProperties.abstract.skip
+
+    {ABSTRACT_SELECTOR}
+
+      Abstract(typographyProperties.abstract)
+      setPositionalRelationship(typographyProperties.abstract.positionalRelationship)
+
+
+  // === Lists =========================================================================================================
+  if !typographyProperties.unorderedList.skip
+
+    {UNORDERED_LIST_SELECTOR}
+
+      UnorderedList(typographyProperties.unorderedList)
+      setPositionalRelationship(typographyProperties.unorderedList.positionalRelationship)
+
+
+  if !typographyProperties.orderedList.skip
+
+    {ORDERED_LIST_SELECTOR}
+
+      OrderedList(typographyProperties.orderedList)
+      setPositionalRelationship(typographyProperties.orderedList.positionalRelationship)
+
+
+  // === Inline elements ===============================================================================================
+  if !typographyProperties.link.skip
+
+    {LINK_SELECTOR}
+
+      Link(typographyProperties.link)
+
+
+providePositionalRelationshipWithTypographyElements(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      positionalRelationshipWithTypographyElementsSettings: {
+        required: false
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "providePositionalRelationshipWithTypographyElements"
+  })
+
+  if isNotNull(parametersObject.positionalRelationshipWithTypographyElementsSettings)
+
+    for profileName, profile in parametersObject.positionalRelationshipWithTypographyElementsSettings
+
+      if isNotNull(profile) && isNotNull(profile.typographySpecification)
+
+        keysAndSelectorsMap = generateTypographySelectors(profile.typographySpecification)
+
+        for elementKey, positionalRelationshipDefinition in profile.definitions
+
+          if isNull(keysAndSelectorsMap[elementKey])
+            error("不正相互配置設定：キー：「" + elementKey + "に該当する選択式が発見されず。")
+
+          PositionalRelationship({
+            definitions: (keysAndSelectorsMap[elementKey] {
+              retireFromIt: { y: positionalRelationshipDefinition.whenItJustBefore },
+              pushItFromSelf: { y: positionalRelationshipDefinition.whenItJustAfter }
+            }),
+            referenceElementSelector: parametersObject.componentRootElementSelector
+          })

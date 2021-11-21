@@ -1,0 +1,145 @@
+-
+
+  const Snackbar = {
+
+    /* --- Themes --------------------------------------------------------------------------------------------------- */
+    /** @readonly */
+    Themes: {
+      basic: "BASIC"
+    },
+
+    /** @private */
+    _themesCSS_ModifiersNamesMap: new Map(),
+
+    /** @private */
+    get ThemesCSS_ModifiersNames() {
+      return this._themesCSS_ModifiersNamesMap.size > 0 ?  this._themesCSS_ModifiersNamesMap.size :
+          new Map([ [ this.Themes.basic, "BasicTheme" ] ])
+    },
+
+    /** @public */
+    defineNewThemes(definitions) {
+
+      for (const definition of definitions) {
+
+        const THEME_ID = definition.ID || definition.key;
+
+        this.Themes[definition.key] = THEME_ID;
+        this._themesCSS_ModifiersNamesMap.set(THEME_ID, definition.CSS_ModifierName);
+      }
+
+      return this;
+    },
+
+
+    /* --- Geometry ------------------------------------------------------------------------------------------------- */
+    /** @readonly */
+    GeometricVariations: {
+      regular: "REGULAR"
+    },
+
+    /** @private */
+    _geometricVariationsCSS_ModifiersNamesMap: new Map(),
+
+    /** @private */
+    get geometricVariationsCSS_ModifiersNamesMap() {
+      return this._geometricVariationsCSS_ModifiersNamesMap.size > 0 ? this._geometricVariationsCSS_ModifiersNamesMap :
+          new Map([ [ this.GeometricVariations.regular, "RegularGeometry" ] ])
+    },
+
+    /** @public */
+    defineNewGeometricVariations(definitions) {
+
+      for (const definition of definitions) {
+
+        const VARIATION_ID = definition.ID || definition.key;
+
+        this.GeometricVariations[definition.key] = VARIATION_ID;
+        this._geometricVariationsCSS_ModifiersNamesMap.set(VARIATION_ID, definition.CSS_ModifierName);
+      }
+
+      return this;
+    },
+
+
+    /* --- Decorations ---------------------------------------------------------------------------------------------- */
+    /** @readonly */
+    DecorativeVariations: {
+      error: "ERROR",
+      warning: "WARNING",
+      guidance: "GUIDANCE",
+      success: "SUCCESS"
+    },
+
+    /** @private */
+    _decorativeVariationsCSS_ModifiersNamesMap: new Map(),
+
+    /** @private */
+    get decorativeVariationsCSS_ModifiersNamesMap() {
+      return this._decorativeVariationsCSS_ModifiersNamesMap.size > 0 ? this._decorativeVariationsCSS_ModifiersNamesMap :
+          new Map([
+            [ this.DecorativeVariations.error, "ErrorDecoration" ],
+            [ this.DecorativeVariations.warning, "WarningDecoration" ],
+            [ this.DecorativeVariations.guidance, "GuidanceDecoration" ],
+            [ this.DecorativeVariations.success, "SuccessDecoration" ]
+          ]);
+    },
+
+
+    /** @public */
+    defineNewDecorativeVariation(definitions) {
+
+      for (const definition of definitions) {
+
+        const VARIATION_ID = definition.ID || definition.key;
+
+        this.DecorativeVariations[definition.key] = VARIATION_ID;
+        this._decorativeVariationsCSS_ModifiersNamesMap.get(VARIATION_ID, definition.CSS_ModifiersName);
+      }
+
+      return this;
+    },
+
+    /* --- Localization --------------------------------------------------------------------------------------------- */
+    localization: {
+      dismissButton: { accessibilityGuidance: "Close snackbar" }
+    }
+  }
+
+
+mixin Snackbar(propertiesObject)
+
+  -
+    const {
+      theme = Snackbar.Themes.basic,
+      geometry = Snackbar.GeometricVariations.regular,
+      decoration
+    } = propertiesObject
+
+    const rootElementCSS_ModiferClasses = [
+      ...Object.entries(Snackbar.Themes).length > 1 ? [
+        `Snackbar__${Snackbar.themesCSS_ModifiersNamesMap.get(theme)}`
+      ] : [],
+      ...Object.entries(Snackbar.GeometricVariations).length > 1 ? [
+        `Snackbar__${Snackbar.geometricVariationsCSS_ModifiersNamesMap.get(geometry)}`
+      ] : [],
+      ...Object.entries(Snackbar.DecorativeVariations).length > 1 ? [
+        `Snackbar__${Snackbar.decorativeVariationsCSS_ModifiersNamesMap.get(decoration)}`
+      ] : []
+    ];
+
+
+  .Snackbar&attributes(attributes)(
+    class= rootElementCSS_ModiferClasses
+    role="status"
+    aria-live="polite"
+  )
+
+    +ExclamationMarkIcon__Circled__Filled.Snackbar-Icon
+
+    .Snackbar-Text 例文言
+
+    button.Snackbar-DismissButton(
+      type="button"
+      aria-label= Snackbar.localization.dismissButton.accessibilityGuidance
+    ): +MultiplicationSignIcon__Boxed__Filled.Snackbar-DismissButton-Icon

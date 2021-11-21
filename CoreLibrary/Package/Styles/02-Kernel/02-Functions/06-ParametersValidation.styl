@@ -94,6 +94,7 @@ validateSingleParametersObject(data)
         }
       }
 
+      // --- String ----------------------------------------------------------------------------------------------------
       if (propertySpecification.type == DataTypes.string) {
 
         if (!isString(propertyValue)) {
@@ -126,6 +127,7 @@ validateSingleParametersObject(data)
         }
       }
 
+      // --- Unit ------------------------------------------------------------------------------------------------------
       else if (propertySpecification.type == DataTypes.unit) {
         if (typeof(propertyValue) != "unit") {
           error(buildString(
@@ -141,6 +143,7 @@ validateSingleParametersObject(data)
         }
       }
 
+      // --- Boolean ---------------------------------------------------------------------------------------------------
       else if (propertySpecification.type == DataTypes.boolean) {
         if (!isBoolean(propertyValue)) {
           error(buildString(

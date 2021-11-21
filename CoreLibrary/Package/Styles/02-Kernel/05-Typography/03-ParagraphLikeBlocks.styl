@@ -37,7 +37,7 @@ AbstractDefaultProperties = {
   geometry: {
     fontSize: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
     lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS,
-    //paddings: specifyPaddings({ leftOrRightEqual: 24px }),
+    paddings: { horizontalSymmectic: 24px },
     customDeclarations: {}
   },
   decoration: {
@@ -53,7 +53,7 @@ Abstract(preset = AbstractDefaultProperties, overridings = {})
 
 
   // --- Geometry ------------------------------------------------------------------------------------------------------
-  applyPaddingsSpecification(properties.geometry.paddings)
+  Paddings(properties.geometry.paddings)
 
   MultilineTextWithoutExtraSpaceCausedByLineHeight({
     fontSize: properties.geometry.fontSize,
