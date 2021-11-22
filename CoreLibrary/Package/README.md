@@ -58,7 +58,7 @@ include "PATH_TO_NODE_MODULES/@yamato-daiwa/frontend/Components.pug
 
 #### Assets
 
-* [📖 Basic constants](Documentation/Styles/01-Assets/01-BasicConstants/BasicConstants.md)
+* [📖 Basic constants](Documentation/Styles/01-Assets/BasicConstants.md)
 * [📖 Font stacks](Documentation/Styles/01-Assets/02-FontStacks/FontStacks.md)
 * [📖 Colors](Documentation/Styles/01-Assets/03-Colors/Colors.md)
   

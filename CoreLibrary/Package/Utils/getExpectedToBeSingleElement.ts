@@ -48,7 +48,7 @@ export default function getExpectedToBeSingleElement<SpecificElement extends Ele
   if (targetElementSearchRequestMatch.length > 1) {
     Logger.throwErrorAndLog({
       errorInstance: new UnexpectedEventError(
-        `Сontrary to expectations ${targetElementSearchRequestMatch.length} elements has been found for the selector` +
+        `Contrary to expectations, ${targetElementSearchRequestMatch.length} elements has been found for the selector ` +
         `"${selector}."`
       ),
       title: UnexpectedEventError.DEFAULT_TITLE,
@@ -66,7 +66,9 @@ export default function getExpectedToBeSingleElement<SpecificElement extends Ele
 
   if (!elementTypeChecker(targetElement)) {
     Logger.throwErrorAndLog({
-      errorInstance: new UnexpectedEventError("Wrong subtype"),
+      errorInstance: new UnexpectedEventError(
+        "The picked element subtype does match with expected one specified in 'elementTypeChecker'"
+      ),
       title: UnexpectedEventError.DEFAULT_TITLE,
       occurrenceLocation: "getExpectedToBeSingleElement(parametersObject)"
     });

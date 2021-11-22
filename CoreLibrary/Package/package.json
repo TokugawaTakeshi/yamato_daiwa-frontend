@@ -38,6 +38,7 @@
     "hikari-automation": "0.0.44",
     "stylus": "0.55.0",
     "ts-node": "10.4.0",
+    "typescript": "4.5.2",
     "yamato-daiwa_code_quality_management": "0.0.19"
   },
   "scripts": {

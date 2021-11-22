@@ -1,104 +1,65 @@
-import componentTemplate from "./Snackbar.template.pug";
-import { createElement } from "@yamato-daiwa/es-extensions-browserjs";
+import componentHTML_Workpiece from "./Snackbar.template.pug";
 // import {
 //   isNull,
 //   Logger,
 //   ClassRequiredInitializationHasNotBeenExecutedError,
 //   InheritEnumerationKeys
 // } from "@yamato-daiwa/es-extensions";
-import { getExpectedToBeSingleElement } from "../../Utils/getExpectedToBeSingleElement";
+import getExpectedToBeSingleElement from "../../Utils/getExpectedToBeSingleElement";
+import createElement from "../../Utils/createElement";
 
 
 class Snackbar {
 
-  // TODO HTMLElement
-  private static readonly equipment: Element = createElement(componentTemplate);
+  private static readonly constructionSite: HTMLElement = createElement({
+    HTML_Code: componentHTML_Workpiece,
+    rootElementTypeChecker: (rootElement: Element): rootElement is HTMLElement => rootElement instanceof HTMLElement
+  });
 
 
   public static mountAndDisplayForAWhile(
     {
+      textOrHTML,
       decorativeVariation,
       parentElementSelector = "body"
     }: {
+      textOrHTML: string;
       decorativeVariation: Snackbar.DecorativeVariations;
       parentElementSelector?: string;
     }
   ): void {
 
-    const parentElement: Element = getExpectedToBeSingleElement({
-      selector: parentElementSelector
-    });
+    const parentElement: Element = getExpectedToBeSingleElement({ selector: parentElementSelector });
 
     let rootElementDecorativeVariationModifierCSS_Class: string;
 
     switch (decorativeVariation) {
       case Snackbar.DecorativeVariations.success: {
-        rootElementDecorativeVariationModifierCSS_Class = ".Snackbar__SuccessDecoration";
+        rootElementDecorativeVariationModifierCSS_Class = "Snackbar__SuccessDecoration";
         break;
       }
       case Snackbar.DecorativeVariations.guidance: {
-        rootElementDecorativeVariationModifierCSS_Class = ".Snackbar__InfoDecoration";
+        rootElementDecorativeVariationModifierCSS_Class = "Snackbar__InfoDecoration";
         break;
       }
       case Snackbar.DecorativeVariations.warning: {
-        rootElementDecorativeVariationModifierCSS_Class = ".Snackbar__WarningDecoration";
+        rootElementDecorativeVariationModifierCSS_Class = "Snackbar__WarningDecoration";
         break;
       }
       case Snackbar.DecorativeVariations.error: {
-        rootElementDecorativeVariationModifierCSS_Class = ".Snackbar__ErrorDecoration";
+        rootElementDecorativeVariationModifierCSS_Class = "Snackbar__ErrorDecoration";
       }
     }
 
-    Snackbar.equipment.classList.add(rootElementDecorativeVariationModifierCSS_Class);
-    // Snackbar.equipment.style
+    Snackbar.constructionSite.classList.add(rootElementDecorativeVariationModifierCSS_Class);
 
-    parentElement.appendChild(Snackbar.equipment);
+    parentElement.appendChild(Snackbar.constructionSite);
   }
 
-  // public static mount(
-  //   parametersObject: { parentElementSelector: string; }
-  // ): typeof Snackbar {
-  //
-  //   document.querySelector(parametersObject.parentElementSelector).appendChild(selfSoleInstance.rootElement);
-  //   selfSoleInstance.rootElement.style.display = "none";
-  //   Snackbar.selfSoleInstance = selfSoleInstance;
-  //   return Snackbar;
-  // }
-  //
-  //
-  // public static displayForAWhile(
-  //   parametersObject: {
-  //     message: string;
-  //     semantic: string;
-  //     displayingDuration: string;
-  //   }
-  // ): void {
-  //   console.log("確認点1");
-  //   console.log(Snackbar.getSelfSoleInstanceWhichExpectedToBeCreated());
-  //   Snackbar.getSelfSoleInstanceWhichExpectedToBeCreated().displayForAWhile(parametersObject);
-  // }
-  //
-  // public static dismiss(): void {
-  //   console.log("");
-  // }
-  //
-  //
-  // private static getSelfSoleInstanceWhichExpectedToBeCreated(): Snackbar {
-  //
-  //   if (isNull(Snackbar.selfSoleInstance)) {
-  //     Logger.throwErrorAndLog({
-  //       errorInstance: new ClassRequiredInitializationHasNotBeenExecutedError({
-  //         className: "ClassRequiredInitializationHasNotBeenExecutedError",
-  //         initializingMethodName: "mount"
-  //       }),
-  //       title: ClassRequiredInitializationHasNotBeenExecutedError.DEFAULT_TITLE,
-  //       occurrenceLocation: "Snackbar.getSelfSoleInstanceWhichExpectedToBeCreated()"
-  //     });
-  //   }
-  //
-  //   console.log("確認点2");
-  //   return Snackbar.selfSoleInstance;
-  // }
+
+  public static hideAndUnmount(): void {
+    document.removeChild(Snackbar.constructionSite);
+  }
 }
 
 

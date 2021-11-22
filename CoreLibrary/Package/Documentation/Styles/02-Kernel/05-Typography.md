@@ -22,4 +22,3 @@ provideTypography(overridings: { prefix: "TypographyTesting" })
 
 
 ### Case 3: I want to create my own preset
-
