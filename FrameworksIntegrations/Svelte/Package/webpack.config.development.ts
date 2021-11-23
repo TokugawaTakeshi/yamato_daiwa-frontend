@@ -5,14 +5,16 @@ import preprocessSvelteSingleFileComponent from "svelte-preprocess";
 
 const webpackConfig: Webpack.Configuration = {
 
-  context: Path.resolve(process.cwd(), "Source"),
-  entry: "./index.ts",
+  context: Path.resolve(process.cwd(), "Tests"),
+  entry: {
+    "OverflowSafeSingleLineLabel": "./OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.ts"
+  },
   output: {
-    filename: "index.js",
-    path: Path.resolve(process.cwd(), "Distributable")
+    filename: "[name].build.js",
+    path: Path.resolve(process.cwd(), "Tests/OverflowSafeSingleLineLabel")
   },
   mode: "development",
-  watch: false,
+  watch: true,
 
   module: {
     rules: [

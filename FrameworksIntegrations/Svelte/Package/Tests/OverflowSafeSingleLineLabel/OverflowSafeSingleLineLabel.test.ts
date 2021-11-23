@@ -4,4 +4,3 @@ import OverflowSafeSingleLineLabelComponentTestSite from "./OverflowSafeSingleLi
 new OverflowSafeSingleLineLabelComponentTestSite({
   target: document.body
 })
-

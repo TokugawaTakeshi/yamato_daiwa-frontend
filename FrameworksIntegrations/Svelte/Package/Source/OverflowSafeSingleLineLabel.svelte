@@ -1,14 +1,14 @@
 <template lang="pug">
 
-  svelte:component.OverflowSafeSingleLineLabel(this={rootElementTag})
+  svelte:component.OverflowSafeSingleLineLabel(this="{rootElementTag}")
     span.OverflowSafeSingleLineLabel-TextWithIncreasedLineHeight
       slot
 
 </template>
 
 
-<script lang="ts">
+<script lang="ts" context="module">
 
-  export const rootElementTag: string = "div";
+  const rootElementTag: string = "div";
 
 </script>
