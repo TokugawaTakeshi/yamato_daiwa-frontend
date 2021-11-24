@@ -10,7 +10,7 @@ const webpackConfig: Webpack.Configuration = {
     "OverflowSafeSingleLineLabel": "./OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.ts"
   },
   output: {
-    filename: "[name].js",
+    filename: "[name].build.js",
     path: Path.resolve(process.cwd(), "Distributable")
   },
   mode: "development",

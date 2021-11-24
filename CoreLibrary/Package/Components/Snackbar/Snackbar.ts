@@ -9,7 +9,7 @@ import getExpectedToBeSingleElement from "../../Utils/getExpectedToBeSingleEleme
 import createElement from "../../Utils/createElement";
 
 
-class Snackbar {
+abstract class Snackbar {
 
   private static readonly constructionSite: HTMLElement = createElement({
     HTML_Code: componentHTML_Workpiece,

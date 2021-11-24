@@ -168,24 +168,24 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 
 ##### Positional relationship
 
-* [📖 Introduction](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md) 
-* [📖 `PositionalRelationship` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#positionalrelationship-mixin)
+* [📖 Introduction](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md) 
+* [📖 `PositionalRelationship` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#positionalrelationship-mixin)
   Low-level mixin for the defining of the vertical space between two or more elements.
-* [📖 `retireFrom` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#retirefrom-mixin)
+* [📖 `retireFrom` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#retirefrom-mixin)
   Allows to define how much element `B` must retire from `A` by top/left margin.
-* [📖 `pushTargetFromSelf` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#pushtargetfromself-mixin)
+* [📖 `pushTargetFromSelf` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#pushtargetfromself-mixin)
   Allows to define how much element `B` must push `A` from self by `A`'s top/left margin.
-* [📖 `retireFromElementWithSameSelector` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#retirefromelementwithsameselector-mixin)
+* [📖 `retireFromElementWithSameSelector` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#retirefromelementwithsameselector-mixin)
   Allows to define how much certain element must retire from other element with same selector.
-* [📖 `whenItGoingFirst` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whenitgoingfirst-mixin)
+* [📖 `whenItGoingFirst` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitgoingfirst-mixin)
   Allows to define CSS properties for certain element when it is going first in some container.
-* [📖 `whenItGoingLast` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whenitgoinglast-mixin)
+* [📖 `whenItGoingLast` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitgoinglast-mixin)
   Allows to define CSS properties for certain element when it is going last in some container.
-* [📖 `whenItJustAfter` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whenitjustafter)
+* [📖 `whenItJustAfter` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitjustafter)
   Allows to specify any CSS properties for element `B` when it is going after element `A`.
-* [📖 `whenTargetGoingJustAfterIt` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whentargetgoingjustafterit)
+* [📖 `whenTargetGoingJustAfterIt` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whentargetgoingjustafterit)
   Allows to specify any CSS properties for the target element `X` when it is going after currently being declared element.
-* [📖 `whenTargetWithSameSelectorGoingJustAfterIt` mixin](Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit)
+* [📖 `whenTargetWithSameSelectorGoingJustAfterIt` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit)
   The equivalent of `+whenTargetGoingJustAfterIt({ targetElementSelector: ".X" })` for the case when reference element's selector is also `.X`.
 
 

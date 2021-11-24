@@ -1,3 +1,11 @@
+include Bell/BellIcon__Filled.pug
+
+//- --- レ点・ -----------------------------------------------------------------------------------------------------------
+include Checkmark/CheckboxIcon__Checked.pug
+include Checkmark/CheckboxIcon__Unchecked.pug
+include Checkmark/CheckmarkIcon__Circled__Filled.pug
+include Checkmark/CheckmarkIcon__Circled__Outlined.pug
+
 //- --- ビックリマーク -------------------------------------------------------------------------------------------------------
 include ExclamationMark/ExclamationMarkIcon__Circled__Filled.pug
 include ExclamationMark/ExclamationMarkIcon__Circled__Outlined.pug
@@ -7,6 +15,10 @@ include ExclamationMark/ExclamationMarkIcon__Rectangled__Filled.pug
 include ExclamationMark/ExclamationMarkIcon__Rectangled__Outlined.pug
 include ExclamationMark/ExclamationMarkIcon__Triangled__Filled.pug
 include ExclamationMark/ExclamationMarkIcon__Triangled__Outlined.pug
+
+include Filtering/FilteringIcon__Outlined.pug
+
+include HamburgerMenu/HamburgerMenuIcon.pug
 
 //- --- 案内 ------------------------------------------------------------------------------------------------------------
 include InfoSign/InfoSignIcon__Circled__Filled.pug
@@ -19,62 +31,18 @@ include MagnifyingGlass/ZoomingInIcon__Outlined.pug
 include MagnifyingGlass/ZoomingOutIcon__Filled.pug
 include MagnifyingGlass/ZoomingOutIcon__Outlined.pug
 
-//- --- レ点・ -----------------------------------------------------------------------------------------------------------
-mixin Checkmark__Circled__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M10 0a10 10 0 1010 10A10 10 0 0010 0zM8.47 14.74l-.09-.09-4.05-4.05 1.22-1.23 2.92 2.91 5.89-5.9 1.23 1.23z")
-
-mixin Checkmark__Circled__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M10 1.48A8.5 8.5 0 111.5 10 8.51 8.51 0 0110 1.48M10 0a10 10 0 1010 10A10 10 0 0010 0z")
-    path(d="M15.59 7.59l-1.23-1.23-5.9 5.9-2.91-2.91-1.22 1.22 4.05 4.06.09.08 7.12-7.12z")
-
-mixin Checkbox__Checked--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M0 .13v20h20v-20zm8.47 14.73l-.09-.09-4.05-4L5.55 9.5l2.92 2.91 5.89-5.9 1.23 1.23z")
-
-mixin Checkbox__Unchecked--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M18.5 1.5v17h-17v-17h17M20 0H0v20h20V0z")
-
-
-//- --- レ点 ------------------------------------------------------------------------------------------------------------
-mixin HamburgerMenu--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 13.74")&attributes(attributes)
-    path(d="M0 0h20v3H0zM0 5.37h20v3H0zM0 10.74h20v3H0z")
-
-
-//- --- フィールダー -------------------------------------------------------------------------------------------------------
-mixin Filter__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M14.54 1.5L9.23 7a1.53 1.53 0 00-.41 1v9.23l-1.1-.68V8.08A1.51 1.51 0 007.27 7L1.7 1.5h12.84M16.25 0H0v1.93l6.22 6.15v9.39l4.1 2.53V8.08l5.93-6.19V0zM16.22 20l-3.78-3.79H20L16.22 20z")
-
-
-//- --- 鐘 -------------------------------------------------------------------------------------------------------------
-mixin Bell__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.53 20")&attributes(attributes)
-    path(d="M18.28 16.5c-1.49-2.33-1.74-4.78-2.18-8.19-.53-4.05-2.5-6.26-5.54-6.73a1.15 1.15 0 000-.26 1.32 1.32 0 00-2.56 0 1.14 1.14 0 000 .26c-3 .47-5 2.68-5.53 6.73C2 11.72 1.74 14.17.25 16.5c-.53.83-.2 1 .79 1h16.45c.99-.01 1.32-.17.79-1zM9.27 20a2.94 2.94 0 002.54-1.47H6.72A2.94 2.94 0 009.27 20z")
-
-
-//- --- メール -----------------------------------------------------------------------------------------------------------
-mixin Mail__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 15.11")&attributes(attributes)
-    path(d="M0 0v15.07h20V0zm18.49 1.55L10 8.74 1.52 1.55v-.06h17z")
-
-mixin Mail__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 15.79")&attributes(attributes)
-    path(d="M18.5 1.5v12.79h-17V1.5h17M20 0H0v15.79h20V0z")
-    path(d="M17.48 1.5L10 7.09 2.52 1.5h15M20 0H0v1.5L10 9l10-7.5V0z")
+include Mail/MailIcon__Filled.pug
+include Mail/MailIcon__Outlined.pug
 
 
 //- --- 鉛筆 -----------------------------------------------------------------------------------------------------------
-mixin Pencil__Filled--Icon
+mixin PencilIcon__Filled
   svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20")&attributes(attributes)
     path(
       d="M15.66 2.55L12.52.13h-.08a.2.2 0 00-.08 0h-.31a.57.57 0 00-.37.22l-1.56 2.1 4.05 3.25 1.62-2.3a.61.61 0 00-.13-.85zM14.1 4.42l-2.92-2.26 1-1.35 2.94 2.27zM.82 14.67L0 19.6a.36.36 0 00.39.4h.09l4.45-2.13 8.9-11.97-4.06-3.25zm.18 3.4L1.52 15l.08-.11.4-.07a.43.43 0 01.38.09.49.49 0 01.2.36A1.09 1.09 0 003 16a1.05 1.05 0 00.86.2.49.49 0 01.39.09.52.52 0 01.19.37v.44l-.08.11-2.71 1.35z"
     )
 
-mixin Pencil__Outlined--Icon
+mixin PencilIcon__Outlined
   svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20")&attributes(attributes)
     path(d="M15.74 2.57L12.61.13H12.46L12.3 0h-.15a.57.57 0 00-.38.22l-1.57 2.1 4 3.28 1.63-2.18a.61.61 0 00-.09-.85zM.84 14.65L0 19.6a.36.36 0 00.39.4h.09l4.46-2.11 9-11.93-4-3.28zm3.63 2.07v.43l-.08.11-2.73 1.31-.66-.51.54-3.06.08-.1.32-.07H2a.53.53 0 01.39.09.52.52 0 01.19.37 1.09 1.09 0 001.28 1 .5.5 0 01.59.46zM12.89 6L5 16.41v-.45a.49.49 0 00-.2-.37.45.45 0 00-.39-.09 1.09 1.09 0 01-1.28-1 .52.52 0 00-.13-.4.52.52 0 00-.4-.09l-.43.08L10 3.71z")
 

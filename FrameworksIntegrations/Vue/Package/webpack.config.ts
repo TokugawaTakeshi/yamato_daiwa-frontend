@@ -12,7 +12,7 @@ const webpackConfig: Webpack.Configuration = {
     path: Path.resolve(process.cwd(), "Distributable")
   },
   mode: "development",
-  watch: true,
+  watch: false,
 
   module: {
     rules: [
