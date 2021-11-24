@@ -1,12 +1,20 @@
 include Bell/BellIcon__Filled.pug
 
-//- --- レ点・ -----------------------------------------------------------------------------------------------------------
+//- --- Brackets -------------------------------------------------------------------------------------------------------
+include Brackets/CurlyBracketIcon__Closing.pug
+include Brackets/CurlyBracketIcon__Opening.pug
+include Brackets/RoundBracketIcon__Closing.pug
+include Brackets/RoundBracketIcon__Opening.pug
+include Brackets/SquareBracketIcon__Closing.pug
+include Brackets/SquareBracketIcon__Opening.pug
+
+//- --- Checkmark ------------------------------------------------------------------------------------------------------
 include Checkmark/CheckboxIcon__Checked.pug
 include Checkmark/CheckboxIcon__Unchecked.pug
 include Checkmark/CheckmarkIcon__Circled__Filled.pug
 include Checkmark/CheckmarkIcon__Circled__Outlined.pug
 
-//- --- ビックリマーク -------------------------------------------------------------------------------------------------------
+//- --- Exclamation mark -----------------------------------------------------------------------------------------------
 include ExclamationMark/ExclamationMarkIcon__Circled__Filled.pug
 include ExclamationMark/ExclamationMarkIcon__Circled__Outlined.pug
 include ExclamationMark/ExclamationMarkIcon__Octagoned__Filled.pug
@@ -20,7 +28,7 @@ include Filtering/FilteringIcon__Outlined.pug
 
 include HamburgerMenu/HamburgerMenuIcon.pug
 
-//- --- 案内 ------------------------------------------------------------------------------------------------------------
+//- --- Info sign ------------------------------------------------------------------------------------------------------
 include InfoSign/InfoSignIcon__Circled__Filled.pug
 include InfoSign/InfoSignIcon__Circled__Outlined.pug
 
@@ -31,109 +39,19 @@ include MagnifyingGlass/ZoomingInIcon__Outlined.pug
 include MagnifyingGlass/ZoomingOutIcon__Filled.pug
 include MagnifyingGlass/ZoomingOutIcon__Outlined.pug
 
+//- --- Mail -----------------------------------------------------------------------------------------------------------
 include Mail/MailIcon__Filled.pug
 include Mail/MailIcon__Outlined.pug
 
+//- --- Menu -----------------------------------------------------------------------------------------------------------
+include Menu/MenuIcon__ThreeDots__Horizontal.pug
+include Menu/MenuIcon__ThreeDots__Horizontal__Circled__Filled.pug
+include Menu/MenuIcon__ThreeDots__Horizontal__Circled__Outlined.pug
+include Menu/MenuIcon__ThreeDots__Vertical.pug
+include Menu/MenuIcon__ThreeDots__Vertical__Circled__Filled.pug
+include Menu/MenuIcon__ThreeDots__Vertical__Circled__Outlined.pug
 
-//- --- 鉛筆 -----------------------------------------------------------------------------------------------------------
-mixin PencilIcon__Filled
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20")&attributes(attributes)
-    path(
-      d="M15.66 2.55L12.52.13h-.08a.2.2 0 00-.08 0h-.31a.57.57 0 00-.37.22l-1.56 2.1 4.05 3.25 1.62-2.3a.61.61 0 00-.13-.85zM14.1 4.42l-2.92-2.26 1-1.35 2.94 2.27zM.82 14.67L0 19.6a.36.36 0 00.39.4h.09l4.45-2.13 8.9-11.97-4.06-3.25zm.18 3.4L1.52 15l.08-.11.4-.07a.43.43 0 01.38.09.49.49 0 01.2.36A1.09 1.09 0 003 16a1.05 1.05 0 00.86.2.49.49 0 01.39.09.52.52 0 01.19.37v.44l-.08.11-2.71 1.35z"
-    )
-
-mixin PencilIcon__Outlined
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20")&attributes(attributes)
-    path(d="M15.74 2.57L12.61.13H12.46L12.3 0h-.15a.57.57 0 00-.38.22l-1.57 2.1 4 3.28 1.63-2.18a.61.61 0 00-.09-.85zM.84 14.65L0 19.6a.36.36 0 00.39.4h.09l4.46-2.11 9-11.93-4-3.28zm3.63 2.07v.43l-.08.11-2.73 1.31-.66-.51.54-3.06.08-.1.32-.07H2a.53.53 0 01.39.09.52.52 0 01.19.37 1.09 1.09 0 001.28 1 .5.5 0 01.59.46zM12.89 6L5 16.41v-.45a.49.49 0 00-.2-.37.45.45 0 00-.39-.09 1.09 1.09 0 01-1.28-1 .52.52 0 00-.13-.4.52.52 0 00-.4-.09l-.43.08L10 3.71z")
-
-mixin Pencil__Circled__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M10 0a10 10 0 1010 10A10 10 0 0010 0zM7.84 14.75L5.05 16h-.06a.21.21 0 01-.23-.24l.52-3 5.63-7.36 2.53 2zm6.84-8.85l-1 1.33-2.53-2 1-1.29a.34.34 0 01.23-.13h.25l2 1.5a.37.37 0 01.05.59z")
-    path(d="M7.61 14a.3.3 0 00-.12-.22.33.33 0 00-.25-.06.65.65 0 01-.54-.13.65.65 0 01-.26-.48.35.35 0 00-.12-.23.3.3 0 00-.24-.05h-.29l-.05.07-.32 1.9.4.31 1.73-.81v-.32z")
-
-mixin Pencil__Circled__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M14.85 5.45l-1.93-1.52H12.77a.32.32 0 00-.37.07l-1 1.29 2.5 2.03 1-1.34a.39.39 0 00-.05-.53zm-1 1.15l-1.8-1.42.63-.82 1.81 1.42zM5.55 12.85L5 15.9a.22.22 0 00.24.25h.06l2.77-1.29 5.62-7.33-2.49-2zM5.64 15L6 13.05V13l.25-.05a.3.3 0 01.24.07.3.3 0 01.12.22.67.67 0 00.25.49.68.68 0 00.53.14.28.28 0 01.25.06.3.3 0 01.12.22V14.5L6 15.27z")
-    path(d="M10 1.5A8.5 8.5 0 111.5 10 8.51 8.51 0 0110 1.5M10 0a10 10 0 1010 10A10 10 0 0010 0z")
-
-mixin PencilWithPlusSign__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 20")&attributes(attributes)
-    path(d="M17.75 2.46L14.61 0H14.46a.42.42 0 00-.16 0h-.15a.54.54 0 00-.38.22l-1.56 2.01 4.06 3.25 1.62-2.17a.62.62 0 00-.14-.85zM16.2 4.33l-2.93-2.25 1-1.35L17.2 3zM2.91 14.58l-.81 4.94a.34.34 0 00.38.39.16.16 0 00.09 0L7 17.76l8.92-11.94-4.06-3.25zM3.1 18l.51-3.09.08-.11.4-.08a.53.53 0 01.39.09.52.52 0 01.19.37 1.1 1.1 0 00.43.78 1.06 1.06 0 00.86.21.45.45 0 01.39.09.49.49 0 01.2.36v.45l-.09.11-2.71 1.3zM6 4.4H3.6V2H2.4v2.4H0v1.2h2.4V8h1.2V5.6H6V4.4z")
-
-mixin PencilWithPlusSign__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 20")&attributes(attributes)
-    path(d="M17.75 2.51L14.62.06H14.16a.59.59 0 00-.38.23l-1.57 1.96 4.05 3.28 1.62-2.17a.61.61 0 00-.13-.85zM2.85 14.59L2 19.53a.35.35 0 00.38.4.16.16 0 00.09 0L7 17.79l9-11.93-4.14-3.28zm3.64 2.07v.42l-.08.11-2.74 1.31L3 18l.52-3.1.08-.11.4-.06h.08a.47.47 0 01.38.1.57.57 0 01.2.36A1.08 1.08 0 005 16a1.06 1.06 0 00.86.21.46.46 0 01.39.1.52.52 0 01.19.36zM14.9 5.94l-7.85 10.4v-.45a.5.5 0 00-.19-.36.46.46 0 00-.39-.1 1.06 1.06 0 01-.86-.21 1.12 1.12 0 01-.43-.79A.52.52 0 005 14a.5.5 0 00-.39-.1l-.47.1L12 3.64zM6 4.4H3.6V2H2.4v2.4H0v1.2h2.4V8h1.2V5.6H6V4.4z")
-
-mixin PencilWithLock__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M19.75 2.55L16.61.13H16.46L16.3 0h-.15a.57.57 0 00-.38.22l-1.56 2.1 4.06 3.25 1.62-2.17a.62.62 0 00-.14-.85zM18.2 4.42l-2.93-2.26 1-1.35 2.93 2.26zM4.91 14.67L4.1 19.6a.35.35 0 00.38.4h.09L9 17.84 17.92 5.9l-4.06-3.25zm.19 3.4L5.61 15l.08-.11.4-.07a.45.45 0 01.39.09.52.52 0 01.19.36 1.12 1.12 0 00.43.73 1.06 1.06 0 00.86.2.5.5 0 01.59.46v.44l-.09.11-2.71 1.35zM6 9.2V5.47A.49.49 0 005.51 5h-5a.49.49 0 00-.51.47V9.2a.49.49 0 00.49.49h5A.49.49 0 006 9.2zm-2.55-2a.74.74 0 00-.19.51v.55c0 .23-.29.39-.52.13v-.77a.52.52 0 00-.17-.39.61.61 0 01-.2-.48.76.76 0 01.17-.44.74.74 0 01.28-.14.72.72 0 01.36 0 .62.62 0 01.41.41.47.47 0 010 .17.63.63 0 01-.14.46zM1.22 3.45v1.29H2V3.45a1 1 0 012 0v1.3h.78v-1.3a1.78 1.78 0 10-3.56 0z")
-
-mixin PencilWithLock__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M6 9.12V5.39a.48.48 0 00-.49-.48h-5a.48.48 0 00-.51.48v3.73a.49.49 0 00.49.48h5A.49.49 0 006 9.12zm-2.55-2a.72.72 0 00-.19.51v.55c0 .23-.29.39-.52.12v-.77a.5.5 0 00-.17-.38.61.61 0 01-.2-.48.74.74 0 01.17-.44.77.77 0 01.28-.15.63.63 0 01.36 0 .63.63 0 01.41.4.57.57 0 010 .18.65.65 0 01-.14.47zM1.22 3.36v1.3H2v-1.3a1 1 0 112 0v1.3h.78v-1.3a1.78 1.78 0 00-3.56 0zM19.75 2.57L16.62.13H16.16a.62.62 0 00-.38.22l-1.57 2.1 4.05 3.15 1.62-2.18a.61.61 0 00-.13-.85zM4.85 14.65L4 19.6a.35.35 0 00.38.4h.09L9 17.86l9-11.93-4.14-3.28zm3.64 2.07v.43l-.08.11-2.74 1.31-.67-.51.55-3.06.08-.1.37-.11a.51.51 0 01.38.09.57.57 0 01.2.37A1.08 1.08 0 007 16a1.09 1.09 0 00.86.21.49.49 0 01.39.09.52.52 0 01.19.37zM16.9 6L9.05 16.41v-.45a.52.52 0 00-.19-.37.45.45 0 00-.39-.09 1.09 1.09 0 01-.86-.21 1.12 1.12 0 01-.43-.79.52.52 0 00-.18-.4.49.49 0 00-.42-.1l-.44.08L14 3.71z")
-
-mixin Pencil__Boxed__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M7.25 15.17a.33.33 0 00-.15-.27.37.37 0 00-.3-.08.81.81 0 01-.67-.16.83.83 0 01-.33-.6.39.39 0 00-.15-.28.36.36 0 00-.3-.07h-.32l-.03.14-.41 2.37.5.38 2.16-1 .06-.08v-.33z")
-    path(d="M18 0H2a2 2 0 00-2 2v16a2 2 0 002 2h16a2 2 0 002-2V2a2 2 0 00-2-2zM7.62 16.06l-3.47 1.61h-.08a.26.26 0 01-.29-.3l.65-3.78 7-9.17L14.6 7zM16.14 5l-1.27 1.69-3.15-2.5 1.22-1.6a.42.42 0 01.3-.17h.12a.27.27 0 01.12 0h.12L16 4.38a.48.48 0 01.14.62z")
-
-mixin Pencil__Boxed__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M18 1.5a.51.51 0 01.5.5v16a.51.51 0 01-.5.5H2a.51.51 0 01-.5-.5V2a.51.51 0 01.5-.5h16M18 0H2a2 2 0 00-2 2v16a2 2 0 002 2h16a2 2 0 002-2V2a2 2 0 00-2-2z")
-    path(d="M16.05 4.33l-2.4-1.91h-.12a.27.27 0 00-.12 0h-.12a.4.4 0 00-.29.17l-1.23 1.6 3.11 2.56L16.15 5a.47.47 0 00-.1-.67zm-1.22 1.43L12.59 4l.79-1 2.25 1.78zM4.44 13.56l-.68 3.81a.27.27 0 00.29.31h.08l3.47-1.6 7-9.16-3.11-2.57zm.11 2.63L5 13.8v-.08l.32-.06a.38.38 0 01.29.08.39.39 0 01.19.26.85.85 0 001 .78.38.38 0 01.3.08.39.39 0 01.15.28v.35l-.06.08-2.15 1z")
-
-//- --- メニュー ----------------------------------------------------------------------------------------------------------
-mixin Menu__ThreeDots__Horizontal--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 5")&attributes(attributes)
-    circle(cx="10.01" cy="2.5" r="2.5")
-    circle(cx="17.51" cy="2.5" r="2.5")
-    circle(cx="2.5" cy="2.5" r="2.5")
-
-mixin Menu__ThreeDots__Vertical--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 5 20")&attributes(attributes)
-    circle(cx="2.5" cy="10" r="2.5")
-    circle(cx="2.5" cy="2.49" r="2.5")
-    circle(cx="2.5" cy="17.51" r="2.5")
-
-mixin Menu__ThreeDots__Horizontal__Circled__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M20 10A10 10 0 1110 0a10 10 0 0110 10zM10 8.5a1.5 1.5 0 101.5 1.5A1.5 1.5 0 0010 8.5zm5.81 0a1.5 1.5 0 101.5 1.5 1.5 1.5 0 00-1.5-1.5zm-11.62 0a1.5 1.5 0 101.5 1.5 1.5 1.5 0 00-1.5-1.5z")
-
-mixin Menu__ThreeDots__Vertical__Circled__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M10 0A10 10 0 110 10 10 10 0 0110 0zM8.5 10A1.5 1.5 0 1010 8.5 1.5 1.5 0 008.5 10zm0-5.81a1.5 1.5 0 101.5-1.5 1.5 1.5 0 00-1.5 1.5zm0 11.62a1.5 1.5 0 101.5-1.5 1.5 1.5 0 00-1.5 1.5z")
-
-mixin Menu__ThreeDots__Horizontal__Circled__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M10 1.5A8.5 8.5 0 111.5 10 8.51 8.51 0 0110 1.5M10 0a10 10 0 1010 10A10 10 0 0010 0z")
-    circle(cx="10" cy="10" r="1.5")
-    circle(cx="15.81" cy="10" r="1.5")
-    circle(cx="4.19" cy="10" r="1.5")
-
-mixin Menu__ThreeDots__Vertical__Circled__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M10 1.5A8.5 8.5 0 111.5 10 8.51 8.51 0 0110 1.5M10 0a10 10 0 1010 10A10 10 0 0010 0z")
-    circle(cx="10" cy="10" r="1.5")
-    circle(cx="10" cy="4.19" r="1.5")
-    circle(cx="10" cy="15.81" r="1.5")
-
-
-//- --- 電話 ------------------------------------------------------------------------------------------------------------
-mixin Telephone__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 16.17")&attributes(attributes)
-    path(d="M18.1 1.54C15.64.13 12.37 0 10 0S4.36.13 1.9 1.54A3.91 3.91 0 00.1 5.85C.14 6.11.63 7 1.46 7A15.39 15.39 0 004.9 5.89a1.18 1.18 0 00.22-1.54c-.31-.53 0-.7 0-.7h9.84s.27.17 0 .7a1.18 1.18 0 00.22 1.54A15.39 15.39 0 0018.54 7c.83.08 1.32-.84 1.36-1.1a3.91 3.91 0 00-1.8-4.36zM10 8.88a2.25 2.25 0 101.59.66A2.24 2.24 0 0010 8.88z")
-    path(d="M13.78 5.25a.4.4 0 00-.34-.2H12.3a.26.26 0 00-.3.25v.78a.26.26 0 01-.25.26H8.21A.26.26 0 018 6.08V5.3a.26.26 0 00-.26-.25H6.56a.4.4 0 00-.34.2l-2.8 5.36a6.62 6.62 0 00-.74 3v1.25A1.29 1.29 0 004 16.17h12a1.28 1.28 0 001.28-1.28v-1.25a6.62 6.62 0 00-.74-3zM10 14.65a3.52 3.52 0 113.52-3.52A3.52 3.52 0 0110 14.65z")
-
-mixin Phone__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.83 20")&attributes(attributes)
-    path(d="M2.68.3l-1 .86 4 4.76 1-.87a1.07 1.07 0 00.12-1.51L4.18.43A1.06 1.06 0 002.68.3zM4.46 13.8c3.72 4.43 9.12 7.35 11.11 5.68l.28-.24-4-4.78a1.08 1.08 0 01-1.22-.16 24.48 24.48 0 01-3-3.14A24.33 24.33 0 015 7.64a1.07 1.07 0 010-1.23L1 1.63l-.2.24C-1.19 3.54.74 9.37 4.46 13.8zM13.46 13.15l-1 .86 4 4.76 1-.87a1.07 1.07 0 00.13-1.51L15 13.28a1.07 1.07 0 00-1.54-.13z")
-
-mixin Phone__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.97 20")&attributes(attributes)
-    path(d="M5.8 7.71l-.1-.16a.56.56 0 010-.63l.47-.43 1-.82a1.47 1.47 0 00.13-2.16L4.8.53A1.47 1.47 0 002.72.35l-1 .83-.53.45-.28.22a2.49 2.49 0 00-.67 1A4.73 4.73 0 00.05 5.1a14 14 0 001.38 4.3 23.19 23.19 0 002.94 4.51 21 21 0 006.07 5 9.15 9.15 0 002.89 1 4 4 0 001.25 0 2.31 2.31 0 001.06-.5l.27-.23.54-.45 1-.83a1.48 1.48 0 00.18-2.08l-2.5-3a1.48 1.48 0 00-2.13-.18l-1 .82-.5.39a.56.56 0 01-.63-.09 22.82 22.82 0 01-2.79-2.96 31.36 31.36 0 01-1.87-2.45c-.21-.28-.33-.5-.41-.64zm11.13 8.67a.58.58 0 01-.07.81l-.78.65L12.84 14l.78-.66a.58.58 0 01.81.07zM6.61 4.09a.57.57 0 01-.07.8l-.78.66-3.24-3.86.79-.69a.57.57 0 01.8.07zM4.88 7.93a22.84 22.84 0 002.5 3.45 22.91 22.91 0 003 3.06 1.49 1.49 0 001.66.21l.39-.3 3.24 3.86-.33.28-.27.23a1.61 1.61 0 01-.66.3 3.89 3.89 0 01-1.84-.18 13 13 0 01-3.73-2 21.44 21.44 0 01-3.77-3.53 20 20 0 01-3.72-6.53 8 8 0 01-.44-2.7 3.14 3.14 0 01.18-.94 1.47 1.47 0 01.42-.59l.27-.23.33-.32 3.24 3.91-.35.32a1.48 1.48 0 00-.12 1.7z")
-
-
-//- --- ✖点 ------------------------------------------------------------------------------------------------------------
+//- --- Multiplication sign --------------------------------------------------------------------------------------------
 include MultiplicationSign/MultiplicationSignIcon.pug
 include MultiplicationSign/MultiplicationSignIcon__Bold.pug
 include MultiplicationSign/MultiplicationSignIcon__Boxed__Filled.pug
@@ -141,48 +59,27 @@ include MultiplicationSign/MultiplicationSignIcon__Boxed__Outlined.pug
 include MultiplicationSign/MultiplicationSignIcon__Octagoned__Filled.pug
 include MultiplicationSign/MultiplicationSignIcon__Octagoned__Outlined.pug
 
+//- --- Pencil ---------------------------------------------------------------------------------------------------------
+include Pencil/PencilIcon__Boxed__Filled.pug
+include Pencil/PencilIcon__Boxed__Outlined.pug
+include Pencil/PencilIcon__Circled.pug
+include Pencil/PencilIcon__Circled__Outlined.pug
+include Pencil/PencilIcon__Filled.pug
+include Pencil/PencilIcon__Outlined.pug
+include Pencil/PencilWithLockIcon__Filled.pug
+include Pencil/PencilWithLockIcon__Outlined.pug
+include Pencil/PencilWithPlusSignIcon__Filled.pug
+include Pencil/PencilWithPlusSignIcon__Outlined.pug
 
-//- --- 塵箱 ------------------------------------------------------------------------------------------------------------
-mixin TrashCan__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20")&attributes(attributes)
-    path(d="M.46 5l1 13.12a2 2 0 002 1.85h9a2 2 0 002-1.85L15.54 5zm4.69 12a.42.42 0 01-.44-.39l-.4-7.9a.42.42 0 01.39-.44.41.41 0 01.44.39l.4 7.9a.43.43 0 01-.39.44zm3.27-.42a.42.42 0 01-.84 0V8.69a.42.42 0 01.84 0zm2.87 0a.42.42 0 01-.44.39.43.43 0 01-.39-.44l.4-7.9a.41.41 0 01.44-.39.42.42 0 01.39.44zM15.15 2.52s-1.33-.22-1.69-.33-3.16-.53-3.16-.53l-.1-.75a1 1 0 00-1-.91H6.8a1 1 0 00-1 .91l-.1.75s-2.84.43-3.16.53-1.69.33-1.69.33a1 1 0 00-.69.93v.86h15.68v-.86a1 1 0 00-.69-.93z")
+//- --- Phone ----------------------------------------------------------------------------------------------------------
+include Phone/PhoneIcon__Filled.pug
+include Phone/PhoneIcon__Outlined.pug
+include Phone/TelephoneIcon__Filled.pug
 
-mixin TrashCan__Outlined__Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 20")&attributes(attributes)
-    path(d="M1.46 18.15a2 2 0 002 1.85h9a2 2 0 002-1.85L15.54 5H.46zm13-12.1l-.92 12a1 1 0 01-1 .92h-9a1 1 0 01-1-.9l-.92-12z")
-    path(d="M5.15 17a.43.43 0 00.39-.44l-.4-7.9a.41.41 0 00-.44-.39.42.42 0 00-.39.44l.4 7.9a.42.42 0 00.44.39zM8 17a.42.42 0 00.42-.42V8.69a.42.42 0 00-.84 0v7.9A.42.42 0 008 17zM10.85 17a.42.42 0 00.44-.39l.4-7.9a.42.42 0 00-.39-.44.41.41 0 00-.44.39l-.4 7.9a.43.43 0 00.39.44zM15.15 2.52s-1.33-.22-1.69-.33-3.16-.53-3.16-.53l-.1-.75a1 1 0 00-1-.91H6.8a1 1 0 00-1 .91l-.1.75s-2.84.43-3.16.53-1.69.33-1.69.33a1 1 0 00-.69.93v.86h15.68v-.86a1 1 0 00-.69-.93z")
+//- --- Question mark --------------------------------------------------------------------------------------------------
+include QuestionMark/QuestionMarkIcon__Circled__Filled.pug
+include QuestionMark/QuestionMarkIcon__Circled__Outlined.pug
 
-
-mixin QuestionMark__Circled__Filled--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M10 0a10 10 0 1010 10A10 10 0 0010 0zm.15 16.56a1.23 1.23 0 111.22-1.22 1.23 1.23 0 01-1.22 1.22zm3.24-5.89a4.74 4.74 0 01-1.67.86.28.28 0 00-.22.25v1.06H8.79v-1.91a1.55 1.55 0 011.69-1.36c1-.19 1.53-.81 1.53-1.5A1.36 1.36 0 0011.47 7a2.22 2.22 0 00-2.65 0 1.36 1.36 0 00-.54 1.06c0 .11-.61.19-1.37.19s-1.36-.08-1.36-.19a3.77 3.77 0 012.74-3.37l.19-.06a5.12 5.12 0 015.88 2l.08.15a3.22 3.22 0 01-1.05 3.89z")
-
-mixin QuestionMark__Circled__Outlined--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20")&attributes(attributes)
-    path(d="M10 1.5A8.5 8.5 0 111.5 10 8.51 8.51 0 0110 1.5M10 0a10 10 0 1010 10A10 10 0 0010 0z")
-    circle(cx="10" cy="15.06" r="1.22")
-    path(d="M14.29 6.46l-.08-.16a5.15 5.15 0 00-5.88-1.95l-.19.06A3.77 3.77 0 005.41 7.8c0 .1.61.19 1.36.19s1.37-.09 1.37-.19a1.32 1.32 0 01.55-1.06A2.06 2.06 0 0110 6.3a2.15 2.15 0 011.32.43 1.37 1.37 0 01.54 1.07c0 .68-.57 1.3-1.53 1.5a1.55 1.55 0 00-1.69 1.35v1.92h2.71V11.5a.28.28 0 01.22-.25 4.89 4.89 0 001.67-.85 3.22 3.22 0 001.05-3.94z")
-
-mixin SquareBracket__Opening--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 20")&attributes(attributes)
-    path(d="M0 10V.46C0 0 0 0 .45 0H5c.29 0 .39.08.39.38 0 .93 0 .93-.93.93H2.18c-.36 0-.43.11-.43.45v16.59c0 .3.07.41.4.4H5c.27 0 .38.06.39.36 0 .95 0 .95-.94.95h-4C.09 20 0 19.9 0 19.58V10z")
-
-mixin SquareBracket__Closing--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6 20")&attributes(attributes)
-    path(d="M6 10v9.54C6 20 6 20 5.55 20H1.06c-.29 0-.39-.08-.39-.38 0-.93 0-.93.92-.93h2.39c.25 0 .36-.05.36-.34V1.64c0-.28-.11-.34-.36-.33h-2.9c-.33.01-.44-.1-.41-.42a4.14 4.14 0 000-.61C.67.07.76 0 1 0h4.72C6 0 6 .16 6 .35V10z")
-
-mixin RoundBracket__Opening--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 20")&attributes(attributes)
-    path(d="M1.66 10A13.23 13.23 0 016.07.08V0H4c-.07 0-.15.08-.2.15-.21.25-.41.5-.6.76v.11l-.38.54A14.64 14.64 0 00.43 6.4l-.06.21-.17.9c0 .13-.05.26-.06.4s-.07.53-.09.8L0 9v2.29c0 .27.05.54.09.8s0 .27.06.4c0 .3.11.6.17.9l.06.21a14.73 14.73 0 002.25 4.87l.38.54a.21.21 0 010 .06c.19.26.39.51.6.76 0 .06.13.15.2.15H6v-.08A13.25 13.25 0 011.66 10z")
-
-mixin RoundBracket__Closing--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 20")&attributes(attributes)
-    path(d="M5.34 10A13.25 13.25 0 00.93.12L1 0h2.05c.07 0 .15.09.2.15.21.25.41.5.6.76a.21.21 0 000 .06l.38.54a14.73 14.73 0 012.34 4.93l.06.21.17.9c0 .13 0 .26.06.4s.07.53.09.8L7 9v2.29c0 .27 0 .54-.09.8s0 .27-.06.4c0 .3-.11.6-.17.9l-.06.21a14.64 14.64 0 01-2.25 4.87l-.43.53v.11c-.19.26-.39.51-.6.76 0 .07-.13.15-.2.15H1.06v-.08A13.23 13.23 0 005.34 10z")
-
-mixin CurlyBracket__Opening--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 20")&attributes(attributes)
-    path(d="M4.38 15.12c0-.7 0-1.24-.13-1.78a2.85 2.85 0 00-3-2.64l-.81-.11V9.38c0-.05.17-.12.27-.13.4 0 .82 0 1.22-.1A2.86 2.86 0 004.31 6.2c.05-.92 0-1.84.07-2.75A3.53 3.53 0 018 0h1.63a.35.35 0 01.23.06.35.35 0 01.09.26c0 .52 0 .76-.12.88s-.38.11-.85.11c-.26 0-.52 0-.78.05a2.2 2.2 0 00-2.1 2.28v2a4 4 0 01-2.51 4 .74.74 0 00-.22.1c-.07.06-.18.14-.18.2s.11.15.19.2c.4.25.82.45 1.19.72a3.79 3.79 0 011.53 3.19v2a2.33 2.33 0 002.52 2.57h1c.34 0 .32.09.33.34 0 1 0 1-.95 1a10.63 10.63 0 01-1.79-.13 3.39 3.39 0 01-2.8-3.24c-.06-.51-.03-1.07-.03-1.47z")
-
-mixin CurlyBracket__Closing--Icon
-  svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 20")&attributes(attributes)
-    path(d="M5.66 4.78c0 .56 0 1.11.1 1.66a2.88 2.88 0 003 2.79c.86 0 .86 0 .86.9a1 1 0 000 .17c0 .29-.06.4-.37.39a6.23 6.23 0 00-1.15.09 2.77 2.77 0 00-2.35 2.64c-.09.86 0 1.74-.09 2.61a6.07 6.07 0 01-.17 1.34A3.5 3.5 0 012.07 20H.4c-.22 0-.31-.07-.3-.3s0-.47 0-.71.1-.3.32-.3c.51 0 1 0 1.53-.07a2.1 2.1 0 002-2A20.84 20.84 0 004 14.26a4 4 0 012.54-4 1 1 0 00.18-.09c.07-.06.19-.14.18-.2s-.11-.15-.19-.2a14.31 14.31 0 01-1.52-1A3.38 3.38 0 014 6.17c0-.88 0-1.77-.06-2.64a2.22 2.22 0 00-2.4-2.21H.42C.19 1.31.11 1.24.1 1 0 0 0 0 1.05 0a10.71 10.71 0 011.7.1 3.49 3.49 0 012.93 3.56v1.12z")
+//- --- Trash can ------------------------------------------------------------------------------------------------------
+include TrashCan/TrashCanIcon__Filled.pug
+include TrashCan/TrashCanIcon__Outlined.pug
