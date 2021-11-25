@@ -9,10 +9,12 @@ Pseudo enumeration including the data types of Stylus pre-processor.
 
 ```stylus
 DataTypes = {
-  unit: "unit",
-  string: "string",
-  boolean: "boolean",
-  object: "object"
+  unit: "UNIT",
+  unitlessNumber: "UNITLESS_NUMBER",
+  string: "STRING",
+  boolean: "BOOLEAN",
+  object: "OBJECT",
+  colorDefinition: "COLOR_DEFINITION"
 }
 ```
 

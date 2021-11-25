@@ -152,6 +152,7 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
   adds each specified CSS property to target ruleset when if it's not zero. Intended to be used in cases when CSS values 
   are unknown in advance.
 
+
 ##### Width sizing
 
 * [📖 `widthSizing`](Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/widthSizing.md)
@@ -160,10 +161,21 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 * [📖 `TableCellWidthSizing`](Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/TableCellWidthSizing.md) 
   Allows to define the width, borders and paddings of table cell by various combinations of parameters.
 
-#### Paddings
+
+##### Paddings
 
 * [📖 `Paddings` mixin](Documentation/Styles/02-Kernel/03-Mixins/03-Paddings.md)
   The alternative to native CSS method of defining of the paddings intended to be used in customizable components development.
+
+
+##### Layout
+
+* [📖 `fillBodyVertically`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/fillBodyVertically.md)
+  Fills `<body>` when `<body>` and `<html>` takes 100% of viewport's height as minimum with or without vertical scrolling
+  availability.
+* [📖 `FixedTranslucentDimLayer`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/FixedTranslucentDimLayer.md)
+  The mixin intended to be applied to `div` element to overlap the other content which translucent dim layer.
+  Such element is frequently being used as underlay for modal dialogs.
 
 
 ##### Positional relationship
@@ -188,12 +200,6 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 * [📖 `whenTargetWithSameSelectorGoingJustAfterIt` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit)
   The equivalent of `+whenTargetGoingJustAfterIt({ targetElementSelector: ".X" })` for the case when reference element's selector is also `.X`.
 
-
-##### Layout
-
-* [📖 `fillBodyVertically`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/fillBodyVertically.md)
-  Fills `<body>` when `<body>` and `<html>` takes 100% of viewport's height as minimum with or without vertical scrolling
-  availability.
 
 ##### Typography
 
