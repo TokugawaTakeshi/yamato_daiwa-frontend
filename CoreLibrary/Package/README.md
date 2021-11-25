@@ -176,6 +176,8 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 * [📖 `FixedTranslucentDimLayer`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/FixedTranslucentDimLayer.md)
   The mixin intended to be applied to `div` element to overlap the other content which translucent dim layer.
   Such element is frequently being used as underlay for modal dialogs.
+* [📖 `Centerer`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/Centerer.md)
+  Centering of the block elements with `auto` margins, minimal and maximal widths. 
 
 
 ##### Positional relationship

@@ -9,7 +9,8 @@
 - `ainn` - live template for [`applyIfNotNull`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/applyIfNotNull.md) mixin
 - `bce` - live template for [`buildCalcExpression`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildCalcExpression.md) function
 - `fbv` - live template for [`fillBodyVertically`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/fillBodyVertically.md) mixin
-- `ftdl` - lite template for [`FixedTranslucentDimLayer`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/FixedTranslucentDimLayer.md) mixin
+- `ftdl` - live template for [`FixedTranslucentDimLayer`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/FixedTranslucentDimLayer.md) mixin
+- `cnt` - live template for [`Centerer`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/Centerer.md) mixin
 
 ## [0.0.2]
 ### Added 

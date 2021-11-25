@@ -33,6 +33,7 @@ Currently, below live templates are available:
     * Layout
       * `fbv` - [`fillBodyVertically`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/fillBodyVertically.md) mixin
       * `ftdl` - [`FixedTranslucentDimLayer`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/FixedTranslucentDimLayer.md) mixin
+      * `cnt` - [`Centerer`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/Centerer.md) mixin
     
 * Components
   * `ossll` - [`OverflowSafeSingleLineLabel`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md) mixin/component (Available for Pug and Stylus contexts)
