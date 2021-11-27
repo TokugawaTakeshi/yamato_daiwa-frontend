@@ -8,7 +8,7 @@
 
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false, /* Actual for Vue3; see https://github.com/vuejs/vue-next/issues/4668 */
     "experimentalDecorators": true,
 
     "baseUrl": "./",

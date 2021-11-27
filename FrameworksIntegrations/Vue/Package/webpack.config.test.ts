@@ -7,11 +7,11 @@ const webpackConfig: Webpack.Configuration = {
 
   context: Path.resolve(process.cwd(), "Tests"),
   entry: {
-    "OverflowSafeSingleLineLabel": "./OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.ts"
+    "OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel": "./OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.ts"
   },
   output: {
     filename: "[name].build.js",
-    path: Path.resolve(process.cwd(), "Distributable")
+    path: Path.resolve(process.cwd(), "Tests")
   },
   mode: "development",
   watch: true,
@@ -45,6 +45,19 @@ const webpackConfig: Webpack.Configuration = {
                 }
               },
               "pug-html-loader"
+            ]
+          }
+        ]
+      },
+      {
+        test: "/\.styl(?:us)?$/u",
+        oneOf: [
+          {
+            resourceQuery: "/^\?vue/u",
+            use: [
+              "vue-style-loader",
+              "css-loader",
+              "stylus-loader"
             ]
           }
         ]
