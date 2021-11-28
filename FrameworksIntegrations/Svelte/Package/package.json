@@ -1,6 +1,8 @@
 {
+  "name": "@yamato-daiwa/frontend-svelte",
   "private": true,
   "dependencies": {
+    "@yamato-daiwa/frontend": "0.3.0-alpha0",
     "svelte": "3.44.2"
   },
   "devDependencies": {

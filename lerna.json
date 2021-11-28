@@ -6,6 +6,7 @@
     }
   },
   "packages": [
-    "CoreLibrary/Package"
+    "CoreLibrary/Package",
+    "FrameworksIntegrations/**"
   ]
 }

@@ -1,13 +1,14 @@
 {
+  "name": "@yamato-daiwa/frontend-vue",
   "private": true,
   "dependencies": {
+    "@yamato-daiwa/frontend": "0.3.0-alpha0",
     "vue": "3.2.21",
     "vue-class-component": "8.0.0-rc.1",
     "vue-property-decorator": "10.0.0-rc.3"
   },
   "devDependencies": {
     "@vue/compiler-sfc": "3.2.23",
-    "@yamato-daiwa/frontend": "0.2.0",
     "css-loader": "6.5.1",
     "html-loader": "3.0.1",
     "pug-html-loader": "1.1.5",
