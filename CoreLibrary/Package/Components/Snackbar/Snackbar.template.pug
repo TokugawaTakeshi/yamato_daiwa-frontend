@@ -1,12 +1,19 @@
+include ../../Markup/Assets/SVG_Icons/Checkmark/CheckmarkIcon__Circled__Filled.pug
+include ../../Markup/Assets/SVG_Icons/InfoSign/InfoSignIcon__Circled__Filled.pug
+include ../../Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Triangled__Filled.pug
 include ../../Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Circled__Filled.pug
 include ../../Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Octagoned__Filled.pug
 
 
 .Snackbar
 
-  +ExclamationMarkIcon__Circled__Filled.Snackbar-Icon
+  template.Snackbar-IconPlaceholder
+  +CheckmarkIcon__Circled__Filled.Snackbar-Icon(data-icon="SUCCESS")
+  +InfoSignIcon__Circled__Filled.Snackbar-Icon(data-icon="GUIDANCE")
+  +ExclamationMarkIcon__Triangled__Filled.Snackbar-Icon(data-icon="WARNING")
+  +ExclamationMarkIcon__Circled__Filled.Snackbar-Icon(data-icon="ERROR")
 
-  .Snackbar-Text AAA
+  .Snackbar-Text
 
   button.Snackbar-DismissButton(
     type="button"
