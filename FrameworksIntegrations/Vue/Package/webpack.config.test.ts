@@ -50,12 +50,19 @@ const webpackConfig: Webpack.Configuration = {
         ]
       },
       {
-        test: "/\.styl(?:us)?$/u",
+        test: /\.styl(?:us)?$/u,
         oneOf: [
           {
-            resourceQuery: "/^\?vue/u",
+            resourceQuery: /^\?vue/u,
             use: [
               "vue-style-loader",
+              "css-loader",
+              "stylus-loader"
+            ]
+          },
+          {
+            use: [
+              "style-loader",
               "css-loader",
               "stylus-loader"
             ]

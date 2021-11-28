@@ -6,10 +6,10 @@
     | YourLayoutDefinitelyWillBrakeHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHa
 
   dl.DefinitionsListTest
-    dt ID
+    dt.DefinitionsListTest-Key ID
     OverflowSafeSingleLineLabel.DefinitionsListTest-Value(rootElementTag="dd")
       | YourLayoutDefinitelyWillBrakeHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHa
-    dt Displaying name
+    dt.DefinitionsListTest-Key Displaying name
     OverflowSafeSingleLineLabel.DefinitionsListTest-Value(rootElementTag="dd")
       | YourLayoutDefinitelyWillBrakeHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHaHa
 
@@ -36,19 +36,28 @@
 </script>
 
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 
-  @require "node_modules/@yamato-daiwa/frontend/Functionality.styl"
-  @require "node_modules/@yamato-daiwa/frontend/Components.styl"
+  @require "@yamato-daiwa/frontend/Functionality.styl"
+  @require "@yamato-daiwa/frontend/Components.styl"
+
+
+  CrossBrowserStylesReset()
+  InitialGlobalCSS_Rules()
+
+
+  provideOverflowSafeSingleLineLabelComponent()
 
 
   .TestSite
 
-    with 320px
+    width 320px
     padding-top 24px
 
     margin-left auto
     margin-right auto
+
+    background tan
 
 
   .PlainLabelTest
@@ -60,6 +69,20 @@
 
 
   .DefinitionsListTest
+
+    display grid
+    grid-template-columns auto minmax(0, 1fr)
+    gap 6px 12px
+
+    retireFrom({ targetElementSelector: ".PlainLabelTest", y: 24px })
+
+
+    &-Key
+
+      font-weight bold
+
+      justify-self end
+
 
     &-Value
 
