@@ -3,9 +3,8 @@
 [![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-ossll-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
 Improved solution of [horizontal text overflow safety of single line labels](https://stackoverflow.com/q/68667208/4818123)
-problem. The component. Recommended to use when single line label's height wanted to be equal to font size, but be 
+problem. The component. Recommended to use when single line label's height wanted to be equal to font size, but be
 overflow-safe and all hanging symbols like *g* or *h* be fully visible.
-
 
 ## Quick example
 
@@ -53,7 +52,7 @@ provideOverflowSafeSingleLineLabelComponent()
 
     flex 0 0 CARD_FIXED_WIDTH
     max-width CARD_FIXED_WIDTH
-    
+  
 
 .Card
 
@@ -115,7 +114,6 @@ Both `.Card-FullNameLabel` and `.Card-OrganizationNameLabel` has same height as 
 
 ![](Images/OverflowSafeSingleLineLabel-Example1-2.png)
 
-
 ### Usage
 
 #### Markup (Pug)
@@ -132,7 +130,6 @@ Some CSS class must be assigned to `OverflowSafeSingleLineLabel` mixin for the s
 +OverflowSafeSingleLineLabel.ExampleLabel Text goes here
 ```
 
-
 #### Styles (Stylus)
 
 Make sure that you have required the `Functionlity.styl` and `Components.styl` from the library.
@@ -145,13 +142,13 @@ Make sure that you have required the `Functionlity.styl` and `Components.styl` f
 Note that just these requires will not produce any CSS.
 
 `OverflowSafeSingleLineLabel` component has **common** and **individual** styles.
-To provide the common styles, call below function:
+To provide the common styles, call below mixin:
 
 ```stylus
 provideOverflowSafeSingleLineLabelComponent()
 ```
 
-Then apply the individual styles to desired selector by mixin `OverflowSafeSingleLineLabel`: 
+Then apply the individual styles to desired selector by mixin `OverflowSafeSingleLineLabel`:
 
 ```stylus
 .ExampleLabel
@@ -190,12 +187,10 @@ It also could be other minimal width of the item instead of `0`
 
 Check below sources for the details and other solutions;.
 
-
 * [Prevent content from expanding grid items - Stack Overflow](https://stackoverflow.com/a/43312314/4818123)
 * [Why does minmax(0, 1fr) work for long elements while 1fr doesn't? - Stack Overflow](https://stackoverflow.com/q/52861086/4818123)
 * [Reconsider the meaning of 1fr - Git Hub](https://github.com/w3c/csswg-drafts/issues/1777)
 * [Prevent grid area from expanding causing whole page to scroll](https://stackoverflow.com/q/52785750/4818123)
-
 
 ### API
 
@@ -206,7 +201,6 @@ Check below sources for the details and other solutions;.
   rootElementTag?: string = "div"
 })
 ```
-
 
 #### Styles (Stylus)
 

@@ -1,4 +1,4 @@
-_HorizontalCenteringWithoutWrapper = {
+HorizontalCenteringWithoutWrapper = {
   TargetElementTypes: {
     block: "BLOCK",
     inlineBlock: "INLINE_BLOCK"
@@ -6,7 +6,7 @@ _HorizontalCenteringWithoutWrapper = {
 }
 
 
-HorizontalCenteringWithoutWrapper(parametersObject, restParameters__MUST_NOT_BE...)
+centerHorizontallyWithoutWrapper(parametersObject, restParameters__MUST_NOT_BE...)
 
   validateSingleParametersObject({
     targetObject: parametersObject,
@@ -14,7 +14,7 @@ HorizontalCenteringWithoutWrapper(parametersObject, restParameters__MUST_NOT_BE.
       targetElementType: {
         type: DataTypes.string,
         required: true,
-        allowedValues: values(_HorizontalCenteringWithoutWrapper.TargetElementTypes)
+        allowedValues: values(HorizontalCenteringWithoutWrapper.TargetElementTypes)
       },
       maximalWidth: {
         type: DataTypes.unit,
@@ -26,7 +26,7 @@ HorizontalCenteringWithoutWrapper(parametersObject, restParameters__MUST_NOT_BE.
       }
     },
     restParameters: restParameters__MUST_NOT_BE,
-    mixinOrFunctionName: "HorizontalCenteringWithoutWrapper"
+    mixinOrFunctionName: "centerHorizontallyWithoutWrapper"
   })
 
 
