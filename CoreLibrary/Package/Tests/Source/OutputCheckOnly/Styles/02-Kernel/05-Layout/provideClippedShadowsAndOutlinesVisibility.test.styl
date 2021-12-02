@@ -1,0 +1,23 @@
+/*  === Execution
+stylus Tests/Source/OutputCheckOnly/Styles/02-Kernel/05-Layout/provideClippedShadowsAndOutlinesVisibility.test.styl `
+    --out Tests/Build/OutputCheckOnly/Styles/02-Kernel/05-Layout/provideClippedShadowsAndOutlinesVisibility.test.css --include Styles
+ */
+
+@require "../../../../../../Functionality.styl"
+
+
+.ExampleDialog
+
+  &-Header
+
+    // ...
+
+  &-Body
+
+    max-height 300px
+    overflow-y scroll
+
+    provideClippedShadowsAndOutlinesVisibility({
+      requiredSpaceAtLeft: 4px,
+      requiredSpaceAtBottom: 4px
+    })
