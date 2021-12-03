@@ -6,11 +6,20 @@ stylus Tests/Source/OutputCheckOnly/Styles/02-Kernel/05-Layout/provideClippedSha
 @require "../../../../../../Functionality.styl"
 
 
-.ExampleDialog
+BUTTON_BOX_SHADOW_THICKNESS = 4px
+
+.Button
+
+  // ...
+  box-shadow 0 0 BUTTON_BOX_SHADOW_THICKNESS rgba(black, 0.25)
+
+
+.ExampleDialog1
 
   &-Header
 
     // ...
+
 
   &-Body
 
@@ -19,5 +28,23 @@ stylus Tests/Source/OutputCheckOnly/Styles/02-Kernel/05-Layout/provideClippedSha
 
     provideClippedShadowsAndOutlinesVisibility({
       requiredSpaceAtLeft: 4px,
+      requiredSpaceAtBottom: 4px
+    })
+
+
+.ExampleDialog2
+
+  &-Header
+
+    // ...
+
+
+  &-Body
+
+    max-height 300px
+    overflow-y scroll
+
+    provideClippedShadowsAndOutlinesVisibility({
+      requiredHorizontalSymmetricSpace: 4px,
       requiredSpaceAtBottom: 4px
     })

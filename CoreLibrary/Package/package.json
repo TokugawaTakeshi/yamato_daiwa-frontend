@@ -4,6 +4,7 @@
   "description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
   "keywords": [
     "frontend",
+    "pug",
     "stylus"
   ],
   "author": {
