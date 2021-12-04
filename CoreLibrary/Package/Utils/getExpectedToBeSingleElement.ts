@@ -6,14 +6,14 @@ import {
 } from "@yamato-daiwa/es-extensions";
 
 
-export function getExpectedToBeSingleElement(
+export default function getExpectedToBeSingleElement(
   parametersObject: {
     selector: string;
     context?: Element | Document;
   }
 ): Element;
 
-export function getExpectedToBeSingleElement<SpecificElement extends Element>(
+export default function getExpectedToBeSingleElement<SpecificElement extends Element>(
   parametersObject: {
     selector: string;
     context?: Element | Document;

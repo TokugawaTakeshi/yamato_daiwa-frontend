@@ -210,7 +210,7 @@ export class CodeViewer {
     clipboard.on("success", (): void => {
       Snackbar.mountAndDisplayForAWhile({
         decorativeVariation: Snackbar.DecorativeVariations.success,
-        textOrHTML: "Code has been copied to clipboard"
+        messageTextOrHTML: "Code has been copied to clipboard"
       });
     });
   }

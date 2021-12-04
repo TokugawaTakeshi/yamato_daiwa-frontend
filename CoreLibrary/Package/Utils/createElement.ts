@@ -2,13 +2,13 @@ import { Logger, ImproperUsageError, isUndefined, UnexpectedEventError } from "@
 import { createElements } from "@yamato-daiwa/es-extensions-browserjs";
 
 
-export function createElement(
+export default function createElement(
   parametersObject: {
     HTML_Code: string;
   }
 ): Element;
 
-export function createElement<SpecificElement extends Element>(
+export default function createElement<SpecificElement extends Element>(
   parametersObject: {
     HTML_Code: string;
     rootElementTypeChecker: (rootElement: Element) => rootElement is SpecificElement;

@@ -1,10 +1,4 @@
 import componentHTML_Workpiece from "./Snackbar.template.pug";
-// import {
-//   isNull,
-//   Logger,
-//   ClassRequiredInitializationHasNotBeenExecutedError,
-//   InheritEnumerationKeys
-// } from "@yamato-daiwa/es-extensions";
 import getExpectedToBeSingleElement from "../../Utils/getExpectedToBeSingleElement";
 import createElement from "../../Utils/createElement";
 import addClickEventHandler from "../../Utils/addClickEventHandler";
@@ -12,38 +6,58 @@ import addClickEventHandler from "../../Utils/addClickEventHandler";
 
 abstract class Snackbar {
 
-  private static readonly constructionSite: HTMLElement = createElement({
+  private static readonly workpiece: HTMLElement = createElement({
     HTML_Code: componentHTML_Workpiece,
     rootElementTypeChecker: (rootElement: Element): rootElement is HTMLElement => rootElement instanceof HTMLElement
   });
 
   private static readonly iconPlaceholder: Element = getExpectedToBeSingleElement({
-    selector: ".Snackbar-IconPlaceholder", context: Snackbar.constructionSite
+    selector: ".Snackbar-IconPlaceholder", context: Snackbar.workpiece
   });
 
-  private static readonly successIcon: Element;
-  private static readonly guidanceIcon: Element;
-  private static readonly warningIcon: Element;
-  private static readonly errorIcon: Element;
+  private static readonly successIcon: Element = getExpectedToBeSingleElement({
+    selector: "[data-icon='SUCCESS']", context: Snackbar.workpiece
+  });
+  private static readonly guidanceIcon: Element = getExpectedToBeSingleElement({
+    selector: "[data-icon='GUIDANCE']", context: Snackbar.workpiece
+  });
+  private static readonly warningIcon: Element = getExpectedToBeSingleElement({
+    selector: "[data-icon='WARNING']", context: Snackbar.workpiece
+  });
+  private static readonly errorIcon: Element = getExpectedToBeSingleElement({
+    selector: "[data-icon='ERROR']", context: Snackbar.workpiece
+  });
 
-  private static readonly textElement: Element = getExpectedToBeSingleElement({
-    selector: ".Snackbar-Text", context: Snackbar.constructionSite
+  private static readonly messageElement: Element = getExpectedToBeSingleElement({
+    selector: ".Snackbar-Message", context: Snackbar.workpiece
   });
 
   private static readonly dismissButton: Element = getExpectedToBeSingleElement({
-    selector: ".Snackbar-DismissButton", context: Snackbar.constructionSite
+    selector: ".Snackbar-DismissButton", context: Snackbar.workpiece
   });
 
-  // TODO Static block の対応が出来次第、アイコン初期化。
-  // TODO Static block の対応が出来次第、閉じるボタンを初期化
+  static {
+
+    Snackbar.successIcon.remove();
+    Snackbar.guidanceIcon.remove();
+    Snackbar.warningIcon.remove();
+    Snackbar.errorIcon.remove();
+
+    addClickEventHandler({
+      targetElement: Snackbar.dismissButton,
+      handler(): void { Snackbar.hideAndUnmount(); },
+      handleParentElementFirst: false
+    });
+  }
+
 
   public static mountAndDisplayForAWhile(
     {
-      textOrHTML,
+      messageTextOrHTML,
       decorativeVariation,
       parentElementSelector = "body"
     }: {
-      textOrHTML: string;
+      messageTextOrHTML: string;
       decorativeVariation: Snackbar.DecorativeVariations;
       parentElementSelector?: string;
     }
@@ -75,14 +89,12 @@ abstract class Snackbar {
       }
     }
 
-    Snackbar.constructionSite.classList.add(rootElementDecorativeVariationModifierCSS_Class);
-    Snackbar.textElement.innerHTML = textOrHTML;
+    Snackbar.workpiece.classList.add(rootElementDecorativeVariationModifierCSS_Class);
+    Snackbar.messageElement.innerHTML = messageTextOrHTML;
 
-    Snackbar.initializeCloseButton(); // TODO static block 追加後彼方に移動する
+    parentElement.appendChild(Snackbar.workpiece);
 
-    parentElement.appendChild(Snackbar.constructionSite);
-
-    Snackbar.constructionSite.animate([
+    Snackbar.workpiece.animate([
       {
         opacity: 0,
         transform: "translateY(-100%)"
@@ -97,10 +109,9 @@ abstract class Snackbar {
     });
   }
 
-
   public static hideAndUnmount(): void {
 
-    Snackbar.constructionSite.animate([
+    Snackbar.workpiece.animate([
       {
         opacity: 1,
         transform: "none"
@@ -113,18 +124,15 @@ abstract class Snackbar {
       duration: 250,
       easing: "ease-in"
     }).
-        addEventListener("finish", () => {
-          Snackbar.constructionSite.remove();
+        addEventListener("finish", (): void => {
+
+          getExpectedToBeSingleElement({
+            selector: ".Snackbar-Icon", context: Snackbar.workpiece
+          }).replaceWith();
+
+          Snackbar.workpiece.replaceWith(Snackbar.iconPlaceholder);
+          Snackbar.workpiece.remove();
         });
-  }
-
-
-  private static initializeCloseButton(): void {
-    addClickEventHandler({
-      targetElement: Snackbar.dismissButton,
-      handler: Snackbar.hideAndUnmount,
-      handleParentElementFirst: false
-    });
   }
 }
 
