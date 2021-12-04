@@ -73,7 +73,10 @@ const webpackConfig: Webpack.Configuration = {
   },
 
   resolve: {
-    extensions: [ ".js", ".ts" ]
+    extensions: [ ".js", ".ts" ],
+    alias: {
+      "@SVG_Icons": Path.resolve("Source/SVG_Icons")
+    }
   },
 
   plugins: [

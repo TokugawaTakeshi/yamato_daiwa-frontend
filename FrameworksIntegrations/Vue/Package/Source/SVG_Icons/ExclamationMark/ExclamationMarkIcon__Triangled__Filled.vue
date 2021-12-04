@@ -1,7 +1,7 @@
 <template lang="pug">
 
-  include ../../Markup/SVG_Icons/SVG_Icons
+  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Triangled__Filled.pug
 
-  +ExclamationMark__Triangled__Filled--Icon
+  +ExclamationMarkIcon__Triangled__Filled
 
 </template>

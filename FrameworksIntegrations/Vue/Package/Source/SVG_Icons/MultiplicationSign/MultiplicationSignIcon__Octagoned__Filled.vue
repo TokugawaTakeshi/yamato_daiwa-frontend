@@ -1,7 +1,7 @@
 <template lang="pug">
 
-  include ../../Markup/SVG_Icons/SVG_Icons
+  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Octagoned__Filled.pug
 
-  +MultiplicationSign__Octagoned__Filled--Icon
+  +MultiplicationSignIcon__Octagoned__Filled
     
 </template>

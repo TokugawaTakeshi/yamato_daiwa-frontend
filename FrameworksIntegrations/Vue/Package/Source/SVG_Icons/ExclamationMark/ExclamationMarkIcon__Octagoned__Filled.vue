@@ -1,6 +1,6 @@
 <template lang="pug">
 
-  include ../../Markup/SVG_Icons/SVG_Icons
+  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons
 
   +ExclamationMark__Octagoned__Filled--Icon
     
