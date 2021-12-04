@@ -2,6 +2,7 @@ import componentHTML_Workpiece from "./Snackbar.template.pug";
 import getExpectedToBeSingleElement from "../../Utils/getExpectedToBeSingleElement";
 import createElement from "../../Utils/createElement";
 import addClickEventHandler from "../../Utils/addClickEventHandler";
+import { secondsToMilliseconds } from "@yamato-daiwa/es-extensions";
 
 
 abstract class Snackbar {
@@ -36,6 +37,8 @@ abstract class Snackbar {
     selector: ".Snackbar-DismissButton", context: Snackbar.workpiece
   });
 
+  private static readonly DEFAULT_DISPLAYING_DURATION__SECONDS: number = 3;
+
   static {
 
     Snackbar.successIcon.remove();
@@ -55,11 +58,13 @@ abstract class Snackbar {
     {
       messageTextOrHTML,
       decorativeVariation,
-      parentElementSelector = "body"
+      parentElementSelector = "body",
+      displayingDuration__seconds = Snackbar.DEFAULT_DISPLAYING_DURATION__SECONDS
     }: {
       messageTextOrHTML: string;
       decorativeVariation: Snackbar.DecorativeVariations;
       parentElementSelector?: string;
+      displayingDuration__seconds?: number;
     }
   ): void {
 
@@ -107,6 +112,8 @@ abstract class Snackbar {
       duration: 500,
       easing: "ease-out"
     });
+
+    setTimeout((): void => { this.hideAndUnmount(); }, secondsToMilliseconds(displayingDuration__seconds));
   }
 
   public static hideAndUnmount(): void {
@@ -126,9 +133,11 @@ abstract class Snackbar {
     }).
         addEventListener("finish", (): void => {
 
+          console.log(Snackbar.workpiece);
+
           getExpectedToBeSingleElement({
             selector: ".Snackbar-Icon", context: Snackbar.workpiece
-          }).replaceWith();
+          });
 
           Snackbar.workpiece.replaceWith(Snackbar.iconPlaceholder);
           Snackbar.workpiece.remove();
