@@ -3,10 +3,13 @@ import getExpectedToBeSingleElement from "../../Utils/getExpectedToBeSingleEleme
 import createElement from "../../Utils/createElement";
 import addClickEventHandler from "../../Utils/addClickEventHandler";
 import { secondsToMilliseconds } from "@yamato-daiwa/es-extensions";
+import PromisesQueue from "../../Utils/PromisesQueue";
 
 
 abstract class Snackbar {
 
+  private static sessionsQueue: PromisesQueue = new PromisesQueue();
+  
   private static readonly workpiece: HTMLElement = createElement({
     HTML_Code: componentHTML_Workpiece,
     rootElementTypeChecker: (rootElement: Element): rootElement is HTMLElement => rootElement instanceof HTMLElement
@@ -54,19 +57,49 @@ abstract class Snackbar {
   }
 
 
-  public static mountAndDisplayForAWhile(
+  public static mountAndDisplayForAWhile(parametersObject: Snackbar.ParametersObject): void {
+    Snackbar.sessionsQueue.addFunctionToQueueAndStartQueueExecutionIfHasNotStartedYet(
+      async (): Promise<void> => Snackbar.mountAndDisplayForAWhileSingleInstance(parametersObject)
+    ).catch(PromisesQueue.errorHandler);
+  }
+
+  public static hideAndUnmount(): void {
+
+    Snackbar.workpiece.animate([
+      {
+        opacity: 1,
+        transform: "none"
+      },
+      {
+        opacity: 0,
+        transform: "translateY(-100%)"
+      }
+    ], {
+      duration: 250,
+      easing: "ease-in"
+    }).
+        addEventListener("finish", (): void => {
+
+          console.log(Snackbar.workpiece);
+
+          const actualIcon: Element = getExpectedToBeSingleElement({
+            selector: ".Snackbar-Icon", context: Snackbar.workpiece
+          });
+
+          actualIcon.replaceWith(Snackbar.iconPlaceholder);
+          Snackbar.workpiece.remove();
+        });
+  }
+
+
+  private static async mountAndDisplayForAWhileSingleInstance(
     {
       messageTextOrHTML,
       decorativeVariation,
       parentElementSelector = "body",
       displayingDuration__seconds = Snackbar.DEFAULT_DISPLAYING_DURATION__SECONDS
-    }: {
-      messageTextOrHTML: string;
-      decorativeVariation: Snackbar.DecorativeVariations;
-      parentElementSelector?: string;
-      displayingDuration__seconds?: number;
-    }
-  ): void {
+    }: Snackbar.ParametersObject
+  ): Promise<void> {
 
     const parentElement: Element = getExpectedToBeSingleElement({ selector: parentElementSelector });
 
@@ -113,40 +146,24 @@ abstract class Snackbar {
       easing: "ease-out"
     });
 
-    setTimeout((): void => { this.hideAndUnmount(); }, secondsToMilliseconds(displayingDuration__seconds));
-  }
 
-  public static hideAndUnmount(): void {
-
-    Snackbar.workpiece.animate([
-      {
-        opacity: 1,
-        transform: "none"
-      },
-      {
-        opacity: 0,
-        transform: "translateY(-100%)"
-      }
-    ], {
-      duration: 250,
-      easing: "ease-in"
-    }).
-        addEventListener("finish", (): void => {
-
-          console.log(Snackbar.workpiece);
-
-          getExpectedToBeSingleElement({
-            selector: ".Snackbar-Icon", context: Snackbar.workpiece
-          });
-
-          Snackbar.workpiece.replaceWith(Snackbar.iconPlaceholder);
-          Snackbar.workpiece.remove();
-        });
+    // Timer.start
+    setTimeout((): void => {
+      this.hideAndUnmount();
+    }, secondsToMilliseconds(displayingDuration__seconds));
   }
 }
 
 
 namespace Snackbar {
+  
+  export type ParametersObject = {
+    messageTextOrHTML: string;
+    decorativeVariation: DecorativeVariations;
+    parentElementSelector?: string;
+    displayingDuration__seconds?: number;
+  };
+  
   export enum DecorativeVariations {
     error = "ERROR",
     warning = "WARNING",
