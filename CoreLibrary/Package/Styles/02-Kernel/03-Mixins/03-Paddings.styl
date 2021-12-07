@@ -5,7 +5,7 @@ paddingsSpecificationSchema = {
     required: false
   },
 
-  horizontalSymmectic: {
+  horizontalSymmetric: {
     type: DataTypes.unit,
     required: false,
     incompatibleWith: "all"
@@ -13,15 +13,15 @@ paddingsSpecificationSchema = {
   left: {
     type: DataTypes.unit,
     required: false,
-    incompatibleWith: "all" "horizontalSymmectic"
+    incompatibleWith: "all" "horizontalSymmetric"
   },
   right: {
     type: DataTypes.unit,
     required: false,
-    incompatibleWith: "all" "horizontalSymmectic"
+    incompatibleWith: "all" "horizontalSymmetric"
   },
 
-  verticalSymmectic: {
+  verticalSymmetric: {
     type: DataTypes.unit,
     required: false,
     incompatibleWith: "all"
@@ -33,12 +33,12 @@ paddingsSpecificationSchema = {
   top: {
     type: DataTypes.unit,
     required: false,
-    incompatibleWith: "all" "verticalSymmectic"
+    incompatibleWith: "all" "verticalSymmetric"
   },
   bottom: {
     type: DataTypes.unit,
     required: false,
-    incompatibleWith: "all" "verticalSymmectic"
+    incompatibleWith: "all" "verticalSymmetric"
   }
 }
 
@@ -54,9 +54,9 @@ overridePaddingsSpecification(parametersObject, restParameters__MUST_NOT_BE...)
 
   return {
     all: parametersObject.all,
-    horizontalSymmectic: parametersObject.horizontalSymmectic,
+    horizontalSymmetric: parametersObject.horizontalSymmetric,
     verticalUpwardShifting: parametersObject.verticalUpwardShifting,
-    verticalSymmectic: parametersObject.verticalSymmectic,
+    verticalSymmetric: parametersObject.verticalSymmetric,
     top: parametersObject.top,
     bottom: parametersObject.bottom,
     left: parametersObject.left,
@@ -74,19 +74,19 @@ Paddings(parametersObject, restParameters__MUST_NOT_BE...)
   })
 
   leftPadding = getFirstNonNullArrayElement(arrayConstructor__POLYFILL(
-    parametersObject.all, parametersObject.horizontalSymmectic, parametersObject.left
+    parametersObject.all, parametersObject.horizontalSymmetric, parametersObject.left
   ))
 
   rightPadding = getFirstNonNullArrayElement(arrayConstructor__POLYFILL(
-    parametersObject.all, parametersObject.horizontalSymmectic, parametersObject.right
+    parametersObject.all, parametersObject.horizontalSymmetric, parametersObject.right
   ))
 
   topPadding = getFirstNonNullArrayElement(arrayConstructor__POLYFILL(
-    parametersObject.all, parametersObject.verticalSymmectic, parametersObject.top
+    parametersObject.all, parametersObject.verticalSymmetric, parametersObject.top
   ))
 
   bottomPadding = getFirstNonNullArrayElement(arrayConstructor__POLYFILL(
-    parametersObject.all, parametersObject.verticalSymmectic, parametersObject.bottom
+    parametersObject.all, parametersObject.verticalSymmetric, parametersObject.bottom
   ))
 
 

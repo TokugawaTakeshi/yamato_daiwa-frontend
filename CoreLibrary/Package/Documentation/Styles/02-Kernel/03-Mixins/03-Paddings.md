@@ -15,13 +15,13 @@ The alternative to native CSS method of defining of the paddings intended to be 
 .Example2
 
   // Equivalent to `padding-left: 4px; padding-right: 4px;`
-  Paddings({ horizontalSymmectic: 4px })
+  Paddings({ horizontalSymmetric: 4px })
 
 
 .Example3
 
   // Equivalent to `padding-top: 5px; padding-bottom: 5px;`
-  Paddings({ verticalSymmectic: 5px })
+  Paddings({ verticalSymmetric: 5px })
 
   
 .Example4
@@ -46,7 +46,7 @@ the offset about `1px`.  Moreover, this offset depending on the font and the lan
 .Example5
   
   Paddings({
-    verticalSymmectic: 6px,
+    verticalSymmetric: 6px,
     verticalUpwardShifting: 1px
   })
 ```
