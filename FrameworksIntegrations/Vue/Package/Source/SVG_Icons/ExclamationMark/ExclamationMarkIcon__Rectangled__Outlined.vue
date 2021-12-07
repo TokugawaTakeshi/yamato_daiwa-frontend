@@ -1,7 +1,7 @@
 <template lang="pug">
 
-  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons
+  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Rectangled__Outlined.pug
 
-  +ExclamationMark__Rectangled__Outlined--Icon
+  +ExclamationMarkIcon__Rectangled__Outlined
 
 </template>

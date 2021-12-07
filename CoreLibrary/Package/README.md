@@ -168,6 +168,10 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 * [📖 `TableCellWidthSizing`](Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/TableCellWidthSizing.md) 
   Allows to define the width, borders and paddings of table cell by various combinations of parameters.
 
+##### Height sizing
+
+* [📖 `textBoxLikeElementsHeightSizing`](Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/02-HeightSizing/textBoxLikeElementsHeightSizing.md)
+  The vertical sizing of block and inline block elements only with text content.
 
 ##### Paddings
 
@@ -210,7 +214,19 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
   The equivalent of `+whenTargetGoingJustAfterIt({ targetElementSelector: ".X" })` for the case when reference element's selector is also `.X`.
 
 
-##### Typography
+#### Styles initialization
+
+* [📖 `CrossBrowserStylesReset`](Documentation/Styles/02-Kernel/04-StylesInitialization/CrossBrowserStylesReset.md)
+  The resetting of browser dependent styles and some usually redefinable styles like default margins of `body` based on
+  [Eric Mayer's **Reset CSS**](https://meyerweb.com/eric/tools/css/reset/).
+* [`InitialGlobalCSS_Rules`](Documentation/Styles/02-Kernel/04-StylesInitialization/InitialGlobalCSS_Rules.md)
+  Some basic CSS rules like default font size and default line height intended to be applying directly after 
+  `CrossBrowserStylesReset`. 
+* [`ButtonLikeElementsPrimer`](Documentation/Styles/02-Kernel/04-StylesInitialization/ButtonLikeElementsPrimer.md)
+  Resets all styles which usually pre-defined on buttons and similar elements such as the target element becomes even
+  with unstyled `span`.
+
+#### Typography
 
 * [📖 `SingleLineElementOverflowTolerance`](Documentation/Styles/02-Kernel/03-Mixins/07-Typography/SingleLineElementOverflowTolerance.md)
 * [📖 `MultilineTextWithoutExtraSpaceCausedByLineHeight`](Documentation/Styles/02-Kernel/03-Mixins/07-Typography/MultilineTextWithoutExtraSpaceCausedByLineHeight.md)

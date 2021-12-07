@@ -1,14 +1,14 @@
 {
   "private": true,
-  "name": "@yamato-daiwa/frontend-localization-japanese",
+  "name": "@yamato-daiwa/frontend-localization-russian",
   "version": "0.3.0-alpha1",
-  "description": "The Japanese localization for '@yamato-daiwa/frontend' package.",
+  "description": "The Russian localization for '@yamato-daiwa/frontend' package.",
   "keywords": [
     "frontend",
     "pug",
     "stylus",
     "localization",
-    "japanese"
+    "russian"
   ],
   "author": {
     "name": "Takeshi Tokugawa",
@@ -25,5 +25,8 @@
   },
   "files": [
     "StaticPreviewAnywherePageLocalization.pug"
-  ]
+  ],
+  "peerDependencies": {
+    "@yamato-daiwa/es-extensions": "1.4.0-alpha.1"
+  }
 }

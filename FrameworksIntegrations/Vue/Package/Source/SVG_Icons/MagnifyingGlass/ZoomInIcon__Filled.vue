@@ -1,7 +1,7 @@
 <template lang="pug">
 
-  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons
+  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/MagnifyingGlass/ZoomingInIcon__Filled.pug
 
-  +ZoomIn__Filled--Icon
+  +ZoomingInIcon__Filled
     
 </template>

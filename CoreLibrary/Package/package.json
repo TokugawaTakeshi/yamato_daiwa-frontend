@@ -1,6 +1,6 @@
 {
   "name": "@yamato-daiwa/frontend",
-  "version": "0.3.0-alpha.4",
+  "version": "0.3.0-alpha.6",
   "description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
   "keywords": [
     "frontend",
@@ -22,8 +22,12 @@
   },
   "files": [
     "Components",
+    "!Components/**/*.ts",
+    "!Components/**/*.template.pug",
     "Markup",
+    "!Markup/Source",
     "PagesTemplates",
+    "!PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.styl",
     "Styles",
     "Components.pug",
     "Components.styl",
