@@ -32,7 +32,7 @@ export default function getExpectedToBeSingleElement<SpecificElement extends Ele
     context?: Element | Document;
     elementTypeChecker?: (element: Element) => element is SpecificElement;
   }
-): SpecificElement {
+): Element | SpecificElement {
 
   const targetElementSearchRequestMatch: Array<Element> = Array.from(context.querySelectorAll(selector));
 

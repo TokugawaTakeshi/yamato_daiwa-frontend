@@ -2,13 +2,13 @@ import componentHTML_Workpiece from "./Snackbar.template.pug";
 import getExpectedToBeSingleElement from "../../Utils/getExpectedToBeSingleElement";
 import createElement from "../../Utils/createElement";
 import addClickEventHandler from "../../Utils/addClickEventHandler";
-import { secondsToMilliseconds } from "@yamato-daiwa/es-extensions";
 import PromisesQueue from "../../Utils/PromisesQueue";
+import BrowserJS_Timer from "../../Utils/BrowserJS_Timer";
 
 
 abstract class Snackbar {
 
-  private static sessionsQueue: PromisesQueue = new PromisesQueue();
+  private static readonly sessionsQueue: PromisesQueue = new PromisesQueue();
   
   private static readonly workpiece: HTMLElement = createElement({
     HTML_Code: componentHTML_Workpiece,
@@ -51,44 +51,51 @@ abstract class Snackbar {
 
     addClickEventHandler({
       targetElement: Snackbar.dismissButton,
-      handler(): void { Snackbar.hideAndUnmount(); },
+      handler(): void {
+        // TODO Rewrite
+        Snackbar.hideAndUnmount().catch((error: unknown): void => { console.error(error); });
+      },
       handleParentElementFirst: false
     });
   }
 
 
   public static mountAndDisplayForAWhile(parametersObject: Snackbar.ParametersObject): void {
+    console.log("ok!");
     Snackbar.sessionsQueue.addFunctionToQueueAndStartQueueExecutionIfHasNotStartedYet(
       async (): Promise<void> => Snackbar.mountAndDisplayForAWhileSingleInstance(parametersObject)
     ).catch(PromisesQueue.errorHandler);
   }
 
-  public static hideAndUnmount(): void {
 
-    Snackbar.workpiece.animate([
-      {
-        opacity: 1,
-        transform: "none"
-      },
-      {
-        opacity: 0,
-        transform: "translateY(-100%)"
-      }
-    ], {
-      duration: 250,
-      easing: "ease-in"
-    }).
-        addEventListener("finish", (): void => {
+  public static async hideAndUnmount(): Promise<void> {
+    return new Promise<void>((resolve: () => void): void => {
 
-          console.log(Snackbar.workpiece);
+      Snackbar.workpiece.animate([
+        {
+          opacity: 1,
+          transform: "none"
+        },
+        {
+          opacity: 0,
+          transform: "translateY(-100%)"
+        }
+      ], {
+        duration: 250,
+        easing: "ease-in"
+      }).
+          addEventListener("finish", (): void => {
 
-          const actualIcon: Element = getExpectedToBeSingleElement({
-            selector: ".Snackbar-Icon", context: Snackbar.workpiece
+            const actualIcon: Element = getExpectedToBeSingleElement({
+              selector: ".Snackbar-Icon", context: Snackbar.workpiece
+            });
+
+            actualIcon.replaceWith(Snackbar.iconPlaceholder);
+            Snackbar.workpiece.remove();
+
+            resolve();
           });
-
-          actualIcon.replaceWith(Snackbar.iconPlaceholder);
-          Snackbar.workpiece.remove();
-        });
+    });
   }
 
 
@@ -147,10 +154,11 @@ abstract class Snackbar {
     });
 
 
-    // Timer.start
-    setTimeout((): void => {
-      this.hideAndUnmount();
-    }, secondsToMilliseconds(displayingDuration__seconds));
+    await new BrowserJS_Timer({
+      period__seconds: displayingDuration__seconds
+    }).countDown();
+
+    return Snackbar.hideAndUnmount();
   }
 }
 

@@ -1,8 +1,15 @@
 import Snackbar from "../../../../Components/Snackbar/Snackbar";
+import getExpectedToBeSingleElement from "../../../../Utils/getExpectedToBeSingleElement";
+import addClickEventHandler from "../../../../Utils/addClickEventHandler";
 
-document.querySelector("#DisplaySnackbarButton").addEventListener("click", (): void => {
-  Snackbar.mountAndDisplayForAWhile({
-    messageTextOrHTML: "No problems!",
-    decorativeVariation: Snackbar.DecorativeVariations.success
-  });
+
+addClickEventHandler({
+  targetElement: getExpectedToBeSingleElement({ selector: "#DisplaySnackbarButton" }),
+  handler(): void {
+    Snackbar.mountAndDisplayForAWhile({
+      messageTextOrHTML: "Working fine!",
+      decorativeVariation: Snackbar.DecorativeVariations.success
+    });
+  },
+  handleParentElementFirst: false
 });

@@ -23,6 +23,8 @@ export default class PromisesQueue {
 
     for (const asynchronousFunction of this.asynchronousFunctionsQueue) {
 
+      /* [ ESLint muting rationale ] Because it is a queue, all async function must be executed sequentially. */
+      /* eslint-disable-next-line no-await-in-loop */
       await asynchronousFunction();
 
       if (!this.mustExecuteNextAsynchronousFunction) {
@@ -53,6 +55,7 @@ export default class PromisesQueue {
   }
 
   public static errorHandler(error: unknown): void {
+    // TODO 完成させる。
     console.error(error);
   }
 }

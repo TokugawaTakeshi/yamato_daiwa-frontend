@@ -1,4 +1,9 @@
-import { Logger, ImproperUsageError, isUndefined, UnexpectedEventError } from "@yamato-daiwa/es-extensions";
+import {
+  Logger,
+  ImproperUsageError,
+  UnexpectedEventError,
+  isUndefined
+} from "@yamato-daiwa/es-extensions";
 import { createElements } from "@yamato-daiwa/es-extensions-browserjs";
 
 
@@ -22,9 +27,9 @@ export default function createElement<SpecificElement extends Element>(
     rootElementTypeChecker
   }: {
     HTML_Code: string;
-    rootElementTypeChecker: (element: Element) => element is SpecificElement;
+    rootElementTypeChecker?: (element: Element) => element is SpecificElement;
   }
-): SpecificElement {
+): Element | SpecificElement {
 
   const elementsCollection: HTMLCollection = createElements(HTML_Code);
 
