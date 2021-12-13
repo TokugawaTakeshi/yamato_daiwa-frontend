@@ -63,6 +63,14 @@ include "PATH_TO_NODE_MODULES/@yamato-daiwa/frontend/Components.pug
 
 ### Table of contents
 
+### Pages templates
+
+* [📖 `RegularWebPage`](Documentation/PagesTemplates/RegularWebPage.md)
+  The basic HTML5 page with pre-filled required HTML tabs.
+* [📖 `StaticPreviewAnywherePage`](Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md)
+  The top page for static HTML/CSS implementation stage.
+
+
 #### Assets
 
 * [📖 Basic constants](Documentation/Styles/01-Assets/BasicConstants.md)
@@ -188,8 +196,21 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
   The mixin intended to be applied to `div` element to overlap the other content which translucent dim layer.
   Such element is frequently being used as underlay for modal dialogs.
 * [📖 `Centerer`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/Centerer.md)
-  Centering of the block elements with `auto` margins, minimal and maximal widths. 
+  Centering of the block elements with `auto` margins, minimal and maximal widths. Intended to be used on containers.
+* [📖 `centerHorizontallyWithoutWrapper`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/centerHorizontallyWithoutWrapper.md)
+  Centering of the block and inline-block elements without wrapper.
+* [📖 `provideClippedShadowsAndOutlinesVisibility`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/provideClippedShadowsAndOutlinesVisibility.md)
+  The ugly but still no-alternatives solution of clipped by `overflow` shadows and outlines problem. Indented to be used on non-containers.
 
+
+##### Positioning
+
+* [📖 CenteredContentWithComputedHorizontalPaddings](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/CenteredContentWithComputedHorizontalPaddings.md)
+  Centering the element by computed horizontal symmetric paddings. Intended to be used on page containers on wide screens.
+* [📖 placeToRight](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/placeToRight.md)
+  Placing the element to right side or the container by relative positioning and `transform`.
+* [📖 VerticallyCenteredAbsolutelyPositionedBlock](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md)
+  Centers vertically the absolutely positioned block.
 
 ##### Positional relationship
 
@@ -214,6 +235,12 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
   The equivalent of `+whenTargetGoingJustAfterIt({ targetElementSelector: ".X" })` for the case when reference element's selector is also `.X`.
 
 
+##### Other mixin utils
+
+* [📖 Sprite](Documentation/Styles/02-Kernel/03-Mixins/09-Rest/Sprite.md)
+  Mixin for the making of the element to sprite. 
+
+
 #### Styles initialization
 
 * [📖 `CrossBrowserStylesReset`](Documentation/Styles/02-Kernel/04-StylesInitialization/CrossBrowserStylesReset.md)
@@ -232,8 +259,6 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 * [📖 `MultilineTextWithoutExtraSpaceCausedByLineHeight`](Documentation/Styles/02-Kernel/03-Mixins/07-Typography/MultilineTextWithoutExtraSpaceCausedByLineHeight.md)
   Defines the font size and line height, herewith there will not be extra vertical space above first line and below last
   line caused by `line-height`. Prevents overflow.
-
-
 
 #### Components
 
