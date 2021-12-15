@@ -1,7 +1,7 @@
 <template lang="pug">
 
-  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons
+  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Pencil/PencilWithPlusSignIcon__Outlined.pug
 
-  +PencilWithPlusSign__Outlined--Icon
+  +PencilWithPlusSignIcon__Outlined
     
 </template>

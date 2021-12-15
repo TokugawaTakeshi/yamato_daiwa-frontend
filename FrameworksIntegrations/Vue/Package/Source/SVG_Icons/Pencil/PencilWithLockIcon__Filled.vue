@@ -1,7 +1,7 @@
 <template lang="pug">
 
-  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons
+  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Pencil/PencilWithLockIcon__Filled.pug
 
-  +PencilWithLock__Filled--Icon
+  +PencilWithLockIcon__Filled
     
 </template>
