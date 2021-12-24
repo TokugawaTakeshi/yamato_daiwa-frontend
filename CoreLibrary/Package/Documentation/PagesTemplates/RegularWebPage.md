@@ -133,7 +133,55 @@ There is `EndBodyContent` block also been prepared - it going after `PageContent
 or `HTML_PAGE_TITLE`.
 * Do not intended to be appended any markup because it will be rendered outside of `html` tag.
 
-###
+### `Data`
+
+* Intended to be included some JavaScript with dummy data.
+* Do not intended to be appended any markup because it will be rendered outside of `html` tag.
+
+
+### `Requirements`
+
+* Intended to be included other Pug files containing only mixins and/or JavaScript code.
+* Do not intended to be appended any markup because it will be rendered outside of `html` tag.
+
+
+### `StatesSimulations`
+
+* Intended to be included some JavaScript with variables responsible for conditional rendering like loading, errors, 
+empty data etc.
+* Do not intended to be appended any markup because it will be rendered outside of both `head` and `body` tags.
+
+
+### `HeadBegin`
+
+If you are not enough of `head` customization functionality, you can append to `head` anything what you want
+(while it is a valid HTML5).
+
+
+### `StylesLinks` 
+
+Intended to be included some `link` tags with styles when `styleSheetsURIs` variable doesn't fit for some reason.
+
+
+### `HeadScriptsLinks`
+
+Intended to be added some script tags when `scriptsURIs.endOfHead` variable doesn't fit for some reason.
+Appropriate for third party inline scripts like Google Analytics™.
+
+
+### `PageContent`
+
+Intended to be filled with target markup of the visible part of HTML page.
+
+
+### `EndBodyContent`
+
+Intended to be filled with content always going after `PageContent`.
+
+
+### `EndBodyScriptsLinks`
+
+Intended to be filled with `script` tags `scriptsURIs.endOfBody` variable doesn't fit for some reason.
 
 
 ## Extending of the layouts
@@ -142,18 +190,19 @@ Usually the pages of web site/application has the common part like header, navig
 The HTML pre-processors including Pug allowing to extract this common part to separate file, but it does not mean that
 extracted content could not be changed.
 
-The multiple reusable layouts is a common scenario, so it's recommended to prepare the directory with layouts and
-add files for each layout like below one:
+The multiple reusable layouts is a common scenario (for example one basis layout, the layout for authentication and
+the layout for admin panel), so it's recommended to prepare the directory with layouts and add files for each layout 
+like below one:
 
 
 ```pug
-// TODO Correct the valid relative path node_modules 
-extends RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+// TODO Correct the relative path to "node_modules" 
+extends RELATIVE/PATH/TO/node_modules/hikari-frontend/PagesTemplates/RegularWebPage.pug
 
 block append Requirements
   
   //- 
-    You can include some files with mixins here, but including them in the page file extended from this one 
+    You can include some files with mixins here, but including them in the page file extended from this layout file
     is another option.
   include PATH/TO/Components/SharedSingletons/Header/Header.pug
   include PATH/TO/Components/SharedSingletons/Header/NavigationBar.pug
@@ -174,7 +223,7 @@ block append PageContent
         
     .MainLayout-DynamicContent
 
-      block DynamicContent
+      block SpecificContent
         
         
     +Footer
@@ -182,47 +231,16 @@ block append PageContent
 
 
 ## Related IntelliJ IDEA files templates (official plugin)
+
+With [official IntelliJ IDEA plugin](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend), you can quickly
+create files extended from `RegularWebPage` with some initial content and `TODO` hints.
+
+
 ### Web page (Yamato Daiwa Frontend)
 
-Creates the pug and same-name Stylus file. It's recommended to put the to same directory because the separate directories
-for markup, styles and scripts is very inconvenient structure, especially for large projects.
+Creates the Pug and same-name Stylus file. It's recommended to put these files to same directory because the separate 
+directories for markup, styles and scripts is very inconvenient structure, especially for the large projects.
 
-The contents of the Pug file 
+The initial content of this template has been fully described above.
 
-```jade
-// TODO Correct the relative path to "node_modules" and remove this comment
-extends RELATIVE/PATH/TO/00-Components/SharedSingletons/Layouts/Main/MainLayout.pug
-
-
-block append Metadata
-
-  -
-
-    HTML_PAGE_LANGUAGE = "en";  // TODO Specify the code of your language (see https://www.w3schools.com/tags/ref_language_codes.asp) and remove this comment 
-    HTML_PAGE_TITLE = "Top page - You great web site/application";　　// TODO Edit the title of your page and remove this comment
-
-    // TODO Edit the meta of your page or remove it you don't need the search engine optimization now.
-    HTML_PageMetaData = {
-      description: "The introduction of sedans of NNN company",
-      keywords: "NNN, sedan",
-      author: "NNN company"
-    };
-
-    // TODO Edit the path to your stylesheet and remove this comment
-    styleSheetsURIs = [ "./TopPage.css" ];
-
-
-block append Requirements
-
-  //- TODO Include files with mixins here and remove this comment
-  include RELATIVE/PATH/TO/00-Components/Components.pug
-
-  include _Partials/Partial1/Partial1.pug
-  include _Partials/Partial2/Partial2.pug
-
-
-block append DynamicContent
-
-  +Partial1.TopPage-Partial1
-  +Partial2.TopPage-Partial2
-```
+### Layout (Yamato Daiwa Frontend)

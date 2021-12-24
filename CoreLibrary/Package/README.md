@@ -14,8 +14,7 @@ The toolkit for the frontend development with [Pug](https://pugjs.org/api/gettin
 Currently, the Pug and Stylus auxiliaries are under refactoring.
 The next step will be the adding of the UI components.
 
-* [🛣️ Version 0.3 (2021-22 Winter sprint)](https://yamato-daiwa.myjetbrains.com/youtrack/agiles/121-8/current)
-* [🛣️ Version 1.0 (2022 Spring sprint)](https://yamato-daiwa.myjetbrains.com/youtrack/agiles/121-7/122-13)
+[🛣️ Version 1.0 (2022 Spring sprint)](https://yamato-daiwa.myjetbrains.com/youtrack/agiles/121-7/122-13)
 
 **Hint:** Set the unlabeled slider in the top right corner of the screen to `XL` to see the tags and descriptions.
 
@@ -66,7 +65,7 @@ include "PATH_TO_NODE_MODULES/@yamato-daiwa/frontend/Components.pug
 ### Pages templates
 
 * [📖 `RegularWebPage`](Documentation/PagesTemplates/RegularWebPage.md)
-  The basic HTML5 page with pre-filled required HTML tabs.
+  The basic HTML5 page with pre-filled required HTML tags.
 * [📖 `StaticPreviewAnywherePage`](Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md)
   The top page for static HTML/CSS implementation stage.
 
@@ -197,19 +196,19 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
   Such element is frequently being used as underlay for modal dialogs.
 * [📖 `Centerer`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/Centerer.md)
   Centering of the block elements with `auto` margins, minimal and maximal widths. Intended to be used on containers.
-* [📖 `centerHorizontallyWithoutWrapper`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/centerHorizontallyWithoutWrapper.md)
-  Centering of the block and inline-block elements without wrapper.
 * [📖 `provideClippedShadowsAndOutlinesVisibility`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/provideClippedShadowsAndOutlinesVisibility.md)
   The ugly but still no-alternatives solution of clipped by `overflow` shadows and outlines problem. Indented to be used on non-containers.
 
 
 ##### Positioning
 
-* [📖 CenteredContentWithComputedHorizontalPaddings](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/CenteredContentWithComputedHorizontalPaddings.md)
-  Centering the element by computed horizontal symmetric paddings. Intended to be used on page containers on wide screens.
-* [📖 placeToRight](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/placeToRight.md)
+* [📖 `centerHorizontallyWithoutWrapper`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/centerHorizontallyWithoutWrapper.md)
+  Centering of the block and inline-block elements without wrapper.
+* [📖 `CenteredContentWithComputedHorizontalPaddings`](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/CenteredContentWithComputedHorizontalPaddings.md)
+  Centering of the element by computed horizontal symmetric paddings. Intended to be used on the page containers on wide screens.
+* [📖 `placeToRight`](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/placeToRight.md)
   Placing the element to right side or the container by relative positioning and `transform`.
-* [📖 VerticallyCenteredAbsolutelyPositionedBlock](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md)
+* [📖 `VerticallyCenteredAbsolutelyPositionedBlock`](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md)
   Centers vertically the absolutely positioned block.
 
 ##### Positional relationship

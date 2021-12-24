@@ -1,107 +1,222 @@
 Snackbar = {
+
   defaultProperties: {
 
+    themes: {
+      basic: {
+
+
+        geometricVariations: {
+          basic: {
+
+            rootElement: {
+              width: 280px,
+              minimalHeight: 40px,
+              borderRadius: JQueryUI_BaseTheme.basicBorderRadius,
+              paddings: { horizontalSymmetric: 8px }
+            },
+
+            icon: {
+              width: 20px
+            }
+          }
+        },
+
+        decorativeVariations: {
+          success: {
+            rootElement: {
+              backgroundColor: JQueryUI_BaseTheme.success.background,
+              boxShadow: 0 2px 8px rgba(black, 0.25)
+            }
+          },
+          info: {
+            rootElement: {
+              backgroundColor: JQueryUI_BaseTheme.info.background,
+              boxShadow: 0 2px 8px rgba(black, 0.25)
+            }
+          },
+          warning: {
+            rootElement: {
+              backgroundColor: JQueryUI_BaseTheme.warning.background,
+              boxShadow: 0 2px 8px rgba(black, 0.25)
+            }
+          },
+          error: {
+            rootElement: {
+              backgroundColor: JQueryUI_BaseTheme.error.background,
+              boxShadow: 0 2px 8px rgba(black, 0.25)
+            }
+          }
+        }
+      }
+    }
   }
 }
+
+// TODO 移動
+DefaultSelector(defaultSelector)
+
+  if selector() == "&"
+
+    .{defaultSelector}
+
+      {block}
+
+
+  else
+
+    {block}
+
+
 
 
 provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
 
-
-  .Snackbar
-
-    WIDTH = 280px
-
-    display flex
-    align-items center
-
-    width WIDTH
-    min-height 40px
-    border-radius: JQueryUI_BaseTheme.basicBorderRadius
-    Paddings({ horizontalSymmetric: 8px })
-
-    background aliceblue
-    box-shadow 0 2px 8px rgba(black, 0.25)
-
-    position fixed
-    top 96px
-    left "calc(50% - 0.5*%s)" % WIDTH
-    z-index: ZIndexes.floatingNotifications
+  themes = properties.themes
 
 
-    &__SuccessDecoration
-
-      background: JQueryUI_BaseTheme.success.background
-
-
-    &__InfoDecoration
-
-      background: JQueryUI_BaseTheme.info.background
-
-
-    &__WarningDecoration
-
-      background: JQueryUI_BaseTheme.warning.background
-
-
-    &__ErrorDecoration
-
-      background: JQueryUI_BaseTheme.error.background
-
-
-    &-Icon
-
-      width 20px
-
-      flex-shrink 0
-
-
-      /.Snackbar__SuccessDecoration &
-
-        fill: JQueryUI_BaseTheme.success.iconsColor
-
-
-      /.Snackbar__InfoDecoration &
-
-        fill: JQueryUI_BaseTheme.info.iconsColor
-
-
-      /.Snackbar__WarningDecoration &
-
-        fill: JQueryUI_BaseTheme.warning.iconsColor
-
-
-      /.Snackbar__ErrorDecoration &
-
-        fill: JQueryUI_BaseTheme.error.iconsColor
-
-
-    &-Message
-
-      MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineHeight: 17px })
-
-      color: JQueryUI_BaseTheme.success.fontColor
-
-      flex-grow 1
-      retireFrom({ targetElementSelector: ".Snackbar-Icon", x: 8px })
-
-
-    &-DismissButton
-
-      ButtonLikeElementsPrimer()
-
-      retireFrom({ targetElementSelector: ".Snackbar-Text", x: 8px })
-      flex-shrink 0
-
-      cursor pointer
-
-
-      &-Icon
-
-        height 24px
+  //    /.Snackbar__SuccessDecoration &
+  //
+  //      fill: JQueryUI_BaseTheme.success.iconsColor
+  //
+  //
+  //    /.Snackbar__InfoDecoration &
+  //
+  //      fill: JQueryUI_BaseTheme.info.iconsColor
+  //
+  //
+  //    /.Snackbar__WarningDecoration &
+  //
+  //      fill: JQueryUI_BaseTheme.warning.iconsColor
+  //
+  //
+  //    /.Snackbar__ErrorDecoration &
+  //
+  //      fill: JQueryUI_BaseTheme.error.iconsColor
+  //
+  //
+  //  &-Message
+  //
+  //    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineHeight: 17px })
+  //
+  //    color: JQueryUI_BaseTheme.success.fontColor
+  //
+  //    flex-grow 1
+  //    retireFrom({ targetElementSelector: ".Snackbar-Icon", x: 8px })
+  //
+  //
+  //  &-DismissButton
+  //
+  //    ButtonLikeElementsPrimer()
+  //
+  //    retireFrom({ targetElementSelector: ".Snackbar-Text", x: 8px })
+  //    flex-shrink 0
+  //
+  //    cursor pointer
+  //
+  //
+  //    &-Icon
+  //
+  //      height 24px
 
 
   // === Methods =======================================================================================================
   // --- Basic ---------------------------------------------------------------------------------------------------------
+  applyBasicRules()
+
+    .Snackbar
+
+      display flex
+      align-items center
+
+      position fixed
+      top 96px
+      left "calc(50% - 0.5*%s)" % 280px
+      z-index: ZIndexes.floatingNotifications
+
+
+      &-Icon
+
+        flex-shrink 0
+
+
+  // --- Geometry ------------------------------------------------------------------------------------------------------
+  applyGeometricVariation(variation)
+
+    // ...
+    // substituteSelectorIfNoContext()
+
+
+  // --- Decoration ----------------------------------------------------------------------------------------------------
+  applyDecorativeVariation(variation)
+
+    // ...
+
+
+  // --- Theme ---------------------------------------------------------------------------------------------------------
+  applyTheme(theme) {
+
+    iterateObjectSkippingNullValues(theme.geometricVariations, @(geometricVariationName, geometricVariation) {
+
+      if (getObjectNonNullValuesCount(theme.geometricVariations) == 1) {
+
+        applyGeometricVariation(getFirstNonNullArrayElement(values(theme.geometricVariations)))
+
+      } else {
+
+        geometricVariationCSS_Class = buildBEM_Class({
+          block: "Snackbar",
+          modifier: geometricVariationName + "Geometry"
+        })
+
+        &.{geometricVariationCSS_Class} {
+          applyGeometricVariation(geometricVariation)
+        }
+      }
+    })
+
+    iterateObjectSkippingNullValues(theme.decorativeVariations, @(decorativeVariationName, decorativeVariation) {
+
+      if (getObjectNonNullValuesCount(theme.decorativeVariations) == 1) {
+
+        applyDecorativeVariation(getFirstNonNullArrayElement(values(theme.decorativeVariations)))
+
+      } else {
+
+        decorativeVariationCSS_Class = buildBEM_Class({
+          block: "Snackbar",
+          modifier: decorativeVariationName + "Decoration"
+        })
+
+        &.{decorativeVariationCSS_Class} {
+          applyDecorativeVariation(decorativeVariation)
+        }
+      }
+    })
+  }
+
+
+  // --- Applying ------------------------------------------------------------------------------------------------------
+  applyBasicRules()
+
+
+  if (getObjectNonNullValuesCount(themes) == 1) {
+
+    applyTheme(getFirstNonNullArrayElement(values(themes)))
+
+  } else {
+
+    iterateObjectSkippingNullValues(properties.themes, @(themeName, theme) {
+
+      themeCSS_Class = buildBEM_Class({
+        block: "Snackbar",
+        modifier: themeName + "Theme"
+      })
+
+      .{themeCSS_Class} {
+        applyTheme(theme)
+      }
+    })
+  }
