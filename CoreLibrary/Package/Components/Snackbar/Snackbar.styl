@@ -53,22 +53,6 @@ Snackbar = {
   }
 }
 
-// TODO 移動
-DefaultSelector(defaultSelector)
-
-  if selector() == "&"
-
-    .{defaultSelector}
-
-      {block}
-
-
-  else
-
-    {block}
-
-
-
 
 provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
 
@@ -97,14 +81,7 @@ provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
   //      fill: JQueryUI_BaseTheme.error.iconsColor
   //
   //
-  //  &-Message
-  //
-  //    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineHeight: 17px })
-  //
-  //    color: JQueryUI_BaseTheme.success.fontColor
-  //
-  //    flex-grow 1
-  //    retireFrom({ targetElementSelector: ".Snackbar-Icon", x: 8px })
+
   //
   //
   //  &-DismissButton
@@ -145,14 +122,20 @@ provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
   // --- Geometry ------------------------------------------------------------------------------------------------------
   applyGeometricVariation(variation)
 
-    // ...
-    // substituteSelectorIfNoContext()
+    .Snackbar-Message
+
+      MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineHeight: 17px })
+
+      flex-grow 1
+      retireFrom({ targetElementSelector: ".Snackbar-Icon", x: 8px })
 
 
   // --- Decoration ----------------------------------------------------------------------------------------------------
   applyDecorativeVariation(variation)
 
-    // ...
+    .Snackbar-Message
+
+      color greenyellow
 
 
   // --- Theme ---------------------------------------------------------------------------------------------------------
@@ -168,7 +151,7 @@ provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
 
         geometricVariationCSS_Class = buildBEM_Class({
           block: "Snackbar",
-          modifier: geometricVariationName + "Geometry"
+          modifier: capitalizeFirstCharacter(geometricVariationName) + "Geometry"
         })
 
         &.{geometricVariationCSS_Class} {
@@ -187,7 +170,7 @@ provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
 
         decorativeVariationCSS_Class = buildBEM_Class({
           block: "Snackbar",
-          modifier: decorativeVariationName + "Decoration"
+          modifier: capitalizeFirstCharacter(decorativeVariationName) + "Decoration"
         })
 
         &.{decorativeVariationCSS_Class} {
@@ -220,3 +203,5 @@ provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
       }
     })
   }
+
+
