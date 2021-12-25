@@ -56,9 +56,8 @@ Snackbar = {
 
 provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
 
+  CSS_NAMESPACE = "Snackbar"
   properties = deeplyCloneAndOverrideObject(preset, overridings)
-
-  themes = properties.themes
 
 
   //    /.Snackbar__SuccessDecoration &
@@ -135,73 +134,15 @@ provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
 
     .Snackbar-Message
 
-      color greenyellow
-
-
-  // --- Theme ---------------------------------------------------------------------------------------------------------
-  applyTheme(theme) {
-
-    iterateObjectSkippingNullValues(theme.geometricVariations, @(geometricVariationName, geometricVariation) {
-
-      if (getObjectNonNullValuesCount(theme.geometricVariations) == 1) {
-
-        applyGeometricVariation(getFirstNonNullArrayElement(values(theme.geometricVariations)))
-
-      } else {
-
-        geometricVariationCSS_Class = buildBEM_Class({
-          block: "Snackbar",
-          modifier: capitalizeFirstCharacter(geometricVariationName) + "Geometry"
-        })
-
-        &.{geometricVariationCSS_Class} {
-          applyGeometricVariation(geometricVariation)
-        }
-      }
-    })
-
-    iterateObjectSkippingNullValues(theme.decorativeVariations, @(decorativeVariationName, decorativeVariation) {
-
-      if (getObjectNonNullValuesCount(theme.decorativeVariations) == 1) {
-
-        applyDecorativeVariation(getFirstNonNullArrayElement(values(theme.decorativeVariations)))
-
-      } else {
-
-        decorativeVariationCSS_Class = buildBEM_Class({
-          block: "Snackbar",
-          modifier: capitalizeFirstCharacter(decorativeVariationName) + "Decoration"
-        })
-
-        &.{decorativeVariationCSS_Class} {
-          applyDecorativeVariation(decorativeVariation)
-        }
-      }
-    })
-  }
+      color red
 
 
   // --- Applying ------------------------------------------------------------------------------------------------------
   applyBasicRules()
 
-
-  if (getObjectNonNullValuesCount(themes) == 1) {
-
-    applyTheme(getFirstNonNullArrayElement(values(themes)))
-
-  } else {
-
-    iterateObjectSkippingNullValues(properties.themes, @(themeName, theme) {
-
-      themeCSS_Class = buildBEM_Class({
-        block: "Snackbar",
-        modifier: themeName + "Theme"
-      })
-
-      .{themeCSS_Class} {
-        applyTheme(theme)
-      }
-    })
-  }
-
-
+  applyComponentThemes({
+    CSS_Namespace: CSS_NAMESPACE,
+    themes: properties.themes,
+    applyGeometricVariation: applyGeometricVariation,
+    applyDecorativeVariation: applyDecorativeVariation
+  })

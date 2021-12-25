@@ -6,7 +6,88 @@ DefaultSelector(defaultSelector)
 
       {block}
 
-
   else
 
     {block}
+
+
+applyComponentThemes(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "applyComponentThemes"
+  })
+
+  CSS_Namespace = parametersObject.CSS_Namespace
+  themes = parametersObject.themes
+
+  /* [ Stylus theory ] Functions in object are allowed but must be decomposed to be invoked. */
+  applyGeometricVariation = parametersObject.applyGeometricVariation
+  applyDecorativeVariation = parametersObject.applyDecorativeVariation
+
+
+  applyTheme(theme) {
+
+    /* [ Theory ] Every value could be set to null by user. */
+    iterateObjectSkippingNullValues(theme.geometricVariations, @(geometricVariationName, geometricVariation) {
+
+      if (getObjectNonNullValuesCount(theme.geometricVariations) == 1) {
+
+        applyGeometricVariation(getFirstNonNullArrayElement(values(theme.geometricVariations)))
+
+      } else {
+
+        geometricVariationCSS_Class = buildBEM_Class({
+          block: CSS_Namespace,
+          modifier: capitalizeFirstCharacter(geometricVariationName) + "Geometry"
+        })
+
+        &.{geometricVariationCSS_Class} {
+          applyGeometricVariation(geometricVariation)
+        }
+      }
+    })
+
+    iterateObjectSkippingNullValues(theme.decorativeVariations, @(decorativeVariationName, decorativeVariation) {
+
+      if (getObjectNonNullValuesCount(theme.decorativeVariations) == 1) {
+
+        applyDecorativeVariation(getFirstNonNullArrayElement(values(theme.decorativeVariations)))
+
+      } else {
+
+        decorativeVariationCSS_Class = buildBEM_Class({
+          block: CSS_Namespace,
+          modifier: capitalizeFirstCharacter(decorativeVariationName) + "Decoration"
+        })
+
+        &.{decorativeVariationCSS_Class} {
+          applyDecorativeVariation(decorativeVariation)
+        }
+      }
+    })
+  }
+
+
+  if (getObjectNonNullValuesCount(themes) == 1) {
+
+    applyTheme(getFirstNonNullArrayElement(values(themes)))
+
+  } else {
+
+    iterateObjectSkippingNullValues(properties.themes, @(themeName, theme) {
+
+      themeCSS_Class = buildBEM_Class({
+        block: CSS_Namespace,
+        modifier: themeName + "Theme"
+      })
+
+      .{themeCSS_Class} {
+        applyTheme(theme)
+      }
+    })
+  }
