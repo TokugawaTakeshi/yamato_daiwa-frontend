@@ -18,33 +18,67 @@ Snackbar = {
 
             icon: {
               width: 20px
+            },
+
+            dismissButton: {
+              icon: {
+                width: 20px
+              }
             }
           }
         },
 
         decorativeVariations: {
+
           success: {
             rootElement: {
               backgroundColor: JQueryUI_BaseTheme.success.background,
               boxShadow: 0 2px 8px rgba(black, 0.25)
+            },
+            message: {
+              fontColor: JQueryUI_BaseTheme.success.fontColor
+            },
+            icon: {
+              color: JQueryUI_BaseTheme.success.iconsColor
             }
           },
+
           info: {
             rootElement: {
               backgroundColor: JQueryUI_BaseTheme.info.background,
               boxShadow: 0 2px 8px rgba(black, 0.25)
+            },
+            message: {
+              fontColor: JQueryUI_BaseTheme.info.fontColor
+            },
+            icon: {
+              color: JQueryUI_BaseTheme.info.iconsColor
             }
           },
+
           warning: {
             rootElement: {
               backgroundColor: JQueryUI_BaseTheme.warning.background,
               boxShadow: 0 2px 8px rgba(black, 0.25)
+            },
+            message: {
+              fontColor: JQueryUI_BaseTheme.warning.fontColor
+            },
+            icon: {
+              color: JQueryUI_BaseTheme.warning.iconsColor
             }
           },
+
           error: {
             rootElement: {
               backgroundColor: JQueryUI_BaseTheme.error.background,
               boxShadow: 0 2px 8px rgba(black, 0.25)
+            },
+            message: {
+              fontColor: JQueryUI_BaseTheme.error.fontColor
+            },
+            icon: {
+              color: JQueryUI_BaseTheme.error.iconsColor
             }
           }
         }
@@ -57,52 +91,21 @@ Snackbar = {
 provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
 
   CSS_NAMESPACE = "Snackbar"
+  ROOT_ELEMENT_SELECTOR = "." + CSS_NAMESPACE
+
   properties = deeplyCloneAndOverrideObject(preset, overridings)
 
-
-  //    /.Snackbar__SuccessDecoration &
-  //
-  //      fill: JQueryUI_BaseTheme.success.iconsColor
-  //
-  //
-  //    /.Snackbar__InfoDecoration &
-  //
-  //      fill: JQueryUI_BaseTheme.info.iconsColor
-  //
-  //
-  //    /.Snackbar__WarningDecoration &
-  //
-  //      fill: JQueryUI_BaseTheme.warning.iconsColor
-  //
-  //
-  //    /.Snackbar__ErrorDecoration &
-  //
-  //      fill: JQueryUI_BaseTheme.error.iconsColor
-  //
-  //
-
-  //
-  //
-  //  &-DismissButton
-  //
-  //    ButtonLikeElementsPrimer()
-  //
-  //    retireFrom({ targetElementSelector: ".Snackbar-Text", x: 8px })
-  //    flex-shrink 0
-  //
-  //    cursor pointer
-  //
-  //
-  //    &-Icon
-  //
-  //      height 24px
+  ICON_SELECTOR = "." + buildBEM_Class({ block: CSS_NAMESPACE, element: "Icon", elementSeparator: "-" })
+  MESSAGE_SELECTOR = "." + buildBEM_Class({ block: CSS_NAMESPACE, element: "Message", elementSeparator: "-" })
+  DISMISS_BUTTON_SELECTOR = "." + buildBEM_Class({ block: CSS_NAMESPACE, element: "DismissButton", elementSeparator: "-" })
+  DISMISS_BUTTON_ICON_SELECTOR = "." + buildBEM_Class({ block: CSS_NAMESPACE, element: "DismissButton-Icon", elementSeparator: "-" })
 
 
   // === Methods =======================================================================================================
   // --- Basic ---------------------------------------------------------------------------------------------------------
   applyBasicRules()
 
-    .Snackbar
+    {ROOT_ELEMENT_SELECTOR}
 
       display flex
       align-items center
@@ -113,28 +116,71 @@ provideSnackbarComponent(preset = Snackbar.defaultProperties, overridings = {})
       z-index: ZIndexes.floatingNotifications
 
 
-      &-Icon
+    {ICON_SELECTOR}
 
-        flex-shrink 0
+      flex-shrink 0
+
+
+    {MESSAGE_SELECTOR}
+
+      flex-grow 1
+
+      retireFrom({ targetElementSelector: ICON_SELECTOR, x: 8px })
+
+
+    {DISMISS_BUTTON_SELECTOR}
+
+      ButtonLikeElementsPrimer()
+
+      cursor pointer
+
+      retireFrom({ targetElementSelector: MESSAGE_SELECTOR, x: 8px })
+      flex-shrink 0
 
 
   // --- Geometry ------------------------------------------------------------------------------------------------------
   applyGeometricVariation(variation)
 
-    .Snackbar-Message
+    +DefaultSelector(ROOT_ELEMENT_SELECTOR)
+
+      width variation.rootElement.width
+      min-height variation.rootElement.minimalHeight
+      border-radius variation.rootElement.borderRadius
+      Paddings(variation.rootElement.paddings)
+
+
+    {ICON_SELECTOR}
+
+      width variation.icon.width
+
+
+    {MESSAGE_SELECTOR}
 
       MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineHeight: 17px })
 
-      flex-grow 1
-      retireFrom({ targetElementSelector: ".Snackbar-Icon", x: 8px })
+
+    {DISMISS_BUTTON_ICON_SELECTOR}
+
+      width variation.dismissButton.icon.width
 
 
   // --- Decoration ----------------------------------------------------------------------------------------------------
   applyDecorativeVariation(variation)
 
-    .Snackbar-Message
+    +DefaultSelector(ROOT_ELEMENT_SELECTOR)
 
-      color red
+      background-color variation.rootElement.backgroundColor
+      box-shadow variation.rootElement.boxShadow
+
+
+    {ICON_SELECTOR}
+
+      fill variation.icon.color
+
+
+    {MESSAGE_SELECTOR}
+
+      color variation.message.fontColor
 
 
   // --- Applying ------------------------------------------------------------------------------------------------------

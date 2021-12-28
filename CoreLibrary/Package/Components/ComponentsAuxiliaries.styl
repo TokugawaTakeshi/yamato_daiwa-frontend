@@ -2,7 +2,7 @@ DefaultSelector(defaultSelector)
 
   if selector() == "&"
 
-    .{defaultSelector}
+    {defaultSelector}
 
       {block}
 
@@ -25,14 +25,14 @@ applyComponentThemes(parametersObject, restParameters__MUST_NOT_BE...)
   CSS_Namespace = parametersObject.CSS_Namespace
   themes = parametersObject.themes
 
-  /* [ Stylus theory ] Functions in object are allowed but must be decomposed to be invoked. */
+  // [ Stylus theory ] Functions in object are allowed but must be decomposed to be invoked.
   applyGeometricVariation = parametersObject.applyGeometricVariation
   applyDecorativeVariation = parametersObject.applyDecorativeVariation
 
 
   applyTheme(theme) {
 
-    /* [ Theory ] Every value could be set to null by user. */
+    // [ Theory ] Every value could be set to null by user.
     iterateObjectSkippingNullValues(theme.geometricVariations, @(geometricVariationName, geometricVariation) {
 
       if (getObjectNonNullValuesCount(theme.geometricVariations) == 1) {
