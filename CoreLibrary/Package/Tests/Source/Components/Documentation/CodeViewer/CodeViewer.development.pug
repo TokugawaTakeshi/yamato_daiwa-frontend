@@ -1,0 +1,60 @@
+extends ../../../../../PagesTemplates/RegularWebPage.pug
+
+
+block append Metadata
+
+  -
+    HTML_PAGE_TITLE = "CodeViewer component development";
+    styleSheetsURIs = [ "./CodeViewer.development.css" ]
+    scriptsURIs.endOfBody = [ "./CodeViewer.test.js" ]
+
+
+block append Requirements
+
+  include ../../../../../Components.pug
+
+
+block append PageContent
+
+  .SamplesFlow
+
+    .Sample
+
+      .CodeViewer
+
+        .CodeViewer-CommonHeading 見出し
+
+        .CodeViewer-IFrameSizingContainer
+          iframe.CodeViewer-CodeExecutionResultViewport.CodeViewer-CodeExecutionResultViewport__DefaultPaddings(
+            src= "https://duckduckgo.com/"
+            title="Below listing rendering result"
+          )
+
+        .CodeViewer-ActionBar
+
+          button.CodeViewer-ActionBar__CopyCode(
+            type="button"
+          ) Copy
+
+        .CodeViewer-TabsFlow
+
+          .CodeViewer-Tab(
+            tabindex="0"
+          )
+            span.CodeViewer-Tab-FileLabel index.pug
+            span.CodeViewer-Tab-LanguageKey Language
+            span.CodeViewer-Tab-LanguageValue Pug
+
+          .CodeViewer-Tab.CodeViewer-Tab__SelectedState(
+            tabindex="0"
+          )
+            span.CodeViewer-Tab-FileLabel Styles.styl
+            span.CodeViewer-Tab-LanguageKey Language
+            span.CodeViewer-Tab-LanguageValue Stylus
+
+          .CodeViewer-Tab(
+            tabindex="0"
+          )
+            span.CodeViewer-Tab-FileLabel Logic.ts
+            span.CodeViewer-Tab-LanguageKey Language
+            span.CodeViewer-Tab-LanguageValue TypeScript

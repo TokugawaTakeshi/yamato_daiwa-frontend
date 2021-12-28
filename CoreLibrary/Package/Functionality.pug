@@ -1,6 +1,6 @@
 -
 
-  /* [ Theory ] Require for HTML validity */
+  /* [ Theory ] Required for HTML validity */
   const HTML_PAGE_DEFAULT_LANGUAGE_SPECIFICATION__BCP47 = "en";
 
   let BEM_ELEMENT_SEPARATOR = "-";
@@ -40,6 +40,17 @@ include Markup/PugExtensions.generated.pug
     separateEach3DigitsGroupWithComma,
     separateEach4DigitsGroupWithComma,
 
+    /* === Strings ================================================================================================== */
+    replace2OrMoreSpacesTo1,
+
+    /* === Random values generators ================================================================================= */
+    getRandomArrayElement,
+    getRandomBoolean,
+    getRandomInteger,
+
+    /* === Specialities for Pug ===================================================================================== */
+    buildEmailLinkHREF_ArttributeValue,
+    buildPhoneNumberLinkHREF_ArttributeValue
     // -----------------------------------------------------------------------------------------------------------------
     /*
     areStringifiedDigitsOnly,
@@ -99,4 +110,8 @@ include Markup/PugExtensions.generated.pug
   } = global.__PUG_EXTENSIONS_EXPORTS__;
 
 
+include Markup/Assets/Dummies.pug
+include Markup/Assets/SVG_Icons/SVG_Icons.pug
+
 include Markup/BuildInPlugins/PrismJS_Integration.pug
+include Markup/BuildInPlugins/YamatoDaiwaInformationDesign.pug

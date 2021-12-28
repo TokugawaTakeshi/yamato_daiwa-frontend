@@ -1,5 +1,7 @@
 # `buildCalcExpression`
 
+[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-bce-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+
 ```
 buildCalcExpression(formula: string, variables: { [variableName: string]: value }): CSS_Function
 ```

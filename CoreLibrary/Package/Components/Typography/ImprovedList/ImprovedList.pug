@@ -1,0 +1,131 @@
+-
+
+  /* [ Theory ] Simultaneous rendering of multiple Improved lists is seems to be unlikely, but to exclude it logically,
+  *   it is required the deep understanding of Pug pre-processor. */
+  const ImprovedUnorderedListsCoordinator = {
+
+    counterForUniqueID_generation: 0,
+    currentMasterListID: null,
+
+    /*
+     * {
+     *   [masterListID]: {
+     *
+     *     currentDepthLevel: number;
+     *     currentItemCompoundNumber: Array<number>;
+     *
+     *     [depthLevel: number]: {
+     *       listType: string;
+     *       customMakerGenerationFunction: (currentItemCompoundNumber: Array<number>) => string;
+     *     }
+     *   }
+     * }
+     * */
+    listsAbstractions: {}
+  }
+
+  const ImprovedList = {
+    Types: {
+      unordered: "unordered",
+      ordered: "ordered"
+    }
+  }
+
+
+mixin ImprovedList(properties)
+
+  -
+
+    properties = properties || {}
+
+    const { type: listType } = properties;
+
+    const isTopDepthLevel = ImprovedUnorderedListsCoordinator.currentMasterListID === null;
+
+    let currentMasterListID;
+    let currentDepthLevel;
+
+
+    if (isTopDepthLevel) {
+
+      currentMasterListID = ImprovedUnorderedListsCoordinator.counterForUniqueID_generation;
+
+      ImprovedUnorderedListsCoordinator.currentMasterListID = currentMasterListID
+
+      ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID] = {
+        currentDepthLevel: 1,
+        currentItemCompoundNumber: [ 0 ]
+      };
+
+      ImprovedUnorderedListsCoordinator.counterForUniqueID_generation++;
+      currentDepthLevel = 1;
+
+    } else {
+
+      currentMasterListID = ImprovedUnorderedListsCoordinator.currentMasterListID;
+      currentDepthLevel = ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentDepthLevel + 1;
+
+      ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentDepthLevel = currentDepthLevel;
+      ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentItemCompoundNumber.push(0);
+    }
+
+    ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID][currentDepthLevel] = {
+      listType
+    }
+
+
+
+  .ImprovedList(role="list")
+    block
+
+
+  -
+
+    if (currentDepthLevel === 1) {
+      delete ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID];
+      ImprovedUnorderedListsCoordinator.currentMasterListID = null;
+    } else {
+      ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentDepthLevel--;
+      ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentItemCompoundNumber.pop()
+    }
+
+
+mixin ImprovedListItem(properties)
+
+  -
+
+    properties = properties || {}
+
+    const { important, notice } = properties
+
+    const {
+      currentDepthLevel,
+      currentItemCompoundNumber
+    } = ImprovedUnorderedListsCoordinator.listsAbstractions[ImprovedUnorderedListsCoordinator.currentMasterListID]
+
+    const currentListType = ImprovedUnorderedListsCoordinator.
+        listsAbstractions[ImprovedUnorderedListsCoordinator.currentMasterListID][currentDepthLevel].listType;
+
+    ImprovedUnorderedListsCoordinator.listsAbstractions[ImprovedUnorderedListsCoordinator.currentMasterListID].
+        currentItemCompoundNumber[currentItemCompoundNumber.length - 1]++;
+
+
+  .ImprovedList-Item
+
+    case currentListType
+
+      when ImprovedList.Types.unordered
+        case currentDepthLevel
+          when 1
+            svg.ImprovedList-Item-Marker.ImprovedList-Item-Marker__SVG
+              circle(r="4" cx="50%" cy="50%" fill="black")
+          when 2
+            svg.ImprovedList-Item-Marker.ImprovedList-Item-Marker__SVG
+              circle(r="3.5" cx="50%" cy="50%" stroke="black" stroke-width="1" fill="none")
+
+      when ImprovedList.Types.ordered
+        .ImprovedList-Item-Marker.ImprovedList-Item-Marker__Lettering= currentItemCompoundNumber.join(".")
+
+
+    .ImprovedList-Item-TargetContent(role="listitem")
+      block

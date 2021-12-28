@@ -1,5 +1,7 @@
 # `applyIfNotNull`: applying the nullable CSS properties
 
+[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-ainn-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+
 Adds each specified CSS property to target ruleset when if it's not null. Intended to be used in
 cases when CSS values are unknown in advance (actual for the frameworks development).
 

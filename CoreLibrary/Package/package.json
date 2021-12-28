@@ -1,9 +1,10 @@
 {
   "name": "@yamato-daiwa/frontend",
-  "version": "0.2.0",
+  "version": "0.3.0-alpha.9",
   "description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
   "keywords": [
     "frontend",
+    "pug",
     "stylus"
   ],
   "author": {
@@ -21,6 +22,12 @@
   },
   "files": [
     "Components",
+    "!Components/**/*.ts",
+    "!Components/**/*.template.pug",
+    "Markup",
+    "!Markup/Source",
+    "PagesTemplates",
+    "!PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.styl",
     "Styles",
     "Components.pug",
     "Components.styl",
@@ -28,21 +35,23 @@
     "Functionality.styl"
   ],
   "dependencies": {
-    "@yamato-daiwa/es-extensions": "1.3.0-alpha.2",
-    "@yamato-daiwa/es-extensions-browserjs": "1.3.0-alpha.5",
+    "@yamato-daiwa/es-extensions": "1.4.0-alpha.1",
+    "@yamato-daiwa/es-extensions-browserjs": "1.3.0-alpha.8",
     "clipboard": "2.0.8",
     "prismjs": "1.25.0"
   },
   "devDependencies": {
     "@types/prismjs": "1.16.6",
-    "hikari-automation": "0.0.43",
+    "hikari-automation": "0.0.44",
     "stylus": "0.55.0",
-    "ts-node": "10.3.0",
-    "yamato-daiwa_code_quality_management": "0.0.16"
+    "ts-node": "10.4.0",
+    "typescript": "4.5.2",
+    "yamato-daiwa_code_quality_management": "0.0.19"
   },
   "scripts": {
     "PugExtensions:ProductionBuild": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution PugExtensions --mode PRODUCTION & ts-node Markup/Source/PugExtensionsOutputFileGenerator.ts",
     "AnywherePageStyles:IncrementalBuild": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution StaticPreviewAnywherePage --mode DEVELOPMENT",
-    "Tests": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution StylesAndComponentsTesting --mode DEVELOPMENT"
+    "Tests": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution StylesAndComponentsTesting --mode DEVELOPMENT",
+    "Alpha realize": "npm publish --tag alpha"
   }
 }

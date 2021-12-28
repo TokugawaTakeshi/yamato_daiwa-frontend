@@ -10,22 +10,22 @@ isNotNull(value)
 
 isString(value)
 
-  return typeof(value) == DataTypes.string
+  return typeof(value) == "string"
 
 
 isEmptyString(value)
 
-  return typeof(value) == DataTypes.string && length(value) == 0
+  return typeof(value) == "string" && length(value) == 0
 
 
 isUnitlessNumber(value)
 
-  return typeof(value) == DataTypes.unit && isEmptyString(unit(value))
+  return typeof(value) == "unit" && isEmptyString(unit(value))
 
 
 isBoolean(value)
 
-  return typeof(value) == DataTypes.boolean
+  return typeof(value) == "boolean"
 
 
 isTrue(value)
@@ -40,7 +40,7 @@ isFalse(value)
 
 isObject(value)
 
-  return typeof(value) == DataTypes.object
+  return typeof(value) == "object"
 
 
 isIdentifier(value)

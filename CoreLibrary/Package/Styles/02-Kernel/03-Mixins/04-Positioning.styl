@@ -1,0 +1,90 @@
+HorizontalCenteringWithoutWrapper = {
+  TargetElementTypes: {
+    block: "BLOCK",
+    inlineBlock: "INLINE_BLOCK"
+  }
+}
+
+
+centerHorizontallyWithoutWrapper(parametersObject, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      targetElementType: {
+        type: DataTypes.string,
+        required: true,
+        allowedValues: values(HorizontalCenteringWithoutWrapper.TargetElementTypes)
+      },
+      maximalWidth: {
+        type: DataTypes.unit,
+        required: false
+      },
+      horizontalSpaceBetweenSelfAndParent: {
+        type: DataTypes.unit,
+        required: false
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "centerHorizontallyWithoutWrapper"
+  })
+
+
+  parametersObject = parametersObject || {}
+
+
+  if parametersObject.targetElementType == HorizontalCenteringWithoutWrapper.TargetElementTypes.inlineBlock
+
+    position relative
+    left 50%
+    transform translateX(-50%)
+
+
+  else
+
+    margin-left auto
+    margin-right auto
+
+
+  applyIfNotNull({ max-width: parametersObject.maximalWidth })
+
+
+  if isNotNull(parametersObject.horizontalSpaceBetweenSelfAndParent)
+
+    width "calc(100% - 2*%s)" % parametersObject.horizontalSpaceBetweenSelfAndParent
+
+
+VerticallyCenteredAbsolutelyPositionedBlock(parametersObject = {}, restParameters__MUST_NOT_BE...)
+
+  validateSingleParametersObject({
+    targetObject: parametersObject,
+    propertiesSpecification: {
+      properties: {
+        upwardShifting: {
+          type: DataTypes.unit
+        }
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE,
+    mixinOrFunctionName: "VerticallyCenteredAbsolutelyPositionedBlock"
+  })
+
+
+  position absolute
+  top 50%
+
+
+  if isNull(parametersObject.upwardShifting)
+
+    transform translateY(-50%)
+
+  else
+
+    transform "translateY(calc(-50% - %s))" % parametersObject.upwardShifting
+
+
+placeToRight()
+
+  position relative
+  left 100%
+  transform translateX(-100%)

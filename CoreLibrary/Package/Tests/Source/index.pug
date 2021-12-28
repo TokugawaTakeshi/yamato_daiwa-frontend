@@ -3,33 +3,58 @@ extends ../../PagesTemplates/StaticPreviewAnywherePage.pug
 
 block append Metadata
 
-  - HTML_PAGE_TITLE = "@yamato-daiwa/frontend testing"
+  - HTML_PAGE_TITLE = "@yamato-daiwa/frontend testing";
 
 
 block append TableOfContents
 
   h1.AnywherePage-TopHeading= HTML_PAGE_TITLE
 
-  +PageLink__ImplementationInProgress(
-    "./Styles/02-Kernel/03-Mixins/02-HeightSizing/textBoxLikeElementsHeightSizing.test.html"
-  ) textBoxLikeElementsHeightSizing
+  +PageLink({
+    label: "textBoxLikeElementsHeightSizing",
+    URI: "./Styles/02-Kernel/03-Mixins/02-HeightSizing/textBoxLikeElementsHeightSizing.test.html",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+
+  h2.AnywherePage-PagesGroupHeading Typography
+
+  +PageLink({
+    label: "Typography",
+    URI: "./Styles/02-Kernel/05-Typography/Typography.test.html",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
 
 
   h2.AnywherePage-PagesGroupHeading Components
 
+  +PageLinksGroup({
+    title: "Snackbar",
+    linksData: [
+      { label: "Testing", URI: "./Components/Snackbar/Snackbar.test.html" },
+      { label: "Development", URI: "./Components/Snackbar/Snackbar.development.html" }
+    ],
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementInProgress
+  })
+
+
   h3.AnywherePage-PagesSubgroupHeading Documentation
 
-  +PagesLinksGroup__ImplementationInProgress({
-    label: "CodeViewer",
+  +PageLinksGroup({
+    title: "CodeViewer",
     linksData: [
-      { label: "Testing", URI: "./Components/Documentation/CodeViewer/CodeViewer.test.html" },
-      { label: "Development", URI: "./Components/Documentation/CodeViewer/CodeViewer.development.html" }
-    ]
+      {label: "Testing", URI: "./Components/Documentation/CodeViewer/CodeViewer.test.html" },
+      {label: "Development", URI: "./Components/Documentation/CodeViewer/CodeViewer.development.html" }
+    ],
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementInProgress
   })
 
 
   h3.AnywherePage-PagesSubgroupHeading Other
 
-  +PageLink__ImplementationInProgress(
-    "./Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.html"
-  ) OverflowSafeSingleLineLabel
+  +PageLink({
+    label: "OverflowSafeSingleLineLabel",
+    URI: "./Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.html",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
+  })
+

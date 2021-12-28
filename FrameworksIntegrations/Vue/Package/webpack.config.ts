@@ -1,0 +1,66 @@
+import Webpack from "webpack";
+import Path from "path";
+import { VueLoaderPlugin } from "vue-loader";
+
+
+const webpackConfig: Webpack.Configuration = {
+
+  context: Path.resolve(process.cwd(), "Source"),
+  entry: "./index.ts",
+  output: {
+    filename: "index.js",
+    path: Path.resolve(process.cwd(), "Distributable")
+  },
+  mode: "development",
+  watch: false,
+
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        loader: "ts-loader",
+        options: {
+          appendTsSuffixTo: [ /\.vue$/ ]
+        }
+      },
+      {
+        test: /\.vue$/,
+        loader: "vue-loader"
+      },
+      {
+        test: /\.pug$/u,
+        oneOf: [
+          {
+            resourceQuery: /^\?vue/u,
+            use: [ "pug-plain-loader" ]
+          },
+          {
+            use: [
+              {
+                loader: "html-loader",
+                options: {
+                  minimize: { caseSensitive: true }
+                }
+              },
+              "pug-html-loader"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  resolve: {
+    extensions: [ ".js", ".ts" ],
+    alias: {
+      "@SVG_Icons": Path.resolve("Source/SVG_Icons")
+    }
+  },
+
+  plugins: [
+    new VueLoaderPlugin()
+  ]
+};
+
+
+export default webpackConfig;
