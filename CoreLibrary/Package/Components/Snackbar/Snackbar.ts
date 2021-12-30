@@ -61,7 +61,6 @@ abstract class Snackbar {
 
 
   public static mountAndDisplayForAWhile(parametersObject: Snackbar.ParametersObject): void {
-    console.log("ok!");
     Snackbar.sessionsQueue.addFunctionToQueueAndStartQueueExecutionIfHasNotStartedYet(
       async (): Promise<void> => Snackbar.mountAndDisplayForAWhileSingleInstance(parametersObject)
     ).catch(PromisesQueue.errorHandler);
