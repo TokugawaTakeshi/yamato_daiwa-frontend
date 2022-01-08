@@ -23,7 +23,7 @@ block append PageContent
       .Sample-Heading One tab
 
       +CodeViewer.Sample-CodeViewer
-        +CodeViewerListing({ codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript }).
+        +CodeViewer-Listing({ codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript }).
           import { areStringifiedDigitsOnly } from "hikari-es-extensions";
 
           console.log(areStringifiedDigitsOnly("123")); // 数字しか含めていないので「true」
@@ -38,7 +38,7 @@ block append PageContent
 
       +CodeViewer({ topHeading: "必須HTML用意済みPug初手" }).Sample-CodeViewer
 
-        +CodeViewerListing({
+        +CodeViewer-Listing({
           codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.Pug,
           fileLabel: "Source code"
         }).
@@ -58,7 +58,7 @@ block append PageContent
 
             p 目に見える内容は此方
 
-        +CodeViewerListing({
+        +CodeViewer-Listing({
           codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.HTML,
           fileLabel: "Output"
         })
@@ -80,3 +80,78 @@ block append PageContent
             </body>
 
             </html>
+
+
+    .Sample
+
+      .Sample-Heading With explanations
+
+      +CodeViewer.Sample-CodeViewer
+
+        +CodeViewer-PartialListingsWithExplanations({
+          codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript,
+          fileLabel: "Source code"
+        })
+
+          +CodeViewer-PartialListing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+          }).
+
+            import { areStringifiedDigitsOnly } from "hikari-es-extensions";
+
+            console.log(areStringifiedDigitsOnly("123"));
+
+          +CodeViewer-Explanation: p 数字しか含めていないので「true」
+
+          +CodeViewer-PartialListing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+          }) console.log(areStringifiedDigitsOnly("032"));
+
+          +CodeViewer-Explanation
+            p 此の#[+Term--YDID 関数]の場合先に行く#[+ImportantEntity--YDID 0]は妥当とされているので#[+ImportantEntity--YDID true]が返される。
+
+          +CodeViewer-PartialListing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+          }) console.log(areStringifiedDigitsOnly("03e"));
+
+          +CodeViewer-Explanation: p 「e」はネイピア数？何方にせよ、関数名通り数字だけではない場合、「false」
+
+          +CodeViewer-PartialListing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+          }) console.log(areStringifiedDigitsOnly("ab1"));
+
+          +CodeViewer-Explanation: p 数字だけではないので「false」
+
+        +CodeViewer-PartialListingsWithExplanations({
+          codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript,
+          fileLabel: "Source code"
+        })
+
+          +CodeViewer-PartialListing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+          }).
+
+            import { areStringifiedDigitsOnly } from "hikari-es-extensions";
+
+            console.log(areStringifiedDigitsOnly("123"));
+
+        +CodeViewer-Explanation: p 数字しか含めていないので「true」
+
+        +CodeViewer-PartialListing({
+          codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+        }) console.log(areStringifiedDigitsOnly("032"));
+
+        +CodeViewer-Explanation
+          p 此の#[+Term--YDID 関数]の場合先に行く#[+ImportantEntity--YDID 0]は妥当とされているので#[+ImportantEntity--YDID true]が返される。
+
+        +CodeViewer-PartialListing({
+          codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+        }) console.log(areStringifiedDigitsOnly("03e"));
+
+        +CodeViewer-Explanation: p 「e」はネイピア数？何方にせよ、関数名通り数字だけではない場合、「false」
+
+        +CodeViewer-PartialListing({
+          codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+        }) console.log(areStringifiedDigitsOnly("ab1"));
+
+        +CodeViewer-Explanation: p 数字だけではないので「false」

@@ -1,20 +1,20 @@
-import CodeHighlighter from "prismjs";
+import CodeSyntaxHighlighter from "prismjs";
 import ClipboardAccess from "clipboard";
 import {
   RawObjectDataProcessor,
   Logger,
   InvalidExternalDataError,
   DOM_ElementRetrievingFailedError,
+  insertSubstringIf,
   isNotUndefined,
   isEmptyString,
   isNonEmptyString
 } from "@yamato-daiwa/es-extensions";
 import {
-  createElement,
-  getElementWhichMustExist
+  createElement
 } from "@yamato-daiwa/es-extensions-browserjs";
-// eslint-disable-next-line node/no-unpublished-import
 import delegateClickEventHandling from "../../../Utils/delegateClickEventHandling";
+import getExpectedToBeSingleElement from "../../../Utils/getExpectedToBeSingleElement";
 import Snackbar from "../../Snackbar/Snackbar";
 
 /* --- Temporary ---------------------------------------------------------------------------------------------------- */
@@ -22,76 +22,87 @@ import "prismjs/components/prism-typescript.js";
 import "prismjs/components/prism-pug.js";
 // ---------------------------------------------------------------------------------------------------------------------
 
-import componentTemplate from "./CodeViewer.template.pug";
+import componentHTML_Workpiece from "./CodeViewer.template.pug";
 
 
 export class CodeViewer {
 
-  private static readonly componentImage: Element = createElement(componentTemplate);
+  protected static readonly workpiece: Element = createElement(componentHTML_Workpiece);
 
-  private readonly rootElement: Element;
-  private readonly codeListings: NodeListOf<HTMLElement>;
-  private readonly tabsFlow: HTMLElement;
-  private readonly tabs: Array<Element> = [];
+  protected readonly rootElement: Element;
+  protected readonly tabsFlow: Element;
+  protected readonly tabs: Array<Element> = [];
+  protected readonly tabsContent: NodeListOf<HTMLElement>;
+
+  protected activeTabContent!: HTMLElement;
 
 
   public static initializeAllInstances(): Array<CodeViewer> {
-    return Array.from(document.querySelectorAll(".CodeViewer")).
+    return Array.from(document.querySelectorAll("[data-element-root]")).
         map((componentRootElement: Element): CodeViewer => CodeViewer.initializeSingleInstance(componentRootElement));
   }
 
   public static initializeSingleInstance(componentRootElement: Element): CodeViewer {
 
-    const selfInstance: CodeViewer = new CodeViewer(componentRootElement);
+    const selfInstance: CodeViewer = new CodeViewer(componentRootElement).
+        initializeTabsAndIts_Content().
+        initializeActionBar();
 
-    selfInstance.initializeTabsAndCodeListings();
-    selfInstance.initializeActionBar();
-
-    CodeHighlighter.highlightAllUnder(componentRootElement);
+    CodeSyntaxHighlighter.highlightAllUnder(componentRootElement);
 
     return selfInstance;
   }
 
 
-  private constructor(componentRootElement: Element) {
+  protected constructor(componentRootElement: Element) {
 
     this.rootElement = componentRootElement;
 
-    this.codeListings = componentRootElement.querySelectorAll(".CodeViewer-CodeListing");
-
-    this.tabsFlow = getElementWhichMustExist({
-      selector: ".CodeViewer-TabsFlow", context: componentRootElement
+    this.tabsFlow = getExpectedToBeSingleElement({
+      selector: "[data-element-tabs_flow]", context: componentRootElement
     });
+
+    this.tabsContent = componentRootElement.querySelectorAll<HTMLElement>("[data-element-tab_content]");
   }
 
 
-  private initializeTabsAndCodeListings(): void {
+  protected initializeTabsAndIts_Content(): this {
 
-    if (this.codeListings.length === 0) {
+    if (this.tabsContent.length === 0) {
       Logger.logError({
         errorType: DOM_ElementRetrievingFailedError.NAME,
         title: DOM_ElementRetrievingFailedError.DEFAULT_TITLE,
-        description: "No code listings ('.CodeViewer-CodeListing') found. The initialization has been terminated.",
-        occurrenceLocation: "CodeViewer.initializeSingleInstance(parametersObject) -> initializeTabsAndCodeListings()"
+        description: "The tabs content is empty. The initialization of CodeViewer component instance has been terminated. " +
+            "Add '+CodeViewer-Listing' and/or '+CodeViewer-PartialListingsWithExplanations' as block content of '+CodeViewer'.",
+        occurrenceLocation: "CodeViewer.initializeSingleInstance(parametersObject) -> initializeTabsAndIts_Content()"
       });
-      return;
+      return this;
     }
 
 
-    if (this.codeListings.length === 1) {
-      this.codeListings[0].removeAttribute("hidden");
+    if (this.tabsContent.length === 1) {
+
+      this.activeTabContent = this.tabsContent[0];
+
+      console.log(this.tabsContent[0].getAttribute("hidden"));
+      this.tabsContent[0].removeAttribute("hidden");
       this.tabsFlow.remove();
-      return;
+
+      return this;
     }
 
 
-    const emptyTab: Element = getElementWhichMustExist({ selector: ".CodeViewer-Tab", context: CodeViewer.componentImage });
-    let hasAtLeastOneCodeListingBeenSetToActive: boolean = false;
+    const emptyTab: Element = getExpectedToBeSingleElement({
+      selector: "[data-element-tab]", context: CodeViewer.workpiece
+    });
 
-    for (const [ listingNumber, codeListing ] of this.codeListings.entries()) {
+    /* [ Theory ] The programmer could set the content of multiple tabs to active without understanding what he is doing. */
+    let hasAtLeastOneTabContentBeenSetToActive: boolean = false;
+
+    for (const [ tabContentNumber, tabContent ] of this.tabsContent.entries()) {
 
       const currentTabDataProcessingResult: RawObjectDataProcessor.ProcessingResult<CodeViewer.TabData> =
-          RawObjectDataProcessor.process(codeListing.dataset, {
+          RawObjectDataProcessor.process(tabContent.dataset, {
             subtype: RawObjectDataProcessor.ObjectSubtypes.fixedKeyAndValuePairsObject,
             nameForLogging: "TabData",
             properties: {
@@ -117,37 +128,41 @@ export class CodeViewer {
         Logger.logError({
           errorType: InvalidExternalDataError.NAME,
           title: InvalidExternalDataError.DEFAULT_TITLE,
-          description: "Invalid dataset on 'CodeListing' element of 'CodeViewerListing' mixin.\n" +
+          description: `Invalid dataset on tab content number ${tabContentNumber}:\n` +
               `${RawObjectDataProcessor.formatValidationErrorsList(currentTabDataProcessingResult.validationErrorsMessages)}`,
-          occurrenceLocation: "className.methodName(parametersObject)"
+          occurrenceLocation: "CodeViewer.initializeSingleInstance(parametersObject) -> initializeTabsAndIts_Content()"
         });
         continue;
       }
 
 
-      const currentTabData: CodeViewer.TabData = currentTabDataProcessingResult.processedData;
+      const tacContentData: CodeViewer.TabData = currentTabDataProcessingResult.processedData;
+
       /* It is the issue: https://github.com/microsoft/TypeScript/issues/283 */
       const currentTab: HTMLElement = emptyTab.cloneNode(true) as HTMLElement;
-      currentTab.dataset.listingNumber = listingNumber.toString();
+      currentTab.dataset.listingNumber = tabContentNumber.toString();
 
-      if (currentTabData.isActive && !hasAtLeastOneCodeListingBeenSetToActive) {
+      if (tacContentData.isActive && !hasAtLeastOneTabContentBeenSetToActive) {
 
-        codeListing.removeAttribute("hidden");
         currentTab.classList.add("CodeViewer-Tab__SelectedState");
 
-        hasAtLeastOneCodeListingBeenSetToActive = true;
+        tabContent.removeAttribute("hidden");
+        this.activeTabContent = tabContent;
+
+        hasAtLeastOneTabContentBeenSetToActive = true;
       }
 
-      getElementWhichMustExist({
+      getExpectedToBeSingleElement({
         selector: ".CodeViewer-Tab-LanguageValue",
         context: currentTab
-      }).textContent = currentTabData.language;
+      }).textContent = tacContentData.language;
 
-      if (isNotUndefined(currentTabData.fileLabel)) {
-        getElementWhichMustExist({ selector: ".CodeViewer-Tab-FileLabel", context: currentTab }).
-            textContent = currentTabData.fileLabel;
+
+      if (isNotUndefined(tacContentData.fileLabel)) {
+        getExpectedToBeSingleElement({ selector: ".CodeViewer-Tab-FileLabel", context: currentTab }).
+            textContent = tacContentData.fileLabel;
       } else {
-        getElementWhichMustExist({ selector: ".CodeViewer-Tab-FileLabel", context: currentTab }).remove();
+        getExpectedToBeSingleElement({ selector: ".CodeViewer-Tab-FileLabel", context: currentTab }).remove();
       }
 
       this.tabs.push(currentTab);
@@ -155,9 +170,10 @@ export class CodeViewer {
 
     this.tabsFlow.append(...this.tabs);
 
-    if (!hasAtLeastOneCodeListingBeenSetToActive) {
+    if (!hasAtLeastOneTabContentBeenSetToActive) {
       this.tabs[0].classList.add("CodeViewer-Tab__SelectedState");
-      this.codeListings[0].removeAttribute("hidden");
+      this.tabsContent[0].removeAttribute("hidden");
+      this.activeTabContent = this.tabsContent[0];
     }
 
     delegateClickEventHandling(
@@ -167,6 +183,9 @@ export class CodeViewer {
         clickTargetTypeChecker: (element: Element): element is HTMLDivElement => element instanceof HTMLElement
       }, this.onClickTab.bind(this)
     );
+
+
+    return this;
   }
 
   private onClickTab(clickedTab: HTMLElement): void {
@@ -176,35 +195,52 @@ export class CodeViewer {
     }
 
 
-    const targetCodeListingNumber: number = Number.parseInt(clickedTab.dataset.listingNumber, 10);
-    const targetCodeListing: HTMLElement = this.codeListings[targetCodeListingNumber];
+    const targetTabContentNumber: number = Number.parseInt(clickedTab.dataset.listingNumber, 10);
+    const targetCodeListing: HTMLElement = this.tabsContent[targetTabContentNumber];
 
     for (const [ tabNumber, tabElement ] of this.tabs.entries()) {
-      if (tabNumber === targetCodeListingNumber) {
+      if (tabNumber === targetTabContentNumber) {
         targetCodeListing.removeAttribute("hidden");
         clickedTab.classList.add("CodeViewer-Tab__SelectedState");
       } else {
         tabElement.classList.remove("CodeViewer-Tab__SelectedState");
-        this.codeListings[tabNumber].setAttribute("hidden", "hidden");
+        this.tabsContent[tabNumber].setAttribute("hidden", "hidden");
       }
     }
+
+    this.activeTabContent = this.tabsContent[targetTabContentNumber];
   }
 
-  private initializeActionBar(): void {
+  private initializeActionBar(): this {
 
-    const actionBar: HTMLElement = getElementWhichMustExist({
+    const actionBar: Element = getExpectedToBeSingleElement({
       selector: ".CodeViewer-ActionBar", context: this.rootElement
     });
 
-    const copyCodeButton: HTMLElement = getElementWhichMustExist({
+    const copyCodeButton: Element = getExpectedToBeSingleElement({
       selector: ".CodeViewer-ActionBar__CopyCode", context: actionBar
     });
 
     const clipboard: ClipboardAccess = new ClipboardAccess(copyCodeButton, {
-      target: (): Element => getElementWhichMustExist({
-          selector: ".CodeViewer-CodeListing-CodeContainer",
-          context: this.codeListings[0]
-        })
+      text: (): string => {
+
+        const codeContainers: NodeListOf<Element> = this.activeTabContent.querySelectorAll(
+          ".CodeViewer-CodeListing-CodeContainer"
+        );
+
+        if (codeContainers.length === 1) {
+          return codeContainers[0].textContent;
+        }
+
+
+        let accumulatingValue: string = "";
+
+        codeContainers.forEach((codeListing: Element): void => {
+          accumulatingValue = `${accumulatingValue}${insertSubstringIf("\n", !codeListing.textContent.endsWith("\n"))}${codeListing.textContent}`;
+        });
+
+        return accumulatingValue;
+      }
     });
 
     clipboard.on("success", (): void => {
@@ -213,6 +249,8 @@ export class CodeViewer {
         messageTextOrHTML: "Code has been copied to clipboard"
       });
     });
+
+    return this;
   }
 }
 
