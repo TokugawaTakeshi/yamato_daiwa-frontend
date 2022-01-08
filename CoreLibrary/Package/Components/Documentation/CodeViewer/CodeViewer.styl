@@ -32,7 +32,7 @@ provideCodeViewerComponent(preset = CodeViewerComponentDefaultProperties, overri
     border-color: JQueryUI_BaseTheme.clickableElements.defaultState.borderColor
 
 
-    &-CommonHeading
+    &-TopHeading
 
       MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 18px, lineHeight: 22px })
       color: JQueryUI_BaseTheme.headerAndToolbars.fontColor
@@ -40,13 +40,15 @@ provideCodeViewerComponent(preset = CodeViewerComponentDefaultProperties, overri
       margin-top 6px
 
 
-    &-IFrameSizingContainer
+    &-IFrame
 
-      position relative
+      display block
+
       aspect-ratio 16 / 9
+      width 100%
 
 
-      +whenItJustAfter({ targetElementSelector: ".CodeViewer-CommonHeading" })
+      +whenItJustAfter({ targetElementSelector: ".CodeViewer-TopHeading" })
 
         border-width 1px
 
@@ -54,14 +56,6 @@ provideCodeViewerComponent(preset = CodeViewerComponentDefaultProperties, overri
         border-color: JQueryUI_BaseTheme.headerAndToolbars.borderColor
 
         margin-top 8px
-
-
-    &-CodeExecutionResultViewport
-
-      position absolute
-      top 0
-      width 100%
-      height 100%
 
 
       &__DefaultPaddings
@@ -81,15 +75,19 @@ provideCodeViewerComponent(preset = CodeViewerComponentDefaultProperties, overri
         margin-top 6px
 
 
-      +whenItJustAfter({ targetElementSelector: ".CodeViewer-CommonHeading"})
+      +whenItJustAfter({ targetElementSelector: ".CodeViewer-TopHeading"})
 
-        border-top: 1px solid JQueryUI_BaseTheme.headerAndToolbars.borderColor
+
+        border-top-width 1px
         padding-top 4px
+
+        border-style solid
+        border-color: JQueryUI_BaseTheme.headerAndToolbars.borderColor
 
         margin-top 8px
 
 
-      +whenItJustAfter({ targetElementSelector: ".CodeViewer-IFrameSizingContainer"})
+      +whenItJustAfter({ targetElementSelector: ".CodeViewer-IFrame"})
 
         margin-top 8px
 
@@ -102,6 +100,7 @@ provideCodeViewerComponent(preset = CodeViewerComponentDefaultProperties, overri
       margin-top 12px
 
 
+    // --- Tabs --------------------------------------------------------------------------------------------------------
     &-Tab
 
       display grid
@@ -111,16 +110,19 @@ provideCodeViewerComponent(preset = CodeViewerComponentDefaultProperties, overri
 
       border-top-width 1px
       border-left-width 1px
+      Paddings({
+        horizontalSymmetric: 12px,
+        verticalSymmetric: 6px
+      })
+
       border-style solid
       border-color: JQueryUI_BaseTheme.clickableElements.defaultState.borderColor
-
-      padding 6px 12px
       background: JQueryUI_BaseTheme.clickableElements.defaultState.background
-
-      flex 1 0 140px
 
       cursor pointer
       outline none
+
+      flex 1 0 140px
 
 
       &:hover
@@ -162,6 +164,7 @@ provideCodeViewerComponent(preset = CodeViewerComponentDefaultProperties, overri
       &-FileLabel
 
         MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 14px, lineHeight: 18px })
+
         color ShadeOfGray__14--W3C_Palette
 
         grid-column-start span 2
@@ -198,7 +201,7 @@ provideCodeViewerComponent(preset = CodeViewerComponentDefaultProperties, overri
           color: JQueryUI_BaseTheme.clickableElements.activeState.fontColor
 
 
-    &-Listings
+    &-TabsContent
 
       retireFrom({ targetElementSelector: ".CodeViewer-ActionBar", y: 8px })
 
@@ -208,7 +211,7 @@ provideCodeViewerComponent(preset = CodeViewerComponentDefaultProperties, overri
         margin-bottom 4px
 
 
-    &-CodeListing
+    &-TabContent
 
       max-height 600px
       overflow-y auto
@@ -226,3 +229,50 @@ provideCodeViewerComponent(preset = CodeViewerComponentDefaultProperties, overri
 
         font-family Consolas__SmoothJapaneseSymbols--FontsStack
       /* ------------------------------------------------------------------------------------------------------------ */
+
+
+    &-PartialListing
+
+      /* --- PrismJS overriding ------------------------------------------------------------------------------------- */
+      >pre
+
+        margin-top 0 !important
+        margin-bottom 0 !important
+
+
+      code[class*=language-]
+      pre[class*=language-]
+
+        font-family Consolas__SmoothJapaneseSymbols--FontsStack
+      /* ------------------------------------------------------------------------------------------------------------ */
+
+
+
+
+
+    // --- Tabs --------------------------------------------------------------------------------------------------------
+    &-Explanation
+
+      background r10
+      display flex
+      align-items center
+      column-gap 12px
+
+
+      &-Icon
+
+        height 30px
+
+        flex-shrink 0
+
+
+      &-Text
+
+        background o10
+
+        flex-grow 1
+
+
+        p
+
+          MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineHeight: 17px })

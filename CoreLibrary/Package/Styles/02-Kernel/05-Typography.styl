@@ -386,7 +386,7 @@ providePositionalRelationshipWithTypographyElements(parametersObject, restParame
         for elementKey, positionalRelationshipDefinition in profile.definitions
 
           if isNull(keysAndSelectorsMap[elementKey])
-            error("不正相互配置設定：キー：「" + elementKey + "に該当する選択式が発見されず。")
+            error("不正相互配置設定：キー：「" + elementKey + "」に該当する選択式が発見されず。")
 
           PositionalRelationship({
             definitions: (keysAndSelectorsMap[elementKey] {

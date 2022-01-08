@@ -18,65 +18,122 @@ block append PageContent
 
   .SamplesFlow
 
+    //-
+      .Sample
+
+        .Sample-Heading One tab
+
+        +CodeViewer.Sample-CodeViewer
+          +CodeViewer-Listing({ codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript }).
+            import { areStringifiedDigitsOnly } from "hikari-es-extensions";
+
+            console.log(areStringifiedDigitsOnly("123")); // 数字しか含めていないので「true」
+            console.log(areStringifiedDigitsOnly("032")); // 此の関数の場合先に行く"0"は妥当とされているので、「true」
+            console.log(areStringifiedDigitsOnly("03e")); // 「e」はネイピア数？何方にせよ、関数名通り数字だけではない場合、「false」
+            console.log(areStringifiedDigitsOnly("ab1")); // 数字だけではないので「false」
+
+
+      .Sample
+
+        .Sample-Heading Multiple tabs
+
+        +CodeViewer({ topHeading: "必須HTML用意済みPug初手" }).Sample-CodeViewer
+
+          +CodeViewer-Listing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.Pug,
+            fileLabel: "Source code"
+          }).
+            extends ../../../../../../node_modules/hikari-frontend/PagesTemplates/RegularWebPage
+
+
+            block append Metadata
+
+              -
+                styleSheetURLs = [ "./Styles.css" ]
+                scriptsURLs.endOfBody = [ "./Main.js" ]
+
+
+            block append PageContent
+
+              h1 ページ見出し
+
+              p 目に見える内容は此方
+
+          +CodeViewer-Listing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.HTML,
+            fileLabel: "Output"
+          })
+            :escape-html
+              <!DOCTYPE html>
+              <html lang="ja">
+
+              <head>
+                <title>最小HTMLページ</title>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <link href="./Styles.css" rel="stylesheet" type="text/css">
+              </head>
+
+              <body>
+                <h1>ページ見出し</h1>
+                <p>目に見える内容は此方</p>
+                <script src="./Main.js"></script>
+              </body>
+
+              </html>
+
+
     .Sample
 
-      .Sample-Heading One tab
+      .Sample-Heading With explanations
 
       +CodeViewer.Sample-CodeViewer
-        +CodeViewerListing({ codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript }).
-          import { areStringifiedDigitsOnly } from "hikari-es-extensions";
 
-          console.log(areStringifiedDigitsOnly("123")); // 数字しか含めていないので「true」
-          console.log(areStringifiedDigitsOnly("032")); // 此の関数の場合先に行く"0"は妥当とされているので、「true」
-          console.log(areStringifiedDigitsOnly("03e")); // 「e」はネイピア数？何方にせよ、関数名通り数字だけではない場合、「false」
-          console.log(areStringifiedDigitsOnly("ab1")); // 数字だけではないので「false」
-
-
-    .Sample
-
-      .Sample-Heading Multiple tabs
-
-      +CodeViewer({ topHeading: "必須HTML用意済みPug初手" }).Sample-CodeViewer
-
-        +CodeViewerListing({
-          codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.Pug,
+        +CodeViewer-PartialListingsWithExplanations({
+          codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript,
           fileLabel: "Source code"
-        }).
-          extends ../../../../../../node_modules/hikari-frontend/PagesTemplates/RegularWebPage
-
-
-          block append Metadata
-
-            -
-              styleSheetURLs = [ "./Styles.css" ]
-              scriptsURLs.endOfBody = [ "./Main.js" ]
-
-
-          block append PageContent
-
-            h1 ページ見出し
-
-            p 目に見える内容は此方
-
-        +CodeViewerListing({
-          codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.HTML,
-          fileLabel: "Output"
         })
-          :escape-html
-            <!DOCTYPE html>
-            <html lang="ja">
 
-            <head>
-              <title>最小HTMLページ</title>
-              <meta charset="utf-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-              <link href="./Styles.css" rel="stylesheet" type="text/css">
-            </head>
+          +CodeViewer-PartialListing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+          }).
 
-            <body>
-              <h1>ページ見出し</h1>
-              <p>目に見える内容は此方</p>
-              <script src="./Main.js"></script>
-            </body>
+            import { areStringifiedDigitsOnly } from "hikari-es-extensions";
 
-            </html>
+            console.log(areStringifiedDigitsOnly("123"));
+
+          +CodeViewer-Explanation: p 数字しか含めていないので「true」
+
+          +CodeViewer-PartialListing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+          }) console.log(areStringifiedDigitsOnly("032"));
+
+          +CodeViewer-Explanation
+            p 此の#[+Term--YDID 関数]の場合先に行く#[+ImportantEntity--YDID 0]は妥当とされているので#[+ImportantEntity--YDID true]が返される。
+
+          +CodeViewer-PartialListing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+          }) console.log(areStringifiedDigitsOnly("03e"));
+
+          +CodeViewer-Explanation: p 「e」はネイピア数？何方にせよ、関数名通り数字だけではない場合、「false」
+
+          +CodeViewer-PartialListing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+          }) console.log(areStringifiedDigitsOnly("ab1"));
+
+          +CodeViewer-Explanation: p 数字だけではないので「false」
+
+        +CodeViewer-PartialListingsWithExplanations({
+          codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript,
+          fileLabel: "Output code"
+        })
+
+          +CodeViewer-PartialListing({
+            codeLanguageNotationByPrismJS: PrismJS_Integration.SupportedLanguagesNotations.TypeScript
+          }).
+
+            import { areStringifiedDigitsOnly } from "hikari-es-extensions";
+
+            console.log(areStringifiedDigitsOnly("123"));
+
+          +CodeViewer-Explanation: p 数字しか含めていないので「true」

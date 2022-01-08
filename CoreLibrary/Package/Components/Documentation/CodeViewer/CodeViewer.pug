@@ -1,35 +1,32 @@
-mixin CodeViewer(propertiesObject)
-
-  include CodeViewerComponentPropertiesSpecification.pug
+mixin CodeViewer(properties)
 
   -
 
-    propertiesObject = propertiesObject || {}
+    properties = properties || {}
 
     const {
       topHeading,
       resultViewURI,
       enableDefaultPaddingsInViewport = false
-    } = propertiesObject
-    // MixinParametersValidator.getValidatedParameters(propertiesObject, CodeViewerComponentPropertiesSpecification)
+    } = properties
 
 
-  .CodeViewer&attributes(attributes)
+  .CodeViewer&attributes(attributes)(
+    data-element-root
+  )
 
     if topHeading
 
-      .CodeViewer-CommonHeading= topHeading
+      .CodeViewer-TopHeading= topHeading
 
 
     if resultViewURI
 
-      .CodeViewer-IFrameSizingContainer
-        iframe.CodeViewer-CodeExecutionResultViewport(
-          src= resultViewURI
-          class= enableDefaultPaddingsInViewport && "CodeViewer-CodeExecutionResultViewport__DefaultPaddings"
-          title="Below code rendering result"
-        )
-
+      iframe.CodeViewer-IFrame(
+        src= resultViewURI
+        class= enableDefaultPaddingsInViewport && "CodeViewer-CodeExecutionResultViewport__DefaultPaddings"
+        title="Below code rendering result"
+      )
 
     .CodeViewer-ActionBar
 
@@ -38,23 +35,50 @@ mixin CodeViewer(propertiesObject)
       ) Copy code
 
 
-    .CodeViewer-TabsFlow
+    .CodeViewer-TabsFlow(
+      data-element-tabs_flow
+    )
 
-    .CodeViewer-Listings
+    .CodeViewer-TabsContent
       block
 
 
+mixin CodeViewer-Listing(properties)
 
-mixin CodeViewerListing(propertiesObject)
-
-  .CodeViewer-CodeListing(
-    data-file_label= propertiesObject.fileLabel
-    data-is_active= propertiesObject.isActive
-    data-language= PrismJS_Integration.languageNotationsAndTitlesMap[propertiesObject.codeLanguageNotationByPrismJS]
-    hidden= !propertiesObject.isActive
+  .CodeViewer-TabContent(
+    data-element-tab_content
+    data-file_label= properties.fileLabel
+    data-is_active= properties.isActive
+    data-language= PrismJS_Integration.languageNotationsAndTitlesMap[properties.codeLanguageNotationByPrismJS]
+    hidden= !properties.isActive
   )
     pre
       code.CodeViewer-CodeListing-CodeContainer(
-        class=`language-${propertiesObject.codeLanguageNotationByPrismJS}`
+        class=`language-${properties.codeLanguageNotationByPrismJS}`
       )
         block
+
+
+mixin CodeViewer-PartialListingsWithExplanations(properties)
+
+  .CodeViewer-TabContent(
+    data-element-tab_content
+    data-file_label= properties.fileLabel
+    data-is_active= properties.isActive
+    data-language= PrismJS_Integration.languageNotationsAndTitlesMap[properties.codeLanguageNotationByPrismJS]
+    hidden= !properties.isActive
+  ): block
+
+
+mixin CodeViewer-PartialListing(properties)
+
+  pre.CodeViewer-PartialListing
+    code.CodeViewer-CodeListing-CodeContainer
+      block
+
+
+mixin CodeViewer-Explanation(properties)
+  .CodeViewer-Explanation
+    +InfoSignIcon__Circled__Filled.CodeViewer-Explanation-Icon
+    .CodeViewer-Explanation-Text
+      block
