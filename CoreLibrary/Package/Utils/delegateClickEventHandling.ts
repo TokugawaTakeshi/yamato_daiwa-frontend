@@ -9,7 +9,7 @@ export default function delegateClickEventHandling<ClickTargetElement extends El
   }: {
     clickTargetSelector: string;
     clickTargetTypeChecker: (element: Element) => element is ClickTargetElement;
-    container?: HTMLElement | Document;
+    container?: Element | Document;
   },
   handler: (clickedElement: ClickTargetElement, event: MouseEvent) => void
 ): void {
