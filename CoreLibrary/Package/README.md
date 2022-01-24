@@ -204,7 +204,7 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 
 * [📖 `centerHorizontallyWithoutWrapper`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/centerHorizontallyWithoutWrapper.md)
   Centering of the block and inline-block elements without wrapper.
-* [📖 `CenteredContentWithComputedHorizontalPaddings`](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/CenteredContentWithComputedHorizontalPaddings.md)
+* [📖 `CenteredContentWithComputedHorizontalPaddings`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/CenteredContentWithComputedHorizontalPaddings.md)
   Centering of the element by computed horizontal symmetric paddings. Intended to be used on the page containers on wide screens.
 * [📖 `placeToRight`](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/placeToRight.md)
   Placing the element to right side or the container by relative positioning and `transform`.

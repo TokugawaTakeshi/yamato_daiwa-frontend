@@ -162,6 +162,12 @@ There is `EndBodyContent` block also been prepared - it going after `PageContent
 
 
 ## Pre-defined blocks
+### `Functionality`
+
+* Intended to be included (via `include` keyword) some `.pug` files containing JavaScript code with functionality for
+  for pre-precessing only in addition to [`@yamato-daiwa/es-extensions](https://www.npmjs.com/package/@yamato-daiwa/es-extensions).
+* Do not intended to be appended any markup because it will be rendered outside of `html` tag.  ` 
+
 ### `Metadata`
 
 * Intended to be filled with redefining of variables responsible for `head` part of the HTML page like `HTML_PAGE_LANGUAGE`
