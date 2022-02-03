@@ -2,14 +2,16 @@
 <idea-plugin>
 
     <name>Yamato-Daiwa Frontend</name>
-    <vendor url="https://github.com/TokugawaTakeshi" email="tokugawa.takesi@gmail.com">Tokugawa Takeshi</vendor>
+    <vendor url="https://github.com/TokugawaTakeshi" email="tokugawa.takesi@gmail.com">Takeshi Tokugawa</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+
         <defaultLiveTemplates file="liveTemplates/Yamato-Daiwa Frontend _Pug_.xml"/>
         <defaultLiveTemplates file="liveTemplates/Yamato-Daiwa Frontend _Stylus_.xml"/>
         <defaultLiveTemplates file="liveTemplates/Yamato-Daiwa Frontend _Vue _ TypeScript_.xml"/>
+
     </extensions>
 
     <applicationListeners>

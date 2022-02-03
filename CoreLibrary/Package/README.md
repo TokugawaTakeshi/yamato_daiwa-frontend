@@ -64,27 +64,27 @@ include "PATH_TO_NODE_MODULES/@yamato-daiwa/frontend/Components.pug
 
 ### Pages templates
 
-* [📖 `RegularWebPage`](Documentation/PagesTemplates/RegularWebPage.md)
+* [📖 `RegularWebPage`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/RegularWebPage.md)
   The basic HTML5 page with pre-filled required HTML tags.
-* [📖 `StaticPreviewAnywherePage`](Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md)
+* [📖 `StaticPreviewAnywherePage`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md)
   The top page for static HTML/CSS implementation stage.
 
 
 #### Assets
 
-* [📖 Basic constants](Documentation/Styles/01-Assets/BasicConstants.md)
-* [📖 Font stacks](Documentation/Styles/01-Assets/02-FontStacks/FontStacks.md)
-* [📖 Colors](Documentation/Styles/01-Assets/03-Colors/Colors.md)
+* [📖 Basic constants](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/BasicConstants.md)
+* [📖 Font stacks](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-FontStacks/FontStacks.md)
+* [📖 Colors](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/03-Colors/Colors.md)
   
-* [📖 Basic variables](Documentation/Styles/02-Kernel/01-BasicVariables/BasicVariables.md)
+* [📖 Basic variables](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/BasicVariables.md)
 
 
 #### Functions
 
 ##### Value checkers
     
-* [`isTrue`/`isFalse`](Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers/isTrueIsFalse.md)
-* [`isString(value)`](Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers/isNullIsNotNull.md)
+* [`isTrue`/`isFalse`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers/isTrueIsFalse.md)
+* [`isString(value)`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers/isNullIsNotNull.md)
 * `isEmptyString(value)`
 * `isUnitlessNumber(value)`
 * `isBoolean(value)`
@@ -102,56 +102,56 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
     
 ##### Strings
     
-* [📖 `buildString`](Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString/buildString.md)
+* [📖 `buildString`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString/buildString.md)
   Allows to create the dynamic strings using the [ES6 Template literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).  
 
 ##### Objects (hashes)
     
-* [📖 `deeplyCloneAndOverrideObject`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject/deeplyCloneAndOverrideObject.md)
+* [📖 `deeplyCloneAndOverrideObject`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject/deeplyCloneAndOverrideObject.md)
   Allows to clone and immediately override the object without affecting to initial object.
-* [📖 `deeplyCloneObject`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject/deeplyCloneObject.md)
+* [📖 `deeplyCloneObject`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject/deeplyCloneObject.md)
   Creates the deep copy object the object.
-* [📖 `getObjectNonNullValuesCount`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectNonNullValuesCount/getObjectNonNullValuesCount.md)
+* [📖 `getObjectNonNullValuesCount`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectNonNullValuesCount/getObjectNonNullValuesCount.md)
   Returns the count of non-null values of specified object.
-* [📖 `getObjectValueByDotSeparatedPathSafely`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely/getObjectValueByDotSeparatedPathSafely.md)
+* [📖 `getObjectValueByDotSeparatedPathSafely`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely/getObjectValueByDotSeparatedPathSafely.md)
   Accesses to nested object (hash) without risk being throw the error when some property does not exist.
-* [📖 `iterateObjectSkippingNullValues`](Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues/iterateObjectSkippingNullValues.md)
+* [📖 `iterateObjectSkippingNullValues`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues/iterateObjectSkippingNullValues.md)
   Iterates the object's keys and values skipping entries with `null` value.
 * `formatObject` Stringifies and formats object for logging
 
 ##### Arrays
     
-* [📖 `arrayConstructor__POLYFILL`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/arrayConstructor__POLYFILL/arrayConstructor__POLYFILL.md)
+* [📖 `arrayConstructor__POLYFILL`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/arrayConstructor__POLYFILL/arrayConstructor__POLYFILL.md)
   Fixes the [Unsolicited two-dimensional array when trying to declare the plain one-dimensional array](https://github.com/stylus/stylus/issues/2582) issue.
-* [📖 `getFirstNonNullArrayElement`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getFirstNonNullElement/getFirstNonNullArrayElement.md)
+* [📖 `getFirstNonNullArrayElement`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getFirstNonNullElement/getFirstNonNullArrayElement.md)
   Returns first non-null element for array or null if no such elements.
-* [📖 `getStringsOrNumbersArrayLength`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getStringsOrNumbersArrayLength/getStringsOrNumbersArrayLength.md)
+* [📖 `getStringsOrNumbersArrayLength`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getStringsOrNumbersArrayLength/getStringsOrNumbersArrayLength.md)
   Returns the elements count of array of strings of numbers.
-* [📖 `hasStringsOrNumbersArraySpecifiedElement`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/hasStringsOrNumbersArraySpecifiedElement/hasStringsOrNumbersArraySpecifiedElement.md)
+* [📖 `hasStringsOrNumbersArraySpecifiedElement`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/hasStringsOrNumbersArraySpecifiedElement/hasStringsOrNumbersArraySpecifiedElement.md)
   Checks has certain array of strings of numbers the specified element.
-* [📖 `iterate2DimensionalArray`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterate2DimensionalArray/iterate2DimensionalArray.md)
+* [📖 `iterate2DimensionalArray`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterate2DimensionalArray/iterate2DimensionalArray.md)
   Iterate the 2-dimensional array supporting single-element case.
-* [📖 `iterateAssociativeArray`](Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterateAssociativeArray/iterateAssociativeArray.md)
+* [📖 `iterateAssociativeArray`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterateAssociativeArray/iterateAssociativeArray.md)
   Iterates associative array supporting single-element case.
 
 ##### Logging
 
-* [📖 `log`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/log.md)
+* [📖 `log`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/log.md)
   Makes log output to console. Unlike native similar `p` function formats the objects.
 
 ##### Parameters validation
 
-* [📖 `validateSingleParametersObject`](Documentation/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateSingleParametersObject.md)
+* [📖 `validateSingleParametersObject`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateSingleParametersObject.md)
   Validating of the parameters of function and mixins.
       
 
 ##### Other
 
-  * [`buildBEM_Class`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildBEM_Class.md) 
+  * [`buildBEM_Class`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildBEM_Class.md) 
     Builds BEM class according specified block, element and modifier.
-  * [`substituteWhenNull`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/substituteWhenNull.md) 
+  * [`substituteWhenNull`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/substituteWhenNull.md) 
     Substitutes the second argument's value when first one is `null`
-  * [`buildCalcExpression`](Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildCalcExpression.md)
+  * [`buildCalcExpression`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildCalcExpression.md)
     Generates [`calc()`](https://developer.mozilla.org/en-US/docs/Web/CSS/calc()) expression; interpolation
     is available.
 
@@ -159,109 +159,109 @@ If it not such as, please open the issue with title "[FunctionName]: Unclear nam
 
 ##### Basic
 
-* [📖 `applyIfNotNull`](Documentation/Styles/02-Kernel/03-Mixins/applyIfNotNull.md) 
+* [📖 `applyIfNotNull`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/applyIfNotNull.md) 
   adds each specified CSS property to target ruleset when if it's not null. Intended to be used in cases when CSS values 
   are unknown in advance.
-* [📖 `applyIfNotZero`](Documentation/Styles/02-Kernel/03-Mixins/applyIfNotZero.md) 
+* [📖 `applyIfNotZero`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/applyIfNotZero.md) 
   adds each specified CSS property to target ruleset when if it's not zero. Intended to be used in cases when CSS values 
   are unknown in advance.
 
 
 ##### Width sizing
 
-* [📖 `widthSizing`](Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/widthSizing.md)
+* [📖 `widthSizing`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/widthSizing.md)
   Alternative width specifying approach intended to be used in frameworks development.
 * `fillViewportWidthIgnoringParentPaddings` Takes 100% of viewport in spite of parent element's paddings.
-* [📖 `TableCellWidthSizing`](Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/TableCellWidthSizing.md) 
+* [📖 `TableCellWidthSizing`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/01-WidthSizing/TableCellWidthSizing.md) 
   Allows to define the width, borders and paddings of table cell by various combinations of parameters.
 
 ##### Height sizing
 
-* [📖 `textBoxLikeElementsHeightSizing`](Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/02-HeightSizing/textBoxLikeElementsHeightSizing.md)
+* [📖 `textBoxLikeElementsHeightSizing`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/01-Sizing/02-HeightSizing/textBoxLikeElementsHeightSizing.md)
   The vertical sizing of block and inline block elements only with text content.
 
 ##### Paddings
 
-* [📖 `Paddings` mixin](Documentation/Styles/02-Kernel/03-Mixins/03-Paddings.md)
+* [📖 `Paddings` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/03-Paddings.md)
   The alternative to native CSS method of defining of the paddings intended to be used in customizable components development.
 
 
 ##### Layout
 
-* [📖 `fillBodyVertically`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/fillBodyVertically.md)
+* [📖 `fillBodyVertically`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/fillBodyVertically.md)
   Fills `<body>` when `<body>` and `<html>` takes 100% of viewport's height as minimum with or without vertical scrolling
   availability.
-* [📖 `FixedTranslucentDimLayer`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/FixedTranslucentDimLayer.md)
+* [📖 `FixedTranslucentDimLayer`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/FixedTranslucentDimLayer.md)
   The mixin intended to be applied to `div` element to overlap the other content which translucent dim layer.
   Such element is frequently being used as underlay for modal dialogs.
-* [📖 `Centerer`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/Centerer.md)
+* [📖 `Centerer`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/Centerer.md)
   Centering of the block elements with `auto` margins, minimal and maximal widths. Intended to be used on containers.
-* [📖 `provideClippedShadowsAndOutlinesVisibility`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/provideClippedShadowsAndOutlinesVisibility.md)
+* [📖 `provideClippedShadowsAndOutlinesVisibility`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/provideClippedShadowsAndOutlinesVisibility.md)
   The ugly but still no-alternatives solution of clipped by `overflow` shadows and outlines problem. Indented to be used on non-containers.
 
 
 ##### Positioning
 
-* [📖 `centerHorizontallyWithoutWrapper`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/centerHorizontallyWithoutWrapper.md)
+* [📖 `centerHorizontallyWithoutWrapper`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/centerHorizontallyWithoutWrapper.md)
   Centering of the block and inline-block elements without wrapper.
-* [📖 `CenteredContentWithComputedHorizontalPaddings`](Documentation/Styles/02-Kernel/03-Mixins/05-Layout/CenteredContentWithComputedHorizontalPaddings.md)
+* [📖 `CenteredContentWithComputedHorizontalPaddings`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/CenteredContentWithComputedHorizontalPaddings.md)
   Centering of the element by computed horizontal symmetric paddings. Intended to be used on the page containers on wide screens.
-* [📖 `placeToRight`](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/placeToRight.md)
+* [📖 `placeToRight`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/placeToRight.md)
   Placing the element to right side or the container by relative positioning and `transform`.
-* [📖 `VerticallyCenteredAbsolutelyPositionedBlock`](Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md)
+* [📖 `VerticallyCenteredAbsolutelyPositionedBlock`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md)
   Centers vertically the absolutely positioned block.
 
 ##### Positional relationship
 
-* [📖 Introduction](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md) 
-* [📖 `PositionalRelationship` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#positionalrelationship-mixin)
+* [📖 Introduction](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md) 
+* [📖 `PositionalRelationship` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#positionalrelationship-mixin)
   Low-level mixin for the defining of the vertical space between two or more elements.
-* [📖 `retireFrom` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#retirefrom-mixin)
+* [📖 `retireFrom` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#retirefrom-mixin)
   Allows to define how much element `B` must retire from `A` by top/left margin.
-* [📖 `pushTargetFromSelf` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#pushtargetfromself-mixin)
+* [📖 `pushTargetFromSelf` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#pushtargetfromself-mixin)
   Allows to define how much element `B` must push `A` from self by `A`'s top/left margin.
-* [📖 `retireFromElementWithSameSelector` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#retirefromelementwithsameselector-mixin)
+* [📖 `retireFromElementWithSameSelector` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#retirefromelementwithsameselector-mixin)
   Allows to define how much certain element must retire from other element with same selector.
-* [📖 `whenItGoingFirst` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitgoingfirst-mixin)
+* [📖 `whenItGoingFirst` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitgoingfirst-mixin)
   Allows to define CSS properties for certain element when it is going first in some container.
-* [📖 `whenItGoingLast` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitgoinglast-mixin)
+* [📖 `whenItGoingLast` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitgoinglast-mixin)
   Allows to define CSS properties for certain element when it is going last in some container.
-* [📖 `whenItJustAfter` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitjustafter)
+* [📖 `whenItJustAfter` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitjustafter)
   Allows to specify any CSS properties for element `B` when it is going after element `A`.
-* [📖 `whenTargetGoingJustAfterIt` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whentargetgoingjustafterit)
+* [📖 `whenTargetGoingJustAfterIt` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whentargetgoingjustafterit)
   Allows to specify any CSS properties for the target element `X` when it is going after currently being declared element.
-* [📖 `whenTargetWithSameSelectorGoingJustAfterIt` mixin](Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit)
+* [📖 `whenTargetWithSameSelectorGoingJustAfterIt` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit)
   The equivalent of `+whenTargetGoingJustAfterIt({ targetElementSelector: ".X" })` for the case when reference element's selector is also `.X`.
 
 
 ##### Other mixin utils
 
-* [📖 Sprite](Documentation/Styles/02-Kernel/03-Mixins/09-Rest/Sprite.md)
+* [📖 Sprite](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/09-Rest/Sprite.md)
   Mixin for the making of the element to sprite. 
 
 
 #### Styles initialization
 
-* [📖 `CrossBrowserStylesReset`](Documentation/Styles/02-Kernel/04-StylesInitialization/CrossBrowserStylesReset.md)
+* [📖 `CrossBrowserStylesReset`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/CrossBrowserStylesReset.md)
   The resetting of browser dependent styles and some usually redefinable styles like default margins of `body` based on
   [Eric Mayer's **Reset CSS**](https://meyerweb.com/eric/tools/css/reset/).
-* [`InitialGlobalCSS_Rules`](Documentation/Styles/02-Kernel/04-StylesInitialization/InitialGlobalCSS_Rules.md)
+* [`InitialGlobalCSS_Rules`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/InitialGlobalCSS_Rules.md)
   Some basic CSS rules like default font size and default line height intended to be applying directly after 
   `CrossBrowserStylesReset`. 
-* [`ButtonLikeElementsPrimer`](Documentation/Styles/02-Kernel/04-StylesInitialization/ButtonLikeElementsPrimer.md)
+* [`ButtonLikeElementsPrimer`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/ButtonLikeElementsPrimer.md)
   Resets all styles which usually pre-defined on buttons and similar elements such as the target element becomes even
   with unstyled `span`.
 
 #### Typography
 
-* [📖 `SingleLineElementOverflowTolerance`](Documentation/Styles/02-Kernel/03-Mixins/07-Typography/SingleLineElementOverflowTolerance.md)
-* [📖 `MultilineTextWithoutExtraSpaceCausedByLineHeight`](Documentation/Styles/02-Kernel/03-Mixins/07-Typography/MultilineTextWithoutExtraSpaceCausedByLineHeight.md)
+* [📖 `SingleLineElementOverflowTolerance`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/07-Typography/SingleLineElementOverflowTolerance.md)
+* [📖 `MultilineTextWithoutExtraSpaceCausedByLineHeight`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/07-Typography/MultilineTextWithoutExtraSpaceCausedByLineHeight.md)
   Defines the font size and line height, herewith there will not be extra vertical space above first line and below last
   line caused by `line-height`. Prevents overflow.
 
 #### Components
 
-* [📖 `OverflowSafeSingleLineLabel`](Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md)
+* [📖 `OverflowSafeSingleLineLabel`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md)
   Improved solution of
   [horizontal text overflow safety of single line labels](https://stackoverflow.com/questions/68667208/keep-hanging-characters-visible-in-spite-of-line-height-1-and-overflow-hidd)
   problem.

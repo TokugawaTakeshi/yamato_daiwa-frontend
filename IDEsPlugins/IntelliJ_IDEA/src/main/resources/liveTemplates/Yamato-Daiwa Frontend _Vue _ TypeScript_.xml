@@ -1,0 +1,7 @@
+<templateSet group="Yamato-Daiwa Frontend (Vue + TypeScript)">
+  <template name="ossll" value="//- Minimal example&#10;OverflowSafeSingleLineLabel {{ value }}&#10;&#10;//- Full example&#10;OverflowSafeSingleLineLabel(&#10;  rootElementTag=&quot;h1&quot;&#10;})" description="`OverflowSafeSingleLineLabel` component" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="VUE_INSIDE_TAG" value="true" />
+    </context>
+  </template>
+</templateSet>
