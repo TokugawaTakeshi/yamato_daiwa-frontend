@@ -1,0 +1,19 @@
+/* === Execution
+stylus Tests/CompiledCodeCheckOnly/Styles/02-Kernel/02-Functions/01-ValueCheckers/isDimensionalOrDimensionlessAmount.test.styl `
+  --out Tests/Build/CompiledCodeCheckOnly/Styles/02-Kernel/02-Functions/01-ValueCheckers/isDimensionalOrDimensionlessAmount.test.css `
+  --include Styles
+*/
+
+
+@require "01-Assets.styl"
+@require "02-Kernel.styl"
+
+
+p(isDimensionalOrDimensionlessAmount(2px))  // => true
+p(isDimensionalAmount(2px))                 // => true
+p(isDimensionlessAmount(2px))               // => false
+
+
+p(isDimensionalOrDimensionlessAmount(2))    // => true
+p(isDimensionalAmount(2))                   // => false
+p(isDimensionlessAmount(2))                 // => true

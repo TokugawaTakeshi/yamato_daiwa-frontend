@@ -1,13 +1,13 @@
 emptyStringToNull(value)
 
-  return value == "" ? null : value
+  return isEmptyString(value) ? null : value
 
 
 nullToZero(value)
 
-  return value == null ? 0 : value
+  return isNull(value) ? 0 : value
 
 
 nullToEmptyString(value)
 
-  return value == null ? "" : value
+  return isNull(value) ? "" : value
