@@ -1,5 +1,5 @@
 //- TODO Correct the relative path to "node_modules" and remove this comment
-extends RELATIVE/PATH/TO/node_modules/hikari-frontend/PagesTemplates/RegularWebPage.pug
+extends RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
 
 //- Or:
 //- TODO Correct the relative path to your layout (extended from "RegularWebPage.pug") and remove this comment

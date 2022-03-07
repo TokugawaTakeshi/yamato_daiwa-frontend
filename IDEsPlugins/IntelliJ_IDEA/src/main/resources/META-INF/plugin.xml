@@ -12,6 +12,8 @@
         <defaultLiveTemplates file="liveTemplates/Yamato-Daiwa Frontend _Stylus_.xml"/>
         <defaultLiveTemplates file="liveTemplates/Yamato-Daiwa Frontend _Vue _ TypeScript_.xml"/>
 
+        <fileTemplateGroup implementation="com.github.tokugawatakeshi.temp.TestFileTemplateGroupFactory"/>
+
     </extensions>
 
     <applicationListeners>
