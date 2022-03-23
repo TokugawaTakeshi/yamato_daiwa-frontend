@@ -31,7 +31,7 @@ and other styles.
 
 ## ZIndexes
 
-[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-zi-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+[![Official IntelliJ IDEA plugin live template](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-zi-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
 The **ZIndexes** is the object. It could not be called "the enumeration" because it is assuming that the values could be
 changed and new values could be added.

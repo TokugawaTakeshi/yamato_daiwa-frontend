@@ -23,6 +23,24 @@
 * [**isNonEmptyString**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 * [**isDimensionalOrDimensionlessAmount**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 * [**isDimensionalAmount**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+* [**isNaturalNumber**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnaturalnumber)
+
+
+## Mixin utils
+
+* [**BordersSizing**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/03-Borders/BordersSizing.md)
+  The alternative to native CSS method of defining of the border width (thickness) and radius intended to be used in customizable components development.
+
+
+### Strings
+
+* [**capitalizeFirstLatinCharacter**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md)
+  Capitalizes first lowercase latin character (a-z) of string.
+
+### Objects
+
+* [formatObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/formatObject.md)
+  Beautifies the object (hash).
 
 
 ## Breaking changes
@@ -52,6 +70,8 @@
   **dimensionlessAmount** has been added instead, but it is not just renaming. Reason: it is required to clearly 
   discriminate dimensional and dimensionless values for the development of the future functionality, while **unit** 
   term is pretty ambiguous is Stylus.
+* The properties **leftOrRightEqualBordersWidths** and **leftOrRightEqualPaddings** of **TableCellWidthSizing** mixin 
+  has been renamed to **leftOrRightSymmetricBordersWidths** and **leftOrRightSymmetricPaddings** respectively.
 
 
 ### Basic variables
@@ -68,3 +88,21 @@
 * **isUnitlessNumber** has been renamed to **isDimensionlessAmount**. Reason: there is no antonym of **unitless** including
   **unit** root. Now, whew this function has been renamed to **isDimensionlessAmount**, it is clear that **isDimensionalAmount**
   is antonym.
+
+#### Parameters validation
+
+* **validateObjectTypeParameter** has been replaced with **validateObjectTypeParameter** which has more reach functionality
+including nested objects support.
+
+#### Other functions 
+
+* **buildBEM_Class** has been renamed to **buildBEM_ClassName**.
+* **substituteWhenNull** has been renamed to **substituteNull**.
+
+
+### Mixins
+
+* **widthSizing** has been renamed to **WidthSizing**
+* In **WidthSizing** (**widthSizing** in the past)
+  * **leftOrRightEqualBordersWidths** has been renamed to **leftOrRightSymmetricBordersWidths**
+  * **leftOrRightEqualPaddings** has been renamed to **leftOrRightSymmetricPaddings**

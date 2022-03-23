@@ -1,0 +1,36 @@
+SingleLineElementOverflowSafety(compoundParameter = {}, restParameters__MUST_NOT_BE...)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "SingleLineElementOverflowSafety",
+    targetParameterNumber: 1,
+    targetParameter: compoundParameter,
+    schema: {
+      displayEllipsis: {
+        type: DataTypes.boolean,
+        defaultValue: false
+      },
+      supportCrossAxisCenteredFlexChild: {
+        type: DataTypes.boolean,
+        defaultValue: false
+      }
+    },
+    restParameters: restParameters__MUST_NOT_BE
+  })
+
+
+  overflow hidden
+  white-space nowrap
+
+
+  if isTrue(compoundParameter.displayEllipsis)
+
+    text-overflow ellipsis
+
+  else
+
+    text-overflow clip
+
+
+  if isTrue(compoundParameter.supportCrossAxisCenteredFlexChild)
+
+    max-width 100%

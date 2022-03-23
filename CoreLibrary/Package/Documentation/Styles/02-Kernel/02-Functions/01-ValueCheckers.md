@@ -10,6 +10,7 @@ All value checkers returns **true** when the first and only parameter matches wi
 * isDimensionalOrDimensionlessAmount
 * isDimensionalAmount
 * isDimensionlessAmount
+* isNaturalNumber
 * isBoolean
 * isTrue
 * isFalse
@@ -182,12 +183,37 @@ For the Stylus, both `typeof(2)` (dimensionless amount example) and `typeof(2px)
 **isDimensionalAmount** and **isDimensionlessAmount** could distinguish these two cases. Additionally, 
 **isDimensionalOrDimensionlessAmount** is equivalent of `typeof(value) == "unit"`.
 
-```stylus
-p(isDimensionalAmount(2px))                 // => true
-p(isDimensionlessAmount(2px))               // => false
-p(isDimensionalOrDimensionlessAmount(2px))  // => true
+It is also required to respect that units could be omitted for 0 case is CSS.
+When expect the amount as parameter, you must to agree consider 0 as dimensional amount or no.
+That is why `isDimensionalAmount` has second parameter, but to make it's meaning clear without documentation, it has object type.
 
-p(isDimensionalAmount(2))                   // => false
-p(isDimensionlessAmount(2))                 // => true
+
+```stylus
+p(isDimensionalOrDimensionlessAmount(2px))  // => true
+p(isDimensionalAmount(2px, { considerDimensionlessZeroAsDimensionalAmount: true }))      // => true
+p(isDimensionlessAmount(2px, { considerDimensionlessZeroAsDimensionlessAmount: true }))  // => false
+
 p(isDimensionalOrDimensionlessAmount(2))    // => true
+p(isDimensionalAmount(2, { considerDimensionlessZeroAsDimensionalAmount: true }))    // => false
+p(isDimensionlessAmount(2 ))  // => true
+
+p(isDimensionalAmount(0, { considerDimensionlessZeroAsDimensionalAmount: true }))    // => true
+p(isDimensionalAmount(0, { considerDimensionlessZeroAsDimensionalAmount: false }))   // => false
+p(isDimensionlessAmount(0))  // => true
+p(isDimensionlessAmount(0))  // => true
+```
+
+
+### isNaturalNumber
+
+According Math, the <dfn>natural number</dfn> is the numbers for counting of real objects and ordering beings from 1.
+Please note that 0 is not a natural number.
+
+```stylus
+p(isNaturalNumber(1))       // => true
+
+p(isNaturalNumber(0))      // => false
+p(isNaturalNumber(1.1))     // => false
+p(isNaturalNumber(1e+1))      // => false
+p(isNaturalNumber(-1))      // => false
 ```

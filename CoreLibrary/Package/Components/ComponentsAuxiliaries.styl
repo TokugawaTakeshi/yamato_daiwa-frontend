@@ -11,23 +11,24 @@ DefaultSelector(defaultSelector)
     {block}
 
 
-applyComponentThemes(parametersObject, restParameters__MUST_NOT_BE...)
+applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
 
-  validateSingleParametersObject({
-    targetObject: parametersObject,
-    propertiesSpecification: {
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "applyComponentThemes",
+    targetParameterNumber: 1,
+    targetParameter: compoundParameter,
+    schema: {
 
     },
-    restParameters: restParameters__MUST_NOT_BE,
-    mixinOrFunctionName: "applyComponentThemes"
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
   })
 
-  CSS_Namespace = parametersObject.CSS_Namespace
-  themes = parametersObject.themes
+  CSS_Namespace = compoundParameter.CSS_Namespace
+  themes = compoundParameter.themes
 
   // [ Stylus theory ] Functions in object are allowed but must be decomposed to be invoked.
-  applyGeometricVariation = parametersObject.applyGeometricVariation
-  applyDecorativeVariation = parametersObject.applyDecorativeVariation
+  applyGeometricVariation = compoundParameter.applyGeometricVariation
+  applyDecorativeVariation = compoundParameter.applyDecorativeVariation
 
 
   applyTheme(theme) {
