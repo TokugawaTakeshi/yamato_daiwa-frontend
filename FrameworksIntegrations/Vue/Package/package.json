@@ -2,11 +2,12 @@
   "name": "@yamato-daiwa/frontend-vue",
   "private": true,
   "dependencies": {
-    "@yamato-daiwa/es-extensions": "1.4.4",
+    "@yamato-daiwa/es-extensions": "1.5.0-alpha.2",
     "@yamato-daiwa/frontend": "0.3.2",
     "vue": "3.2.31",
     "vue-class-component": "8.0.0-rc.1",
     "vue-property-decorator": "10.0.0-rc.3",
+    "vue-router": "4.0.14",
     "vuex-module-decorators": "2.0.0"
   },
   "devDependencies": {
