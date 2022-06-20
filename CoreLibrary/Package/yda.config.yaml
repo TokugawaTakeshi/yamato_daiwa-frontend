@@ -95,17 +95,19 @@ projectBuilding:
 
         entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Markup/Source/PugExtensions.ts
         targetRuntime:
+#          type: BROWSER
           type: NODEJS
           minimalVersion:
             major: 16
 
-        exportsFromEntryPointsAreAccessible: true
-        exportsObjectName: __PUG_EXTENSIONS_EXPORTS__
+#        exportsFromEntryPointsAreAccessible: true
+#        exportsObjectName: __PUG_EXTENSIONS_EXPORTS__
+        experimentalOption1: __PUG_EXTENSIONS_EXPORTS__
 
         buildingModeDependent:
           PRODUCTION:
             outputBaseDirectoryRelativePath: Markup/Source
-            revisioning: { skip: true }
+            revisioning: { disable: true }
 
 
   # === Development server =============================================================================================

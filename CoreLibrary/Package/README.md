@@ -150,10 +150,10 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
       <dd>The workaround for <a href="https://github.com/stylus/stylus/issues/2582">Unsolicited two-dimensional array when trying to declare the plain one-dimensional array</a> issue.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getFirstNonNullArrayElement.md">getFirstNonNullArrayElement</a></dt>
       <dd>Returns first non-null element for array or null if no such elements.</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getStringsOrNumbersArrayLength.md">getStringsOrNumbersArrayLength</a></dt>
-      <dd>Returns the elements count of array of strings of numbers.</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/hasStringsOrNumbersArraySpecifiedElement.md">hasStringsOrNumbersArraySpecifiedElement</a></dt>
-      <dd>Checks has certain array of strings of numbers the specified element.</dd> 
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getLengthOfPrimitivesArray.md">getLengthOfPrimitivesArray</a></dt>
+      <dd>Returns the elements count of array of strings, numbers or booleans.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/hasPrimitivesArraySpecifiedElement.md">hasPrimitivesArraySpecifiedElement</a></dt>
+      <dd>Checks has certain array of strings/numbers/booleans the specified element.</dd> 
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterate2DimensionalArray.md">iterate2DimensionalArray</a></dt>
       <dd>Iterate the 2-dimensional array supporting single-element case.</dd> 
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterateAssociativeArray.md">iterateAssociativeArray</a></dt>
@@ -231,6 +231,71 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
       </li>
     </ul>
   </li>
+  <li>
+    <b>Positioning</b>
+    <dl>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/centerHorizontallyWithoutWrapper.md">centerHorizontallyWithoutWrapper</a></dt>
+      <dd>Centering of the block or inline-block elements without wrapper.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/placeToRight.md">placeToRight</a></dt>
+      <dd>Placing the element to right side or the container by relative positioning and <code>transform</code>.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md">VerticallyCenteredAbsolutelyPositionedBlock</a></dt>
+      <dd>Centers vertically the absolutely positioned block.</dd>
+    </dl>
+  </li>
+  <li>
+    <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md">Positional relationship</a>
+    <dl>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#positionalrelationship-mixin">PositionalRelationship</a></dt>
+      <dd>Low-level mixin for the defining of the vertical space between two or more elements.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#retirefrom-mixin">retireFrom</a></dt>
+      <dd>Allows to define how much element <b>B</b> must retire from <b>A</b> by top/left margin.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#pushtargetfromself-mixin">pushTargetFromSelf</a></dt>
+      <dd>Allows to define how much element <b>B</b> must push <b>A</b> from self by <b>A</b>'s top/left margin.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#retirefromelementwithsameselector-mixin">retireFromElementWithSameSelector</a></dt>
+      <dd>Allows to define how much certain element must retire from other element with same selector.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitgoingfirst-mixin">whenItGoingFirst</a></dt>
+      <dd>Allows to define CSS properties for certain element when it is going first in some container.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitgoinglast-mixin">whenItGoingLast</a></dt>
+      <dd>Allows to define CSS properties for certain element when it is going last in some container.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitjustafter">whenItJustAfter</a></dt>
+      <dd>Allows to specify any CSS properties for element <b>B</b> when it is going after element <b>A</b>.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whentargetgoingjustafterit">whenTargetGoingJustAfterIt</a></dt>
+      <dd>Allows to specify any CSS properties for the target element <b>X</b> when it is going after currently being declared element.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit">whenTargetWithSameSelectorGoingJustAfterIt</a></dt>
+      <dd>The equivalent of <code>+whenTargetGoingJustAfterIt({ targetElementSelector: ".X" })</code> for the case when reference element's selector is also <b>.X</b>.</dd>
+    </dl>
+  </li>
+  <li>
+    <b>Layout</b>
+    <dl>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/CenteredContentWithComputedHorizontalPaddings.md">CenteredContentWithComputedHorizontalPaddings</a></dt>
+      <dd>Centering of the element by computed horizontal symmetric paddings. Intended to be used on the page containers on wide screens.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/Centerer.md">Centerer</a></dt>
+      <dd>Centering of the block elements with `auto` margins, minimal and maximal widths. Intended to be used on containers.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/fillBodyVertically.md">fillBodyVertically</a></dt>
+      <dd>Fills "body" when "body" and "html" takes 100% of viewport's height as minimum with or without vertical scrolling availability.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/FixedTranslucentDimLayer.md"></a></dt>
+      <dd>The mixin intended to be applied to <code>div</code> element to overlap the other content which translucent dim layer. Such element is frequently being used as underlay for modal dialogs.</dd>
+    </dl>
+  </li>
+  <li>
+    <b>Typography</b>
+    <dl>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md">SingleLineTextElementOverflowSafety</a></dt>
+      <dd>Provides the text overflow safety for single-line elements</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md">MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight</a></dt>
+      <dd>Defines the font size and line height, herewith there will not be extra vertical space above first line and below last line caused by "line-height".</dd>
+    </dl>
+  </li>
+  <li>
+    <b>Other</b>
+    <dl>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/provideClippedShadowsAndOutlinesVisibility.md">provideClippedShadowsAndOutlinesVisibility</a></dt>
+      <dd>The ugly but still no-alternatives solution of clipped by <code>overflow</code> shadows and outlines problem. Indented to be used on non-containers.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/Sprite.md">Sprite</a></dt>
+      <dd>Mixin for the making of the element to sprite.</dd>
+    </dl>
+  </li>
 </ul>
 
 
@@ -259,126 +324,12 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
 * [MaterialDesignColors](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md)
 
 
-[//]: # ()
-[//]: # (##### Layout)
+##### Components
 
-[//]: # ()
-[//]: # (* [`fillBodyVertically`]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/fillBodyVertically.md&#41;)
-
-[//]: # (  Fills `<body>` when `<body>` and `<html>` takes 100% of viewport's height as minimum with or without vertical scrolling)
-
-[//]: # (  availability.)
-
-[//]: # (* [`FixedTranslucentDimLayer`]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/FixedTranslucentDimLayer.md&#41;)
-
-[//]: # (  The mixin intended to be applied to `div` element to overlap the other content which translucent dim layer.)
-
-[//]: # (  Such element is frequently being used as underlay for modal dialogs.)
-
-[//]: # (* [`Centerer`]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/Centerer.md&#41;)
-
-[//]: # (  Centering of the block elements with `auto` margins, minimal and maximal widths. Intended to be used on containers.)
-
-[//]: # (* [`provideClippedShadowsAndOutlinesVisibility`]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/provideClippedShadowsAndOutlinesVisibility.md&#41;)
-
-[//]: # (  The ugly but still no-alternatives solution of clipped by `overflow` shadows and outlines problem. Indented to be used on non-containers.)
-
-[//]: # ()
-[//]: # ()
-[//]: # (##### Positioning)
-
-[//]: # ()
-[//]: # (* [`centerHorizontallyWithoutWrapper`]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/centerHorizontallyWithoutWrapper.md&#41;)
-
-[//]: # (  Centering of the block and inline-block elements without wrapper.)
-
-[//]: # (* [`CenteredContentWithComputedHorizontalPaddings`]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/CenteredContentWithComputedHorizontalPaddings.md&#41;)
-
-[//]: # (  Centering of the element by computed horizontal symmetric paddings. Intended to be used on the page containers on wide screens.)
-
-[//]: # (* [`placeToRight`]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/placeToRight.md&#41;)
-
-[//]: # (  Placing the element to right side or the container by relative positioning and `transform`.)
-
-[//]: # (* [`VerticallyCenteredAbsolutelyPositionedBlock`]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md&#41;)
-
-[//]: # (  Centers vertically the absolutely positioned block.)
-
-[//]: # ()
-[//]: # (##### Positional relationship)
-
-[//]: # ()
-[//]: # (* [Introduction]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md&#41; )
-
-[//]: # (* [`PositionalRelationship` mixin]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#positionalrelationship-mixin&#41;)
-
-[//]: # (  Low-level mixin for the defining of the vertical space between two or more elements.)
-
-[//]: # (* [`retireFrom` mixin]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#retirefrom-mixin&#41;)
-
-[//]: # (  Allows to define how much element `B` must retire from `A` by top/left margin.)
-
-[//]: # (* [`pushTargetFromSelf` mixin]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#pushtargetfromself-mixin&#41;)
-
-[//]: # (  Allows to define how much element `B` must push `A` from self by `A`'s top/left margin.)
-
-[//]: # (* [`retireFromElementWithSameSelector` mixin]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#retirefromelementwithsameselector-mixin&#41;)
-
-[//]: # (  Allows to define how much certain element must retire from other element with same selector.)
-
-[//]: # (* [`whenItGoingFirst` mixin]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitgoingfirst-mixin&#41;)
-
-[//]: # (  Allows to define CSS properties for certain element when it is going first in some container.)
-
-[//]: # (* [`whenItGoingLast` mixin]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitgoinglast-mixin&#41;)
-
-[//]: # (  Allows to define CSS properties for certain element when it is going last in some container.)
-
-[//]: # (* [`whenItJustAfter` mixin]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whenitjustafter&#41;)
-
-[//]: # (  Allows to specify any CSS properties for element `B` when it is going after element `A`.)
-
-[//]: # (* [`whenTargetGoingJustAfterIt` mixin]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whentargetgoingjustafterit&#41;)
-
-[//]: # (  Allows to specify any CSS properties for the target element `X` when it is going after currently being declared element.)
-
-[//]: # (* [`whenTargetWithSameSelectorGoingJustAfterIt` mixin]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/06-PositionalRelationship/PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit&#41;)
-
-[//]: # (  The equivalent of `+whenTargetGoingJustAfterIt&#40;{ targetElementSelector: ".X" }&#41;` for the case when reference element's selector is also `.X`.)
-
-[//]: # ()
-[//]: # ()
-[//]: # (##### Other mixin utils)
-
-[//]: # ()
-[//]: # (* [Sprite]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/09-Rest/Sprite.md&#41;)
-
-[//]: # (  Mixin for the making of the element to sprite. )
-
-
-[//]: # ()
-[//]: # (#### Typography)
-
-[//]: # ()
-[//]: # (* [`SingleLineElementOverflowTolerance`]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/07-Typography/SingleLineElementOverflowTolerance.md&#41;)
-
-[//]: # (* [`MultilineTextWithoutExtraSpaceCausedByLineHeight`]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/07-Typography/MultilineTextWithoutExtraSpaceCausedByLineHeight.md&#41;)
-
-[//]: # (  Defines the font size and line height, herewith there will not be extra vertical space above first line and below last)
-
-[//]: # (  line caused by `line-height`. Prevents overflow.)
-
-[//]: # ()
-[//]: # (#### Components)
-
-[//]: # ()
-[//]: # (* [`OverflowSafeSingleLineLabel`]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md&#41;)
-
-[//]: # (  Improved solution of)
-
-[//]: # (  [horizontal text overflow safety of single line labels]&#40;https://stackoverflow.com/questions/68667208/keep-hanging-characters-visible-in-spite-of-line-height-1-and-overflow-hidd&#41;)
-
-[//]: # (  problem.)
+<dl>
+  <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md">OverflowSafeSingleLineLabel</a></dt>
+  <dd>Improved solution of <a href="https://stackoverflow.com/questions/68667208/keep-hanging-characters-visible-in-spite-of-line-height-1-and-overflow-hidd">horizontal text overflow safety of single line labels</a> problem.</dd>
+</dl>
 
 
 ### Motivation

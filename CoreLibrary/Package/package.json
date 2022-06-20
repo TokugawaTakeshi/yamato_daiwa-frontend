@@ -49,7 +49,7 @@
     "yamato-daiwa_code_quality_management": "0.0.19"
   },
   "scripts": {
-    "Production building of Pug extensions": "yda build --selectiveExecution PugExtensions --mode PRODUCTION",
+    "Production building of Pug extensions": "yda build --selectiveExecution PugExtensions --mode PRODUCTION && ts-node Markup/Source/PugExtensionsOutputFileGenerator.ts ",
     "AnywherePageStyles:IncrementalBuild": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution StaticPreviewAnywherePage --mode DEVELOPMENT",
     "Tests": "yda build --selectiveExecution StylesAndComponentsTesting --mode DEVELOPMENT",
     "Alpha realize": "npm publish --tag alpha"

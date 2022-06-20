@@ -1,7 +1,7 @@
 getObjectValueByDotSeparatedPathSafely(targetObject, dotSeparatedPath)
 
   objectNamePathSegments = split(".", dotSeparatedPath)
-  lastIterationNumber = getStringsOrNumbersArrayLength(objectNamePathSegments) - 1
+  lastIterationNumber = getLengthOfPrimitivesArray(objectNamePathSegments) - 1
   valueOfCurrentDepth = targetObject
 
   for pathSegment, index in objectNamePathSegments

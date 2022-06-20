@@ -19,8 +19,8 @@
 - <kbd>getFirstNonNullArrayElement</kbd> - autocomplete imitator for eponymous function
 - <kbd>iterate2DimensionalArray</kbd> - autocomplete imitator for eponymous function
 - <kbd>iterateAssociativeArray</kbd> - autocomplete imitator for eponymous function
-- <kbd>getStringsOrNumbersArrayLength</kbd> - autocomplete imitator for eponymous function
-- <kbd>hasStringsOrNumbersArraySpecifiedElement</kbd> - autocomplete imitator for eponymous function
+- <kbd>getLengthOfPrimitivesArray</kbd> - autocomplete imitator for eponymous function
+- <kbd>hasPrimitivesArraySpecifiedElement</kbd> - autocomplete imitator for eponymous function
 - <kbd>ainz</kbd> - live template for [applyIfNotZero](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/00-GeneralUtils/applyIfNotZero.md) utility mixin  
 - <kbd>dt</kbd> - live template for [**DataTypes**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types) enumeration
 - <kbd>fuic</kbd> - live template for [**FlatUI_Colors**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md) enumeration
@@ -83,6 +83,8 @@
 - <kbd>nsc</kbd> - Inserts `+NarrowScreensConfiguration()` block mixin invocation (must be preliminarily defined)
 - <kbd>wmsc</kbd> - Inserts `+WideAndMediumScreensConfiguration()` block mixin invocation (must be preliminarily defined)
 - <kbd>mnsc</kbd> - Inserts `+MediumAndNarrowScreensConfiguration()` block mixin invocation (must be preliminarily defined)
+- <kbd>slteos</kdb> - [`SingleLineTextElementOverflowSafety`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md)
+- <kbd>mlt</kdb> - [`MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md)
 
 
 ## [0.0.2]

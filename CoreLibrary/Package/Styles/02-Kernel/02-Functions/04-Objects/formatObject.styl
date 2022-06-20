@@ -47,7 +47,7 @@ formatObject(targetObject)
 
     accumulatingString = "{\n";
 
-    lastKey = keys(targetObject)[getStringsOrNumbersArrayLength(keys(targetObject)) - 1]
+    lastKey = keys(targetObject)[getLengthOfPrimitivesArray(keys(targetObject)) - 1]
 
     for key, value in targetObject
 

@@ -17,9 +17,7 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
     mixinOrFunctionName: "applyComponentThemes",
     targetParameterNumber: 1,
     targetParameter: compoundParameter,
-    schema: {
-
-    },
+    schema: {},
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
   })
 
@@ -42,9 +40,11 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
 
       } else {
 
-        geometricVariationCSS_Class = buildBEM_Class({
+        geometricVariationCSS_Class = buildBEM_ClassName({
           block: CSS_Namespace,
-          modifier: capitalizeFirstCharacter(geometricVariationName) + "Geometry"
+          modifier: capitalizeFirstLatinCharacter(geometricVariationName) + "Geometry"
+          elementSeparator: "-",
+          modifierSeparator: "__"
         })
 
         &.{geometricVariationCSS_Class} {
@@ -61,9 +61,11 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
 
       } else {
 
-        decorativeVariationCSS_Class = buildBEM_Class({
+        decorativeVariationCSS_Class = buildBEM_ClassName({
           block: CSS_Namespace,
-          modifier: capitalizeFirstCharacter(decorativeVariationName) + "Decoration"
+          modifier: capitalizeFirstLatinCharacter(decorativeVariationName) + "Decoration",
+          elementSeparator: "-",
+          modifierSeparator: "__"
         })
 
         &.{decorativeVariationCSS_Class} {

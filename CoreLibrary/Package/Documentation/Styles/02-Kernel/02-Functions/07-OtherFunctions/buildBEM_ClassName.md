@@ -26,6 +26,5 @@ p(buildBEM_ClassName({
   modifier: "BasicTheme",
   elementSeparator: "-",
   modifierSeparator: "__"
-})) 
-// => Header-Icon__BasicTheme
+})) // => Header-Icon__BasicTheme
 ```

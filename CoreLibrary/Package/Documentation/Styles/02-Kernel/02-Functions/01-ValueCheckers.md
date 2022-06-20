@@ -195,7 +195,7 @@ p(isDimensionlessAmount(2px, { considerDimensionlessZeroAsDimensionlessAmount: t
 
 p(isDimensionalOrDimensionlessAmount(2))    // => true
 p(isDimensionalAmount(2, { considerDimensionlessZeroAsDimensionalAmount: true }))    // => false
-p(isDimensionlessAmount(2 ))  // => true
+p(isDimensionlessAmount(2))  // => true
 
 p(isDimensionalAmount(0, { considerDimensionlessZeroAsDimensionalAmount: true }))    // => true
 p(isDimensionalAmount(0, { considerDimensionlessZeroAsDimensionalAmount: false }))   // => false

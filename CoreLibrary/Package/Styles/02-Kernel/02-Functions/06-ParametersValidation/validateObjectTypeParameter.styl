@@ -218,7 +218,7 @@ validateObjectTypeParameter(namedParameters)
 
           if (\
             isNotNull(propertySpecification.allowedAlternatives) &&\
-            !hasStringsOrNumbersArraySpecifiedElement(propertySpecification.allowedAlternatives, propertyValue)
+            !hasPrimitivesArraySpecifiedElement(propertySpecification.allowedAlternatives, propertyValue)
           ) {
             error(generateErrorMessage({
               messageSpecificPart: buildString(

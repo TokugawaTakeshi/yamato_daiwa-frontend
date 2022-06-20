@@ -35,13 +35,18 @@
 ### Strings
 
 * [**capitalizeFirstLatinCharacter**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md)
-  Capitalizes first lowercase latin character (a-z) of string.
+  Capitalizes first lowercase latin character (a-z) of the string.
 
 ### Objects
 
 * [formatObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/formatObject.md)
   Beautifies the object (hash).
 
+
+## Improvements
+
+* [SingleLineTextElementOverflowSafety](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md) 
+  Provides the text overflow safety for single-line elements
 
 ## Breaking changes
 
@@ -70,8 +75,6 @@
   **dimensionlessAmount** has been added instead, but it is not just renaming. Reason: it is required to clearly 
   discriminate dimensional and dimensionless values for the development of the future functionality, while **unit** 
   term is pretty ambiguous is Stylus.
-* The properties **leftOrRightEqualBordersWidths** and **leftOrRightEqualPaddings** of **TableCellWidthSizing** mixin 
-  has been renamed to **leftOrRightSymmetricBordersWidths** and **leftOrRightSymmetricPaddings** respectively.
 
 
 ### Basic variables
@@ -88,6 +91,13 @@
 * **isUnitlessNumber** has been renamed to **isDimensionlessAmount**. Reason: there is no antonym of **unitless** including
   **unit** root. Now, whew this function has been renamed to **isDimensionlessAmount**, it is clear that **isDimensionalAmount**
   is antonym.
+
+#### Arrays
+
+* **getStringsOrNumbersArrayLength** has been renamed to **getLengthOfPrimitivesArray**. Reason: "primitives" is correct
+  generalizing term in Stylus context.
+* **hasStringsOrNumbersArraySpecifiedElement** has been renamed to **hasPrimitivesArraySpecifiedElement**. Reason: "primitives"
+  is correct generalizing term in Stylus context.
 
 #### Parameters validation
 
@@ -106,3 +116,8 @@ including nested objects support.
 * In **WidthSizing** (**widthSizing** in the past)
   * **leftOrRightEqualBordersWidths** has been renamed to **leftOrRightSymmetricBordersWidths**
   * **leftOrRightEqualPaddings** has been renamed to **leftOrRightSymmetricPaddings**
+* The properties **leftOrRightEqualBordersWidths** and **leftOrRightEqualPaddings** of **TableCellWidthSizing** mixin
+  has been renamed to **leftOrRightSymmetricBordersWidths** and **leftOrRightSymmetricPaddings** respectively. Reason:
+  unification to **symmetric** word.
+* **SingleLineElementOverflowTolerance** has been replaced with to **SingleLineTextElementOverflowSafety**
+* **MultilineTextWithoutExtraSpaceCausedByLineHeight** has been renamed to **MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight**

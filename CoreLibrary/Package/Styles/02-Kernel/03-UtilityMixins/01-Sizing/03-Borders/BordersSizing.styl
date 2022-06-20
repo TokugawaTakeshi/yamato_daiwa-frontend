@@ -99,7 +99,7 @@ BordersSizingSpecificationSchema = {
 }
 
 
-BordersSizing(bordersSpecification, restParameters__MUST_NOT_BE...)
+BordersSizing(bordersSpecification = {}, restParameters__MUST_NOT_BE...)
 
   validateObjectTypeParameter({
     mixinOrFunctionName: "BordersSizing",
@@ -152,3 +152,41 @@ BordersSizing(bordersSpecification, restParameters__MUST_NOT_BE...)
       getObjectValueByDotSeparatedPathSafely(bordersSpecification, "radius.rightFillets")
     ))
   })
+
+
+specifyBordersSizing(bordersSizingSpecification, restParameters__MUST_NOT_BE...)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "specifyBordersSizing",
+    targetParameterNumber: 1,
+    targetParameter: bordersSizingSpecification,
+    schema: BordersSizingSpecificationSchema,
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+  bordersThicknessSpecification = substituteNull(bordersSizingSpecification.thickness, {})
+  bordersRadiusSpecification = substituteNull(bordersSizingSpecification.radius, {})
+
+
+  return {
+    thickness: {
+      all: bordersThicknessSpecification.all,
+      horizontalSymmetric: bordersThicknessSpecification.horizontalSymmetric,
+      left: bordersThicknessSpecification.left,
+      right: bordersThicknessSpecification.right,
+      verticalSymmetric: bordersThicknessSpecification.verticalSymmetric,
+      top: bordersThicknessSpecification.top,
+      bottom: bordersThicknessSpecification.bottom,
+    },
+    radius: {
+      all: bordersRadiusSpecification.all,
+      topLeft: bordersRadiusSpecification.topLeft,
+      topRight: bordersRadiusSpecification.topRight,
+      bottomLeft: bordersRadiusSpecification.bottomLeft,
+      bottomRight: bordersRadiusSpecification.bottomRight,
+      leftFillets: bordersRadiusSpecification.leftFillets,
+      rightFillets: bordersRadiusSpecification.rightFillets,
+      topFillets: bordersRadiusSpecification.topFillets,
+      bottomFillets: bordersRadiusSpecification.bottomFillets
+    }
+  }
