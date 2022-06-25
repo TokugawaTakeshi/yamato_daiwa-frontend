@@ -7,7 +7,11 @@ const webpackConfig: Webpack.Configuration = {
 
   context: Path.resolve(process.cwd(), "Tests"),
   entry: {
-    "OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel": "./OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.ts"
+    "Components/Controls/Buttons/Simple/Button": "./Components/Controls/Buttons/Simple/Button.test.ts",
+    "Components/Controls/TextBox/TextBox": "./Components/Controls/TextBox/TextBox.test.ts",
+    "Components/Controls/DropDownList/DropDownList": "./Components/Controls/DropDownList/DropDownList.test.ts",
+    "Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel":
+        "./Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.ts"
   },
   output: {
     filename: "[name].build.js",
@@ -75,12 +79,17 @@ const webpackConfig: Webpack.Configuration = {
   resolve: {
     extensions: [ ".js", ".ts" ],
     alias: {
+      vue: "vue/dist/vue.esm-bundler.js",
       "@SVG_Icons": Path.resolve("Source/SVG_Icons")
     }
   },
 
   plugins: [
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new Webpack.DefinePlugin({
+      __VUE_OPTIONS_API__: true,
+      __VUE_PROD_DEVTOOLS__: false
+    })
   ]
 };
 

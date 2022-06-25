@@ -19,7 +19,7 @@
 <script lang="ts">
 
   /* --- Other components ------------------------------------------------------------------------------------------- */
-  import { OverflowSafeSingleLineLabel } from "../../Source";
+  import { OverflowSafeSingleLineLabel } from "../../../Source";
 
   /* --- Framework -------------------------------------------------------------------------------------------------- */
   import { Options as VueComponentConfiguration, Vue as VueComponent } from "vue-property-decorator";

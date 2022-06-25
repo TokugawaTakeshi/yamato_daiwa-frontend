@@ -1,11 +1,9 @@
 import TextBox from "./TextBox";
-
-import {
-  Options as VueComponentConfiguration
-} from "vue-property-decorator";
+import componentTemplate from "./TextBox.pug";
+import { Options as VueComponentConfiguration } from "vue-property-decorator";
 
 
-@VueComponentConfiguration({})
-export default class TextBoxBasicImplementation extends TextBox.BasicLogic {
-
-}
+@VueComponentConfiguration({
+  template: componentTemplate
+})
+export default class TextBoxBasicImplementation extends TextBox.BasicLogic {}
