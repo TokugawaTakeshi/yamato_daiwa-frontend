@@ -1,0 +1,119 @@
+Button = {
+
+  defaultProperties: {
+
+    themes: {
+      regular: {
+
+        geometricVariations: {
+
+          regular: {
+            rootElement: {
+              minimalWidth: 80px
+              borders: specifyBordersSizing({
+                thickness: { all: 1px },
+                radius: { all: 3px }
+              })
+            }
+          },
+
+          small: {
+            rootElement: {
+              minimalWidth: 60px
+              borders: specifyBordersSizing({
+                thickness: { all: 1px },
+                radius: { all: 3px }
+              })
+            }
+          }
+        },
+
+        decorativeVariations: {
+
+          regular: {
+            rootElement: {
+              borders: {
+                style: solid,
+                color: JQueryUI_BaseTheme.clickableElements.defaultState.borderColor
+              },
+              background: {
+                color: JQueryUI_BaseTheme.clickableElements.defaultState.background
+              },
+              font: {
+                color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
+              }
+            }
+          },
+
+          accented: {
+            rootElement: {
+              borders: {
+                style: solid,
+                color: JQueryUI_BaseTheme.clickableElements.defaultState.borderColor
+              },
+              background: {
+                color: JQueryUI_BaseTheme.clickableElements.defaultState.background
+              },
+              font: {
+                color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+provideButtonComponent(preset= Button.defaultProperties, overridings = {})
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+  CSS_NAMESPACE = "Button"
+  ROOT_ELEMENT_SELECTOR = "." + CSS_NAMESPACE
+
+
+  // === Methods =======================================================================================================
+  applyBasicRules()
+
+    .Button
+
+      ButtonLikeElementsPrimer()
+
+      display inline-flex
+
+      cursor pointer
+
+
+  // --- Geometry ------------------------------------------------------------------------------------------------------
+  applyGeometricVariation(variation)
+
+    +DefaultSelector(ROOT_ELEMENT_SELECTOR)
+
+      applyIfNotNull({ min-width: variation.rootElement.minimalWidth })
+
+      BordersSizing(variation.rootElement.borders)
+
+
+  // --- Decoration ----------------------------------------------------------------------------------------------------
+  applyDecorativeVariation(variation)
+
+    +DefaultSelector(ROOT_ELEMENT_SELECTOR)
+
+      applyIfNotNull({
+        border-style: variation.rootElement.borders.style,
+        border-color: variation.rootElement.borders.color,
+        background-color: variation.rootElement.background.color,
+        color: variation.rootElement.font.color
+      })
+
+
+  // --- Applying ------------------------------------------------------------------------------------------------------
+  applyBasicRules()
+
+  applyComponentThemes({
+    CSS_Namespace: CSS_NAMESPACE,
+    themes: properties.themes,
+    applyGeometricVariation: applyGeometricVariation,
+    applyDecorativeVariation: applyDecorativeVariation
+  })

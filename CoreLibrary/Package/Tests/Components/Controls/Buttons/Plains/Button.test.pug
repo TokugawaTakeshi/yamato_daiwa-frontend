@@ -1,0 +1,131 @@
+extends ../../../../../PagesTemplates/RegularWebPage.pug
+
+
+block append Metadata
+
+  - styleSheetsURIs = [ "./Button.test.css" ]
+
+
+block append Requirements
+
+  include ../../../../../Components.pug
+
+
+block append PageContent
+
+  .ButtonsShowcasesFlow
+
+    mixin ButtonsShowcase(propertiesObject)
+      table.ButtonsShowcase
+        caption= propertiesObject.caption
+        thead
+          tr
+            th "button" tag
+            th "a" tag
+            th "input" tag
+        tbody
+          tr
+            block
+
+    +ButtonsShowcase({ caption: "Default options" })
+      td
+        +Button 本文 Teksto
+      td
+        +Button({ URI: "#" }) 本文 Teksto
+      td
+        +Button({
+          label: "本文 Teksto",
+          HTML_Type: Button.HTML_Types.inputButton
+        })
+
+    +ButtonsShowcase({ caption: "Small size" })
+      td
+        +Button({ geometry: Button.GeometricVariations.small }) 本文 Teksto
+      td
+        +Button({
+          URI: "#",
+          geometry: Button.GeometricVariations.small
+        }) 本文 Teksto
+      td
+        +Button({
+          label: "本文 Teksto",
+          HTML_Type: Button.HTML_Types.inputButton,
+          geometry: Button.GeometricVariations.small
+        })
+
+    //-
+
+      +ButtonsShowcase({ caption: "錠型" })
+        td
+          +Button({ capsuleShape: true }) 本文 Teksto
+        td
+          +Button({
+            URI: "#",
+            capsuleShape: true
+          }) 本文 Teksto
+        td
+          +Button({
+            label: "本文 Teksto",
+            HTML_Type: Button.HTML_Types.inputButton,
+            capsuleShape: true
+          })
+
+      +ButtonsShowcase({ caption: "強調配色" })
+        td
+          +Button({ decoration: Button.DecorativeVariations.accented }) 本文 Teksto
+        td
+          +Button({
+            URI: "#",
+            decoration: Button.DecorativeVariations.accented
+          }) 本文 Teksto
+        td
+          +Button({
+            label: "本文 Teksto",
+            HTML_Type: Button.HTML_Types.inputButton,
+            decoration: Button.DecorativeVariations.accented
+          })
+
+      +ButtonsShowcase({ caption: "ティックボックス振る舞い" })
+        td: +Button({ toggled: true }) 入
+        td 不可能
+        td 不可能
+
+      +ButtonsShowcase({ caption: "無効状態" })
+        td
+          +Button({ disabled: true }) 押せない
+        td
+          +Button({
+            URI: "#",
+            disabled: true
+          }) 押せない
+        td
+          +Button({
+            label: "押せない",
+            HTML_Type: Button.HTML_Types.inputButton,
+            disabled: true
+          })
+
+      +ButtonsShowcase({ caption: "就いているアイコン有り" })
+        td: +Button({
+          hasPrependedSVG_Icon: true
+        })
+          +MagnifyingGlass--Icon.Button-PrependedSVG_Icon
+          | 良いね！
+        td: +Button({　
+          URI: "#",
+          hasPrependedSVG_Icon: true
+        })
+          +MagnifyingGlass--Icon.Button-PrependedSVG_Icon
+          | 良いね！
+        td 不可能
+
+      +ButtonsShowcase({caption: "単独アイコン有り"})
+        td: +Button({
+          hasLoneSVG_Icon: true
+        })(title="良いね！"): +MagnifyingGlass--Icon.Button-LoneSVG_Icon
+
+        td: +Button({
+          URI: "#",
+          hasLoneSVG_Icon: true
+        })(title="良いね！"): +MagnifyingGlass--Icon.Button-LoneSVG_Icon
+        td 不可能

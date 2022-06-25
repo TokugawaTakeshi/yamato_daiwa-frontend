@@ -5,7 +5,7 @@ Because the Stylus pre-processor does not allow to define the readonly variables
 
 ## DataTypes - Stylus data types
 
-[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-dt-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+[![Official IntelliJ IDEA plugin live template](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-dt-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
 ![](DataTypes-LiveTemplateDemo.gif)
 
@@ -34,7 +34,7 @@ in IntelliJ IDEA.
 
 ## NARROWEST_SCREEN_WIDTH_UNIT - The narrowest screen width unit
 
-[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-nswu-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+[![Official IntelliJ IDEA plugin live template](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-nswu-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
 ![](NarrowestScreenWidthUnit-LiveTemplateDemo.gif)
 

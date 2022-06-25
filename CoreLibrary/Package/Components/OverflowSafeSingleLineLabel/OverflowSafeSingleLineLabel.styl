@@ -15,17 +15,19 @@ provideOverflowSafeSingleLineLabelComponent()
       white-space nowrap
 
 
-OverflowSafeSingleLineLabel(parametersObject, restParameters__MUST_NOT_BE...)
+OverflowSafeSingleLineLabel(compoundParameter, restParameters__MUST_NOT_BE...)
 
-  validateSingleParametersObject({
-    targetObject: parametersObject,
-    propertiesSpecification: {
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "OverflowSafeSingleLineLabel",
+    targetParameterNumber: 1,
+    targetParameter: compoundParameter,
+    schema: {
       fontSize: {
-        type: DataTypes.unit,
+        type: DataTypes.dimensionalAmount,
         required: true
       },
       lineHeight: {
-        type: DataTypes.unit,
+        type: DataTypes.dimensionalAmount DataTypes.dimensionlessAmount,
         defaultValue: 1.4
       },
       displayEllipsis: {
@@ -33,13 +35,12 @@ OverflowSafeSingleLineLabel(parametersObject, restParameters__MUST_NOT_BE...)
         defaultValue: false
       }
     },
-    restParameters: restParameters__MUST_NOT_BE,
-    mixinOrFunctionName: "OverflowSafeSingleLineLabel"
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
   })
 
 
-  fontSize = parametersObject.fontSize
-  lineHeight = parametersObject.lineHeight
+  fontSize = compoundParameter.fontSize
+  lineHeight = compoundParameter.lineHeight
   lineHeight__dimensionalValue = isUnitlessNumber(lineHeight) ? lineHeight * fontSize : lineHeight
 
 
@@ -66,7 +67,7 @@ OverflowSafeSingleLineLabel(parametersObject, restParameters__MUST_NOT_BE...)
     margin-bottom topOrBottomMarginValue
 
 
-    if isTrue(parametersObject.displayEllipsis)
+    if isTrue(compoundParameter.displayEllipsis)
 
       text-overflow ellipsis
 

@@ -15,11 +15,11 @@ export {
   getRandomInteger
 } from "@yamato-daiwa/es-extensions";
 
-export function buildEmailLinkHREF_ArttributeValue(emailAddress: string): string {
+export function buildEmailLinkHREF_AttributeValue(emailAddress: string): string {
   return `mailto:${emailAddress}`;
 }
 
-export function buildPhoneNumberLinkHREF_ArttributeValue(phoneNumber: string): string {
+export function buildPhoneNumberLinkHREF_AttributeValue(phoneNumber: string): string {
   return `tel:${phoneNumber}`;
 }
 
