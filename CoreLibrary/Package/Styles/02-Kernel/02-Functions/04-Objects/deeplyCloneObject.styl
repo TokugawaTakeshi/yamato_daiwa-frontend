@@ -1,0 +1,9 @@
+deeplyCloneObject(targetObject)
+
+  workpieceClone = {}
+
+  for key, value in targetObject
+
+    workpieceClone[key] = typeof(value) == "object" ? deeplyCloneObject(value) : value
+
+  return workpieceClone

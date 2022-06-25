@@ -23,7 +23,30 @@
 * [**isNonEmptyString**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 * [**isDimensionalOrDimensionlessAmount**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 * [**isDimensionalAmount**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+* [**isNaturalNumber**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnaturalnumber)
 
+
+## Mixin utils
+
+* [**BordersSizing**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/03-Borders/BordersSizing.md)
+  The alternative to native CSS method of defining of the border width (thickness) and radius intended to be used in customizable components development.
+
+
+### Strings
+
+* [**capitalizeFirstLatinCharacter**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md)
+  Capitalizes first lowercase latin character (a-z) of the string.
+
+### Objects
+
+* [formatObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/formatObject.md)
+  Beautifies the object (hash).
+
+
+## Improvements
+
+* [SingleLineTextElementOverflowSafety](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md) 
+  Provides the text overflow safety for single-line elements
 
 ## Breaking changes
 
@@ -68,3 +91,33 @@
 * **isUnitlessNumber** has been renamed to **isDimensionlessAmount**. Reason: there is no antonym of **unitless** including
   **unit** root. Now, whew this function has been renamed to **isDimensionlessAmount**, it is clear that **isDimensionalAmount**
   is antonym.
+
+#### Arrays
+
+* **getStringsOrNumbersArrayLength** has been renamed to **getLengthOfPrimitivesArray**. Reason: "primitives" is correct
+  generalizing term in Stylus context.
+* **hasStringsOrNumbersArraySpecifiedElement** has been renamed to **hasPrimitivesArraySpecifiedElement**. Reason: "primitives"
+  is correct generalizing term in Stylus context.
+
+#### Parameters validation
+
+* **validateObjectTypeParameter** has been replaced with **validateObjectTypeParameter** which has more reach functionality
+including nested objects support.
+
+#### Other functions 
+
+* **buildBEM_Class** has been renamed to **buildBEM_ClassName**.
+* **substituteWhenNull** has been renamed to **substituteNull**.
+
+
+### Mixins
+
+* **widthSizing** has been renamed to **WidthSizing**
+* In **WidthSizing** (**widthSizing** in the past)
+  * **leftOrRightEqualBordersWidths** has been renamed to **leftOrRightSymmetricBordersWidths**
+  * **leftOrRightEqualPaddings** has been renamed to **leftOrRightSymmetricPaddings**
+* The properties **leftOrRightEqualBordersWidths** and **leftOrRightEqualPaddings** of **TableCellWidthSizing** mixin
+  has been renamed to **leftOrRightSymmetricBordersWidths** and **leftOrRightSymmetricPaddings** respectively. Reason:
+  unification to **symmetric** word.
+* **SingleLineElementOverflowTolerance** has been replaced with to **SingleLineTextElementOverflowSafety**
+* **MultilineTextWithoutExtraSpaceCausedByLineHeight** has been renamed to **MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight**

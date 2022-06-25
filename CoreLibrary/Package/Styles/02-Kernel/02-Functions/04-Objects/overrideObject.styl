@@ -1,0 +1,18 @@
+// It was detected some problems with 'merge' function for nested objects case in the past, but currently it's unclear
+// where is the difference. However this function could be removed only if will be proved that it's completely equivalent
+// to 'merge'
+overrideObject(targetObject, overridings)
+
+  merge(targetObject, overridings)
+
+
+  //if targetObject == null
+  //
+  //  return overridings
+  //
+  //
+  //for key, value in overridings
+  //
+  //  targetObject[key] = typeof(value) == "object" ? overrideObject(targetObject[key], value) : value
+  //
+  //return targetObject

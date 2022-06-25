@@ -1,8 +1,8 @@
-mixin OverflowSafeSingleLineLabel(propertiesObject)
+mixin OverflowSafeSingleLineLabel(properties)
 
   -
-    propertiesObject = propertiesObject || {}
-    const { rootElementTag = "div" } = propertiesObject;
+    properties = properties || {}
+    const { rootElementTag = "div" } = properties;
 
   #{rootElementTag}.OverflowSafeSingleLineLabel&attributes(attributes)
     span.OverflowSafeSingleLineLabel-TextWithIncreasedLineHeight

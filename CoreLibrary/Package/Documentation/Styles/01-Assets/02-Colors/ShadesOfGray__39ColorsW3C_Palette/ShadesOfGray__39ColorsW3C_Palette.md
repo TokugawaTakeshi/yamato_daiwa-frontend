@@ -1,6 +1,6 @@
 # ShadesOfGray__39ColorsW3C_Palette - Shades of gray (39 colors W3C palette)
 
-[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-sogw3c-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+[![Official IntelliJ IDEA plugin live template](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-sogw3c-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
 ![](LiveTemplateDemo.gif)
 

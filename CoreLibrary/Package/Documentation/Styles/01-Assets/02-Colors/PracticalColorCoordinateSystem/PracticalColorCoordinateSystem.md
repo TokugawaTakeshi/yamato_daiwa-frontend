@@ -1,6 +1,6 @@
 `# PracticalColorCoordinateSystem - Colors of Practical Color Coordinate System (PCCS)
 
-[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-pccs-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+[![Official IntelliJ IDEA plugin live template](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-pccs-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
 ![](LiveTemplateDemo.gif)
 
