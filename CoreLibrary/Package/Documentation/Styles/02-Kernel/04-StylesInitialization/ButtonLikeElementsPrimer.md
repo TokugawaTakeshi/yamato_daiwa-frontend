@@ -1,4 +1,6 @@
-# `ButtonLikeElementsPrimer`
+# ButtonLikeElementsPrimer
+
+[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-blep-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
 Resets all styles which usually pre-defined on buttons and similar elements by browser such as the target element becomes even
 with unstyled `span`.

@@ -1,10 +1,10 @@
-# `RegularWebPage`
+# RegularWebPage
 
 The Pug file including pre-filled required HTML tags thus will be compiled to valid HTML5 document even if just to inherit it.
 
 * Intended to be extended (`extend` keyword) by page files and layout files.
 * Including a part (currently) of Pug functionality of `@yamato-daiwa/es-extensions` 
-  (see [Available `@yamato-daiwa/es-extensions` functionality](#available-yamato-daiwaes-extensions-functionality)).
+[//]: # (  &#40;see [Available `@yamato-daiwa/es-extensions` functionality]&#40;#available-yamato-daiwaes-extensions-functionality&#41;&#41;.)
 
 Just
 
@@ -271,26 +271,33 @@ block append PageContent
 ```
 
 
-## Related IntelliJ IDEA files templates (official plugin)
+[//]: # (## Related IntelliJ IDEA files templates &#40;official plugin&#41;)
 
-With [official IntelliJ IDEA plugin](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend), you can quickly
-create files extended from `RegularWebPage` with some initial content and `TODO` hints.
+[//]: # ()
+[//]: # (With [official IntelliJ IDEA plugin]&#40;https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend&#41;, you can quickly)
 
-When creating the new file by context menu in "Project" panel, select one of below templates in the list.
+[//]: # (create files extended from `RegularWebPage` with some initial content and `TODO` hints.)
 
+[//]: # ()
+[//]: # (When creating the new file by context menu in "Project" panel, select one of below templates in the list.)
 
-### Web page (Yamato Daiwa Frontend)
+[//]: # ()
+[//]: # ()
+[//]: # (### Web page &#40;Yamato Daiwa Frontend&#41;)
 
-Creates the Pug file and same-name Stylus file where you can define some styles for your layout.
+[//]: # ()
+[//]: # (Creates the Pug file and same-name Stylus file where you can define some styles for your layout.)
 
-The initial content of the Pug file has been fully described above.
+[//]: # ()
+[//]: # (The initial content of the Pug file has been fully described above.)
 
+[//]: # ()
+[//]: # ()
+[//]: # (### Layout &#40;Yamato Daiwa Frontend&#41;)
 
-### Layout (Yamato Daiwa Frontend)
+[//]: # ()
+[//]: # (Create the layout file extended to be extended by page file.)
 
-Create the layout file extended to be extended by page file.
-You can use any blocks of `RegularWebPage`, but do you need to fill the template only by HTML of the visible part,
-or fill also metadata, etc. - methodology dependent.
+[//]: # (You can use any blocks of `RegularWebPage`, but do you need to fill the template only by HTML of the visible part,)
 
-
-## Available `@yamato-daiwa/es-extensions` functionality
+[//]: # (or fill also metadata, etc. - methodology dependent.)

@@ -291,40 +291,66 @@ h3.AnywherePage-PagesSubgroupHeading Entities management
 ```
 
 
-## IntelliJ IDEA files template (official plugin)
+[//]: # (## IntelliJ IDEA files template &#40;official plugin&#41;)
 
-With installed [official IntelliJ IDEA plugin](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend), you can quickly
-generate the anywhere page (<kbd>Project</kbd> > <kbd>Right click on directory</kbd> > <kbd>New</kbd> > 
-<kbd>Static preview anywhere page"</kbd>). The content of this file has been fully explained above, but there are a lot
-of hinting comments.
+[//]: # ()
+[//]: # (With installed [official IntelliJ IDEA plugin]&#40;https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend&#41;, you can quickly)
 
+[//]: # (generate the anywhere page &#40;<kbd>Project</kbd> > <kbd>Right click on directory</kbd> > <kbd>New</kbd> > )
 
-## Localization of links' badges
+[//]: # (<kbd>Static preview anywhere page"</kbd>&#41;. The content of this file has been fully explained above, but there are a lot)
 
-You can localize the badges of pages links in `Metadata` block by `setLocalization` method of `StaticPreviewAnywherePage`
-object:
+[//]: # (of hinting comments.)
 
-```jade
-block append Metadata
+[//]: # ()
+[//]: # ()
+[//]: # (## Localization of links' badges)
 
-  -
-    HTML_PAGE_LANGUAGE = "ja";
+[//]: # ()
+[//]: # (You can localize the badges of pages links in `Metadata` block by `setLocalization` method of `StaticPreviewAnywherePage`)
 
-    StaticPreviewAnywherePage.setLocalization({
-      progressStatusBadgesText: {
-        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationWaiting]: "実装待機",
-        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress]: "実装中",
+[//]: # (object:)
 
-        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementWaiting]: "改良待機",
-        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementInProgress]: "改良中",
+[//]: # ()
+[//]: # (```jade)
 
-        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingWaiting]: "修正待機",
-        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingInProgress]: "修正中",
+[//]: # (block append Metadata)
 
-        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.specificationClarification]: "仕様確認中",
-        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.reviewWaiting]: "校閲待機",
-        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.customerEvaluationWaiting]: "評価中",
-        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted]: "承諾済み"
-      }
-    })
-```
+[//]: # ()
+[//]: # (  -)
+
+[//]: # (    HTML_PAGE_LANGUAGE = "ja";)
+
+[//]: # ()
+[//]: # (    StaticPreviewAnywherePage.setLocalization&#40;{)
+
+[//]: # (      progressStatusBadgesText: {)
+
+[//]: # (        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationWaiting]: "実装待機",)
+
+[//]: # (        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress]: "実装中",)
+
+[//]: # ()
+[//]: # (        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementWaiting]: "改良待機",)
+
+[//]: # (        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementInProgress]: "改良中",)
+
+[//]: # ()
+[//]: # (        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingWaiting]: "修正待機",)
+
+[//]: # (        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingInProgress]: "修正中",)
+
+[//]: # ()
+[//]: # (        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.specificationClarification]: "仕様確認中",)
+
+[//]: # (        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.reviewWaiting]: "校閲待機",)
+
+[//]: # (        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.customerEvaluationWaiting]: "評価中",)
+
+[//]: # (        [StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted]: "承諾済み")
+
+[//]: # (      })
+
+[//]: # (    }&#41;)
+
+[//]: # (```)

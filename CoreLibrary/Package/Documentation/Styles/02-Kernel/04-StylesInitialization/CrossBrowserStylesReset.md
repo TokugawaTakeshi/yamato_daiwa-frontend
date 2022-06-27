@@ -5,6 +5,7 @@
 The resetting of browser dependent styles and some usually redefinable styles like default margins of `body` based on
 [Eric Mayer's **Reset CSS**](https://meyerweb.com/eric/tools/css/reset/).
 
+
 ## Differences with original Reset CSS
 
 ### No `font-size: 100%` in first ruleset

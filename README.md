@@ -1,4 +1,4 @@
-# Yamato-Daiwa FrontEnd [YDF]
+# Yamato-Daiwa FrontEnd 〔YDF〕
 
 ![Hero image of @yamato-daiwa/frontend](https://repository-images.githubusercontent.com/376180981/885d8a83-98a8-47d0-b2e2-5abf042ef184)
 

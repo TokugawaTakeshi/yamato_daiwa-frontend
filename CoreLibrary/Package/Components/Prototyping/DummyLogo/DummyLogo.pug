@@ -1,0 +1,18 @@
+mixin DummyLogo(properties)
+
+  -
+    const {
+      iconTextContent,
+      heading = "NNN Application prototype",
+      subheading
+    } = properties
+
+
+  a.DummyLogo(
+    href="#"
+  )&attributes(attributes)
+
+    .DummyLogo-Icon= iconTextContent
+
+    .DummyLogo-Heading= heading
+    .DummyLogo-Subheading= subheading

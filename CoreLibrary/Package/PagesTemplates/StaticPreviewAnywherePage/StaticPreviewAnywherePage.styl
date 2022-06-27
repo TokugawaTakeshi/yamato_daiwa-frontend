@@ -17,22 +17,22 @@ InitialGlobalCSS_Rules()
 
   &-TopHeading
 
-    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 32px, lineHeight: 36px })
+    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 32px, lineHeight: 36px })
     color ACCENTED_COLOR
 
 
   &-TopSubheading
 
-    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 22px, lineHeight: 26px })
+    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 22px, lineHeight: 26px })
     font-weight bold
-    color ShadeOfGray__24--W3C_Palette
+    color: ShadesOfGray__39ColorsW3C_Palette[24]
 
     retireFrom({ targetElementSelector: ".AnywherePage-TopHeading", y: 12px })
 
 
   &-PagesGroupHeading
 
-    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 28px, lineHeight: 32px })
+    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 28px, lineHeight: 32px })
     font-weight bold
     color ACCENTED_COLOR
 
@@ -42,7 +42,7 @@ InitialGlobalCSS_Rules()
 
   &-PagesSubgroupHeading
 
-    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 22px, lineHeight: 26px })
+    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 22px, lineHeight: 26px })
     font-weight bold
     color PRIMARY_COLOR
 
@@ -51,9 +51,9 @@ InitialGlobalCSS_Rules()
 
   &-PageSubsubgroupHeading
 
-    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 18px, lineHeight: 20px })
+    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 18px, lineHeight: 20px })
     font-weight bold
-    color ShadeOfGray__24--W3C_Palette
+    color: ShadesOfGray__39ColorsW3C_Palette[24]
 
     retireFrom({ targetElementSelector: ".AnywherePage-PagesSubgroupHeading", y: 4px })
 
@@ -63,7 +63,7 @@ InitialGlobalCSS_Rules()
 
     border-radius 10px
     padding 8px 12px
-    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 14px, lineHeight: 16px })
+    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 14px, lineHeight: 16px })
     text-align center
 
     font-weight bold
@@ -111,7 +111,7 @@ InitialGlobalCSS_Rules()
 
   PageLinkText-CommonSettings()
 
-    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 14px, lineHeight: 18px })
+    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 14px, lineHeight: 18px })
 
     color #0075c4
 
@@ -188,7 +188,7 @@ InitialGlobalCSS_Rules()
 
     &-Heading
 
-      MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 18px, lineHeight: 22px })
+      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 18px, lineHeight: 22px })
 
       font-weight bold
       color PRIMARY_COLOR

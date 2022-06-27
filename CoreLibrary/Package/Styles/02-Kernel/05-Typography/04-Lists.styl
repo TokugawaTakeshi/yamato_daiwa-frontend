@@ -1,16 +1,13 @@
-// --- 箇条書き ----------------------------------------------------------------------------------------------------------
-UnorderedListDefaultProperties = {
+UnorderedListDefaultProperties--YDF = {
   geometry: {
     fontSize: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
     lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS,
     paddings: { left: 28px },
-    verticalSpaceBetweenItems: 8px,
-    customDeclarations: {}
+    verticalSpaceBetweenItems: 8px
   }
 }
 
-
-UnorderedList(preset = UnorderedListDefaultProperties, overridings = {})
+UnorderedList--YDF(preset = UnorderedListDefaultProperties--YDF, overridings = {})
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
   geometry = properties.geometry
@@ -26,7 +23,7 @@ UnorderedList(preset = UnorderedListDefaultProperties, overridings = {})
 
   li
 
-    MultilineTextWithoutExtraSpaceCausedByLineHeight({
+    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
       fontSize: geometry.fontSize,
       lineHeight: geometry.lineHeight
     })
@@ -48,20 +45,16 @@ UnorderedList(preset = UnorderedListDefaultProperties, overridings = {})
       list-style-type square
 
 
-// --- 段落番号 ---------------------------------------------------------------------------------------------------------
-OrderedListDefaultProperties = {
+OrderedListDefaultProperties--YDF = {
   geometry: {
     fontSize: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
     lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS,
     paddings: { left: 28px },
-    verticalSpaceBetweenItems: 8px,
-    customDeclarations: {}
-  },
-  customDeclarations: {}
+    verticalSpaceBetweenItems: 8px
+  }
 }
 
-
-OrderedList(preset = OrderedListDefaultProperties, overridings = {})
+OrderedList--YDF(preset = OrderedListDefaultProperties--YDF, overridings = {})
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
   geometry = properties.geometry
@@ -77,7 +70,7 @@ OrderedList(preset = OrderedListDefaultProperties, overridings = {})
 
   li
 
-    MultilineTextWithoutExtraSpaceCausedByLineHeight({
+    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
       fontSize: geometry.fontSize,
       lineHeight: geometry.lineHeight
     })

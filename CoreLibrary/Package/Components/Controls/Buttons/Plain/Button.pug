@@ -1,0 +1,138 @@
+include Button.class.pug
+
+
+mixin Button--YDF(properties)
+
+  -
+
+    properties = properties || {}
+    const {
+      HTML_Type = Button.HTML_Types.regular,
+      label,
+      URI,
+      toggled = false,
+      disabled = false,
+      theme = Button.Themes.regular,
+      geometry = Button.GeometricVariations.regular,
+      decoration = Button.DecorativeVariations.regular,
+      hasPrependedSVG_Icon,
+      hasAppendedSVG_Icon,
+      hasLoneSVG_Icon
+    } = properties;
+
+    let isTagTheButton = false;
+    let isTagTheInput = false;
+    let isTagTheAnchor = false;
+    let typeArgumentValue;
+
+    if (URI) {
+
+      tagName = "a";
+      isTagTheAnchor = true;
+
+    } else {
+
+      switch (HTML_Type) {
+
+        case Button.HTML_Types.inputButton: {
+
+          tagName = "input";
+          isTagTheInput = true;
+          typeArgumentValue = "button";
+
+          break;
+        }
+
+        case Button.HTML_Types.inputSubmit: {
+
+          tagName = "input";
+          isTagTheInput = true;
+          typeArgumentValue = "submit";
+
+          break;
+        }
+
+        case Button.HTML_Types.inputReset: {
+
+          tagName = "input";
+          isTagTheInput = true;
+          typeArgumentValue = "reset";
+
+          break;
+
+        }
+
+        case Button.HTML_Types.regular: {
+
+          tagName = "button";
+          isTagTheButton = true;
+          typeArgumentValue = "button"
+
+          break;
+        }
+
+        case Button.HTML_Types.submit: {
+
+          tagName = "button";
+          isTagTheButton = true;
+          typeArgumentValue = "submit"
+
+          break;
+        }
+      }
+    }
+
+    const commonCSS_Classes = [
+      "Button",
+      ...Object.entries(Button.Themes).length > 1 ? [ Button.ThemesCSS_ModifiersNames[theme] ] : [],
+      ...Object.entries(Button.GeometricVariations).length > 1 ? [ Button.GeometricVariationsCSS_ModifiersNames[geometry] ] : [],
+      ...Object.entries(Button.DecorativeVariations).length > 1 ? [ Button.DecorativeVariationsCSS_Modifiers[decoration] ] : [],
+      ...toggled ? [ "Button__ToggledState" ] : [],
+      ...hasPrependedSVG_Icon ? [ "Button__HasPrependedSVG_Icon" ] : [],
+      ...hasAppendedSVG_Icon ? [ "Button__HasAppendedSVG_Icon" ] : [],
+      ...hasLoneSVG_Icon ? [ `Button__HasLoneSVG_Icon` ] : []
+    ]
+
+
+  if isTagTheButton
+
+    button&attributes(attributes)(
+      class= commonCSS_Classes
+      type= typeArgumentValue
+      aria-pressed= toggled ? "true" : undefined
+      disabled= disabled
+    )
+
+      if block
+
+        block
+
+      else if label
+
+        span.Button-Label= label
+
+  else if isTagTheAnchor
+
+    a&attributes(attributes)(
+      class= [ ...commonCSS_Classes, disabled ? [ "Button__DisabledState" ] : [] ]
+      href= URI
+      aria-disabled= disabled ? "true" : undefined
+      tabindex = disabled && -1
+    )
+
+      if block
+
+        block
+
+      else if label
+
+        span.Button-Label= label
+
+  else if isTagTheInput
+
+    input&attributes(attributes)(
+      class= commonCSS_Classes
+      type= typeArgumentValue
+      value= label
+      disabled= disabled
+    )

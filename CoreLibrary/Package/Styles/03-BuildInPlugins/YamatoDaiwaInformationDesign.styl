@@ -1,29 +1,30 @@
-ImportantEntity--YDID_Color = hsl(0, 100, 40)
-SecondaryEntity--YDID_Color = hsl(40, 100, 40)
+YamatoDaiwaInformationDesignColors = {
+  importantEntity: hsl(0, 100, 40),
+  secondaryEntity: hsl(40, 100, 40),
+  definableTerm: hsl(110, 100, 40),
+  term: hsl(225, 100, 40),
+  term__variation: hsl(200, 100, 40),
+  keyword: hsl(290, 100, 40),
+  keyword__variation: hsl(315, 100, 40)
+}
 
-DefinableTerm--YDID_Color = hsl(110, 100, 40)
 
-Term__Variation1--YDID_Color = hsl(225, 100, 40)
-Term__Variation2--YDID_Color = hsl(200, 100, 40)
-
-Keyword__Variation1--YDID_Color = hsl(290, 100, 40)
-Keyword__Variation2--YDID_Color = hsl(315, 100, 40)
-
-
-DefinableTerm()
+DefinableTerm--YDID()
 
   font-weight bold
-  color DefinableTerm--YDID_Color
+  color: YamatoDaiwaInformationDesignColors.definableTerm
+
 
 ImportantEntity--YDID()
 
   font-weight bold
-  color ImportantEntity--YDID_Color
+  color: YamatoDaiwaInformationDesignColors.importantEntity
+
 
 ImportantEntity__Code--YDID()
 
   ImportantEntity--YDID()
-  font-family Consolas__SmoothJapaneseSymbols--FontsStack
+  font-family Consolas, monaco, Meiryo UI, monospace
 
 
 SecondaryEntity--YDID()
@@ -31,15 +32,17 @@ SecondaryEntity--YDID()
   font-weight bold
   color SecondaryEntity--YDID_Color
 
+
 SecondaryEntity__Code--YDID()
 
   SecondaryEntity--YDID()
-  font-family Consolas__SmoothJapaneseSymbols--FontsStack
+  font-family Consolas, monaco, Meiryo UI, monospace
 
 
 Term--YDID()
 
   color Term__Variation1--YDID_Color
+
 
 Term__Contrast--YDID()
 
@@ -49,6 +52,7 @@ Term__Contrast--YDID()
 Keyword--YDID()
 
   color Keyword__Variation1--YDID_Color
+
 
 Keyword__Contrast--YDID()
 
@@ -65,7 +69,7 @@ provideYamatoDaiwaInformationDesignClasses()
 
   .DefinableTerm--YDID
 
-    DefinableTerm()
+    DefinableTerm--YDID()
 
 
   .Term--YDID

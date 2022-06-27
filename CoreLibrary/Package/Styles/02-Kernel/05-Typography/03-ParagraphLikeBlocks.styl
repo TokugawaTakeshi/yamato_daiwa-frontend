@@ -1,23 +1,21 @@
-ParagraphDefaultProperties = {
+ParagraphDefaultProperties--YDF = {
   geometry: {
     fontSize: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
-    lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS,
-    customDeclarations: {}
+    lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS
   },
   decoration: {
-    fontColor: null,
-    customDeclarations: {}
+    fontColor: null
   }
 }
 
 
-Paragraph(preset = ParagraphDefaultProperties, overridings = {})
+Paragraph--YDF(preset = ParagraphDefaultProperties--YDF, overridings = {})
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
 
 
   // --- Geometry ------------------------------------------------------------------------------------------------------
-  MultilineTextWithoutExtraSpaceCausedByLineHeight({
+  MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
     fontSize: properties.geometry.fontSize,
     lineHeight: properties.geometry.lineHeight
   })
@@ -33,21 +31,19 @@ Paragraph(preset = ParagraphDefaultProperties, overridings = {})
   applyIfNotNull(properties.decoration.customDeclarations)
 
 
-AbstractDefaultProperties = {
+AbstractDefaultProperties--YDF = {
   geometry: {
     fontSize: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
     lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS,
-    paddings: { horizontalSymmetric: 24px },
-    customDeclarations: {}
+    paddings: { horizontalSymmetric: 24px }
   },
   decoration: {
-    fontColor: ShadeOfGray__12--W3C_Palette,
-    customDeclarations: {}
+    fontColor: ShadesOfGray__39ColorsW3C_Palette[12]
   }
 }
 
 
-Abstract(preset = AbstractDefaultProperties, overridings = {})
+Abstract--YDF(preset = AbstractDefaultProperties--YDF, overridings = {})
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
 
@@ -55,7 +51,7 @@ Abstract(preset = AbstractDefaultProperties, overridings = {})
   // --- Geometry ------------------------------------------------------------------------------------------------------
   Paddings(properties.geometry.paddings)
 
-  MultilineTextWithoutExtraSpaceCausedByLineHeight({
+  MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
     fontSize: properties.geometry.fontSize,
     lineHeight: properties.geometry.lineHeight
   })

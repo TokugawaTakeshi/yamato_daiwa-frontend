@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "IncrementalDevelopmentBuilding": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --mode DEVELOPMENT",
+    "ProductionBuilding": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --mode PRODUCTION"
+  },
+  "dependencies": {
+    "@yamato-daiwa/frontend": "0.3.2"
+  },
+  "devDependencies": {
+    "hikari-automation": "0.0.44"
+  }
+}
