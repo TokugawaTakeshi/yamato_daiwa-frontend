@@ -1,4 +1,4 @@
-DefaultSelector(defaultSelector)
+provideDefaultSelectorWhenRootAndApply(defaultSelector)
 
   if selector() == "&"
 
@@ -9,6 +9,11 @@ DefaultSelector(defaultSelector)
   else
 
     {block}
+
+
+getCurrentSelectorSubstitutingRoot(defaultSelector)
+
+  return selector() == "&" ? defaultSelector : selector()
 
 
 applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)

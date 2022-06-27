@@ -34,7 +34,13 @@ npm i @yamato-daiwa/frontend -E
 @require "RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Functionality.styl"
 ```
 
+Please note that this including will not cause any output CSS rules -  100% of YDF functionality has been provided via variables 
+and mixins.
+
+
 ### Get components
+
+Again, neither Pug nor Stylus including will not cause any output CSS rules.
 
 #### Markup (Pug)
 

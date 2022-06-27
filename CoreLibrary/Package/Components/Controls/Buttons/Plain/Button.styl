@@ -8,22 +8,38 @@ Button = {
         geometricVariations: {
 
           regular: {
+
             rootElement: {
               minimalWidth: 80px
               borders: specifyBordersSizing({
                 thickness: { all: 1px },
                 radius: { all: 3px }
               })
+            },
+
+            label: {
+              text: {
+                size: 15px,
+                lineSpacing: 4px
+              }
             }
           },
 
           small: {
+
             rootElement: {
               minimalWidth: 60px
               borders: specifyBordersSizing({
                 thickness: { all: 1px },
                 radius: { all: 3px }
               })
+            },
+
+            label: {
+              text: {
+                size: 13px,
+                lineSpacing: 4px
+              }
             }
           }
         },
@@ -81,6 +97,7 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
       ButtonLikeElementsPrimer()
 
       display inline-flex
+      justify-content center
 
       cursor pointer
 
@@ -88,17 +105,31 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
   // --- Geometry ------------------------------------------------------------------------------------------------------
   applyGeometricVariation(variation)
 
-    +DefaultSelector(ROOT_ELEMENT_SELECTOR)
+    +provideDefaultSelectorWhenRootAndApply(ROOT_ELEMENT_SELECTOR)
 
       applyIfNotNull({ min-width: variation.rootElement.minimalWidth })
 
       BordersSizing(variation.rootElement.borders)
 
 
+    /a{getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)} .Button-Label,
+    /button{getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)} .Button-Label
+
+      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
+        fontSize: variation.label.text.size,
+        lineHeight: 4px
+      })
+
+
+    /input{getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)}
+
+      font-size: variation.label.text.size
+
+
   // --- Decoration ----------------------------------------------------------------------------------------------------
   applyDecorativeVariation(variation)
 
-    +DefaultSelector(ROOT_ELEMENT_SELECTOR)
+    +provideDefaultSelectorWhenRootAndApply(ROOT_ELEMENT_SELECTOR)
 
       applyIfNotNull({
         border-style: variation.rootElement.borders.style,

@@ -28,26 +28,24 @@ block append PageContent
             block
 
     +ButtonsShowcase({ caption: "Default options" })
+      td: +Button--YDF({ label: "本文 Teksto" })
+      td: +Button--YDF({ label: "本文 Teksto", URI: "#" })
       td
-        +Button 本文 Teksto
-      td
-        +Button({ URI: "#" }) 本文 Teksto
-      td
-        +Button({
+        +Button--YDF({
           label: "本文 Teksto",
           HTML_Type: Button.HTML_Types.inputButton
         })
 
     +ButtonsShowcase({ caption: "Small size" })
+      td: +Button--YDF({ geometry: Button.GeometricVariations.small }) 本文 Teksto
       td
-        +Button({ geometry: Button.GeometricVariations.small }) 本文 Teksto
-      td
-        +Button({
+        +Button--YDF({
+          label: "本文 Teksto",
           URI: "#",
           geometry: Button.GeometricVariations.small
-        }) 本文 Teksto
+        })
       td
-        +Button({
+        +Button--YDF({
           label: "本文 Teksto",
           HTML_Type: Button.HTML_Types.inputButton,
           geometry: Button.GeometricVariations.small

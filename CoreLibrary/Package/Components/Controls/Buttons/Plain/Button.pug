@@ -1,7 +1,7 @@
 include Button.class.pug
 
 
-mixin Button(properties)
+mixin Button--YDF(properties)
 
   -
 
@@ -101,7 +101,15 @@ mixin Button(properties)
       type= typeArgumentValue
       aria-pressed= toggled ? "true" : undefined
       disabled= disabled
-    ): block
+    )
+
+      if block
+
+        block
+
+      else if label
+
+        span.Button-Label= label
 
   else if isTagTheAnchor
 
@@ -110,7 +118,15 @@ mixin Button(properties)
       href= URI
       aria-disabled= disabled ? "true" : undefined
       tabindex = disabled && -1
-    ): block
+    )
+
+      if block
+
+        block
+
+      else if label
+
+        span.Button-Label= label
 
   else if isTagTheInput
 
