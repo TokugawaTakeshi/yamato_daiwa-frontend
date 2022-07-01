@@ -1,4 +1,4 @@
-# @yamato-daiwa/frontend - 〔YDF〕
+# Yamato Daiwa Frontend 〔YDF〕
 
 [![NPM Version](https://img.shields.io/npm/v/@yamato-daiwa/frontend)](https://www.npmjs.com/package/@yamato-daiwa/frontend)
 [![IntelliJ IDEA plugin](https://img.shields.io/badge/IntelliJ_IDEA-Official_Plugin-088BF8.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
@@ -75,18 +75,18 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
   * [DataTypes](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types) enumeration
   * [NARROWEST_SCREEN_WIDTH_UNIT](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit---the-narrowest-screen-width-unit) contant
 * Colors
-  * [ShadesOfGray__W3C_Palette](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md)  
+  * [ShadesOfGray__39ColorsW3C_Palette](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md)  
   * [TemporaryHighlighting](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md)
   * [PracticalColorCoordinateSystem](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md)
 
 ##### Kernel
 ###### Basic variables
 
-* [Typography](Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#typography)
-  * [Font stacks](Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#font-stacks)
-  * [Dimensions](Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#dimensions)
-* [ZIndexes](Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#zindexes)
-* [BEM Related](Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#bem-related)
+* [Typography](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#typography)
+  * [Font stacks](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#font-stacks)
+  * [Dimensions](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#dimensions)
+* [ZIndexes](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#zindexes)
+* [BEM Related](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#bem-related)
 
 ###### Functions
 
@@ -137,13 +137,13 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject.md">deeplyCloneAndOverrideObject</a></dt>
       <dd>Allows to clone and immediately override the object without affecting to initial object.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject.md">deeplyCloneObject</a></dt>
-      <dd>Creates the deep copy object the object.</dd>
+      <dd>Creates the deep copy of the object.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/formatObject.md">formatObject</a></dt>
-      <dd>Beautifies the object (hash).</dd>
+      <dd>Formats the object-type data.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectNonNullValuesCount.md">getObjectNonNullValuesCount</a></dt>
       <dd>Returns the count of non-null values of specified object.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely.md">getObjectValueByDotSeparatedPathSafely</a></dt>
-      <dd>Accesses to nested object (hash) without risk being throw the error when some property does not exist.</dd>
+      <dd>Accesses to nested object without risk being thrown the error when some property does not exist.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues.md">iterateObjectSkippingNullValues</a></dt>
       <dd>Iterates the object's keys and values skipping entries with null value.</dd>
     </dl>
@@ -155,15 +155,15 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/arrayConstructor__POLYFILL.md">arrayConstructor__POLYFILL</a></dt>
       <dd>The workaround for <a href="https://github.com/stylus/stylus/issues/2582">Unsolicited two-dimensional array when trying to declare the plain one-dimensional array</a> issue.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getFirstNonNullArrayElement.md">getFirstNonNullArrayElement</a></dt>
-      <dd>Returns first non-null element for array or null if no such elements.</dd>
+      <dd>Returns first non-null element of the array or null if there are no such elements.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getLengthOfPrimitivesArray.md">getLengthOfPrimitivesArray</a></dt>
       <dd>Returns the elements count of array of strings, numbers or booleans.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/hasPrimitivesArraySpecifiedElement.md">hasPrimitivesArraySpecifiedElement</a></dt>
       <dd>Checks has certain array of strings/numbers/booleans the specified element.</dd> 
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterate2DimensionalArray.md">iterate2DimensionalArray</a></dt>
-      <dd>Iterate the 2-dimensional array supporting single-element case.</dd> 
+      <dd>Iterates the 2-dimensional array supporting single element case.</dd> 
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterateAssociativeArray.md">iterateAssociativeArray</a></dt>
-      <dd>Iterates associative array supporting single-element case.</dd>
+      <dd>Iterates the associative array supporting single element case.</dd>
     </dl>
   </li>
   
@@ -200,9 +200,9 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
     <b>General</b>
     <dl>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/00-GeneralUtils/applyIfNotNull.md">applyIfNotNull</a></dt>
-      <dd>Adds each specified CSS properties to target ruleset when if it's not null. Intended to be used in cases when CSS values are being retrieved via variables/parameters thus unknown in advance.</dd>
+      <dd>Adds each specified CSS property to target ruleset when it is not null. Intended to be used in cases when CSS values are being retrieved via variables/parameters thus unknown in advance.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/00-GeneralUtils/applyIfNotZero.md">applyIfNotZero</a></dt>
-      <dd>Adds each specified CSS properties to target ruleset when if it's not zero. Intended to be used in cases when CSS values are being retrieved via variables/parameters thus unknown in advance.</dd>
+      <dd>Adds each specified CSS property to target ruleset when it is not zero. Intended to be used in cases when CSS values are being retrieved via variables/parameters thus unknown in advance.</dd>
     </dl>
   </li>
   <li>
@@ -212,9 +212,9 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
         <b>Width</b>
         <dl>
           <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/WidthSizing.md">WidthSizing</a></dt>
-          <dd>Alternative width specifying approach intended to be used in frameworks development.</dd>
+          <dd>Alternative to native CSS approach of width specifying intended to be used in customizable UI components development.</dd>
           <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/fillViewportWidthIgnoringParentPaddings.md">fillViewportWidthIgnoringParentPaddings</a></dt>
-          <dd>Make element fill the viewport's width ignoring parent's side paddings with some limitations.</dd>
+          <dd>Makes element fill the viewport's width ignoring parent's side paddings with some limitations.</dd>
           <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/TableCellWidthSizing.md">TableCellWidthSizing</a></dt>
           <dd>Allows to define the width, borders and paddings of table cell by various combinations of properties.</dd>
         </dl>
@@ -223,16 +223,16 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
         <b>Borders</b>
         <dl>
           <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/03-Borders/BordersSizing.md">BordersSizing</a></dt>
-          <dd>The alternative to native CSS method of defining of the border width (thickness) and radius intended to be used in customizable components development.</dd>
-          <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/03-Borders/BordersFillets.md">Border fillets mixins</a></dt>
-          <dd>Allows to define the top, bottom, left or right fillets via border radius</dd>
+          <dd>Alternative to native CSS approach of specifying of the border width (thickness) and radius intended to be used in customizable UI components development.</dd>
+          <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/03-Borders/BordersFilletsRadius.md">Border fillets radius</a></dt>
+          <dd>Allows to define the top, bottom, left or right fillets radius.</dd>
         </dl>
       </li>
       <li>
         <b>Paddings</b>
         <dl>
           <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/04-Paddings/Paddings.md">Paddings</a></dt>
-          <dd>The alternative to native CSS method of defining of the paddings intended to be used in customizable components development.</dd>
+          <dd>Alternative to native CSS approach of paddings specifying intended to be used in customizable UI components development.</dd>
         </dl>
       </li>
     </ul>
@@ -243,7 +243,7 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/centerHorizontallyWithoutWrapper.md">centerHorizontallyWithoutWrapper</a></dt>
       <dd>Centering of the block or inline-block elements without wrapper.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/placeToRight.md">placeToRight</a></dt>
-      <dd>Placing the element to right side or the container by relative positioning and <code>transform</code>.</dd>
+      <dd>Places the element to right side or the container by relative positioning and <code>transform</code>.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md">VerticallyCenteredAbsolutelyPositionedBlock</a></dt>
       <dd>Centers vertically the absolutely positioned block.</dd>
     </dl>
@@ -252,7 +252,7 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
     <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md">Positional relationship</a>
     <dl>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#positionalrelationship-mixin">PositionalRelationship</a></dt>
-      <dd>Low-level mixin for the defining of the vertical space between two or more elements.</dd>
+      <dd>Low-level mixin for the defining of the space between two or more elements.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#retirefrom-mixin">retireFrom</a></dt>
       <dd>Allows to define how much element <b>B</b> must retire from <b>A</b> by top/left margin.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#pushtargetfromself-mixin">pushTargetFromSelf</a></dt>
@@ -275,13 +275,13 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
     <b>Layout</b>
     <dl>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/CenteredContentWithComputedHorizontalPaddings.md">CenteredContentWithComputedHorizontalPaddings</a></dt>
-      <dd>Centering of the element by computed horizontal symmetric paddings. Intended to be used on the page containers on wide screens.</dd>
+      <dd>Centering of the element by computed horizontal symmetric paddings. Intended applied to the page containers on wide screens.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/Centerer.md">Centerer</a></dt>
-      <dd>Centering of the block elements with `auto` margins, minimal and maximal widths. Intended to be used on containers.</dd>
+      <dd>Centering of the block elements with `auto` margins, minimal and maximal widths. Intended to be applied to containers.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/fillBodyVertically.md">fillBodyVertically</a></dt>
       <dd>Fills "body" when "body" and "html" takes 100% of viewport's height as minimum with or without vertical scrolling availability.</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/FixedTranslucentDimLayer.md"></a></dt>
-      <dd>The mixin intended to be applied to <code>div</code> element to overlap the other content which translucent dim layer. Such element is frequently being used as underlay for modal dialogs.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/FixedTranslucentDimLayer.md">FixedTranslucentDimLayer</a></dt>
+      <dd>The mixin intended to be applied to <b>div</b> element to overlap the other content which translucent dim layer. Such element is being frequently used as underlay for modal dialogs.</dd>
     </dl>
   </li>
   <li>
@@ -297,7 +297,7 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
     <b>Other</b>
     <dl>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/provideClippedShadowsAndOutlinesVisibility.md">provideClippedShadowsAndOutlinesVisibility</a></dt>
-      <dd>The ugly but still no-alternatives solution of clipped by <code>overflow</code> shadows and outlines problem. Indented to be used on non-containers.</dd>
+      <dd>The ugly but still no-alternatives solution of clipped by <code>overflow</code> shadows and outlines problem.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/Sprite.md">Sprite</a></dt>
       <dd>Mixin for the making of the element to sprite.</dd>
     </dl>
@@ -336,12 +336,3 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
   <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md">OverflowSafeSingleLineLabel</a></dt>
   <dd>Improved solution of <a href="https://stackoverflow.com/questions/68667208/keep-hanging-characters-visible-in-spite-of-line-height-1-and-overflow-hidd">horizontal text overflow safety of single line labels</a> problem.</dd>
 </dl>
-
-
-### Motivation
-
-It is considered that the programming in the overkill for creating of stylesheets.
-Maybe is so until writing the flexible and customizable UI framework.
-
-The `@yamato-daiwa/frontend` synthetically improving the programming functionality of Stylus pre-processor
-allows flexibly work with unknown at-advance data, namely the customization data from the framework users.

@@ -18,7 +18,7 @@ Although the inline SVG is better alternative (including easy resizing meris), s
 
 There are no limitations on icons' sizes and coordinates.
 In particular, the icons must not be of same width.
-But if they has same size and there is no gap between them, besides the hard-coding of coordinates, 
+But if they have same size and there is no gap between them, besides the hard-coding of coordinates, 
 you can compute the coordinates like: 
 
 ```stylus
@@ -39,6 +39,7 @@ you can compute the coordinates like:
       // ↓
       // y
       Sprite({
+        spritesMapURL: "ExampleSpritesMap.png",
         width: ICONS_WIDTH,
         height: ICONS_HEIGHT,
         positiveX_Coordinate: 0,
@@ -53,6 +54,7 @@ you can compute the coordinates like:
       // ↓
       // y
       Sprite({
+        spritesMapURL: "ExampleSpritesMap.png",
         width: ICONS_WIDTH,
         height: ICONS_HEIGHT,
         positiveX_Coordinate: ICONS_WIDTH,
@@ -67,6 +69,7 @@ you can compute the coordinates like:
       // ↓
       // y
       Sprite({
+        spritesMapURL: "ExampleSpritesMap.png",
         width: ICONS_WIDTH,
         height: ICONS_HEIGHT,
         positiveX_Coordinate: 2*ICONS_WIDTH,
@@ -81,6 +84,7 @@ you can compute the coordinates like:
       // ↓
       // y
       Sprite({
+        spritesMapURL: "ExampleSpritesMap.png",
         width: ICONS_WIDTH,
         height: ICONS_HEIGHT,
         positiveX_Coordinate: 0,

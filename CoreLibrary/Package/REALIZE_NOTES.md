@@ -29,13 +29,15 @@
 ## Mixin utils
 
 * [**BordersSizing**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/03-Borders/BordersSizing.md)
-  The alternative to native CSS method of defining of the border width (thickness) and radius intended to be used in customizable components development.
-
+  The alternative to native CSS method of defining of the border width (thickness) and radius intended to be used in customizable UI components development.
+* [**BorderTopFilletsRadius**, **BorderBottomFilletsRadius**, **BorderLeftFilletsRadius**, **BorderRightFilletsRadius**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/03-Borders/BordersFilletsRadius.md) 
+  Allows to define the top, bottom, left or right fillets radius.
 
 ### Strings
 
 * [**capitalizeFirstLatinCharacter**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md)
   Capitalizes first lowercase latin character (a-z) of the string.
+
 
 ### Objects
 

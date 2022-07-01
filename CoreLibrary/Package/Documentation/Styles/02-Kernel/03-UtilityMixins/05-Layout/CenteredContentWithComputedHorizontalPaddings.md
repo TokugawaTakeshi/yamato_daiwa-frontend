@@ -143,6 +143,6 @@ added.
     Paddings({ horizontalSymmetric: 12px })
 ```
 
-You can input this example in one second with <kbd>med-3c<kbd> live template of official plugin for IntelliJ IDEA-family IDEs.
-Also, you can use again `WideScreensConfiguration` by <kbd>wsc<kbd>, `MediumScreensConfiguration` by <kbd>msc<kbd> and
-`NarrowScreensConfiguration` by <kbd>msc<kbd>.
+You can input this example in one second with <kbd>med-3c</kbd> live template of official plugin for IntelliJ IDEA-family IDEs.
+Also, you can use again `WideScreensConfiguration` by <kbd>wsc</kbd>, `MediumScreensConfiguration` by <kbd>msc</kbd> and
+`NarrowScreensConfiguration` by <kbd>nsc</kbd>.
