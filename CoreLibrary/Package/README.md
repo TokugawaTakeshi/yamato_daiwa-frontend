@@ -127,7 +127,7 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString.md">buildString</a></dt>
       <dd>Allows to create the dynamic strings using the syntax similar to <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">ES6 Template literals</a>.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md">capitalizeFirstLatinCharacter</a></dt>
-      <dd>Capitalizes first latin character.</dd>
+      <dd>Capitalizes first lowercase latin character (a-z) of the string.</dd>
     </dl>
   </li>
   
