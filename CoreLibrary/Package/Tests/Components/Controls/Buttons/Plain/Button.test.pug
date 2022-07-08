@@ -51,6 +51,15 @@ block append PageContent
           geometry: Button.GeometricVariations.small
         })
 
+    +ButtonsShowcase({ caption: "Multiline safety test" })
+      td: +Button--YDF({ label: "Super hyper mega extra very log label "}).Button-NarrowWidth
+      td: +Button--YDF({ label: "Super hyper mega extra very log label", URI: "#"}).Button-NarrowWidth
+      td
+        +Button--YDF({
+          label: "Super hyper mega extra very log label",
+          HTML_Type: Button.HTML_Types.inputButton
+        }).Button-NarrowWidth
+
     //-
 
       +ButtonsShowcase({ caption: "錠型" })

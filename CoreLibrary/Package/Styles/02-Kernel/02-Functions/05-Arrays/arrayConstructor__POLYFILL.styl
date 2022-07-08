@@ -1,11 +1,11 @@
 arrayConstructor__POLYFILL(elements...)
 
-  accumulatingArray = elements[0]
+  accumulatingArray = null
 
-  for element, interationNumber in elements
+  hash = {}
 
-    if interationNumber > 0
+  for element, index in elements
 
-      push(accumulatingArray, element)
+    hash["" + index] = element
 
-  return accumulatingArray
+  return values(hash)

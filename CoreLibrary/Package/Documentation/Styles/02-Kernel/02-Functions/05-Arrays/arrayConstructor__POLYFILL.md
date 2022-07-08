@@ -67,3 +67,254 @@ Currently, it's completely undefined why the values in below example has been br
 p(borderRadiusSpecification.all borderRadiusSpecification.topSideFillets borderRadiusSpecification.leftSideFillets)
 // => (null) ((null) ((null)))
 ```
+
+## Development reports
+## June 2022
+
+Developing the **Button** component, we have encountered with yet another weird behaviour of Stylus.
+
+The **Button** styles specification (at that time):
+
+```stylus
+Button = {
+
+  defaultProperties: {
+
+    themes: {
+      regular: {
+
+        geometricVariations: {
+
+          regular: {
+
+            rootElement: {
+              // ...
+              paddings: specifyPaddings({
+                horizontalSymmetric: 15px,
+                verticalSymmetric: 6px
+              })
+            },
+
+            // ...
+          }
+        },
+
+        // ...
+      }
+    }
+  }
+}
+```
+
+In the **Paddings** mixin, we had:
+
+```stylus
+
+Paddings(paddingsSpecification, restParameters__MUST_NOT_BE...)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "Paddings",
+    targetParameterNumber: 1,
+    targetParameter: paddingsSpecification,
+    schema: PaddingsSpecificationSchema,
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+  log("===============================================================================================================")
+  log(paddingsSpecification.all)
+  log(paddingsSpecification.horizontalSymmetric)
+  log(paddingsSpecification.left)
+  log(paddingsSpecification.all paddingsSpecification.horizontalSymmetric paddingsSpecification.left)
+```
+
+Output:
+
+```
+inspect: null
+inspect: 15px
+inspect: null
+inspect: (null) ((15px) ((null)))
+```
+
+Each scalar value has nothing extraordinary: `null`, `15px`, `null`.
+But if we try to print the array... We have no idea what braces means and why Stylus grouped the second and third element, 
+but this phenomenon already known for us.
+
+Now, let us try to construct the array by **arrayConstructor__POLYFILL**. We'll print the **paddingsSpecification**
+object before and after:
+
+```stylus
+log("===============================================================================================================")
+log(paddingsSpecification)
+log(arrayConstructor__POLYFILL(
+  paddingsSpecification.all, paddingsSpecification.horizontalSymmetric, paddingsSpecification.left
+))
+log(paddingsSpecification)
+```
+
+Output:
+
+```
+inspect: '{
+  all: null,
+  horizontalSymmetric: 15px,
+  verticalUpwardShifting: null,
+  verticalSymmetric: 6px,
+  top: null,
+  bottom: null,
+  left: null,
+  right: null
+}'
+
+inspect: null (15px) (null)
+
+inspect: '{
+  all: null 15px null,
+  horizontalSymmetric: 15px,
+  verticalUpwardShifting: null,
+  verticalSymmetric: 6px,
+  top: null,
+  bottom: null,
+  left: null,
+  right: null
+}'
+```
+
+The **paddingsSpecification.all** has been mutated! First thought: something wrong **arrayConstructor__POLYFILL**.
+At that time, the implementation of **arrayConstructor__POLYFILL** was:
+
+```stylus
+arrayConstructor__POLYFILL(elements...)
+
+  accumulatingArray = elements[0]
+
+  for element, interationNumber in elements
+
+    if interationNumber > 0
+
+      push(accumulatingArray, element)
+
+  return accumulatingArray
+```
+
+Experimentally known that the cause is this line:
+
+```stylus
+accumulatingArray = elements[0]
+```
+
+But what wrong we are doing? We just copied the `null`.
+Let use try to make the `paddingsSpecification.all` to non-null:
+
+```stylus
+Button = {
+
+  defaultProperties: {
+
+    themes: {
+      regular: {
+
+        geometricVariations: {
+
+          regular: {
+
+            rootElement: {
+              // ...
+              paddings: specifyPaddings({
+                all: 13px
+              })
+            },
+
+            // ...
+          }
+
+          // ...
+       }
+     }
+   }
+ }
+}
+```
+
+Try to get output again:
+
+```
+inspect: '{
+  all: 13px,
+  horizontalSymmetric: null,
+  verticalUpwardShifting: null,
+  verticalSymmetric: null,
+  top: null,
+  bottom: null,
+  left: null,
+  right: null
+}'
+inspect: 13px (null) (null)
+inspect: '{
+  all: 13px null null,
+  horizontalSymmetric: null,
+  verticalUpwardShifting: null,
+  verticalSymmetric: null,
+  top: null,
+  bottom: null,
+  left: null,
+  right: null
+}'
+```
+
+The mutating left however with `accumulatingArray = elements[0]` we just copied the scalar value.
+No understanding for us what is going on.
+
+Next, we tried to change the implementation of `arrayConstructor__POLYFILL` to:
+
+```stylus
+arrayConstructor__POLYFILL(elements...)
+
+  accumulatingArray = null
+
+  for element, index in elements
+
+    accumulatingArray[index] = element
+
+  return accumulatingArray
+```
+
+It no use, the mutating left. ...If we do not skip the first element:
+
+```stylus
+arrayConstructor__POLYFILL(elements...)
+
+  accumulatingArray = null
+
+  for element, index in elements
+
+    if index > 0
+
+      accumulatingArray[index] = element
+
+  return accumulatingArray
+```
+
+
+But it is not the solution.
+
+Finally, we stopped at this implementation:
+
+```stylus
+arrayConstructor__POLYFILL(elements...)
+
+  accumulatingArray = null
+
+  hash = {}
+
+  for element, index in elements
+
+    hash["" + index] = element
+
+  return values(hash)
+```
+
+Without converting of the index to string, this solution will equivalent to previous one.
+
+We would be glad to report about this to Stylus development team, however we stop to do it after has been ignored for the multiple times
+([1](https://github.com/stylus/stylus/issues/2596), [2](https://github.com/stylus/stylus/issues/2582), [3](https://github.com/stylus/stylus/issues/2557), [4](https://github.com/stylus/stylus/issues/2541), [5](https://github.com/stylus/stylus/issues/2539)).

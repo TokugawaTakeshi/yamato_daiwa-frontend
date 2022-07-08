@@ -14,6 +14,10 @@ Button = {
               borders: specifyBordersSizing({
                 thickness: { all: 1px },
                 radius: { all: 3px }
+              }),
+              paddings: specifyPaddings({
+                horizontalSymmetric: 15px,
+                verticalSymmetric: 6px
               })
             },
 
@@ -32,6 +36,10 @@ Button = {
               borders: specifyBordersSizing({
                 thickness: { all: 1px },
                 radius: { all: 3px }
+              }),
+              paddings: specifyPaddings({
+                horizontalSymmetric: 6px,
+                verticalSymmetric: 3px
               })
             },
 
@@ -117,13 +125,18 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
 
       MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
         fontSize: variation.label.text.size,
-        lineHeight: 4px
+        lineHeight: 19px
       })
 
 
     /input{getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)}
 
+      //min-height 27px
+
       font-size: variation.label.text.size
+      line-height 18px
+
+      Paddings(variation.rootElement.paddings)
 
 
   // --- Decoration ----------------------------------------------------------------------------------------------------
