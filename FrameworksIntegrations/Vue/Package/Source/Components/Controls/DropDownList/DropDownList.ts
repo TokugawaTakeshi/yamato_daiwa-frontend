@@ -10,8 +10,7 @@ import {
   Options as VueComponentConfiguration,
   Vue as VueComponent,
   Model as VModel,
-  Prop as VueProperty,
-  Emit as emitEvent,
+  Prop as VueProperty
 } from "vue-property-decorator";
 
 /* --- Utils -------------------------------------------------------------------------------------------------------- */
@@ -20,11 +19,9 @@ import {
   isNumber,
   isNull,
   isNotNull,
-  isElementOfEnumeration,
   ArbitraryObject,
   isArbitraryObject,
   isNotUndefined,
-  addElementsToArrayImmutably,
   removeArrayElementsByIndexes,
   isNeitherUndefinedNorNull
 } from "@yamato-daiwa/es-extensions";
@@ -159,10 +156,10 @@ namespace DropDownList {
 
 
     /* === State ==================================================================================================== */
-    private indexesOfSelectedOption: Array<number> = [];
+    private indexesOfSelectedOptions: Array<number> = [];
     private isExpanded: boolean = false;
 
-    protected readonly COMPONENT_BASIC_ID: string = LessonTestQuestionEditor.generateComponentBasicID();
+    protected readonly COMPONENT_BASIC_ID: string = BasicLogic.generateComponentBasicID();
     protected get LABEL_ELEMENT_HTML_ID(): string { return `${this.COMPONENT_BASIC_ID}-LABEL` }
     protected get OPTIONS_LIST_HTML_ID(): string { return `${this.COMPONENT_BASIC_ID}-OPTIONS_LIST`; }
 
@@ -201,32 +198,32 @@ namespace DropDownList {
     }
 
 
-    protected onNewOptionSelected(newOption: DropdownList.SelectionOption | null, indexInArray: number | null): void {
+    protected onNewOptionSelected(newOption: DropDownList.SelectionOption | null, indexInArray: number | null): void {
 
       if (isNotNull(indexInArray)) {
 
         if (this.multipleSelectableOptions) {
 
-          if (this.indexesOfSelectedOption.includes(indexInArray)) {
-            this.indexesOfSelectedOption = removeArrayElementsByIndexes({
-              targetArray: this.indexesOfSelectedOption,
+          if (this.indexesOfSelectedOptions.includes(indexInArray)) {
+            this.indexesOfSelectedOptions = removeArrayElementsByIndexes({
+              targetArray: this.indexesOfSelectedOptions,
               indexes: indexInArray,
               mutably: false
-            });
+            }).updatedArray;
           } else {
-            this.indexesOfSelectedOption = addElementsToArray({
-              targetArray: this.this.indexesOfSelectedOption,
-              newElements: indexInArray,
+            this.indexesOfSelectedOptions = addElementsToArray({
+              targetArray: this.indexesOfSelectedOptions,
+              newElements: [ indexInArray ],
               toStart: true,
               mutably: false
             });
           }
 
         } else {
-          if (this.indexesOfSelectedOption.includes(indexInArray)) {
-            this.indexesOfSelectedOption = [ indexInArray ];
+          if (this.indexesOfSelectedOptions.includes(indexInArray)) {
+            this.indexesOfSelectedOptions = [ indexInArray ];
           } else {
-            this.indexesOfSelectedOption = [];
+            this.indexesOfSelectedOptions = [];
           }
         }
       }
@@ -234,28 +231,28 @@ namespace DropDownList {
       this.isExpanded = false;
 
 
-      if (isNotUndefined(this.validatableVModel)) {
-        this.mustHighlightAsErrorIfInputIsInvalid = true;
-        this.$emit(DropdownList.Events.change, this.validatableVModel.updateImmutably({ newValue: newOption }));
+      if (isNotUndefined(this.validatablePayload)) {
+        this.mustActivateAppropriateHighlightIfAnyErrorsMessages = true;
+        this.$emit("change", this.validatablePayload.updateImmutably({ newValue: newOption }));
         return;
       }
 
 
       if (isNull(newOption)) {
-        this.$emit(DropdownList.Events.change, null);
+        this.$emit("change", null);
       } else if ("key" in newOption) {
-        this.$emit(DropdownList.Events.change, newOption.key);
+        this.$emit("change", newOption.key);
       } else {
-        this.$emit(DropdownList.Events.change, newOption.relatedEntity);
+        this.$emit("change", newOption.relatedEntity);
       }
     }
 
 
     /* --- ??? ------------------------------------------------------------------------------------------------------ */
     protected get currentSelectionLabel(): string | null {
-      switch (this.selectedOptionsIndexes.length) {
+      switch (this.indexesOfSelectedOptions.length) {
         case 0: return "Nothing selected";
-        case 1: return this.selectOptions[this.selectedOptionsIndexes[0]].label;
+        case 1: return this.selectOptions[this.indexesOfSelectedOptions[0]].label;
         default: return "(Multiple selected)";
       }
     }
@@ -283,7 +280,7 @@ namespace DropDownList {
       return `DROP_DOWN_LIST-${BasicLogic.counterForComponentBasicID_Generating}`;
     }
 
-    private readonly PSEUDO_BUTTON_WITH_CURRENT_SELECTION_VUE_REFERENCE_ID: string = "PSEUDO_BUTTON_WITH_CURRENT_SELECTION";
+    protected readonly PSEUDO_BUTTON_WITH_CURRENT_SELECTION_VUE_REFERENCE_ID: string = "PSEUDO_BUTTON_WITH_CURRENT_SELECTION";
 
 
     /* === Themes =================================================================================================== */

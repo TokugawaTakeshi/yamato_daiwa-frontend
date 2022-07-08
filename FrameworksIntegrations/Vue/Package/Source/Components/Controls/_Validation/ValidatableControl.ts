@@ -107,7 +107,7 @@ namespace ValidatableControl {
       if (this.isInvalid) {
         Logger.throwErrorAndLog({
           errorInstance: new UnexpectedEventError("Contrary os expectations, the value is still 'null'."),
-          title: UnexpectedEventError.DEFAULT_TITLE,
+          title: UnexpectedEventError.localization.defaultTitle,
           occurrenceLocation: "ValidatableControl.Payload.getExpectedToBeValidValue()"
         });
       }

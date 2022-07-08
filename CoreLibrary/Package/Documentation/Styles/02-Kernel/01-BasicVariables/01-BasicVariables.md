@@ -58,7 +58,7 @@ splitting the GUI on components.
 Below variables are being used by [buildBEM_ClassName](../07-OtherFunctions/buildBEM_ClassName.md) functions, but elements
 and modifier separators could be overwritten.
 
-| Variable name            | [Type](../../01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types) | Default value |
-|--------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------|
-| `BEM_ELEMENT_SEPARATOR`  | `DataTypes.string`                                                                                                    | `__`          |
-| `BEM_MODIFIER_SEPARATOR` | `DataTypes.string`                                                                                                    | `_`           |
+| Variable name          | [Type](../../01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types) | Default value |
+|------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------|
+| BEM_ELEMENT_SEPARATOR  | DataTypes.string                                                                                                      | `__`          |
+| BEM_MODIFIER_SEPARATOR | DataTypes.string                                                                                                      | `_`           |

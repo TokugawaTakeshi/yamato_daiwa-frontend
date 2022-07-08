@@ -1,7 +1,7 @@
 <template lang="pug">
 
-  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/QuestionMark/QuestionMarkIcon__Circled__Filled.pug
+include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/QuestionMark/QuestionMarkIcon__Circled__Filled.pug
 
-  +QuestionMarkIcon__Circled__Filled
++QuestionMarkIcon__Circled__Filled
 
 </template>

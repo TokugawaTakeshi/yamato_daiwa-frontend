@@ -1,5 +1,7 @@
 # Sprite
 
+[![Official IntelliJ IDEA plugin live template](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-sprt-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+
 ```
 Sprite({
   spritesMapURL: DataTypes.string;

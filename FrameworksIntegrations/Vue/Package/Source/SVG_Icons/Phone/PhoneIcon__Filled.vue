@@ -1,7 +1,7 @@
 <template lang="pug">
 
-  include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Phone/PhoneIcon__Filled.pug
+include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Phone/PhoneIcon__Filled.pug
 
-  +PhoneIcon__Filled
-    
++PhoneIcon__Filled
+
 </template>
