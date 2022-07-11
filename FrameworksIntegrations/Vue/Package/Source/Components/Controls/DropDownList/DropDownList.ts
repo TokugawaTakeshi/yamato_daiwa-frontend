@@ -143,6 +143,9 @@ namespace DropDownList {
 
 
     /* === Properties =============================================================================================== */
+    @VueProperty({ type: Array, required: true })
+    private readonly selectOptions!: Array<DropDownList.SelectionOption>;
+
     @VueProperty({ type: Boolean, default: false })
     protected readonly allowSelectionClearing!: boolean;
 
@@ -243,7 +246,7 @@ namespace DropDownList {
       } else if ("key" in newOption) {
         this.$emit("change", newOption.key);
       } else {
-        this.$emit("change", newOption.relatedEntity);
+        this.$emit("change", newOption.entity);
       }
     }
 
