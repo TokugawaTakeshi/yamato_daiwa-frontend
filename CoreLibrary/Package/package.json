@@ -50,7 +50,7 @@
   },
   "scripts": {
     "Production building of Pug extensions": "yda build --selectiveExecution PugExtensions --mode PRODUCTION && ts-node Markup/Source/PugExtensionsOutputFileGenerator.ts ",
-    "AnywherePageStyles:IncrementalBuild": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --selectiveExecution StaticPreviewAnywherePage --mode DEVELOPMENT",
+    "AnywherePageStyles:IncrementalBuild": "yda build --selectiveExecution StaticPreviewAnywherePage --mode DEVELOPMENT",
     "Tests": "yda build --selectiveExecution StylesAndComponentsTesting --mode DEVELOPMENT",
     "Alpha realize": "npm publish --tag alpha"
   }
