@@ -80,16 +80,15 @@
 - <kbd>pl</kbd> - inerts example of [`PageLink`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage#pagelink) mixin usage
 - <kbd>plg</kbd> - inserts example of [`PagesLinksGroup`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage#pagelinksgroup) mixin usage
 - <kbd>ptr</kbd> - live template for [`placeToRight`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/placeToRight.md) mixin
-- <kbd>med3c</kbd> inserts the code template with media queries definitions for 3-pattern layout
+- <kbd>med3c</kbd> inserts the code template with media queries definitions for 3-patterns layout
 - <kbd>wsc</kbd> - Inserts `+WideScreensConfiguration()` block mixin invocation (must be preliminarily defined)
 - <kbd>msc</kbd> - Inserts `+MediumScreensConfiguration()` block mixin invocation (must be preliminarily defined)
 - <kbd>nsc</kbd> - Inserts `+NarrowScreensConfiguration()` block mixin invocation (must be preliminarily defined)
 - <kbd>wmsc</kbd> - Inserts `+WideAndMediumScreensConfiguration()` block mixin invocation (must be preliminarily defined)
 - <kbd>mnsc</kbd> - Inserts `+MediumAndNarrowScreensConfiguration()` block mixin invocation (must be preliminarily defined)
 - <kbd>slteos</kdb> - [`SingleLineTextElementOverflowSafety`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md)
-- <kbd>mlt</kdb> - [`MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md)
 - <kbd>si</kbd> - styles initialization
-
+- <kbd>mlt</kdb> - [`MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md)
 
 ### Removed
 

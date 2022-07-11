@@ -120,6 +120,7 @@ Currently, below live templates are available:
       * <kbd>pcsaov</kbd> - [`provideClippedShadowsAndOutlinesVisibility`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-Layout/provideClippedShadowsAndOutlinesVisibility.md) mixin
     * Typography
       * <kbd>slteos</kdb> - [`SingleLineTextElementOverflowSafety`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md)
+      * <kbd>mlt</kdb> - [`MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md)
     * Other
       * <kbd>sprt</kdb> - [`Sprite`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/Sprite.md)
   * Code templates 
