@@ -10,7 +10,7 @@ npm i @yamato-daiwa/frontend-vue @yamato-daiwa/frontend -E
 
 ## Usage
 
-You can import everyting what you need from the root of library.
+You can import everything what you need from the root of library.
 
 ```typescript
 import { OverflowSafeSingleLineLabel } from "OverflowSafeSingleLineLabel";

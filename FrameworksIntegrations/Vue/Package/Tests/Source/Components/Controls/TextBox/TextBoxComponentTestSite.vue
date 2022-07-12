@@ -2,7 +2,7 @@
 
 .TestSite
 
-  DropDownList(
+  TextBox(
     v-model:payload="samplePayload"
     label="Test"
   )
@@ -13,11 +13,11 @@
 <script lang="ts">
 
   /* --- Other components ------------------------------------------------------------------------------------------- */
-  import { DropDownList } from "../../../../Source";
+  import { TextBox } from "@Source/index";
 
   /* --- Validations ------------------------------------------------------------------------------------------------ */
-  import ValidatableControl from "../../../../Source/Components/Controls/_Validation/ValidatableControl";
-  import ValueValidation from "../../../../Source/Components/Controls/_Validation/ValueValidation";
+  import ValidatableControl from "@Components/Controls/_Validation/ValidatableControl";
+  import ValueValidation from "@Components/Controls/_Validation/ValueValidation";
 
   /* --- Framework -------------------------------------------------------------------------------------------------- */
   import { Options as VueComponentConfiguration, Vue as VueComponent } from "vue-property-decorator";
@@ -33,7 +33,7 @@
   }
 
   @VueComponentConfiguration({})
-  export default class DropDownListComponentTestSite extends VueComponent {
+  export default class TextBoxComponentTestSite extends VueComponent {
 
     public created(): void {
       this.initializeNonReactiveClassFields();
@@ -48,10 +48,10 @@
 
 
     /* --- Non-reactive class fields -------------------------------------------------------------------------------- */
-    protected DropDownList!: typeof DropDownList;
+    protected TextBox!: typeof TextBox;
 
     private initializeNonReactiveClassFields(): void {
-      this.DropDownList = DropDownList;
+      this.TextBox = TextBox;
     }
   }
 
@@ -60,8 +60,8 @@
 
 <style lang="stylus" scoped>
 
-  @require "@yamato-daiwa/frontend/Functionality.styl"
-  @require "@yamato-daiwa/frontend/Components.styl"
+  @require "../../../../../node_modules/@yamato-daiwa/frontend/Functionality.styl"
+  @require "../../../../../node_modules/@yamato-daiwa/frontend/Components.styl"
 
   CrossBrowserStylesReset()
   InitialGlobalCSS_Rules()

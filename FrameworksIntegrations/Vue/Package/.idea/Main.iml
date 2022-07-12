@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Source" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/Distributable" />
+      <excludeFolder url="file://$MODULE_DIR$/Tests/Output" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

@@ -19,7 +19,7 @@
 <script lang="ts">
 
   /* --- Other components ------------------------------------------------------------------------------------------- */
-  import { OverflowSafeSingleLineLabel } from "../../../Source";
+  import { OverflowSafeSingleLineLabel } from "@Source/index";
 
   /* --- Framework -------------------------------------------------------------------------------------------------- */
   import { Options as VueComponentConfiguration, Vue as VueComponent } from "vue-property-decorator";
@@ -38,8 +38,8 @@
 
 <style lang="stylus">
 
-  @require "@yamato-daiwa/frontend/Functionality.styl"
-  @require "@yamato-daiwa/frontend/Components.styl"
+  @require "../../../../node_modules/@yamato-daiwa/frontend/Functionality.styl"
+  @require "../../../../node_modules/@yamato-daiwa/frontend/Components.styl"
 
 
   CrossBrowserStylesReset()

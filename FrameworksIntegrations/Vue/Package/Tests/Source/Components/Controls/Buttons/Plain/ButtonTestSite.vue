@@ -7,14 +7,13 @@
     @click="onClickButton"
   ) test
 
-  
 </template>
 
 
 <script lang="ts">
 
   /* --- 子コンポネント -------------------------------------------------------------------------------------------------- */
-  import { Button } from "../../../../../Source";
+  import { Button } from "@Source/index";
 
   /* --- フレームワーク -------------------------------------------------------------------------------------------------- */
   import { Options as VueComponentConfiguration, Vue as VueComponent } from "vue-property-decorator";
@@ -48,8 +47,8 @@
 
 <style lang="stylus" scoped>
 
-  @require "@yamato-daiwa/frontend/Functionality.styl"
-  @require "@yamato-daiwa/frontend/Components.styl"
+  @require "../../../../../../node_modules/@yamato-daiwa/frontend/Functionality.styl"
+  @require "../../../../../../node_modules/@yamato-daiwa/frontend/Components.styl"
 
   CrossBrowserStylesReset()
   InitialGlobalCSS_Rules()

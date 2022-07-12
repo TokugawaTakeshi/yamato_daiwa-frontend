@@ -52,13 +52,36 @@ block append PageContent
         })
 
     +ButtonsShowcase({ caption: "Multiline safety test" })
-      td: +Button--YDF({ label: "Super hyper mega extra very log label "}).Button-NarrowWidth
+      td: +Button--YDF({ label: "Super hyper mega extra very log label"}).Button-NarrowWidth
       td: +Button--YDF({ label: "Super hyper mega extra very log label", URI: "#"}).Button-NarrowWidth
       td
         +Button--YDF({
           label: "Super hyper mega extra very log label",
           HTML_Type: Button.HTML_Types.inputButton
         }).Button-NarrowWidth
+
+    +ButtonsShowcase({ caption: "Has prepended icon" })
+      td: +Button--YDF({
+        hasPrependedSVG_Icon: true
+      })
+        +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
+        span.Button-Label 良いね！
+      td: +Button--YDF({
+        URI: "#",
+        hasPrependedSVG_Icon: true
+      })
+        +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
+        span.Button-Label 良いね！
+      td 不可能
+
+    +ButtonsShowcase({ caption: "単独アイコン有り" })
+      td: +Button--YDF(aria-label="良いね！"): +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
+
+      td: +Button--YDF({
+        URI: "#"
+      })(aria-label="良いね！"): +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
+      td 不可能
+
 
     //-
 
@@ -111,28 +134,3 @@ block append PageContent
             HTML_Type: Button.HTML_Types.inputButton,
             disabled: true
           })
-
-      +ButtonsShowcase({ caption: "就いているアイコン有り" })
-        td: +Button({
-          hasPrependedSVG_Icon: true
-        })
-          +MagnifyingGlass--Icon.Button-PrependedSVG_Icon
-          | 良いね！
-        td: +Button({　
-          URI: "#",
-          hasPrependedSVG_Icon: true
-        })
-          +MagnifyingGlass--Icon.Button-PrependedSVG_Icon
-          | 良いね！
-        td 不可能
-
-      +ButtonsShowcase({caption: "単独アイコン有り"})
-        td: +Button({
-          hasLoneSVG_Icon: true
-        })(title="良いね！"): +MagnifyingGlass--Icon.Button-LoneSVG_Icon
-
-        td: +Button({
-          URI: "#",
-          hasLoneSVG_Icon: true
-        })(title="良いね！"): +MagnifyingGlass--Icon.Button-LoneSVG_Icon
-        td 不可能

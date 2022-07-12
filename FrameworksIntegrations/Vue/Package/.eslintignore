@@ -1,8 +1,4 @@
 /Distributable/
 /Tests/Output/
 
-/node_modules/
-
 **/.DS_Store
-
-**/*.build.js

@@ -10,7 +10,8 @@ Button = {
           regular: {
 
             rootElement: {
-              minimalWidth: 80px
+              minimalWidth: 80px,
+              minimalHeight: 31px,
               borders: specifyBordersSizing({
                 thickness: { all: 1px },
                 radius: { all: 3px }
@@ -26,6 +27,17 @@ Button = {
                 size: 15px,
                 lineSpacing: 4px
               }
+            },
+
+            prependedSVG_Icon: {
+              width: 16px,
+              height: 16px,
+              horizontalSpaceBeforeLabel: 4px
+            },
+
+            loneSVG_Icon: {
+              width: 16px,
+              height: 16px
             }
           },
 
@@ -48,6 +60,17 @@ Button = {
                 size: 13px,
                 lineSpacing: 4px
               }
+            },
+
+            prependedSVG_Icon: {
+              width: 16px,
+              height: 16px,
+              horizontalSpaceBeforeLabel: 4px
+            },
+
+            loneSVG_Icon: {
+              width: 16px,
+              height: 16px
             }
           }
         },
@@ -106,6 +129,7 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
 
       display inline-flex
       justify-content center
+      align-items center
 
       cursor pointer
 
@@ -115,7 +139,8 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
 
     +provideDefaultSelectorWhenRootAndApply(ROOT_ELEMENT_SELECTOR)
 
-      applyIfNotNull({ min-width: variation.rootElement.minimalWidth })
+      min-width: variation.rootElement.minimalWidth
+      min-height: variation.rootElement.minimalHeight
 
       BordersSizing(variation.rootElement.borders)
 
@@ -123,20 +148,48 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
     /a{getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)} .Button-Label,
     /button{getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)} .Button-Label
 
-      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
-        fontSize: variation.label.text.size,
-        lineHeight: 19px
-      })
+      font-size: variation.label.text.size
+
+      // TODO if isNotNull(lineSpacing)
+      // TODO getLineSpacingByFontSizeAndLineHeight
+      // TODO else line-height: lineHeight
+
+      padding-left 15px // TODO when it going first
+      padding-right 15px // TODO when it going last
+
+      // 垂直調節にはtransform translateが必要
 
 
     /input{getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)}
 
-      //min-height 27px
-
+      // TODO 同上
       font-size: variation.label.text.size
-      line-height 18px
+      line-height 19px
 
+      // Paddingは垂直調節のに必要
       Paddings(variation.rootElement.paddings)
+
+
+    .Button-Label
+
+      //VERTICAL_SYMMETRIC_MARGIN = 0.5*(31px - 19px)
+      //
+      //margin-top VERTICAL_SYMMETRIC_MARGIN
+      //margin-bottom VERTICAL_SYMMETRIC_MARGIN
+
+
+    .Button-PrependedSVG_Icon
+
+      width: variation.prependedSVG_Icon.width
+      height: variation.prependedSVG_Icon.height
+
+      margin-right: variation.prependedSVG_Icon.horizontalSpaceBeforeLabel
+
+
+    .Button-LoneSVG_Icon
+
+      width: variation.loneSVG_Icon.width
+      height: variation.loneSVG_Icon.height
 
 
   // --- Decoration ----------------------------------------------------------------------------------------------------

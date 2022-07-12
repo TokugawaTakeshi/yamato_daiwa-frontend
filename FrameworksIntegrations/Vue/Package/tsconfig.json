@@ -13,6 +13,8 @@
 
     "baseUrl": "./",
     "paths": {
+      "@Source/*": [ "./Source/*"],
+      "@Components/*": [ "./Source/Components/*"],
       "@SVG_Icons/*": [ "./Source/SVG_Icons/*"]
     }
   }
