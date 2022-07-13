@@ -1,10 +1,12 @@
+/* --- Framework ---------------------------------------------------------------------------------------------------- */
 import {
   Options as VueComponentConfiguration,
   Vue as VueComponent,
   Prop as VueProperty
 } from "vue-property-decorator";
-import { RouteLocationRaw as VueRouterRawLocation } from "vue-router";
+import type { RouteLocationRaw as VueRouterRawLocation } from "vue-router";
 
+/* --- Utils -------------------------------------------------------------------------------------------------------- */
 import {
   isUndefined,
   isNotUndefined,
@@ -12,7 +14,6 @@ import {
   isElementOfEnumeration,
   isNull
 } from "@yamato-daiwa/es-extensions";
-
 import toLowerCamelCase from "../../../../UtilsIncubator/toLowerCamelCase";
 import toUpperCamelCase from "../../../../UtilsIncubator/toUpperCamelCase";
 import toScreamingSnakeCase from "../../../../UtilsIncubator/toScreamingSnakeCase";
@@ -25,14 +26,14 @@ namespace Button {
     submit = "SUBMIT",
     inputButton = "INPUT_BUTTON",
     inputSubmit = "INPUT_SUBMIT",
-    inputReset = "INPUT_RESET",
+    inputReset = "INPUT_RESET"
   }
 
 
   export type Themes = {
     readonly regular: "REGULAR";
     [themeName: string]: string;
-  }
+  };
 
   export const Themes: Themes = { regular: "REGULAR" };
 
@@ -71,8 +72,8 @@ namespace Button {
     /* === Properties =============================================================================================== */
     @VueProperty({
       type: String,
-      default: Button.HTML_Types.regular,
-      validator: (rawValue: unknown): boolean => isString(rawValue) && isElementOfEnumeration(rawValue, Button.HTML_Types)
+      default: HTML_Types.regular,
+      validator: (rawValue: unknown): boolean => isString(rawValue) && isElementOfEnumeration(rawValue, HTML_Types)
     })
     protected readonly HTML_Type!: string;
 
@@ -90,37 +91,37 @@ namespace Button {
 
     @VueProperty({
       type: String,
-      default: Button.Themes.regular,
-      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(Button.Themes).includes(rawValue)
+      default: Themes.regular,
+      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(Themes).includes(rawValue)
     })
     protected readonly theme!: string;
 
     @VueProperty({
       type: String,
-      default: Button.GeometricVariations.regular,
-      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(Button.GeometricVariations).includes(rawValue)
+      default: GeometricVariations.regular,
+      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(GeometricVariations).includes(rawValue)
     })
     protected readonly geometry!: string;
 
     @VueProperty({
       type: String,
-      default: Button.DecorativeVariations.regular,
-      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(Button.DecorativeVariations).includes(rawValue)
+      default: DecorativeVariations.regular,
+      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(DecorativeVariations).includes(rawValue)
     })
     protected readonly decoration!: string;
 
 
-    /* === Root element tag name computing ========================================================================== */
-    protected get isRootElementTagNameTheButton(): boolean {
+    /* === Computing of tag name of root element ==================================================================== */
+    protected get isButtonTheTagNameOfRootElement(): boolean {
       return (isUndefined(this.route) && isUndefined(this.externalLinkURI)) &&
-          (this.HTML_Type === Button.HTML_Types.regular || this.HTML_Type === Button.HTML_Types.submit);
+          (this.HTML_Type === HTML_Types.regular || this.HTML_Type === HTML_Types.submit);
     }
 
-    protected get isRootElementTagNameTheInput(): boolean {
+    protected get isInputTheTagNameOfRootElement(): boolean {
       return isUndefined(this.route) && (
-        this.HTML_Type === Button.HTML_Types.inputButton ||
-        this.HTML_Type === Button.HTML_Types.inputSubmit ||
-        this.HTML_Type === Button.HTML_Types.inputReset
+        this.HTML_Type === HTML_Types.inputButton ||
+        this.HTML_Type === HTML_Types.inputSubmit ||
+        this.HTML_Type === HTML_Types.inputReset
       );
     }
 
@@ -128,22 +129,24 @@ namespace Button {
       return isNotUndefined(this.route);
     }
 
-    private get isRootElementTagNameTheAnchor(): boolean {
+    private get isAnchorTheTagNameOfRootElement(): boolean {
       return isNotUndefined(this.externalLinkURI);
     }
 
-    protected get inputOrButtonElementTypeAttributeValue(): string | null {
+
+    /* === Computing of the attributes ============================================================================== */
+    protected get typeAttributeValueOfInputOrButtonElement(): string | null {
 
       if (isNotUndefined(this.route)) {
         return null;
       }
 
       switch (this.HTML_Type) {
-        case Button.HTML_Types.regular: return "button";
-        case Button.HTML_Types.submit: return "submit";
-        case Button.HTML_Types.inputButton: return "button";
-        case Button.HTML_Types.inputSubmit: return "submit";
-        case Button.HTML_Types.inputReset: return "reset";
+        case HTML_Types.regular: return "button";
+        case HTML_Types.submit: return "submit";
+        case HTML_Types.inputButton: return "button";
+        case HTML_Types.inputSubmit: return "submit";
+        case HTML_Types.inputReset: return "reset";
         default: return null;
       }
     }
@@ -152,16 +155,16 @@ namespace Button {
     /* === Themes =================================================================================================== */
     protected static ThemesCSS_ModifiersNames: { [themeID: string]: string; } = {
       [Themes.regular]: "RegularTheme"
-    }
+    };
 
     public static defineNewThemes(themesNames: Array<string>): typeof BasicLogic {
 
       for (const themeName of themesNames) {
 
-        const themeName__lowerCamelCase: string = toLowerCamelCase(themeName)
+        const themeName__lowerCamelCase: string = toLowerCamelCase(themeName);
 
         Themes[themeName__lowerCamelCase] = toScreamingSnakeCase(themeName);
-        BasicLogic.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button__${toUpperCamelCase(themeName)}Theme`;
+        BasicLogic.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button__${ toUpperCamelCase(themeName) }Theme`;
       }
 
       return BasicLogic;
@@ -182,7 +185,7 @@ namespace Button {
 
         GeometricVariations[geometricVariationsName__lowerCamelCase] = toScreamingSnakeCase(geometricVariationsName);
         BasicLogic.GeometricVariationsCSS_ModifiersNames[geometricVariationsName__lowerCamelCase] =
-            `Button__${toUpperCamelCase(geometricVariationsName)}Geometry`;
+            `Button__${ toUpperCamelCase(geometricVariationsName) }Geometry`;
       }
 
       return BasicLogic;
@@ -203,7 +206,7 @@ namespace Button {
 
         DecorativeVariations[decorativeVariationsName__lowerCamelCase] = toScreamingSnakeCase(decorativeVariationsName);
         BasicLogic.DecorativeVariationsCSS_ModifiersNames[decorativeVariationsName__lowerCamelCase] =
-            `Button__${toUpperCamelCase(decorativeVariationsName)}Decorations`;
+            `Button__${ toUpperCamelCase(decorativeVariationsName) }Decorations`;
       }
 
       return BasicLogic;
@@ -214,18 +217,20 @@ namespace Button {
     protected get rootElementModifierCSS_Classes(): Array<string> {
       return [
         "Button",
-        ...(this.isRootElementTagNameTheAnchor || this.isRootElementTheRouterLink) && this.disabled ? [ "Button__DisabledState" ] : [],
+        ...(this.isAnchorTheTagNameOfRootElement || this.isRootElementTheRouterLink) && this.disabled ?
+            [ "Button__DisabledState" ] : [],
         BasicLogic.ThemesCSS_ModifiersNames[this.theme],
         BasicLogic.GeometricVariationsCSS_ModifiersNames[this.geometry],
-        BasicLogic.DecorativeVariationsCSS_ModifiersNames[this.decoration],
+        BasicLogic.DecorativeVariationsCSS_ModifiersNames[this.decoration]
       ];
     }
   }
 
+  
   let Implementation: typeof VueComponent | null;
 
   export function setImplementation(_Implementation: typeof VueComponent): void {
-    Implementation = _Implementation
+    Implementation = _Implementation;
   }
 
   export function getImplementation(): typeof VueComponent | null {

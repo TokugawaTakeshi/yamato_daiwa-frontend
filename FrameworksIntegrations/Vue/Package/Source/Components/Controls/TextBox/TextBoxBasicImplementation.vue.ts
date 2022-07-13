@@ -1,5 +1,5 @@
-import TextBox from "./TextBox";
-import componentTemplate from "./TextBox.pug";
+import TextBox from "./TextBox.vue";
+import componentTemplate from "./TextBox.vue.pug";
 import { Options as VueComponentConfiguration } from "vue-property-decorator";
 
 

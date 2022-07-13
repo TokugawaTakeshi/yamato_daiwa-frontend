@@ -1,4 +1,4 @@
-import ValueValidation from "./ValueValidation";
+import type ValueValidation from "./ValueValidation";
 import {
   Logger,
   UnexpectedEventError,
@@ -113,6 +113,8 @@ namespace ValidatableControl {
       }
 
 
+      /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
+      * In this case, we are guarantee the ValidValue by "this.isInvalid" check */
       return this.value as ValidValue;
     }
 

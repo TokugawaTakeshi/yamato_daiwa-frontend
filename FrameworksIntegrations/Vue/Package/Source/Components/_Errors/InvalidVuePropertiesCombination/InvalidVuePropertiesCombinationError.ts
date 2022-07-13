@@ -21,18 +21,18 @@ namespace InvalidVuePropertiesCombinationError {
 
   export type ConstructorNamedParameters = Localization.GenericDescriptionPartTemplateParameters;
 
-  export type Localization = {
-    readonly defaultTitle: string;
-    readonly generateMessage: (
+  export type Localization = Readonly<{
+    defaultTitle: string;
+    generateMessage: (
       parametersObject: Localization.GenericDescriptionPartTemplateParameters
     ) => string;
-  };
+  }>;
 
   export namespace Localization {
-    export type GenericDescriptionPartTemplateParameters = {
+    export type GenericDescriptionPartTemplateParameters = Readonly<{
       vueComponentName: string;
       messageSpecificPart?: string;
-    };
+    }>;
   }
 }
 

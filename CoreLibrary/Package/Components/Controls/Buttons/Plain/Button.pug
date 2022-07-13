@@ -10,7 +10,6 @@ mixin Button--YDF(properties)
       HTML_Type = Button.HTML_Types.regular,
       label,
       URI,
-      toggled = false,
       disabled = false,
       theme = Button.Themes.regular,
       geometry = Button.GeometricVariations.regular,
@@ -20,15 +19,15 @@ mixin Button--YDF(properties)
       hasLoneSVG_Icon
     } = properties;
 
-    let isTagTheButton = false;
-    let isTagTheInput = false;
-    let isTagTheAnchor = false;
-    let typeArgumentValue;
+    let isButtonTheTagNameOfRootElement = false;
+    let isInputTheTagNameOfRootElement = false;
+    let isAnchorTheTagNameOfRootElement = false;
+    let typeAttributeValueOfInputOrButtonElement;
 
     if (URI) {
 
       tagName = "a";
-      isTagTheAnchor = true;
+      isAnchorTheTagNameOfRootElement = true;
 
     } else {
 
@@ -37,8 +36,8 @@ mixin Button--YDF(properties)
         case Button.HTML_Types.inputButton: {
 
           tagName = "input";
-          isTagTheInput = true;
-          typeArgumentValue = "button";
+          isInputTheTagNameOfRootElement = true;
+          typeAttributeValueOfInputOrButtonElement = "button";
 
           break;
         }
@@ -46,8 +45,8 @@ mixin Button--YDF(properties)
         case Button.HTML_Types.inputSubmit: {
 
           tagName = "input";
-          isTagTheInput = true;
-          typeArgumentValue = "submit";
+          isInputTheTagNameOfRootElement = true;
+          typeAttributeValueOfInputOrButtonElement = "submit";
 
           break;
         }
@@ -55,8 +54,8 @@ mixin Button--YDF(properties)
         case Button.HTML_Types.inputReset: {
 
           tagName = "input";
-          isTagTheInput = true;
-          typeArgumentValue = "reset";
+          isInputTheTagNameOfRootElement = true;
+          typeAttributeValueOfInputOrButtonElement = "reset";
 
           break;
 
@@ -65,8 +64,8 @@ mixin Button--YDF(properties)
         case Button.HTML_Types.regular: {
 
           tagName = "button";
-          isTagTheButton = true;
-          typeArgumentValue = "button"
+          isButtonTheTagNameOfRootElement = true;
+          typeAttributeValueOfInputOrButtonElement = "button"
 
           break;
         }
@@ -74,8 +73,8 @@ mixin Button--YDF(properties)
         case Button.HTML_Types.submit: {
 
           tagName = "button";
-          isTagTheButton = true;
-          typeArgumentValue = "submit"
+          isButtonTheTagNameOfRootElement = true;
+          typeAttributeValueOfInputOrButtonElement = "submit"
 
           break;
         }
@@ -87,19 +86,17 @@ mixin Button--YDF(properties)
       ...Object.entries(Button.Themes).length > 1 ? [ Button.ThemesCSS_ModifiersNames[theme] ] : [],
       ...Object.entries(Button.GeometricVariations).length > 1 ? [ Button.GeometricVariationsCSS_ModifiersNames[geometry] ] : [],
       ...Object.entries(Button.DecorativeVariations).length > 1 ? [ Button.DecorativeVariationsCSS_Modifiers[decoration] ] : [],
-      ...toggled ? [ "Button__ToggledState" ] : [],
       ...hasPrependedSVG_Icon ? [ "Button__HasPrependedSVG_Icon" ] : [],
       ...hasAppendedSVG_Icon ? [ "Button__HasAppendedSVG_Icon" ] : [],
       ...hasLoneSVG_Icon ? [ `Button__HasLoneSVG_Icon` ] : []
     ]
 
 
-  if isTagTheButton
+  if isButtonTheTagNameOfRootElement
 
     button&attributes(attributes)(
       class= commonCSS_Classes
-      type= typeArgumentValue
-      aria-pressed= toggled ? "true" : undefined
+      type= typeAttributeValueOfInputOrButtonElement
       disabled= disabled
     )
 
@@ -111,7 +108,7 @@ mixin Button--YDF(properties)
 
         span.Button-Label= label
 
-  else if isTagTheAnchor
+  else if isAnchorTheTagNameOfRootElement
 
     a&attributes(attributes)(
       class= [ ...commonCSS_Classes, disabled ? [ "Button__DisabledState" ] : [] ]
@@ -128,11 +125,11 @@ mixin Button--YDF(properties)
 
         span.Button-Label= label
 
-  else if isTagTheInput
+  else if isInputTheTagNameOfRootElement
 
     input&attributes(attributes)(
       class= commonCSS_Classes
-      type= typeArgumentValue
+      type= typeAttributeValueOfInputOrButtonElement
       value= label
       disabled= disabled
     )

@@ -3,16 +3,16 @@ import Control from "../Control";
 
 /* --- Validations -------------------------------------------------------------------------------------------------- */
 import ValidatableControl from "../_Validation/ValidatableControl";
-import ValueValidation from "../_Validation/ValueValidation";
+import type ValueValidation from "../_Validation/ValueValidation";
 
 /* --- Framework ---------------------------------------------------------------------------------------------------- */
 import {
   Options as VueComponentConfiguration,
-  Vue as VueComponent,
   Model as VModel,
   Prop as VueProperty,
-  Emit as emitEvent,
+  Emit as emitEvent
 } from "vue-property-decorator";
+import type { Vue as VueComponent } from "vue-property-decorator";
 
 /* --- Utils -------------------------------------------------------------------------------------------------------- */
 import {
@@ -37,7 +37,7 @@ namespace TextBox {
     password = "password",
     phoneNumber = "tel",
     hidden = "hidden",
-    URL = "url",
+    URL = "url"
   }
 
   export enum Events {
@@ -121,8 +121,8 @@ namespace TextBox {
     /* === Properties =============================================================================================== */
     @VueProperty({
       type: String,
-      default: TextBox.HTML_Types.text,
-      validator: (rawValue: unknown): boolean => isString(rawValue) && isElementOfEnumeration(rawValue, TextBox.HTML_Types)
+      default: HTML_Types.text,
+      validator: (rawValue: unknown): boolean => isString(rawValue) && isElementOfEnumeration(rawValue, HTML_Types)
     })
     protected readonly HTML_Type!: string;
 
@@ -257,49 +257,49 @@ namespace TextBox {
       if (rawValue.length === 0) {
 
         if (this.convertEmptyValueToZero) {
-          this.$emit(TextBox.Events.input, this.validatablePayload.updateImmutably({ newValue: 0 }));
+          this.$emit(Events.input, this.validatablePayload.updateImmutably({ newValue: 0 }));
           this.rawInput = "0";
           return;
         }
 
 
         if (this.convertEmptyValueToNull) {
-          this.$emit(TextBox.Events.input, this.validatablePayload.updateImmutably({ newValue: null }));
+          this.$emit(Events.input, this.validatablePayload.updateImmutably({ newValue: null }));
           return;
         }
       }
 
 
       // TODO 動作確認
-      if (this.HTML_Type === TextBox.HTML_Types.number && this.convertEmptyValueToZero && this.rawInput.startsWith("0")) {
+      if (this.HTML_Type === HTML_Types.number && this.convertEmptyValueToZero && this.rawInput.startsWith("0")) {
 
         const inputtedValueWithoutPrependedZeros: string = this.rawInput.replace(/^0+/u, "");
 
         if (inputtedValueWithoutPrependedZeros.length === 0) {
-          this.$emit(TextBox.Events.input, this.validatablePayload.updateImmutably({ newValue: 0 }));
+          this.$emit(Events.input, this.validatablePayload.updateImmutably({ newValue: 0 }));
           return;
         }
 
 
         this.rawInput = inputtedValueWithoutPrependedZeros;
-        this.$emit(TextBox.Events.input, this.validatablePayload.updateImmutably({
+        this.$emit(Events.input, this.validatablePayload.updateImmutably({
           newValue: Number(inputtedValueWithoutPrependedZeros)
         }));
         return;
       }
 
 
-      if (this.HTML_Type === TextBox.HTML_Types.number) {
-        this.$emit(TextBox.Events.input, this.validatablePayload.updateImmutably({ newValue: Number(rawValue) }));
+      if (this.HTML_Type === HTML_Types.number) {
+        this.$emit(Events.input, this.validatablePayload.updateImmutably({ newValue: Number(rawValue) }));
         return;
       }
 
 
-      this.$emit(TextBox.Events.input, this.validatablePayload.updateImmutably({ newValue: rawValue }));
+      this.$emit(Events.input, this.validatablePayload.updateImmutably({ newValue: rawValue }));
       console.log(this.validatablePayload);
     }
 
-    @emitEvent(TextBox.Events.blur)
+    @emitEvent(Events.blur)
     protected onBlur(): void {
       this.mustActivateAppropriateHighlightIfAnyErrorsMessages = true;
     }
@@ -331,23 +331,23 @@ namespace TextBox {
     private static counterForInputOrTextareaElementHTML_ID_Generating: number = 0;
     private static generateInputOrTextareaElementHTML_ID(): string {
       BasicLogic.counterForInputOrTextareaElementHTML_ID_Generating++;
-      return `TEXT_BOX-INPUT_OR_TEXTAREA_ELEMENT-${BasicLogic.counterForInputOrTextareaElementHTML_ID_Generating}`;
+      return `TEXT_BOX-INPUT_OR_TEXTAREA_ELEMENT-${ BasicLogic.counterForInputOrTextareaElementHTML_ID_Generating }`;
     }
 
 
     /* === Themes =================================================================================================== */
     protected static ThemesCSS_ModifiersNames: { [themeID: string]: string; } = {
       [Themes.regular]: "RegularTheme"
-    }
+    };
 
     public static defineNewThemes(themesNames: Array<string>): typeof BasicLogic {
 
       for (const themeName of themesNames) {
 
-        const themeName__lowerCamelCase: string = toLowerCamelCase(themeName)
+        const themeName__lowerCamelCase: string = toLowerCamelCase(themeName);
 
         Themes[themeName__lowerCamelCase] = toScreamingSnakeCase(themeName);
-        BasicLogic.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button__${toUpperCamelCase(themeName)}Theme`;
+        BasicLogic.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button__${ toUpperCamelCase(themeName) }Theme`;
       }
 
       return BasicLogic;
@@ -368,7 +368,7 @@ namespace TextBox {
 
         GeometricVariations[geometricVariationsName__lowerCamelCase] = toScreamingSnakeCase(geometricVariationsName);
         BasicLogic.GeometricVariationsCSS_ModifiersNames[geometricVariationsName__lowerCamelCase] =
-            `Button__${toUpperCamelCase(geometricVariationsName)}Geometry`;
+            `Button__${ toUpperCamelCase(geometricVariationsName) }Geometry`;
       }
 
       return BasicLogic;
@@ -389,7 +389,7 @@ namespace TextBox {
 
         DecorativeVariations[decorativeVariationsName__lowerCamelCase] = toScreamingSnakeCase(decorativeVariationsName);
         BasicLogic.DecorativeVariationsCSS_ModifiersNames[decorativeVariationsName__lowerCamelCase] =
-            `TextBox__${toUpperCamelCase(decorativeVariationsName)}Decorations`;
+            `TextBox__${ toUpperCamelCase(decorativeVariationsName) }Decorations`;
       }
 
       return BasicLogic;
@@ -400,7 +400,7 @@ namespace TextBox {
   export let Implementation: typeof VueComponent | null;
 
   export function setImplementation(_Implementation: typeof VueComponent): void {
-    Implementation = _Implementation
+    Implementation = _Implementation;
   }
 }
 

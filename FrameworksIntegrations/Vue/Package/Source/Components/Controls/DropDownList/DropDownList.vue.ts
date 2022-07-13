@@ -3,15 +3,15 @@ import Control from "../Control";
 
 /* --- Validations -------------------------------------------------------------------------------------------------- */
 import ValidatableControl from "../_Validation/ValidatableControl";
-import ValueValidation from "../_Validation/ValueValidation";
+import type ValueValidation from "../_Validation/ValueValidation";
 
 /* --- Framework ---------------------------------------------------------------------------------------------------- */
 import {
   Options as VueComponentConfiguration,
-  Vue as VueComponent,
   Model as VModel,
   Prop as VueProperty
 } from "vue-property-decorator";
+import type { Vue as VueComponent } from "vue-property-decorator";
 
 /* --- Utils -------------------------------------------------------------------------------------------------------- */
 import {
@@ -19,12 +19,12 @@ import {
   isNumber,
   isNull,
   isNotNull,
-  ArbitraryObject,
   isArbitraryObject,
   isNotUndefined,
   removeArrayElementsByIndexes,
   isNeitherUndefinedNorNull
 } from "@yamato-daiwa/es-extensions";
+import type { ArbitraryObject } from "@yamato-daiwa/es-extensions";
 import toLowerCamelCase from "../../../UtilsIncubator/toLowerCamelCase";
 import toScreamingSnakeCase from "../../../UtilsIncubator/toScreamingSnakeCase";
 import toUpperCamelCase from "../../../UtilsIncubator/toUpperCamelCase";
@@ -144,7 +144,7 @@ namespace DropDownList {
 
     /* === Properties =============================================================================================== */
     @VueProperty({ type: Array, required: true })
-    private readonly selectOptions!: Array<DropDownList.SelectionOption>;
+    private readonly selectOptions!: Array<SelectionOption>;
 
     @VueProperty({ type: Boolean, default: false })
     protected readonly allowSelectionClearing!: boolean;
@@ -280,7 +280,7 @@ namespace DropDownList {
     private static counterForComponentBasicID_Generating: number = 0;
     private static generateComponentBasicID(): string {
       BasicLogic.counterForComponentBasicID_Generating++;
-      return `DROP_DOWN_LIST-${BasicLogic.counterForComponentBasicID_Generating}`;
+      return `DROP_DOWN_LIST-${ BasicLogic.counterForComponentBasicID_Generating }`;
     }
 
     protected readonly PSEUDO_BUTTON_WITH_CURRENT_SELECTION_VUE_REFERENCE_ID: string = "PSEUDO_BUTTON_WITH_CURRENT_SELECTION";
@@ -295,10 +295,10 @@ namespace DropDownList {
 
       for (const themeName of themesNames) {
 
-        const themeName__lowerCamelCase: string = toLowerCamelCase(themeName)
+        const themeName__lowerCamelCase: string = toLowerCamelCase(themeName);
 
         Themes[themeName__lowerCamelCase] = toScreamingSnakeCase(themeName);
-        BasicLogic.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button__${toUpperCamelCase(themeName)}Theme`;
+        BasicLogic.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button__${ toUpperCamelCase(themeName) }Theme`;
       }
 
       return BasicLogic;
@@ -319,7 +319,7 @@ namespace DropDownList {
 
         GeometricVariations[geometricVariationsName__lowerCamelCase] = toScreamingSnakeCase(geometricVariationsName);
         BasicLogic.GeometricVariationsCSS_ModifiersNames[geometricVariationsName__lowerCamelCase] =
-            `Button__${toUpperCamelCase(geometricVariationsName)}Geometry`;
+            `Button__${ toUpperCamelCase(geometricVariationsName) }Geometry`;
       }
 
       return BasicLogic;
@@ -340,7 +340,7 @@ namespace DropDownList {
 
         DecorativeVariations[decorativeVariationsName__lowerCamelCase] = toScreamingSnakeCase(decorativeVariationsName);
         BasicLogic.DecorativeVariationsCSS_ModifiersNames[decorativeVariationsName__lowerCamelCase] =
-            `DropDownList__${toUpperCamelCase(decorativeVariationsName)}Decorations`;
+            `DropDownList__${ toUpperCamelCase(decorativeVariationsName) }Decorations`;
       }
 
       return BasicLogic;
@@ -351,7 +351,7 @@ namespace DropDownList {
   export let Implementation: typeof VueComponent | null;
 
   export function setImplementation(_Implementation: typeof VueComponent): void {
-    Implementation = _Implementation
+    Implementation = _Implementation;
   }
 }
 

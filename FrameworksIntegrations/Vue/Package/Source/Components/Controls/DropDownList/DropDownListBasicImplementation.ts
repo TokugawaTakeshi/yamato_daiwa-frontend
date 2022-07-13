@@ -1,6 +1,6 @@
 /* --- Assets ------------------------------------------------------------------------------------------------------- */
 import componentTemplate from "./DropDownList.vue.pug";
-import DropDownList from "./DropDownList";
+import DropDownList from "./DropDownList.vue";
 
 /* --- Utils -------------------------------------------------------------------------------------------------------- */
 import { Options as VueComponentConfiguration } from "vue-property-decorator";

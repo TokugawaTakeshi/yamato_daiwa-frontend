@@ -1,0 +1,46 @@
+button.Button(
+  v-if="isButtonTheTagNameOfRootElement"
+  :type="typeAttributeValueOfInputOrButtonElement"
+  :disabled="disabled"
+  @click.prevent="() => {}"
+  :class="rootElementModifierCSS_Classes"
+)
+  slot(name="prependedSVG_Icon")
+  span.Button-Label(v-if="label") {{ label }}
+  slot(name="appendedSVG_Icon")
+  slot(name="loneSVG_Icon")
+
+input.Button(
+  v-else-if="isInputTheTagNameOfRootElement"
+  :type="typeAttributeValueOfInputOrButtonElement"
+  :value="label"
+  :disabled="disabled"
+  @click.prevent="() => {}"
+  :class="rootElementModifierCSS_Classes"
+)
+
+RouterLink.Button(
+  v-else-if="isRootElementTheRouterLink"
+  :to="route"
+  :aria-disabled="disabled"
+  :tabindex="disabled && -1"
+  :class="rootElementModifierCSS_Classes"
+)
+  slot(name="prependedSVG_Icon")
+  span.Button-Label(v-if="label") {{ label }}
+  slot(name="appendedSVG_Icon")
+  slot(name="loneSVG_Icon")
+
+a.Button(
+  v-else-if="isAnchorTheTagNameOfRootElement"
+  :href="externalLinkURI"
+  target="_blank"
+  rel="noopener noreferrer"
+  :aria-disabled="disabled"
+  :tabindex="disabled && -1"
+  :class="rootElementModifierCSS_Classes"
+)
+  slot(name="prependedSVG_Icon")
+  span.Button-Label(v-if="label") {{ label }}
+  slot(name="appendedSVG_Icon")
+  slot(name="loneSVG_Icon")

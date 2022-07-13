@@ -49,6 +49,7 @@ export default class Control extends VueComponent {
   /* === State ====================================================================================================== */
   protected mustActivateAppropriateHighlightIfAnyErrorsMessages: boolean = false;
 
+
   /* === Methods ==================================================================================================== */
   public highlightInvalidInput(): this {
     this.mustActivateAppropriateHighlightIfAnyErrorsMessages = true;
@@ -63,6 +64,8 @@ export default class Control extends VueComponent {
   /* === Livecycle hooks ========================================================================================== */
   public beforeCreate(): void {
 
+    const inheritedComponentNameForLogging: string = this.$options.name ?? "(Unnamed component)";
+
     if (
       isEitherUndefinedOrNull(this.label) &&
       isEitherUndefinedOrNull(this.ARIA_Label) &&
@@ -72,12 +75,12 @@ export default class Control extends VueComponent {
         errorType: InvalidVuePropertiesCombinationError.NAME,
         title: InvalidVuePropertiesCombinationError.localization.defaultTitle,
         description: InvalidVuePropertiesCombinationError.localization.generateMessage({
-          vueComponentName: this.$options.name ?? "(Unnamed component)",
+          vueComponentName: inheritedComponentNameForLogging,
           messageSpecificPart: "From the accessibility requirements, one of next properties must be specified:\n" +
               "● label\n● ARIA_Label\n● externalLabelHTML_ID"
 
         }),
-        occurrenceLocation: "className.beforeCreate()",
+        occurrenceLocation: `${ inheritedComponentNameForLogging }.beforeCreate()`
       });
     }
   }

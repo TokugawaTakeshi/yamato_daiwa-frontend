@@ -11,7 +11,7 @@ namespace CompoundControlShell {
   export type Themes = {
     readonly regular: "REGULAR";
     [themeName: string]: string;
-  }
+  };
 
   export const Themes: Themes = { regular: "REGULAR" };
 
@@ -34,12 +34,11 @@ namespace CompoundControlShell {
   export const DecorativeVariations: DecorativeVariations = {
     regular: "REGULAR"
   };
-  
-  
+
+
   @VueComponentConfiguration({})
   export class BasicLogic extends VueComponent {
 
-    /* === Properties =============================================================================================== */
     @VueProperty({ type: String })
     protected readonly label?: string;
 
@@ -76,22 +75,22 @@ namespace CompoundControlShell {
 
     @VueProperty({
       type: String,
-      default: CompoundControlShell.Themes.regular,
-      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(CompoundControlShell.Themes).includes(rawValue)
+      default: Themes.regular,
+      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(Themes).includes(rawValue)
     })
     protected readonly theme!: string;
 
     @VueProperty({
       type: String,
-      default: CompoundControlShell.GeometricVariations.regular,
-      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(CompoundControlShell.GeometricVariations).includes(rawValue)
+      default: GeometricVariations.regular,
+      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(GeometricVariations).includes(rawValue)
     })
     protected readonly geometry!: string;
 
     @VueProperty({
       type: String,
-      default: CompoundControlShell.DecorativeVariations.regular,
-      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(CompoundControlShell.DecorativeVariations).includes(rawValue)
+      default: DecorativeVariations.regular,
+      validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(DecorativeVariations).includes(rawValue)
     })
     protected readonly decoration!: string;
   }
