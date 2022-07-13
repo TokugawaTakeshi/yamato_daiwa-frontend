@@ -2,7 +2,7 @@
 @require "05-Typography/02-Subheadings.styl"
 @require "05-Typography/03-ParagraphLikeBlocks.styl"
 @require "05-Typography/04-Lists.styl"
-//@require "05-Typography/05-InlineElements.styl"
+@require "05-Typography/05-InlineElements.styl"
 
 
 TypographyDefaultDefinition = {
@@ -161,13 +161,13 @@ TypographyDefaultDefinition = {
         paragraph: { whenItJustBefore: 12px },
         unorderedList: { whenItJustBefore: 12px }
       }
+    }),
+
+    link: deeplyCloneAndOverrideObject(LinkDefaultProperties--YDF, {
+      class: "Link",
+      mixin: Link--YDF,
+      skip: false
     })
-
-    //link: deeplyCloneAndOverrideObject(LinkDefaultProperties, {
-    //  class: "Link",
-    //  skip: false
-    //})
-
   }
 }
 

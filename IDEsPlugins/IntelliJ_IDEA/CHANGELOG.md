@@ -79,7 +79,7 @@
 - <kbd>pcsaov</kbd> - live template for [`provideClippedShadowsAndOutlinesVisibility`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/provideClippedShadowsAndOutlinesVisibility.md) mixin
 - <kbd>pl</kbd> - inerts example of [`PageLink`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage#pagelink) mixin usage
 - <kbd>plg</kbd> - inserts example of [`PagesLinksGroup`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage#pagelinksgroup) mixin usage
-- <kbd>ptr</kbd> - live template for [`placeToRight`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/04-Positioning/placeToRight.md) mixin
+- <kbd>ptr</kbd> - live template for [`placeToRight`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/placeToRight.md) mixin
 - <kbd>med3c</kbd> inserts the code template with media queries definitions for 3-patterns layout
 - <kbd>wsc</kbd> - Inserts `+WideScreensConfiguration()` block mixin invocation (must be preliminarily defined)
 - <kbd>msc</kbd> - Inserts `+MediumScreensConfiguration()` block mixin invocation (must be preliminarily defined)
@@ -87,7 +87,7 @@
 - <kbd>wmsc</kbd> - Inserts `+WideAndMediumScreensConfiguration()` block mixin invocation (must be preliminarily defined)
 - <kbd>mnsc</kbd> - Inserts `+MediumAndNarrowScreensConfiguration()` block mixin invocation (must be preliminarily defined)
 - <kbd>slteos</kdb> - [`SingleLineTextElementOverflowSafety`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md)
-- <kbd>si</kbd> - styles initialization
+- <kbd>si</kbd> -styles initialization ([`InitialGlobalCSS_Rules`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/InitialGlobalCSS_Rules.md) and [`CrossBrowserStylesReset`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/CrossBrowserStylesReset.md) mixins)
 - <kbd>mlt</kdb> - [`MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md)
 
 ### Removed
@@ -111,9 +111,9 @@
 ### Added
 
 - <kbd>prs</kbd> live template for [`PositionalRelationship`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#positionalrelationship-mixin) mixin
-- <kbd>rf</kbd> live template for [`retireFrom`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#retirefrom-mixin) mixin
+- <kbd>rf</kbd> live template for [`retireFrom`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#retirefrom-mixin) mixin
 - <kbd>ptfs</kbd> live template for [`pushTargetFromSelf`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#pushtargetfromself-mixin) mixin
-- <kbd>rfewss</kbd> live template for [`retireFromElementWithSameSelector`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#retirefromelementwithsameselector-mixin) mixin
+- <kbd>rfewss</kbd> live template for [`retireFromElementWithSameSelector`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#retirefromelementwithsameselector-mixin) mixin
 
 
 ## [0.0.0]

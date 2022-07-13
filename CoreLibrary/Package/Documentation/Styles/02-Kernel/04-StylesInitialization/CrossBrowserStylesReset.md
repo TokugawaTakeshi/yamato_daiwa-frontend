@@ -1,6 +1,6 @@
 # `CrossBrowserStylesReset`
 
-[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-cbsr-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-si-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
 The resetting of browser dependent styles and some usually redefinable styles like default margins of `body` based on
 [Eric Mayer's **Reset CSS**](https://meyerweb.com/eric/tools/css/reset/).

@@ -1,6 +1,6 @@
 # `InitialGlobalCSS_Rules`
 
-[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-igcr-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+[![Official plugin](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-si-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
 Some basic CSS rules like default font size and default line height intended to be applying directly after
 `CrossBrowserStylesReset`. 
