@@ -1,13 +1,19 @@
 {
-  "private": true,
+  "private": "true",
   "scripts": {
-    "IncrementalDevelopmentBuilding": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --mode DEVELOPMENT",
-    "ProductionBuilding": "hikari-automation buildProject --configurationFile hikari.config-EN.yaml --mode PRODUCTION"
+    "Incremental development building": "rimraf 02-DevelopmentBuild & yda build --mode DEVELOPMENT",
+    "Production building": "rimraf 03-ProductionBuild & yda build --mode PRODUCTION"
   },
   "dependencies": {
-    "@yamato-daiwa/frontend": "0.3.2"
+    "@yamato-daiwa/backend": "0.1.5",
+    "@yamato-daiwa/es-extensions": "1.5.1",
+    "@yamato-daiwa/es-extensions-browserjs": "1.5.4",
+    "@yamato-daiwa/es-extensions-nodejs": "1.5.1",
+    "@yamato-daiwa/frontend": "1.0.3"
   },
   "devDependencies": {
-    "hikari-automation": "0.0.44"
+    "@yamato-daiwa/automation": "0.0.2",
+    "@yamato-daiwa/style_guides": "0.0.17",
+    "rimraf": "3.0.2"
   }
 }
