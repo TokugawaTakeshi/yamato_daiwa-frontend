@@ -37,7 +37,11 @@ block append PageContent
         })
 
     +ButtonsShowcase({ caption: "Small size" })
-      td: +Button--YDF({ geometry: Button.GeometricVariations.small }) 本文 Teksto
+      td
+        +Button--YDF({
+          label: "本文 Teksto",
+          geometry: Button.GeometricVariations.small
+        })
       td
         +Button--YDF({
           label: "本文 Teksto",
