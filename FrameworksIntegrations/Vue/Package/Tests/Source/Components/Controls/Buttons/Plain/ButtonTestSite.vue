@@ -4,19 +4,23 @@
 
   Button(
     :HTML_Type="Button.HTML_Types.regular"
+    label="test"
     @click="onClickButton"
-  ) test
+  )
 
 </template>
 
 
 <script lang="ts">
 
-  /* --- 子コンポネント -------------------------------------------------------------------------------------------------- */
+  /* --- Other components ------------------------------------------------------------------------------------------- */
   import { Button } from "@Source/index";
 
-  /* --- フレームワーク -------------------------------------------------------------------------------------------------- */
+  /* --- Framework -------------------------------------------------------------------------------------------------- */
   import { Options as VueComponentConfiguration, Vue as VueComponent } from "vue-property-decorator";
+
+  /* --- Utils ------------------------------------------------------------------------------------------------------ */
+  import { Logger } from "@yamato-daiwa/es-extensions";
 
 
   @VueComponentConfiguration({
@@ -30,7 +34,10 @@
 
 
     public onClickButton(): void {
-      console.log("ok!");
+      Logger.logInfo({
+        title: "Normal operationing",
+        description: "Button click event handler is operationing."
+      });
     }
 
 

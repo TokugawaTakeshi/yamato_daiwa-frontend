@@ -25,7 +25,6 @@
   import { Options as VueComponentConfiguration, Vue as VueComponent } from "vue-property-decorator";
 
 
-
   @VueComponentConfiguration({
     components: {
       OverflowSafeSingleLineLabel

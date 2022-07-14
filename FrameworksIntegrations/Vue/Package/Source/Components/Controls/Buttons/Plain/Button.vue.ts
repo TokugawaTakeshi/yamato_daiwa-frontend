@@ -202,7 +202,7 @@ namespace Button {
 
       for (const decorativeVariationsName of decorativeVariationsNames) {
 
-        const decorativeVariationsName__lowerCamelCase: string = toLowerCamelCase(decorativeVariationsName)
+        const decorativeVariationsName__lowerCamelCase: string = toLowerCamelCase(decorativeVariationsName);
 
         DecorativeVariations[decorativeVariationsName__lowerCamelCase] = toScreamingSnakeCase(decorativeVariationsName);
         BasicLogic.DecorativeVariationsCSS_ModifiersNames[decorativeVariationsName__lowerCamelCase] =
@@ -214,19 +214,20 @@ namespace Button {
 
 
     /* === Auxiliaries ============================================================================================== */
+    protected IS_NUXT: boolean = ("$nuxt" in window);
+
     protected get rootElementModifierCSS_Classes(): Array<string> {
       return [
-        "Button",
         ...(this.isAnchorTheTagNameOfRootElement || this.isRootElementTheRouterLink) && this.disabled ?
             [ "Button__DisabledState" ] : [],
-        BasicLogic.ThemesCSS_ModifiersNames[this.theme],
-        BasicLogic.GeometricVariationsCSS_ModifiersNames[this.geometry],
-        BasicLogic.DecorativeVariationsCSS_ModifiersNames[this.decoration]
+        `Button__${ BasicLogic.ThemesCSS_ModifiersNames[this.theme] }`,
+        `Button__${ BasicLogic.GeometricVariationsCSS_ModifiersNames[this.geometry] }`,
+        `Button__${ BasicLogic.DecorativeVariationsCSS_ModifiersNames[this.decoration] }`
       ];
     }
   }
 
-  
+
   let Implementation: typeof VueComponent | null;
 
   export function setImplementation(_Implementation: typeof VueComponent): void {

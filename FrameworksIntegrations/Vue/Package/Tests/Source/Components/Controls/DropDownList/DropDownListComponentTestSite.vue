@@ -12,6 +12,8 @@
 
 <script lang="ts">
 
+  /* eslint-disable max-classes-per-file -- For the testing purposes */
+
   /* --- Other components ------------------------------------------------------------------------------------------- */
   import { DropDownList } from "@Source/index";
 
@@ -44,7 +46,7 @@
         createInitialInstance({
           initialValue: "",
           validation: new TestValidation()
-        })
+        });
 
 
     /* --- Non-reactive class fields -------------------------------------------------------------------------------- */

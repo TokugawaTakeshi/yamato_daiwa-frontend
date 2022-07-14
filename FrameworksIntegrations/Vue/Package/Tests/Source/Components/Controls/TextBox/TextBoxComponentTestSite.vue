@@ -12,6 +12,8 @@
 
 <script lang="ts">
 
+  /* eslint-disable max-classes-per-file -- For the testing purposes */
+
   /* --- Other components ------------------------------------------------------------------------------------------- */
   import { TextBox } from "@Source/index";
 
@@ -26,11 +28,13 @@
   import { isEmptyString } from "@yamato-daiwa/es-extensions";
 
 
+  /* eslint-disable max-classes-per-file */
   export class TestValidation extends ValueValidation {
     public constructor() {
       super({ omittedValueChecker: isEmptyString, inputIsRequired: true });
     }
   }
+
 
   @VueComponentConfiguration({})
   export default class TextBoxComponentTestSite extends VueComponent {
@@ -44,7 +48,7 @@
         createInitialInstance({
           initialValue: "",
           validation: new TestValidation()
-        })
+        });
 
 
     /* --- Non-reactive class fields -------------------------------------------------------------------------------- */

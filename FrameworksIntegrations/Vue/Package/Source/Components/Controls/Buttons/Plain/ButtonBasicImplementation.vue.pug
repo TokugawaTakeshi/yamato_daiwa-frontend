@@ -19,8 +19,9 @@ input.Button(
   :class="rootElementModifierCSS_Classes"
 )
 
-RouterLink.Button(
+component.Button(
   v-else-if="isRootElementTheRouterLink"
+  :is="IS_NUXT ? 'NuxtLink' : 'RouterLink'"
   :to="route"
   :aria-disabled="disabled"
   :tabindex="disabled && -1"
