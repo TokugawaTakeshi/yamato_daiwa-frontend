@@ -1,5 +1,7 @@
 # `VerticallyCenteredAbsolutelyPositionedBlock`
 
+[![Official IntelliJ IDEA plugin live template](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-vcapb-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
+
 ```
 VerticallyCenteredAbsolutelyPositionedBlock({
   upwardShifting?: DataTypes.unit

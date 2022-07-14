@@ -112,7 +112,7 @@
 
 - <kbd>prs</kbd> live template for [`PositionalRelationship`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#positionalrelationship-mixin) mixin
 - <kbd>rf</kbd> live template for [`retireFrom`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#retirefrom-mixin) mixin
-- <kbd>ptfs</kbd> live template for [`pushTargetFromSelf`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#pushtargetfromself-mixin) mixin
+- <kbd>ptfs</kbd> live template for [`pushTargetFromSelf`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#pushtargetfromself-mixin) mixin
 - <kbd>rfewss</kbd> live template for [`retireFromElementWithSameSelector`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#retirefromelementwithsameselector-mixin) mixin
 
 
