@@ -9,6 +9,7 @@
 - <kbd>vcapb</kbd> - [`VerticallyCenteredAbsolutelyPositionedBlock`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md) mixin
 - <kbd>bfr</kbd> - Unified live template for [**4 mixins for the border fillets radius defining**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/03-Borders/BordersFilletsRadius.md)
 - <kbd>bds</kbd> - [BordersSizing](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/03-Borders/BordersSizing.md)
+- <kbd>votp</kbd> - live template for [validateObjectTypeParameter](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateObjectTypeParameter.md) function
 - <kbd>votp-a</kbd> - live template for amount property specification for [validateObjectTypeParameter](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateObjectTypeParameter.md) function
 - <kbd>votp-s</kbd> - live template for string property specification for [validateObjectTypeParameter](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateObjectTypeParameter.md) function
 - <kbd>votp-p</kbd> - live template for any other property specification for [validateObjectTypeParameter](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateObjectTypeParameter.md) function
@@ -100,11 +101,11 @@
 ### Added 
 
 - <kbd>pd</kbd> - live template for [`Paddings`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/03-Paddings.md)
-- <kbd>wigf</kbd> - live template for [`whenItGoingFirst`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whenitgoingfirst-mixin) mixin
-- <kbd>wigl</kbd> - live template for [`whenItGoingLast`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whenitgoinglast-mixin) mixin
-- <kbd>wija</kbd> - live template for [`whenItJustAfter`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whenitjustafter) mixin
-- <kbd>wtgjai</kbd> - live template for [`whenTargetGoingJustAfterIt`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whentargetgoingjustafterit) mixin
-- <kbd>wtwssgjat</kbd> - live template for [`whenTargetWithSameSelectorGoingJustAfterIt`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/05-PositionalRelationship/PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit) mixin
+- <kbd>wigf</kbd> - live template for [`whenItGoingFirst`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitgoingfirst-mixin) mixin
+- <kbd>wigl</kbd> - live template for [`whenItGoingLast`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitgoinglast-mixin) mixin
+- <kbd>wija</kbd> - live template for [`whenItJustAfter`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitjustafter) mixin
+- <kbd>wtgjai</kbd> - live template for [`whenTargetGoingJustAfterIt`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whentargetgoingjustafterit) mixin
+- <kbd>wtwssgjat</kbd> - live template for [`whenTargetWithSameSelectorGoingJustAfterIt`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit) mixin
 
 
 ## [0.0.1]

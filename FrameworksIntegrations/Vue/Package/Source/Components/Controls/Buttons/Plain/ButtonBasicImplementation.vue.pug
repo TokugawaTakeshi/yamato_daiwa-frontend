@@ -1,7 +1,7 @@
 button.Button(
   v-if="isButtonTheTagNameOfRootElement"
   :type="typeAttributeValueOfInputOrButtonElement"
-  :disabled="disabled"
+  :disabled="mustDisable"
   @click.prevent="() => {}"
   :class="rootElementModifierCSS_Classes"
 )
@@ -14,7 +14,7 @@ input.Button(
   v-else-if="isInputTheTagNameOfRootElement"
   :type="typeAttributeValueOfInputOrButtonElement"
   :value="label"
-  :disabled="disabled"
+  :disabled="mustDisable"
   @click.prevent="() => {}"
   :class="rootElementModifierCSS_Classes"
 )
@@ -23,7 +23,7 @@ component.Button(
   v-else-if="isRootElementTheRouterLink"
   :is="IS_NUXT ? 'NuxtLink' : 'RouterLink'"
   :to="route"
-  :aria-disabled="disabled"
+  :aria-disabled="mustDisable"
   :tabindex="disabled && -1"
   :class="rootElementModifierCSS_Classes"
 )
@@ -35,9 +35,9 @@ component.Button(
 a.Button(
   v-else-if="isAnchorTheTagNameOfRootElement"
   :href="externalLinkURI"
-  target="_blank"
+  :target="mustOpenExternalLinkInCurrentTab ? '_self' : '_blank'"
   rel="noopener noreferrer"
-  :aria-disabled="disabled"
+  :aria-disabled="mustDisable"
   :tabindex="disabled && -1"
   :class="rootElementModifierCSS_Classes"
 )

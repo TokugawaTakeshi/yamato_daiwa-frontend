@@ -2,6 +2,7 @@ export { default as OverflowSafeSingleLineLabel } from "./Components/OverflowSaf
 
 export { default as Button } from "./Components/Controls/Buttons/Plain/Button.vue";
 export { default as ButtonBasicImplementation } from "./Components/Controls/Buttons/Plain/ButtonBasicImplementation.vue";
+export { default as ButtonLoadingPlaceholder } from "@Components/Controls/Buttons/Plain/ButtonLoadingPlaceholder.vue";
 
 export { default as CompoundControlShell } from "./Components/Controls/CompoundControlShell/CompoundControlShell.vue";
 export {

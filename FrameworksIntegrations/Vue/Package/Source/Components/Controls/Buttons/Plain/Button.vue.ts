@@ -41,24 +41,28 @@ namespace Button {
   export type GeometricVariations = {
     readonly regular: "REGULAR";
     readonly small: "SMALL";
+    readonly linkLike: "LINK_LIKE";
     [themeName: string]: string;
   };
 
   export const GeometricVariations: GeometricVariations = {
     regular: "REGULAR",
-    small: "SMALL"
+    small: "SMALL",
+    linkLike: "LINK_LIKE"
   };
 
 
   export type DecorativeVariations = {
     readonly regular: "REGULAR";
     readonly accented: "ACCENTED";
+    readonly linkLike: "LINK_LIKE";
     [themeName: string]: string;
   };
 
   export const DecorativeVariations: DecorativeVariations = {
     regular: "REGULAR",
-    accented: "ACCENTED"
+    accented: "ACCENTED",
+    linkLike: "LINK_LIKE"
   };
 
 
@@ -66,7 +70,7 @@ namespace Button {
   export class BasicLogic extends VueComponent {
 
     /* === Constants & enumerations ================================================================================= */
-    protected readonly HTML_Types: typeof HTML_Types = HTML_Types;
+    protected HTML_Types!: typeof HTML_Types;
 
 
     /* === Properties =============================================================================================== */
@@ -87,7 +91,10 @@ namespace Button {
     protected readonly externalLinkURI?: string;
 
     @VueProperty({ type: Boolean, default: false })
-    protected readonly disabled!: string;
+    protected readonly mustOpenExternalLinkInCurrentTab!: string;
+
+    @VueProperty({ type: Boolean, default: false })
+    protected readonly mustDisable!: string;
 
     @VueProperty({
       type: String,
@@ -109,6 +116,12 @@ namespace Button {
       validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(DecorativeVariations).includes(rawValue)
     })
     protected readonly decoration!: string;
+
+
+    /* === Lifecycle hooks ========================================================================================== */
+    public created(): void {
+      this.initializeNonReactiveClassFields();
+    }
 
 
     /* === Computing of tag name of root element ==================================================================== */
@@ -141,6 +154,7 @@ namespace Button {
         return null;
       }
 
+
       switch (this.HTML_Type) {
         case HTML_Types.regular: return "button";
         case HTML_Types.submit: return "submit";
@@ -153,7 +167,7 @@ namespace Button {
 
 
     /* === Themes =================================================================================================== */
-    protected static ThemesCSS_ModifiersNames: { [themeID: string]: string; } = {
+    public static readonly ThemesCSS_ModifiersNames: { [themeID: string]: string; } = {
       [Themes.regular]: "RegularTheme"
     };
 
@@ -172,7 +186,7 @@ namespace Button {
 
 
     /* --- Geometric variations ------------------------------------------------------------------------------------- */
-    protected static GeometricVariationsCSS_ModifiersNames: { [ geometricVariationID: string ]: string; } = {
+    public static readonly GeometricVariationsCSS_ModifiersNames: { [ geometricVariationID: string ]: string; } = {
       [GeometricVariations.regular]: "RegularGeometry",
       [GeometricVariations.small]: "SmallGeometry"
     };
@@ -181,7 +195,7 @@ namespace Button {
 
       for (const geometricVariationsName of geometricVariationsNames) {
 
-        const geometricVariationsName__lowerCamelCase: string = toLowerCamelCase(geometricVariationsName)
+        const geometricVariationsName__lowerCamelCase: string = toLowerCamelCase(geometricVariationsName);
 
         GeometricVariations[geometricVariationsName__lowerCamelCase] = toScreamingSnakeCase(geometricVariationsName);
         BasicLogic.GeometricVariationsCSS_ModifiersNames[geometricVariationsName__lowerCamelCase] =
@@ -193,7 +207,7 @@ namespace Button {
 
 
     /* --- Decorative variations ------------------------------------------------------------------------------------- */
-    protected static DecorativeVariationsCSS_ModifiersNames: { [ decorativeVariationID: string ]: string; } = {
+    public static readonly DecorativeVariationsCSS_ModifiersNames: { [ decorativeVariationID: string ]: string; } = {
       [DecorativeVariations.regular]: "RegularDecoration",
       [DecorativeVariations.small]: "AccentedDecoration"
     };
@@ -214,16 +228,28 @@ namespace Button {
 
 
     /* === Auxiliaries ============================================================================================== */
+    /* eslint-disable-next-line @typescript-eslint/no-extra-parens --
+     * Parens are actually unnecessary but some IDEs could complain. */
     protected IS_NUXT: boolean = ("$nuxt" in window);
 
     protected get rootElementModifierCSS_Classes(): Array<string> {
       return [
-        ...(this.isAnchorTheTagNameOfRootElement || this.isRootElementTheRouterLink) && this.disabled ?
+        ...(this.isAnchorTheTagNameOfRootElement || this.isRootElementTheRouterLink) && this.mustDisable ?
             [ "Button__DisabledState" ] : [],
-        `Button__${ BasicLogic.ThemesCSS_ModifiersNames[this.theme] }`,
-        `Button__${ BasicLogic.GeometricVariationsCSS_ModifiersNames[this.geometry] }`,
-        `Button__${ BasicLogic.DecorativeVariationsCSS_ModifiersNames[this.decoration] }`
+        ...Object.entries(Themes).length > 1 ? [ `Button__${ BasicLogic.ThemesCSS_ModifiersNames[this.theme] }` ] : [],
+        ...Object.entries(GeometricVariations).length > 1 ? [
+          `Button__${ BasicLogic.GeometricVariationsCSS_ModifiersNames[this.geometry] }`
+        ] : [],
+        ...Object.entries(DecorativeVariations).length > 1 ? [
+          `Button__${ BasicLogic.DecorativeVariationsCSS_ModifiersNames[this.decoration] }`
+        ] : []
       ];
+    }
+
+
+    /* === Non-reactive class fields ================================================================================ */
+    private initializeNonReactiveClassFields(): void {
+      this.HTML_Types = HTML_Types;
     }
   }
 
