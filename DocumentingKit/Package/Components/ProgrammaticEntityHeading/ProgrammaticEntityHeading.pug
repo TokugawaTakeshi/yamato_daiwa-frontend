@@ -1,0 +1,13 @@
+mixin ProgrammaticEntityHeading(propertiesObject)
+
+  -
+    const {
+      headingElementTag = "h1",
+      entityName,
+      entityLocalizedInterpretation,
+    } = propertiesObject
+
+
+  #{headingElementTag}.ProgrammaticEntityHeading&attributes(attributes)
+    code.ProgrammaticEntityHeading-EntityName= entityName
+    span.ProgrammaticEntityHeading-EntityNameLocalizedInterpretation= entityLocalizedInterpretation
