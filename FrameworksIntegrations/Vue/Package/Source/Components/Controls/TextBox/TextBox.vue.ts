@@ -227,7 +227,7 @@ namespace TextBox {
       }
 
       this.validatablePayload.completeInitialization({
-        getComponentInstanceMethodImplementation: () => this
+        getComponentInstanceMethodImplementation: (): this => this
       });
     }
 
@@ -296,7 +296,6 @@ namespace TextBox {
 
 
       this.$emit(Events.input, this.validatablePayload.updateImmutably({ newValue: rawValue }));
-      console.log(this.validatablePayload);
     }
 
     @emitEvent(Events.blur)
@@ -364,7 +363,7 @@ namespace TextBox {
 
       for (const geometricVariationsName of geometricVariationsNames) {
 
-        const geometricVariationsName__lowerCamelCase: string = toLowerCamelCase(geometricVariationsName)
+        const geometricVariationsName__lowerCamelCase: string = toLowerCamelCase(geometricVariationsName);
 
         GeometricVariations[geometricVariationsName__lowerCamelCase] = toScreamingSnakeCase(geometricVariationsName);
         BasicLogic.GeometricVariationsCSS_ModifiersNames[geometricVariationsName__lowerCamelCase] =
@@ -385,7 +384,7 @@ namespace TextBox {
 
       for (const decorativeVariationsName of decorativeVariationsNames) {
 
-        const decorativeVariationsName__lowerCamelCase: string = toLowerCamelCase(decorativeVariationsName)
+        const decorativeVariationsName__lowerCamelCase: string = toLowerCamelCase(decorativeVariationsName);
 
         DecorativeVariations[decorativeVariationsName__lowerCamelCase] = toScreamingSnakeCase(decorativeVariationsName);
         BasicLogic.DecorativeVariationsCSS_ModifiersNames[decorativeVariationsName__lowerCamelCase] =

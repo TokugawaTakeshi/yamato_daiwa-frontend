@@ -70,6 +70,27 @@ projectBuilding:
 
     entryPointsGroups:
 
+      Distributable:
+
+        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Source/index.ts
+
+        targetRuntime:
+          type: BROWSER
+
+        buildingModeDependent:
+
+          DEVELOPMENT:
+            outputBaseDirectoryRelativePath: ""
+            distributing:
+              typeScriptTypesDeclarations:
+                mustGenerate: true
+
+          PRODUCTION:
+            outputBaseDirectoryRelativePath: ""
+            distributing:
+              typeScriptTypesDeclarations:
+                mustGenerate: true
+
       Tests:
 
         entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Source

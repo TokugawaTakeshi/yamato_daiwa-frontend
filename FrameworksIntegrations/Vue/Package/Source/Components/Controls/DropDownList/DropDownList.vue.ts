@@ -163,8 +163,8 @@ namespace DropDownList {
     private isExpanded: boolean = false;
 
     protected readonly COMPONENT_BASIC_ID: string = BasicLogic.generateComponentBasicID();
-    protected get LABEL_ELEMENT_HTML_ID(): string { return `${this.COMPONENT_BASIC_ID}-LABEL` }
-    protected get OPTIONS_LIST_HTML_ID(): string { return `${this.COMPONENT_BASIC_ID}-OPTIONS_LIST`; }
+    protected get LABEL_ELEMENT_HTML_ID(): string { return `${ this.COMPONENT_BASIC_ID }-LABEL`; }
+    protected get OPTIONS_LIST_HTML_ID(): string { return `${ this.COMPONENT_BASIC_ID }-OPTIONS_LIST`; }
 
 
     /* === Interface ================================================================================================ */
@@ -183,7 +183,7 @@ namespace DropDownList {
 
       if (isNotUndefined(this.validatablePayload)) {
         this.validatablePayload.completeInitialization({
-          getComponentInstanceMethodImplementation: () => this
+          getComponentInstanceMethodImplementation: (): this => this
         });
       }
     }
@@ -201,7 +201,7 @@ namespace DropDownList {
     }
 
 
-    protected onNewOptionSelected(newOption: DropDownList.SelectionOption | null, indexInArray: number | null): void {
+    protected onNewOptionSelected(newOption: SelectionOption | null, indexInArray: number | null): void {
 
       if (isNotNull(indexInArray)) {
 
@@ -289,7 +289,7 @@ namespace DropDownList {
     /* === Themes =================================================================================================== */
     protected static ThemesCSS_ModifiersNames: { [themeID: string]: string; } = {
       [Themes.regular]: "RegularTheme"
-    }
+    };
 
     public static defineNewThemes(themesNames: Array<string>): typeof BasicLogic {
 
@@ -315,7 +315,7 @@ namespace DropDownList {
 
       for (const geometricVariationsName of geometricVariationsNames) {
 
-        const geometricVariationsName__lowerCamelCase: string = toLowerCamelCase(geometricVariationsName)
+        const geometricVariationsName__lowerCamelCase: string = toLowerCamelCase(geometricVariationsName);
 
         GeometricVariations[geometricVariationsName__lowerCamelCase] = toScreamingSnakeCase(geometricVariationsName);
         BasicLogic.GeometricVariationsCSS_ModifiersNames[geometricVariationsName__lowerCamelCase] =
@@ -336,7 +336,7 @@ namespace DropDownList {
 
       for (const decorativeVariationsName of decorativeVariationsNames) {
 
-        const decorativeVariationsName__lowerCamelCase: string = toLowerCamelCase(decorativeVariationsName)
+        const decorativeVariationsName__lowerCamelCase: string = toLowerCamelCase(decorativeVariationsName);
 
         DecorativeVariations[decorativeVariationsName__lowerCamelCase] = toScreamingSnakeCase(decorativeVariationsName);
         BasicLogic.DecorativeVariationsCSS_ModifiersNames[decorativeVariationsName__lowerCamelCase] =
