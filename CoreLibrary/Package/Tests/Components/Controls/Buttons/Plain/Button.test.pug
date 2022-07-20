@@ -24,68 +24,160 @@ block append PageContent
             th "a" tag
             th "input" tag
         tbody
-          tr
-            block
+          block
+
 
     +ButtonsShowcase({ caption: "Default options" })
-      td: +Button--YDF({ label: "本文 Teksto" })
-      td: +Button--YDF({ label: "本文 Teksto", URI: "#" })
-      td
-        +Button--YDF({
-          label: "本文 Teksto",
-          HTML_Type: Button.HTML_Types.inputButton
-        })
+      tr
+        td: +Button--YDF({ label: "Teksto 本文"})
+        td: +Button--YDF({ label: "Teksto 本文", URI: "#" })
+        td
+          +Button--YDF({
+            label: "Teksto 本文",
+            HTML_Type: Button.HTML_Types.inputButton
+          })
 
-    +ButtonsShowcase({ caption: "Small size" })
-      td
-        +Button--YDF({
-          label: "本文 Teksto",
-          geometry: Button.GeometricVariations.small
-        })
-      td
-        +Button--YDF({
-          label: "本文 Teksto",
-          URI: "#",
-          geometry: Button.GeometricVariations.small
-        })
-      td
-        +Button--YDF({
-          label: "本文 Teksto",
-          HTML_Type: Button.HTML_Types.inputButton,
-          geometry: Button.GeometricVariations.small
-        })
+    +ButtonsShowcase({ caption: "Geometric variations" })
+
+      tr
+        td: +Button--YDF({ label: "Teksto 本文" })
+        td: +Button--YDF({ label: "Teksto 本文", URI: "#" })
+        td
+          +Button--YDF({
+            label: "Teksto 本文",
+            HTML_Type: Button.HTML_Types.inputButton
+          })
+
+      tr
+        td
+          +Button--YDF({
+            label: "Teksto 本文",
+            geometry: Button.GeometricVariations.small
+          })
+        td
+          +Button--YDF({
+            label: "Teksto 本文",
+            URI: "#",
+            geometry: Button.GeometricVariations.small
+          })
+        td
+          +Button--YDF({
+            label: "Teksto 本文",
+            HTML_Type: Button.HTML_Types.inputButton,
+            geometry: Button.GeometricVariations.small
+          })
 
     +ButtonsShowcase({ caption: "Multiline safety test" })
-      td: +Button--YDF({ label: "Super hyper mega extra very log label"}).Button-NarrowWidth
-      td: +Button--YDF({ label: "Super hyper mega extra very log label", URI: "#"}).Button-NarrowWidth
-      td
-        +Button--YDF({
-          label: "Super hyper mega extra very log label",
-          HTML_Type: Button.HTML_Types.inputButton
-        }).Button-NarrowWidth
 
-    +ButtonsShowcase({ caption: "Has prepended icon" })
-      td: +Button--YDF({
-        hasPrependedSVG_Icon: true
-      })
-        +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
-        span.Button-Label 良いね！
-      td: +Button--YDF({
-        URI: "#",
-        hasPrependedSVG_Icon: true
-      })
-        +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
-        span.Button-Label 良いね！
-      td (Impossible)
+      tr
+        td: +Button--YDF({ label: "SuperHyperMegaExtraVeryLongLabelTryToBreakMeHaHaHaHaHaHaHaHa" })
+        td: +Button--YDF({ label: "SuperHyperMegaExtraVeryLongLabelTryToBreakMeHaHaHaHaHaHaHaHa", URI: "#"})
+        td
+          +Button--YDF({
+            label: "SuperHyperMegaExtraVeryLongLabelTryToBreakMeHaHaHaHaHaHaHaHa",
+            HTML_Type: Button.HTML_Types.inputButton
+          })
 
-    +ButtonsShowcase({ caption: "単独アイコン有り" })
-      td: +Button--YDF(aria-label="良いね！"): +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
+      tr
+        td
+          +Button--YDF({
+            label: "SuperHyperMegaExtraVeryLongLabelTryToBreakMeHaHaHaHaHaHaHaHa",
+            geometry: Button.GeometricVariations.small
+          })
+        td
+          +Button--YDF({
+            label: "SuperHyperMegaExtraVeryLongLabelTryToBreakMeHaHaHaHaHaHaHaHa",
+            URI: "#",
+            geometry: Button.GeometricVariations.small
+          })
+        td
+          +Button--YDF({
+            label: "SuperHyperMegaExtraVeryLongLabelTryToBreakMeHaHaHaHaHaHaHaHa",
+            HTML_Type: Button.HTML_Types.inputButton,
+            geometry: Button.GeometricVariations.small
+          })
 
-      td: +Button--YDF({
-        URI: "#"
-      })(aria-label="良いね！"): +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
-      td (Impossible)
+    +ButtonsShowcase({ caption: "Prepended icon" })
 
+      tr
+        td
+          +Button--YDF
+            +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
+            span.Button-Label Like
+        td
+          +Button--YDF({ URI: "#" })
+            +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
+            span.Button-Label Like
+        td Impossible
+
+      tr
+        td
+          +Button--YDF({ geometry: Button.GeometricVariations.small })
+            +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
+            span.Button-Label Like
+        td
+          +Button--YDF({
+            URI: "#",
+            geometry: Button.GeometricVariations.small
+          })
+            +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
+            span.Button-Label Like
+        td Impossible
+
+      +ButtonsShowcase({ caption: "Appended icon" })
+
+        tr
+          td
+            +Button--YDF
+              span.Button-Label Like
+              +MagnifyingGlass--YDF_Icon.Button-AppendedSVG_Icon
+          td
+            +Button--YDF({ URI: "#" })
+              span.Button-Label Like
+              +MagnifyingGlass--YDF_Icon.Button-AppendedSVG_Icon
+          td Impossible
+
+        tr
+          td
+            +Button--YDF({ geometry: Button.GeometricVariations.small })
+              span.Button-Label Like
+              +MagnifyingGlass--YDF_Icon.Button-AppendedSVG_Icon
+          td
+            +Button--YDF({
+              URI: "#",
+              geometry: Button.GeometricVariations.small
+            })
+              span.Button-Label Like
+              +MagnifyingGlass--YDF_Icon.Button-AppendedSVG_Icon
+          td Impossible
+
+
+        +ButtonsShowcase({ caption: "Lone SVG icon" })
+
+          tr
+            td
+              +Button--YDF({ ARIA_Label: "Search" })
+                +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
+            td
+              +Button--YDF({ URI: "#", ARIA_Label: "Search" })
+                +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
+            td Impossible
+
+          tr
+            td
+              +Button--YDF({
+                ARIA_Label: "Search",
+                geometry: Button.GeometricVariations.small
+              })
+                +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
+            td
+              +Button--YDF({
+                URI: "#",
+                ARIA_Label: "Search",
+                geometry: Button.GeometricVariations.small
+              })
+                +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
+            td Impossible
 
     //-
 

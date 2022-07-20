@@ -1,3 +1,7 @@
+@require "Themes/Regular/GeometricVariations/Button-RegularGeometry.styl"
+@require "Themes/Regular/GeometricVariations/Button-SmallGeometry.styl"
+
+
 getLineHeightByFontSizeAndLineSpacing(compoundParameter, restParameters__MUST_NOT_BE...)
 
   validateObjectTypeParameter({
@@ -60,88 +64,8 @@ Button = {
       regular: {
 
         geometricVariations: {
-
-          regular: {
-
-            rootElement: {
-              minimalWidth: 6rem,
-              borders: specifyBordersSizing({
-                thickness: { all: 1px },
-                radius: { all: 3px }
-              })
-            },
-
-            label: {
-              text: {
-                size: 1rem,
-                lineSpacing: 0.1rem,
-                lineHeight: null
-              },
-              spacing: {
-                left: 1rem,
-                right: 1rem,
-                top: 0.45rem,
-                bottom: 0.45rem,
-                upwardShifting: null,
-                afterPrependedIcon: 1rem
-              }
-            },
-
-            prependedSVG_Icon: {
-              width: 1rem,
-              height: 1rem,
-              spacing: {
-                top: 0.45rem,
-                bottom: 0.45rem
-              }
-            },
-
-            loneSVG_Icon: {
-              width: 16px,
-              height: 16px
-            }
-          },
-
-          small: {
-
-            rootElement: {
-              minimalWidth: 4rem
-              borders: specifyBordersSizing({
-                thickness: { all: 1px },
-                radius: { all: 3px }
-              })
-            },
-
-            label: {
-              text: {
-                size: 0.9rem,
-                lineSpacing: 0.1rem,
-                lineHeight: null
-              },
-              spacing: {
-                left: 0.6rem,
-                right: 0.6rem,
-                top: 0.2rem,
-                bottom: 0.2rem,
-                upwardShifting: null,
-                afterPrependedIcon: 1rem
-              }
-            },
-
-            prependedSVG_Icon: {
-              width: 1rem,
-              height: 1rem,
-              spacing: {
-                top: 0.45rem,
-                bottom: 0.45rem
-              }
-            },
-
-            loneSVG_Icon: {
-              width: 16px,
-              height: 16px
-            }
-          }
+          regular: Button-RegularGeometry--YDF,
+          small: Button-SmallGeometry--YDF
         },
 
         decorativeVariations: {
@@ -196,11 +120,15 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
 
       ButtonLikeElementsPrimer()
 
+      cursor pointer
+
+
+    button.Button,
+    a.Button
+
       display inline-flex
       justify-content center
       align-items center
-
-      cursor pointer
 
 
   // --- Geometry ------------------------------------------------------------------------------------------------------
@@ -237,27 +165,26 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
     )
 
 
-    +provideDefaultSelectorWhenRootAndApply(ROOT_ELEMENT_SELECTOR)
-
-      min-width: variation.rootElement.minimalWidth
-
-      BordersSizing(variation.rootElement.borders)
+    min-width: variation.rootElement.minimalWidth
+    BordersSizing(variation.rootElement.borders)
 
 
-    /{getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)} .Button-PrependedSVG_Icon
+    .Button-PrependedSVG_Icon
 
       width: variation.prependedSVG_Icon.width
       height: variation.prependedSVG_Icon.height
 
+      margin-left: variation.prependedSVG_Icon.spacing.left
       margin-top: variation.prependedSVG_Icon.spacing.top
       margin-bottom: variation.prependedSVG_Icon.spacing.bottom
 
 
-    /a{getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)} .Button-Label,
-    /button{getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)} .Button-Label
+    /a{selector()} .Button-Label,
+    /button{selector()} .Button-Label
 
       font-size: variation.label.text.size
       line-height: lineHeight
+      word-break break-all
 
       margin-top: topSpacing
       margin-bottom: bottomSpacing
@@ -268,24 +195,39 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
         margin-left: variation.label.spacing.left
 
 
-      retireFrom({
-        targetElementSelector: ".Button-PrependedSVG_Icon",
-        x: variation.label.spacing.afterPrependedIcon,
-        referenceElementSelector: ".Button-Label",
-        contextSelector: getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)
-      })
-
-
       &:last-child
 
         margin-right: variation.label.spacing.right
 
 
-    /input{getCurrentSelectorSubstitutingRoot(ROOT_ELEMENT_SELECTOR)}
+    /a{selector()}
+
+      log(selector())
+
+      retireFrom({
+        targetElementSelector: ".Button-PrependedSVG_Icon",
+        x: variation.label.spacing.afterPrependedIcon,
+        referenceElementSelector: ".Button-Label",
+        contextSelector: selector()
+      })
+
+
+    /button{selector()}
+
+      retireFrom({
+        targetElementSelector: ".Button-PrependedSVG_Icon",
+        x: variation.label.spacing.afterPrependedIcon,
+        referenceElementSelector: ".Button-Label",
+        contextSelector: selector()
+      })
+
+
+    /input{selector()}
 
       font-size: variation.label.text.size
       line-height: lineHeight
       white-space: break-spaces
+      word-break: break-all
 
       padding-left: variation.label.spacing.left
       padding-right: variation.label.spacing.right
@@ -299,17 +241,25 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
       height: variation.loneSVG_Icon.height
 
 
+    .Button-AppendedSVG_Icon
+
+      width: variation.prependedSVG_Icon.width
+      height: variation.prependedSVG_Icon.height
+
+      margin-left: variation.prependedSVG_Icon.spacing.left
+      margin-top: variation.prependedSVG_Icon.spacing.top
+      margin-bottom: variation.prependedSVG_Icon.spacing.bottom
+
+
   // --- Decoration ----------------------------------------------------------------------------------------------------
   applyDecorativeVariation(variation)
 
-    +provideDefaultSelectorWhenRootAndApply(ROOT_ELEMENT_SELECTOR)
-
-      applyIfNotNull({
-        border-style: variation.rootElement.borders.style,
-        border-color: variation.rootElement.borders.color,
-        background-color: variation.rootElement.background.color,
-        color: variation.rootElement.font.color
-      })
+    applyIfNotNull({
+      border-style: variation.rootElement.borders.style,
+      border-color: variation.rootElement.borders.color,
+      background-color: variation.rootElement.background.color,
+      color: variation.rootElement.font.color
+    })
 
 
   // --- Applying ------------------------------------------------------------------------------------------------------

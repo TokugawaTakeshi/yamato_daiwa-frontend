@@ -9,6 +9,7 @@ mixin Button--YDF(properties)
     const {
       HTML_Type = Button.HTML_Types.regular,
       label,
+      ARIA_Label,
       URI,
       disabled = false,
       theme = Button.Themes.regular,
@@ -98,6 +99,7 @@ mixin Button--YDF(properties)
       class= commonCSS_Classes
       type= typeAttributeValueOfInputOrButtonElement
       disabled= disabled
+      aria-label= ARIA_Label
     )
 
       if block
@@ -114,6 +116,7 @@ mixin Button--YDF(properties)
       class= [ ...commonCSS_Classes, disabled ? [ "Button__DisabledState" ] : [] ]
       href= URI
       aria-disabled= disabled ? "true" : undefined
+      aria-label= ARIA_Label
       tabindex = disabled && -1
     )
 
