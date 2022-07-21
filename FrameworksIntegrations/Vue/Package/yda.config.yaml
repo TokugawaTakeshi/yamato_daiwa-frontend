@@ -77,19 +77,19 @@ projectBuilding:
         targetRuntime:
           type: BROWSER
 
+        distributing:
+          exposingOfExportsFromEntryPoints:
+            mustExpose: true
+          typeScriptTypesDeclarations:
+            mustGenerate: true
+
         buildingModeDependent:
 
           DEVELOPMENT:
             outputBaseDirectoryRelativePath: ""
-            distributing:
-              typeScriptTypesDeclarations:
-                mustGenerate: true
 
           PRODUCTION:
             outputBaseDirectoryRelativePath: ""
-            distributing:
-              typeScriptTypesDeclarations:
-                mustGenerate: true
 
       Tests:
 
