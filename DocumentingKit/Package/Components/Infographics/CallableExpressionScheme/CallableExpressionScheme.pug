@@ -1,0 +1,73 @@
+mixin CallableExpressionScheme(properties)
+
+  -
+    const {
+      technicalName,
+      localizedDescriptiveHeading
+    } = properties
+
+
+  .CallableExpressionScheme&attributes(attributes)
+
+    .CallableExpressionScheme-TechnicalNameRow= `${technicalName}(`
+    .CallableExpressionScheme-LocalizedDescriptiveHeading= localizedDescriptiveHeading
+
+    //-
+
+      .CallableExpressionScheme-GridFlow
+
+        each parameterSpecification, index in parametersSpecification
+          - parameterSpecification.number = index + 1
+          +FunctionParameterAbstract(parameterSpecification)
+
+      .CallableExpressionScheme-ClosingBracketRow
+        .CallableExpressionScheme-ClosingBracket ):
+        .CallableExpressionScheme-ReturnValue
+          if returnValue
+            | #{returnValue}
+          else
+            | 無返値
+
+      if block
+        .CallableExpressionScheme-UsedTypesGridFlow
+          block
+
+
+//-
+  mixin FunctionParameterAbstract(parameterSpecification)
+
+    .FunctionParameterAbstract
+
+      .FunctionParameterAbstract-HeaderRow
+
+        .FunctionParameterAbstract-Title= `第${parameterSpecification.number}引数`
+
+        if parameterSpecification.required === true
+          span.FunctionParameterAbstract-RequirementBadge.FunctionParameterAbstract-RequirementBadge__Required 必須
+          +ParameterOrPropertyRequirementBadge({
+            status: ParameterOrPropertyRequirementBadge.RequirementStatuses.required
+          }).FunctionParameterAbstract-RequirementBadge
+        else if parameterSpecification.required === false
+          +ParameterOrPropertyRequirementBadge({
+            status: ParameterOrPropertyRequirementBadge.RequirementStatuses.optional
+          }).FunctionParameterAbstract-RequirementBadge
+        else if typeof parameterSpecification.defaultValue !== "undefined"
+          +ParameterOrPropertyRequirementBadge({
+            status: ParameterOrPropertyRequirementBadge.RequirementStatuses.optional
+          }).FunctionParameterAbstract-RequirementBadge
+
+      .FunctionParameterAbstract-HeaderCell 一般技術名
+      .FunctionParameterAbstract-GenericTechnicalName= parameterSpecification.genericTechnicalName
+
+      .FunctionParameterAbstract-HeaderCell 型
+      .FunctionParameterAbstract-Type
+        if Array.isArray(parameterSpecification.type)
+          .FunctionParameterAbstract-Type-OneOfComposition
+            each alternative in parameterSpecification.type
+              .FunctionParameterAbstract-Type-OneOfComposition-Alternative= alternative
+
+        else
+          | #{parameterSpecification.type}
+
+      .FunctionParameterAbstract-HeaderCell 日本語名
+      .FunctionParameterAbstract-LocalizedName= parameterSpecification.localizedName
