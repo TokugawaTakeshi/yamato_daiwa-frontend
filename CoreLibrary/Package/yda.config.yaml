@@ -94,15 +94,14 @@ projectBuilding:
       PugExtensions:
 
         entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Markup/Source/PugExtensions.ts
-        targetRuntime:
-#          type: BROWSER
-          type: NODEJS
-          minimalVersion:
-            major: 16
 
-#        exportsFromEntryPointsAreAccessible: true
-#        exportsObjectName: __PUG_EXTENSIONS_EXPORTS__
-        experimentalOption1: __PUG_EXTENSIONS_EXPORTS__
+        targetRuntime:
+          type: PUG
+
+        distributing:
+          exposingOfExportsFromEntryPoints:
+            mustExpose: true
+            namespace: __PUG_EXTENSIONS_EXPORTS__
 
         buildingModeDependent:
           PRODUCTION:
