@@ -37,12 +37,12 @@ p(formatObject({
 will format the output:
 
 ```
-inspect: '{
-  alpha: ALPHA,
-  bravo: BRAVO,
+inspect: '{      
+  alpha: 'ALPHA',
+  bravo: 'BRAVO',
   charlie: {
-    charlie1: CHARLIE_1,
-    charlie2: CHARLIE_1
+    charlie1: 'CHARLIE_1',
+    charlie2: 'CHARLIE_1'
   }
 }'
 ```

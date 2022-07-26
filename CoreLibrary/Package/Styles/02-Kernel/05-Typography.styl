@@ -7,7 +7,7 @@
 
 TypographyDefaultDefinition = {
 
-  prefix: null,
+  CSS_NamespacePrefix: null,
 
   elements: {
 
@@ -178,8 +178,8 @@ generateTypographyElementsKeysAndCSS_ClassesMap(typographyDefinition)
 
   for elementKey, elementProperties in typographyDefinition.elements
 
-    elementsKeysAndCSS_ClassesMap[elementKey] = isNotNull(typographyDefinition.prefix) ?\
-        typographyDefinition.prefix + "-" + elementProperties.class :\
+    elementsKeysAndCSS_ClassesMap[elementKey] = isNotNull(typographyDefinition.CSS_NamespacePrefix) ?\
+        typographyDefinition.CSS_NamespacePrefix + "-" + elementProperties.class :\
         elementProperties.class
 
   return elementsKeysAndCSS_ClassesMap
@@ -216,36 +216,29 @@ provideTypography(preset = TypographyDefaultDefinition, overridings = {})
         setPositionalRelationshipForSpecificElement(elementProperties.positionalRelationship)
 
 
-//providePositionalRelationshipWithTypographyElements(parametersObject, restParameters__MUST_NOT_BE...)
-//
-//  validateSingleParametersObject({
-//    targetObject: parametersObject,
-//    propertiesSpecification: {
-//      positionalRelationshipWithTypographyElementsSettings: {
-//        required: false
-//      }
-//    },
-//    restParameters: restParameters__MUST_NOT_BE,
-//    mixinOrFunctionName: "providePositionalRelationshipWithTypographyElements"
-//  })
-//
-//  if isNotNull(parametersObject.positionalRelationshipWithTypographyElementsSettings)
-//
-//    for profileName, profile in parametersObject.positionalRelationshipWithTypographyElementsSettings
-//
-//      if isNotNull(profile) && isNotNull(profile.typographySpecification)
-//
-//        keysAndSelectorsMap = generateTypographySelectors(profile.typographySpecification)
-//
-//        for elementKey, positionalRelationshipDefinition in profile.definitions
-//
-//          if isNull(keysAndSelectorsMap[elementKey])
-//            error("不正相互配置設定：キー：「" + elementKey + "」に該当する選択式が発見されず。")
-//
-//          PositionalRelationship({
-//            definitions: (keysAndSelectorsMap[elementKey] {
-//              retireFromIt: { y: positionalRelationshipDefinition.whenItJustBefore },
-//              pushItFromSelf: { y: positionalRelationshipDefinition.whenItJustAfter }
-//            }),
-//            referenceElementSelector: parametersObject.componentRootElementSelector
-//          })
+providePositionalRelationshipWithTypographyElements(compoundParameter, restParameters__MUST_NOT_BE...)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "providePositionalRelationshipWithTypographyElements",
+    targetParameterNumber: 1,
+    targetParameter: compoundParameter,
+    schema: {},
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+
+  iterateObjectSkippingNullValues(compoundParameter.presets, @(presetName, preset) {
+
+    if isNotNull(preset.typographyDefinition) && isNotNull(preset.spacingDefinitions) {
+
+      elementsKeysAndCSS_ClassesMap = generateTypographyElementsKeysAndCSS_ClassesMap(preset.typographyDefinition)
+
+      for elementKey, spacingDefinitions in preset.spacingDefinitions {
+
+        TARGET_ELEMENT_CSS_CLASS = elementsKeysAndCSS_ClassesMap[elementKey]
+
+      }
+
+    }
+
+  })

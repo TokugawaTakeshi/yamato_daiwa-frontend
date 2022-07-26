@@ -57,6 +57,10 @@ formatObject(targetObject)
         incrementTabbing()
         accumulatingString = accumulatingString + formatDepthLevel(value)
 
+      else if isString(value)
+
+        accumulatingString = accumulatingString + insertTabbing() + key + ": " + "'" + value + "'"
+
       else
 
         accumulatingString = accumulatingString + insertTabbing() + key + ": " + value

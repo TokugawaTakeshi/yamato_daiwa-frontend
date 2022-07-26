@@ -32,7 +32,7 @@ and same for **blueGreen** (has number 14 and 15).
 Although the designers learning this colors system could explain the PCCS conception exhaustively, at a glance is could 
 seem strange.
 
-* **Vivid** tone has 24 color while any other tones has 12 colors and numeration is limited by even number (2, 4, ..., 24).
+* **Vivid** tone has 24 colors while any other tones has 12 colors and numeration is limited by even numbers (2, 4, ..., 24).
   [https://www.color-site.com/pccs_tones/dull](color-site.com) provides 24 color for each tone (except grayscale).
 * **White** color is not actually #FFF same as **black** color is not #000.
 

@@ -1,5 +1,7 @@
 @require "Themes/Regular/GeometricVariations/Button-RegularGeometry.styl"
 @require "Themes/Regular/GeometricVariations/Button-SmallGeometry.styl"
+@require "Themes/Regular/DecorativeVariations/Button-RegularDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Button-AccentedDecoration.styl"
 
 
 getLineHeightByFontSizeAndLineSpacing(compoundParameter, restParameters__MUST_NOT_BE...)
@@ -69,36 +71,8 @@ Button = {
         },
 
         decorativeVariations: {
-
-          regular: {
-            rootElement: {
-              borders: {
-                style: solid,
-                color: JQueryUI_BaseTheme.clickableElements.defaultState.borderColor
-              },
-              background: {
-                color: JQueryUI_BaseTheme.clickableElements.defaultState.background
-              },
-              font: {
-                color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
-              }
-            }
-          },
-
-          accented: {
-            rootElement: {
-              borders: {
-                style: solid,
-                color: JQueryUI_BaseTheme.clickableElements.defaultState.borderColor
-              },
-              background: {
-                color: JQueryUI_BaseTheme.clickableElements.defaultState.background
-              },
-              font: {
-                color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
-              }
-            }
-          }
+          regular: Button-RegularDecoration--YDF,
+          accented: Button-AccentedDecoration--YDF
         }
       }
     }
@@ -171,12 +145,30 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
 
     .Button-PrependedSVG_Icon
 
-      width: variation.prependedSVG_Icon.width
-      height: variation.prependedSVG_Icon.height
+      applyIfNotNull({
+        width: variation.prependedSVG_Icon.standard.width,
+        height: variation.prependedSVG_Icon.standard.height
+      })
 
-      margin-left: variation.prependedSVG_Icon.spacing.left
-      margin-top: variation.prependedSVG_Icon.spacing.top
-      margin-bottom: variation.prependedSVG_Icon.spacing.bottom
+      margin-left: variation.prependedSVG_Icon.standard.spacing.left
+      margin-top: variation.prependedSVG_Icon.standard.spacing.top
+      margin-bottom: variation.prependedSVG_Icon.standard.spacing.bottom
+
+
+      specialIcons = substituteNull(variation.prependedSVG_Icon.specials, {})
+
+      for iconSpecificCSS_Class, dimensions in specialIcons
+
+        &.{iconSpecificCSS_Class}
+
+          applyIfNotNull({
+            width: dimensions.width,
+            height: dimensions.height
+          })
+
+          margin-left: dimensions.spacing.left
+          margin-top: dimensions.spacing.top
+          margin-bottom: dimensions.spacing.bottom
 
 
     /a{selector()} .Button-Label,
@@ -201,8 +193,6 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
 
 
     /a{selector()}
-
-      log(selector())
 
       retireFrom({
         targetElementSelector: ".Button-PrependedSVG_Icon",
@@ -237,18 +227,26 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
 
     .Button-LoneSVG_Icon
 
-      width: variation.loneSVG_Icon.width
-      height: variation.loneSVG_Icon.height
+      applyIfNotNull({
+        width: variation.loneSVG_Icon.standard.width,
+        height: variation.loneSVG_Icon.standard.height
+      })
+
+      margin-top: variation.loneSVG_Icon.standard.spacing.top
+      margin-bottom: variation.loneSVG_Icon.standard.spacing.bottom
 
 
     .Button-AppendedSVG_Icon
 
-      width: variation.prependedSVG_Icon.width
-      height: variation.prependedSVG_Icon.height
+      applyIfNotNull({
+        width: variation.appendedSVG_Icon.standard.width,
+        height: variation.appendedSVG_Icon.standard.height
+      })
 
-      margin-left: variation.prependedSVG_Icon.spacing.left
-      margin-top: variation.prependedSVG_Icon.spacing.top
-      margin-bottom: variation.prependedSVG_Icon.spacing.bottom
+      margin-left: variation.appendedSVG_Icon.standard.spacing.left
+      margin-right: variation.appendedSVG_Icon.standard.spacing.right
+      margin-top: variation.appendedSVG_Icon.standard.spacing.top
+      margin-bottom: variation.appendedSVG_Icon.standard.spacing.bottom
 
 
   // --- Decoration ----------------------------------------------------------------------------------------------------
@@ -258,8 +256,33 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
       border-style: variation.rootElement.borders.style,
       border-color: variation.rootElement.borders.color,
       background-color: variation.rootElement.background.color,
-      color: variation.rootElement.font.color
+      color: variation.rootElement.text.color
     })
+
+
+    &:hover
+
+      applyIfNotNull({
+        border-style: variation.stateDependent.hover.rootElement.borders.style,
+        border-color: variation.stateDependent.hover.rootElement.borders.color,
+        background-color: variation.stateDependent.hover.rootElement.background.color,
+        color: variation.stateDependent.hover.rootElement.text.color
+      })
+
+
+    &:focus
+
+      box-shadow: JQueryUI_BaseTheme.clickableElements.focusState.shadow
+
+
+    &:active
+
+      applyIfNotNull({
+        border-style: variation.stateDependent.active.rootElement.borders.style,
+        border-color: variation.stateDependent.active.rootElement.borders.color,
+        background-color: variation.stateDependent.active.rootElement.background.color,
+        color: variation.stateDependent.active.rootElement.text.color
+      })
 
 
   // --- Applying ------------------------------------------------------------------------------------------------------

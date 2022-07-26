@@ -1,7 +1,9 @@
 iterateObjectSkippingNullValues(targetObject, iterator)
 
-  for key, value in targetObject
+  if isNotNull(targetObject)
 
-    if isNotNull(value)
+    for key, value in targetObject
 
-      iterator(key, value)
+      if isNotNull(value)
+
+        iterator(key, value)

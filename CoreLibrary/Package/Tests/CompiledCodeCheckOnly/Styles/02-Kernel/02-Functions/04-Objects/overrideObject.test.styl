@@ -9,24 +9,59 @@ stylus Tests/CompiledCodeCheckOnly/Styles/02-Kernel/02-Functions/04-Objects/over
 @require "02-Kernel.styl"
 
 
-sample = {
+// In this case, "overrideObject" is equivalent to "merge"/"extend"
+sample1 = {
   alpha: "FOO",
   charlie: {
     delta: "BAR"
   }
 }
 
-overridings = {
+overridings1 = {
   alpha: null,
   bravo: "BAZ"
-  charlie: {
-    delta: null,
-    echo: "HOGE"
+}
+
+mergingResult1 = merge(sample1, overridings1)
+//mergingResult1 = overrideObject(sample1, overridings1)
+
+p(sample1)
+log(sample1)
+
+p(overridings1)
+log(overridings1)
+
+p(mergingResult1)
+log(mergingResult1)
+
+
+p("===================================================================================================================")
+// In this case, "overrideObject" gives different result to "merge"/"extend"
+sample2 = {
+  alpha: {
+    bravo: "FOO",
+    charlie: {
+      delta: "BAR",
+      golf: "BAZ"
+    }
   }
 }
 
-p("----")
-//p(merge(sample, overridings))
-p(overrideObject(sample, overridings))
-p(sample)
-p(overridings)
+overridings2 = {
+  alpha: {
+    bravo: "HOGE"
+  }
+}
+
+
+//mergingResult2 = merge(sample2, overridings2)
+mergingResult2 = overrideObject(sample2, overridings2)
+
+p(sample2)
+log(sample2)
+
+p(overridings2)
+log(overridings2)
+
+p(mergingResult2)
+log(mergingResult2)

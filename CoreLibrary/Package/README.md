@@ -146,6 +146,8 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
       <dd>Accesses to nested object without risk being thrown the error when some property does not exist.</dd>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues.md">iterateObjectSkippingNullValues</a></dt>
       <dd>Iterates the object's keys and values skipping entries with null value.</dd>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/overrideObject.md">overrideObject</a></dt>
+      <dd>Overrides object herewith unlike native <b>merge</b>/<b>extend</b> works correctly with nested objects.</dd>
     </dl>
   </li>
 
@@ -249,25 +251,25 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
     </dl>
   </li>
   <li>
-    <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md">Positional relationship</a>
+    <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md">Positional relationship</a>
     <dl>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#positionalrelationship-mixin">PositionalRelationship</a></dt>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#positionalrelationship-mixin">PositionalRelationship</a></dt>
       <dd>Low-level mixin for the defining of the space between two or more elements.</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#retirefrom-mixin">retireFrom</a></dt>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefrom-mixin">retireFrom</a></dt>
       <dd>Allows to define how much element <b>B</b> must retire from <b>A</b> by top/left margin.</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#pushtargetfromself-mixin">pushTargetFromSelf</a></dt>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#pushtargetfromself-mixin">pushTargetFromSelf</a></dt>
       <dd>Allows to define how much element <b>B</b> must push <b>A</b> from self by <b>A</b>'s top/left margin.</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#retirefromelementwithsameselector-mixin">retireFromElementWithSameSelector</a></dt>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefromelementwithsameselector-mixin">retireFromElementWithSameSelector</a></dt>
       <dd>Allows to define how much certain element must retire from other element with same selector.</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitgoingfirst-mixin">whenItGoingFirst</a></dt>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoingfirst-mixin">whenItGoingFirst</a></dt>
       <dd>Allows to define CSS properties for certain element when it is going first in some container.</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitgoinglast-mixin">whenItGoingLast</a></dt>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoinglast-mixin">whenItGoingLast</a></dt>
       <dd>Allows to define CSS properties for certain element when it is going last in some container.</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitjustafter">whenItJustAfter</a></dt>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitjustafter">whenItJustAfter</a></dt>
       <dd>Allows to specify any CSS properties for element <b>B</b> when it is going after element <b>A</b>.</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whentargetgoingjustafterit">whenTargetGoingJustAfterIt</a></dt>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetgoingjustafterit">whenTargetGoingJustAfterIt</a></dt>
       <dd>Allows to specify any CSS properties for the target element <b>X</b> when it is going after currently being declared element.</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit">whenTargetWithSameSelectorGoingJustAfterIt</a></dt>
+      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit">whenTargetWithSameSelectorGoingJustAfterIt</a></dt>
       <dd>The equivalent of <code>+whenTargetGoingJustAfterIt({ targetElementSelector: ".X" })</code> for the case when reference element's selector is also <b>.X</b>.</dd>
     </dl>
   </li>

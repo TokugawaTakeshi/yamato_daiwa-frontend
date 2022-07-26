@@ -5,6 +5,7 @@
 ## [0.0.3]
 ### Added
 
+- <kbd>oo</kbd> - [overrideObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/overrideObject.md) function
 - <kbd>sprt</kdb> - [`Sprite`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/Sprite.md)
 - <kbd>vcapb</kbd> - [`VerticallyCenteredAbsolutelyPositionedBlock`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md) mixin
 - <kbd>bfr</kbd> - Unified live template for [**4 mixins for the border fillets radius defining**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/03-Borders/BordersFilletsRadius.md)
@@ -100,21 +101,21 @@
 ## [0.0.2]
 ### Added 
 
-- <kbd>pd</kbd> - live template for [`Paddings`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-Mixins/03-Paddings.md)
-- <kbd>wigf</kbd> - live template for [`whenItGoingFirst`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitgoingfirst-mixin) mixin
-- <kbd>wigl</kbd> - live template for [`whenItGoingLast`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitgoinglast-mixin) mixin
-- <kbd>wija</kbd> - live template for [`whenItJustAfter`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whenitjustafter) mixin
-- <kbd>wtgjai</kbd> - live template for [`whenTargetGoingJustAfterIt`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whentargetgoingjustafterit) mixin
-- <kbd>wtwssgjat</kbd> - live template for [`whenTargetWithSameSelectorGoingJustAfterIt`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit) mixin
+- <kbd>pd</kbd> - live template for [`Paddings`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/04-Paddings/Paddings.md)
+- <kbd>wigf</kbd> - live template for [`whenItGoingFirst`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoingfirst-mixin) mixin
+- <kbd>wigl</kbd> - live template for [`whenItGoingLast`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoinglast-mixin) mixin
+- <kbd>wija</kbd> - live template for [`whenItJustAfter`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitjustafter) mixin
+- <kbd>wtgjai</kbd> - live template for [`whenTargetGoingJustAfterIt`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetgoingjustafterit) mixin
+- <kbd>wtwssgjat</kbd> - live template for [`whenTargetWithSameSelectorGoingJustAfterIt`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit) mixin
 
 
 ## [0.0.1]
 ### Added
 
-- <kbd>prs</kbd> live template for [`PositionalRelationship`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#positionalrelationship-mixin) mixin
-- <kbd>rf</kbd> live template for [`retireFrom`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#retirefrom-mixin) mixin
-- <kbd>ptfs</kbd> live template for [`pushTargetFromSelf`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#pushtargetfromself-mixin) mixin
-- <kbd>rfewss</kbd> live template for [`retireFromElementWithSameSelector`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-PositionalRelationship.md#retirefromelementwithsameselector-mixin) mixin
+- <kbd>prs</kbd> live template for [`PositionalRelationship`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#positionalrelationship-mixin) mixin
+- <kbd>rf</kbd> live template for [`retireFrom`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefrom-mixin) mixin
+- <kbd>ptfs</kbd> live template for [`pushTargetFromSelf`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#pushtargetfromself-mixin) mixin
+- <kbd>rfewss</kbd> live template for [`retireFromElementWithSameSelector`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefromelementwithsameselector-mixin) mixin
 
 
 ## [0.0.0]
