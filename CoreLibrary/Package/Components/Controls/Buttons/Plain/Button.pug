@@ -114,7 +114,7 @@ mixin Button--YDF(properties)
 
     a&attributes(attributes)(
       class= [ ...commonCSS_Classes, disabled ? [ "Button__DisabledState" ] : [] ]
-      href= URI
+      href= disabled ? undefined : URI
       aria-disabled= disabled ? "true" : undefined
       aria-label= ARIA_Label
       tabindex = disabled && -1

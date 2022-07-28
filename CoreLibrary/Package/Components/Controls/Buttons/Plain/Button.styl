@@ -4,60 +4,6 @@
 @require "Themes/Regular/DecorativeVariations/Button-AccentedDecoration.styl"
 
 
-getLineHeightByFontSizeAndLineSpacing(compoundParameter, restParameters__MUST_NOT_BE...)
-
-  validateObjectTypeParameter({
-    mixinOrFunctionName: "getLineHeightByFontSizeAndLineSpacing",
-    targetParameterNumber: 1,
-    targetParameter: compoundParameter,
-    schema: {
-      fontSize: {
-        type: DataTypes.dimensionalAmount,
-        required: true
-      },
-      lineSpacing: {
-        type: DataTypes.dimensionalAmount,
-        required: true
-      }
-    },
-    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
-  })
-
-  return buildCalcExpression(
-    "${fontSize} + 2*${lineSpacing}",
-    { fontSize: compoundParameter.fontSize, lineSpacing: compoundParameter.lineSpacing }
-  )
-
-
-getLineSpacingByFontSizeAndLineHeight(compoundParameter, restParameters__MUST_NOT_BE...)
-
-  validateObjectTypeParameter({
-    mixinOrFunctionName: "getLineSpacingByFontSizeAndLineHeight",
-    targetParameterNumber: 1,
-    targetParameter: compoundParameter,
-    schema: {
-      fontSize: {
-        type: DataTypes.dimensionalAmount,
-        required: true
-      },
-      lineHeight: {
-        type: DataTypes.dimensionalAmount DataTypes.dimensionlessAmount,
-        required: true
-      }
-    },
-    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
-  })
-
-  fontSize = compoundParameter.fontSize
-  lineHeight = compoundParameter.lineHeight
-  lineHeight__dimensionalAmount = isDimensionlessAmount(lineHeight) ? lineHeight * fontSize : lineHeight
-
-  return buildCalcExpression(
-    "${lineHeight__dimensionalAmount} - ${fontSize}",
-    { lineHeight__dimensionalAmount: round(lineHeight__dimensionalAmount), fontSize: fontSize }
-  )
-
-
 Button = {
 
   defaultProperties: {
@@ -105,6 +51,17 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
       align-items center
 
 
+    /button{selector()}:disabled,
+    /input{selector()}:disabled
+
+      cursor not-allowed
+
+
+    a.Button__DisabledState
+
+      pointer-events none
+
+
   // --- Geometry ------------------------------------------------------------------------------------------------------
   applyGeometricVariation(variation)
 
@@ -143,34 +100,6 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
     BordersSizing(variation.rootElement.borders)
 
 
-    .Button-PrependedSVG_Icon
-
-      applyIfNotNull({
-        width: variation.prependedSVG_Icon.standard.width,
-        height: variation.prependedSVG_Icon.standard.height
-      })
-
-      margin-left: variation.prependedSVG_Icon.standard.spacing.left
-      margin-top: variation.prependedSVG_Icon.standard.spacing.top
-      margin-bottom: variation.prependedSVG_Icon.standard.spacing.bottom
-
-
-      specialIcons = substituteNull(variation.prependedSVG_Icon.specials, {})
-
-      for iconSpecificCSS_Class, dimensions in specialIcons
-
-        &.{iconSpecificCSS_Class}
-
-          applyIfNotNull({
-            width: dimensions.width,
-            height: dimensions.height
-          })
-
-          margin-left: dimensions.spacing.left
-          margin-top: dimensions.spacing.top
-          margin-bottom: dimensions.spacing.bottom
-
-
     /a{selector()} .Button-Label,
     /button{selector()} .Button-Label
 
@@ -192,26 +121,6 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
         margin-right: variation.label.spacing.right
 
 
-    /a{selector()}
-
-      retireFrom({
-        targetElementSelector: ".Button-PrependedSVG_Icon",
-        x: variation.label.spacing.afterPrependedIcon,
-        referenceElementSelector: ".Button-Label",
-        contextSelector: selector()
-      })
-
-
-    /button{selector()}
-
-      retireFrom({
-        targetElementSelector: ".Button-PrependedSVG_Icon",
-        x: variation.label.spacing.afterPrependedIcon,
-        referenceElementSelector: ".Button-Label",
-        contextSelector: selector()
-      })
-
-
     /input{selector()}
 
       font-size: variation.label.text.size
@@ -225,28 +134,53 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
       padding-bottom: bottomSpacing
 
 
-    .Button-LoneSVG_Icon
+    .Button-SVG_Icon
 
       applyIfNotNull({
-        width: variation.loneSVG_Icon.standard.width,
-        height: variation.loneSVG_Icon.standard.height
+        width: variation.SVG_Icon.standard.width,
+        height: variation.SVG_Icon.standard.height
       })
 
-      margin-top: variation.loneSVG_Icon.standard.spacing.top
-      margin-bottom: variation.loneSVG_Icon.standard.spacing.bottom
+      flex-shrink 0
+
+      margin-top: variation.SVG_Icon.standard.spacing.top
+      margin-bottom: variation.SVG_Icon.standard.spacing.bottom
 
 
-    .Button-AppendedSVG_Icon
+      &:first-child
 
-      applyIfNotNull({
-        width: variation.appendedSVG_Icon.standard.width,
-        height: variation.appendedSVG_Icon.standard.height
-      })
+        margin-left: variation.SVG_Icon.standard.spacing.leftWhenGoingFirst
 
-      margin-left: variation.appendedSVG_Icon.standard.spacing.left
-      margin-right: variation.appendedSVG_Icon.standard.spacing.right
-      margin-top: variation.appendedSVG_Icon.standard.spacing.top
-      margin-bottom: variation.appendedSVG_Icon.standard.spacing.bottom
+
+      &:last-child
+
+        margin-right: variation.SVG_Icon.standard.spacing.rightWhinGoingLast
+
+
+      ../
+
+        PositionalRelationship({
+          definitions: (
+            ".Button-Label" {
+              retireFromIt: { x: variation.SVG_Icon.standard.spacing.afterLabel },
+              pushItFromSelf: { x: variation.SVG_Icon.standard.spacing.beforeLabel }
+            }
+          ),
+          contextSelector: selector()
+          referenceElementSelector: ".Button-SVG_Icon"
+        })
+
+
+      specialIcons = substituteNull(variation.SVG_Icon.specials, {})
+
+      for iconSpecificCSS_Class, dimensions in specialIcons
+
+        &.{iconSpecificCSS_Class}
+
+          applyIfNotNull({
+            width: dimensions.width,
+            height: dimensions.height
+          })
 
 
   // --- Decoration ----------------------------------------------------------------------------------------------------
@@ -282,6 +216,18 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
         border-color: variation.stateDependent.active.rootElement.borders.color,
         background-color: variation.stateDependent.active.rootElement.background.color,
         color: variation.stateDependent.active.rootElement.text.color
+      })
+
+
+    /button{selector()}:disabled,
+    /input{selector()}:disabled,
+    /a{selector()}.Button__DisabledState
+
+      applyIfNotNull({
+        border-style: variation.stateDependent.disabled.rootElement.borders.style,
+        border-color: variation.stateDependent.disabled.rootElement.borders.color,
+        background-color: variation.stateDependent.disabled.rootElement.background.color,
+        color: variation.stateDependent.disabled.rootElement.text.color
       })
 
 

@@ -8,21 +8,6 @@ Button-SmallGeometry--YDF = {
     })
   },
 
-  prependedSVG_Icon: {
-
-    standard: {
-      width: null,
-      height: 0.8rem,
-      spacing: {
-        left: 0.6rem,
-        top: 0.25rem,
-        bottom: 0.25rem
-      }
-    },
-
-    specials: {}
-  },
-
   label: {
     text: {
       size: 0.9rem,
@@ -34,37 +19,29 @@ Button-SmallGeometry--YDF = {
       right: 0.6rem,
       top: 0.2rem,
       bottom: 0.2rem,
-      upwardShifting: 0.05rem,
-      afterPrependedIcon: 0.4rem
+      upwardShifting: 0.05rem
     }
   },
 
-  appendedSVG_Icon: {
+  SVG_Icon: {
 
     standard: {
       width: null,
       height: 0.8rem,
       spacing: {
-        left: 0.5rem,
-        right: 0.6rem,
         top: 0.25rem,
-        bottom: 0.25rem
+        bottom: 0.25rem,
+        beforeLabel: 0.4rem,
+        afterLabel: 0.5rem,
+        leftWhenGoingFirst: 0.75rem,
+        rightWhinGoingLast: 0.75rem
       }
     },
 
-    specials: {}
-  },
-
-  loneSVG_Icon: {
-
-    standard: {
-      width: null
-      height: 1rem,
-      spacing: {
-        top: 0.25rem,
-        bottom: 0.25rem
+    specials: {
+      Button-SVG_Icon__Menu__ThreeDots__Horizontal: {
+        width: 1rem
       }
     }
-
   }
 }
