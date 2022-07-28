@@ -2,6 +2,6 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/MagnifyingGlass/MagnifyingGlassIcon.pug
 
-+MagnifyingGlassIcon
++MagnifyingGlass--YDF_Icon
 
 </template>

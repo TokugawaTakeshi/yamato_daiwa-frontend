@@ -2,6 +2,6 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Triangled__Outlined.pug
 
-+ExclamationMarkIcon__Triangled__Outlined
++ExclamationMarkIcon__Triangled__Outlined--YDF_Icon
 
 </template>

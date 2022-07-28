@@ -5,6 +5,7 @@
   "module": "./index.js",
   "types": "./index.d.ts",
   "dependencies": {
+    "@babel/types": "7.18.9",
     "@yamato-daiwa/es-extensions": "1.5.2",
     "@yamato-daiwa/frontend": "1.0.4",
     "vue": "3.2.37",

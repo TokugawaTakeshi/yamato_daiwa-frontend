@@ -32,3 +32,13 @@ Please note that `@yamato-daiwa/frontend-vue` suggests only the logic for the Vu
 |-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------|
 | OverflowSafeSingleLineLabel | [Basic documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md) | [Vue 3.x example](Tests/OverflowSafeSingleLineLabel) |
 |                             |                                                                                                                                                                                                     |                                                      |
+
+
+## Dependencies
+
+<dl>
+
+  <dt>@babel/types</dt>
+  <dd>Used by Vue package; required to be installed to generate TypeScript type declaration.</dd>
+
+</dl>

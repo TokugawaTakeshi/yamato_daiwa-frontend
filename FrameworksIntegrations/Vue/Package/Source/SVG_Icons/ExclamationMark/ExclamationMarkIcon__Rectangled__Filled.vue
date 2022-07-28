@@ -2,6 +2,6 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Rectangled__Filled.pug
 
-+ExclamationMarkIcon__Rectangled__Filled
++ExclamationMarkIcon__Rectangled__Filled--YDF_Icon
 
 </template>

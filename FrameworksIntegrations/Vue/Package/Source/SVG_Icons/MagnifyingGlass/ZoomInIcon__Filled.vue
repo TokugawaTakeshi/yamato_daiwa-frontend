@@ -2,6 +2,6 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/MagnifyingGlass/ZoomingInIcon__Filled.pug
 
-+ZoomingInIcon__Filled
++ZoomingIn__Filled--YDF_Icon
 
 </template>

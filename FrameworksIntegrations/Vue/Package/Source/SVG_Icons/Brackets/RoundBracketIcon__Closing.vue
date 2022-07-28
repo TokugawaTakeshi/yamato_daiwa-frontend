@@ -2,6 +2,6 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Brackets/RoundBracketIcon__Closing.pug
 
-+RoundBracketIcon__Closing
++RoundBracketIcon__Closing--YDF_Icon
 
 </template>

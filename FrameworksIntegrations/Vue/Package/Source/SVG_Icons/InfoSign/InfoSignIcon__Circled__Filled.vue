@@ -2,6 +2,6 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/InfoSign/InfoSignIcon__Circled__Filled.pug
 
-+InfoSignIcon__Circled__Filled
++InfoSign__Circled__Filled--YDF_Icon
 
 </template>
