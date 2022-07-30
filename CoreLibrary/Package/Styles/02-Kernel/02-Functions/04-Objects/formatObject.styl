@@ -1,5 +1,20 @@
 formatObject(targetObject)
 
+  if !isObject(targetObject)
+
+    warn(
+      "The passed parameter to 'formatObject' function is not an object - it has type " + typeof(targetObject) + " " +\
+      "and value:\n" + targetObject
+    )
+
+    return targetObject
+
+
+  if length(keys(targetObject)) == 0
+
+    return "{}"
+
+
   // 〔 Theory 〕 Just 'currentTabbingMultiplier = currentTabbingMultiplier + 1' will be lost once 'incrementTabbing' complete.
   currentTabbingMultiplier = { value: 1 };
 

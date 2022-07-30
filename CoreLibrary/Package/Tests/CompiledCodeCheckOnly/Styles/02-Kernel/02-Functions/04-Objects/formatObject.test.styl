@@ -8,6 +8,9 @@ stylus Tests/CompiledCodeCheckOnly/Styles/02-Kernel/02-Functions/04-Objects/form
 @require "02-Kernel.styl"
 
 
+p(formatObject({}))
+//p(formatObject("NON_OBJECT"))
+
 p(formatObject({ alpha: "ALPHA" }))
 
 p(formatObject({ alpha: "ALPHA", bravo: "BRAVO" }))
