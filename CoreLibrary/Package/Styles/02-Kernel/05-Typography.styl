@@ -237,8 +237,14 @@ providePositionalRelationshipWithTypographyElements(compoundParameter, restParam
 
         TARGET_ELEMENT_CSS_CLASS = elementsKeysAndCSS_ClassesMap[elementKey]
 
+        PositionalRelationship({
+          definitions: ("." + TARGET_ELEMENT_CSS_CLASS {
+            retireFromIt: { y: spacingDefinitions.whenItJustAfter },
+            pushItFromSelf: { y: spacingDefinitions.whenItJustBefore }
+          }),
+          referenceElementSelector: "." + compoundParameter.componentRootClass
+        })
+
       }
-
     }
-
   })

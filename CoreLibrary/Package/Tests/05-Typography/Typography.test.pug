@@ -3,13 +3,14 @@ extends ../../PagesTemplates/RegularWebPage.pug
 block append Metadata
 
   -
+    HTML_PAGE_LANGUAGE = "eo"
     HTML_PAGE_TITLE = "Typography testing";
     styleSheetsURIs = [ "./Typography.test.css" ]
 
 
 block append Requirements
 
-  //- include ../../Components.pug
+  include ../../Components.pug
 
 
 block append PageContent
@@ -244,32 +245,31 @@ block append PageContent
           無論昔が解人はけっしてその指導たうくらいでつけ込むば下さらありには談判違いですうて、少しにも進みらしいますますで。心で出たのはおそらくほかを単にだでん。
           どうも嘉納さんを乱暴個人多少お話にするべき人この事業私か相当をというお脱却たななないと
 
-    //-
-      .Showcase
+    .Showcase
 
-        .Showcase-Subsection
+      .Showcase-Subsection
 
-          .TypographyTesting-Heading1 見出し段階１
+        .TypographyTesting-Heading1 見出し段階１
 
-          +ImprovedList({ type: ImprovedList.Types.ordered })
-            +ImprovedListItem.
-              たとい当時が損害帰りもまあそのお話したただってに威張っけれども得るまいをも賞翫参りますたて、こうにもするたうですた。双方をしましものはようやく生涯が初めてたでで。
-            +ImprovedListItem
-              | もう岡田さんがお話し校長必ず学問に書いです兄その礼それか研究をというお危くうないたたて、その今もどこかごまかし大勢を尊ぶて、
-              +ImprovedList({ type: ImprovedList.Types.ordered })
-                +ImprovedListItem.
-                  たとい当時が損害帰りもまあそのお話したただってに威張っけれども得るまいをも賞翫参りますたて、こうにもするたうですた。双方をしましものはようやく生涯が初めてたでで。
-                +ImprovedListItem
-                  | もう岡田さんがお話し校長必ず学問に書いです兄その礼それか研究をというお危くうないたたて、その今もどこかごまかし大勢を尊ぶて、
+        +ImprovedList--YDF({ type: ImprovedList__YDF.Types.ordered })
+          +ImprovedList-Item--YDF.
+            たとい当時が損害帰りもまあそのお話したただってに威張っけれども得るまいをも賞翫参りますたて、こうにもするたうですた。双方をしましものはようやく生涯が初めてたでで。
+          +ImprovedList-Item--YDF
+            | もう岡田さんがお話し校長必ず学問に書いです兄その礼それか研究をというお危くうないたたて、その今もどこかごまかし大勢を尊ぶて、
+            +ImprovedList--YDF({ type: ImprovedList__YDF.Types.ordered })
+              +ImprovedList-Item--YDF.
+                たとい当時が損害帰りもまあそのお話したただってに威張っけれども得るまいをも賞翫参りますたて、こうにもするたうですた。双方をしましものはようやく生涯が初めてたでで。
+              +ImprovedList-Item--YDF
+                | もう岡田さんがお話し校長必ず学問に書いです兄その礼それか研究をというお危くうないたたて、その今もどこかごまかし大勢を尊ぶて、
 
-        .Showcase-Subsection
-          +ImprovedList({ type: ImprovedList.Types.unordered })
-            +ImprovedListItem.
-              たとい当時が損害帰りもまあそのお話したただってに威張っけれども得るまいをも賞翫参りますたて、こうにもするたうですた。双方をしましものはようやく生涯が初めてたでで。
-            +ImprovedListItem
-              | もう岡田さんがお話し校長必ず学問に書いです兄その礼それか研究をというお危くうないたたて、その今もどこかごまかし大勢を尊ぶて、
-              +ImprovedList({ type: ImprovedList.Types.unordered })
-                +ImprovedListItem.
-                  たとい当時が損害帰りもまあそのお話したただってに威張っけれども得るまいをも賞翫参りますたて、こうにもするたうですた。双方をしましものはようやく生涯が初めてたでで。
-                +ImprovedListItem
-                  | もう岡田さんがお話し校長必ず学問に書いです兄その礼それか研究をというお危くうないたたて、その今もどこかごまかし大勢を尊ぶて、
+      .Showcase-Subsection
+        +ImprovedList--YDF({ type: ImprovedList__YDF.Types.unordered })
+          +ImprovedList-Item--YDF.
+            たとい当時が損害帰りもまあそのお話したただってに威張っけれども得るまいをも賞翫参りますたて、こうにもするたうですた。双方をしましものはようやく生涯が初めてたでで。
+          +ImprovedList-Item--YDF
+            | もう岡田さんがお話し校長必ず学問に書いです兄その礼それか研究をというお危くうないたたて、その今もどこかごまかし大勢を尊ぶて、
+            +ImprovedList--YDF({ type: ImprovedList__YDF.Types.unordered })
+              +ImprovedList-Item--YDF.
+                たとい当時が損害帰りもまあそのお話したただってに威張っけれども得るまいをも賞翫参りますたて、こうにもするたうですた。双方をしましものはようやく生涯が初めてたでで。
+              +ImprovedList-Item--YDF
+                | もう岡田さんがお話し校長必ず学問に書いです兄その礼それか研究をというお危くうないたたて、その今もどこかごまかし大勢を尊ぶて、

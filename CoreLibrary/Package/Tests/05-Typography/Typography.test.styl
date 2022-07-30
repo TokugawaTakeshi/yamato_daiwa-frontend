@@ -7,17 +7,18 @@ stylus Tests/05-Typography/Typography.test.styl `
 
 @require "../../Styles/01-Assets.styl"
 @require "../../Styles/02-Kernel.styl"
+@require "../../Components.styl"
 
 
 CrossBrowserStylesReset()
 InitialGlobalCSS_Rules()
 
 
-provideTypography(overridings: { prefix: "TypographyTesting" })
+provideTypography(overridings: { CSS_NamespacePrefix: "TypographyTesting" })
 
 //provideWordWithFuriganaComponent()
 
-//provideImprovedListComponent()
+provideImprovedListYDF_Component()
 
 
 .Layout

@@ -37,6 +37,7 @@ block append PageContent
             HTML_Type: Button.HTML_Types.inputButton
           })
 
+
     +ButtonsShowcase({ caption: "Geometric variations" })
 
       tr
@@ -66,6 +67,29 @@ block append PageContent
             HTML_Type: Button.HTML_Types.inputButton,
             geometry: Button.GeometricVariations.small
           })
+
+        tr
+          td
+            +Button--YDF({
+              label: "Teksto 本文",
+              geometry: Button.GeometricVariations.linkLike,
+              decoration: Button.DecorativeVariations.linkLike
+            })
+          td
+            +Button--YDF({
+              label: "Teksto 本文",
+              URI: "#",
+              geometry: Button.GeometricVariations.linkLike,
+              decoration: Button.DecorativeVariations.linkLike
+            })
+          td
+            +Button--YDF({
+              label: "Teksto 本文",
+              HTML_Type: Button.HTML_Types.inputButton,
+              geometry: Button.GeometricVariations.linkLike,
+              decoration: Button.DecorativeVariations.linkLike
+            })
+
 
     +ButtonsShowcase({ caption: "Multiline safety test" })
 
@@ -97,32 +121,74 @@ block append PageContent
             geometry: Button.GeometricVariations.small
           })
 
+      tr
+        td
+          +Button--YDF({
+            label: "SuperHyperMegaExtraVeryLongLabelTryToBreakMeHaHaHaHaHaHaHaHa",
+            geometry: Button.GeometricVariations.linkLike,
+            decoration: Button.DecorativeVariations.linkLike
+          })
+        td
+          +Button--YDF({
+            label: "SuperHyperMegaExtraVeryLongLabelTryToBreakMeHaHaHaHaHaHaHaHa",
+            URI: "#",
+            geometry: Button.GeometricVariations.linkLike,
+            decoration: Button.DecorativeVariations.linkLike
+          })
+        td
+          +Button--YDF({
+            label: "SuperHyperMegaExtraVeryLongLabelTryToBreakMeHaHaHaHaHaHaHaHa",
+            HTML_Type: Button.HTML_Types.inputButton,
+            geometry: Button.GeometricVariations.linkLike,
+            decoration: Button.DecorativeVariations.linkLike
+          })
+
+
     +ButtonsShowcase({ caption: "Prepended icon" })
 
       tr
         td
           +Button--YDF
-            +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
+            +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
             span.Button-Label Like us on FaceTube
         td
           +Button--YDF({ URI: "#" })
-            +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
+            +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
             span.Button-Label Like us on FaceTube
-        td Impossible
+        td Unavailable
 
       tr
         td
           +Button--YDF({ geometry: Button.GeometricVariations.small })
-            +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
+            +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
             span.Button-Label Like us on FaceTube
         td
           +Button--YDF({
             URI: "#",
             geometry: Button.GeometricVariations.small
           })
-            +MagnifyingGlass--YDF_Icon.Button-PrependedSVG_Icon
+            +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
             span.Button-Label Like us on FaceTube
-        td Impossible
+        td Unavailable
+
+      tr
+        td
+          +Button--YDF({
+            geometry: Button.GeometricVariations.linkLike,
+            decoration: Button.DecorativeVariations.linkLike
+          })
+            +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
+            span.Button-Label Like us on FaceTube
+        td
+          +Button--YDF({
+            URI: "#",
+            geometry: Button.GeometricVariations.linkLike,
+            decoration: Button.DecorativeVariations.linkLike
+          })
+            +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
+            span.Button-Label Like us on FaceTube
+        td Unavailable
+
 
       +ButtonsShowcase({ caption: "Appended icon" })
 
@@ -130,26 +196,41 @@ block append PageContent
           td
             +Button--YDF
               span.Button-Label Like us on FaceTube
-              +MagnifyingGlass--YDF_Icon.Button-AppendedSVG_Icon
+              +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
           td
             +Button--YDF({ URI: "#" })
               span.Button-Label Like us on FaceTube
-              +MagnifyingGlass--YDF_Icon.Button-AppendedSVG_Icon
-          td Impossible
+              +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
+          td Unavailable
 
         tr
           td
-            +Button--YDF({ geometry: Button.GeometricVariations.small })
+            +Button--YDF
               span.Button-Label Like us on FaceTube
-              +MagnifyingGlass--YDF_Icon.Button-AppendedSVG_Icon
+              +Menu__ThreeDots__Horizontal--YDF_Icon.Button-SVG_Icon.Button-SVG_Icon__Menu__ThreeDots__Horizontal
+          td
+            +Button--YDF({ URI: "#" })
+              span.Button-Label Like us on FaceTube
+              +Menu__ThreeDots__Horizontal--YDF_Icon.Button-SVG_Icon.Button-SVG_Icon__Menu__ThreeDots__Horizontal
+          td Unavailable
+
+        tr
+          td
+            +Button--YDF({
+              geometry: Button.GeometricVariations.linkLike,
+              decoration: Button.DecorativeVariations.linkLike
+            })
+              span.Button-Label Like us on FaceTube
+              +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
           td
             +Button--YDF({
               URI: "#",
-              geometry: Button.GeometricVariations.small
+              geometry: Button.GeometricVariations.linkLike,
+              decoration: Button.DecorativeVariations.linkLike
             })
               span.Button-Label Like us on FaceTube
-              +MagnifyingGlass--YDF_Icon.Button-AppendedSVG_Icon
-          td Impossible
+              +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
+          td Unavailable
 
 
         +ButtonsShowcase({ caption: "Lone SVG icon" })
@@ -157,10 +238,10 @@ block append PageContent
           tr
             td
               +Button--YDF({ ARIA_Label: "Search" })
-                +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
+                +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
             td
               +Button--YDF({ URI: "#", ARIA_Label: "Search" })
-                +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
+                +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
             td Impossible
 
           tr
@@ -169,14 +250,14 @@ block append PageContent
                 ARIA_Label: "Search",
                 geometry: Button.GeometricVariations.small
               })
-                +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
+                +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
             td
               +Button--YDF({
                 URI: "#",
                 ARIA_Label: "Search",
                 geometry: Button.GeometricVariations.small
               })
-                +MagnifyingGlass--YDF_Icon.Button-LoneSVG_Icon
+                +MagnifyingGlass--YDF_Icon.Button-SVG_Icon
             td Impossible
 
     //-

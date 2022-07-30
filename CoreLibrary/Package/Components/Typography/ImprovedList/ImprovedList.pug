@@ -2,7 +2,7 @@
 
   /* [ Theory ] Simultaneous rendering of multiple Improved lists is seems to be unlikely, but to exclude it logically,
   *   it is required the deep understanding of Pug pre-processor. */
-  const ImprovedUnorderedListsCoordinator = {
+  const YDF_ImprovedUnorderedListsCoordinator = {
 
     counterForUniqueID_generation: 0,
     currentMasterListID: null,
@@ -24,7 +24,7 @@
     listsAbstractions: {}
   }
 
-  const ImprovedList = {
+  const ImprovedList__YDF = {
     Types: {
       unordered: "unordered",
       ordered: "ordered"
@@ -32,7 +32,7 @@
   }
 
 
-mixin ImprovedList(properties)
+mixin ImprovedList--YDF(properties)
 
   -
 
@@ -40,7 +40,7 @@ mixin ImprovedList(properties)
 
     const { type: listType } = properties;
 
-    const isTopDepthLevel = ImprovedUnorderedListsCoordinator.currentMasterListID === null;
+    const isTopDepthLevel = YDF_ImprovedUnorderedListsCoordinator.currentMasterListID === null;
 
     let currentMasterListID;
     let currentDepthLevel;
@@ -48,49 +48,49 @@ mixin ImprovedList(properties)
 
     if (isTopDepthLevel) {
 
-      currentMasterListID = ImprovedUnorderedListsCoordinator.counterForUniqueID_generation;
+      currentMasterListID = YDF_ImprovedUnorderedListsCoordinator.counterForUniqueID_generation;
 
-      ImprovedUnorderedListsCoordinator.currentMasterListID = currentMasterListID
+      YDF_ImprovedUnorderedListsCoordinator.currentMasterListID = currentMasterListID
 
-      ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID] = {
+      YDF_ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID] = {
         currentDepthLevel: 1,
         currentItemCompoundNumber: [ 0 ]
       };
 
-      ImprovedUnorderedListsCoordinator.counterForUniqueID_generation++;
+      YDF_ImprovedUnorderedListsCoordinator.counterForUniqueID_generation++;
       currentDepthLevel = 1;
 
     } else {
 
-      currentMasterListID = ImprovedUnorderedListsCoordinator.currentMasterListID;
-      currentDepthLevel = ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentDepthLevel + 1;
+      currentMasterListID = YDF_ImprovedUnorderedListsCoordinator.currentMasterListID;
+      currentDepthLevel = YDF_ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentDepthLevel + 1;
 
-      ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentDepthLevel = currentDepthLevel;
-      ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentItemCompoundNumber.push(0);
+      YDF_ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentDepthLevel = currentDepthLevel;
+      YDF_ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentItemCompoundNumber.push(0);
     }
 
-    ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID][currentDepthLevel] = {
+    YDF_ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID][currentDepthLevel] = {
       listType
     }
 
 
 
-  .ImprovedList(role="list")
+  .ImprovedList--YDF(role="list")
     block
 
 
   -
 
     if (currentDepthLevel === 1) {
-      delete ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID];
-      ImprovedUnorderedListsCoordinator.currentMasterListID = null;
+      delete YDF_ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID];
+      YDF_ImprovedUnorderedListsCoordinator.currentMasterListID = null;
     } else {
-      ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentDepthLevel--;
-      ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentItemCompoundNumber.pop()
+      YDF_ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentDepthLevel--;
+      YDF_ImprovedUnorderedListsCoordinator.listsAbstractions[currentMasterListID].currentItemCompoundNumber.pop()
     }
 
 
-mixin ImprovedListItem(properties)
+mixin ImprovedList-Item--YDF(properties)
 
   -
 
@@ -101,31 +101,31 @@ mixin ImprovedListItem(properties)
     const {
       currentDepthLevel,
       currentItemCompoundNumber
-    } = ImprovedUnorderedListsCoordinator.listsAbstractions[ImprovedUnorderedListsCoordinator.currentMasterListID]
+    } = YDF_ImprovedUnorderedListsCoordinator.listsAbstractions[YDF_ImprovedUnorderedListsCoordinator.currentMasterListID]
 
-    const currentListType = ImprovedUnorderedListsCoordinator.
-        listsAbstractions[ImprovedUnorderedListsCoordinator.currentMasterListID][currentDepthLevel].listType;
+    const currentListType = YDF_ImprovedUnorderedListsCoordinator.
+        listsAbstractions[YDF_ImprovedUnorderedListsCoordinator.currentMasterListID][currentDepthLevel].listType;
 
-    ImprovedUnorderedListsCoordinator.listsAbstractions[ImprovedUnorderedListsCoordinator.currentMasterListID].
+    YDF_ImprovedUnorderedListsCoordinator.listsAbstractions[YDF_ImprovedUnorderedListsCoordinator.currentMasterListID].
         currentItemCompoundNumber[currentItemCompoundNumber.length - 1]++;
 
 
-  .ImprovedList-Item
+  .ImprovedList-Item--YDF
 
     case currentListType
 
-      when ImprovedList.Types.unordered
+      when ImprovedList__YDF.Types.unordered
         case currentDepthLevel
           when 1
-            svg.ImprovedList-Item-Marker.ImprovedList-Item-Marker__SVG
+            svg.ImprovedList-Item--YDF-Marker.ImprovedList-Item--YDF-Marker__SVG
               circle(r="4" cx="50%" cy="50%" fill="black")
           when 2
-            svg.ImprovedList-Item-Marker.ImprovedList-Item-Marker__SVG
+            svg.ImprovedList-Item--YDF-Marker.ImprovedList-Item--YDF-Marker__SVG
               circle(r="3.5" cx="50%" cy="50%" stroke="black" stroke-width="1" fill="none")
 
-      when ImprovedList.Types.ordered
-        .ImprovedList-Item-Marker.ImprovedList-Item-Marker__Lettering= currentItemCompoundNumber.join(".")
+      when ImprovedList__YDF.Types.ordered
+        .ImprovedList-Item--YDF-Marker.ImprovedList-Item--YDF-Marker__Lettering= currentItemCompoundNumber.join(".")
 
 
-    .ImprovedList-Item-TargetContent(role="listitem")
+    .ImprovedList-Item--YDF-TargetContent(role="listitem")
       block
