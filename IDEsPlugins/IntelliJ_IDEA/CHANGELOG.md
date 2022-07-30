@@ -41,6 +41,7 @@
 - <kbd>emptyStringToNull</kbd> - autocomplete imitator for eponymous value converter
 - <kbd>nullToZero</kbd> - autocomplete imitator for eponymous value converter
 - <kbd>nullToEmptyString</kbd> - autocomplete imitator for eponymous value converter
+- <kbd>nullToEmptyObject</kbd> - autocomplete imitator for eponymous value converter
 
 
 - <kbd>oo</kbd> - [overrideObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/overrideObject.md) function

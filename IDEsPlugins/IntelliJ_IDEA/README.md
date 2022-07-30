@@ -64,6 +64,7 @@ Currently, below live templates are available:
       * <kbd>emptyStringToNull</kbd>
       * <kbd>nullToZero</kbd>
       * <kbd>nullToEmptyString</kbd>
+      * <kbd>nullToEmptyObject</kbd>
       
     * Strings
       * <kbd>bs</kbd> - [buildString](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString.md) function

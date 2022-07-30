@@ -118,6 +118,7 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
       <li>emptyStringToNull</li>
       <li>nullToZero</li>
       <li>nullToEmptyString</li>
+      <li>nullToEmptyObject</li>
     </ul>    
   </li>
 
