@@ -3,7 +3,9 @@ mixin CallableExpressionScheme(properties)
   -
     const {
       technicalName,
-      localizedDescriptiveHeading
+      localizedDescriptiveHeading,
+      parametersSpecification = [],
+      returnedValue
     } = properties
 
 
@@ -12,62 +14,69 @@ mixin CallableExpressionScheme(properties)
     .CallableExpressionScheme-TechnicalNameRow= `${technicalName}(`
     .CallableExpressionScheme-LocalizedDescriptiveHeading= localizedDescriptiveHeading
 
-    //-
+    .CallableExpressionScheme-GridFlow
 
-      .CallableExpressionScheme-GridFlow
+      each argumentSpecification, index in parametersSpecification
 
-        each parameterSpecification, index in parametersSpecification
-          - parameterSpecification.number = index + 1
-          +FunctionParameterAbstract(parameterSpecification)
+        - argumentSpecification.number = index + 1
 
-      .CallableExpressionScheme-ClosingBracketRow
-        .CallableExpressionScheme-ClosingBracket ):
-        .CallableExpressionScheme-ReturnValue
-          if returnValue
-            | #{returnValue}
-          else
-            | 無返値
+        +ArgumentAbstract(argumentSpecification)
 
-      if block
-        .CallableExpressionScheme-UsedTypesGridFlow
-          block
+    .CallableExpressionScheme-ClosingBracketRow
+      .CallableExpressionScheme-ClosingBracket ):
+      .CallableExpressionScheme-ReturnValue
+        if returnedValue
+          | #{returnedValue}
+        else
+          | void
+
+    if block
+      .CallableExpressionScheme-UsedTypesGridFlow
+        block
 
 
-//-
-  mixin FunctionParameterAbstract(parameterSpecification)
+mixin ArgumentAbstract(argumentSpecification)
 
-    .FunctionParameterAbstract
+  .FunctionParameterAbstract
 
-      .FunctionParameterAbstract-HeaderRow
+    .FunctionParameterAbstract-HeaderRow
 
-        .FunctionParameterAbstract-Title= `第${parameterSpecification.number}引数`
+      .FunctionParameterAbstract-Title= `Parameter No. ${argumentSpecification.number}`
 
-        if parameterSpecification.required === true
-          span.FunctionParameterAbstract-RequirementBadge.FunctionParameterAbstract-RequirementBadge__Required 必須
+      if argumentSpecification.required === true
+        span.FunctionParameterAbstract-RequirementBadge.FunctionParameterAbstract-RequirementBadge__Required 必須
+        //-
           +ParameterOrPropertyRequirementBadge({
             status: ParameterOrPropertyRequirementBadge.RequirementStatuses.required
           }).FunctionParameterAbstract-RequirementBadge
-        else if parameterSpecification.required === false
+      else if argumentSpecification.required === false
+        //-
           +ParameterOrPropertyRequirementBadge({
             status: ParameterOrPropertyRequirementBadge.RequirementStatuses.optional
           }).FunctionParameterAbstract-RequirementBadge
-        else if typeof parameterSpecification.defaultValue !== "undefined"
+      else if typeof argumentSpecification.defaultValue !== "undefined"
+        //-
           +ParameterOrPropertyRequirementBadge({
             status: ParameterOrPropertyRequirementBadge.RequirementStatuses.optional
           }).FunctionParameterAbstract-RequirementBadge
 
-      .FunctionParameterAbstract-HeaderCell 一般技術名
-      .FunctionParameterAbstract-GenericTechnicalName= parameterSpecification.genericTechnicalName
+    .FunctionParameterAbstract-HeaderCell 一般技術名
+    .FunctionParameterAbstract-GenericTechnicalName= argumentSpecification.genericTechnicalName
 
-      .FunctionParameterAbstract-HeaderCell 型
+    .FunctionParameterAbstract-HeaderCell 型
       .FunctionParameterAbstract-Type
-        if Array.isArray(parameterSpecification.type)
+
+        if Array.isArray(argumentSpecification.type)
           .FunctionParameterAbstract-Type-OneOfComposition
-            each alternative in parameterSpecification.type
+            each alternative in argumentSpecification.type
               .FunctionParameterAbstract-Type-OneOfComposition-Alternative= alternative
 
         else
-          | #{parameterSpecification.type}
+          | #{argumentSpecification.type}
 
-      .FunctionParameterAbstract-HeaderCell 日本語名
-      .FunctionParameterAbstract-LocalizedName= parameterSpecification.localizedName
+      //-
+
+
+
+        .FunctionParameterAbstract-HeaderCell 日本語名
+        .FunctionParameterAbstract-LocalizedName= argumentSpecification.localizedName

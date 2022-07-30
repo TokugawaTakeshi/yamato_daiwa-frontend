@@ -21,107 +21,102 @@ provideCallableExpressionSchemeAndRelatedComponentStyles()
       margin-top 0.2rem
 
 
-  //  &-GridFlow
-  //
-  //    display grid
-  //    grid-template-columns repeat(auto-fill, minmax(280px, 1fr));
-  //    gap 6px
-  //
-  //    EqualLeftAndRightPaddings(8px)
-  //
-  //    font-size 13px
-  //
-  //
-  //    PositionalRelationship({
-  //      definitions:\
-  //          (".CallableExpressionScheme-FunctionNameRow" { retireFromIt: { y: 6px } })\
-  //          (".CallableExpressionScheme-FunctionNameLocalizedInterpretation" { retireFromIt: { y: 8px } })
-  //    })
-  //
-  //
-  //  &-ClosingBracketRow
-  //
-  //    display grid
-  //    grid-template-columns auto minmax(0, 1fr)
-  //    align-items baseline
-  //    grid-column-gap 4px
-  //
-  //
-  //    retireFrom({ targetElementSelector: ".CallableExpressionScheme-GridFlow", y: 6px })
-  //
-  //
-  //  &-ReturnValue
-  //
-  //    font-family Consolas__SmoothJapaneseSymbols--FontsStack
-  //    font-weight bold
-  //    color ShadeOfGray__12--W3C_Palette
-  //
-  //
-  //  &-UsedTypesGridFlow
-  //
-  //    display grid
-  //    grid-template-columns repeat(auto-fill, minmax(280px, 1fr));
-  //    gap 6px
-  //
-  //    retireFrom({ targetElementSelector: ".CallableExpressionScheme-ClosingBracketRow", y: 8px })
-  //
-  //
-  //.FunctionParameterAbstract
-  //
-  //  display grid
-  //  grid-template-columns auto minmax(0, 1fr)
-  //  grid-gap 6px 12px
-  //  align-items start
-  //
-  //  border-width 1px
-  //  border-radius 3px
-  //  padding 6px 10px
-  //
-  //  border-style solid
-  //  border-color: JQueryUI_BaseTheme.content.borders
-  //  color: JQueryUI_BaseTheme.content.font
-  //
-  //
-  //  &-HeaderRow
-  //
-  //    grid-column-start span 2
-  //
-  //    display flex
-  //    align-items center
-  //
-  //
-  //  &-Title
-  //
-  //    font-size 13px
-  //    font-weight bold
-  //    color ShadeOfGray__18--W3C_Palette
-  //
-  //
-  //  &-RequirementBadge
-  //
-  //    margin-left 6px
-  //
-  //
-  //  &-HeaderCell
-  //
-  //    text-align right
-  //
-  //    color ShadeOfGray__20--W3C_Palette
-  //
-  //
-  //  &-LocalizedName
-  //
-  //    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineHeight: 17px })
-  //    color ShadeOfGray__14--W3C_Palette
-  //
-  //
-  //  &-Type
-  //
-  //    font-family Consolas__SmoothJapaneseSymbols--FontsStack
-  //    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineHeight: 17px })
-  //    font-weight bold
-  //    color ImportantEntity--YDID_Color
-  //
+    &-GridFlow
+
+      display grid
+      grid-template-columns repeat(auto-fill, minmax(280px, 1fr));
+      gap 6px
+
+      Paddings({ horizontalSymmetric: 8px })
+
+      PositionalRelationship({
+        definitions:\
+            (".CallableExpressionScheme-FunctionNameRow" { retireFromIt: { y: 6px } })\
+            (".CallableExpressionScheme-FunctionNameLocalizedInterpretation" { retireFromIt: { y: 8px } })
+      })
+
+    &-ClosingBracketRow
+
+      display grid
+      grid-template-columns auto minmax(0, 1fr)
+      align-items baseline
+      grid-column-gap 4px
+
+      margin-top 6px
+
+
+    &-ReturnedValue
+
+      font-family Consolas, monaco, Meiryo UI, monospace
+      font-weight bold
+      color ShadeOfGray__12--W3C_Palette
+
+
+    &-UsedTypesGridFlow
+
+      display grid
+      grid-template-columns repeat(auto-fill, minmax(280px, 1fr));
+      gap 6px
+
+      retireFrom({ targetElementSelector: ".CallableExpressionScheme-ClosingBracketRow", y: 8px })
+
+
+  .FunctionParameterAbstract
+
+    display grid
+    grid-template-columns auto minmax(0, 1fr)
+    grid-gap 6px 12px
+    align-items start
+
+    border-width 1px
+    border-radius 3px
+    padding 6px 10px
+
+    border-style solid
+    border-color: JQueryUI_BaseTheme.content.borderColor
+    color: JQueryUI_BaseTheme.content.fontColor
+
+
+    &-HeaderRow
+
+      grid-column-start span 2
+
+      display flex
+      align-items center
+
+
+    &-Title
+
+      font-size 13px
+      font-weight bold
+      color: ShadesOfGray__39ColorsW3C_Palette[18]
+
+
+    &-RequirementBadge
+
+      margin-left 6px
+
+
+    &-HeaderCell
+
+      text-align right
+
+      color: ShadesOfGray__39ColorsW3C_Palette[20]
+
+
+    &-LocalizedName
+
+      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 1rem, lineHeight: 1.2rem })
+      color: ShadesOfGray__39ColorsW3C_Palette[14]
+
+
+    &-Type
+
+      font-family Consolas, monaco, Meiryo UI, monospace
+      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 1rem, lineHeight: 1.2rem })
+      font-weight bold
+      color: YamatoDaiwaInformationDesignColors.importantEntity
+
   //
   //    &-OneOfComposition
   //
