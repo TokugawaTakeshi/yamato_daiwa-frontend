@@ -709,3 +709,46 @@ Please check the specification of this property:
   allowedAlternatives: FIXED NATURAL
 }
 ```
+
+
+### Making of the whole object type parameter optional
+
+Stylus [supports](https://stylus-lang.com/docs/functions.html#argument-defaults) the default parameter value.
+
+```stylus
+BordersSizing(bordersSpecification = {}, restParameters__MUST_NOT_BE...)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "BordersSizing",
+    targetParameterNumber: 1,
+    targetParameter: bordersSpecification,
+    schema: BordersSizingSpecificationSchema,
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+```
+
+But here is another pitfall of the Stylus language.
+For the one side, unlike ECMAScript, Stylus has no `undefined` value/type additionally to `null`.
+From the other side, "the unspecified parameter" and null are different cases.
+The substitution of the default value will be if and only if the parameter has not been passed.
+
+Consider below example:
+
+```stylus
+Test(parameter = {})
+
+  p(parameter)
+
+sampleObject = { alpha: "FOO" }
+
+Test()
+Test(null)
+Test(sampleObject.bravo)
+```
+
+1. In the first case, the `{}` will be substituted because the parameter has been omitted.
+2. In the second case, the parameter will _not_ be substituted because it has been specified is spit of its value is explicit `null`
+3. In the tried case,  the parameter will _not_ be substituted because it has been specified is spit its value is null
+   as not existing object property for the Stylus case 
+
+The `validateObjectTypeParameter` converts null to empty object, but as the Stylus user, you have to know about above pitfall. 

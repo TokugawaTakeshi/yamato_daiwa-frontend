@@ -29,7 +29,8 @@ validateObjectTypeParameter(namedParameters)
     )
 
 
-  targetParameter = namedParameters.targetParameter
+  // [ Theory ] Explicit null will not be substituted by Stylus default parameters functionality
+  targetParameter = nullToEmptyObject(namedParameters.targetParameter)
 
   if (!isObject(targetParameter)) {
     error(buildString(
