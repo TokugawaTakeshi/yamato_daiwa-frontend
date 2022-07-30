@@ -7,14 +7,14 @@ mixin Button--YDF(properties)
 
     properties = properties || {}
     const {
-      HTML_Type = Button.HTML_Types.regular,
+      HTML_Type = Button__YDF.HTML_Types.regular,
       label,
       ARIA_Label,
       URI,
       disabled = false,
-      theme = Button.Themes.regular,
-      geometry = Button.GeometricVariations.regular,
-      decoration = Button.DecorativeVariations.regular,
+      theme = Button__YDF.Themes.regular,
+      geometry = Button__YDF.GeometricVariations.regular,
+      decoration = Button__YDF.DecorativeVariations.regular,
       hasPrependedSVG_Icon,
       hasAppendedSVG_Icon,
       hasLoneSVG_Icon
@@ -34,7 +34,7 @@ mixin Button--YDF(properties)
 
       switch (HTML_Type) {
 
-        case Button.HTML_Types.inputButton: {
+        case Button__YDF.HTML_Types.inputButton: {
 
           tagName = "input";
           isInputTheTagNameOfRootElement = true;
@@ -43,7 +43,7 @@ mixin Button--YDF(properties)
           break;
         }
 
-        case Button.HTML_Types.inputSubmit: {
+        case Button__YDF.HTML_Types.inputSubmit: {
 
           tagName = "input";
           isInputTheTagNameOfRootElement = true;
@@ -52,7 +52,7 @@ mixin Button--YDF(properties)
           break;
         }
 
-        case Button.HTML_Types.inputReset: {
+        case Button__YDF.HTML_Types.inputReset: {
 
           tagName = "input";
           isInputTheTagNameOfRootElement = true;
@@ -62,7 +62,7 @@ mixin Button--YDF(properties)
 
         }
 
-        case Button.HTML_Types.regular: {
+        case Button__YDF.HTML_Types.regular: {
 
           tagName = "button";
           isButtonTheTagNameOfRootElement = true;
@@ -71,7 +71,7 @@ mixin Button--YDF(properties)
           break;
         }
 
-        case Button.HTML_Types.submit: {
+        case Button__YDF.HTML_Types.submit: {
 
           tagName = "button";
           isButtonTheTagNameOfRootElement = true;
@@ -83,14 +83,16 @@ mixin Button--YDF(properties)
     }
 
     const commonCSS_Classes = [
-      "Button",
-      ...Object.entries(Button.Themes).length > 1 ? [ Button.ThemesCSS_ModifiersNames[theme] ] : [],
-      ...Object.entries(Button.GeometricVariations).length > 1 ? [ Button.GeometricVariationsCSS_ModifiersNames[geometry] ] : [],
-      ...Object.entries(Button.DecorativeVariations).length > 1 ? [ Button.DecorativeVariationsCSS_Modifiers[decoration] ] : [],
-      ...hasPrependedSVG_Icon ? [ "Button__HasPrependedSVG_Icon" ] : [],
-      ...hasAppendedSVG_Icon ? [ "Button__HasAppendedSVG_Icon" ] : [],
-      ...hasLoneSVG_Icon ? [ `Button__HasLoneSVG_Icon` ] : []
-    ]
+      "Button--YDF",
+      ...Object.entries(Button__YDF.Themes).length > 1 ? [ Button__YDF.ThemesCSS_ModifiersNames[theme] ] : [],
+      ...Object.entries(Button__YDF.GeometricVariations).length > 1 ?
+          [ Button__YDF.GeometricVariationsCSS_ModifiersNames[geometry] ] : [],
+      ...Object.entries(Button__YDF.DecorativeVariations).length > 1 ?
+          [ Button__YDF.DecorativeVariationsCSS_Modifiers[decoration] ] : [],
+      ...hasPrependedSVG_Icon ? [ "Button--YDF__HasPrependedSVG_Icon" ] : [],
+      ...hasAppendedSVG_Icon ? [ "Button--YDF__HasAppendedSVG_Icon" ] : [],
+      ...hasLoneSVG_Icon ? [ `Button--YDF__HasLoneSVG_Icon` ] : []
+    ];
 
 
   if isButtonTheTagNameOfRootElement
@@ -108,12 +110,12 @@ mixin Button--YDF(properties)
 
       else if label
 
-        span.Button-Label= label
+        span.Button--YDF-Label= label
 
   else if isAnchorTheTagNameOfRootElement
 
     a&attributes(attributes)(
-      class= [ ...commonCSS_Classes, disabled ? [ "Button__DisabledState" ] : [] ]
+      class= [ ...commonCSS_Classes, disabled ? [ "Button--YDF__DisabledState" ] : [] ]
       href= disabled ? undefined : URI
       aria-disabled= disabled ? "true" : undefined
       aria-label= ARIA_Label
@@ -126,7 +128,7 @@ mixin Button--YDF(properties)
 
       else if label
 
-        span.Button-Label= label
+        span.Button--YDF-Label= label
 
   else if isInputTheTagNameOfRootElement
 

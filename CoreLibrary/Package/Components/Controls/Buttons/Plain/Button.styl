@@ -1,7 +1,9 @@
 @require "Themes/Regular/GeometricVariations/Button-RegularGeometry.styl"
 @require "Themes/Regular/GeometricVariations/Button-SmallGeometry.styl"
+@require "Themes/Regular/GeometricVariations/Button-LinkLikeGeometry.styl"
 @require "Themes/Regular/DecorativeVariations/Button-RegularDecoration.styl"
 @require "Themes/Regular/DecorativeVariations/Button-AccentedDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Button-LinkLikeDecoration.styl"
 
 
 Button = {
@@ -13,12 +15,14 @@ Button = {
 
         geometricVariations: {
           regular: Button-RegularGeometry--YDF,
-          small: Button-SmallGeometry--YDF
+          small: Button-SmallGeometry--YDF,
+          linkLike: Button-LinkLikeGeometry--YDF
         },
 
         decorativeVariations: {
           regular: Button-RegularDecoration--YDF,
-          accented: Button-AccentedDecoration--YDF
+          accented: Button-AccentedDecoration--YDF,
+          linkLike: Button-LinkLikeDecoration--YDF
         }
       }
     }
@@ -29,22 +33,22 @@ Button = {
 provideButtonComponent(preset= Button.defaultProperties, overridings = {})
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
-  CSS_NAMESPACE = "Button"
+  CSS_NAMESPACE = "Button--YDF"
   ROOT_ELEMENT_SELECTOR = "." + CSS_NAMESPACE
 
 
   // === Methods =======================================================================================================
   applyBasicRules()
 
-    .Button
+    .Button--YDF
 
       ButtonLikeElementsPrimer()
 
       cursor pointer
 
 
-    button.Button,
-    a.Button
+    button.Button--YDF,
+    a.Button--YDF
 
       display inline-flex
       justify-content center
@@ -57,7 +61,7 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
       cursor not-allowed
 
 
-    a.Button__DisabledState
+    a.Button--YDF__DisabledState
 
       pointer-events none
 
@@ -80,7 +84,7 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
     topSpacing = buildCalcExpression(
       "${topSpacing} - ${lineSpacing}/2 - ${upwardShifting}",
       {
-        topSpacing: variation.label.spacing.top,
+        topSpacing: nullToZero(variation.label.spacing.top),
         lineSpacing: lineSpacing,
         upwardShifting: nullToZero(variation.label.spacing.upwardShifting)
       }
@@ -89,19 +93,19 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
     bottomSpacing = buildCalcExpression(
       "${topSpacing} - ${lineSpacing}/2 + ${upwardShifting}",
       {
-        topSpacing: variation.label.spacing.top,
+        topSpacing: nullToZero(variation.label.spacing.top),
         lineSpacing: lineSpacing,
         upwardShifting: nullToZero(variation.label.spacing.upwardShifting)
       }
     )
 
 
-    min-width: variation.rootElement.minimalWidth
+    applyIfNotNull({ min-width: variation.rootElement.minimalWidth })
     BordersSizing(variation.rootElement.borders)
 
 
-    /a{selector()} .Button-Label,
-    /button{selector()} .Button-Label
+    /a{selector()} .Button--YDF-Label,
+    /button{selector()} .Button--YDF-Label
 
       font-size: variation.label.text.size
       line-height: lineHeight
@@ -111,14 +115,18 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
       margin-bottom: bottomSpacing
 
 
-      &:first-child
+      if isNotNull(variation.label.spacing.left)
 
-        margin-left: variation.label.spacing.left
+        &:first-child
+
+          margin-left: variation.label.spacing.left
 
 
-      &:last-child
+      if isNotNull(variation.label.spacing.right)
 
-        margin-right: variation.label.spacing.right
+        &:last-child
+
+          margin-right: variation.label.spacing.right
 
 
     /input{selector()}
@@ -134,7 +142,7 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
       padding-bottom: bottomSpacing
 
 
-    .Button-SVG_Icon
+    .Button--YDF-SVG_Icon
 
       applyIfNotNull({
         width: variation.SVG_Icon.standard.width,
@@ -143,31 +151,37 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
 
       flex-shrink 0
 
-      margin-top: variation.SVG_Icon.standard.spacing.top
-      margin-bottom: variation.SVG_Icon.standard.spacing.bottom
+      applyIfNotNull({
+        margin-top: variation.SVG_Icon.standard.spacing.top,
+        margin-bottom: variation.SVG_Icon.standard.spacing.bottom
+      })
 
 
-      &:first-child
+      if isNotNull(variation.SVG_Icon.standard.spacing.leftWhenGoingFirst)
 
-        margin-left: variation.SVG_Icon.standard.spacing.leftWhenGoingFirst
+        &:first-child
+
+          margin-left: variation.SVG_Icon.standard.spacing.leftWhenGoingFirst
 
 
-      &:last-child
+      if isNotNull(variation.SVG_Icon.standard.spacing.rightWhinGoingLast)
 
-        margin-right: variation.SVG_Icon.standard.spacing.rightWhinGoingLast
+        &:last-child
+
+          margin-right: variation.SVG_Icon.standard.spacing.rightWhinGoingLast
 
 
       ../
 
         PositionalRelationship({
           definitions: (
-            ".Button-Label" {
+            ".Button--YDF-Label" {
               retireFromIt: { x: variation.SVG_Icon.standard.spacing.afterLabel },
               pushItFromSelf: { x: variation.SVG_Icon.standard.spacing.beforeLabel }
             }
           ),
           contextSelector: selector()
-          referenceElementSelector: ".Button-SVG_Icon"
+          referenceElementSelector: ".Button--YDF-SVG_Icon"
         })
 
 
@@ -194,6 +208,11 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
     })
 
 
+    .Button--YDF-SVG_Icon
+
+      applyIfNotNull({ fill: variation.SVG_Icon.color })
+
+
     &:hover
 
       applyIfNotNull({
@@ -202,6 +221,11 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
         background-color: variation.stateDependent.hover.rootElement.background.color,
         color: variation.stateDependent.hover.rootElement.text.color
       })
+
+
+      .Button--YDF-SVG_Icon
+
+        applyIfNotNull({ fill: variation.stateDependent.hover.SVG_Icon.color })
 
 
     &:focus
@@ -219,9 +243,14 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
       })
 
 
+      .Button--YDF-SVG_Icon
+
+        applyIfNotNull({ fill: variation.stateDependent.active.SVG_Icon.color })
+
+
     /button{selector()}:disabled,
     /input{selector()}:disabled,
-    /a{selector()}.Button__DisabledState
+    /a{selector()}.Button--YDF__DisabledState
 
       applyIfNotNull({
         border-style: variation.stateDependent.disabled.rootElement.borders.style,
@@ -229,6 +258,14 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
         background-color: variation.stateDependent.disabled.rootElement.background.color,
         color: variation.stateDependent.disabled.rootElement.text.color
       })
+
+
+    /button{selector()}:disabled,
+    /a{selector()}.Button--YDF__DisabledState
+
+      .Button--YDF-SVG_Icon
+
+        applyIfNotNull({ fill: variation.stateDependent.disabled.SVG_Icon.color })
 
 
   // --- Applying ------------------------------------------------------------------------------------------------------

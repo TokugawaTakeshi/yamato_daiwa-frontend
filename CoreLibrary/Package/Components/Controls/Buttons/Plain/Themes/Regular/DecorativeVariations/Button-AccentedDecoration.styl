@@ -13,9 +13,14 @@ Button-AccentedDecoration--YDF = {
     }
   },
 
+  SVG_Icon: {
+    color: JQueryUI_BaseTheme.clickableElements.activeState.fontColor
+  },
+
   stateDependent: {
 
     hover: {
+
       rootElement: {
         borders: {
           style: null,
@@ -27,10 +32,15 @@ Button-AccentedDecoration--YDF = {
         text: {
           color: JQueryUI_BaseTheme.clickableElements.hoverState.fontColor
         }
+      },
+
+      SVG_Icon: {
+        color: JQueryUI_BaseTheme.clickableElements.hoverState.fontColor
       }
     },
 
     active: {
+
       rootElement: {
         borders: {
           style: null,
@@ -42,10 +52,15 @@ Button-AccentedDecoration--YDF = {
         text: {
           color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
         }
+      },
+
+      SVG_Icon: {
+        color: JQueryUI_BaseTheme.clickableElements.activeState.fontColor
       }
     },
 
     disabled: {
+
       rootElement: {
         borders: {
           style: null,
@@ -57,6 +72,10 @@ Button-AccentedDecoration--YDF = {
         text: {
           color: ShadesOfGray__39ColorsW3C_Palette[24]
         }
+      },
+
+      SVG_Icon: {
+        color: ShadesOfGray__39ColorsW3C_Palette[24]
       }
     }
   }

@@ -1,5 +1,5 @@
 -
-  const Button = {
+  const Button__YDF = {
 
     /** @readonly */
     HTML_Types: {
@@ -14,12 +14,12 @@
     /* === Themes =================================================================================================== */
     /** @readonly */
     Themes: {
-      regular: "BASIC"
+      regular: "REGULAR"
     },
 
     /** @readonly */
     ThemesCSS_ModifiersNames: {
-      BASIC: "BasicTheme"
+      REGULAR: "RegularTheme"
     },
 
     /** @public */
@@ -31,7 +31,7 @@
         const themeName__capitalized = themeName.charAt(0).toUpperCase() + themeName.slice(1);
 
         this.Themes[themeName__lowerCamelCase] = themeName.toUpperCase();
-        this.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button__${themeName__capitalized}Theme`;
+        this.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button--YDF__${themeName__capitalized}Theme`;
       }
 
       return this;
@@ -48,9 +48,9 @@
 
     /** @private */
     GeometricVariationsCSS_ModifiersNames: {
-      REGULAR: "Button__RegularGeometry",
-      SMALL: "Button__SmallGeometry",
-      LINK_LIKE: "Button__LinkLikeGeometry"
+      REGULAR: "Button--YDF__RegularGeometry",
+      SMALL: "Button--YDF__SmallGeometry",
+      LINK_LIKE: "Button--YDF__LinkLikeGeometry"
     },
 
     /** @public */
@@ -63,7 +63,7 @@
 
         this.GeometricVariations[geometricVariationsName__lowerCamelCase] = geometricVariationsName.toUpperCase();
         this.GeometricVariationsCSS_ModifiersNames[geometricVariationsName__lowerCamelCase] =
-            `Button__${geometricVariationsName__capitalized}Geometry`;
+            `Button--YDF__${geometricVariationsName__capitalized}Geometry`;
       }
 
       return this;
@@ -80,9 +80,9 @@
 
     /** @private */
     DecorativeVariationsCSS_Modifiers: {
-      REGULAR: "Button__RegularDecoration",
-      ACCENTED: "Button__AccentedDecoration",
-      LINK_LIKE: "Button__LinkLikeDecoration"
+      REGULAR: "Button--YDF__RegularDecoration",
+      ACCENTED: "Button--YDF__AccentedDecoration",
+      LINK_LIKE: "Button--YDF__LinkLikeDecoration"
     },
 
     /** @public */
@@ -95,12 +95,14 @@
 
         this.DecorativeVariations[decorativeVariationsName__lowerCamelCase] = decorativeVariationsName.toUpperCase();
         this.DecorativeVariationsCSS_Modifiers[decorativeVariationsName__lowerCamelCase] =
-                `Button__${decorativeVariationsName__capitalized}Decoration`;
+            `Button--YDF__${decorativeVariationsName__capitalized}Decoration`;
       }
 
       return this;
     },
 
+
+    /* === Properties specification ================================================================================= */
     get properties() {
       return {
 
@@ -135,7 +137,7 @@
           type: String,
           required: false,
           allowedAlternatives: Object.values(this.Themes),
-          defaultValue: this.Themes.basic,
+          defaultValue: this.Themes.regular,
         },
 
         geometry: {
