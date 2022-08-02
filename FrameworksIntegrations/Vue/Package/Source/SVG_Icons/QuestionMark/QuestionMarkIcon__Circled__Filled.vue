@@ -2,6 +2,6 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/QuestionMark/QuestionMarkIcon__Circled__Filled.pug
 
-+QuestionMarkIcon__Circled__Filled
++QuestionMark__Circled__Filled--YDF_Icon
 
 </template>

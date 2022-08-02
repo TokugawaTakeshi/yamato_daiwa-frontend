@@ -2,6 +2,6 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Pencil/PencilIcon__Boxed__Filled.pug
 
-+PencilIcon__Boxed__Filled
++Pencil__Boxed__Filled--YDF_Icon
 
 </template>

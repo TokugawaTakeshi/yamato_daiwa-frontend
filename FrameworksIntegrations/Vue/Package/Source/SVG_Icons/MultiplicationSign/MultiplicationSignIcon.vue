@@ -2,6 +2,6 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon.pug
 
-+MultiplicationSignIcon
++MultiplicationSign--YDF_Icon
 
 </template>

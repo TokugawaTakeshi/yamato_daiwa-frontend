@@ -2,6 +2,6 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Octagoned__Outlined.pug
 
-+MultiplicationSignIcon__Octagoned__Outlined
++MultiplicationSign__Octagoned__Outlined--YDF_Icon
 
 </template>
