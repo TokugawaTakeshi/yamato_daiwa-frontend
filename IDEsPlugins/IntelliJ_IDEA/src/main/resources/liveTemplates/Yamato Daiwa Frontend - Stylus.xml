@@ -1,0 +1,730 @@
+<templateSet group="Yamato Daiwa Frontend - Stylus">
+  <template name="nswu" value="NARROWEST_SCREEN_WIDTH_UNIT" description="`NARROWEST_SCREEN_WIDTH_UNIT` constant (320px)" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="si" value="CrossBrowserStylesReset()&#10;InitialGlobalCSS_Rules()&#10;&#10;$END$" description="Styles initialization (`CrossBrowserStylesReset` and `InitialGlobalCSS_Rules` mixins)" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_RULESET_LIST" value="true" />
+    </context>
+  </template>
+  <template name="ossll" value="OverflowSafeSingleLineLabel({&#10;  fontSize: $END$,&#10;  displayEllipsis: true&#10;})" description="`OverflowSafeSingleLineLabel` mixin/component" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="prs" value="// Minimal example&#10;PositionalRelationship({&#10;  definitions: (&quot;$TARGET_ELEMENT_SELECTOR$&quot; { retireFromIt: { y: 8px }, pushItFromSelf: { y: 16px } })&#10;})&#10;&#10;&#10;// Scoped definition&#10;PositionalRelationship({&#10;  definitions: (&quot;h2&quot; { retireFromIt: { y: 8px }, pushItFromSelf: { y: 16px } }),&#10;  contextSelector: &quot;$TARGET_ELEMENT_SELECTOR$&quot;,&#10;  referenceElementSelector: &quot;p&quot;&#10;})&#10;&#10;&#10;// All functionality used&#10;PositionalRelationship({&#10;  definitions:\&#10;      (&quot;$TARGET_ELEMENT_SELECTOR$&quot; { &#10;        retireFromIt: { x: 2px, y: 4px }, &#10;        pushItFromSelf: { x: 6px, y: 8px }, &#10;        usePaddingsInsteadOfMargins: true &#10;      })\&#10;      (&quot;.ContextSelector-ElementC&quot; { retireFromIt: { x: 10px, y: 12px }, pushItFromSelf: { x: 14px, y: 16px } }),&#10;  contextSelector: &quot;.ContextSelector&quot;,&#10;  referenceElementSelector: &quot;.ContextSelector-ElementA&quot;&#10;})&#10;&#10;// TODO Make sure that no whitespaces after backslashes, the line breakers&#10;// TODO Make sure that there are no training commas&#10;// --- END OF AUTOMATICALLY GENERATED CODE ---------------------------------------------------------------------------" description="`PositionalRelationship` mixin" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_ELEMENT_SELECTOR" expression="clipboard()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="rf" value="// Minimal example&#10;retireFrom({ targetElementSelector: &quot;$TARGET_ELEMENT_SELECTOR$&quot;, y: 8px })&#10;&#10;&#10;// Scoped definition&#10;retireFrom({&#10;  targetElementSelector: &quot;$TARGET_ELEMENT_SELECTOR$&quot;,&#10;  y: 14px,&#10;  referenceElementSelector: &quot;p&quot;,&#10;  contextSelector: &quot;.Article&quot;&#10;})&#10;&#10;&#10;// Multiple definitions&#10;retireFrom({&#10;  definitions:\&#10;      (&quot;h1&quot; { x: 2px, y: 4px })\&#10;      (&quot;h2&quot; { x: 6px, y: 8px, usePaddingsInsteadOfMargins: true }),&#10;  referenceElementSelector: &quot;p&quot;,&#10;  contextSelector: &quot;.Article&quot;&#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`retireFrom` mixin" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_ELEMENT_SELECTOR" expression="clipboard()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="ptfs" value="$END$// Minimal example&#10;pushTargetFromSelf({ targetElementSelector: &quot;.BlockName-ElementName&quot;, y: 4px })&#10;&#10;&#10;// Scoped definition&#10;pushTargetFromSelf({&#10;  targetElementSelector: &quot;h2&quot;,&#10;  y: 24px,&#10;  referenceElementSelector: &quot;p&quot;,&#10;  contextSelector: &quot;.Article&quot;&#10;})&#10;&#10;&#10;// Multiple definitions&#10;pushTargetFromSelf({&#10;  definitions:\&#10;    (&quot;.Example3-ElementA&quot; { x: 2px, y: 4px })\&#10;    (&quot;.Example3-ElementB&quot; { x: 6px, y: 8px, usePaddingsInsteadOfMargins: true })&#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`pushTargetFromSelf` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="rfewss" value="// Minimal example&#10;retireFromElementWithSameSelector({ y: $END$px })&#10;&#10;&#10;// Scoped definition&#10;retireFromElementWithSameSelector({ y: 8px, contextSelector: &quot;.Block ul&quot;, referenceElementSelector: &quot;li&quot; })&#10;&#10;&#10;// All functionality used&#10;retireFromElementWithSameSelector({&#10;  x: 4px,&#10;  y: 8px,&#10;  usePaddingsInsteadOfMargins: true,&#10;  contextSelector: &quot;.Block ol&quot;,&#10;  referenceElementSelector: &quot;li&quot;&#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`retireFromElementWithSameSelector` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="wigf" value="// Specify &quot;margin-top&quot; only&#10;whenItGoingFirst({ verticalSpaceAbove: $END$px })&#10;&#10;&#10;// Specify also other properties (parameters object is optional)&#10;+whenItGoingFirst({ verticalSpaceAbove: 4px })&#10;&#10;  border-top 1px solid gray&#10;// --- END OF AUTOMATICALLY GENERATED CODE ---------------------------------------------------------------------------" description="`whenItGoingFirst` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="wigl" value="// Specify &quot;margin-bottom&quot; only&#10;whenItGoingLast({ verticalSpaceBelow: $END$px })&#10;&#10;&#10;// Specify also other properties (parameters object is optional)&#10;+whenItGoingLast({ verticalSpaceBelow: 36px })&#10;&#10;  border-bottom 2px solid gray&#10;// --- END OF AUTOMATICALLY GENERATED CODE ---------------------------------------------------------------------------" description="`whenItGoingLast` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="wija" value="// Minimal example&#10;+whenItJustAfter({ targetElementSelector: &quot;.Block-ChildA1&quot; })&#10;&#10;  background gold&#10;&#10;&#10;// Scoped definition&#10;+whenItJustAfter({ &#10;  targetElementSelector: &quot;h2&quot;, &#10;  contextSelector: &quot;.Block2&quot;, &#10;  referenceElementSelector: &quot;p&quot; &#10;})&#10;&#10;  background silver&#10;// --- END OF AUTOMATICALLY GENERATED CODE ---------------------------------------------------------------------------" description="`whenItJustAfter` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="wtgjai" value="$END$// Minimal example&#10;+whenTargetGoingJustAfterIt({ targetElementSelector: &quot;.Block-ChildA&quot; })&#10;&#10;  background gold&#10;&#10;&#10;// Scoped definition&#10;+whenTargetGoingJustAfterIt({ &#10;  targetElementSelector: &quot;h2&quot;, &#10;  contextSelector: &quot;.Block2&quot;, &#10;  referenceElementSelector: &quot;p&quot; &#10;})&#10;&#10;  background silver&#10;// --- END OF AUTOMATICALLY GENERATED CODE ---------------------------------------------------------------------------" description="`whenTargetGoingJustAfterIt` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+    </context>
+  </template>
+  <template name="wtwssgjat" value="$END$// Minimal example&#10;+whenTargetWithSameSelectorGoingJustAfterIt()&#10;&#10;  border-top 1px solid black&#10;  &#10;  &#10;// Scoped definition&#10;+whenTargetWithSameSelectorGoingJustAfterIt({ referenceElementSelector: &quot;p&quot;, contextSelector: &quot;.Block&quot; })&#10;&#10;  border-top 1px solid black&#10;// --- END OF AUTOMATICALLY GENERATED CODE ---------------------------------------------------------------------------" description="`whenTargetWithSameSelectorGoingJustAfterIt` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+    </context>
+  </template>
+  <template name="pd" value="// Frequent one-line use cases&#10;Paddings({ all: 3px })$END$&#10;Paddings({ horizontalSymmetric: 4px })&#10;Paddings({ verticalSymmetric: 5px })&#10;&#10;&#10;// Advanced examples&#10;Paddings({&#10;  all: 3px,&#10;  verticalUpwardShifting: 1px&#10;})&#10;&#10;Paddings({&#10;  horizontalSymmetric: 4px,&#10;  verticalSymmetric: 4px,&#10;  verticalUpwardShifting: 1px&#10;})&#10;&#10;Paddings({&#10;  left: 1px,&#10;  right: 2px,&#10;  top: 3px,&#10;  bottom: 4px,&#10;  verticalUpwardShifting: 1px&#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE ---------------------------------------------------------------------------" description="`Paddings` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="ainn" value="// One pair&#10;applyIfNotNull({ $KEY$: $VALUE$ })&#10;&#10;// Multiple pairs&#10;applyIfNotNull({ &#10;  border-color: BORDER_COLOR,&#10;  background-color: BACKGROUND_COLOR &#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`applyIfNotNull` mixin" toReformat="false" toShortenFQNames="true">
+    <variable name="KEY" expression="" defaultValue="&quot;validCSS_Key&quot;" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="&quot;value&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="bce" value="buildCalcExpression(&quot;${$END$a} - ${b}&quot;, { a: 100%, b: 30px })" description="`buildCalcExpression` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="fbv" value="fillBodyVertically({ verticalScrolling: $END$true })" description="`fillBodyVertically` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="ftdl" value="$END$// Minimal example&#10;FixedTranslucentDimLayer()&#10;&#10;// Full example&#10;FixedTranslucentDimLayer({&#10;  ZIndex: ZIndexes.blockingOverlay + 1,&#10;  backgroundColor: rgba(black, 0.5)&#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`FixedTranslucentDimLayer` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="cnt" value="// Minimal example&#10;Centerer()&#10;&#10;// Full example&#10;Centerer({ minimalWidth: $MINIMAL_WIDTH$, maximalWidth: $MAXIMAL_WIDTH$ })&#10;// Defaults: { minimalWidth: NARROWEST_SCREEN_WIDTH_UNIT, maximalWidth: 3*NARROWEST_SCREEN_WIDTH_UNIT }&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`Centerer` mixin" toReformat="false" toShortenFQNames="true">
+    <variable name="MINIMAL_WIDTH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MAXIMAL_WIDTH" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="pcsaov" value="SHADOW_THICKNESS = 4px&#10;&#10;box-shadow 0 0 SHADOW_THICKNESS rgba(black, 0.25)&#10;&#10;// Basic example&#10;provideClippedShadowsAndOutlinesVisibility({&#10;  requiredHorizontalSymmetricSpace: SHADOW_THICKNESS,&#10;  requiredSpaceAtBottom: SHADOW_THICKNESS&#10;})&#10;&#10;// All options&#10;provideClippedShadowsAndOutlinesVisibility({&#10;  &#10;  requiredHorizontalSymmetricSpace: 2px,&#10;  // OR&#10;  requiredSpaceAtLeft: 2px,&#10;  requiredSpaceAtRight: 2px,&#10;  &#10;  requiredVerticalSymmetricSpace: 2px,&#10;  // OR&#10;  requiredSpaceAtTop: 2px,&#10;  requiredSpaceAtBottom: 2px,&#10;  &#10;  noCompensatingNegativeTopMargins: true,&#10;  noCompensatingNegativeBottomMargins: true,&#10;  noCompensatingNegativeLeftMargins: true,&#10;  noCompensatingNegativeRightMargins: true,&#10;  &#10;  useBeforePseudoElementWithCompensatingNegativeTopMargins: true,&#10;  useAfterPseudoElementWithCompensatingNegativeBottomMargins: true&#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE ---------------------------------------------------------------------------" description="`provideClippedShadowsAndOutlinesVisibility` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="blep" value="ButtonLikeElementsPrimer()&#10;&#10;$END$" description="`ButtonLikeElementsPrimer` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="bbcn" value="buildBEM_ClassName({&#10;  block: &quot;$BOCK$&quot;,&#10;  element: &quot;$ELEMENT$&quot;,&#10;  modifier: &quot;$MODIFIER$&quot;,&#10;  elementSeparator: &quot;$ELEMENT_SEPARATOR$&quot;,  // Default is value of BEM_ELEMENT_SEPARATOR&#10;  modifierSeparator: &quot;$MODIFIER_SEPARATOR$&quot; // Default is value of BEM_MODIFIER_SEPARATOR&#10;})&#10;" description="`buildBEM_Class` function" toReformat="false" toShortenFQNames="true">
+    <variable name="BOCK" expression="" defaultValue="&quot;Button&quot;" alwaysStopAt="true" />
+    <variable name="ELEMENT" expression="" defaultValue="&quot;Icon&quot;" alwaysStopAt="true" />
+    <variable name="MODIFIER" expression="" defaultValue="&quot;__Appended&quot;" alwaysStopAt="true" />
+    <variable name="ELEMENT_SEPARATOR" expression="" defaultValue="__" alwaysStopAt="true" />
+    <variable name="MODIFIER_SEPARATOR" expression="" defaultValue="_" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="chww" value="centerHorizontallyWithoutWrapper({ &#10;  targetElementType: HorizontalCenteringWithoutWrapper.TargetElementTypes.$TARGET_ELEMENT_TYPE$,&#10;  maximalWidth: $MAXIMAL_WIDTH$,&#10;  horizontalSpaceBetweenSelfAndParent: $HORIZONTAL_SPACE_BETWEEN_SELF_AND_PARENT$ &#10;})" description="`centerHorizontallyWithoutWrapper` mixin" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_ELEMENT_TYPE" expression="enum(&quot;block&quot;, &quot;inlineBlock&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="MAXIMAL_WIDTH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="HORIZONTAL_SPACE_BETWEEN_SELF_AND_PARENT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="ccwchp" value="CenteredContentWithComputedHorizontalPaddings({ contentWidth: $WIDTH$px })&#10;" description="`CenteredContentWithComputedHorizontalPaddings` mixin" toReformat="false" toShortenFQNames="true">
+    <variable name="WIDTH" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="med3c" value="MAXIMAL_CONTENT_WIDTH = $MAXIMAL_CONTENT_WIDTH$px&#10;MINIMAL_SIDE_SYMMETRIC_PADDINGS__WIDE_SCREENS = 20px&#10;&#10;wideScreensConfigurationMinimalWidth = MAXIMAL_CONTENT_WIDTH + 2*MINIMAL_SIDE_SYMMETRIC_PADDINGS__WIDE_SCREENS&#10;MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 420px&#10;&#10;&#10;WideScreensConfiguration()&#10;  @media screen and (min-width: wideScreensConfigurationMinimalWidth)&#10;    {block}&#10;&#10;MediumScreensConfiguration()&#10;  @media screen and (min-width: MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: wideScreensConfigurationMinimalWidth - 1)&#10;    {block}&#10;&#10;NarrowScreensConfiguration()&#10;  @media screen and (max-width: MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;WideAndMediumScreensConfiguration()&#10;  @media screen and (min-width: MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH)&#10;    {block}&#10;&#10;MediumAndNarrowScreensConfiguration()&#10;  @media screen and (max-width: wideScreensConfigurationMinimalWidth - 1)&#10;    {block}&#10;&#10;&#10;+WideScreensConfiguration()&#10;&#10;  CenteredContentWithComputedHorizontalPaddings({ contentWidth: MAXIMAL_CONTENT_WIDTH })&#10;&#10;&#10;+MediumScreensConfiguration()&#10;&#10;  Paddings({ horizontalSymmetric: 20px })&#10;&#10;&#10;+NarrowScreensConfiguration()&#10;&#10;  Paddings({ horizontalSymmetric: 12px })&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="Media queries definitions for 3-patterns layout" toReformat="false" toShortenFQNames="true">
+    <variable name="MAXIMAL_CONTENT_WIDTH" expression="" defaultValue="&quot;920&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="wsc" value="+WideScreensConfiguration()&#10;&#10;  $END$" description="`WideScreensConfiguration` media query" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="msc" value="+MediumScreensConfiguration()&#10;&#10;  $END$" description="`MediumScreensConfiguration` media query" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="wmsc" value="+WideAndMediumScreensConfiguration()&#10;&#10;  $END$" description="`WideAndMediumScreensConfiguration` media query" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="nsc" value="+NarrowScreensConfiguration()&#10;&#10;  $END$" description="`NarrowScreensConfiguration` media query" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="mnsc" value="+MediumAndNarrowScreensConfiguration()&#10;&#10;  $END$&#10;  " description="`MediumAndNarrowScreensConfiguration` media query" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="ptr" value="placeToRight()&#10;$END$" description="`placeToRight` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="sogw3c" value="ShadesOfGray__39ColorsW3C_Palette[$NUMBER$]&#10;// Please note that valid number of element must be from 0 fto 38 (not 39)" description="`ShadesOfGray__39ColorsW3C_Palette` array" toReformat="false" toShortenFQNames="true">
+    <variable name="NUMBER" expression="enum(&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;,&quot;13&quot;,&quot;14&quot;,&quot;15&quot;,&quot;16&quot;,&quot;17&quot;,&quot;18&quot;,&quot;19&quot;,&quot;20&quot;,&quot;21&quot;,&quot;22&quot;,&quot;23&quot;,&quot;24&quot;,&quot;25&quot;,&quot;26&quot;,&quot;27&quot;,&quot;28&quot;,&quot;29&quot;,&quot;30&quot;,&quot;31&quot;,&quot;32&quot;,&quot;33&quot;,&quot;34&quot;,&quot;35&quot;,&quot;36&quot;,&quot;37&quot;,&quot;38&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="mdc" value="MaterialDesignColors.$TONE$.$SHADE$&#10;// * Available tones: red, pink, purple, deepPurple, indigo, blue, lightBlue, cyan, teal, green, lightGreen, lime, &#10;//   yellow, amber, orange, deepOrange, brown, grey, blueGrey&#10;// * Each one has &quot;base&quot; property&#10;// * Primary shades: P50, P100, P200, P300, P400, P500, P600, P700, P800, P900&#10;// * Accent shades: A100, A200, A400, A700 (except brown, grey and blueGray tones!)" description="`MaterialDesignColors` object" toReformat="false" toShortenFQNames="true">
+    <variable name="TONE" expression="enum(&quot;red&quot;, &quot;pink&quot;, &quot;purple&quot;, &quot;deepPurple&quot;, &quot;indigo&quot;, &quot;blue&quot;, &quot;lightBlue&quot;, &quot;cyan&quot;, &quot;teal&quot;, &quot;green&quot;, &quot;lightGreen&quot;, &quot;lime&quot;, &quot;yellow&quot;, &quot;amber&quot;, &quot;orange&quot;, &quot;deepOrange&quot;, &quot;brown&quot;, &quot;grey&quot;, &quot;blueGrey&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="SHADE" expression="enum(&quot;base&quot;, &quot;P50&quot;, &quot;P100&quot;, &quot;P200&quot;, &quot;P300&quot;, &quot;P400&quot;, &quot;P500&quot;, &quot;P600&quot;, &quot;P700&quot;, &quot;P800&quot;, &quot;P900&quot;, &quot;A100&quot;, &quot;A200&quot;, &quot;A400&quot;, &quot;A700&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="dt" value="DataTypes.$TYPE$" description="`DataTypes` enumeration" toReformat="false" toShortenFQNames="true">
+    <variable name="TYPE" expression="enum(&quot;dimensionalAmount&quot;, &quot;dimensionlessAmount&quot;, &quot;string&quot;, &quot;boolean&quot;, &quot;object&quot;, &quot;colorDefinition&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="th" value="TemporaryHighlighting.$TONE$.$OPACITY$&#10;// * Available tones: red, orange, yellow, green, cyan, blue, magenta, purple&#10;// * Available opacity values: o10, o25, o50, o75" description="`TemporaryHighlighting` object" toReformat="false" toShortenFQNames="true">
+    <variable name="TONE" expression="enum(&quot;red&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;green&quot;, &quot;cyan&quot;, &quot;blue&quot;, &quot;magenta&quot;, &quot;purple&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="OPACITY" expression="enum(&quot;o10&quot;, &quot;o25&quot;, &quot;o50&quot;, &quot;o75&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+    </context>
+  </template>
+  <template name="pccs" value="PracticalColorCoordinateSystem.$TONE$.$COLOR$&#10;&#10;// * Available tones: &quot;vivid&quot;, &quot;bright&quot;, &quot;strong&quot;, &quot;deep&quot;, &quot;light&quot;, &quot;soft&quot;, &quot;dull&quot;, &quot;dark&quot;, &quot;pale&quot;, &quot;lightGrayish&quot;, &#10;//       &quot;grayish&quot;, &quot;darkGrayish&quot;, &quot;white&quot;, &quot;lightGray8_5&quot;, &quot;lightGray7_5&quot;, &quot;mediumGray6_5&quot;, &quot;mediumGray5_5&quot;, &quot;mediumGray4_5&quot;, &#10;//       &quot;darkGray3_5&quot;, &quot;darkGray2_5&quot;, &quot;black&quot;&#10;// * Available colors: &quot;purplishRed1&quot;, &quot;red2&quot;, &quot;yellowishRed3&quot;, &quot;reddishOrange4&quot;, &quot;orange5&quot;, &quot;yellowishOrange6&quot;, &#10;//       &quot;reddishYellow7&quot;, &quot;yellow8&quot;, &quot;greenishYellow9&quot;, &quot;yellowGreen10&quot;, &quot;yellowishGreen11&quot;, &quot;green12&quot;, &quot;bluishGreen13&quot;, &#10;//       &quot;blueGreen14&quot;, &quot;blueGreen15&quot;, &quot;geenishBlue16&quot;, &quot;blue17&quot;, &quot;blue18&quot;, &quot;purplishBlue19&quot;, &quot;violet20&quot;, &quot;bluishPurple21&quot;,&#10;//       &quot;purple22&quot;, &quot;reddishPurple23&quot;, &quot;redPurple24&quot; (except white, lightGray8_5, etc. until black!) &#10;" description="`PracticalColorCoordinateSystem` object" toReformat="false" toShortenFQNames="true">
+    <variable name="TONE" expression="enum(&quot;vivid&quot;, &quot;bright&quot;, &quot;strong&quot;, &quot;deep&quot;, &quot;light&quot;, &quot;soft&quot;, &quot;dull&quot;, &quot;dark&quot;, &quot;pale&quot;, &quot;lightGrayish&quot;, &quot;grayish&quot;, &quot;darkGrayish&quot;, &quot;white&quot;, &quot;lightGray8_5&quot;, &quot;lightGray7_5&quot;, &quot;mediumGray6_5&quot;, &quot;mediumGray5_5&quot;, &quot;mediumGray4_5&quot;, &quot;darkGray3_5&quot;, &quot;darkGray2_5&quot;, &quot;black&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="COLOR" expression="enum(&quot;purplishRed1&quot;, &quot;red2&quot;, &quot;yellowishRed3&quot;, &quot;reddishOrange4&quot;, &quot;orange5&quot;, &quot;yellowishOrange6&quot;, &quot;reddishYellow7&quot;, &quot;yellow8&quot;, &quot;greenishYellow9&quot;, &quot;yellowGreen10&quot;, &quot;yellowishGreen11&quot;, &quot;green12&quot;, &quot;bluishGreen13&quot;, &quot;blueGreen14&quot;, &quot;blueGreen15&quot;, &quot;geenishBlue16&quot;, &quot;blue17&quot;, &quot;blue18&quot;, &quot;purplishBlue19&quot;, &quot;violet20&quot;, &quot;bluishPurple21&quot;, &quot;purple22&quot;, &quot;reddishPurple23&quot;, &quot;redPurple24&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="fuic" value="FlatUI_Colors.$COLOR$" description="`FlatUI_Colors` object" toReformat="false" toShortenFQNames="true">
+    <variable name="COLOR" expression="enum(&quot;turquoise&quot;, &quot;greenSea&quot;, &quot;emerald&quot;, &quot;nephritis&quot;, &quot;peterRiver&quot;, &quot;belizeHole&quot;, &quot;amethyst&quot;, &quot;wisteria&quot;, &quot;wetAsphalt&quot;, &quot;midnightBlue&quot;, &quot;sunFlower&quot;, &quot;orange&quot;, &quot;carrot&quot;, &quot;pumpkin&quot;, &quot;alizarin&quot;, &quot;pomegranate&quot;, &quot;clouds&quot;, &quot;silver&quot;, &quot;concrete&quot;, &quot;asbestos&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isNull" value="isNull($END$)" description="`isNull` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isNotNull" value="isNotNull($END$)" description="`isNotNull` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isTrue" value="isTrue($END$)" description="`isTrue` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isFalse" value="isFalse($END$)" description="`isFalse` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isString" value="isString($END$)" description="`isString` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isNonEmptyString" value="isNonEmptyString($END$)" description="`isNonEmptyString` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isEmptyString" value="isEmptyString($END$)" description="`isEmptyString` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isDimensionalOrDimensionlessAmount" value="isDimensionalOrDimensionlessAmount($END$)" description="`isDimensionalOrDimensionlessAmount` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isDimensionalAmount" value="isDimensionalAmount($END$, { considerDimensionlessZeroAsDimensionalAmount: $CONSIDER_DIMENSIONLESS_ZERO_AS_DIMENSIONAL_AMOUNT$ })" description="`isDimensionalAmount` function" toReformat="false" toShortenFQNames="true">
+    <variable name="CONSIDER_DIMENSIONLESS_ZERO_AS_DIMENSIONAL_AMOUNT" expression="enum(&quot;true&quot;, &quot;false&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isDimensionlessAmount" value="isDimensionlessAmount($END$)" description="`isDimensionlessAmount` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isBoolean" value="isBoolean($END$)" description="`isBoolean` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isObject" value="isObject($END$)" description="`isObject` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isIdentifier" value="isIdentifier($END$)" description="`isIdentifier` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="MAIN_SANS_SERIF_FONT_STACK" value="MAIN_SANS_SERIF_FONT_STACK" description="`MAIN_SANS_SERIF_FONT_STACK` variable" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="MAIN_SERIF_FONT_STACK" value="MAIN_SERIF_FONT_STACK" description="`MAIN_SERIF_FONT_STACK` variable" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="MAIN_MONOSPACED_FONT_STACK" value="MAIN_MONOSPACED_FONT_STACK" description="`MAIN_MONOSPACED_FONT_STACK` variable" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="MAIN_FONT_STACK" value="MAIN_FONT_STACK" description="`MAIN_FONT_STACK` variable" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="BASIC_FONT_SIZE" value="BASIC_FONT_SIZE" description="`BASIC_FONT_SIZE`  variable" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="BASIC_LINE_HEIGHT" value="BASIC_LINE_HEIGHT" description="`BASIC_LINE_HEIGHT`  variable" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS" value="BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS" description="`BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS`  variable" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS" value="BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS" description="`BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS`  variable" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="zi" value="ZIndexes.$ELEMENT$" description="`ZIndexes` object" toReformat="false" toShortenFQNames="true">
+    <variable name="ELEMENT" expression="enum(&quot;floatingNotifications&quot;, &quot;blockingOverlay&quot;, &quot;floatingAboveModalsComponents&quot;, &quot;modalsUnderlay&quot;, &quot;floatingBelowModalsComponents&quot;, &quot;drawers&quot;, &quot;lowermostLayer&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="BEM_ELEMENT_SEPARATOR" value="BEM_ELEMENT_SEPARATOR" description="`BEM_ELEMENT_SEPARATOR` constant" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="BEM_MODIFIER_SEPARATOR" value="BEM_MODIFIER_SEPARATOR" description="`BEM_MODIFIER_SEPARATOR` constant" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="emptyStringToNull" value="emptyStringToNull($END$)" description="`emptyStringToNull` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="nullToZero" value="nullToZero($END$)" description="`nullToZero` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="nullToEmptyString" value="nullToEmptyString($END$)" description="`nullToEmptyString` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="bs" value="buildString(&quot;$END$Good morning, ${name}&quot;, { name: &quot;Takeshi&quot; })&#10;&#10;buildString(&#10;  &quot;Good morning, ${givenName} ${familyName}&quot;, &#10;  {&#10;    givenName: &quot;Takeshi&quot;,&#10;    familyName: &quot;Tokugawa&quot;&#10;  }&#10;)&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`buildString` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="cflc" value="capitalizeFirstLatinCharacter($END$)" description="`capitalizeFirstLatinCharacter` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="dcaoo" value="// One-line example&#10;deeplyCloneAndOverrideObject($TARGET_OBJECT$, { $OVERRIDINGS$: &quot;newValue&quot; })&#10;&#10;// Multi-line example&#10;deeplyCloneAndOverrideObject($TARGET_OBJECT$, { &#10;  $OVERRIDINGS$: &quot;newValue&quot;,&#10;  otherProperty: &quot;newValue&quot;&#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`deeplyCloneAndOverrideObject` function" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
+    <variable name="OVERRIDINGS" expression="" defaultValue="&quot;oneProperty&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="dco" value="deeplyCloneObject($TARGET_OBJECT$)" description="`deeplyCloneObject` function" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="gnnovc" value="getNonNullObjectValuesCount($TARGET_OBJECT$)" description="`getNonNullObjectValuesCount` function" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="govbdsps" value="getObjectValueByDotSeparatedPathSafely($TARGET_OBJECT$, $DOT_SEPARATED_PATH$)" description="`getObjectValueByDotSeparatedPathSafely` function" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
+    <variable name="DOT_SEPARATED_PATH" expression="" defaultValue="&quot;foo.bar.baz&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="iosnv" value="iterateObjectSkippingNullValues($TARGET_OBJECT$, @(key, value) {&#10;&#10;})" description="`iterateObjectSkippingNullValues` function" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="fo" value="formatObject($END$)" description="`formatObject` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isNaturalNumber" value="isNaturalNumber($END$)" description="`isNaturalNumber` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="arrayConstructor__POLYFILL" value="arrayConstructor__POLYFILL($END$)" description="Autocomplete for `arrayConstructor__POLYFILL` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="getFirstNonNullArrayElement" value="getFirstNonNullArrayElement($END$)" description="`getFirstNonNullArrayElement` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="getLengthOfPrimitivesArray" value="getLengthOfPrimitivesArray($END$)" description="`getLengthOfPrimitivesArray` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="hasPrimitivesArraySpecifiedElement" value="hasPrimitivesArraySpecifiedElement($END$)" description="Autocomplete for `hasPrimitivesArraySpecifiedElement` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="iterate2DimensionalArray" value="iterate2DimensionalArray($TARGET_ARRAY$, @($NESTED_ARRAY$, index){&#10;  p(&quot;Element No. &quot; + index + &quot;:&quot;)&#10;  p($NESTED_ARRAY$)&#10;})" description="`iterate2DimensionalArray` function" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_ARRAY" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="NESTED_ARRAY" expression="" defaultValue="&quot;nestedArray&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="iterateAssociativeArray" value="iterateAssociativeArray($TARGET_ARRAY$, @($KEY$, $VALUE$) {&#10;  p(&quot;Key: &quot; + $KEY$);&#10;  p(&quot;Value: &quot; + $VALUE$)&#10;})" description="`iterateAssociativeArray` function" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_ARRAY" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="KEY" expression="" defaultValue="&quot;key&quot;" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="&quot;value&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="ainz" value="// One pair&#10;applyIfNotZero({ $KEY$: $VALUE$ })&#10;&#10;// Multile pairs&#10;applyIfNotZero({ &#10;  border-color: BORDER_COLOR,&#10;  background-color: BACKGROUND_COLOR &#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`applyIfNotZero` mixin" toReformat="false" toShortenFQNames="true">
+    <variable name="KEY" expression="" defaultValue="&quot;validCSS_Key&quot;" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="&quot;value&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="votp" value="validateObjectTypeParameter({&#10;  mixinOrFunctionName: &quot;$MIXIN_OR_FUNCTION_NAME$&quot;,&#10;  targetParameterNumber: $PARAMETER_NUMBER$,&#10;  targetParameter: compoundParameter,&#10;  schema: {&#10;    block: {&#10;      type: DataTypes.string,&#10;      required: true,&#10;      minimalCharactersCount: 1&#10;    }&#10;    // votp-a for amount property&#10;    // votp-s for string property&#10;    // votp-p for property of any type&#10;    // TODO Make sure that there is no trailing comma&#10;  },&#10;  followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE&#10;})" description="`validateObjectTypeParameter` function" toReformat="false" toShortenFQNames="true">
+    <variable name="MIXIN_OR_FUNCTION_NAME" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PARAMETER_NUMBER" expression="" defaultValue="&quot;1&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="votp-s" value="$PROPERTY_KEY$: {&#10;  type: DataTypes.string,&#10;  required: $IS_REQUIRED$,&#10;  minimalCharactersCount: 1,&#10;  maximalCharactersCount: 4,&#10;  allowedAlternatives: &quot;FOO&quot; &quot;BAR&quot;&#10;}&#10;" description="String property specification for `validateObjectTypeParameter` function" toReformat="false" toShortenFQNames="true">
+    <variable name="PROPERTY_KEY" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="IS_REQUIRED" expression="enum(&quot;true&quot;, &quot;false&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="ws" value="WidthSizing({&#10;&#10;  fixedWidth: $END$100px,&#10;  // OR&#10;  minimalWidth: 100px,&#10;  maximalWidth: 100px,&#10;  takeMaximumSpaceAsPossible: true, // &quot;false&quot; could be skipped&#10;&#10;  truncateOnOverflow: true, // &quot;false&quot; could be skipped&#10;  displayEllipsisOnOverflow: true, // &quot;false&quot; could be skipped&#10;  &#10;  leftOrRightSymmetricBordersWidths: 2px,&#10;  // OR&#10;  leftBorderWidth: 2px,&#10;  rightBorderWidth: 2px,&#10;  explicitBorderNoneDeclarationRequired: true, // &quot;false&quot; could be skipped&#10;&#10;  leftOrRightSymmetricPaddings: 5px,&#10;  // OR&#10;  leftPadding: 5px,&#10;  rightPadding: 5px,&#10;  explicitPaddingZeroDeclarationRequired: true // &quot;false&quot; could be skipped&#10;})" description="`widthSizing` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="fillViewportWidthIgnoringParentPaddings" value="fillViewportWidthIgnoringParentPaddings()" description="`fillViewportWidthIgnoringParentPaddings` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="votp-a" value="$PROPERTY_KEY$: {&#10;  type: DataTypes.dimensionalAmount, // or DataTypes.dimensionlessAmount, or both but &quot;dimensionalAmount&quot; must be first &#10;  required: $IS_REQUIRED$,&#10;  minimalValue: 1,&#10;  maximalValue: 4&#10;}&#10;" description="Amount property specification for `validateObjectTypeParameter` function" toReformat="false" toShortenFQNames="true">
+    <variable name="PROPERTY_KEY" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="IS_REQUIRED" expression="enum(&quot;true&quot;, &quot;false&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="tcws" value="TableCellWidthSizing({&#10;&#10;  // Define by total width&#10;  fixedTotalWidth: 120px,&#10;  // OR&#10;  totalMinimalWidth: 60px,&#10;  totalMaximalWidth: 120px,&#10;  &#10;  // Or define by content width&#10;  fixedContentWidth: 120px,&#10;  // OR&#10;  contentMinimalWidth: 60px,&#10;  contentMaximalWidth: 120px,&#10;  &#10;  leftOrRightSymmetricBordersWidths: 6px,&#10;  // OR&#10;  leftBorderWidth: 4px,&#10;  rightBorderWidth: 4px,&#10;  &#10;  leftOrRightSymmetricPaddings: 4px,&#10;  // OR&#10;  leftPadding: 6px,&#10;  rightPadding: 6px,&#10;  &#10;  truncateOnOverflow: true,&#10;  displayEllipsisOnOverflow: true&#10;})" description="`TableCellWidthSizing` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="sn" value="substituteNull($POSSIBLY_NULL_VALUE$, $SUBSTITUTE$)" description="`substituteNull` function" toReformat="false" toShortenFQNames="true">
+    <variable name="POSSIBLY_NULL_VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="SUBSTITUTE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="log" value="log($END$)" description="`log` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+    </context>
+  </template>
+  <template name="votp-p" value="$PROPERTY_KEY$: {&#10;  type: DataTypes.$DATA_TYPE$, &#10;  required: $IS_REQUIRED$&#10;}&#10;" description="Property specification for `validateObjectTypeParameter` function" toReformat="false" toShortenFQNames="true">
+    <variable name="PROPERTY_KEY" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DATA_TYPE" expression="enum(&quot;dimensionalAmount&quot;, &quot;dimensionlessAmount&quot;, &quot;string&quot;, &quot;boolean&quot;, &quot;object&quot;, &quot;colorDefinition&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="IS_REQUIRED" expression="enum(&quot;true&quot;, &quot;false&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="bds" value="BordersSizing({&#10;  $END$thickness: {&#10;    all: 1px,&#10;    // OR&#10;    horizontalSymmetric: 5px,&#10;    verticalSymmetric: 8px,&#10;    // OR&#10;    top: 1px,&#10;    left: 2px,&#10;    right: 3px,&#10;    bottom: 4px&#10;  },&#10;  radius: {&#10;    all: 3px,&#10;    // OR&#10;    leftFillets: 5px,&#10;    rightFillets: 8px,&#10;    // OR&#10;    topFillets: 2px,&#10;    bottomFillets: 2px,&#10;    // OR&#10;    topLeft: 1px,&#10;    topRight: 2px,&#10;    bottomLeft: 3px,&#10;    bottomRight: 4px&#10;  }&#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`BordersSizing` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="slteos" value="SingleLineTextElementOverflowSafety({&#10;  displayEllipsis: true,$END$ // TODO delete if false&#10;  supportCrossAxisCenteredFlexChild: true, // TODO delete if false&#10;  lineHeight: 1.2, // TODO delete if not required&#10;  verticalSymmetricPaddings: 4px, // TODO delete if not required&#10;})&#10;" description="`SingleLineTextElementOverflowSafety` mixin" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="mlt" value="MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: $FONT_SIZE$, lineHeight: $LINE_HEIGHT$ })&#10;" description="`MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight` mixin" toReformat="false" toShortenFQNames="true">
+    <variable name="FONT_SIZE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LINE_HEIGHT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="bfr" value="Border$SIDE$FilletsRadius($RADIUS$)&#10;" description="Border fillets mixins" toReformat="false" toShortenFQNames="true">
+    <variable name="SIDE" expression="enum(&quot;Top&quot;, &quot;Bottom&quot;, &quot;Left&quot;, &quot;Right&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="RADIUS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="vcapb" value="VerticallyCenteredAbsolutelyPositionedBlock({ upwardShifting: 1px })&#10;" description="VerticallyCenteredAbsolutelyPositionedBlock" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="sprt" value="Sprite({&#10;  spritesMapURL: &quot;$SPRITES_MAP_URL$&quot;,&#10;  width: $WIDTH$px,&#10;  height: $HEIGHT$px,&#10;  positiveX_Coordinate: $X_COORDINATE$,&#10;  positiveY_Coordinate: $Y_COORDINATE$&#10;})" description="`Sprite` mixin" toReformat="false" toShortenFQNames="true">
+    <variable name="SPRITES_MAP_URL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="WIDTH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="HEIGHT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="X_COORDINATE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="Y_COORDINATE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="oo" value="overrideObject($TARGET_OBJECT$, $OVERRIDINGS$)" description="`overrideObject` function" toReformat="false" toShortenFQNames="true">
+    <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
+    <variable name="OVERRIDINGS" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="nullToEmptyObject" value="nullToEmptyObject($END$)" description="`nullToEmptyObject` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="iydf" value="@require &quot;$RELATIVE_PATH_TO_NODE_MODULES$/node_modules/@yamato-daiwa/frontend/Functionality.styl&quot;&#10;@require &quot;$RELATIVE_PATH_TO_NODE_MODULES$/node_modules/@yamato-daiwa/frontend/Components.styl&quot;" description="Import YDF styles" toReformat="false" toShortenFQNames="true">
+    <variable name="RELATIVE_PATH_TO_NODE_MODULES" expression="" defaultValue="&quot;..&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_RULESET_LIST" value="true" />
+    </context>
+  </template>
+  <template name="med2p" value="WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 500px    &#10;    &#10;WideScreensConfiguration()&#10;  @media screen and (min-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH)&#10;    {block}&#10;&#10;NarrowScreensConfiguration()&#10;  @media screen and (max-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}" description="Media queries definitions for 2-pattern layout" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="med5p" value="EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 1024px&#10;WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 860px&#10;MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 680px&#10;NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 500px&#10;&#10;ExtraWideScreensLayout()&#10;  @media screen and (min-width: EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH)&#10;    {block}&#10;&#10;WideScreensLayout()&#10;  @media screen and (min-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;MediumScreensLayout()&#10;  @media screen and (min-width: MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;NarrowScreensLayout()&#10;  @media screen and (min-width: NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;ExtraNarrowScreensLayout()&#10;  @media screen and (max-width: NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}" description="Media queries definitions for 5-patterns layout" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="med4c" value="EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 1024px&#10;WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 860px&#10;MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 680px&#10;NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 500px&#10;&#10;ExtraWideScreensLayout()&#10;  @media screen and (min-width: EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH)&#10;    {block}&#10;&#10;WideScreensLayout()&#10;  @media screen and (min-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;NarrowScreensLayout()&#10;  @media screen and (min-width: NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;ExtraNarrowScreensLayout()&#10;  @media screen and (max-width: NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}" description="Media queries definitions for 4-patterns layout" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+</templateSet>

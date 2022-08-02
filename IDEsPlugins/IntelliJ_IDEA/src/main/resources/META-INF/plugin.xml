@@ -8,11 +8,9 @@
 
     <extensions defaultExtensionNs="com.intellij">
 
-        <defaultLiveTemplates file="liveTemplates/Yamato-Daiwa Frontend _Pug_.xml"/>
-        <defaultLiveTemplates file="liveTemplates/Yamato-Daiwa Frontend _Stylus_.xml"/>
-        <defaultLiveTemplates file="liveTemplates/Yamato-Daiwa Frontend _Vue _ TypeScript_.xml"/>
-
-        <fileTemplateGroup implementation="com.github.tokugawatakeshi.temp.TestFileTemplateGroupFactory"/>
+        <defaultLiveTemplates file="liveTemplates/Yamato Daiwa Frontend - Pug.xml"/>
+        <defaultLiveTemplates file="liveTemplates/Yamato Daiwa Frontend - Stylus.xml"/>
+        <defaultLiveTemplates file="liveTemplates/Yamato Daiwa Frontend - Vue_TypeScript.xml"/>
 
     </extensions>
 

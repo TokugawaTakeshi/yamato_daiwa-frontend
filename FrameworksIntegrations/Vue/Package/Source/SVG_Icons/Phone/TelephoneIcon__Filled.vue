@@ -2,6 +2,6 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Phone/TelephoneIcon__Filled.pug
 
-+TelephoneIcon__Filled
++Telephone__Filled--YDF_Icon
 
 </template>
