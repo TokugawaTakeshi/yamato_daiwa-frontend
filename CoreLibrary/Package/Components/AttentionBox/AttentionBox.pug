@@ -23,7 +23,7 @@ mixin AttentionBox--YDF(properties)
 
 
   .AttentionBox--YDF&attributes(attributes)(
-    class= rootElementCSS_Classes
+    class= rootElementModifierCSS_Classes
     role="alert"
   )
 
@@ -32,28 +32,28 @@ mixin AttentionBox--YDF(properties)
       case decoration
 
         when AttentionBox__YDF.DecorativeVariations.importantInfo
-          +ExclamationMarkIcon__Circled__Filled--YDF_Icon.AttentionBox--YDF-PrependedSVG_Icon
+          +ExclamationMarkIcon__Circled__Filled--YDF_Icon.AttentionBox--YDF-SVG_Icon
 
         when AttentionBox__YDF.DecorativeVariations.secondaryInfo
-          +ExclamationMarkIcon__Triangled__Filled--YDF_Icon.AttentionBox--YDF-PrependedSVG_Icon
+          +ExclamationMarkIcon__Triangled__Filled--YDF_Icon.AttentionBox--YDF-SVG_Icon
 
         when AttentionBox__YDF.DecorativeVariations.notice
-          +Pencil__Circled__Filled--YDF_Icon.AttentionBox--YDF-PrependedSVG_Icon
+          +Pencil__Circled__Filled--YDF_Icon.AttentionBox--YDF-SVG_Icon
 
         when AttentionBox__YDF.DecorativeVariations.error
-          +ExclamationMarkIcon__Circled__Filled--YDF_Icon.AttentionBox--YDF-PrependedSVG_Icon
+          +ExclamationMarkIcon__Circled__Filled--YDF_Icon.AttentionBox--YDF-SVG_Icon
 
         when AttentionBox__YDF.DecorativeVariations.warning
-          +ExclamationMarkIcon__Triangled__Filled--YDF_Icon.AttentionBox--YDF-PrependedSVG_Icon
+          +ExclamationMarkIcon__Triangled__Filled--YDF_Icon.AttentionBox--YDF-SVG_Icon
 
         when AttentionBox__YDF.DecorativeVariations.success
-          +CheckmarkIcon__Circled__Filled--YDF_Icon.AttentionBox--YDF-PrependedSVG_Icon
+          +CheckmarkIcon__Circled__Filled--YDF_Icon.AttentionBox--YDF-SVG_Icon
 
         when AttentionBox__YDF.DecorativeVariations.guidance
-          +InfoSign__Circled__Filled--YDF_Icon.AttentionBox--YDF-PrependedSVG_Icon
+          +InfoSign__Circled__Filled--YDF_Icon.AttentionBox--YDF-SVG_Icon
 
         when AttentionBox__YDF.DecorativeVariations.question
-          +QuestionMark__Circled__Filled--YDF_Icon.AttentionBox--YDF-PrependedSVG_Icon
+          +QuestionMark__Circled__Filled--YDF_Icon.AttentionBox--YDF-SVG_Icon
 
     div.AttentionBox--YDF-MainSection
 

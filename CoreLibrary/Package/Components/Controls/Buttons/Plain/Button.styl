@@ -6,7 +6,7 @@
 @require "Themes/Regular/DecorativeVariations/Button-LinkLikeDecoration.styl"
 
 
-Button = {
+Button--YDF = {
 
   defaultProperties: {
 
@@ -30,11 +30,9 @@ Button = {
 }
 
 
-provideButtonComponent(preset= Button.defaultProperties, overridings = {})
+provideButtonComponent(preset= Button--YDF.defaultProperties, overridings = {})
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
-  CSS_NAMESPACE = "Button--YDF"
-  ROOT_ELEMENT_SELECTOR = "." + CSS_NAMESPACE
 
 
   // === Methods =======================================================================================================
@@ -99,9 +97,10 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
       }
     )
 
+    +provideDefaultSelectorWhenRootAndApply(".Button--YDF")
 
-    applyIfNotNull({ min-width: variation.rootElement.minimalWidth })
-    BordersSizing(variation.rootElement.borders)
+      applyIfNotNull({ min-width: variation.rootElement.minimalWidth })
+      BordersSizing(variation.rootElement.borders)
 
 
     /a{selector()} .Button--YDF-Label,
@@ -200,12 +199,14 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
   // --- Decoration ----------------------------------------------------------------------------------------------------
   applyDecorativeVariation(variation)
 
-    applyIfNotNull({
-      border-style: variation.rootElement.borders.style,
-      border-color: variation.rootElement.borders.color,
-      background-color: variation.rootElement.background.color,
-      color: variation.rootElement.text.color
-    })
+    +provideDefaultSelectorWhenRootAndApply(".Button--YDF")
+
+      applyIfNotNull({
+        border-style: variation.rootElement.borders.style,
+        border-color: variation.rootElement.borders.color,
+        background-color: variation.rootElement.background.color,
+        color: variation.rootElement.text.color
+      })
 
 
     .Button--YDF-SVG_Icon
@@ -272,7 +273,7 @@ provideButtonComponent(preset= Button.defaultProperties, overridings = {})
   applyBasicRules()
 
   applyComponentThemes({
-    CSS_Namespace: CSS_NAMESPACE,
+    CSS_Namespace: "Button--YDF",
     themes: properties.themes,
     applyGeometricVariation: applyGeometricVariation,
     applyDecorativeVariation: applyDecorativeVariation

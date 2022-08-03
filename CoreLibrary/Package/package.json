@@ -1,6 +1,6 @@
 {
   "name": "@yamato-daiwa/frontend",
-  "version": "1.2.0",
+  "version": "2.0.0-alpha.0",
   "description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
   "keywords": [
     "frontend",
@@ -55,3 +55,4 @@
     "Alpha realize": "npm publish --tag alpha"
   }
 }
+
