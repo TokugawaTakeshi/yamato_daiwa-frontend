@@ -3,9 +3,6 @@
   /* [ Theory ] Required for HTML validity */
   const HTML_PAGE_DEFAULT_LANGUAGE_SPECIFICATION__BCP47 = "en";
 
-  let BEM_ELEMENT_SEPARATOR = "-";
-  let BEM_MODIFIER_SEPARATOR = "__";
-
   const textOverflowSafetyTest = "OverflowTest:ÀÇĤfhjgpjklbĜiEstosTreMalfacileEnvolverLaVicoAbcdefghijklmnopqrstuvwxyza" +
           "bcdefgghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghi" +
           "jklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwx";
@@ -19,16 +16,7 @@
   };
 
 
-mixin HighDummy(backgroundColor)
-  - backgroundColor = backgroundColor || "cornflowerblue"
-  div(style=`width: 100px; height: 2000px; background: ${backgroundColor};`)
-
-mixin WideDummy(backgroundColor)
-  - backgroundColor = backgroundColor || "cornflowerblue"
-  div(style=`width: 2000px; height: 100px; background: ${backgroundColor};`)
-
-
-include Markup/PugExtensions.generated.pug
+include Markup/InlineECMAScript/PugExtensions.generated.pug
 
 -
 
@@ -37,11 +25,49 @@ include Markup/PugExtensions.generated.pug
     /* === Numbers ================================================================================================== */
     formatNumberWith4KetaKanji,
     isStringifiedNonNegativeIntegerOfRegularNotation,
+    roundToSpecifiedNearestDecimalPlaceValue,
     separateEach3DigitsGroupWithComma,
     separateEach4DigitsGroupWithComma,
 
     /* === Strings ================================================================================================== */
+    EscapeCharacters,
+    latinCharacters__lowercase,
+    latinCharacters__uppercase,
+    SpaceCharacters,
+    SpaceCharactersStringifiedHexCharactersForRegularExpressionWithUnicodeFlag,
+    stringifiedDigits,
+    areStringifiedDigitsOnly,
+    capitalizeFirstCharacter,
+    EmailAddress,
+    getLastCharacter,
+    getPositionsOfAllSubstringOccurrences,
+    hasStringOnlySpecificCharacters,
+    insertSubstring,
+    insertSubstringIf,
+    removeAllSpecifiedCharacters,
+    removeLastCharacter,
+    removeNonDigitsCharacters,
+    removeNthCharacter,
+    removeSpecificCharacterFromCertainPosition,
     replace2OrMoreSpacesTo1,
+    replaceBrHTML_TagToNewLineEscapeSequence,
+    replaceDoubleBackslashesWithForwardSlashes,
+    reverseString,
+    splitString,
+    stringifyAndFormatArbitraryValue,
+    trimSpaces,
+
+    /* === Arrays ===================================================================================================== */
+    addElementsToArray,
+    getArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne,
+    getIndexesOfArrayElementsWhichSatisfiesThePredicate,
+    getIndexOfArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne,
+    getLastElementOfNonEmptyArray,
+    removeArrayElementsByIndexes,
+    removeArrayElementsByPredicates,
+    replaceArrayElementsByIndexesImmutably,
+    replaceArrayElementsByPredicates,
+    twoDimensionalizeArray,
 
     /* === Random values generators ================================================================================= */
     getRandomArrayElement,
@@ -52,60 +78,6 @@ include Markup/PugExtensions.generated.pug
     buildEmailLinkHREF_ArttributeValue,
     buildPhoneNumberLinkHREF_ArttributeValue
     // -----------------------------------------------------------------------------------------------------------------
-    /*
-    areStringifiedDigitsOnly,
-    capitalizeFirstSymbol,
-    getLastSymbol,
-    getPositionsOfAllSubstringOccurrences,
-    insertSubstring,
-    insertSubstringIf,
-    removeAllSpecifiedCharacters,
-    removeNonDigitsCharacters,
-    removeNthSymbol,
-    replace2OrMoreSpacesTo1,
-    replaceBrHTML_TagToNewLineEscapeSequence,
-    reverseString,
-    splitString,
-    stringifyAndFormatUnknownAtAdvanceEntity,
-
-    /!* === Arrays =================================================================================================== *!/
-    getArrayElementWhichMustExistByPredicate,
-    getLastElementOfNonEmptyArray,
-    getIndexesOfArrayElementsWhichSatisfiesToPredicate,
-    getIndexOfArrayElementByPredicate,
-
-    /!* === Sets ===================================================================================================== *!/
-    addMultipleElementsToSet,
-
-    /!* === Maps ===================================================================================================== *!/
-    addMultiplePairsToMap,
-    createMapBasedOnOtherMap,
-    filterMap,
-
-    /!* === Type guards ============================================================================================== *!/
-    /!* --- Numbers -------------------------------------------------------------------------------------------------- *!/
-    isDecimalFractionOfAnySign,
-    isNaturalNumber,
-    isNegativeDecimalFraction,
-    isNegativeInteger,
-    isNegativeIntegerOrZero,
-    isNonNegativeInteger,
-    isNumber,
-    isPositiveDecimalFraction,
-
-    /!* --- Strings -------------------------------------------------------------------------------------------------- *!/
-    isEmptyString,
-    isNonEmptyString,
-    isString,
-    isStringOfLength,
-
-    /!* --- Objects -------------------------------------------------------------------------------------------------- *!/
-    isArbitraryObject,
-    isEmptyObject,
-    isNonEmptyObject,
-    isNonNullArbitraryObject,
-    isNonNullObject,
-    */
 
   } = global.__PUG_EXTENSIONS_EXPORTS__;
 
