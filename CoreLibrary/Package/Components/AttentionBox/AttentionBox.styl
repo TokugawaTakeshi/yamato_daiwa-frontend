@@ -1,0 +1,132 @@
+@require "Themes/Regular/GeometricVariations/AttentionBox-RegularGeometry.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-ImportantInfoDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-SecondaryInfoDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-NoticeDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-ErrorDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-WarningDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-SuccessDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-GuidanceDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-QuestionDecoration.styl"
+
+
+AttentionBox--YDF = {
+
+  defaultProperties: {
+
+    themes: {
+      regular: {
+
+        geometricVariations: {
+          regular: AttentionBox-RegularGeometry--YDF
+        },
+        decorativeVariations: {
+          importantInfo: AttentionBox-ImportantInfoDecoration--YDF,
+          secondaryInfo: AttentionBox__SecondaryInfoDecoration--YDF
+          notice: AttentionBox__NoticeDecoration--YDF,
+          error: AttentionBox__ErrorDecoration--YDF,
+          warning: AttentionBox__WarningDecoration--YDF,
+          success: AttentionBox__SuccessDecoration--YDF,
+          guidance: AttentionBox__GuidanceDecoration--YDF,
+          question: AttentionBox__QuestionDecoration--YDF
+        }
+      }
+    }
+  }
+}
+
+
+provideAttentionBoxComponent--YDF(preset = AttentionBox--YDF.defaultProperties, overridings = {})
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+
+
+  // === Methods =======================================================================================================
+  applyBasicRules()
+
+    .AttentionBox--YDF
+
+      display flex
+      align-items center
+
+
+      &-SVG_Icon
+
+        flex-shrink 0
+
+
+      &-MainSection
+
+        flex-grow 1
+
+
+      &-DismissingButton
+
+        ButtonLikeElementsPrimer()
+
+
+  // --- Geometry ------------------------------------------------------------------------------------------------------
+  applyGeometricVariation(variation)
+
+    +provideDefaultSelectorWhenRootAndApply(".AttentionBox--YDF")
+
+      BordersSizing(variation.rootElement.borders)
+      Paddings(variation.rootElement.paddings)
+
+
+    .AttentionBox--YDF-SVG_Icon
+
+      applyIfNotNull({
+        width: variation.SVG_Icon.width,
+        height: variation.SVG_Icon.height
+      })
+
+
+    .AttentionBox--YDF-MainSection
+
+      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
+        fontSize: variation.mainSection.text.size,
+        lineSpacing: variation.mainSection.text.lineSpacing,
+        lineHeight: variation.mainSection.text.lineHeight
+      })
+
+      retireFrom({
+        targetElementSelector: ".AttentionBox--YDF-SVG_Icon",
+        referenceElementSelector: selector(),
+        x: variation.mainSection.spacing.afterSVG_Icon
+      })
+
+
+  // --- Decoration ----------------------------------------------------------------------------------------------------
+  applyDecorativeVariation(variation)
+
+    +provideDefaultSelectorWhenRootAndApply(".AttentionBox--YDF")
+
+      border-style: variation.rootElement.borders.style
+      border-color: variation.rootElement.borders.color
+
+      applyIfNotNull({
+        background-color: variation.rootElement.background.color,
+        background-image: variation.rootElement.background.image
+      })
+
+
+    .AttentionBox--YDF-MainSection
+
+      font-weight: variation.mainSection.font.fontWeight
+      color: variation.mainSection.font.color
+
+
+    .AttentionBox--YDF-SVG_Icon
+
+      fill: variation.SVG_Icon.color
+
+
+  // --- Applying ------------------------------------------------------------------------------------------------------
+  applyBasicRules()
+
+  applyComponentThemes({
+    CSS_Namespace: "AttentionBox--YDF",
+    themes: properties.themes,
+    applyGeometricVariation: applyGeometricVariation,
+    applyDecorativeVariation: applyDecorativeVariation
+  })

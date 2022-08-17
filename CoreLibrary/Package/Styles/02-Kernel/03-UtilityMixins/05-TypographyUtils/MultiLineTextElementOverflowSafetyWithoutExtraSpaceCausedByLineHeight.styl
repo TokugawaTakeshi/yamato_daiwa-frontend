@@ -11,7 +11,15 @@ MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(compoundPa
       },
       lineHeight: {
         type: DataTypes.dimensionalAmount DataTypes.dimensionlessAmount,
-        required: true
+        required: false
+      },
+      lineSpacing: {
+        type: DataTypes.dimensionalAmount DataTypes.dimensionlessAmount,
+        requiredIf: {
+          predicate: @(compoundParameter) { return isNull(compoundParameter.lineHeight) },
+          descriptionForLogging: "The 'lineHeight' is not specified"
+        },
+        incompatibleWith: "lineHeight"
       },
       doNotUsePseudoElements: {
         type: DataTypes.boolean,
@@ -23,14 +31,26 @@ MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(compoundPa
 
 
   fontSize = compoundParameter.fontSize
+
   lineHeight = compoundParameter.lineHeight
-  lineHeight__dimensionalValue = isDimensionlessAmount(lineHeight) ? lineHeight * fontSize : lineHeight
+
+  lineHeight = isNotNull(compoundParameter.lineHeight) ? compoundParameter.lineHeight :\
+      getLineHeightByFontSizeAndLineSpacing({
+        fontSize: fontSize,
+        lineSpacing: compoundParameter.lineSpacing
+      })
+
+  lineSpacing = isNotNull(compoundParameter.lineSpacing) ? compoundParameter.lineSpacing :\
+      getLineSpacingByFontSizeAndLineHeight({
+        fontSize: fontSize,
+        lineHeight: compoundParameter.lineHeight
+      })
 
   doNotUsePseudoElements = compoundParameter.doNotUsePseudoElements
 
   extraSpaceCausedByLineHeightAtTopOrBottom = buildCalcExpression(
-    "(${lineHeight__dimensionalValue} - ${fontSize}) / 2",
-    { lineHeight__dimensionalValue: round(lineHeight__dimensionalValue), fontSize: fontSize }
+    "(${lineHeight} - ${fontSize}) / 2",
+    { lineHeight: lineHeight, fontSize: fontSize }
   )
 
   topOrBottomMarginValue = buildCalcExpression(

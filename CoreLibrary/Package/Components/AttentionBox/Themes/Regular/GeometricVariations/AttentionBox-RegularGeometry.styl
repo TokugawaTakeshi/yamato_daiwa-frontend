@@ -1,0 +1,77 @@
+AttentionBox-RegularGeometry--YDF = {
+
+  rootElement: {
+    borders: specifyBordersSizing({
+      thickness: { all: 1px },
+      radius: { all: 3px }
+    }),
+    paddings: specifyPaddings({
+      horizontalSymmetric: 12px,
+      verticalSymmetric: 10px
+    })
+  },
+
+  SVG_Icon: {
+    width: null,
+    height: 18px
+  },
+
+  mainSection: {
+    text: {
+      size: 1rem,
+      lineSpacing: 0.1rem,
+      lineHeight: null
+    },
+    spacing: {
+      afterSVG_Icon: 1rem
+    }
+  },
+
+  heading: {
+    text: {
+      size: 1.5rem,
+      lineSpacing: 0.2rem,
+      lineHeight: null
+    }
+  },
+
+  subheading: {
+    text: {
+      size: 1.5rem,
+      lineSpacing: 0.2rem,
+      lineHeight: null
+    },
+    spacing: {
+      beforeHeading: 0.2rem
+    }
+  }
+}
+
+
+
+//subheading: {
+//  fontSize: 16px,
+//  lineHeight: 20px,
+//  positionalRelationship: {
+//    heading: { retireFromIt: 6px }
+//  }
+//},
+//
+//paragraph: {
+//  fontSize: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
+//  lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS,
+//  positionalRelationship: {
+//    heading: { retireFromIt: 8px },
+//    subheading: { retireFromIt: 6px, pushItFromSelf: 8px },
+//    paragraph: { retireFromIt: 6px }
+//  }
+//},
+//
+//divider: {
+//  thickness: 2px,
+//  positionalRelationship: {
+//    subheading: { retireFromIt: 4px },
+//    paragraph: { retireFromIt: 4px, pushItFromSelf: 6px }
+//  }
+//}
+//}

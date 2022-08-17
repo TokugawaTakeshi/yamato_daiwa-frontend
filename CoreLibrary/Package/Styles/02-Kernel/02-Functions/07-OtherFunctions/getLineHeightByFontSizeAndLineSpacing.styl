@@ -18,6 +18,6 @@ getLineHeightByFontSizeAndLineSpacing(compoundParameter, restParameters__MUST_NO
   })
 
   return buildCalcExpression(
-    "${fontSize} + 2*${lineSpacing}",
+    "${fontSize} + ${lineSpacing}",
     { fontSize: compoundParameter.fontSize, lineSpacing: compoundParameter.lineSpacing }
   )

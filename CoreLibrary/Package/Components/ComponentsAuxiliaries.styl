@@ -52,8 +52,8 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
           modifierSeparator: "__"
         })
 
-        if (selector() == "." + CSS_Namespace) {
-          /.{geometricVariationCSS_Class} {
+        if (selector() == "&") {
+          .{geometricVariationCSS_Class} {
             applyGeometricVariation(geometricVariation)
           }
         } else {
@@ -79,8 +79,8 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
           modifierSeparator: "__"
         })
 
-        if (selector() == "." + CSS_Namespace) {
-          /.{decorativeVariationCSS_Class} {
+        if (selector() == "&") {
+          .{decorativeVariationCSS_Class} {
             applyDecorativeVariation(decorativeVariation)
           }
         } else {
@@ -95,9 +95,7 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
 
   if (getObjectNonNullValuesCount(themes) == 1) {
 
-    .{CSS_Namespace} {
-      applyTheme(getFirstNonNullArrayElement(values(themes)))
-    }
+    applyTheme(getFirstNonNullArrayElement(values(themes)))
 
   } else {
 
