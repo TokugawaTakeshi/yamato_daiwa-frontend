@@ -1,6 +1,6 @@
-ImprovedUnorderedList--YDF = {
+ImprovedList--YDF = {
 
-  CSS_Namespace: "ImprovedUnorderedList--YDF",
+  CSS_NAMESPACE: "ImprovedList--YDF",
 
   defaultProperties: {
 
@@ -33,7 +33,7 @@ ImprovedUnorderedList--YDF = {
 }
 
 
-provideImprovedListYDF_Component(preset = ImprovedUnorderedList--YDF.defaultProperties, overridings = {})
+provideImprovedListYDF_Component(preset = ImprovedList--YDF.defaultProperties, overridings = {})
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
 
@@ -77,9 +77,3 @@ provideImprovedListYDF_Component(preset = ImprovedUnorderedList--YDF.defaultProp
         fontSize: BASIC_FONT_SIZE,
         lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS
       })
-
-
-  providePositionalRelationshipWithTypographyElements({
-    presets: properties.positionalRelationship.withTypographyElements,
-    componentRootClass: ImprovedUnorderedList--YDF.CSS_Namespace
-  })

@@ -1,0 +1,209 @@
+extends ../../../PagesTemplates/RegularWebPage.pug
+
+
+block append Requirements
+
+  include ../../../Components.pug
+
+
+block append Metadata
+
+  - styleSheetsURIs = [ "./Badge.test.css" ]
+
+
+block append StatesSimulations
+
+  -
+
+    const StatesSimulations = {
+      headings: true,
+      partials: {
+        valuesOnly: true,
+        keysAndValues: true,
+        iconsAndKeysAndValues: true,
+        iconsAndValues: true,
+        geometricModifiers: {
+          pillShape: true
+        },
+        overflowTesting: {
+          multiline: true,
+          singleLine: true
+        },
+        loadingPlaceholder: true
+      }
+    }
+
+
+block append PageContent
+
+  .BadgeComponentTesting
+
+    if StatesSimulations.headings
+
+      h1.Heading1 Badge component testing
+
+
+    //- === Values only ================================================================================================
+    if StatesSimulations.partials.valuesOnly
+
+      if StatesSimulations.headings
+
+        h2.Heading2 Value only
+
+      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+        .BadgeComponentTesting-BadgesFlow
+
+          each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
+
+            +Badge--YDF({
+              value: "Sample",
+              geometry: geometricVariation,
+              decoration: decorativeVariation
+            })
+
+
+    //- === Keys and values ============================================================================================
+    if StatesSimulations.partials.keysAndValues
+
+      if StatesSimulations.headings
+
+        h2.Heading2 Keys and values
+
+      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+        .BadgeComponentTesting-BadgesFlow
+
+          each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
+
+            +Badge--YDF({
+              key: "Key",
+              value: "Value",
+              geometry: geometricVariation,
+              decoration: decorativeVariation
+            })
+
+
+    //- === Icons, keys and values =====================================================================================
+    if StatesSimulations.partials.iconsAndKeysAndValues
+
+      if StatesSimulations.headings
+
+        h2.Heading2 Icons, keys and values
+
+      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+        .BadgeComponentTesting-BadgesFlow
+
+          each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
+
+            +Badge--YDF({
+              key: "Key",
+              value: "value",
+              geometry: geometricVariation,
+              decoration: decorativeVariation
+            }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
+
+
+    //- === Icons and values ===========================================================================================
+    if StatesSimulations.partials.iconsAndValues
+
+      if StatesSimulations.headings
+
+        h2.Heading2 Icons and values
+
+      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+        .BadgeComponentTesting-BadgesFlow
+
+          each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
+
+            +Badge--YDF({
+              value: "value",
+              geometry: geometricVariation,
+              decoration: decorativeVariation
+            }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
+
+
+    //- === Geometric modifiers ========================================================================================
+    if StatesSimulations.partials.geometricModifiers.pillShape
+
+      if StatesSimulations.headings
+
+        h2.Heading2 Geometric modifiers
+
+        h3.Heading3 Pill shape
+
+      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+        .BadgeComponentTesting-BadgesFlow
+
+          each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
+
+            +Badge--YDF({
+              value: "Value",
+              decoration: decorativeVariation,
+              geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ]
+            })
+
+
+    //- === Overflow testing ===========================================================================================
+    if StatesSimulations.partials.overflowTesting.multiline || StatesSimulations.partials.overflowTesting.singleLine
+
+      if StatesSimulations.headings
+
+        h2.Heading2 Overflow testing
+
+
+      if StatesSimulations.partials.overflowTesting.multiline
+
+        if StatesSimulations.headings
+
+          h3.Heading3 Multiline
+
+        .BadgeComponentTesting-BadgesFlow
+
+          +Badge--YDF({
+            key: textOverflowSafetyTest,
+            value: textOverflowSafetyTest,
+            geometry: geometricVariation,
+            decoration: Badge__YDF.DecorativeVariations.achromaticPastel
+          })
+
+
+      if StatesSimulations.partials.overflowTesting.singleLine
+
+        if StatesSimulations.headings
+
+          h3.Heading3 Single line
+
+        .BadgeComponentTesting-BadgesFlow.BadgeComponentTesting-BadgesFlow__LimitedChildrenMaximalWidth
+
+          +Badge--YDF({
+            key: textOverflowSafetyTest,
+            value: textOverflowSafetyTest,
+            geometry: geometricVariation,
+            forbidMultiLine: true,
+            decoration: Badge__YDF.DecorativeVariations.achromaticPastel
+          })
+
+
+    //- === Loading placeholder ========================================================================================
+    if StatesSimulations.partials.loadingPlaceholder
+
+      if StatesSimulations.headings
+
+        h2.Heading2 Loading placeholder
+
+      .BadgeComponentTesting-BadgesFlow
+
+        each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+          +Badge--YDF-LoadingPlaceholder({
+            geometry: geometricVariation,
+          })
+
+          +Badge--YDF-LoadingPlaceholder({
+            geometry: geometricVariation,
+            geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ]
+          })

@@ -1,3 +1,10 @@
+/* === Independent execution
+stylus Tests/Components/AttentionBox/AttentionBox.test.styl `
+    --out Tests/Build/CompiledCodeCheckOnly/Components/AttentionBox/AttentionBox.test.css `
+    --include Styles
+*/
+
+
 @require "../../../Functionality.styl"
 @require "../../../Components.styl"
 
@@ -5,27 +12,27 @@
 CrossBrowserStylesReset()
 InitialGlobalCSS_Rules()
 
+provideTypography()
 
-provideAttentionBoxComponent--YDF()
+provideAttentionBoxYDF_Component()
 
 
-.AttentionBoxesShowcasesFlow
+.AttentionBoxComponentTesting
 
-  display flex
-  flex-direction column
-  row-gap 32px
-
-  Centerer()
   padding 12px 16px
 
-
-.AttentionBoxesShowcase
-
-  display flex
-  flex-direction column
-  row-gap 12px
+  Centerer({ maximalWidth: 2*NARROWEST_SCREEN_WIDTH_UNIT })
 
 
-  &-Heading
+  &-AttentionBoxesFlow
 
-    Heading2--YDF()
+    PositionalRelationship({
+      definitions:\
+          (".Heading2" { retireFromIt: { y: 8px }, pushItFromSelf: { y: 16px } })\
+          (".Heading3" { retireFromIt: { y: 8px } })
+    })
+
+
+    >* + *
+
+      margin-top 6px

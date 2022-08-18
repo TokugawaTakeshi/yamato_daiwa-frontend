@@ -1,0 +1,104 @@
+include Badge.class.pug
+
+
+mixin Badge--YDF(properties)
+
+  -
+
+    const {
+
+      key,
+      value,
+      forbidMultiLine = false,
+
+      theme,
+      areThemesExternal = Badge__YDF.areThemesExternal,
+      geometry = Badge__YDF.GeometricVariations.regular,
+      geometricModifiers = [],
+      decoration,
+      decorativeModifiers = []
+
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: Badge__YDF.propertiesSpecification,
+      mixinName: Badge__YDF.CSS_NAMESPACE
+    })
+
+    const rootElementModifierCSS_Classes = [
+
+      ...forbidMultiLine ? [ `${ Badge__YDF.CSS_NAMESPACE }__SingleLineMode` ] : [],
+
+      ...Object.entries(Badge__YDF.Themes).length > 1 && !areThemesExternal ?
+          [ ComponentsAuxiliaries.generateThemeCSS_Class(Badge__YDF.CSS_NAMESPACE, theme) ] : [],
+
+      ...Object.entries(Badge__YDF.GeometricVariations).length > 1 ?
+          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(Badge__YDF.CSS_NAMESPACE, geometry) ] : [],
+
+      ...geometricModifiers.includes(Badge__YDF.GeometricModifiers.pillShape) ?
+          [
+            ComponentsAuxiliaries.generateGeometricModifierCSS_Class(
+              Badge__YDF.CSS_NAMESPACE, Badge__YDF.GeometricModifiers.pillShape
+            )
+          ] : [],
+
+      ...Object.entries(Badge__YDF.DecorativeVariations).length > 1 ?
+          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(Badge__YDF.CSS_NAMESPACE, decoration) ] : [],
+
+      ...decorativeModifiers.includes(Badge__YDF.DecorativeModifiers.bordersDisguising) ?
+          [
+            ComponentsAuxiliaries.generateDecorativeModifierCSS_Class(
+              Badge__YDF.CSS_NAMESPACE, Badge__YDF.DecorativeModifiers.bordersDisguising
+            )
+          ] : []
+    ];
+
+
+  span.Badge--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
+
+    if block
+
+      block
+
+
+    if key
+
+      span.Badge--YDF-Key= key
+
+    span.Badge--YDF-Value= value
+
+
+mixin Badge--YDF-LoadingPlaceholder(properties)
+
+  -
+
+    const {
+      theme,
+      areThemesExternal = Badge__YDF.areThemesExternal,
+      geometry = Badge__YDF.GeometricVariations.regular,
+      geometricModifiers = []
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: {
+        geometry: Badge__YDF.propertiesSpecification.geometry,
+        geometricModifiers: Badge__YDF.propertiesSpecification.geometricModifiers
+      },
+      mixinName: "Badge--YDF-LoadingPlaceholder"
+    })
+
+    const rootElementModifierCSS_Classes = [
+      ...Object.entries(Badge__YDF.Themes).length > 1 && !areThemesExternal ?
+          [ ComponentsAuxiliaries.generateThemeCSS_Class(Badge__YDF.CSS_NAMESPACE, theme) ] : [],
+      ...Object.entries(Badge__YDF.GeometricVariations).length > 1 ?
+          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(Badge__YDF.CSS_NAMESPACE, geometry) ] : [],
+      ...geometricModifiers.includes(Badge__YDF.GeometricModifiers.pillShape) ?
+          [ "Badge--YDF__PillShapeGeometricModifier" ] : []
+    ];
+
+
+  span.Badge--YDF.Badge--YDF__LoadingPlaceholder(
+    class= rootElementModifierCSS_Classes
+  )

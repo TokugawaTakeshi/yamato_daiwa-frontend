@@ -32,13 +32,27 @@ MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(compoundPa
 
   fontSize = compoundParameter.fontSize
 
-  lineHeight = compoundParameter.lineHeight
-
   lineHeight = isNotNull(compoundParameter.lineHeight) ? compoundParameter.lineHeight :\
       getLineHeightByFontSizeAndLineSpacing({
         fontSize: fontSize,
         lineSpacing: compoundParameter.lineSpacing
       })
+
+  lineHeight__dimensionalAmount = null
+  isLineHeightTheDimensionalAmount = isDimensionalAmount(lineHeight, { considerDimensionlessZeroAsDimensionalAmount: false })
+
+  if isLineHeightTheDimensionalAmount
+
+    lineHeight__dimensionalAmount = lineHeight
+
+  else if isDimensionlessAmount(lineHeight)
+
+    lineHeight__dimensionalAmount = lineHeight * fontSize
+
+  else
+
+    lineHeight__dimensionalAmount = lineHeight
+
 
   lineSpacing = isNotNull(compoundParameter.lineSpacing) ? compoundParameter.lineSpacing :\
       getLineSpacingByFontSizeAndLineHeight({
@@ -46,11 +60,9 @@ MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(compoundPa
         lineHeight: compoundParameter.lineHeight
       })
 
-  doNotUsePseudoElements = compoundParameter.doNotUsePseudoElements
-
   extraSpaceCausedByLineHeightAtTopOrBottom = buildCalcExpression(
-    "(${lineHeight} - ${fontSize}) / 2",
-    { lineHeight: lineHeight, fontSize: fontSize }
+    "(${lineHeight__dimensionalAmount} - ${fontSize}) / 2",
+    { lineHeight__dimensionalAmount: lineHeight__dimensionalAmount, fontSize: fontSize }
   )
 
   topOrBottomMarginValue = buildCalcExpression(
@@ -64,7 +76,7 @@ MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(compoundPa
   word-break break-all
 
 
-  if doNotUsePseudoElements
+  if compoundParameter.doNotUsePseudoElements
 
     margin-top topOrBottomMarginValue
     margin-bottom topOrBottomMarginValue

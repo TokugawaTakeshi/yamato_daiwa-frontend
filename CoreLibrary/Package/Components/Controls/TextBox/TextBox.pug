@@ -1,0 +1,126 @@
+include TextBox.class.pug
+
+
+mixin TextBox--YDF(properties, statesSimulations)
+
+  -
+
+    const COMPONENT_ID = TextBox__YDF.generateComponentID();
+
+    const {
+
+      HTML_Type = TextBox__YDF.HTML_Types.text,
+      label,
+      accessibilityGuidance,
+      externalLabelHTML_ID,
+      guidance,
+      placeholder,
+
+      value = "",
+
+      required = false,
+      displayAppropriateBadgeIfInputIsRequired = false,
+      displayAppropriateBadgeIfInputIsOptional = false,
+      minimalCharactersCount,
+      maximalCharactersCount,
+      minimalNumericValue,
+      maximalNumericValue,
+
+      multiline = false,
+      disabled = false,
+      readonly = false,
+
+      inputOrTextAreaElementHTML_ID = `${ COMPONENT_ID }-INPUT_OR_TEXTAREA`,
+      labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
+
+      theme = TextBox__YDF.Themes.regular,
+      externalThemes = TextBox__YDF.areThemesExternal,
+      geometry = TextBox__YDF.GeometricVariations.regular,
+      decoration = TextBox__YDF.GeometricVariations.regular,
+
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: TextBox__YDF.propertiesSpecification,
+      mixinName: "TextBox--YDF"
+    });
+
+    const {
+      invalidInputHighlightIfAnyErrorsMessages = false,
+      errorsMessages = []
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: statesSimulations,
+      parameterNumber: 2,
+      parameterName: "statesSimulations",
+      parameterPropertiesSpecification: TextBox__YDF.stateSimulationsSpecification,
+      mixinName: "TextBox--YDF"
+    });
+
+    const rootElementModifierCSS_Classes = [
+      ...Object.entries(TextBox__YDF.Themes).length > 1 && !externalThemes ?
+          [ TextBox__YDF.ThemesCSS_ModifiersNames[theme] ] : [],
+      ...Object.entries(TextBox__YDF.GeometricVariations).length > 1 ?
+          [ TextBox__YDF.GeometricVariationsCSS_ModifiersNames[geometry] ] : [],
+      ...Object.entries(TextBox__YDF.DecorativeVariations).length > 1 ?
+          [ TextBox__YDF.DecorativeVariationsCSS_Modifiers[decoration] ] : [],
+      ...invalidInputHighlightIfAnyErrorsMessages && errorsMessages.length > 0 ?
+          [ "TextBox--YDF-InvalidInputState" ] : []
+    ];
+
+
+  +CompoundControlShell--YDF(
+    {
+
+      label,
+      guidance,
+
+      required,
+      displayAppropriateBadgeIfInputIsRequired,
+      displayAppropriateBadgeIfInputIsOptional,
+      coreElementHTML_ID: inputOrTextAreaElementHTML_ID,
+      labelElementHTML_ID: labelElementHTML_ID,
+
+      theme: TextBox__YDF.selfAndCompoundControlShellThemesCorrespondence[theme],
+      externalThemes,
+      geometry: TextBox__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[geometry],
+      decoration: TextBox__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[decoration]
+
+    },
+    {
+      invalidInputHighlightIfAnyErrorsMessages,
+      errorsMessages,
+    }
+  ).TextBox--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
+
+    if multiline
+
+      textarea.TextBox--YDF-InputOrTextAreaElement(
+        placeholder= placeholder
+        minlength= minimalCharactersCount
+        maxlength= maximalCharactersCount
+        min= minimalNumericValue
+        max= maximalNumericValue
+        readonly= readonly
+        disabled= disabled
+        id= inputOrTextAreaElementHTML_ID
+        aria-label= accessibilityGuidance
+        aria-labelledby= externalLabelHTML_ID
+      )= value
+
+    else
+
+      input.TextBox--YDF-InputOrTextAreaElement(
+        type= HTML_Type
+        value= value
+        placeholder= placeholder
+        minlength= minimalCharactersCount
+        maxlength= maximalCharactersCount
+        min= minimalNumericValue
+        max= maximalNumericValue
+        readonly= readonly
+        disabled= disabled
+        id= inputOrTextAreaElementHTML_ID
+        aria-label= accessibilityGuidance
+        aria-labelledby= externalLabelHTML_ID
+      )

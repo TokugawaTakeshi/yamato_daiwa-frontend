@@ -1,78 +1,95 @@
 AttentionBox__QuestionDecoration--YDF = {
 
   rootElement: {
+
     borders: {
       style: solid,
-      color: JQueryUI_BaseTheme.question.borderColor
+      color: YDF_ColorPalette.deepPurple.slightlyDark
     },
+
     background: {
-      image: null,
-      color: JQueryUI_BaseTheme.question.background
+      color: YDF_ColorPalette.deepPurple.pastelLight,
+      image: null
     }
+
   },
 
   mainSection: {
     font: {
       weight: null,
-      color: JQueryUI_BaseTheme.question.fontColor
+      color: YDF_ColorPalette.deepPurple.slightlyDark
     }
   },
 
   SVG_Icon: {
-    color: JQueryUI_BaseTheme.question.iconsColor
+    color: YDF_ColorPalette.deepPurple.slightlyDark
   },
 
+  dismissingButton: {
 
-  heading: {
-    font: {
-      weight: bold,
-      color: #345778
-    }
-  },
-
-  subheading: {
-    font: {
-      weight: null,
-      color: #4F77A6
-    }
-  },
-
-  paragraph: {
-    font: {
-      color: #345778
-    }
-  },
-
-  divider: {
-    color: #8AABCB
-  },
-
-  dismissButton: {
-    defaultState: {
-      background: #00CCC5,
+    background: {
+      color: YDF_ColorPalette.deepPurple.slightlyDark,
       shadow: null
     },
-    hoverState: {
-      background: #48F9EC,
-      shadow: null
-    },
-    tabbedState: {
-      background: null,
-      shadow: 0 0 0 4px #CCCCCC
-    },
-    activeState: {
-      background: #1D938D,
-      shadow: null
+
+    stateDependent: {
+
+      hover: {
+        background: {
+          color: YDF_ColorPalette.deepPurple.pastelLight,
+          shadow: null
+        }
+      },
+
+      focus: {
+        background: {
+          color: YDF_ColorPalette.deepPurple.pastelLight,
+          shadow: null
+        }
+      },
+
+      active: {
+        background: {
+          color: YDF_ColorPalette.deepPurple.pastelLight,
+          shadow: null
+        }
+      }
+
     }
+
   },
 
-  yamatoDaiwaInformationDesign: {
-    importantEntity: { font: { color: null } },
-    secondaryEntity: { font: { color: null } },
-    definableTerm: { font: { color: null } },
-    term: { font: { color: null } },
-    term__contrast: { font: { color: null } },
-    keyword: { font: { color: null } },
-    keyword__contrast: { font: { color: null } }
+  typographyAssimilation: {
+    heading2: {
+      text: {
+        color: YDF_ColorPalette.deepPurple.dark
+      }
+    },
+    heading3: {
+      text: {
+        color: YDF_ColorPalette.deepPurple.mediumDark
+      }
+    },
+    heading4: {
+      text: {
+        color: YDF_ColorPalette.deepPurple.slightlyDark
+      }
+    },
+    heading5: {
+      text: {
+        color: YDF_ColorPalette.deepPurple.slightlyDark
+      }
+    },
+    heading6: {
+      text: {
+        color: YDF_ColorPalette.deepPurple.slightlyDark
+      }
+    },
+    paragraph: {
+      text: {
+        color: YDF_ColorPalette.deepPurple.mediumDark
+      }
+    }
   }
+
 }

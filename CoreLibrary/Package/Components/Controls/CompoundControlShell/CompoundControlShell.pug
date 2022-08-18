@@ -1,0 +1,98 @@
+include CompoundControlShell.class.pug
+
+
+mixin CompoundControlShell--YDF(properties, statesSimulations)
+
+  -
+
+    const {
+
+      label,
+      guidance,
+
+      required = false,
+      displayAppropriateBadgeIfInputIsRequired = false,
+      displayAppropriateBadgeIfInputIsOptional = false,
+      coreElementHTML_ID,
+      labelElementHTML_ID,
+      mainSlotWrapperAdditionalCSS_Classes = [],
+
+      theme = CompoundControlShell__YDF.Themes.regular,
+      externalThemes = CompoundControlShell__YDF.areThemesExternal,
+      geometry = CompoundControlShell__YDF.GeometricVariations.regular,
+      decoration = CompoundControlShell__YDF.DecorativeVariations.regular
+
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: CompoundControlShell__YDF.propertiesSpecification,
+      mixinName: "CompoundControlShell--YDF"
+    });
+
+    const {
+      invalidInputHighlightIfAnyErrorsMessages = false,
+      errorsMessages = []
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: statesSimulations,
+      parameterNumber: 2,
+      parameterName: "statesSimulations",
+      parameterPropertiesSpecification: CompoundControlShell__YDF.stateSimulationsSpecification,
+      mixinName: "CompoundControlShell--YDF"
+    });
+
+    const { localization } = CompoundControlShell__YDF;
+
+    const rootElementModifierCSS_Classes = [
+      ...Object.entries(CompoundControlShell__YDF.Themes).length > 1 && !externalThemes ?
+          [ CompoundControlShell__YDF.ThemesCSS_ModifiersNames[theme] ] : [],
+      ...Object.entries(CompoundControlShell__YDF.GeometricVariations).length > 1 ?
+          [ CompoundControlShell__YDF.GeometricVariationsCSS_ModifiersNames[geometry] ] : [],
+      ...Object.entries(CompoundControlShell__YDF.DecorativeVariations).length > 1 ?
+          [ CompoundControlShell__YDF.DecorativeVariationsCSS_Modifiers[decoration] ] : []
+    ];
+
+
+  .CompoundControlShell--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
+
+    if label || displayAppropriateBadgeIfInputIsRequired || displayAppropriateBadgeIfInputIsOptional
+
+      .CompoundControlShell--YDF-Header
+
+        if label
+
+          label.CompoundControlShell--YDF-Label(
+            for= coreElementHTML_ID
+            id= labelElementHTML_ID
+          )= label
+
+        if required && displayAppropriateBadgeIfInputIsRequired
+
+          span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__RequiredInput
+            | #{ localization.requirementBadges.required }
+
+        if !required && displayAppropriateBadgeIfInputIsOptional
+
+          span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__OptionalInput
+            | #{ localization.requirementBadges.optional }
+
+
+    if guidance
+
+      p.CompoundControlShell--YDF-Guidance!= guidance
+
+    .CompoundControlShell--YDF-MainSlotCustomizableWrapper(
+      class= mainSlotWrapperAdditionalCSS_Classes
+    )
+
+      block
+
+
+    if invalidInputHighlightIfAnyErrorsMessages && errorsMessages.length > 0
+      ul.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer
+        each errorMessage in errorsMessages
+          li.CompoundControlShell--YDF-ErrorMessage= errorMessage
+
+    template.CompoundControlShell--YDF-ErrorMessagesTemplate
+      ul.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer
+        li.CompoundControlShell--YDF-ErrorMessage

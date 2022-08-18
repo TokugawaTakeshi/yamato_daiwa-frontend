@@ -1,34 +1,55 @@
 ParagraphDefaultProperties--YDF = {
   geometry: {
-    fontSize: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
-    lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS
+    text: {
+      size: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
+      lineSpacing: null,
+      lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS
+    }
   },
   decoration: {
-    fontColor: null
+    text: {
+      fontWeight: null,
+      color: null
+    }
   }
 }
 
 
-Paragraph--YDF(preset = ParagraphDefaultProperties--YDF, overridings = {})
+Paragraph--YDF(
+  preset = ParagraphDefaultProperties--YDF,
+  overridings = {},
+  options = {
+    geometryOnly: false,
+    decorationOnly: false
+  }
+)
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
 
-
-  // --- Geometry ------------------------------------------------------------------------------------------------------
-  MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
-    fontSize: properties.geometry.fontSize,
-    lineHeight: properties.geometry.lineHeight
-  })
-
-  applyIfNotNull(properties.geometry.customDeclarations)
+  mustGenerateGeometry = isTrue(options.geometryOnly) || isFalse(options.decorationOnly)
+  mustGenerateDecoration = isTrue(options.decorationOnly) || isFalse(options.geometryOnly)
 
 
-  // --- Decoration ----------------------------------------------------------------------------------------------------
-  applyIfNotNull({
-    color: properties.decoration.fontColor
-  })
+  if mustGenerateGeometry
 
-  applyIfNotNull(properties.decoration.customDeclarations)
+    applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+      fontSize: properties.geometry.text.size,
+      lineHeight: properties.geometry.text.lineHeight,
+      lineSpacing: properties.geometry.text.lineSpacing,
+      mustTryToProvideHyphenations: true
+    })
+
+    applyMixinStoredInObjectIfItIsNotNull(properties.geometry.customDeclarations)
+
+
+  if mustGenerateDecoration
+
+    applyIfNotNull({
+      font-weight: properties.decoration.text.fontWeight,
+      color: properties.decoration.text.color
+    })
+
+    applyMixinStoredInObjectIfItIsNotNull(properties.decoration.customDeclarations)
 
 
 AbstractDefaultProperties--YDF = {
@@ -51,9 +72,10 @@ Abstract--YDF(preset = AbstractDefaultProperties--YDF, overridings = {})
   // --- Geometry ------------------------------------------------------------------------------------------------------
   Paddings(properties.geometry.paddings)
 
-  MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
+  applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
     fontSize: properties.geometry.fontSize,
-    lineHeight: properties.geometry.lineHeight
+    lineHeight: properties.geometry.lineHeight,
+    mustTryToProvideHyphenations: true
   })
 
   applyIfNotNull(properties.geometry.customDeclarations)

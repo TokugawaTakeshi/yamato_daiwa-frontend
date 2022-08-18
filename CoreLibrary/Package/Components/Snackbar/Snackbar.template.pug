@@ -1,0 +1,22 @@
+include ../../Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Circled__Filled.pug
+include ../../Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Triangled__Filled.pug
+include ../../Markup/Assets/SVG_Icons/InfoSign/InfoSignIcon__Circled__Filled.pug
+include ../../Markup/Assets/SVG_Icons/Checkmark/CheckmarkIcon__Circled__Filled.pug
+include ../../Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Octagoned__Filled.pug
+
+
+.Snackbar--YDF
+
+  template.Snackbar--YDF-IconPlaceholder
+  +ExclamationMark__Circled__Filled--YDF_Icon.Snackbar--YDF-Icon(data-icon="ERROR")
+  +ExclamationMark__Triangled__Filled--YDF_Icon.Snackbar--YDF-Icon(data-icon="WARNING")
+  +InfoSign__Circled__Filled--YDF_Icon.Snackbar--YDF-Icon(data-icon="GUIDANCE")
+
+  +Checkmark__Circled__Filled--YDF_Icon.Snackbar--YDF-Icon(data-icon="SUCCESS")
+
+  p.Snackbar--YDF-Message
+
+  button.Snackbar--YDF-DismissingButton(
+    type="button"
+    aria-label="dismiss"
+  ): +MultiplicationSign__Octagoned__Filled--YDF_Icon.Snackbar--YDF-DismissingButton-Icon

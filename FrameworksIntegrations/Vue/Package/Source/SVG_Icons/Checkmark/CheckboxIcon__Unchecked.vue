@@ -2,6 +2,15 @@
 
 include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Checkmark/CheckboxIcon__Unchecked.pug
 
-+CheckboxIcon__Unchecked--YDF_Icon
++Checkbox__Unchecked--YDF_Icon
 
 </template>
+
+
+<script>
+
+  export default {
+    name: "Checkbox__Unchecked--YDF_Icon"
+  };
+
+</script>

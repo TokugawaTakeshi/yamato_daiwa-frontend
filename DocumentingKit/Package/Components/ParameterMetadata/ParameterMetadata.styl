@@ -1,0 +1,68 @@
+.ParameterMetadata
+
+  border-width 1px
+  border-radius 3px
+  padding 6px 10px
+
+  border-style solid
+  border-color: JQueryUI_BaseTheme.content.borderColor
+
+
+  &-Header
+
+    display flex
+    align-items center
+
+
+  &-ParameterNumberTitle
+
+    font-family "Arial Black", "Arial Bold", "Gadget", sans-serif
+    font-size 1.2rem
+    color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+
+  &-RequirementBadge
+
+    font-size 0.8rem
+    margin-left 0.8rem
+
+
+  &-MetadataTable
+
+    display grid
+    grid-template-columns minmax(0, 40%) minmax(0, 1fr)
+    column-gap 10px
+    row-gap 6px
+
+    margin-top 6px
+
+
+    &-Key
+
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+        fontSize: 1rem,
+        lineSpacing: 0.2rem,
+        mustAllowWordBreakingAnywhere: true
+      })
+      text-align right
+
+      color: ShadesOfGray__39ColorsW3C_Palette[16]
+
+
+    &-Value
+
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+        fontSize: 1rem,
+        lineSpacing: 0.2rem,
+        mustAllowWordBreakingAnywhere: true
+      })
+
+      color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+
+      &__Type
+
+        font-family Consolas, monaco, monospace
+
+        font-weight bold
+        color darkred

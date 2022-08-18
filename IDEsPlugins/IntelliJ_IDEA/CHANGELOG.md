@@ -5,6 +5,7 @@
 ## [0.0.3]
 ### Added
 
+- <kbd>tost</kbd> - live template for [**textOverflowSafetyTest** constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Markup/ConstantsAssets/textOverflowSafetyTest/textOverflowSafetyTest.md)
 - <kbd>pl</kbd> - live template for [**PageLink**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelink) mixin usage
 - <kbd>plg</kbd> - live template for [**PagesLinksGroup**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelinksgroup) mixin usage
 - <kbd>dt</kbd> - live template for [**DataTypes**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types) enumeration
@@ -103,6 +104,7 @@
 - <kbd>cbsr</kbd> - live template [CrossBrowserStylesReset](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/CrossBrowserStylesReset.md) mixin; replaced with <kbd>si</kbd> 
 - <kbd>igcr</kbd> - live template [InitialGlobalCSS_Rules](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/InitialGlobalCSS_Rules.md) mixin; replaced with <kbd>si</kbd> 
 - Drop support of IntelliJ IDEA 2021.X
+
 
 ## [0.0.2]
 ### Added 

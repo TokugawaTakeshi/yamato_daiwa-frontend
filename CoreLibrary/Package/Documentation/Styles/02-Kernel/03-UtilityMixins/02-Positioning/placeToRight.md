@@ -10,7 +10,7 @@ Placing target element to right by relative positioning and transformation witho
 ```stylus
 .UsersListPage
 
-  &-SelectAuthorityRoleDropdownSelect
+  &-SelectAuthorityRoleDropdownList
   
     placeToRight()
 ```

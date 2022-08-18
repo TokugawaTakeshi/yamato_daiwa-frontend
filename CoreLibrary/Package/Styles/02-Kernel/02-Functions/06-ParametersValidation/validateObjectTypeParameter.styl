@@ -167,6 +167,10 @@ validateObjectTypeParameter(namedParameters)
         // --- String --------------------------------------------------------------------------------------------------
         if (propertySpecification.type == DataTypes.string) {
 
+          if (isTrue(propertySpecification.considerIdentifierAsString)) {
+            propertyValue = "" + propertyValue
+          }
+
           if (!isString(propertyValue)) {
             error(generateErrorMessage({
               messageSpecificPart: buildString(

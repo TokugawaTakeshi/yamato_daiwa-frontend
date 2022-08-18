@@ -1,6 +1,6 @@
 {
   "name": "@yamato-daiwa/frontend",
-  "version": "2.0.0-alpha.0",
+  "version": "2.0.0-alpha.1",
   "description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
   "keywords": [
     "frontend",
@@ -35,23 +35,23 @@
     "Functionality.styl"
   ],
   "dependencies": {
-    "@yamato-daiwa/es-extensions": "1.5.5",
-    "@yamato-daiwa/es-extensions-browserjs": "1.5.4",
+    "@yamato-daiwa/es-extensions": "../../../YamatoDaiwaES_Extensions/CoreLibrary/Package",
+    "@yamato-daiwa/es-extensions-browserjs": "../../../YamatoDaiwaES_Extensions/BrowserJS/Package",
     "clipboard": "2.0.11",
-    "prismjs": "1.28.0"
+    "prismjs": "1.29.0",
+    "slide-element": "2.3.0"
   },
   "devDependencies": {
     "@types/prismjs": "1.26.0",
-    "@yamato-daiwa/automation": "0.0.10",
-    "@yamato-daiwa/style_guides": "0.0.19",
-    "stylus": "0.55.0",
+    "@yamato-daiwa/automation": "0.2.0-alpha.3",
+    "@yamato-daiwa/style_guides": "0.0.25",
     "ts-node": "10.9.1",
-    "typescript": "4.7.4"
+    "typescript": "4.8.4"
   },
   "scripts": {
     "Production building of Pug extensions": "yda build --selectiveExecution PugExtensions --mode PRODUCTION && ts-node Markup/InlineECMAScript/Source/PugExtensionsOutputFileGenerator.ts",
-    "AnywherePageStyles:IncrementalBuild": "yda build --selectiveExecution StaticPreviewAnywherePage --mode DEVELOPMENT",
-    "Tests": "yda build --selectiveExecution StylesAndComponentsTesting --mode DEVELOPMENT",
+    "AnywherePageStyles:IncrementalBuild": "yda build --selectiveExecution StaticPreviewAnywherePage --mode LOCAL_DEVELOPMENT",
+    "Tests": "yda build --selectiveExecution StylesAndComponentsTesting --mode LOCAL_DEVELOPMENT",
     "Alpha realize": "npm publish --tag alpha"
   }
 }

@@ -7,7 +7,7 @@
     "pug",
     "stylus",
     "ui-kit",
-    "documentation"
+    "documentating"
   ],
   "author": {
     "name": "Takeshi Tokugawa",
@@ -31,7 +31,10 @@
   "devDependencies": {
     "@types/prismjs": "1.26.0",
     "@yamato-daiwa/automation": "../../../YamatoDaiwaAutomation/MainPackage",
+    "@yamato-daiwa/frontend": "../../CoreLibrary/Package",
     "typescript": "4.5.2"
   },
-  "scripts": {}
+  "scripts": {
+    "Tests": "yda build --mode LOCAL_DEVELOPMENT"
+  }
 }

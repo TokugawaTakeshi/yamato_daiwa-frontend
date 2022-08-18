@@ -1,0 +1,24 @@
+extends ../../../PagesTemplates/RegularWebPage.pug
+
+
+block append Metadata
+
+  -
+    HTML_PAGE_TITLE = "Snackbar component testing"
+    HTML_PAGE_LANGUAGE = "en"
+    styleSheetsURIs = [ "./Snackbar.test.css" ]
+    scriptsURIs.endOfBody = [ "./Snackbar.test.js" ]
+
+
+block append Requirements
+
+  include ../../../Components.pug
+
+
+block append PageContent
+
+  //- +Snackbar--YDF({ decoration: Snackbar__YDF.DecorativeVariations.success })
+
+  button#DisplaySnackbarButton(
+    type="button"
+  ) Display snackbar

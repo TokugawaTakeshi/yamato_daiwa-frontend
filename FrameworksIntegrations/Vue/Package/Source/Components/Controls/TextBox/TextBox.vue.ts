@@ -19,11 +19,11 @@ import {
   isString,
   isNumber,
   isNull,
-  isElementOfEnumeration
+  isElementOfEnumeration,
+  toLowerCamelCase,
+  toScreamingSnakeCase,
+  toUpperCamelCase
 } from "@yamato-daiwa/es-extensions";
-import toLowerCamelCase from "../../../UtilsIncubator/toLowerCamelCase";
-import toScreamingSnakeCase from "../../../UtilsIncubator/toScreamingSnakeCase";
-import toUpperCamelCase from "../../../UtilsIncubator/toUpperCamelCase";
 
 
 namespace TextBox {
@@ -134,10 +134,10 @@ namespace TextBox {
 
 
     @VueProperty({ type: Boolean, default: false })
-    protected readonly valueMustBeNonNegativeIntegerOfRegularNotation!: boolean;
+    protected readonly valueMustBeTheNonNegativeIntegerOfRegularNotation!: boolean;
 
     @VueProperty({ type: Boolean, default: false })
-    protected readonly valueMustBeDigitsSequence!: boolean;
+    protected readonly valueMustBeTheDigitsSequence!: boolean;
 
 
     @VueProperty({ type: Boolean, default: false })
@@ -240,13 +240,13 @@ namespace TextBox {
     protected onKeyDown(event: KeyboardEvent): void {
 
       // TODO
-      /* 〔 理論 〕 妥当数入力処理（valueMustBeNonNegativeIntegerOfRegularNotation: true）〔 1 〕
+      /* 〔 理論 〕 妥当数入力処理（valueMustBeTheNonNegativeIntegerOfRegularNotation: true）〔 1 〕
        * 1) 此処では利用者が先に行く不正０の入力を予防する事が出来ない。例えば、利用者は「123」を入力してからカーソルを最初位置に動かして、「0」を入力しても、
        * 此方ではカーソルの位置が判らないので、「onInput」で不正０の入力を遮る。
        * 2) 読める文字と他に、利用者は半角空白やバックスペースや方向ボタンが押せるので、「!/^[0-9]$/u.test(event.key)」の様な正規表現では入力を予防出来ない。
        * 3) 負号はボタンで入力するとは限らなく、ブラウザーに付けられたボタンにより入力も可能である。
        * */
-      if ((this.valueMustBeNonNegativeIntegerOfRegularNotation || this.valueMustBeDigitsSequence) && /^[+\-e.]$/u.test(event.key)) {
+      if ((this.valueMustBeTheNonNegativeIntegerOfRegularNotation || this.valueMustBeTheDigitsSequence) && /^[+\-e.]$/u.test(event.key)) {
         event.preventDefault();
       }
     }

@@ -1,78 +1,95 @@
 AttentionBox__SuccessDecoration--YDF = {
 
   rootElement: {
+
     borders: {
       style: solid,
-      color: JQueryUI_BaseTheme.success.borderColor
+      color: YDF_ColorPalette.mint.slightlyDark
     },
+
     background: {
-      image: null,
-      color: JQueryUI_BaseTheme.success.background
+      color: YDF_ColorPalette.mint.pastelLight,
+      image: null
     }
+
   },
 
   mainSection: {
     font: {
       weight: null,
-      color: #3F7245
+      color: YDF_ColorPalette.mint.slightlyDark
     }
   },
 
   SVG_Icon: {
-    color: JQueryUI_BaseTheme.success.iconsColor
+    color: YDF_ColorPalette.mint.slightlyDark
   },
 
+  dismissingButton: {
 
-  heading: {
-    font: {
-      weight: bold,
-      color: #317B39
-    }
-  },
-
-  subheading: {
-    font: {
-      weight: null,
-      color: #639D50
-    }
-  },
-
-  paragraph: {
-    font: {
-      color: #3F7245
-    }
-  },
-
-  divider: {
-    color: #83C25E
-  },
-
-  dismissButton: {
-    defaultState: {
-      background: #00D019,
+    background: {
+      color: YDF_ColorPalette.mint.slightlyDark,
       shadow: null
     },
-    hoverState: {
-      background: #56EF64,
-      shadow: #CCCCCC
-    },
-    tabbedState: {
-      background: null,
-      shadow: 0 0 0 4px #CCCCCC
-    },
-    activeState: {
-      background: #298430,
-      shadow: null
+
+    stateDependent: {
+
+      hover: {
+        background: {
+          color: YDF_ColorPalette.mint.pastelLight,
+          shadow: null
+        }
+      },
+
+      focus: {
+        background: {
+          color: YDF_ColorPalette.mint.pastelLight,
+          shadow: null
+        }
+      },
+
+      active: {
+        background: {
+          color: YDF_ColorPalette.mint.pastelLight,
+          shadow: null
+        }
+      }
+
     }
+
   },
 
-  yamatoDaiwaInformationDesign: {
-    importantEntity: { font: { color: null } },
-    secondaryEntity: { font: { color: null } },
-    definableTerm: { font: { color: null } },
-    term: { font: { color: null } },
-    term__contrast: { font: { color: null } },
-    keyword: { font: { color: null } },
-    keyword__contrast: { font: { color: null } }
+  typographyAssimilation: {
+    heading2: {
+      text: {
+        color: YDF_ColorPalette.mint.dark
+      }
+    },
+    heading3: {
+      text: {
+        color: YDF_ColorPalette.mint.mediumDark
+      }
+    },
+    heading4: {
+      text: {
+        color: YDF_ColorPalette.mint.slightlyDark
+      }
+    },
+    heading5: {
+      text: {
+        color: YDF_ColorPalette.mint.slightlyDark
+      }
+    },
+    heading6: {
+      text: {
+        color: YDF_ColorPalette.mint.slightlyDark
+      }
+    },
+    paragraph: {
+      text: {
+        color: YDF_ColorPalette.mint.mediumDark
+      }
+    }
   }
+
 }

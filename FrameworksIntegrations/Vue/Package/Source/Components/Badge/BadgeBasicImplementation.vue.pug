@@ -1,0 +1,11 @@
+span.Badge--YDF(
+  :class="rootElementModifierCSS_Classes"
+)
+
+  slot(name="SVG_Icon")
+
+  span.Badge--YDF-Key(
+    v-if="keyLabel"
+  ) {{ keyLabel }}
+
+  span.Badge--YDF-Value {{ valueLabel }}

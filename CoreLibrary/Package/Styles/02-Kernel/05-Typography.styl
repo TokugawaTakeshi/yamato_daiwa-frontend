@@ -5,7 +5,7 @@
 @require "05-Typography/05-InlineElements.styl"
 
 
-TypographyDefaultDefinition = {
+YDF_TypographyDefaultDefinitions = {
 
   CSS_NamespacePrefix: null,
 
@@ -15,7 +15,7 @@ TypographyDefaultDefinition = {
       class: "Heading1",
       mixin: Heading1--YDF,
       skip: false
-    })
+    }),
     heading2: deeplyCloneAndOverrideObject(Heading2DefaultProperties--YDF, {
       class: "Heading2",
       mixin: Heading2--YDF,
@@ -185,10 +185,18 @@ generateTypographyElementsKeysAndCSS_ClassesMap(typographyDefinition)
   return elementsKeysAndCSS_ClassesMap
 
 
-provideTypography(preset = TypographyDefaultDefinition, overridings = {})
+provideTypography(
+  preset = YDF_TypographyDefaultDefinitions,
+  overridings = {},
+  options = {
+    geometryOnly: false,
+    decorationOnly: false
+  }
+)
 
   typographyDefinition = deeplyCloneAndOverrideObject(preset, overridings)
   elementsKeysAndCSS_ClassesMap = generateTypographyElementsKeysAndCSS_ClassesMap(typographyDefinition)
+
 
   setPositionalRelationshipForSpecificElement(positionalRelationship)
 
@@ -201,6 +209,7 @@ provideTypography(preset = TypographyDefaultDefinition, overridings = {})
           })
         })
 
+
   for elementKey, elementProperties in typographyDefinition.elements
 
     TARGET_ELEMENT_CSS_CLASS = elementsKeysAndCSS_ClassesMap[elementKey]
@@ -211,9 +220,11 @@ provideTypography(preset = TypographyDefaultDefinition, overridings = {})
 
         MixinForTargetElement = elementProperties.mixin
 
-        MixinForTargetElement(elementProperties)
+        MixinForTargetElement(elementProperties, {}, options)
 
-        setPositionalRelationshipForSpecificElement(elementProperties.positionalRelationship)
+        if !options.decorationOnly
+
+          setPositionalRelationshipForSpecificElement(elementProperties.positionalRelationship)
 
 
 providePositionalRelationshipWithTypographyElements(compoundParameter, restParameters__MUST_NOT_BE...)

@@ -1,0 +1,38 @@
+{
+  "Components.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-11-05T02:32:53.559Z"
+  },
+  "Tests/Tests.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-11-05T01:29:34.590Z"
+  },
+  "Components/ProgrammaticEntityHeading/ProgrammaticEntityHeading.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-07-18T06:43:10.147Z"
+  },
+  "Components/Infographics/CallableExpressionScheme/CallableExpressionScheme.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-12-18T07:21:30.105Z"
+  },
+  "Tests/Infographics/CallableExpressionScheme/CallableExpressionScheme.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-11-26T02:05:08.422Z"
+  },
+  "Components/ParameterMetadata/ParameterMetadata.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-12-10T01:54:36.636Z"
+  },
+  "Components/ParameterMetadata/ParameterMetadata.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-12-03T03:46:09.698Z"
+  },
+  "Components/Infographics/CallableExpressionScheme/CallableExpressionScheme.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-11-26T02:03:56.216Z"
+  },
+  "Components/ParameterMetadata/ParameterMetadataLocalization.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-12-03T03:41:59.499Z"
+  }
+}

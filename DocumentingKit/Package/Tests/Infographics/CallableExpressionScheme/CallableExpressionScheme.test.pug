@@ -1,0 +1,151 @@
+extends ../../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+block append Data
+
+  -
+
+    const ParameterMetadataJapaneseLocalization = {
+      buildParametersNumberLabel: ({ parameterNumber }) => `${ parameterNumber }パラメーター目`,
+      requirementLabels: {
+        required: "必須",
+        optional: "任意",
+        hasDefaultValue: "規定値有り"
+      },
+      tableKeys: {
+        genericTechnicalName: "一般技術名",
+        localizedName: "Localized name",
+        type: "型"
+      }
+    };
+
+    const ParameterMetadataRussianLocalization = {
+      buildParametersNumberLabel: ({ parameterNumber }) => `Параметр №${ parameterNumber }`,
+      requirementLabels: {
+        required: "Обязательный",
+        optional: "Необязательный",
+        hasDefaultValue: "Имеется значение по умолчанию"
+      },
+      tableKeys: {
+        genericTechnicalName: "Общее техническое наименование",
+        localizedName: "Localized name",
+        type: "Тип"
+      }
+    };
+
+
+
+block append Requirements
+
+  include ../../../node_modules/@yamato-daiwa/frontend/Components.pug
+  include ../../../Components.pug
+
+
+block append Metadata
+
+  - styleSheetsURIs = [ "./CallableExpressionScheme.test.css" ]
+
+
+block append PageContent
+
+  .CallableExpressionSchemeTestSite
+
+    +CallableExpressionScheme({
+      technicalName: "areStringifiedDigitsOnly",
+      parametersSpecification: [
+        {
+          genericTechnicalName: "targetString",
+          type: "string",
+          required: true
+        }
+      ],
+      returnedValue: "boolean"
+    })
+
+
+    - ParameterMetadata__YDF.localization = ParameterMetadataJapaneseLocalization
+
+    +CallableExpressionScheme({
+      technicalName: "areStringifiedDigitsOnly",
+      localizedDescriptiveHeading: "文字列化した数字ばかりであるか",
+      parametersSpecification: [
+        {
+          genericTechnicalName: "targetString",
+          localizedName: "目標的文字列",
+          type: "string",
+          required: true
+        }
+      ],
+      returnedValue: "boolean"
+    })
+
+
+    - ParameterMetadata__YDF.localization = ParameterMetadataRussianLocalization
+
+    +CallableExpressionScheme({
+      technicalName: "areStringifiedDigitsOnly",
+      localizedDescriptiveHeading: "Включает ли в себя строка только цифры",
+      parametersSpecification: [
+        {
+          genericTechnicalName: "targetString",
+          localizedName: "Целевая строка",
+          type: "string",
+          required: true
+        }
+      ],
+      returnedValue: "boolean"
+    })
+
+    +CallableExpressionScheme({
+      technicalName: "getArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne",
+      localizedDescriptiveHeading: "Получить элемент массива удовлетворяющего предикату если такой элемент ровно 1",
+      signatures: [
+
+        {
+          localizedDescriptiveHeading: "Если искомого элемента нет, будет возвращён 'null'",
+          genericParameters: [ { genericTechnicalName: "ArrayElement" } ],
+          parametersSpecification: [
+            {
+              genericTechnicalName: "targetArray",
+              localizedName: "Целевой массив",
+              type: "ReadonlyArray&lt;ArrayElement&gt;",
+              required: true
+            },
+            {
+              genericTechnicalName: "predicate",
+              localizedName: "Предикат",
+              type: "Predicate",
+              required: true
+            }
+          ],
+          returnedValue: "ArrayElement | null"
+        },
+
+        {
+          localizedDescriptiveHeading: "Если искомого элемента нет, будет брошено исключение",
+          genericParameters: [ { genericTechnicalName: "ArrayElement" } ],
+          parametersSpecification: [
+            {
+              genericTechnicalName: "targetArray",
+              localizedName: "Целевой массив",
+              type: "ReadonlyArray&lt;ArrayElement&gt;",
+              required: true
+            },
+            {
+              genericTechnicalName: "predicate",
+              localizedName: "Предикат",
+              type: "Predicate",
+              required: true
+            },
+            {
+              genericTechnicalName: "options",
+              localizedName: "Опции",
+              type: "Options",
+              required: true
+            }
+          ],
+          returnedValue: "ArrayElement | null"
+        }
+
+      ]
+    })

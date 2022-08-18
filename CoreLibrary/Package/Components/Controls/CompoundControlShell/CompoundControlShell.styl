@@ -1,0 +1,254 @@
+@require "Themes/Regular/GeometricVariations/CompoundControlShell-RegularGeometry.styl"
+@require "Themes/Regular/GeometricVariations/CompoundControlShell-SmallGeometry.styl"
+@require "Themes/Regular/DecorativeVariations/CompoundControlShell-RegularDecoration.styl"
+
+
+CompoundControlShell--YDF = {
+
+  defaultProperties: {
+
+    themes: {
+      regular: {
+
+        geometricVariations: {
+          regular: CompoundControlShell-RegularGeometry--YDF,
+          small: CompoundControlShell-SmallGeometry--YDF
+        },
+
+        decorativeVariations: {
+          regular: CompoundControlShell-RegularDecoration--YDF
+        }
+      }
+    }
+  }
+}
+
+
+provideCompoundControlShellYDF_Component(
+  preset = CompoundControlShell--YDF.defaultProperties,
+  overridings = {},
+  options = {
+    themeIndependentStylesOnly: false,
+    externalThemes: false,
+    loadingPlaceholder: true
+  },
+  restParameters__MUST_NOT_BE...
+)
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "provideCompoundControlShellYDF_Component",
+    targetParameterNumber: 3,
+    targetParameter: options,
+    schema: {
+      themeIndependentStylesOnly: {
+        type: DataTypes.boolean,
+        required: true
+      },
+      externalThemes: {
+        type: DataTypes.boolean,
+        required: true
+      },
+      loadingPlaceholder: {
+        type: DataTypes.boolean,
+        required: true
+      }
+    },
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+
+  // === Methods =======================================================================================================
+  applyBasicRules()
+
+    .CompoundControlShell--YDF-Header
+
+      display flex
+      align-items center
+
+
+  // --- Geometry ------------------------------------------------------------------------------------------------------
+  applyGeometricVariation(themeName, variationName, variation)
+
+    VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
+      "CompoundControlShell.${themeName}Theme.${variationName}Geometry",
+      {
+        themeName: themeName,
+        variationName: variationName
+      }
+    )
+
+    ROOT_ELEMENT_SELECTOR = getCurrentSelectorSubstitutingRoot(".CompoundControlShell--YDF")
+
+    .CompoundControlShell--YDF-Label
+
+      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(
+        extractAndValidateObjectProperties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          extracts: {
+            fontSize: { dotSeparatedPath: "label.text.size", required: true },
+            lineSpacing: { dotSeparatedPath: "label.text.lineSpacing", required: false },
+            lineHeight: { dotSeparatedPath: "label.text.lineHeight", mustBeInsteadOf: "label.text.lineSpacing" }
+          }
+        })
+      )
+
+
+    .CompoundControlShell--YDF-Guidance
+
+      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(
+        extractAndValidateObjectProperties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          extracts: {
+            fontSize: { dotSeparatedPath: "guidance.text.size", required: true },
+            lineSpacing: { dotSeparatedPath: "guidance.text.lineSpacing", required: false },
+            lineHeight: { dotSeparatedPath: "guidance.text.lineHeight", mustBeInsteadOf: "guidance.text.lineSpacing" }
+          }
+        })
+      )
+
+
+      /
+
+        retireFrom({
+          targetElementSelector: ".CompoundControlShell--YDF-Header",
+          contextSelector: ROOT_ELEMENT_SELECTOR,
+          referenceElementSelector: ".CompoundControlShell--YDF-Guidance",
+          y: extractAndValidateObjectProperties({
+            targetObject: variation,
+            targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+            extracts: {
+              spacingAfterHeading: { dotSeparatedPath: "guidance.spacing.afterHeader", required: true },
+            }
+          }).spacingAfterHeading
+        })
+
+
+    .CompoundControlShell--YDF-MainSlotCustomizableWrapper
+
+      /
+
+        retireFrom({
+          definitions:\
+              (".CompoundControlShell--YDF-Header" {
+                y: extractAndValidateObjectProperties({
+                  targetObject: variation,
+                  targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+                  extracts: {
+                    spacingAfterHeading: { dotSeparatedPath: "mainSlot.spacing.afterHeader", required: true },
+                  }
+                }).spacingAfterHeading
+              })\
+              (".CompoundControlShell--YDF-Guidance" {
+                y: extractAndValidateObjectProperties({
+                  targetObject: variation,
+                  targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+                  extracts: {
+                    spacingAfterHeading: { dotSeparatedPath: "mainSlot.spacing.afterGuidance", required: true },
+                  }
+                }).spacingAfterHeading
+              }),
+          referenceElementSelector: ".CompoundControlShell--YDF-MainSlotCustomizableWrapper",
+          contextSelector: ROOT_ELEMENT_SELECTOR
+        })
+
+
+    .CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          margin-top: { dotSeparatedPath: "errorsList.spacing.afterMainSlot", required: true }
+        }
+      })
+
+
+    .CompoundControlShell--YDF-ErrorMessage
+
+      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(
+        extractAndValidateObjectProperties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          extracts: {
+            fontSize: { dotSeparatedPath: "errorsList.item.text.size", required: true },
+            lineSpacing: { dotSeparatedPath: "errorsList.item.text.lineSpacing", required: false },
+            lineHeight: { dotSeparatedPath: "errorsList.item.text.lineHeight", mustBeInsteadOf: "errorsList.item.text.lineSpacing" }
+          }
+        })
+      )
+
+      retireFromElementWithSameSelector({
+        contextSelector: ROOT_ELEMENT_SELECTOR,
+        referenceElementSelector: ".CompoundControlShell--YDF-ErrorMessage"
+        y: extractAndValidateObjectProperties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          extracts: {
+            spacingBetweenSelfInstances: { dotSeparatedPath: "errorsList.item.spacing.betweenSelfInstances", required: true },
+          }
+        }).spacingBetweenSelfInstances
+      })
+
+
+  // --- Decoration ----------------------------------------------------------------------------------------------------
+  applyDecorativeVariation(themeName, variationName, variation)
+
+    VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
+      "CompoundControlShell.${themeName}Theme.${variationName}Decoration",
+      {
+        themeName: themeName,
+        variationName: variationName
+      }
+    )
+
+    .CompoundControlShell--YDF-Label
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          font-weight: { dotSeparatedPath: "label.text.weight", required: false },
+          color: { dotSeparatedPath: "label.text.color", required: false }
+        }
+      })
+
+
+    .CompoundControlShell--YDF-Guidance
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          font-weight: { dotSeparatedPath: "guidance.text.weight", required: false },
+          color: { dotSeparatedPath: "guidance.text.color", required: false }
+        }
+      })
+
+
+    .CompoundControlShell--YDF-ErrorMessage
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          font-weight: { dotSeparatedPath: "errorMessage.text.weight", required: false },
+          color: { dotSeparatedPath: "errorMessage.text.color", required: false }
+        }
+      })
+
+
+  // === Applying ======================================================================================================
+  applyBasicRules()
+
+  if !options.themeIndependentStylesOnly
+
+    applyComponentThemes({
+      CSS_Namespace: "CompoundControlShell--YDF",
+      themes: properties.themes,
+      applyGeometricVariation: applyGeometricVariation,
+      applyDecorativeVariation: applyDecorativeVariation
+    })

@@ -1,0 +1,121 @@
+// TODO Import variations
+@require "Themes/Regular/GeometricVariations/${NAME}-RegularGeometry.styl"
+@require "Themes/Regular/DecorativeVariations/${NAME}-RegularDecoration.styl"
+
+
+${NAME}--YDF = {
+
+  defaultProperties: {
+
+    themes: {
+      regular: {
+
+        geometricVariations: {
+          regular: ${NAME}-RegularGeometry--YDF
+        },
+
+        decorativeVariations: {
+          regular: ${NAME}-RegularDecoration--YDF
+        }
+      }
+    }
+  }
+}
+
+
+provide${NAME}YDF_Component(preset = ${NAME}--YDF.defaultProperties, overridings = {})
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+
+
+  // === Methods =======================================================================================================
+  applyBasicRules()
+
+    .${NAME}
+    
+       // TODO Apply variation independent rules
+       display flex
+
+
+  // --- Geometry ------------------------------------------------------------------------------------------------------
+  applyGeometricVariation(themeName, variationName, variation)
+
+    VARIATION_DATA_FOR_LOGGING = buildString(
+      "${NAME}.\${themeName}Theme.\${variationName}Geometry",
+      {
+        themeName: themeName,
+        variationName: variationName
+      }
+    )
+
+    +provideDefaultSelectorWhenRootAndApply(".${NAME}--YDF")
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        assigments: {
+          min-width: {
+            dotSeparatedPath: "rootElement.minimalWidth",
+            required: false
+          }
+        }
+      })
+
+
+    .${NAME}--YDF-ChildElement
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        assigments: {
+          height: {
+            dotSeparatedPath: "childElement.height",
+            required: false
+          }
+        }
+      })
+
+
+  // --- Decoration ----------------------------------------------------------------------------------------------------
+  applyDecorativeVariation(themeName, variationName, variation)
+
+    VARIATION_DATA_FOR_LOGGING = buildString(
+      "${NAME}.\${themeName}Theme.\${variationName}Decoration",
+      {
+        themeName: themeName,
+        variationName: variationName
+      }
+    )
+
+
+    +provideDefaultSelectorWhenRootAndApply(".${NAME}--YDF")
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        assigments: {
+          background-color: { dotSeparatedPath: "rootElement.background.color", required: false }
+        }
+      })
+
+
+    .${NAME}--YDF-ChildElement
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        assigments: {
+          color: { dotSeparatedPath: "childElement.text.color", required: false }
+        }
+      })
+
+
+  // === Applying ======================================================================================================
+  applyBasicRules()
+
+  applyComponentThemes({
+    CSS_Namespace: "${NAME}--YDF",
+    themes: properties.themes,
+    applyGeometricVariation: applyGeometricVariation,
+    applyDecorativeVariation: applyDecorativeVariation
+  })

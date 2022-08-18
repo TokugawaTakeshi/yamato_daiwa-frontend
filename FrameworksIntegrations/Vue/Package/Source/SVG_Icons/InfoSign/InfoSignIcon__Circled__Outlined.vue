@@ -5,3 +5,12 @@ include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Inf
 +InfoSign__Circled__Outlined--YDF_Icon
 
 </template>
+
+
+<script>
+
+  export default {
+    name: "InfoSign__Circled__Outlined--YDF_Icon"
+  };
+
+</script>

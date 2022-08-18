@@ -1,0 +1,43 @@
+PaddingsSpecificationSchema = {
+
+  all: {
+    type: DataTypes.dimensionalAmount,
+    required: false
+  },
+
+  horizontalSymmetric: {
+    type: DataTypes.dimensionalAmount,
+    required: false,
+    incompatibleWith: "all"
+  },
+  left: {
+    type: DataTypes.dimensionalAmount,
+    required: false,
+    incompatibleWith: "all" "horizontalSymmetric"
+  },
+  right: {
+    type: DataTypes.dimensionalAmount,
+    required: false,
+    incompatibleWith: "all" "horizontalSymmetric"
+  },
+
+  verticalSymmetric: {
+    type: DataTypes.dimensionalAmount,
+    required: false,
+    incompatibleWith: "all"
+  },
+  verticalUpwardShifting: {
+    type: DataTypes.dimensionalAmount,
+    required: false
+  },
+  top: {
+    type: DataTypes.dimensionalAmount,
+    required: false,
+    incompatibleWith: "all" "verticalSymmetric"
+  },
+  bottom: {
+    type: DataTypes.dimensionalAmount,
+    required: false,
+    incompatibleWith: "all" "verticalSymmetric"
+  }
+}

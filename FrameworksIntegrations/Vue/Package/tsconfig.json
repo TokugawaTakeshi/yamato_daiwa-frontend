@@ -10,6 +10,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": false, /* Actual for Vue3; see https://github.com/vuejs/vue-next/issues/4668 */
     "experimentalDecorators": true,
+    "allowJs": true, /* Actual for Vue3; */
 
     "baseUrl": "./",
     "paths": {
@@ -18,5 +19,10 @@
       "@SVG_Icons/*": [ "./Source/SVG_Icons/*"]
     },
     "declaration": true
-  }
+  },
+  "include": [
+    "Project.d.ts",
+    "Source/**/*",
+    "Tests/**/*"
+  ]
 }

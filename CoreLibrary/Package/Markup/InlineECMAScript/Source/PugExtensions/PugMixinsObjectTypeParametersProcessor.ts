@@ -24,7 +24,7 @@ export default abstract class PugMixinsObjectTypeParametersProcessor {
       rawParameter: unknown;
       parameterNumber: number;
       parameterName: string;
-      parameterPropertiesSpecification: RawObjectDataProcessor.FixedKeyAndValuesTypeObjectDataSpecification;
+      parameterPropertiesSpecification: RawObjectDataProcessor.PropertiesSpecification;
       mixinName: string;
     }
   ): ParsedJSON_Object {
@@ -38,6 +38,7 @@ export default abstract class PugMixinsObjectTypeParametersProcessor {
         Logger.throwErrorAndLog({
           errorInstance: new InvalidParameterValueError({
             parameterName: mixinName,
+            parameterNumber: 1,
             messageSpecificPart: `Object type parameter No. ${ mixinParameterNumber } (named as '${ mixinParameterName }') ` +
                 `of mixin '${ mixinName }' has been omitted while it has required properties: ` +
                 `\n ${ stringifyAndFormatArbitraryValue(mixinParameterRequiredPropertiesNames) }`
@@ -60,6 +61,7 @@ export default abstract class PugMixinsObjectTypeParametersProcessor {
       Logger.throwErrorAndLog({
         errorInstance: new InvalidParameterValueError({
           parameterName: mixinParameterName,
+          parameterNumber: 1,
           messageSpecificPart: `The parameter No. ${ mixinParameterNumber } (named as '${ mixinParameterName }') ` +
               `of mixin '${ mixinName }' must be an object.`
         }),
@@ -70,7 +72,11 @@ export default abstract class PugMixinsObjectTypeParametersProcessor {
 
 
     const validationResults: RawObjectDataProcessor.ProcessingResult<ParsedJSON_Object> =
-        RawObjectDataProcessor.process(rawMixinParameter, mixinParametersPropertiesSpecification);
+        RawObjectDataProcessor.process(rawMixinParameter, {
+          nameForLogging: "MixinParameterProperties",
+          subtype: RawObjectDataProcessor.ObjectSubtypes.fixedKeyAndValuePairsObject,
+          properties: mixinParametersPropertiesSpecification
+        });
 
     if (validationResults.rawDataIsInvalid) {
       Logger.throwErrorAndLog({
@@ -88,12 +94,12 @@ export default abstract class PugMixinsObjectTypeParametersProcessor {
 
 
   private static getMixinParameterRequiredPropertiesNames(
-    mixinParametersSpecification: RawObjectDataProcessor.FixedKeyAndValuesTypeObjectDataSpecification
+    mixinParametersPropertiesSpecification: RawObjectDataProcessor.PropertiesSpecification
   ): Array<string> {
 
     const mixinParameterRequiredPropertiesNames: Array<string> = [];
 
-    for (const [ propertyName, propertySpecification ] of Object.entries(mixinParametersSpecification.properties)) {
+    for (const [ propertyName, propertySpecification ] of Object.entries(mixinParametersPropertiesSpecification)) {
       if (propertySpecification.required === true) {
         mixinParameterRequiredPropertiesNames.push(propertyName);
       }
@@ -105,9 +111,9 @@ export default abstract class PugMixinsObjectTypeParametersProcessor {
 
   private static substituteDefaultValues(
     parametersObject: ParsedJSON_Object,
-    mixinParametersSpecification: RawObjectDataProcessor.FixedKeyAndValuesTypeObjectDataSpecification
+    mixinParametersPropertiesSpecification: RawObjectDataProcessor.PropertiesSpecification
   ): void {
-    for (const [ propertyName, propertySpecification ] of Object.entries(mixinParametersSpecification.properties)) {
+    for (const [ propertyName, propertySpecification ] of Object.entries(mixinParametersPropertiesSpecification)) {
       if (!isUndefined(propertySpecification.defaultValue) && isUndefined(parametersObject[propertyName])) {
         parametersObject[propertyName] = propertySpecification.defaultValue;
       }

@@ -5,3 +5,12 @@ include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Men
 +Menu__ThreeDots__Vertical__Circled__Filled--YDF_Icon
 
 </template>
+
+
+<script>
+
+  export default {
+    name: "MenuIcon__ThreeDots__Vertical__Circled__Filled--YDF_Icon"
+  };
+
+</script>

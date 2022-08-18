@@ -1,0 +1,86 @@
+-
+
+  const Snackbar__YDF = {
+
+    CSS_NAMESPACE: "Snackbar--YDF",
+
+
+    /* === Themes =================================================================================================== */
+    Themes: { regular: "REGULAR" },
+    ThemesCSS_ModifiersNames: { REGULAR: "Snackbar--YDF__RegularTheme" },
+
+    defineNewThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, this);
+    },
+
+    areThemesExternal: false,
+    considerThemesAsExternal() {
+      this.areThemesExternal = true;
+      return this;
+    },
+
+
+    /* --- Geometric variations ------------------------------------------------------------------------------------- */
+    GeometricVariations: { regular: "REGULAR" },
+    GeometricVariationsCSS_ModifiersNames: { REGULAR: "Snackbar--YDF__RegularGeometry" },
+
+    defineNewGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, this);
+    },
+
+
+    /* --- Decorative variations ------------------------------------------------------------------------------------ */
+    DecorativeVariations: {
+      error: "ERROR",
+      warning: "WARNING",
+      success: "SUCCESS",
+      guidance: "GUIDANCE"
+    },
+
+    DecorativeVariationsCSS_Modifiers: {
+      ERROR: "Snackbar--YDF__ErrorDecoration",
+      WARNING: "Snackbar--YDF__WarningDecoration",
+      SUCCESS: "Snackbar--YDF__SuccessDecoration",
+      GUIDANCE: "Snackbar--YDF__GuidanceDecoration"
+    },
+
+    defineNewDecorativeVariation(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, this);
+    },
+
+
+    /* === Properties specification ================================================================================= */
+    get propertiesSpecification() {
+      return {
+
+        theme: {
+          type: String,
+          required: false,
+          allowedAlternatives: Object.values(this.Themes)
+        },
+
+        externalThemes: {
+          type: Boolean,
+          required: false
+        },
+
+        geometry: {
+          type: String,
+          required: false,
+          allowedAlternatives: Object.values(this.GeometricVariations)
+        },
+
+        decoration: {
+          type: String,
+          required: true,
+          allowedAlternatives: Object.values(this.DecorativeVariations)
+        }
+
+      }
+    },
+
+    /* === Localization ============================================================================================= */
+    localization: {
+      dismissingButton: { accessibilityGuidance: "Hide this message" }
+    }
+  };

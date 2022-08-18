@@ -1,0 +1,244 @@
+@require "Themes/Regular/GeometricVariations/Snackbar-RegularGeometry.styl"
+
+@require "Themes/Regular/DecorativeVariations/Snackbar-ErrorDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Snackbar-WarningDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Snackbar-GudanceDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Snackbar-SuccessDecoration.styl"
+
+
+Snackbar--YDF = {
+
+  defaultProperties: {
+
+    themes: {
+      regular: {
+
+        geometricVariations: {
+          regular: Snackbar-RegularGeometry--YDF
+        },
+
+        decorativeVariations: {
+          error: Snackbar-ErrorDecoration--YDF,
+          warning: Snackbar-WarningDecoration--YDF,
+          guidance: Snackbar-GuidanceDecoration--YDF,
+          success: Snackbar-SuccessDecoration--YDF
+        }
+      }
+    }
+  }
+}
+
+
+provideSnackbarYDF_Component(
+  preset = Snackbar--YDF.defaultProperties,
+  overridings = {},
+  options = {
+    themeIndependentStylesOnly: false,
+    externalThemes: false
+  },
+  restParameters__MUST_NOT_BE...
+)
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "provideSnackbarYDF_Component",
+    targetParameterNumber: 3,
+    targetParameter: options,
+    schema: {
+      themeIndependentStylesOnly: {
+        type: DataTypes.boolean,
+        required: true
+      },
+      externalThemes: {
+        type: DataTypes.boolean,
+        required: true
+      }
+    },
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+
+  // === Methods =======================================================================================================
+  applyBasicRules()
+
+    .Snackbar--YDF
+
+      display flex
+      align-items center
+
+      position fixed
+      top 96px
+      left "calc(50% - 0.5*%s)" % 280px
+      z-index: ZIndexes.floatingNotifications
+
+
+      &-Icon
+
+        flex-shrink 0
+
+
+      &-Message
+
+        flex-grow 1
+        margin-left 8px
+
+
+      &-DismissingButton
+
+        ButtonLikeElementsPrimer()
+
+        cursor pointer
+
+        flex-shrink 0
+        margin-left 8px
+
+
+  // --- Geometry ------------------------------------------------------------------------------------------------------
+  applyGeometricVariation(themeName, variationName, variation)
+
+    VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
+      "Snackbar.${themeName}Theme.${variationName}Geometry",
+      {
+        themeName: themeName,
+        variationName: variationName
+      }
+    )
+
+    +provideDefaultSelectorWhenRootAndApply(".Snackbar--YDF")
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          width: { dotSeparatedPath: "rootElement.width", required: true },
+          min-height: { dotSeparatedPath: "rootElement.minimalHeight", required: true },
+          borders: {
+            dotSeparatedPath: "rootElement.borders",
+            required: false,
+            applier: BordersSizing
+          },
+          padding: {
+            dotSeparatedPath: "rootElement.paddings",
+            required: false,
+            applier: Paddings
+          }
+        }
+      })
+
+
+    .Snackbar--YDF-Icon
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          width: { dotSeparatedPath: "SVG_Icon.width", required: false },
+          height: {
+            dotSeparatedPath: "SVG_Icon.height",
+            requiredIf: {
+              predicate: @(variation) { return isNull(getObjectValueByDotSeparatedPathSafely(variation, "SVG_Icon.width")) },
+              conditionDescription: "'SVG_Icon.width' icon is null"
+            }
+          }
+        }
+      })
+
+
+    .Snackbar--YDF-Message
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          text: { dotSeparatedPath: "message.text", applier: @(textProperties) {
+            MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
+              fontSize: textProperties.size,
+              lineSpacing: textProperties.lineSpacing,
+              lineHeight: textProperties.lineHeight
+            })
+          }}
+        }
+      })
+
+
+    .Snackbar--YDF-DismissingButton-Icon
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          width: { dotSeparatedPath: "dismissingButton.icon.width", required: false },
+          height: {
+            dotSeparatedPath: "dismissingButton.icon.height",
+            requiredIf: {
+              predicate: @(variation) {
+                return isNull(getObjectValueByDotSeparatedPathSafely(variation, "dismissingButton.icon.width"))
+              },
+              conditionDescription: "'dismissingButton.SVG_Icon.width' icon is null"
+            }
+          }
+        }
+      })
+
+
+  // --- Decoration ----------------------------------------------------------------------------------------------------
+  applyDecorativeVariation(themeName, variationName, variation)
+
+    VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
+      "Snackbar.${themeName}Theme.${variationName}Decoration",
+      {
+        themeName: themeName,
+        variationName: variationName
+      }
+    )
+
+    +provideDefaultSelectorWhenRootAndApply(".Snackbar--YDF")
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          background-color: { dotSeparatedPath: "rootElement.background.color", required: false },
+          box-shadow: {
+            dotSeparatedPath: "rootElement.shadow",
+            required: false,
+            applier: applyObjectTypeBoxShadowDefinition
+          }
+        }
+      })
+
+
+    .Snackbar--YDF-Icon
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          fill: { dotSeparatedPath: "icon.color", required: false }
+        }
+      })
+
+
+    .Snackbar--YDF-Message
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          fill: { dotSeparatedPath: "message.text.color", required: false }
+        }
+      })
+
+
+  // --- Applying ------------------------------------------------------------------------------------------------------
+  applyBasicRules()
+
+  if !options.themeIndependentStylesOnly
+
+    applyComponentThemes({
+      CSS_Namespace: "Snackbar--YDF",
+      themes: properties.themes,
+      applyGeometricVariation: applyGeometricVariation,
+      applyDecorativeVariation: applyDecorativeVariation
+    })

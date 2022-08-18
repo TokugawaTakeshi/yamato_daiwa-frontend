@@ -1,3 +1,6 @@
+include CallableExpressionScheme.class.pug
+
+
 mixin CallableExpressionScheme(properties)
 
   -
@@ -5,78 +8,72 @@ mixin CallableExpressionScheme(properties)
       technicalName,
       localizedDescriptiveHeading,
       parametersSpecification = [],
-      returnedValue
+      returnedValue,
+      signatures
     } = properties
 
 
   .CallableExpressionScheme&attributes(attributes)
 
-    .CallableExpressionScheme-TechnicalNameRow= `${technicalName}(`
-    .CallableExpressionScheme-LocalizedDescriptiveHeading= localizedDescriptiveHeading
+    .CallableExpressionScheme-TechnicalNameHeading= `${ technicalName }`
 
-    .CallableExpressionScheme-GridFlow
+    if localizedDescriptiveHeading
 
-      each argumentSpecification, index in parametersSpecification
-
-        - argumentSpecification.number = index + 1
-
-        +ArgumentAbstract(argumentSpecification)
-
-    .CallableExpressionScheme-ClosingBracketRow
-      .CallableExpressionScheme-ClosingBracket ):
-      .CallableExpressionScheme-ReturnValue
-        if returnedValue
-          | #{returnedValue}
-        else
-          | void
-
-    if block
-      .CallableExpressionScheme-UsedTypesGridFlow
-        block
+      .CallableExpressionScheme-LocalizedDescriptiveHeading= localizedDescriptiveHeading
 
 
-mixin ArgumentAbstract(argumentSpecification)
+    if isNonEmptyArray(signatures)
 
-  .FunctionParameterAbstract
+      .CallableExpressionScheme-SignaturesFlow
 
-    .FunctionParameterAbstract-HeaderRow
+        each signature, index in signatures
 
-      .FunctionParameterAbstract-Title= `Parameter No. ${argumentSpecification.number}`
+          .CallableExpressionScheme-Signature
 
-      if argumentSpecification.required === true
-        span.FunctionParameterAbstract-RequirementBadge.FunctionParameterAbstract-RequirementBadge__Required 必須
-        //-
-          +ParameterOrPropertyRequirementBadge({
-            status: ParameterOrPropertyRequirementBadge.RequirementStatuses.required
-          }).FunctionParameterAbstract-RequirementBadge
-      else if argumentSpecification.required === false
-        //-
-          +ParameterOrPropertyRequirementBadge({
-            status: ParameterOrPropertyRequirementBadge.RequirementStatuses.optional
-          }).FunctionParameterAbstract-RequirementBadge
-      else if typeof argumentSpecification.defaultValue !== "undefined"
-        //-
-          +ParameterOrPropertyRequirementBadge({
-            status: ParameterOrPropertyRequirementBadge.RequirementStatuses.optional
-          }).FunctionParameterAbstract-RequirementBadge
+            .CallableExpressionScheme-Signature-Heading= `Перегрузка №${ index + 1 }`
+            .CallableExpressionScheme-Signature-LocalizedDescriptiveHeading= signature.localizedDescriptiveHeading
 
-    .FunctionParameterAbstract-HeaderCell 一般技術名
-    .FunctionParameterAbstract-GenericTechnicalName= argumentSpecification.genericTechnicalName
+            .CallableExpressionScheme-ParametersAndReturnedValuesGroup
 
-    .FunctionParameterAbstract-HeaderCell 型
-      .FunctionParameterAbstract-Type
+              span.CallableExpressionScheme-OpeningCurlyBracket (
 
-        if Array.isArray(argumentSpecification.type)
-          .FunctionParameterAbstract-Type-OneOfComposition
-            each alternative in argumentSpecification.type
-              .FunctionParameterAbstract-Type-OneOfComposition-Alternative= alternative
+              if isNonEmptyArray(signature.parametersSpecification)
 
-        else
-          | #{argumentSpecification.type}
+                .CallableExpressionScheme-ParametersFlow
 
-      //-
+                  each parameterSpecification, index in signature.parametersSpecification
+
+                    - parameterSpecification.number = index + 1
+
+                    +ParameterMetadata--YDF(parameterSpecification)
+
+              span.CallableExpressionScheme-ClosingBracket ):
+              span.CallableExpressionScheme-ReturnedValue
+                if signature.returnedValue
+                  | #{signature.returnedValue}
+                else
+                  | void
 
 
+    else
 
-        .FunctionParameterAbstract-HeaderCell 日本語名
-        .FunctionParameterAbstract-LocalizedName= argumentSpecification.localizedName
+      .CallableExpressionScheme-ParametersAndReturnedValuesGroup
+
+        span.CallableExpressionScheme-OpeningCurlyBracket (
+
+        if isNonEmptyArray(parametersSpecification)
+
+          .CallableExpressionScheme-ParametersFlow
+
+            each parameterSpecification, index in parametersSpecification
+
+              - parameterSpecification.number = index + 1
+
+              +ParameterMetadata--YDF(parameterSpecification)
+
+        span.CallableExpressionScheme-ClosingBracket ):
+        span.CallableExpressionScheme-ReturnedValue
+          if returnedValue
+            | #{returnedValue}
+          else
+            | void

@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@yamato-daiwa/frontend-localization-russian",
-  "version": "0.3.0-alpha1",
+  "version": "0.0.0",
   "description": "The Russian localization for '@yamato-daiwa/frontend' package.",
   "keywords": [
     "frontend",
@@ -27,6 +27,6 @@
     "StaticPreviewAnywherePageLocalization.pug"
   ],
   "peerDependencies": {
-    "@yamato-daiwa/es-extensions": "1.4.0-alpha.1"
+    "@yamato-daiwa/es-extensions": "2.0.0-alpha.0"
   }
 }

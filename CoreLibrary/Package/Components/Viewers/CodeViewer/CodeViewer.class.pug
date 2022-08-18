@@ -1,0 +1,104 @@
+include CodeViewerLocalization.english.pug
+
+
+-
+
+  const CodeViewer__YDF = {
+
+    CSS_NAMESPACE: "CodeViewer--YDF",
+
+    SupportedCodesLanguages: {
+      Bash: "bash",
+      CSS: "css",
+      CPP: "cpp",
+      CSharp: "cs",
+      Handlebars: "handlebars",
+      HTML: "html",
+      Java: "java",
+      JavaScript: "js",
+      JSON: "json",
+      JSON5: "json5",
+      Markdown: "md",
+      PHP: "php",
+      Pug: "pug",
+      SASS: "sass",
+      SCSS: "scss",
+      Stylus: "stylus",
+      TypeScript: "ts",
+      YAML: "yaml"
+    },
+
+    get languagesAndTitlesMap() {
+      return {
+        [this.SupportedCodesLanguages.Bash]: "Bash",
+        [this.SupportedCodesLanguages.CSS]: "CSS",
+        [this.SupportedCodesLanguages.CPP]: "C++",
+        [this.SupportedCodesLanguages.CSharp]: "C#",
+        [this.SupportedCodesLanguages.HTML]: "HTML",
+        [this.SupportedCodesLanguages.Handlebars]: "Handlebars",
+        [this.SupportedCodesLanguages.Java]: "Java",
+        [this.SupportedCodesLanguages.JavaScript]: "JavaScript",
+        [this.SupportedCodesLanguages.JSON]: "JSON",
+        [this.SupportedCodesLanguages.JSON5]: "JSON5",
+        [this.SupportedCodesLanguages.Markdown]: "Markdown",
+        [this.SupportedCodesLanguages.PHP]: "PHP",
+        [this.SupportedCodesLanguages.Pug]: "Pug",
+        [this.SupportedCodesLanguages.SASS]: "SASS",
+        [this.SupportedCodesLanguages.SCSS]: "SCSS",
+        [this.SupportedCodesLanguages.Stylus]: "Stylus",
+        [this.SupportedCodesLanguages.TypeScript]: "TypeScript",
+        [this.SupportedCodesLanguages.YAML]: "YAML"
+      }
+    },
+
+
+    /* === Properties specification ================================================================================= */
+    propertiesSpecification: {
+
+      title: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
+      resultWebViewURI: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
+      defaultPaddingsInViewport: {
+        type: Boolean,
+        required: false
+      }
+
+    },
+
+    get tabPanelPropertiesSpecification() {
+
+      return {
+
+        fileLabel: {
+          type: String,
+          required: false,
+          minimalCharactersCount: 1
+        },
+
+        isActive: {
+          type: Boolean,
+          required: false
+        },
+
+        codeLanguage: {
+          type: String,
+          required: true,
+          allowedAlternatives: Object.values(this.SupportedCodesLanguages)
+        }
+      }
+
+    },
+
+    /* === Localization ============================================================================================= */
+    localization: CodeViewerYDF_ComponentEnglishLocalization
+
+  }

@@ -1,0 +1,120 @@
+-
+
+  const Badge__YDF = {
+
+    CSS_NAMESPACE: "Badge--YDF",
+
+
+    /* === Themes =================================================================================================== */
+    Themes: { regular: "REGULAR" },
+
+    defineNewThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, this);
+    },
+
+    areThemesExternal: false,
+    considerThemesAsExternal() {
+      this.areThemesExternal = true;
+      return this;
+    },
+
+
+    /* --- Geometry ------------------------------------------------------------------------------------------------- */
+    GeometricVariations: { regular: "REGULAR" },
+
+    defineNewGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, this);
+    },
+
+    GeometricModifiers: { pillShape: "PILL_SHAPE" },
+
+
+    /* --- Decoration ----------------------------------------------------------------------------------------------- */
+    DecorativeVariations: {
+      veryCatchyBright: "VERY_CATCHY_BRIGHT",
+      catchyBright: "CATCHY_BRIGHT",
+      modestlyCatchyBright: "MODESTLY_CATCHY_BRIGHT",
+      neutralBright: "NEUTRAL_BRIGHT",
+      modestlyCalmingBright: "MODESTLY_CALMING_BRIGHT",
+      calmingBright: "CALMING_BRIGHT",
+      achromaticBright: "ACHROMATIC_BRIGHT",
+      veryCatchyPastel: "VERY_CATCHY_PASTEL",
+      catchyPastel: "CATCHY_PASTEL",
+      modestlyCatchyPastel: "MODESTLY_CATCHY_PASTEL",
+      neutralPastel: "NEUTRAL_PASTEL",
+      modestlyCalmingPastel: "MODESTLY_CALMING_PASTEL",
+      calmingPastel: "CALMING_PASTEL",
+      achromaticPastel: "ACHROMATIC_PASTEL"
+    },
+
+    defineNewDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, this);
+    },
+
+    DecorativeModifiers: { bordersDisguising: "BORDERS_DISGUISING" },
+
+
+    /* === Properties specification ================================================================================= */
+    get propertiesSpecification() {
+      return {
+
+        key: {
+          type: String,
+          required: false
+        },
+
+        value: {
+          type: String,
+          required: true
+        },
+
+        forbidMultiLine: {
+          type: Boolean,
+          required: false
+        },
+
+        theme: {
+          type: String,
+          required: false,
+          allowedAlternatives: Object.values(this.Themes)
+        },
+
+        areThemesExternal: {
+          type: Boolean,
+          required: false
+        },
+
+        geometry: {
+          type: String,
+          required: false,
+          allowedAlternatives: Object.values(this.GeometricVariations)
+        },
+
+        geometricModifiers: {
+          type: Array,
+          required: false,
+          element: {
+            type: String,
+            allowedAlternatives: Object.values(this.GeometricModifiers)
+          }
+        },
+
+        decoration: {
+          type: String,
+          required: true,
+          allowedAlternatives: Object.values(this.DecorativeVariations)
+        },
+
+        decorativeModifiers: {
+          type: Array,
+          required: false,
+          element: {
+            type: String,
+            allowedAlternatives: Object.values(this.DecorativeModifiers)
+          }
+        }
+
+      };
+    }
+
+  };

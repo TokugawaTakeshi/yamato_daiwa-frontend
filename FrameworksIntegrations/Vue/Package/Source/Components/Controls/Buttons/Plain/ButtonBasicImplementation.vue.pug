@@ -1,7 +1,7 @@
-button.Button(
+button.Button--YDF(
   v-if="isButtonTheTagNameOfRootElement"
   :type="typeAttributeValueOfInputOrButtonElement"
-  :disabled="mustDisable"
+  :disabled="disabled"
   @click.prevent="() => {}"
   :class="rootElementModifierCSS_Classes"
 )
@@ -10,20 +10,20 @@ button.Button(
   slot(name="appendedSVG_Icon")
   slot(name="loneSVG_Icon")
 
-input.Button(
+input.Button--YDF(
   v-else-if="isInputTheTagNameOfRootElement"
   :type="typeAttributeValueOfInputOrButtonElement"
   :value="label"
-  :disabled="mustDisable"
+  :disabled="disabled"
   @click.prevent="() => {}"
   :class="rootElementModifierCSS_Classes"
 )
 
-component.Button(
-  v-else-if="isRootElementTheRouterLink"
+component.Button--YDF(
+  v-else-if="isRouterLinkTheRootElement"
   :is="IS_NUXT ? 'NuxtLink' : 'RouterLink'"
   :to="route"
-  :aria-disabled="mustDisable"
+  :aria-disabled="disabled"
   :tabindex="disabled && -1"
   :class="rootElementModifierCSS_Classes"
 )
@@ -32,12 +32,12 @@ component.Button(
   slot(name="appendedSVG_Icon")
   slot(name="loneSVG_Icon")
 
-a.Button(
+a.Button--YDF(
   v-else-if="isAnchorTheTagNameOfRootElement"
   :href="externalLinkURI"
   :target="mustOpenExternalLinkInCurrentTab ? '_self' : '_blank'"
   rel="noopener noreferrer"
-  :aria-disabled="mustDisable"
+  :aria-disabled="disabled"
   :tabindex="disabled && -1"
   :class="rootElementModifierCSS_Classes"
 )

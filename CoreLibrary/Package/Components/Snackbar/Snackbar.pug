@@ -1,0 +1,44 @@
+include Snackbar.class.pug
+
+
+mixin Snackbar--YDF(properties)
+
+  -
+
+    const {
+      theme = Snackbar__YDF.Themes.regular,
+      externalThemes = Snackbar__YDF.externalThemes,
+      geometry = Snackbar__YDF.GeometricVariations.regular,
+      decoration
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: Snackbar__YDF.propertiesSpecification,
+      mixinName: "Snackbar--YDF"
+    });
+
+    const rootElementModifierCSS_Classes = [
+      ...Object.entries(Snackbar__YDF.Themes).length > 1 && !externalThemes ?
+          [Snackbar__YDF.ThemesCSS_ModifiersNames[theme]] : [],
+      ...Object.entries(Snackbar__YDF.GeometricVariations).length > 1 ?
+          [Snackbar__YDF.GeometricVariationsCSS_ModifiersNames[geometry]] : [],
+      ...Object.entries(Snackbar__YDF.DecorativeVariations).length > 1 ?
+          [Snackbar__YDF.DecorativeVariationsCSS_Modifiers[decoration]] : []
+    ];
+
+
+  .Snackbar--YDF&attributes(attributes)(
+    class= rootElementModifierCSS_Classes
+    role="status"
+    aria-live="polite"
+  )
+
+    +ExclamationMark__Circled__Filled--YDF_Icon.Snackbar--YDF-Icon
+
+    p.Snackbar--YDF-Message Sample text
+
+    button.Snackbar--YDF-DismissingButton(
+      type="button"
+      aria-label= Snackbar__YDF.localization.dismissingButton.accessibilityGuidance
+    ): +MultiplicationSign__Boxed__Filled--YDF_Icon.Snackbar--YDF-DismissingButton-Icon

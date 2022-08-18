@@ -1,0 +1,5 @@
+extends: ./node_modules/@yamato-daiwa/style_guides/BasicPreset.js
+
+globals:
+
+  JSX: readonly

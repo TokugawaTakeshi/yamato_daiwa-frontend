@@ -5,3 +5,12 @@ include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Mai
 +Mail__Filled--YDF_Icon
 
 </template>
+
+
+<script>
+
+  export default {
+    name: "Mail__Filled--YDF_Icon"
+  };
+
+</script>

@@ -1,0 +1,108 @@
+/* === Execution
+stylus Tests/CompiledCodeCheckOnly/Styles/02-Kernel/03-UtilityMixins/05-TypographyUtils/applyTextGeometryWithoutExtraSpaceCausedByLineHeight.test.styl `
+    --out Tests/Build/CompiledCodeCheckOnly/Styles/02-Kernel/03-UtilityMixins/05-TypographyUtils/applyTextGeometryWithoutExtraSpaceCausedByLineHeight.test.css `
+    --include Styles
+*/
+
+
+@require "01-Assets.styl"
+@require "02-Kernel.styl"
+
+
+/* [ ClassesNaming ] [Input]-[Output] */
+
+// === Specifying via line spacing =====================================================================================
+.AbsoluteFontSizeAndZeroLineSpacing-RelativeLineHeight
+
+  /* Expected: line-height: 1 */
+  applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+    fontSize: 13px,
+    lineSpacing: 0
+  })
+
+
+.AbsoluteFontSizeAndZeroLineSpacing-AbsoluteLineHeight
+
+  /* Expected: line-height: 13px */
+  applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+    fontSize: 13px,
+    lineSpacing: 0,
+    mustApplyOnlyAbsoluteLineHeight: true
+  })
+
+
+.AbsoluteFontSizeAndLineSpacingOfSameUnit-RelativeLineHeight
+
+  /* Expected: line-height: 1.4 */
+  applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+    fontSize: 10px,
+    lineSpacing: 4px
+  })
+
+
+.AbsoluteFontSizeAndLineSpacingOfSameUnit-AbsoluteLineHeight
+
+  /* Expected: line-height: 14px */
+  applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+    fontSize: 10px,
+    lineSpacing: 4px,
+    mustApplyOnlyAbsoluteLineHeight: true
+  })
+
+
+.AbsoluteFontSizeAndRelativeLineSpacing-RelativeLineHeight
+
+  /* Expected: line-height: 1.2 */
+  applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+    fontSize: 10px,
+    lineSpacing: 0.2
+  })
+
+
+.AbsoluteFontSizeAndRelativeLineSpacing-AbsoluteLineHeight
+
+  /* Expected: line-height: 12px */
+  applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+    fontSize: 10px,
+    lineSpacing: 0.2,
+    mustApplyOnlyAbsoluteLineHeight: true
+  })
+
+
+// === Specifying via line height ======================================================================================
+.AbsoluteFontSizeAndAbsoluteLineHeight-AbsoluteLineHeight
+
+  /* Expected: line-height: 14px */
+  applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+    fontSize: 10px,
+    lineHeight: 14px,
+    mustApplyOnlyAbsoluteLineHeight: true
+  })
+
+
+.AbsoluteFontSizeAndAbsoluteLineHeight-RelativeLineHeight
+
+  /* Expected: line-height: 1.4 */
+  applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+    fontSize: 10px,
+    lineHeight: 14px
+  })
+
+
+.AbsoluteFontSizeAndRelativeLineHeight-AbsoluteLineHeight
+
+  /* Expected: line-height: 14px */
+  applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+    fontSize: 10px,
+    lineHeight: 1.4,
+    mustApplyOnlyAbsoluteLineHeight: true
+  })
+
+
+.AbsoluteFontSizeAndRelativeLineHeight-RelativeLineHeight
+
+  /* Expected: line-height: 1.4 */
+  applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+    fontSize: 10px,
+    lineHeight: 1.4
+  })

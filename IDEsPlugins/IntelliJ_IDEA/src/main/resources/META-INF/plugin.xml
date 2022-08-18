@@ -14,8 +14,4 @@
 
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.tokugawatakeshi.temp.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>

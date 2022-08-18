@@ -1,0 +1,78 @@
+TextElementHeightSizingTypes = {
+  fixed: "FIXED",
+  natural: "NATURAL"
+}
+
+TextElementHeightSizingSpecificationSchema = {
+
+  type: {
+    type: DataTypes.string,
+    required: true,
+    allowedAlternatives: values(TextElementHeightSizingTypes)
+  },
+
+  fixedHeight: {
+    type: DataTypes.dimensionalAmount,
+    requiredIf: {
+      predicate: @(textElementHeightSizingSpecification) {
+        return textElementHeightSizingSpecification.type == TextElementHeightSizingTypes.fixed
+      },
+      conditionDescription: "'type' is 'TextElementHeightSizingTypes.fixed'"
+    }
+  },
+
+  borders: {
+    type: DataTypes.object,
+    defaultValue: {},
+    properties: BordersSizingSpecificationSchema.thickness.properties
+  },
+  explicitBorderNoneDeclarationRequired: {
+    type: DataTypes.boolean
+  },
+
+  paddings: {
+    type: DataTypes.object,
+    defaultValue: {},
+    properties: PaddingsSpecificationSchema
+  },
+  symmetricComputedPaddings: {
+    type: DataTypes.boolean,
+    defaultValue: false
+  },
+  explicitPaddingZeroDeclarationRequired: {
+    type: DataTypes.boolean
+  },
+
+  fontFamily: {
+    type: DataTypes.string,
+    defaultValue: inherit
+  },
+  fontSize: {
+    type: DataTypes.dimensionalAmount
+    required: true
+  },
+  lineSpacing: {
+    type: DataTypes.dimensionalAmount
+  },
+  lineHeight: {
+    type: DataTypes.dimensionalAmount DataTypes.dimensionlessAmount,
+    incompatibleWith: "lineSpacing",
+    requiredIf: {
+      predicate: @(textElementHeightSizingSpecification) { return isNull(textElementHeightSizingSpecification.lineSpacing) },
+      descriptionForLogging: "The 'lineSpacing' is not specified"
+    }
+  },
+  mustSubstractExtraSpaceCausedByLineHeightFromPaddings: {
+    type: DataTypes.boolean,
+    defaultValue: false
+  },
+  linesCount: {
+    type: DataTypes.dimensionlessAmount
+    defaultValue: 1,
+    minimalValue: 1
+  },
+
+  fixateHeight: {
+    type: DataTypes.boolean
+  }
+}

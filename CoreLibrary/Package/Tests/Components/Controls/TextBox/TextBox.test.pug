@@ -1,0 +1,111 @@
+extends ../../../../PagesTemplates/RegularWebPage.pug
+
+
+block append Metadata
+
+  -
+    styleSheetsURIs = [ "./TextBox.test.css" ]
+    scriptsURIs.endOfBody = [ "./TextBox.test.js" ]
+
+
+block append Requirements
+
+  include ../../../../Components.pug
+
+
+block append PageContent
+
+  .TextBoxComponentTestingPage
+
+    h1.Heading1 TextBox component testing
+
+    h2.Heading2 HTML Types
+
+    dl.TextBoxComponentTestingPage-HTML_TypeShowcase
+
+      dt Text
+      dd
+        +TextBox--YDF({
+          label: "Sample"
+        })
+
+      dt Email
+      dd
+        +TextBox--YDF({
+          HTML_Type: TextBox__YDF.HTML_Types.email,
+          label: "Email",
+          value: "example@examplemail.com"
+        })
+
+      dt Number
+      dd
+        +TextBox--YDF({
+          HTML_Type: TextBox__YDF.HTML_Types.number,
+          label: "Number",
+          value: "8"
+        })
+
+
+    h2.Heading2 Guidance & placeholder
+
+    .TextBoxComponentTestingPage-TextBoxesVerticalFlow
+
+      +TextBox--YDF({
+        label: "Sample",
+        guidance: "8-16 characters",
+        placeholder: "Input here please"
+      })
+
+      +TextBox--YDF({
+        label: "Sample",
+        guidance: "8-16 characters",
+        placeholder: "Input here please",
+        geometry: CompoundControlShell__YDF.GeometricVariations.small
+      })
+
+      +TextBox--YDF({
+        label: "Very-very long label test: The job requires extra pluck and zeal from every young wage earner.",
+        guidance: "Very-very long guidance text: Jaded zombies acted quaintly but kept driving their oxen forward.",
+        placeholder: "Input here please"
+      })
+
+      +TextBox--YDF({
+        label: "Very-very long label test: The job requires extra pluck and zeal from every young wage earner.",
+        guidance: "Very-very long guidance text: Jaded zombies acted quaintly but kept driving their oxen forward.",
+        placeholder: "Input here please",
+        geometry: CompoundControlShell__YDF.GeometricVariations.small
+      })
+
+
+    h2.Heading2 States simulations
+
+    .TextBoxComponentTestingPage-TextBoxesVerticalFlow
+
+      +TextBox--YDF(
+        {
+          label: "Sample",
+          guidance: "Input here please"
+        },
+        {
+          invalidInputHighlightIfAnyErrorsMessages: true,
+          errorsMessages: [
+            "Inputted characters count is exceeding allowed characters count.",
+            "Next characters are not allowed: /, \\, #"
+          ]
+        }
+      )
+
+      +TextBox--YDF(
+        {
+          label: "Sample",
+          guidance: "Input here please",
+          geometry: CompoundControlShell__YDF.GeometricVariations.small
+        },
+        {
+          invalidInputHighlightIfAnyErrorsMessages: true,
+          errorsMessages: [
+            "Inputted characters count is exceeding allowed characters count.",
+            "Next characters are not allowed: /, \\, #"
+          ]
+        }
+      )

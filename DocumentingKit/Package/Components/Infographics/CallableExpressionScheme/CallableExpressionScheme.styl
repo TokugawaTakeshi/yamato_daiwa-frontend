@@ -2,163 +2,122 @@ provideCallableExpressionSchemeAndRelatedComponentStyles()
 
   .CallableExpressionScheme
 
-    &-TechnicalNameRow,
-    &-ClosingBracket
+    &-TechnicalNameHeading
 
-      font-family Consolas, monaco, Meiryo UI, monospace
-      MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 1.2rem, lineHeight: 1.4rem })
+      font-family Consolas, monaco, monospace
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+        fontSize: 1.4rem,
+        lineSpacing: 0.2rem,
+        mustAllowWordBreakingAnywhere: true
+      })
 
       font-weight bold
-      color ShadesOfGray__39ColorsW3C_Palette[12]
+      color: ShadesOfGray__39ColorsW3C_Palette[12]
 
 
     &-LocalizedDescriptiveHeading
 
-      Paddings({ horizontalSymmetric: 1rem })
-      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 1rem, lineHeight: 1.2rem })
-      color ShadesOfGray__39ColorsW3C_Palette[20]
-
-      margin-top 0.2rem
-
-
-    &-GridFlow
-
-      display grid
-      grid-template-columns repeat(auto-fill, minmax(280px, 1fr));
-      gap 6px
-
-      Paddings({ horizontalSymmetric: 8px })
-
-      PositionalRelationship({
-        definitions:\
-            (".CallableExpressionScheme-FunctionNameRow" { retireFromIt: { y: 6px } })\
-            (".CallableExpressionScheme-FunctionNameLocalizedInterpretation" { retireFromIt: { y: 8px } })
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+        fontSize: 1.2rem,
+        lineSpacing: 0.2rem,
+        mustAllowWordBreakingAnywhere: true
       })
 
-    &-ClosingBracketRow
+      color: ShadesOfGray__39ColorsW3C_Palette[16]
+
+      margin-top 0.1rem
+
+
+    &-SignaturesFlow
+
+      margin-top 16px
+
+
+      >* + *
+
+        margin-top 12px
+
+
+    &-Signature
+
+      &-Heading
+
+        font-family "Arial Black", "Arial Bold", "Gadget", sans-serif
+        applyTextGeometryWithoutExtraSpaceCausedByLineHeight({ fontSize: 1.2rem, lineSpacing: 0.2rem })
+
+        color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+
+      &-LocalizedDescriptiveHeading
+
+        applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+          fontSize: 1.1rem,
+          lineSpacing: 0.2rem,
+          mustAllowWordBreakingAnywhere: true
+        })
+
+        font-weight bold
+        color: ShadesOfGray__39ColorsW3C_Palette[16]
+
+        margin-top 0.1rem
+
+
+    &-GenericExpressionLabel
+
+      font-family Consolas, monaco, Meiryo UI, monospace
+
+
+    &-ParametersAndReturnedValuesGroup
+
+      display flex
+      flex-wrap wrap
+      align-items center
+
+      retireFrom({ targetElementSelector: ".CallableExpressionScheme-GenericExpressionLabel", y: 6px })
+
+
+    &-OpeningCurlyBracket
+
+      font-family "Arial Black", "Arial Bold", "Gadget", sans-serif
+
+      font-weight bold
+      color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+      flex-shrink 0
+
+
+    &-ParametersFlow
 
       display grid
-      grid-template-columns auto minmax(0, 1fr)
-      align-items baseline
-      grid-column-gap 4px
+      grid-template-columns repeat(auto-fill, minmax(250px, 1fr));
+      gap 6px
 
-      margin-top 6px
+      margin-top 0.4rem
+      flex 1 1 100%
+
+
+    &-ClosingBracket
+
+      font-family "Arial Black", "Arial Bold", "Gadget", sans-serif
+
+      font-weight bold
+      color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+      flex-shrink 0
+      retireFrom({ targetElementSelector: ".CallableExpressionScheme-ParametersFlow", y: 6px })
 
 
     &-ReturnedValue
 
       font-family Consolas, monaco, Meiryo UI, monospace
+
       font-weight bold
-      color ShadeOfGray__12--W3C_Palette
+      color darkred
+
+      flex-shrink 0
+      margin-left 4px
 
 
-    &-UsedTypesGridFlow
+      /.CallableExpressionScheme-ParametersFlow + .CallableExpressionScheme-ClosingBracket + &
 
-      display grid
-      grid-template-columns repeat(auto-fill, minmax(280px, 1fr));
-      gap 6px
-
-      retireFrom({ targetElementSelector: ".CallableExpressionScheme-ClosingBracketRow", y: 8px })
-
-
-  .FunctionParameterAbstract
-
-    display grid
-    grid-template-columns auto minmax(0, 1fr)
-    grid-gap 6px 12px
-    align-items start
-
-    border-width 1px
-    border-radius 3px
-    padding 6px 10px
-
-    border-style solid
-    border-color: JQueryUI_BaseTheme.content.borderColor
-    color: JQueryUI_BaseTheme.content.fontColor
-
-
-    &-HeaderRow
-
-      grid-column-start span 2
-
-      display flex
-      align-items center
-
-
-    &-Title
-
-      font-size 13px
-      font-weight bold
-      color: ShadesOfGray__39ColorsW3C_Palette[18]
-
-
-    &-RequirementBadge
-
-      margin-left 6px
-
-
-    &-HeaderCell
-
-      text-align right
-
-      color: ShadesOfGray__39ColorsW3C_Palette[20]
-
-
-    &-LocalizedName
-
-      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 1rem, lineHeight: 1.2rem })
-      color: ShadesOfGray__39ColorsW3C_Palette[14]
-
-
-    &-Type
-
-      font-family Consolas, monaco, Meiryo UI, monospace
-      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 1rem, lineHeight: 1.2rem })
-      font-weight bold
-      color: YamatoDaiwaInformationDesignColors.importantEntity
-
-  //
-  //    &-OneOfComposition
-  //
-  //      SQUARE_BRACKET_WIDTH = 5px
-  //      HORIZONTAL_SPACE_BETWEEN_BRACKET_AND_ALTERNATIVES_FLOW = 6px
-  //
-  //
-  //      LinearFlow({
-  //        mainAxeDirection: Directions.bottom,
-  //        constantSpaceBetweenItems: 4px
-  //      })
-  //
-  //      position relative
-  //
-  //
-  //      &:before
-  //
-  //        THICKNESS = 1px
-  //
-  //        content ""
-  //        position absolute
-  //        left 0
-  //        top -(THICKNESS)
-  //
-  //        width SQUARE_BRACKET_WIDTH
-  //        height 100%
-  //
-  //        border-top-width THICKNESS
-  //        border-left-width THICKNESS
-  //        border-bottom-width THICKNESS
-  //        border-right-width 0
-  //
-  //        border-style solid
-  //        border-color ShadeOfGray__16--W3C_Palette
-  //
-  //
-  //      &-Alternative
-  //
-  //        margin-left SQUARE_BRACKET_WIDTH + HORIZONTAL_SPACE_BETWEEN_BRACKET_AND_ALTERNATIVES_FLOW
-  //
-  //
-  //  &-GenericTechnicalName
-  //
-  //    font-family Consolas__SmoothJapaneseSymbols--FontsStack
-  //    MultilineTextWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineHeight: 1.1 })
+        margin-top 8px

@@ -5,3 +5,12 @@ include ../../../node_modules/@yamato-daiwa/frontend/Markup/Assets/SVG_Icons/Mag
 +MagnifyingGlass--YDF_Icon
 
 </template>
+
+
+<script>
+
+export default {
+  name: "MagnifyingGlass--YDF_Icon"
+};
+
+</script>

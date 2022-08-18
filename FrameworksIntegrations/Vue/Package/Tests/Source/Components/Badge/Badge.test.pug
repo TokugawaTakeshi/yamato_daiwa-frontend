@@ -1,0 +1,17 @@
+extends ../../../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "en";
+    HTML_PAGE_TITLE = "Badge component testing";
+
+    styleSheetsURIs = [ "@Tests/Components/Badge/Badge.test.styl" ]
+    scriptsURIs.endOfBody = [ "@Tests/Components/Badge/Badge.test.ts" ]
+
+
+block append PageContent
+
+  #APPLICATION

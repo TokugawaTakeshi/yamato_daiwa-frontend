@@ -1,0 +1,24 @@
+@require "../../../node_modules/@yamato-daiwa/frontend/Functionality.styl"
+@require "../../../node_modules/@yamato-daiwa/frontend/Components.styl"
+@require "../../../Components.styl"
+
+
+CrossBrowserStylesReset()
+InitialGlobalCSS_Rules()
+
+provideTypography()
+
+provideBadgeYDF_Component()
+provideCallableExpressionSchemeAndRelatedComponentStyles()
+
+
+.CallableExpressionSchemeTestSite
+
+  padding 12px 16px
+
+  Centerer({ maximalWidth: 2*NARROWEST_SCREEN_WIDTH_UNIT })
+
+
+  >* + *
+
+    margin-top 24px

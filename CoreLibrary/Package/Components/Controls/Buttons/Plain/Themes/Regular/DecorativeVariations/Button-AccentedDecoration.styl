@@ -1,37 +1,44 @@
 Button-AccentedDecoration--YDF = {
 
   rootElement: {
-    borders: {
-      style: solid,
-      color: JQueryUI_BaseTheme.clickableElements.activeState.borderColor
+    text: {
+      color: JQueryUI_BaseTheme.clickableElements.activeState.fontColor,
+      underline: null
     },
     background: {
       color: JQueryUI_BaseTheme.clickableElements.activeState.background
     },
-    text: {
-      color: JQueryUI_BaseTheme.clickableElements.activeState.fontColor
-    }
+    borders: {
+      style: solid,
+      color: JQueryUI_BaseTheme.clickableElements.activeState.borderColor
+    },
+    outline: null,
+    shadow: null
   },
 
   SVG_Icon: {
     color: JQueryUI_BaseTheme.clickableElements.activeState.fontColor
   },
 
+
   stateDependent: {
 
     hover: {
 
       rootElement: {
-        borders: {
-          style: null,
-          color: JQueryUI_BaseTheme.clickableElements.hoverState.borderColor
+        text: {
+          color: JQueryUI_BaseTheme.clickableElements.hoverState.fontColor,
+          underline: null
         },
         background: {
           color: JQueryUI_BaseTheme.clickableElements.hoverState.background
         },
-        text: {
-          color: JQueryUI_BaseTheme.clickableElements.hoverState.fontColor
-        }
+        borders: {
+          style: null,
+          color: JQueryUI_BaseTheme.clickableElements.hoverState.borderColor
+        },
+        outline: null,
+        shadow: null
       },
 
       SVG_Icon: {
@@ -39,19 +46,42 @@ Button-AccentedDecoration--YDF = {
       }
     },
 
+    focus: {
+      rootElement: {
+        text: {
+          color: null,
+          underline: null
+        },
+        background: {
+          color: null
+        },
+        borders: {
+          style: null,
+          color: null
+        },
+        outline: null,
+        shadow: {
+          blurRadius: 3px,
+          spreadRadius: 1px,
+          color: #007fff
+        }
+      }
+    },
+
     active: {
 
       rootElement: {
-        borders: {
-          style: null,
-          color: JQueryUI_BaseTheme.clickableElements.defaultState.borderColor
+        text: {
+          color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
         },
         background: {
           color: JQueryUI_BaseTheme.clickableElements.defaultState.background
         },
-        text: {
-          color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
-        }
+        borders: {
+          style: null,
+          color: JQueryUI_BaseTheme.clickableElements.defaultState.borderColor
+        },
+        outline: null
       },
 
       SVG_Icon: {
@@ -62,15 +92,15 @@ Button-AccentedDecoration--YDF = {
     disabled: {
 
       rootElement: {
-        borders: {
-          style: null,
-          color: ShadesOfGray__39ColorsW3C_Palette[32]
+        text: {
+          color: ShadesOfGray__39ColorsW3C_Palette[24]
         },
         background: {
           color: ShadesOfGray__39ColorsW3C_Palette[36]
         },
-        text: {
-          color: ShadesOfGray__39ColorsW3C_Palette[24]
+        borders: {
+          style: null,
+          color: ShadesOfGray__39ColorsW3C_Palette[32]
         }
       },
 

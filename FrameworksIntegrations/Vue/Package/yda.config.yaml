@@ -28,14 +28,14 @@ projectBuilding:
 
       Tests:
 
-        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Source
+        topDirectoryRelativePath: Tests/Source
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
           excludeSubdirectoriesWithPrefixes: "_"
 
         buildingModeDependent:
-          DEVELOPMENT:
-            outputBaseDirectoryRelativePath: Tests/Output
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Tests/Output
 
 
 
@@ -46,15 +46,15 @@ projectBuilding:
 
       Tests:
 
-        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Source
+        topDirectoryRelativePath: Tests/Source
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
           excludeSubdirectoriesWithPrefixes: "_"
 
         buildingModeDependent:
-          DEVELOPMENT:
-            outputBaseDirectoryRelativePath: Tests/Output
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Tests/Output
 
 
   # === フロントエンド挙動制御記法事前処理 ======================================================================================
@@ -72,7 +72,7 @@ projectBuilding:
 
       Distributable:
 
-        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Source/index.ts
+        singleEntryPointRelativePath: Source/index.ts
 
         targetRuntime:
           type: BROWSER
@@ -85,15 +85,16 @@ projectBuilding:
 
         buildingModeDependent:
 
-          DEVELOPMENT:
-            outputBaseDirectoryRelativePath: ""
+          # TODO ESLint 問題の解決の後で削除
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: "Distributable"
 
           PRODUCTION:
-            outputBaseDirectoryRelativePath: ""
+            outputTopDirectoryRelativePath: "Distributable"
 
       Tests:
 
-        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Source
+        topDirectoryRelativePath: Tests/Source
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
@@ -103,14 +104,20 @@ projectBuilding:
           type: BROWSER
 
         buildingModeDependent:
-          DEVELOPMENT:
-            outputBaseDirectoryRelativePath: Tests/Output
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Tests/Output
 
 
   # === Development server =============================================================================================
   browserLiveReloading:
 
-    Tests:
+    setups:
 
-      customStartingFilenameWithExtension: Tests.html
-      targetFilesRootDirectoryRelativePath: Tests/Output
+      Tests:
+
+        localServer:
+
+          rootDirectoryRelativePath: Tests/Output
+          customStartingFileNameWithExtension: Tests.html
+
+        openInBrowsers: chrome

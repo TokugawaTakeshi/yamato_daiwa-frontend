@@ -30,9 +30,57 @@ Button--YDF = {
 }
 
 
-provideButtonComponent(preset= Button--YDF.defaultProperties, overridings = {})
+provideButtonYDF_Component(
+  preset = Button--YDF.defaultProperties,
+  overridings = {},
+  options = {
+    themeIndependentStylesOnly: false,
+    externalThemes: false,
+    loadingPlaceholder: true,
+    geometricModifiers: {
+      pillShape: true,
+      squareShape: true
+    }
+  },
+  restParameters__MUST_NOT_BE...
+)
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "provideButtonYDF_Component",
+    targetParameterNumber: 3,
+    targetParameter: options,
+    schema: {
+      themeIndependentStylesOnly: {
+        type: DataTypes.boolean,
+        required: true
+      },
+      externalThemes: {
+        type: DataTypes.boolean,
+        required: true
+      },
+      loadingPlaceholder: {
+        type: DataTypes.boolean,
+        required: true
+      },
+      geometricModifiers: {
+        type: DataTypes.object,
+        required: true,
+        properties: {
+          pillShape: {
+            type: DataTypes.boolean,
+            required: true
+          },
+          squareShape: {
+            type: DataTypes.boolean,
+            required: true
+          }
+        }
+      }
+    },
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
 
 
   // === Methods =======================================================================================================
@@ -45,6 +93,11 @@ provideButtonComponent(preset= Button--YDF.defaultProperties, overridings = {})
       cursor pointer
 
 
+      &:disabled
+
+        cursor not-allowed
+
+
     button.Button--YDF,
     a.Button--YDF
 
@@ -53,10 +106,10 @@ provideButtonComponent(preset= Button--YDF.defaultProperties, overridings = {})
       align-items center
 
 
-    /button{selector()}:disabled,
-    /input{selector()}:disabled
+    input.Button--YDF
 
-      cursor not-allowed
+      white-space break-spaces
+      word-break break-all
 
 
     a.Button--YDF__DisabledState
@@ -64,54 +117,115 @@ provideButtonComponent(preset= Button--YDF.defaultProperties, overridings = {})
       pointer-events none
 
 
-  // --- Geometry ------------------------------------------------------------------------------------------------------
-  applyGeometricVariation(variation)
+    .Button--YDF-Label
 
-    lineHeight = isNotNull(variation.label.text.lineHeight) ? variation.label.text.lineHeight :\
+      word-break break-all
+
+
+    .Button--YDF-SVG_Icon
+
+      flex-shrink 0
+
+
+  // --- Geometry ------------------------------------------------------------------------------------------------------
+  applyGeometricVariation(themeName, variationName, variation)
+
+    VARIATION_DATA_FOR_LOGGING = buildString(
+      "Button.${themeName}Theme.${variationName}Geometry",
+      {
+        themeName: themeName,
+        variationName: variationName
+      }
+    )
+
+    extractedValidProperties = extractAndValidateObjectProperties({
+      targetObject: variation,
+      targetObjectName: VARIATION_DATA_FOR_LOGGING,
+      extracts: {
+        textSize: {
+          dotSeparatedPath: "label.text.size",
+          required: true
+        },
+        lineHeight: {
+          dotSeparatedPath: "label.text.lineHeight",
+          required: false
+        },
+        lineSpacing: {
+          dotSeparatedPath: "label.text.lineSpacing",
+          mustBeInsteadOf: "label.text.lineHeight"
+        },
+        topSpacing: {
+          dotSeparatedPath: "label.spacing.top",
+          required: false
+        },
+        labelUpwardShifting: {
+          dotSeparatedPath: "label.spacing.upwardShifting",
+          required: false
+        },
+        bordersSizing: {
+          dotSeparatedPath: "rootElement.borders",
+          required: false
+        }
+      }
+    })
+
+    textSize = extractedValidProperties.textSize
+
+    lineHeight = isNotNull(extractedValidProperties.lineHeight) ? extractedValidProperties.lineHeight :\
         getLineHeightByFontSizeAndLineSpacing({
-          fontSize: variation.label.text.size,
-          lineSpacing: variation.label.text.lineSpacing
+          fontSize: textSize,
+          lineSpacing: extractedValidProperties.lineSpacing
         })
 
-    lineSpacing = isNotNull(variation.label.text.lineSpacing) ? variation.label.text.lineSpacing :\
+    lineSpacing = isNotNull(extractedValidProperties.lineSpacing) ? extractedValidProperties.lineSpacing :\
         getLineSpacingByFontSizeAndLineHeight({
-          fontSize: variation.label.text.size,
-          lineHeight: variation.label.text.lineHeight
+          fontSize: textSize,
+          lineHeight: extractedValidProperties.lineHeight
         })
 
     topSpacing = buildCalcExpression(
       "${topSpacing} - ${lineSpacing}/2 - ${upwardShifting}",
       {
-        topSpacing: nullToZero(variation.label.spacing.top),
+        topSpacing: nullToZero(extractedValidProperties.topSpacing),
         lineSpacing: lineSpacing,
-        upwardShifting: nullToZero(variation.label.spacing.upwardShifting)
+        upwardShifting: nullToZero(extractedValidProperties.labelUpwardShifting)
       }
     )
 
     bottomSpacing = buildCalcExpression(
       "${topSpacing} - ${lineSpacing}/2 + ${upwardShifting}",
       {
-        topSpacing: nullToZero(variation.label.spacing.top),
+        topSpacing: nullToZero(extractedValidProperties.topSpacing),
         lineSpacing: lineSpacing,
-        upwardShifting: nullToZero(variation.label.spacing.upwardShifting)
+        upwardShifting: nullToZero(extractedValidProperties.labelUpwardShifting)
       }
     )
 
+
     +provideDefaultSelectorWhenRootAndApply(".Button--YDF")
 
-      applyIfNotNull({ min-width: variation.rootElement.minimalWidth })
-      BordersSizing(variation.rootElement.borders)
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        assigments: {
+          min-width: {
+            dotSeparatedPath: "rootElement.minimalWidth",
+            required: false
+          }
+        }
+      })
+
+      BordersSizing(extractedValidProperties.bordersSizing)
 
 
     /a{selector()} .Button--YDF-Label,
     /button{selector()} .Button--YDF-Label
 
-      font-size: variation.label.text.size
-      line-height: lineHeight
-      word-break break-all
+      font-size textSize
+      line-height lineHeight
 
-      margin-top: topSpacing
-      margin-bottom: bottomSpacing
+      margin-top topSpacing
+      margin-bottom bottomSpacing
 
 
       if isNotNull(variation.label.spacing.left)
@@ -130,29 +244,53 @@ provideButtonComponent(preset= Button--YDF.defaultProperties, overridings = {})
 
     /input{selector()}
 
-      font-size: variation.label.text.size
-      line-height: lineHeight
-      white-space: break-spaces
-      word-break: break-all
+      font-size textSize
+      line-height lineHeight
+      padding-top topSpacing
+      padding-bottom bottomSpacing
 
-      padding-left: variation.label.spacing.left
-      padding-right: variation.label.spacing.right
-      padding-top: topSpacing
-      padding-bottom: bottomSpacing
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        assigments: {
+          padding-left: {
+            dotSeparatedPath: "label.spacing.left",
+            required: false
+          },
+          padding-right: {
+            dotSeparatedPath: "label.spacing.right",
+            required: false
+          }
+        }
+      })
 
 
     .Button--YDF-SVG_Icon
 
-      applyIfNotNull({
-        width: variation.SVG_Icon.standard.width,
-        height: variation.SVG_Icon.standard.height
-      })
-
-      flex-shrink 0
-
-      applyIfNotNull({
-        margin-top: variation.SVG_Icon.standard.spacing.top,
-        margin-bottom: variation.SVG_Icon.standard.spacing.bottom
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        assigments: {
+          width: {
+            dotSeparatedPath: "SVG_Icon.standard.width",
+            required: false
+          },
+          height: {
+            dotSeparatedPath: "SVG_Icon.standard.height",
+            requiredIf: {
+              predicate: @(variation) { return isNull(getObjectValueByDotSeparatedPathSafely(variation, "variation.SVG_Icon.standard.width")) },
+              conditionDescription: "'width' is null"
+            }
+          },
+          margin-top: {
+            dotSeparatedPath: "SVG_Icon.standard.spacing.top",
+            required: false
+          },
+          margin-bottom: {
+            dotSeparatedPath: "SVG_Icon.standard.spacing.bottom",
+            required: false
+          }
+        }
       })
 
 
@@ -163,11 +301,11 @@ provideButtonComponent(preset= Button--YDF.defaultProperties, overridings = {})
           margin-left: variation.SVG_Icon.standard.spacing.leftWhenGoingFirst
 
 
-      if isNotNull(variation.SVG_Icon.standard.spacing.rightWhinGoingLast)
+      if isNotNull(variation.SVG_Icon.standard.spacing.rightWhenGoingLast)
 
         &:last-child
 
-          margin-right: variation.SVG_Icon.standard.spacing.rightWhinGoingLast
+          margin-right: variation.SVG_Icon.standard.spacing.rightWhenGoingLast
 
 
       ../
@@ -190,91 +328,158 @@ provideButtonComponent(preset= Button--YDF.defaultProperties, overridings = {})
 
         &.{iconSpecificCSS_Class}
 
-          applyIfNotNull({
-            width: dimensions.width,
-            height: dimensions.height
+          validateAndAssignStoredInObjectCSS_Properties({
+            targetObject: dimensions,
+            targetObjectName: VARIATION_DATA_FOR_LOGGING + ".variation.SVG_Icon.specials." + iconSpecificCSS_Class ,
+            assigments: {
+              width: {
+                dotSeparatedPath: "width",
+                required: false
+              },
+              height: {
+                dotSeparatedPath: "height",
+                requiredIf: {
+                  predicate: @(variation) { return isNull(getObjectValueByDotSeparatedPathSafely(dimensions, "width")) },
+                  conditionDescription: "'width' is null"
+                }
+              }
+            }
           })
 
 
   // --- Decoration ----------------------------------------------------------------------------------------------------
-  applyDecorativeVariation(variation)
+  applyDecorativeVariation(themeName, variationName, variation)
+
+    VARIATION_DATA_FOR_LOGGING = buildString(
+      "Button.${themeName}Theme.${variationName}Decoration",
+      {
+        themeName: themeName,
+        variationName: variationName
+      }
+    )
+
 
     +provideDefaultSelectorWhenRootAndApply(".Button--YDF")
 
-      applyIfNotNull({
-        border-style: variation.rootElement.borders.style,
-        border-color: variation.rootElement.borders.color,
-        background-color: variation.rootElement.background.color,
-        color: variation.rootElement.text.color
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        assigments: {
+          color: { dotSeparatedPath: "rootElement.text.color", required: false },
+          underline: {
+            dotSeparatedPath: "rootElement.text.underline",
+            required: false,
+            applier: applyObjectTypeUnderlineDefinition
+          },
+          background-color: { dotSeparatedPath: "rootElement.background.color", required: false },
+          border-style: { dotSeparatedPath: "rootElement.borders.style", required: false },
+          border-color: { dotSeparatedPath: "rootElement.borders.color", required: false },
+          outline: {
+            dotSeparatedPath: "rootElement.outline",
+            required: false,
+            applier: applyOutlineObjectTypeDefinition
+          },
+          box-shadow: {
+            dotSeparatedPath: "rootElement.shadow",
+            required: false,
+            applier: applyObjectTypeBoxShadowDefinition
+          }
+        }
       })
 
 
     .Button--YDF-SVG_Icon
 
-      applyIfNotNull({ fill: variation.SVG_Icon.color })
-
-
-    &:hover
-
-      applyIfNotNull({
-        border-style: variation.stateDependent.hover.rootElement.borders.style,
-        border-color: variation.stateDependent.hover.rootElement.borders.color,
-        background-color: variation.stateDependent.hover.rootElement.background.color,
-        color: variation.stateDependent.hover.rootElement.text.color
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        assigments: {
+          fill: { dotSeparatedPath: "SVG_Icon.color", required: false }
+        }
       })
 
 
-      .Button--YDF-SVG_Icon
+    stateDependentStyles = isNotNull(variation.stateDependent) ? variation.stateDependent : {}
 
-        applyIfNotNull({ fill: variation.stateDependent.hover.SVG_Icon.color })
+    for state, element in stateDependentStyles
 
+      applyRootElementStateDependentStyles()
 
-    &:focus
-
-      box-shadow: JQueryUI_BaseTheme.clickableElements.focusState.shadow
-
-
-    &:active
-
-      applyIfNotNull({
-        border-style: variation.stateDependent.active.rootElement.borders.style,
-        border-color: variation.stateDependent.active.rootElement.borders.color,
-        background-color: variation.stateDependent.active.rootElement.background.color,
-        color: variation.stateDependent.active.rootElement.text.color
-      })
-
-
-      .Button--YDF-SVG_Icon
-
-        applyIfNotNull({ fill: variation.stateDependent.active.SVG_Icon.color })
-
-
-    /button{selector()}:disabled,
-    /input{selector()}:disabled,
-    /a{selector()}.Button--YDF__DisabledState
-
-      applyIfNotNull({
-        border-style: variation.stateDependent.disabled.rootElement.borders.style,
-        border-color: variation.stateDependent.disabled.rootElement.borders.color,
-        background-color: variation.stateDependent.disabled.rootElement.background.color,
-        color: variation.stateDependent.disabled.rootElement.text.color
-      })
+        validateAndAssignStoredInObjectCSS_Properties({
+          targetObject: variation,
+          targetObjectName: VARIATION_DATA_FOR_LOGGING,
+          assigments: {
+            color: { dotSeparatedPath: "stateDependent." + state + ".rootElement.text.color", required: false },
+            underline: {
+              dotSeparatedPath: "stateDependent." + state + ".rootElement.text.underline",
+              required: false,
+              applier: applyObjectTypeUnderlineDefinition
+            },
+            background-color: { dotSeparatedPath: "stateDependent." + state + ".rootElement.background.color", required: false },
+            border-style: { dotSeparatedPath: "stateDependent." + state + ".rootElement.borders.style", required: false },
+            border-color: { dotSeparatedPath: "stateDependent." + state + ".rootElement.borders.color", required: false },
+            outline: {
+              dotSeparatedPath: "rootElement." + state + ".outline",
+              required: false,
+              applier: applyOutlineObjectTypeDefinition
+            },
+            box-shadow: {
+              dotSeparatedPath: "stateDependent." + state + ".rootElement.shadow",
+              required: false,
+              applier: applyObjectTypeBoxShadowDefinition
+            }
+          }
+        })
 
 
-    /button{selector()}:disabled,
-    /a{selector()}.Button--YDF__DisabledState
+        applySVG_IconStateDependentStyles()
 
-      .Button--YDF-SVG_Icon
+          validateAndAssignStoredInObjectCSS_Properties({
+            targetObject: variation,
+            targetObjectName: VARIATION_DATA_FOR_LOGGING,
+            assigments: {
+              fill: { dotSeparatedPath: "stateDependent." + state + ".SVG_Icon.color", required: false }
+            }
+          })
 
-        applyIfNotNull({ fill: variation.stateDependent.disabled.SVG_Icon.color })
+
+      if state == "hover" || state == "focus" || state == "active"
+
+        &:{state}
+
+          applyRootElementStateDependentStyles()
+
+          .Button--YDF-SVG_Icon
+
+            applySVG_IconStateDependentStyles()
 
 
-  // --- Applying ------------------------------------------------------------------------------------------------------
+      else if state == "disabled"
+
+        /button{selector()}:disabled,
+        /input{selector()}:disabled,
+        /a{selector()}.Button--YDF__DisabledState
+
+          applyRootElementStateDependentStyles()
+
+
+        /button{selector()}:disabled,
+        /a{selector()}.Button--YDF__DisabledState
+
+          .Button--YDF-SVG_Icon
+
+            applySVG_IconStateDependentStyles()
+
+
+  // === Applying ======================================================================================================
   applyBasicRules()
 
-  applyComponentThemes({
-    CSS_Namespace: "Button--YDF",
-    themes: properties.themes,
-    applyGeometricVariation: applyGeometricVariation,
-    applyDecorativeVariation: applyDecorativeVariation
-  })
+  if !options.themeIndependentStylesOnly
+
+    applyComponentThemes({
+      CSS_Namespace: "Button--YDF",
+      themes: properties.themes,
+      areThemesTheExternal: properties.externalThemes,
+      applyGeometricVariation: applyGeometricVariation,
+      applyDecorativeVariation: applyDecorativeVariation
+    })

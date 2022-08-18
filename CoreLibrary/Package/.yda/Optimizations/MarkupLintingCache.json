@@ -1,0 +1,806 @@
+{
+  "Components.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.979Z"
+  },
+  "Functionality.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.397Z"
+  },
+  "Components/ComponentsAuxiliaries.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.889Z"
+  },
+  "PagesTemplates/RegularWebPage.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:56.050Z"
+  },
+  "PagesTemplates/StaticPreviewAnywherePage.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2021-12-08T01:04:36.996Z"
+  },
+  "Tests/Tests.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.462Z"
+  },
+  "Components/AttentionBox/AttentionBox.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.361Z"
+  },
+  "Components/AttentionBox/AttentionBox.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.362Z"
+  },
+  "Components/Badge/Badge.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.368Z"
+  },
+  "Components/Badge/Badge.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.980Z"
+  },
+  "Components/InformationSourceReference/InformationSourceReference.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.742Z"
+  },
+  "Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.576Z"
+  },
+  "Components/Snackbar/Snackbar.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.389Z"
+  },
+  "Components/Snackbar/Snackbar.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.389Z"
+  },
+  "Components/Snackbar/Snackbar.template.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.389Z"
+  },
+  "Components/Typography/Link.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.747Z"
+  },
+  "Markup/Assets/Dummies.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.398Z"
+  },
+  "Markup/BuildInPlugins/YamatoDaiwaInformationDesign.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.433Z"
+  },
+  "Markup/InlineECMAScript/PugExtensions.generated.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.435Z"
+  },
+  "PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePageLocalization.English.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2021-12-04T01:36:44.615Z"
+  },
+  "Tests/05-Typography/Typography.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:56.084Z"
+  },
+  "Tests/PagesTemplates/StaticPreviewAnywherePageDemo.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.684Z"
+  },
+  "Components/Controls/CompoundControlShell/CompoundControlShell.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.383Z"
+  },
+  "Components/Controls/CompoundControlShell/CompoundControlShell.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.383Z"
+  },
+  "Components/Controls/TextBox/TextBox.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.385Z"
+  },
+  "Components/Controls/TextBox/TextBox.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.386Z"
+  },
+  "Components/Controls/DropdownList/DropdownList.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.914Z"
+  },
+  "Components/Controls/DropdownList/DropdownList.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.920Z"
+  },
+  "Components/Images/SingleImageViewer/SingleImageViewer.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.953Z"
+  },
+  "Components/Prototyping/DummyLogoLink/DummyLogoLink.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-07-30T03:15:56.134Z"
+  },
+  "Components/Viewers/CodeViewer/CodeViewer.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.393Z"
+  },
+  "Components/Viewers/CodeViewer/CodeViewer.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.393Z"
+  },
+  "Components/Typography/ImprovedBlockquote/ImprovedBlockquote.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.776Z"
+  },
+  "Components/Typography/ImprovedList/ImprovedList.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.991Z"
+  },
+  "Markup/Assets/SVG_Icons/SVG_Icons.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.995Z"
+  },
+  "Tests/Components/AttentionBox/AttentionBox.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.680Z"
+  },
+  "Tests/Components/Badge/Badge.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:26.006Z"
+  },
+  "Tests/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.684Z"
+  },
+  "Tests/Components/Snackbar/Snackbar.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.460Z"
+  },
+  "Components/Controls/Buttons/HamburgerMenu/HamburgerMenuButton.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-07-30T03:10:28.139Z"
+  },
+  "Components/Controls/Buttons/Plain/Button.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.376Z"
+  },
+  "Components/Controls/Buttons/Plain/Button.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.377Z"
+  },
+  "Markup/Assets/SVG_Icons/Achievement/AchievementIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.399Z"
+  },
+  "Markup/Assets/SVG_Icons/Achievement/AchievementIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.399Z"
+  },
+  "Markup/Assets/SVG_Icons/Brackets/CurlyBracketIcon__Closing.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.433Z"
+  },
+  "Markup/Assets/SVG_Icons/Brackets/CurlyBracketIcon__Opening.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.511Z"
+  },
+  "Markup/Assets/SVG_Icons/Brackets/RoundBracketIcon__Closing.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.543Z"
+  },
+  "Markup/Assets/SVG_Icons/Brackets/RoundBracketIcon__Opening.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.503Z"
+  },
+  "Markup/Assets/SVG_Icons/Brackets/SquareBracketIcon__Closing.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.534Z"
+  },
+  "Markup/Assets/SVG_Icons/Brackets/SquareBracketIcon__Opening.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.415Z"
+  },
+  "Markup/Assets/SVG_Icons/Bell/BellIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.399Z"
+  },
+  "Markup/Assets/SVG_Icons/Calendar/CalendarIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.403Z"
+  },
+  "Markup/Assets/SVG_Icons/Calendar/CalendarIcon__Date.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.403Z"
+  },
+  "Markup/Assets/SVG_Icons/Calendar/CalendarIcon__Repeat.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.403Z"
+  },
+  "Markup/Assets/SVG_Icons/Calendar/CalendarIcon__Time.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.404Z"
+  },
+  "Markup/Assets/SVG_Icons/Chevron/ChevronIcon__Downward.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.406Z"
+  },
+  "Markup/Assets/SVG_Icons/Chevron/ChevronIcon__Leftward.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.407Z"
+  },
+  "Markup/Assets/SVG_Icons/Chevron/ChevronIcon__Rightward.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.407Z"
+  },
+  "Markup/Assets/SVG_Icons/Chevron/ChevronIcon__Upward.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.407Z"
+  },
+  "Markup/Assets/SVG_Icons/Checkmark/CheckboxIcon__Checked.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.404Z"
+  },
+  "Markup/Assets/SVG_Icons/Checkmark/CheckboxIcon__Unchecked.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.405Z"
+  },
+  "Markup/Assets/SVG_Icons/Checkmark/CheckmarkIcon__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.406Z"
+  },
+  "Markup/Assets/SVG_Icons/Checkmark/CheckmarkIcon__Circled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.406Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Dots__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.408Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Dots__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.408Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Lines__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.408Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Lines__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.408Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Minus__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.409Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Minus__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.409Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Pen__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.409Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Pen__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.410Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Plus__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.410Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Plus__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.410Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Qotemark__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.411Z"
+  },
+  "Markup/Assets/SVG_Icons/Comment/CommentIcon__Qotemark__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.411Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.411Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Circled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.412Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Octagoned__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.413Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Octagoned__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.413Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Rectangled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.414Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Rectangled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.414Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Triangled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.415Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Triangled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.415Z"
+  },
+  "Markup/Assets/SVG_Icons/Folder/FolderIcon__ExclamationMark__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.416Z"
+  },
+  "Markup/Assets/SVG_Icons/Folder/FolderIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.416Z"
+  },
+  "Markup/Assets/SVG_Icons/Folder/FolderIcon__MultiplicationSign__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.417Z"
+  },
+  "Markup/Assets/SVG_Icons/Folder/FolderIcon__Person__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.417Z"
+  },
+  "Markup/Assets/SVG_Icons/Folder/FolderIcon__Plus__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.417Z"
+  },
+  "Markup/Assets/SVG_Icons/Folder/FolderIcon__Stationery.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.418Z"
+  },
+  "Markup/Assets/SVG_Icons/Filtering/FilteringIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.615Z"
+  },
+  "Markup/Assets/SVG_Icons/HamburgerMenu/HamburgerMenuIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.615Z"
+  },
+  "Markup/Assets/SVG_Icons/Heart/HeartIcon__Broken__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.418Z"
+  },
+  "Markup/Assets/SVG_Icons/Heart/HeartIcon__Broken__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.418Z"
+  },
+  "Markup/Assets/SVG_Icons/Heart/HeartIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.418Z"
+  },
+  "Markup/Assets/SVG_Icons/Heart/HeartIcon__Half.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.419Z"
+  },
+  "Markup/Assets/SVG_Icons/Heart/HeartIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.419Z"
+  },
+  "Markup/Assets/SVG_Icons/Inbox/InboxIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.419Z"
+  },
+  "Markup/Assets/SVG_Icons/Inbox/InboxIcon__DownwardArrow.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.420Z"
+  },
+  "Markup/Assets/SVG_Icons/InfoSign/InfoSignIcon__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.616Z"
+  },
+  "Markup/Assets/SVG_Icons/InfoSign/InfoSignIcon__Circled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.618Z"
+  },
+  "Markup/Assets/SVG_Icons/Likes/LikeIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.861Z"
+  },
+  "Markup/Assets/SVG_Icons/Likes/LikeIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-31T01:07:52.210Z"
+  },
+  "Markup/Assets/SVG_Icons/Likes/UnlikeIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.595Z"
+  },
+  "Markup/Assets/SVG_Icons/Likes/UnlikeIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.631Z"
+  },
+  "Markup/Assets/SVG_Icons/Lists/ChecklistIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.647Z"
+  },
+  "Markup/Assets/SVG_Icons/MagnifyingGlass/MagnifyingGlassIcon.pug": {
+    "issues": [
+      {
+        "code": "PUG:LINT_VALIDATETEMPLATESTRING",
+        "message": "Template string is unnecessary",
+        "sourceListing": "mixin MagnifyingGlass--YDF_Icon\n  svg(xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\")&attributes(attributes)\n    path(\n      d=`M19.72 18.42l-5.64-5.67a8.07 8.07 0 001-1.67l.06-.16.18-.44c0-.06 0-.13.05-.19s.1-.29.14-.44a.29.29 0 010-.09\n        8.18 8.18 0 00.23-1.87A7.89 7.89 0 007.89 0 8.14 8.14 0 006 .22h-.11l-.35.14-.24.08-.38.14-.22.09A8.07 8.07 0 003\n        1.68 7.34 7.34 0 001.69 3 7.44 7.44 0 001 4.11q-.15.27-.27.54a2.44 2.44 0 01-.1.24c0 .12-.09.24-.14.36s0\n        .17-.08.26-.08.24-.11.37v.15A7.73 7.73 0 000 7.87a7.88 7.88 0 007.87 7.9 8 8 0 001.91-.24h.06l.43-.13.2-.06c.13\n        0 .25-.1.38-.15l.22-.09a3.61 3.61 0 00.44-.22l.14-.06a8.55 8.55 0 001.09-.72l5.65 5.66a.9.9 0 00.66.28.94.94 0\n        00.67-.27 1 1 0 000-1.35zM13.8 7.89a5.92 5.92 0 01-1.13 3.46 6 6 0 01-4.8 2.45A5.93 5.93 0 012 7.87a5.82 5.82 0\n        011.1-3.45 6 6 0 011.33-1.33A5.86 5.86 0 017.89 2a5.93 5.93 0 015.91 5.89z`\n    )\n",
+        "lineNumber": 4,
+        "columnNumber": 9
+      }
+    ],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.619Z"
+  },
+  "Markup/Assets/SVG_Icons/MagnifyingGlass/ZoomingInIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.619Z"
+  },
+  "Markup/Assets/SVG_Icons/MagnifyingGlass/ZoomingInIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.620Z"
+  },
+  "Markup/Assets/SVG_Icons/MagnifyingGlass/ZoomingOutIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.620Z"
+  },
+  "Markup/Assets/SVG_Icons/MagnifyingGlass/ZoomingOutIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.621Z"
+  },
+  "Markup/Assets/SVG_Icons/Mail/MailIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.621Z"
+  },
+  "Markup/Assets/SVG_Icons/Mail/MailIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.622Z"
+  },
+  "Markup/Assets/SVG_Icons/MapAndLocation/LocationIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.422Z"
+  },
+  "Markup/Assets/SVG_Icons/MapAndLocation/LocationIcon__BottomCircle.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.422Z"
+  },
+  "Markup/Assets/SVG_Icons/MapAndLocation/MapIcon__Clock.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.422Z"
+  },
+  "Markup/Assets/SVG_Icons/Menu/MenuIcon__ThreeDots__Horizontal.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.622Z"
+  },
+  "Markup/Assets/SVG_Icons/Menu/MenuIcon__ThreeDots__Horizontal__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.623Z"
+  },
+  "Markup/Assets/SVG_Icons/Menu/MenuIcon__ThreeDots__Horizontal__Circled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.623Z"
+  },
+  "Markup/Assets/SVG_Icons/Menu/MenuIcon__ThreeDots__Vertical.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.624Z"
+  },
+  "Markup/Assets/SVG_Icons/Menu/MenuIcon__ThreeDots__Vertical__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.624Z"
+  },
+  "Markup/Assets/SVG_Icons/Menu/MenuIcon__ThreeDots__Vertical__Circled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.625Z"
+  },
+  "Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.625Z"
+  },
+  "Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Bold.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.626Z"
+  },
+  "Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Boxed__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.626Z"
+  },
+  "Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Boxed__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.627Z"
+  },
+  "Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Octagoned__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.627Z"
+  },
+  "Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Octagoned__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.628Z"
+  },
+  "Markup/Assets/SVG_Icons/Pencil/PencilIcon__Boxed__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.628Z"
+  },
+  "Markup/Assets/SVG_Icons/Pencil/PencilIcon__Boxed__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.629Z"
+  },
+  "Markup/Assets/SVG_Icons/Pencil/PencilIcon__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-07-29T07:10:37.089Z"
+  },
+  "Markup/Assets/SVG_Icons/Pencil/PencilIcon__Circled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.630Z"
+  },
+  "Markup/Assets/SVG_Icons/Pencil/PencilIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.630Z"
+  },
+  "Markup/Assets/SVG_Icons/Pencil/PencilIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.631Z"
+  },
+  "Markup/Assets/SVG_Icons/Pencil/PencilWithLockIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.631Z"
+  },
+  "Markup/Assets/SVG_Icons/Pencil/PencilWithLockIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.632Z"
+  },
+  "Markup/Assets/SVG_Icons/Pencil/PencilWithPlusSignIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.632Z"
+  },
+  "Markup/Assets/SVG_Icons/Pencil/PencilWithPlusSignIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.633Z"
+  },
+  "Markup/Assets/SVG_Icons/Person/PersonIcon__Clock__Rectangled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.423Z"
+  },
+  "Markup/Assets/SVG_Icons/QuestionMark/QuestionMarkIcon__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.635Z"
+  },
+  "Markup/Assets/SVG_Icons/QuestionMark/QuestionMarkIcon__Circled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.636Z"
+  },
+  "Markup/Assets/SVG_Icons/Phone/PhoneIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.634Z"
+  },
+  "Markup/Assets/SVG_Icons/Phone/PhoneIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.634Z"
+  },
+  "Markup/Assets/SVG_Icons/Phone/TelephoneIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.635Z"
+  },
+  "Markup/Assets/SVG_Icons/QuoteMark/QuoteMarkIcon__Downward__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.423Z"
+  },
+  "Markup/Assets/SVG_Icons/QuoteMark/QuoteMarkIcon__Downward__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.424Z"
+  },
+  "Markup/Assets/SVG_Icons/QuoteMark/QuoteMarkIcon__Upward__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.424Z"
+  },
+  "Markup/Assets/SVG_Icons/QuoteMark/QuoteMarkIcon__Upward__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.424Z"
+  },
+  "Markup/Assets/SVG_Icons/Star/StarIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.428Z"
+  },
+  "Markup/Assets/SVG_Icons/Star/StarIcon__Half.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.429Z"
+  },
+  "Markup/Assets/SVG_Icons/Star/StarIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.429Z"
+  },
+  "Markup/Assets/SVG_Icons/Star/StarIcon__Plus__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.429Z"
+  },
+  "Markup/Assets/SVG_Icons/Star/StarIcon__Plus__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.429Z"
+  },
+  "Markup/Assets/SVG_Icons/SocialNetworks/FacebookIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.425Z"
+  },
+  "Markup/Assets/SVG_Icons/SocialNetworks/GoogleIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.426Z"
+  },
+  "Markup/Assets/SVG_Icons/SocialNetworks/InstagramIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.426Z"
+  },
+  "Markup/Assets/SVG_Icons/SocialNetworks/LinkedInIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.426Z"
+  },
+  "Markup/Assets/SVG_Icons/SocialNetworks/RedditIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.427Z"
+  },
+  "Markup/Assets/SVG_Icons/SocialNetworks/RSS_Icon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.996Z"
+  },
+  "Markup/Assets/SVG_Icons/SocialNetworks/SkypeIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.427Z"
+  },
+  "Markup/Assets/SVG_Icons/SocialNetworks/TwitterIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.428Z"
+  },
+  "Markup/Assets/SVG_Icons/SocialNetworks/YouTubeIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.428Z"
+  },
+  "Markup/Assets/SVG_Icons/Timeline/TimelineIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.430Z"
+  },
+  "Markup/Assets/SVG_Icons/TrashCan/TrashCanIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.636Z"
+  },
+  "Markup/Assets/SVG_Icons/TrashCan/TrashCanIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.637Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Downward__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.588Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Downward__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:24.041Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Leftward__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.724Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Leftward__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.911Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Rightward__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.869Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Rightward__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:24.036Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Upward__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.960Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Upward__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.982Z"
+  },
+  "Tests/Components/Controls/TextBox/TextBox.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.459Z"
+  },
+  "Tests/Components/Viewers/CodeViewer/CodeViewer.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:56.058Z"
+  },
+  "Tests/Components/Controls/Buttons/Plain/Button.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.458Z"
+  },
+  "Components/AttentionBox/AttentionBoxLocalization.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.363Z"
+  },
+  "Tests/Assets/Colors/YDF_ColorPalette.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:26.004Z"
+  },
+  "Markup/InlineECMAScript/RoutingEmulator.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.435Z"
+  },
+  "Components/Viewers/CodeViewer/CodeViewerLocalization.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.394Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/CurlyBracketIcon__Closing.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.991Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/CurlyBracketIcon__Opening.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.992Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/RoundBracketIcon__Closing.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.992Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/RoundBracketIcon__Opening.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.992Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/SquareBracketIcon__Closing.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.993Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/SquareBracketIcon__Opening.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.993Z"
+  },
+  "Markup/Assets/SVG_Icons/Like/LikeIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.993Z"
+  },
+  "Markup/Assets/SVG_Icons/Like/LikeIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.994Z"
+  },
+  "Markup/Assets/SVG_Icons/Like/UnlikeIcon__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.994Z"
+  },
+  "Markup/Assets/SVG_Icons/Like/UnlikeIcon__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.994Z"
+  },
+  "Markup/Assets/SVG_Icons/List/ChecklistIcon.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.995Z"
+  },
+  "Components/Typography/ArticleAbstract/ArticleAbstract.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.975Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangle/TriangleIcon__Downward__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.996Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangle/TriangleIcon__Downward__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.996Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangle/TriangleIcon__Leftward__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.997Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangle/TriangleIcon__Leftward__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.997Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangle/TriangleIcon__Rightward__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.998Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangle/TriangleIcon__Rightward__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.998Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangle/TriangleIcon__Upward__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.998Z"
+  },
+  "Markup/Assets/SVG_Icons/Triangle/TriangleIcon__Upward__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.998Z"
+  }
+}

@@ -3,7 +3,6 @@ extends ../../PagesTemplates/RegularWebPage.pug
 block append Metadata
 
   -
-    HTML_PAGE_LANGUAGE = "eo"
     HTML_PAGE_TITLE = "Typography testing";
     styleSheetsURIs = [ "./Typography.test.css" ]
 
@@ -15,180 +14,135 @@ block append Requirements
 
 block append PageContent
 
-  .Layout
+  .TypographyTesting
 
-    .Showcase
+    .TypographyTesting-Heading2 Heading
 
-      .TypographyTesting-Heading1 見出し段階１ La titolo de la unua nivelo
-      .TypographyTesting-Heading2 見出し段階２ La titolo de la dua nivelo
-      .TypographyTesting-Heading3 見出し段階３ La titolo de la tria nivelo
-      .TypographyTesting-Heading4 見出し段階４ La titolo de la kvarobla nivelo
-      .TypographyTesting-Heading5 見出し段階５ La titolo de la kvina nivelo. ĉar testado devas esti pli aŭtentika.
-      .TypographyTesting-Heading6 見出し段階６ La titolo de la sesa nivelo. ĉar testado devas esti pli aŭtentika.
+    .TypographyTesting-Frame(
+      lang="en"
+    )
+      .TypographyTesting-Heading1 The heading of level 1. To check the multiline mode, we need something more long.
+      .TypographyTesting-Heading2 The heading of level 2. To check the multiline mode, we need something more long.
+      .TypographyTesting-Heading3 The heading of level 3. To check the multiline mode, we need something more long.
+      .TypographyTesting-Heading4 The heading of level 4. To check the multiline mode, we need something more long.
+      .TypographyTesting-Heading5 The heading of level 5. To check the multiline mode, we need something more long.
+      .TypographyTesting-Heading6 The heading of level 6. To check the multiline mode, we need something more long.
 
+    .TypographyTesting-Frame(
+      lang="ja"
+    )
+      .TypographyTesting-Heading1 見出し段階１。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Heading2 見出し段階２。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Heading3 見出し段階３。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Heading4 見出し段階４。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Heading5 見出し段階５。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Heading6 見出し段階６。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
 
-    .Showcase
-
-      .TypographyTesting-Heading1 見出し段階１
-      .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-
-      .TypographyTesting-Heading2 見出し段階２
-      .TypographyTesting-Subheading2 副見出し段階２ La subteksto de la dua nivelo
-
-      .TypographyTesting-Heading3 見出し段階３
-      .TypographyTesting-Subheading3 副見出し段階３ La subtitolo de la tria nivelo
-
-      .TypographyTesting-Heading4 見出し段階４
-      .TypographyTesting-Subheading4 副見出し段階４ La subtitolo de la kvarobla nivelo
-
-      .TypographyTesting-Heading5 見出し段階５
-      .TypographyTesting-Subheading5 副見出し段階５ La subtitolo de la kvina nivelo
-
-      .TypographyTesting-Heading6 見出し段階６
-      .TypographyTesting-Subheading6 副見出し段階６ La subtitolo de la sesa nivelo. テストの為にもっと書かないと。ĉar testado devas esti pli aŭtentika.
-
-
-    .Showcase
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-        .TypographyTesting-Heading2 見出し段階２
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-        .TypographyTesting-Heading2 見出し段階２
-        .TypographyTesting-Subheading2 副見出し段階２ La subtitolo de la dua nivelo
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-        .TypographyTesting-Heading2 見出し段階２
-        .TypographyTesting-Subheading2 副見出し段階２ La subtitolo de la dua nivelo
-        .TypographyTesting-Heading3 見出し段階３
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-        .TypographyTesting-Heading2 見出し段階２
-        .TypographyTesting-Subheading2 副見出し段階２ La subtitolo de la dua nivelo
-        .TypographyTesting-Heading3 見出し段階３
-        .TypographyTesting-Subheading3 副見出し段階３ La subtitolo de la tria nivelo
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-        .TypographyTesting-Heading2 見出し段階２
-        .TypographyTesting-Subheading2 副見出し段階２ La subtitolo de la dua nivelo
-        .TypographyTesting-Heading3 見出し段階３
-        .TypographyTesting-Subheading3 副見出し段階３ La subtitolo de la tria nivelo
-        .TypographyTesting-Heading4 見出し段階４
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-        .TypographyTesting-Heading2 見出し段階２
-        .TypographyTesting-Subheading2 副見出し段階２ La subtitolo de la dua nivelo
-        .TypographyTesting-Heading3 見出し段階３
-        .TypographyTesting-Subheading3 副見出し段階３ La subtitolo de la tria nivelo
-        .TypographyTesting-Heading4 見出し段階４
-        .TypographyTesting-Subheading4 副見出し段階４ La subtitolo de la kvarobla nivelo
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-        .TypographyTesting-Heading2 見出し段階２
-        .TypographyTesting-Subheading2 副見出し段階２ La subtitolo de la dua nivelo
-        .TypographyTesting-Heading3 見出し段階３
-        .TypographyTesting-Subheading3 副見出し段階３ La subtitolo de la tria nivelo
-        .TypographyTesting-Heading4 見出し段階４
-        .TypographyTesting-Subheading4 副見出し段階４ La subtitolo de la kvarobla nivelo
-        .TypographyTesting-Heading5 見出し段階５
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-        .TypographyTesting-Heading2 見出し段階２
-        .TypographyTesting-Subheading2 副見出し段階２ La subtitolo de la dua nivelo
-        .TypographyTesting-Heading3 見出し段階３
-        .TypographyTesting-Subheading3 副見出し段階３ La subtitolo de la tria nivelo
-        .TypographyTesting-Heading4 見出し段階４
-        .TypographyTesting-Subheading4 副見出し段階４ La subtitolo de la kvarobla nivelo
-        .TypographyTesting-Heading5 見出し段階５
-        .TypographyTesting-Subheading5 副見出し段階５ La subtitolo de la kvina nivelo
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-        .TypographyTesting-Heading2 見出し段階２
-        .TypographyTesting-Subheading2 副見出し段階２ La subtitolo de la dua nivelo
-        .TypographyTesting-Heading3 見出し段階３
-        .TypographyTesting-Subheading3 副見出し段階３ La subtitolo de la tria nivelo
-        .TypographyTesting-Heading4 見出し段階４
-        .TypographyTesting-Subheading4 副見出し段階４ La subtitolo de la kvarobla nivelo
-        .TypographyTesting-Heading5 見出し段階５
-        .TypographyTesting-Subheading5 副見出し段階５ La subtitolo de la kvina nivelo
-        .TypographyTesting-Heading6 見出し段階６
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
-
-      .Showcase-Subsection
-        .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-        .TypographyTesting-Heading2 見出し段階２
-        .TypographyTesting-Subheading2 副見出し段階２ La subtitolo de la dua nivelo
-        .TypographyTesting-Heading3 見出し段階３
-        .TypographyTesting-Subheading3 副見出し段階３ La subtitolo de la tria nivelo
-        .TypographyTesting-Heading4 見出し段階４
-        .TypographyTesting-Subheading4 副見出し段階４ La subtitolo de la kvarobla nivelo
-        .TypographyTesting-Heading5 見出し段階５
-        .TypographyTesting-Subheading5 副見出し段階５ La subtitolo de la kvina nivelo
-        .TypographyTesting-Heading6 見出し段階６
-        .TypographyTesting-Subheading6 副見出し段階６ La subtitolo de la sesa nivelo
-        p.TypographyTesting-Paragraph.
-          初めて槙さんで誤解作物ちょっと所有をするます風ある基礎それか記憶をというお経験ならでませますて、その場合はどこか通り気を達して
+    .TypographyTesting-Frame(
+      lang="ru"
+    )
+      .TypographyTesting-Heading1 Заголовок первого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Heading2 Заголовок второго уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Heading3 Заголовок третьего уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Heading4 Заголовок четвёртого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Heading5 Заголовок пятого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Heading6 Заголовок шестого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
 
 
-    .Showcase
+    .TypographyTesting-Heading2 見出し・副見出し
 
-      .TypographyTesting-Heading1 見出し段階１
-        .TypographyTesting-Subheading1 副見出し段階１ La subtitolo de la unua nivelo
-      .TypographyTesting-Abstract.
-        無論昔が解人はけっしてその指導たうくらいでつけ込むば下さらありには談判違いですうて、少しにも進みらしいますますで。心で出たのはおそらくほかを単にだでん。
-        どうも嘉納さんを乱暴個人多少お話にするべき人この事業私か相当をというお脱却たななないと
+    .TypographyTesting-Frame(
+      lang="en"
+    )
+      .TypographyTesting-Heading1 The heading of level 1. To check the multiline mode, we need something more long.
+      .TypographyTesting-Subheading1 The subheading of level 1. To check the multiline mode, we need something more long.
+      .TypographyTesting-Heading2 The heading of level 2. To check the multiline mode, we need something more long.
+      .TypographyTesting-Subheading2 The subheading of level 2. To check the multiline mode, we need something more long.
+      .TypographyTesting-Heading3 The heading of level 3. To check the multiline mode, we need something more long.
+      .TypographyTesting-Subheading3 The subheading of level 3. To check the multiline mode, we need something more long.
+      .TypographyTesting-Heading4 The heading of level 4. To check the multiline mode, we need something more long.
+      .TypographyTesting-Subheading4 The subheading of level 4. To check the multiline mode, we need something more long.
+      .TypographyTesting-Heading5 The heading of level 5. To check the multiline mode, we need something more long.
+      .TypographyTesting-Subheading5 The subheading of level 5. To check the multiline mode, we need something more long.
+      .TypographyTesting-Heading6 The heading of level 6. To check the multiline mode, we need something more long.
+      .TypographyTesting-Subheading6 The subheading of level 6. To check the multiline mode, we need something more long.
+
+    .TypographyTesting-Frame(
+      lang="ja"
+    )
+      .TypographyTesting-Heading1 見出し段階１。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Subheading1 副見出し段階１。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Heading2 見出し段階２。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Subheading2 副見出し段階２。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Heading3 見出し段階３。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Subheading3 副見出し段階３。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Heading4 見出し段階４。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Subheading4 副見出し段階４。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Heading5 見出し段階５。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Subheading5 副見出し段階５。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Heading6 見出し段階６。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      .TypographyTesting-Subheading6 副見出し段階６。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+
+    .TypographyTesting-Frame(
+      lang="ru"
+    )
+      .TypographyTesting-Heading1 Заголовок первого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Subheading1 Подзаголовок первого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Heading2 Заголовок второго уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Subheading2 Подзаголовок второго уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Heading3 Заголовок третьего уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Subheading3 Подзаголовок третьего уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Heading4 Заголовок четвёртого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Subheading4 Подзаголовок четвёртого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Heading5 Заголовок пятого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Subheading5 Подзаголовок пятого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Heading6 Заголовок шестого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      .TypographyTesting-Subheading6 Подзаголовок шестого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+
+
+    .TypographyTesting-Heading2 Paragraphs
+
+    .TypographyTesting-Frame(
+      lang="en"
+    )
+      .TypographyTesting-Heading1 The heading of level 1. To check the multiline mode, we need something more long.
       p.TypographyTesting-Paragraph.
-        この今度は何か
-        #[a.TypographyTesting-Link(href="#" target="_blank" rel="nofollow") #{textOverflowToleranceText}漢字も要る]
-        本意に駈けて
+        "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+          aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores
+          eos qui ratione voluptatem sequi nesciunt.
+        Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
+          numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+        Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea
+          commodi consequatur?
 
+    .TypographyTesting-Frame(
+      lang="ja"
+    )
+      .TypographyTesting-Heading1 見出し段階１。複数行の対応を確認するにはもっと本文が必要。更に文字が多くて、長く書かないとね。
+      p.TypographyTesting-Paragraph.
+        文章でしかるないのはそのうち今より一々たあるない。
+        すでに向さんに妨害主義そう入会が申しで人こうした賞私か汚辱がというご妨害ましべきただて、その前はその他か人身発起人に至るて、
+          岩崎さんののに自分のどちらにもう実邁進と抜かしがあなた文章にご妨害が描くようにまずお学習を考えるありでしょて、
+          どうしてももっとも保留がかかるたてみよで方を入れたます。
+        またしかしご高圧が与え事はそれだけ新たとはおりでて、その理窟にはするませてという一つに知れているたます。
+        そのうち自信の以上その知人はあなた上を受けうかと岡田さんが考えないです、モーニングの結果ですというご周旋ますうならから、
+          濶者のためから春に昨日じゃの火事で直接知れからみるて、まだのほかへ歩くて同じところを勢い打ちんませと訊かんのたて、
+          偉くありですてわざわざご校長断っだ事たべきない。
+        しかし内心か変則か煩悶を構わあっと、元来いっぱい主義に打ち明けて行っござい以外をご所有の事実を云っなます。
+
+    .TypographyTesting-Frame(
+      lang="ru"
+    )
+      .TypographyTesting-Heading1 Заголовок первого уровня. Впрочем, чтобы проверить многострочный режим, нужно что-то подлиннее.
+      p.TypographyTesting-Paragraph.
+        Есть над чем задуматься: непосредственные участники технического прогресса набирают популярность среди определенных
+         слоев населения, а значит, должны быть своевременно верифицированы.
+        Лишь реплицированные с зарубежных источников, современные исследования могут быть смешаны с не уникальными
+          данными до степени совершенной неузнаваемости, из-за чего возрастает их статус бесполезности.
+        Но постоянное информационно-пропагандистское обеспечение нашей деятельности создаёт предпосылки для укрепления
+         моральных ценностей.
+    //-
 
     .Showcase
       ul.TypographyTesting-UnorderedList

@@ -12,11 +12,11 @@ import {
   isNotUndefined,
   isString,
   isElementOfEnumeration,
-  isNull
+  isNull,
+  toLowerCamelCase,
+  toUpperCamelCase,
+  toScreamingSnakeCase
 } from "@yamato-daiwa/es-extensions";
-import toLowerCamelCase from "../../../../UtilsIncubator/toLowerCamelCase";
-import toUpperCamelCase from "../../../../UtilsIncubator/toUpperCamelCase";
-import toScreamingSnakeCase from "../../../../UtilsIncubator/toScreamingSnakeCase";
 
 
 namespace Button {
@@ -42,7 +42,7 @@ namespace Button {
     readonly regular: "REGULAR";
     readonly small: "SMALL";
     readonly linkLike: "LINK_LIKE";
-    [themeName: string]: string;
+    [variationName: string]: string;
   };
 
   export const GeometricVariations: GeometricVariations = {
@@ -56,7 +56,7 @@ namespace Button {
     readonly regular: "REGULAR";
     readonly accented: "ACCENTED";
     readonly linkLike: "LINK_LIKE";
-    [themeName: string]: string;
+    [variationName: string]: string;
   };
 
   export const DecorativeVariations: DecorativeVariations = {
@@ -84,6 +84,9 @@ namespace Button {
     @VueProperty({ type: String })
     protected readonly label?: string;
 
+    @VueProperty({ type: String })
+    protected readonly accessibilityGuidance?: string;
+
     @VueProperty({ type: [ String, Object ] })
     protected readonly route?: VueRouterRawLocation;
 
@@ -94,7 +97,7 @@ namespace Button {
     protected readonly mustOpenExternalLinkInCurrentTab!: string;
 
     @VueProperty({ type: Boolean, default: false })
-    protected readonly mustDisable!: string;
+    protected readonly disabled!: boolean;
 
     @VueProperty({
       type: String,
@@ -138,7 +141,7 @@ namespace Button {
       );
     }
 
-    private get isRootElementTheRouterLink(): boolean {
+    private get isRouterLinkTheRootElement(): boolean {
       return isNotUndefined(this.route);
     }
 
@@ -178,7 +181,7 @@ namespace Button {
         const themeName__lowerCamelCase: string = toLowerCamelCase(themeName);
 
         Themes[themeName__lowerCamelCase] = toScreamingSnakeCase(themeName);
-        BasicLogic.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button__${ toUpperCamelCase(themeName) }Theme`;
+        BasicLogic.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button--YDF__${ toUpperCamelCase(themeName) }Theme`;
       }
 
       return BasicLogic;
@@ -199,7 +202,7 @@ namespace Button {
 
         GeometricVariations[geometricVariationsName__lowerCamelCase] = toScreamingSnakeCase(geometricVariationsName);
         BasicLogic.GeometricVariationsCSS_ModifiersNames[geometricVariationsName__lowerCamelCase] =
-            `Button__${ toUpperCamelCase(geometricVariationsName) }Geometry`;
+            `Button--YDF__${ toUpperCamelCase(geometricVariationsName) }Geometry`;
       }
 
       return BasicLogic;
@@ -220,7 +223,7 @@ namespace Button {
 
         DecorativeVariations[decorativeVariationsName__lowerCamelCase] = toScreamingSnakeCase(decorativeVariationsName);
         BasicLogic.DecorativeVariationsCSS_ModifiersNames[decorativeVariationsName__lowerCamelCase] =
-            `Button__${ toUpperCamelCase(decorativeVariationsName) }Decorations`;
+            `Button--YDF__${ toUpperCamelCase(decorativeVariationsName) }Decorations`;
       }
 
       return BasicLogic;
@@ -234,14 +237,14 @@ namespace Button {
 
     protected get rootElementModifierCSS_Classes(): Array<string> {
       return [
-        ...(this.isAnchorTheTagNameOfRootElement || this.isRootElementTheRouterLink) && this.mustDisable ?
-            [ "Button__DisabledState" ] : [],
-        ...Object.entries(Themes).length > 1 ? [ `Button__${ BasicLogic.ThemesCSS_ModifiersNames[this.theme] }` ] : [],
+        ...(this.isAnchorTheTagNameOfRootElement || this.isRouterLinkTheRootElement) && this.disabled ?
+            [ "Button--YDF__DisabledState" ] : [],
+        ...Object.entries(Themes).length > 1 ? [ `Button--YDF__${ BasicLogic.ThemesCSS_ModifiersNames[this.theme] }` ] : [],
         ...Object.entries(GeometricVariations).length > 1 ? [
-          `Button__${ BasicLogic.GeometricVariationsCSS_ModifiersNames[this.geometry] }`
+          `Button--YDF__${ BasicLogic.GeometricVariationsCSS_ModifiersNames[this.geometry] }`
         ] : [],
         ...Object.entries(DecorativeVariations).length > 1 ? [
-          `Button__${ BasicLogic.DecorativeVariationsCSS_ModifiersNames[this.decoration] }`
+          `Button--YDF__${ BasicLogic.DecorativeVariationsCSS_ModifiersNames[this.decoration] }`
         ] : []
       ];
     }

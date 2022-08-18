@@ -1,0 +1,33 @@
+/* === Execution
+stylus Tests/CompiledCodeCheckOnly/Styles/02-Kernel/02-Functions/07-OtherFunctions/computeTotalHeightByTextElementHeightSizingSpecification.test.styl `
+    --out Tests/Build/CompiledCodeCheckOnly/Styles/02-Kernel/02-Functions/07-OtherFunctions/computeTotalHeightByTextElementHeightSizingSpecification.test.css `
+    --include Styles
+*/
+
+
+@require "01-Assets.styl"
+@require "02-Kernel.styl"
+
+
+//log("Fixed height")
+// Expected: 120px
+//log(computeTotalHeightByTextElementHeightSizingSpecification({ type: TextElementHeightSizingTypes.fixed, fixedHeight: 120px }))
+
+
+log("Current")
+log(computeTotalHeightByTextElementHeightSizingSpecification({
+  type: TextElementHeightSizingTypes.natural,
+  borders: { all: 2px },
+  paddings: { all: 4px }
+}))
+log(computeTotalHeightByTextElementHeightSizingSpecification({
+  type: TextElementHeightSizingTypes.natural,
+  borders: { verticalSymmetric: 2px }
+}))
+log(computeTotalHeightByTextElementHeightSizingSpecification({
+  type: TextElementHeightSizingTypes.natural,
+  borders: {
+    top: 2px,
+    bottom: 3px
+  }
+}))

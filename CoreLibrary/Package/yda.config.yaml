@@ -27,13 +27,13 @@ projectBuilding:
     entryPointsGroups:
 
       StylesAndComponentsTesting:
-        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests
+        topDirectoryRelativePath: Tests
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
           excludeSubdirectoriesWithPrefixes: "_"
         buildingModeDependent:
-          DEVELOPMENT:
-            outputBaseDirectoryRelativePath: Tests/Build
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Tests/Build
 
 
   # === Styles =========================================================================================================
@@ -43,7 +43,7 @@ projectBuilding:
 
       StylesAndComponentsTesting:
 
-        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests
+        topDirectoryRelativePath: Tests
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
@@ -51,25 +51,25 @@ projectBuilding:
           excludeSubdirectoriesWithNames: [ "CompiledCodeCheckOnly" ]
 
         buildingModeDependent:
-          DEVELOPMENT:
-            outputBaseDirectoryRelativePath: Tests/Build
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Tests/Build
 
       OutputCheck:
 
-        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Source/OutputCheckOnly
+        topDirectoryRelativePath: Tests/Source/OutputCheckOnly
 
         buildingModeDependent:
-          DEVELOPMENT:
-            outputBaseDirectoryRelativePath: Tests/Build/OutputCheck
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Tests/Build/OutputCheck
 
 
       StaticPreviewAnywherePage:
 
-        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.styl
+        singleEntryPointRelativePath: PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.styl
 
         buildingModeDependent:
-          DEVELOPMENT:
-            outputBaseDirectoryRelativePath: PagesTemplates/StaticPreviewAnywherePage
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: PagesTemplates/StaticPreviewAnywherePage
 
 
   # === フロントエンド挙動制御記法事前処理 ======================================================================================
@@ -79,7 +79,7 @@ projectBuilding:
 
       ComponentsTesting:
 
-        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Tests/Components
+        topDirectoryRelativePath: Tests/Components
         targetRuntime:
           type: BROWSER
 
@@ -88,12 +88,12 @@ projectBuilding:
           excludeSubdirectoriesWithPrefixes: "_"
 
         buildingModeDependent:
-          DEVELOPMENT:
-            outputBaseDirectoryRelativePath: Tests/Build/Components
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Tests/Build/Components
 
       PugExtensions:
 
-        entryPointsSourceFilesTopDirectoryOrSingleFileRelativePath: Markup/InlineECMAScript/Source/PugExtensions.ts
+        singleEntryPointRelativePath: Markup/InlineECMAScript/Source/PugExtensions.ts
 
         targetRuntime:
           type: PUG
@@ -105,14 +105,20 @@ projectBuilding:
 
         buildingModeDependent:
           PRODUCTION:
-            outputBaseDirectoryRelativePath: Markup/InlineECMAScript/Temporary
+            outputTopDirectoryRelativePath: Markup/InlineECMAScript/Temporary
             revisioning: { disable: true }
 
 
   # === Development server =============================================================================================
   browserLiveReloading:
 
-    StylesAndComponentsTesting:
+    setups:
 
-      customStartingFilenameWithExtension: Tests.html
-      targetFilesRootDirectoryRelativePath: Tests/Build
+      StylesAndComponentsTesting:
+
+        localServer:
+
+          rootDirectoryRelativePath: Tests/Build
+          customStartingFileNameWithExtension: Tests.html
+
+        openInBrowsers: chrome

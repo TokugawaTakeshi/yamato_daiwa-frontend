@@ -1,66 +1,37 @@
+include AttentionBoxLocalization.english.pug
+
+
 -
 
   const AttentionBox__YDF = {
 
+    CSS_NAMESPACE: "AttentionBox--YDF",
+
+
     /* === Themes =================================================================================================== */
-    /** @readonly */
-    Themes: {
-      regular: "REGULAR"
-    },
+    Themes: { regular: "REGULAR" },
 
-    ThemesCSS_ModifiersNames: {
-      REGULAR: "RegularTheme"
-    },
-
-    /** @public */
     defineNewThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, this);
+    },
 
-      for (const themeName of themesNames) {
-
-        const themeName__lowerCamelCase = themeName;
-        const themeName__capitalized = themeName.charAt(0).toUpperCase() + themeName.slice(1);
-
-        this.Themes[themeName__lowerCamelCase] = themeName.toUpperCase();
-        this.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `AttentionBox--YDF__${themeName__capitalized}Theme`;
-      }
-
+    areThemesExternal: false,
+    considerThemesAsExternal() {
+      this.areThemesExternal = true;
       return this;
     },
 
 
-    /* --- Geometric variations ------------------------------------------------------------------------------------- */
-    /** @readonly */
-    GeometricVariations: {
-      regular: "REGULAR"
-    },
+    /* --- Geometry ------------------------------------------------------------------------------------------------- */
+    GeometricVariations: { regular: "REGULAR" },
 
-    /** @private */
-    GeometricVariationsCSS_ModifiersNames: {
-      REGULAR: "AttentionBox--YDF__RegularGeometry"
-    },
-
-    /** @public */
-    defineNewThemes(geometricVariationsNames) {
-
-      for (const geometricVariationsName of geometricVariationsNames) {
-
-        const geometricVariationsName__lowerCamelCase = geometricVariationsName;
-        const geometricVariationsName__capitalized = geometricVariationsName.charAt(0).toUpperCase() + geometricVariationsName.slice(1);
-
-        this.GeometricVariations[geometricVariationsName__lowerCamelCase] = geometricVariationsName.toUpperCase();
-        this.GeometricVariationsCSS_ModifiersNames[geometricVariationsName__lowerCamelCase] =
-            `AttentionBox--YDF__${geometricVariationsName__capitalized}Geometry`;
-      }
-
-      return this;
+    defineNewGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, this);
     },
 
 
-    /* --- Decorative variations ------------------------------------------------------------------------------------ */
-    /** @readonly */
+    /* --- Decoration ----------------------------------------------------------------------------------------------- */
     DecorativeVariations: {
-      importantInfo: "IMPORTANT_INFO",
-      secondaryInfo: "SECONDARY_INFO",
       notice: "NOTICE",
       error: "ERROR",
       warning: "WARNING",
@@ -69,55 +40,34 @@
       question: "QUESTION"
     },
 
-    /** @private */
-    DecorativeVariationsCSS_Modifiers: {
-      IMPORTANT_INFO: "AttentionBox--YDF__ImportantInfoDecoration",
-      SECONDARY_INFO: "AttentionBox--YDF__SecondaryInfoDecoration",
-      NOTICE: "AttentionBox--YDF__NoticeDecoration",
-      ERROR: "AttentionBox--YDF__ErrorDecoration",
-      WARNING: "AttentionBox--YDF__WarningDecoration",
-      SUCCESS: "AttentionBox--YDF__SuccessDecoration",
-      GUIDANCE: "AttentionBox--YDF__GuidanceDecoration",
-      QUESTION: "AttentionBox--YDF__QuestionDecoration"
+    defineNewDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, this);
     },
-
-    /** @public */
-    defineNewDecorativeVariation(decorativeVariationsNames) {
-
-      for (const decorativeVariationsName of decorativeVariationsNames) {
-
-        const decorativeVariationsName__lowerCamelCase = decorativeVariationsName;
-        const decorativeVariationsName__capitalized = decorativeVariationsName.charAt(0).toUpperCase() + decorativeVariationsName.slice(1);
-
-        this.DecorativeVariations[decorativeVariationsName__lowerCamelCase] = decorativeVariationsName.toUpperCase();
-        this.DecorativeVariationsCSS_Modifiers[decorativeVariationsName__lowerCamelCase] =
-                `AttentionBox--YDF__${decorativeVariationsName__capitalized}Decoration`;
-      }
-
-      return this;
-    },
-
 
     /* === Properties specification ================================================================================= */
-    get properties() {
+    get propertiesSpecification() {
       return {
 
         theme: {
           type: String,
           required: false,
-          allowedAlternatives: Object.values(this.Themes),
-          defaultValue: this.Themes.regular,
+          allowedAlternatives: Object.values(this.Themes)
+        },
+
+        areThemesExternal: {
+          type: Boolean,
+          required: false
         },
 
         geometry: {
           type: String,
-          defaultValue: this.GeometricVariations.regular,
+          required: false,
           allowedAlternatives: Object.values(this.GeometricVariations)
         },
 
         decoration: {
-          defaultValue: this.DecorativeVariations.regular,
           type: String,
+          required: true,
           allowedAlternatives: Object.values(this.DecorativeVariations)
         },
 
@@ -126,7 +76,7 @@
           defaultValue: false
         },
 
-        hasDismissButton: {
+        hasDismissingButton: {
           type: Boolean,
           defaultValue: false
         }
@@ -135,7 +85,6 @@
     },
 
     /* === Localization ============================================================================================= */
-    localization: {
-      dismissingButtonAccessibilityGuidance: "Hide this message"
-    }
+    localization: AttentionBoxYDF_ComponentEnglishLocalization
+
   };
