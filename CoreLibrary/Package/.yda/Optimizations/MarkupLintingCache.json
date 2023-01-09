@@ -1,7 +1,7 @@
 {
   "Components.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.979Z"
+    "modificationDatetime__ISO_8601": "2023-01-11T01:14:46.805Z"
   },
   "Functionality.pug": {
     "issues": [],
@@ -713,7 +713,7 @@
   },
   "Tests/Assets/Colors/YDF_ColorPalette.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:26.004Z"
+    "modificationDatetime__ISO_8601": "2023-01-10T01:13:58.794Z"
   },
   "Markup/InlineECMAScript/RoutingEmulator.pug": {
     "issues": [],
@@ -802,5 +802,13 @@
   "Markup/Assets/SVG_Icons/Triangle/TriangleIcon__Upward__Filled.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.998Z"
+  },
+  "Components/Controls/Tabs/Tabs.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-09T05:19:49.020Z"
+  },
+  "Components/ModalDialog/ModalDialog.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-10T06:41:07.766Z"
   }
 }

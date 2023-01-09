@@ -97,6 +97,23 @@ provideBadgeYDF_Component(
       align-items center
 
 
+    .Badge--YDF-Key
+
+      word-break break-all
+
+
+    .Badge--YDF-Value
+
+      /.Badge--YDF__SingleLineMode &
+
+        SingleLineTextElementOverflowSafety({ displayEllipsis: true })
+
+
+      /:not(.Badge--YDF__SingleLineMode) &
+
+        word-break break-all
+
+
     .Badge--YDF-SVG_Icon
 
       flex-shrink 0
@@ -127,8 +144,16 @@ provideBadgeYDF_Component(
         labelTextSize: { dotSeparatedPath: "valueLabel.text.size", required: true },
         valueLabelLineSpacing: { dotSeparatedPath: "valueLabel.text.lineSpacing", required: false },
         valueLabelLineHeight: { dotSeparatedPath: "valueLabel.text.lineHeight", mustBeInsteadOf: "valueLabel.text.lineSpacing" },
-        valueLabelTopSpacing: { dotSeparatedPath: "valueLabel.spacing.verticalSymmertic", required: false },
-        valueLabelBottomSpacing: { dotSeparatedPath: "valueLabel.spacing.verticalSymmertic", required: false },
+        valueLabelVerticalSymmerticSpacingAsTopSpacing: {
+          newName: "valueLabelTopSpacing",
+          dotSeparatedPath: "valueLabel.spacing.verticalSymmertic",
+          required: false
+        },
+        valueLabelVerticalSymmerticSpacingAsBottomSpacing: {
+          newName: "valueLabelBottomSpacing",
+          dotSeparatedPath: "valueLabel.spacing.verticalSymmertic",
+          required: false
+        },
         valueLabelTopSpacing: {
           dotSeparatedPath: "valueLabel.spacing.top",
           required: false,
@@ -179,14 +204,24 @@ provideBadgeYDF_Component(
               conditionDescription: "'SVG_Icon.width' icon is null"
             }
           },
-          margin-top: { dotSeparatedPath: "SVG_Icon.spacing.verticalSymmertic", required: false },
-          margin-bottom: { dotSeparatedPath: "SVG_Icon.spacing.verticalSymmertic", required: false },
-          margin-top: {
+          verticalSymmerticMarginsAsTopMargin: {
+            newName: "margin-top",
+            dotSeparatedPath: "SVG_Icon.spacing.verticalSymmertic",
+            required: false
+          },
+          verticalSymmerticMarginsAsBottomMargin: {
+            newName: "margin-bottom",
+            dotSeparatedPath: "SVG_Icon.spacing.verticalSymmertic",
+            required: false
+          },
+          topMargin: {
+            newName: "margin-top",
             dotSeparatedPath: "SVG_Icon.spacing.top",
             required: false,
             incompatibleWith: "SVG_Icon.spacing.verticalSymmertic"
           },
-          margin-bottom: {
+          bottomMargin: {
+            newName: "margin-bottom",
             dotSeparatedPath: "SVG_Icon.spacing.bottom",
             required: false,
             incompatibleWith: "SVG_Icon.spacing.verticalSymmertic"
@@ -205,14 +240,24 @@ provideBadgeYDF_Component(
         targetObject: variation,
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
-          padding-top: { dotSeparatedPath: "keyLabel.spacing.verticalSymmertic", required: false },
-          padding-bottom: { dotSeparatedPath: "keyLabel.spacing.verticalSymmertic", required: false },
-          padding-top: {
+          verticalSymmerticPaddingAsTopPadding: {
+            newName: "padding-top",
+            dotSeparatedPath: "keyLabel.spacing.verticalSymmertic",
+            required: false
+          },
+          verticalSymmerticPaddingAsBottomPaddings: {
+            newName: "padding-bottom",
+            dotSeparatedPath: "keyLabel.spacing.verticalSymmertic",
+            required: false
+          },
+          topPadding: {
+            newName: "padding-top",
             dotSeparatedPath: "keyLabel.spacing.top",
             required: false,
             incompatibleWith: "keyLabel.spacing.verticalSymmertic"
           },
-          padding-bottom: {
+          bottomPadding: {
+            newName: "padding-bottom",
             dotSeparatedPath: "keyLabel.spacing.bottom",
             required: false,
             incompatibleWith: "keyLabel.spacing.verticalSymmertic"
@@ -261,7 +306,6 @@ provideBadgeYDF_Component(
             }
           }),
           {
-            mustAllowWordBreakingAnywhere: true,
             mustApplyNegativeMarginsToRootElement: true
           }
         )
@@ -319,8 +363,6 @@ provideBadgeYDF_Component(
 
       font-size: cachedValidReusables.labelTextSize
 
-      SingleLineTextElementOverflowSafety({ displayEllipsis: true })
-
 
     &:not(.Badge--YDF__SingleLineMode) .Badge--YDF-Value
 
@@ -328,7 +370,6 @@ provideBadgeYDF_Component(
         fontSize: cachedValidReusables.labelTextSize,
         lineSpacing: cachedValidReusables.valueLabelLineSpacing,
         lineHeight: cachedValidReusables.valueLabelLineHeight,
-        mustAllowWordBreakingAnywhere: true,
         mustApplyNegativeMarginsToRootElement: true
       })
 
