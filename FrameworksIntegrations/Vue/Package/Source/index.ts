@@ -1,8 +1,9 @@
 export { default as OverflowSafeSingleLineLabel } from "./Components/OverflowSafeSingleLineLabel.vue";
 
 export { default as Badge } from "@Components/Badge/Badge.vue";
-export { default as BadgeBasicImplementation } from "@Components/Badge/BadgeBasicImplementation.vue";
-export { default as BadgeLoadingPlaceholder } from "@Components/Badge/BadgeLoadingPlaceholder.vue";
+export { default as BadgeBasicImplementation } from "@Components/Badge/Badge-BasicImplementation.vue";
+export { default as BadgeLoadingPlaceholderBasicImplementation } from
+    "@Components/Badge/LoadingPlaceholder/Badge-LoadingPlaceholder-BasicImplementation.vue";
 
 export { default as Button } from "./Components/Controls/Buttons/Plain/Button.vue";
 export { default as ButtonBasicImplementation } from "./Components/Controls/Buttons/Plain/ButtonBasicImplementation.vue";

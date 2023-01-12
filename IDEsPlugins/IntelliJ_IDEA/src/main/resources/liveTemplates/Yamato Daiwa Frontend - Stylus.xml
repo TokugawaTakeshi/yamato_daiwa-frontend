@@ -194,7 +194,7 @@
       <option name="CSS_DECLARATION_BLOCK" value="true" />
     </context>
   </template>
-  <template name="sogw3c" value="ShadesOfGray__39ColorsW3C_Palette[$NUMBER$]&#10;// Please note that valid number of element must be from 0 fto 38 (not 39)" description="`ShadesOfGray__39ColorsW3C_Palette` array" toReformat="false" toShortenFQNames="true">
+  <template name="sogw3c" value="ShadesOfGray__39ColorsW3C_Palette[$NUMBER$]&#10;// Please note that valid number of element must be from 0 to 38 (not 39)" description="`ShadesOfGray__39ColorsW3C_Palette` array" toReformat="false" toShortenFQNames="true">
     <variable name="NUMBER" expression="enum(&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;,&quot;13&quot;,&quot;14&quot;,&quot;15&quot;,&quot;16&quot;,&quot;17&quot;,&quot;18&quot;,&quot;19&quot;,&quot;20&quot;,&quot;21&quot;,&quot;22&quot;,&quot;23&quot;,&quot;24&quot;,&quot;25&quot;,&quot;26&quot;,&quot;27&quot;,&quot;28&quot;,&quot;29&quot;,&quot;30&quot;,&quot;31&quot;,&quot;32&quot;,&quot;33&quot;,&quot;34&quot;,&quot;35&quot;,&quot;36&quot;,&quot;37&quot;,&quot;38&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
@@ -487,7 +487,7 @@
   </template>
   <template name="govbdsps" value="getObjectValueByDotSeparatedPathSafely($TARGET_OBJECT$, $DOT_SEPARATED_PATH$)" description="`getObjectValueByDotSeparatedPathSafely` function" toReformat="false" toShortenFQNames="true">
     <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
-    <variable name="DOT_SEPARATED_PATH" expression="" defaultValue="&quot;foo.bar.baz&quot;" alwaysStopAt="true" />
+    <variable name="DOT_SEPARATED_PATH" expression="" defaultValue="&quot;\&quot;foo.bar.baz\&quot;&quot;" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
@@ -554,10 +554,7 @@
     <variable name="TARGET_ARRAY" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="NESTED_ARRAY" expression="" defaultValue="&quot;nestedArray&quot;" alwaysStopAt="true" />
     <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_PROPERTY_VALUE" value="false" />
-      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
     </context>
   </template>
   <template name="iterateAssociativeArray" value="iterateAssociativeArray($TARGET_ARRAY$, @($KEY$, $VALUE$) {&#10;  p(&quot;Key: &quot; + $KEY$);&#10;  p(&quot;Value: &quot; + $VALUE$)&#10;})" description="`iterateAssociativeArray` function" toReformat="false" toShortenFQNames="true">
@@ -566,7 +563,6 @@
     <variable name="VALUE" expression="" defaultValue="&quot;value&quot;" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
       <option name="CSS_PROPERTY_VALUE" value="false" />
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
@@ -725,6 +721,15 @@
   <template name="med4c" value="EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 1024px&#10;WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 860px&#10;MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 680px&#10;NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 500px&#10;&#10;ExtraWideScreensLayout()&#10;  @media screen and (min-width: EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH)&#10;    {block}&#10;&#10;WideScreensLayout()&#10;  @media screen and (min-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;NarrowScreensLayout()&#10;  @media screen and (min-width: NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;ExtraNarrowScreensLayout()&#10;  @media screen and (max-width: NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}" description="Media queries definitions for 4-patterns layout" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="ydfcp" value="YDF_ColorPalette.$HUE$.$LIGHTNESS$&#10;&#10;// Hues:&#10;// red deepOrange orange amber deepYellow yellow youngFoliage green mint cyan skyBlue deepSkyBlue blue indigo deepPurple&#10;// purple magenta pink deepPink&#10;&#10;// Lightnesses:&#10;// dark mediumDark slightlyDark    bright      &#10;// slightlyLight mediumLight light pastelBright pastelSlightlyLight pastelMediumLight pastelLight faded&#10;// pastelGradient lightGradient darkGradient glossyGradient" description="YDF color palette color" toReformat="false" toShortenFQNames="true">
+    <variable name="HUE" expression="enum(&quot;red&quot;, &quot;deepOrange&quot;, &quot;orange&quot;, &quot;amber&quot;, &quot;deepYellow&quot;, &quot;yellow&quot;, &quot;youngFoliage&quot;, &quot;green&quot;, &quot;mint&quot;, &quot;cyan&quot;, &quot;skyBlue&quot;, &quot;deepSkyBlue&quot;, &quot;blue&quot;, &quot;indigo&quot;, &quot;deepPurple&quot;, &quot;purple&quot;, &quot;magenta&quot;, &quot;pink&quot;, &quot;deepPink&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="LIGHTNESS" expression="enum(&quot;dark&quot;, &quot;mediumDark&quot;, &quot;slightlyDark&quot;, &quot;bright&quot;, &quot;slightlyLight&quot;, &quot;mediumLight&quot;, &quot;light&quot;, &quot;pastelBright&quot;, &quot;pastelSlightlyLight&quot;, &quot;pastelMediumLight&quot;, &quot;pastelLight&quot;, &quot;faded&quot;, &quot;pastelGradient&quot;, &quot;lightGradient&quot;, &quot;darkGradient&quot;, &quot;glossyGradient&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
 </templateSet>

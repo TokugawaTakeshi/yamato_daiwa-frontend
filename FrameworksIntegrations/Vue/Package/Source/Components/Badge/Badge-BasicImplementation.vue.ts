@@ -1,5 +1,5 @@
 /* --- Assets ------------------------------------------------------------------------------------------------------- */
-import componentTemplate from "./BadgeBasicImplementation.vue.pug";
+import componentTemplate from "./Badge-BasicImplementation.vue.pug";
 import Badge from "@Components/Badge/Badge.vue";
 
 /* --- Framework ---------------------------------------------------------------------------------------------------- */

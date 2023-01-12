@@ -205,7 +205,9 @@ namespace Badge {
   }
 
   export function registerImplementationLocally(targetComponent: VueComponent): void {
-    targetComponent.$options.components.Badge = getImplementation();
+    /* eslint-disable-next-line @typescript-eslint/prefer-optional-chain --
+    * The bug of @typescript-eslint: the optional chaining could not be on the left side of assigment. */
+    (targetComponent.$options.components ?? {}).Badge = getImplementation();
   }
 
 }

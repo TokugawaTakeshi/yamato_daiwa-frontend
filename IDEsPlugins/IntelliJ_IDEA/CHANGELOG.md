@@ -2,6 +2,21 @@
 
 # Yamato-Daiwa Frontend IntelliJ IDEA plugin changelog
 
+## [0.0.4]
+### Added
+
+- <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> - live templates for the **Badge** component and its loading placeholder respectively
+- <kbd>badge-ydf-vue</kdb>, <kbd>badge-lp-ydf-vue</kdb> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
+- <kbd>dius</kbd> - **DummyImagesURIs** enumeration
+- <kbd>hd<kbd> - live template inserting the heading tag and dedicated CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
+- <kbd>ossll</kbd> (Markup) - live template for **OverflowSafeSingleLineLabel** component markup 
+- <kbd>ossll</kbd> (Styles) - live template for **OverflowSafeSingleLineLabel** component styles
+- <kbd>ossll</kbd> (Vue) - live template for Vue adaptation of **OverflowSafeSingleLineLabel** component
+- <kbd>par<kbd> - live template inserting the <code>p</code> tag and dedicated CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
+- <kbd>shd<kbd> - live template inserting the <code>div</code> tag with subheading CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
+- <kbd>ydfcp<kbd> - live template for YDF Color Palette
+
+
 ## [0.0.3]
 ### Added
 

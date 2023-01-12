@@ -1,5 +1,5 @@
 <templateSet group="Yamato Daiwa Frontend - Pug">
-  <template name="ossll" value="$END$//- Minimal example&#10;+OverflowSafeSingleLineLabel= textOverflowSafetyTest&#10;&#10;//- Full example&#10;+OverflowSafeSingleLineLabel({&#10;  rootElementTag: &quot;h1&quot;&#10;})= textOverflowSafetyTest&#10;//- --- END OF AUTOMATICALLY GENERATED CODE --------------------------------------------------------------------------" description="`OverflowSafeSingleLineLabel` mixin/component" toReformat="false" toShortenFQNames="true">
+  <template name="ossll" value="$END$//- Minimal example&#10;+OverflowSafeSingleLineLabel= textOverflowSafetyTest&#10;&#10;//- Full example&#10;+OverflowSafeSingleLineLabel({&#10;  rootElementTag: &quot;h1&quot;&#10;})= textOverflowSafetyTest&#10;//- --- END OF AUTOMATICALLY GENERATED CODE ----------------------------------------------------------------------------" description="`OverflowSafeSingleLineLabel` mixin/component" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="JADE" value="true" />
     </context>
@@ -15,6 +15,50 @@
   <template name="plg" value="+PageLinksGroup({&#10;  title: &quot;$PAGE_NAME$&quot;,&#10;  linksData: [&#10;    { label: &quot;Normal displaying&quot;, URI: &quot;Pages/Product/List/ProductsListPage.html&quot; },&#10;    { label: &quot;Loading&quot;, URI: &quot;Pages/Product/List/ProductsListPage-Loading.html&quot; },&#10;    { label: &quot;Error&quot;, URI: &quot;Pages/Product/List/ProductsListPage-Error.html&quot; }&#10;  ],&#10;  progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.$PAGE_DEVELOPMENT_PROGRESS_STATUS$&#10;})&#10;&#10;//-&#10;&#10;  Other statuses:&#10;&#10;  StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress&#10;  StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementWaiting&#10;  StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementInProgress&#10;  StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingWaiting&#10;  StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingInProgress&#10;  StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.specificationClarification&#10;  StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.reviewWaiting&#10;  StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.customerEvaluationWaiting&#10;  StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted&#10;//- --- END OF AUTOMATICALLY GENERATED CODE --------------------------------------------------------------------------" description="`PagesLinksGroup` mixin (for static preview anywhere page only)" toReformat="false" toShortenFQNames="true">
     <variable name="PAGE_NAME" expression="" defaultValue="&quot;Products list&quot;" alwaysStopAt="true" />
     <variable name="PAGE_DEVELOPMENT_PROGRESS_STATUS" expression="enum(&quot;implementationInProgress&quot;, &quot;improvementWaiting&quot;, &quot;improvementInProgress&quot;, &quot;fixingWaiting&quot;, &quot;fixingInProgress&quot;, &quot;specificationClarification&quot;, &quot;reviewWaiting&quot;, &quot;customerEvaluationWaiting&quot;, &quot;accepted&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JADE" value="true" />
+    </context>
+  </template>
+  <template name="tost" value="textOverflowSafetyTest" description="Insert `textOverflowSafetyTest` constant" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="JADE" value="true" />
+    </context>
+  </template>
+  <template name="dius" value="DummyImagesURIs.$IMAGE_KEY$&#10;  " description="`DummyImagesURIs` asset object" toReformat="false" toShortenFQNames="true">
+    <variable name="IMAGE_KEY" expression="enum(&quot;aspectRatio19x6&quot;, &quot;aspectRatio4x3&quot;, &quot;wideAndLow&quot;, &quot;highAndNarrow&quot;, &quot;small&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JADE" value="true" />
+    </context>
+  </template>
+  <template name="badge-ydf" value="+Badge--YDF({&#10;  key: &quot;$KEY$&quot;, // TODO Remove if the badge is value-only&#10;  value: &quot;$VALUE$&quot;,&#10;  theme: Badge__YDF.Themes.dark, // TODO Remove if theme is only one, default or external&#10;  externalThemes: true, // TODO Remove if false&#10;  geometry: Badge__YDF.GeometricVariations.regular, // TODO Remove if the geometric variation is only one or default&#10;  geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ], // TODO Remove if no geometric modifiers required&#10;  decoration: Badge__YDF.DecorativeVariations.$DECORATIVE_VARIATION$,&#10;  decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ] // TODO Remove if no decorative modifiers required&#10;}): +Pencil__Filled--YDF_Icon.Badge--YDF-Icon&#10;//- ↑ TODO Remove if no icon required" description="`Badge`, the YDF component" toReformat="false" toShortenFQNames="true">
+    <variable name="DECORATIVE_VARIATION" expression="enum(&quot;veryCatchy&quot;, &quot;catchy&quot;, &quot;modestlyCatchy&quot;, &quot;neutral&quot;, &quot;modestlyCalming&quot;, &quot;calming&quot;, &quot;achromatic&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="KEY" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JADE" value="true" />
+    </context>
+  </template>
+  <template name="hd" value="h$LEVEL$.$PREFIX$Heading$LEVEL$ $END$" description="The heading tag with dedicated typography class" toReformat="false" toShortenFQNames="true">
+    <variable name="LEVEL" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PREFIX" expression="" defaultValue="&quot;Article-&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="JADE" value="true" />
+    </context>
+  </template>
+  <template name="shd" value=".$PREFIX$-Subheading$LEVEL$ $END$" description="The div tag with subheading typography class" toReformat="false" toShortenFQNames="true">
+    <variable name="PREFIX" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LEVEL" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JADE" value="true" />
+    </context>
+  </template>
+  <template name="par" value="p.$PREFIX$Paragraph.&#10;  $END$" description="Paragraph (YDF)" toReformat="false" toShortenFQNames="true">
+    <variable name="PREFIX" expression="" defaultValue="&quot;Article-&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="JADE" value="true" />
+    </context>
+  </template>
+  <template name="badge-lp-ydf" value="+Badge--YDF-LoadingPlaceholder({&#10;  theme: Badge__YDF.Themes.dark, // TODO Remove if theme is only one, default or external&#10;  externalThemes: true, // TODO Remove if false&#10;  geometry: Badge__YDF.GeometricVariations.regular, // TODO Remove if the geometric variation is only one or default&#10;  geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ], // TODO Remove if no geometric modifiers required&#10;})&#10;" description="`Badge` (loading placeholder), the YDF component" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="JADE" value="true" />
     </context>

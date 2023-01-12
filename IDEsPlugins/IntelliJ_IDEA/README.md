@@ -16,6 +16,11 @@ Currently, below live templates are available:
   * Pages templates
     * <kbd>pl</kbd> - live template for [**PageLink**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelink) mixin usage
     * <kbd>plg</kbd> - live template for [**PagesLinksGroup**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelinksgroup) mixin usage
+  * Components
+    * <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> - live templates for the **Badge** component and its loading placeholder respectively
+    * <kbd>ossll</kbd> - live template for **OverflowSafeSingleLineLabel** component markup
+  * Other
+    * <kbd>dius</kbd> - **DummyImagesURIs** enumeration
 
 * Styles
 
@@ -29,6 +34,7 @@ Currently, below live templates are available:
       * <kbd>pccs</kbd> - live template for [**PracticalColorCoordinateSystem**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md) object
       * <kbd>fuic</kbd> - live template for [**FlatUI_Colors**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md) enumeration
       * <kbd>mdc</kbd> - live template for [**MaterialDesignColors**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md) object
+      * <kbd>ydfcp<kbd> - live template for YDF Color Palette
       
   * Basic variables
     * <kbd>zi</kbd> - live template for [**ZIndexes**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#zindexes) mutable object
@@ -165,11 +171,20 @@ Currently, below live templates are available:
     * <kbd>wmsc</kbd> - **+WideAndMediumScreensConfiguration()** mixin (must be preliminarily defined) invocation.
     * <kbd>mnsc</kbd> - **+MediumAndNarrowScreensConfiguration()** mixin (must be preliminarily defined) invocation.
 
+* Typography
+  * <kbd>hd<kbd> - live template inserting the heading tag and dedicated CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
+  * <kbd>shd<kbd> - live template inserting the <code>div</code> tag with subheading CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
+  * <kbd>par<kbd> - live template inserting the <code>p</code> tag and dedicated CSS class provided by <code>provideYDF_Typography</code> Stylus mixin 
+
 * Components
   * <kbd>ossll</kbd> - live template for [OverflowSafeSingleLineLabel](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md) mixin/component (Available for Pug and Stylus contexts)
 
 * Other 
   * <kbd>iydf</kdb> - live template inserting the import (from **@yamato-daiwa/frontend** package) declaration 
+
+* Vue
+  * <kbd>badge-ydf-vue</kdb>, <kbd>badge-lp-ydf-vue</kdb> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
+  * <kbd>ossll</kbd> - live template for Vue adaptation of **OverflowSafeSingleLineLabel** component
 
 <!-- Plugin description end -->
 
