@@ -130,8 +130,13 @@ namespace DropDownList {
       required: false,
       validator(rawVModel: unknown): boolean {
         return ValidatableControl.VModelChecker(
-            rawVModel, (rawValue: unknown): boolean =>
-              isString(rawValue) || isNumber(rawValue) || isArbitraryObject(rawValue) || Array.isArray(rawValue) || isNull(rawValue)
+            rawVModel,
+            (rawValue: unknown): boolean =>
+                isString(rawValue) ||
+                isNumber(rawValue) ||
+                isArbitraryObject(rawValue) ||
+                Array.isArray(rawValue) ||
+                isNull(rawValue)
         );
       }
     })
@@ -155,8 +160,6 @@ namespace DropDownList {
     @VueProperty({ type: Boolean, default: false })
     protected readonly readonly!: boolean;
 
-    // TODO selectedOptions__nonValidatableControlMode
-
 
     /* === State ==================================================================================================== */
     private indexesOfSelectedOptions: Array<number> = [];
@@ -174,7 +177,8 @@ namespace DropDownList {
     }
 
     public resetStateToInitial(): void {
-      // TODO
+      // eslint-disable-next-line no-void -- 時間的実装
+      return void 0;
     }
 
 
@@ -222,12 +226,10 @@ namespace DropDownList {
             });
           }
 
+        } else if (this.indexesOfSelectedOptions.includes(indexInArray)) {
+          this.indexesOfSelectedOptions = [ indexInArray ];
         } else {
-          if (this.indexesOfSelectedOptions.includes(indexInArray)) {
-            this.indexesOfSelectedOptions = [ indexInArray ];
-          } else {
-            this.indexesOfSelectedOptions = [];
-          }
+          this.indexesOfSelectedOptions = [];
         }
       }
 

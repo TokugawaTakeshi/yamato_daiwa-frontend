@@ -22,7 +22,7 @@
     "typescript": "4.9.4"
   },
   "scripts": {
-    "Rebuilding of distributable": "yda build --selectiveExecution Distributable --mode LOCAL_DEVELOPMENT",
+    "Rebuilding of distributable": "yda build --selectiveExecution Distributable --mode PRODUCTION",
     "TypeScript types generating": "tsc --project tsconfig.declarations.json --declaration --emitDeclarationOnly --outDir Distributable",
     "Tests incremental building": "rimraf Tests/Output & yda build --selectiveExecution Tests --mode LOCAL_DEVELOPMENT"
   }

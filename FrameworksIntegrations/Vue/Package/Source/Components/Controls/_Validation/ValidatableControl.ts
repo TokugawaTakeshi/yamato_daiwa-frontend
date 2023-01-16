@@ -1,4 +1,5 @@
 import type ValueValidation from "./ValueValidation";
+
 import {
   Logger,
   UnexpectedEventError,
@@ -18,6 +19,7 @@ interface ValidatableControl {
   focus: () => this;
 
   resetStateToInitial: () => void;
+
 }
 
 
@@ -28,6 +30,7 @@ namespace ValidatableControl {
     public readonly value: ValidValue | InvalidValue;
     public readonly validation: Validation;
     public readonly isValidationPending: boolean;
+
     private readonly validationResult: ValueValidation.ValidationResult;
 
     /* [ Theory ]

@@ -110,7 +110,13 @@ projectBuilding:
   # === Development server =============================================================================================
   browserLiveReloading:
 
-    Tests:
+    setups:
 
-      customStartingFilenameWithExtension: Tests.html
-      targetFilesRootDirectoryRelativePath: Tests/Output
+      Tests:
+
+        localServer:
+
+          rootDirectoryRelativePath: Tests/Output
+          customStartingFileNameWithExtension: Tests.html
+
+        openInBrowsers: chrome

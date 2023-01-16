@@ -32,10 +32,10 @@ export default class Control extends VueComponent {
   protected readonly required!: boolean;
 
   @VueProperty({ type: Boolean, default: false })
-  protected readonly displayAppropriateBadgeIfInputIsRequired!: boolean;
+  protected readonly mustDisplayAppropriateBadgeIfInputIsRequired!: boolean;
 
   @VueProperty({ type: Boolean, default: false })
-  protected readonly displayAppropriateBadgeIfInputIsOptional!: boolean;
+  protected readonly mustDisplayAppropriateBadgeIfInputIsOptional!: boolean;
 
 
   @VueProperty({ type: String })
@@ -47,12 +47,12 @@ export default class Control extends VueComponent {
 
 
   /* === State ====================================================================================================== */
-  protected mustActivateAppropriateHighlightIfAnyErrorsMessages: boolean = false;
+  protected invalidInputHighlightingIfAnyErrorsMessages: boolean = false;
 
 
   /* === Methods ==================================================================================================== */
   public highlightInvalidInput(): this {
-    this.mustActivateAppropriateHighlightIfAnyErrorsMessages = true;
+    this.invalidInputHighlightingIfAnyErrorsMessages = true;
     return this;
   }
 

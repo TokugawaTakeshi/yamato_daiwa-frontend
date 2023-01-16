@@ -85,12 +85,13 @@ projectBuilding:
 
         buildingModeDependent:
 
-          # TODO ESLint 問題の解決の後で削除
           LOCAL_DEVELOPMENT:
             outputTopDirectoryRelativePath: "Distributable"
 
           PRODUCTION:
             outputTopDirectoryRelativePath: "Distributable"
+            revisioning: { disable: true }
+
 
       Tests:
 

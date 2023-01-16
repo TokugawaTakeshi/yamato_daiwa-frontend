@@ -16,7 +16,7 @@ mixin Button--YDF(properties)
       disabled = false,
 
       theme = Button__YDF.Themes.regular,
-      externalThemes = Button__YDF.areThemesExternal,
+      areThemesExternal = Button__YDF.areThemesExternal,
       geometry = Button__YDF.GeometricVariations.regular,
       geometricModifiers = [],
       decoration = Button__YDF.DecorativeVariations.regular
@@ -26,95 +26,91 @@ mixin Button--YDF(properties)
       parameterNumber: 1,
       parameterName: "properties",
       parameterPropertiesSpecification: Button__YDF.propertiesSpecification,
-      mixinName: "Button--YDF"
+      mixinName: Button__YDF.CSS_NAMESPACE
     });
 
     let isButtonTheTagNameOfRootElement = false;
     let isInputTheTagNameOfRootElement = false;
     let isAnchorTheTagNameOfRootElement = false;
 
-    let typeAttributeValueOfInputOrButtonElement;
+    let typeAttributeValueOfButtonOrInputElement;
 
 
     if (URI) {
 
-      tagName = "a";
       isAnchorTheTagNameOfRootElement = true;
 
     } else {
 
       switch (HTML_Type) {
 
-        case Button__YDF.HTML_Types.inputButton: {
-
-          tagName = "input";
-          isInputTheTagNameOfRootElement = true;
-          typeAttributeValueOfInputOrButtonElement = "button";
-
-          break;
-        }
-
-        case Button__YDF.HTML_Types.inputSubmit: {
-
-          tagName = "input";
-          isInputTheTagNameOfRootElement = true;
-          typeAttributeValueOfInputOrButtonElement = "submit";
-
-          break;
-        }
-
-        case Button__YDF.HTML_Types.inputReset: {
-
-          tagName = "input";
-          isInputTheTagNameOfRootElement = true;
-          typeAttributeValueOfInputOrButtonElement = "reset";
-
-          break;
-
-        }
-
         case Button__YDF.HTML_Types.regular: {
 
-          tagName = "button";
           isButtonTheTagNameOfRootElement = true;
-          typeAttributeValueOfInputOrButtonElement = "button"
+          typeAttributeValueOfButtonOrInputElement = "button"
 
           break;
         }
 
         case Button__YDF.HTML_Types.submit: {
 
-          tagName = "button";
           isButtonTheTagNameOfRootElement = true;
-          typeAttributeValueOfInputOrButtonElement = "submit"
+          typeAttributeValueOfButtonOrInputElement = "submit"
 
           break;
         }
+
+        case Button__YDF.HTML_Types.inputButton: {
+
+          isInputTheTagNameOfRootElement = true;
+          typeAttributeValueOfButtonOrInputElement = "button";
+
+          break;
+
+        }
+
+        case Button__YDF.HTML_Types.inputSubmit: {
+
+          isInputTheTagNameOfRootElement = true;
+          typeAttributeValueOfButtonOrInputElement = "submit";
+
+          break;
+
+        }
+
+        case Button__YDF.HTML_Types.inputReset: {
+
+          isInputTheTagNameOfRootElement = true;
+          typeAttributeValueOfButtonOrInputElement = "reset";
+
+        }
+
       }
     }
 
     const commonCSS_Classes = [
-      "Button--YDF",
-      ...Object.entries(Button__YDF.Themes).length > 1 &&
-          !externalThemes ? [ Button__YDF.ThemesCSS_ModifiersNames[theme] ] : [],
+      Button__YDF.CSS_NAMESPACE,
+      ...isAnchorTheTagNameOfRootElement && disabled ? [ `${ Button__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
+      ...Object.entries(Button__YDF.Themes).length > 1 && !areThemesExternal ?
+          [ ComponentsAuxiliaries.generateThemeCSS_Class(Button__YDF.CSS_NAMESPACE, theme) ] : [],
       ...Object.entries(Button__YDF.GeometricVariations).length > 1 ?
-          [ Button__YDF.GeometricVariationsCSS_ModifiersNames[geometry] ] : [],
+          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(Button__YDF.CSS_NAMESPACE, geometry) ] : [],
       ...geometricModifiers.includes(Button__YDF.GeometricModifiers.squareShape) ?
-          [ "Button--YDF-SquareShapeGeometricModifier" ] : [],
+          [ `${ Button__YDF.CSS_NAMESPACE }__SquareShapeGeometricModifier` ] : [],
       ...geometricModifiers.includes(Button__YDF.GeometricModifiers.pillShape) ?
-          [ "Button--YDF-PillShapeGeometricModifier" ] : [],
+          [ `${Button__YDF.CSS_NAMESPACE}__PillShapeGeometricModifier` ] : [],
       ...Object.entries(Button__YDF.DecorativeVariations).length > 1 ?
-          [ Button__YDF.DecorativeVariationsCSS_Modifiers[decoration] ] : []
+          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(Button__YDF.CSS_NAMESPACE, decoration)]  : []
     ];
 
 
   if isButtonTheTagNameOfRootElement
 
     button&attributes(attributes)(
-      class= commonCSS_Classes
-      type= typeAttributeValueOfInputOrButtonElement
+      type= typeAttributeValueOfButtonOrInputElement
       disabled= disabled
       aria-label= accessibilityGuidance
+      class= commonCSS_Classes
     )
 
       if block
@@ -128,11 +124,11 @@ mixin Button--YDF(properties)
   else if isAnchorTheTagNameOfRootElement
 
     a&attributes(attributes)(
-      class= [ ...commonCSS_Classes, disabled ? [ "Button--YDF__DisabledState" ] : [] ]
       href= disabled ? undefined : URI
       aria-disabled= disabled ? "true" : undefined
       aria-label= accessibilityGuidance
       tabindex = disabled && -1
+      class= [ ...commonCSS_Classes, disabled ? [ `${ Button__YDF.CSS_NAMESPACE }__DisabledState` ] : [] ]
     )
 
       if block
@@ -146,8 +142,42 @@ mixin Button--YDF(properties)
   else if isInputTheTagNameOfRootElement
 
     input&attributes(attributes)(
-      class= commonCSS_Classes
-      type= typeAttributeValueOfInputOrButtonElement
+      type= typeAttributeValueOfButtonOrInputElement
       value= label
       disabled= disabled
+      class= commonCSS_Classes
     )
+
+
+mixin Button--YDF-LoadingPlaceholder(properties)
+
+  -
+
+    const {
+      theme = Button__YDF.Themes.regular,
+      areThemesExternal = Button__YDF.areThemesExternal,
+      geometry = Button__YDF.GeometricVariations.regular,
+      geometricModifiers = []
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: {
+        theme: Button__YDF.propertiesSpecification.theme,
+        areThemesExternal: Button__YDF.propertiesSpecification.areThemesExternal,
+        geometry: Button__YDF.propertiesSpecification.geometry,
+        geometricModifiers: Button__YDF.propertiesSpecification.geometricModifiers
+      },
+      mixinName: `${ Button__YDF.CSS_NAMESPACE }-LoadingPlaceholder`
+    });
+
+    const rootElementModifierCSS_Classes = [
+      ...Object.entries(Button__YDF.Themes).length > 1 && !areThemesExternal ?
+          [ ComponentsAuxiliaries.generateThemeCSS_Class(Button__YDF.CSS_NAMESPACE, theme) ] : [],
+      ...Object.entries(Button__YDF.GeometricVariations).length > 1 ?
+          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(Button__YDF.CSS_NAMESPACE, geometry) ] : [],
+      ...geometricModifiers.includes(Button__YDF.GeometricModifiers.squareShape) ?
+          [ `${Button__YDF.CSS_NAMESPACE}__SquareShapeGeometricModifier` ] : [],
+      ...geometricModifiers.includes(Button__YDF.GeometricModifiers.pillShape) ?
+          [ `${Button__YDF.CSS_NAMESPACE}__PillShapeGeometricModifier` ] : []
+    ];

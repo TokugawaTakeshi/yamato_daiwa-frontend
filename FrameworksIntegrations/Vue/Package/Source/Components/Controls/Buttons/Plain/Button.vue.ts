@@ -8,15 +8,18 @@ import type { RouteLocationRaw as VueRouterRawLocation } from "vue-router";
 
 /* --- Utils -------------------------------------------------------------------------------------------------------- */
 import {
-  isUndefined,
-  isNotUndefined,
-  isString,
-  isElementOfEnumeration,
-  isNull,
   toLowerCamelCase,
   toUpperCamelCase,
-  toScreamingSnakeCase
+  toScreamingSnakeCase,
+  isString,
+  isUndefined,
+  isNull,
+  isEitherUndefinedOrNull,
+  isNeitherUndefinedNorNull,
+  isElementOfEnumeration
 } from "@yamato-daiwa/es-extensions";
+import VueComponentImplementationHasNotBeenSetError from
+    "@Components/_Errors/VueComponentImplementationHasNotBeenSet/VueComponentImplementationHasNotBeenSet";
 
 
 namespace Button {
@@ -37,6 +40,12 @@ namespace Button {
 
   export const Themes: Themes = { regular: "REGULAR" };
 
+  export let areThemesExternal: boolean = false;
+
+  export function considerThemesAsExternal(): void {
+    areThemesExternal = true;
+  }
+
 
   export type GeometricVariations = {
     readonly regular: "REGULAR";
@@ -50,6 +59,11 @@ namespace Button {
     small: "SMALL",
     linkLike: "LINK_LIKE"
   };
+
+  export enum GeometricModifiers {
+    squareShape = "SQUARE_SHAPE",
+    pillShape = "PILL_SHAPE"
+  }
 
 
   export type DecorativeVariations = {
@@ -72,6 +86,8 @@ namespace Button {
     /* === Constants & enumerations ================================================================================= */
     protected HTML_Types!: typeof HTML_Types;
 
+    protected IS_NUXT!: boolean;
+
 
     /* === Properties =============================================================================================== */
     @VueProperty({
@@ -82,16 +98,16 @@ namespace Button {
     protected readonly HTML_Type!: string;
 
     @VueProperty({ type: String })
-    protected readonly label?: string;
+    protected readonly label?: string | null;
 
     @VueProperty({ type: String })
-    protected readonly accessibilityGuidance?: string;
+    protected readonly accessibilityGuidance?: string | null;
 
     @VueProperty({ type: [ String, Object ] })
-    protected readonly route?: VueRouterRawLocation;
+    protected readonly route?: VueRouterRawLocation | null;
 
     @VueProperty({ type: String })
-    protected readonly externalLinkURI?: string;
+    protected readonly externalLinkURI?: string | null;
 
     @VueProperty({ type: Boolean, default: false })
     protected readonly mustOpenExternalLinkInCurrentTab!: string;
@@ -106,12 +122,18 @@ namespace Button {
     })
     protected readonly theme!: string;
 
+    @VueProperty({ type: Boolean, default: areThemesExternal })
+    private readonly areThemesExternal!: boolean;
+
     @VueProperty({
       type: String,
       default: GeometricVariations.regular,
       validator: (rawValue: unknown): boolean => isString(rawValue) && Object.values(GeometricVariations).includes(rawValue)
     })
     protected readonly geometry!: string;
+
+    @VueProperty({ type: Array, default: (): Array<GeometricModifiers> => [] })
+    private readonly geometricModifiers!: Array<GeometricModifiers>;
 
     @VueProperty({
       type: String,
@@ -129,31 +151,34 @@ namespace Button {
 
     /* === Computing of tag name of root element ==================================================================== */
     protected get isButtonTheTagNameOfRootElement(): boolean {
-      return (isUndefined(this.route) && isUndefined(this.externalLinkURI)) &&
+      return isEitherUndefinedOrNull(this.route) &&
+          isEitherUndefinedOrNull(this.externalLinkURI) &&
           (this.HTML_Type === HTML_Types.regular || this.HTML_Type === HTML_Types.submit);
     }
 
     protected get isInputTheTagNameOfRootElement(): boolean {
-      return isUndefined(this.route) && (
-        this.HTML_Type === HTML_Types.inputButton ||
-        this.HTML_Type === HTML_Types.inputSubmit ||
-        this.HTML_Type === HTML_Types.inputReset
-      );
+      return isEitherUndefinedOrNull(this.route) &&
+          isEitherUndefinedOrNull(this.externalLinkURI) &&
+          (
+            this.HTML_Type === HTML_Types.inputButton ||
+            this.HTML_Type === HTML_Types.inputSubmit ||
+            this.HTML_Type === HTML_Types.inputReset
+          );
     }
 
     private get isRouterLinkTheRootElement(): boolean {
-      return isNotUndefined(this.route);
+      return isNeitherUndefinedNorNull(this.route);
     }
 
     private get isAnchorTheTagNameOfRootElement(): boolean {
-      return isNotUndefined(this.externalLinkURI);
+      return isNeitherUndefinedNorNull(this.externalLinkURI);
     }
 
 
     /* === Computing of the attributes ============================================================================== */
-    protected get typeAttributeValueOfInputOrButtonElement(): string | null {
+    protected get typeAttributeValueOfButtonOrInputElement(): string | null {
 
-      if (isNotUndefined(this.route)) {
+      if (!this.isButtonTheTagNameOfRootElement && !this.isInputTheTagNameOfRootElement) {
         return null;
       }
 
@@ -166,22 +191,17 @@ namespace Button {
         case HTML_Types.inputReset: return "reset";
         default: return null;
       }
+
     }
 
 
     /* === Themes =================================================================================================== */
-    public static readonly ThemesCSS_ModifiersNames: { [themeID: string]: string; } = {
-      [Themes.regular]: "RegularTheme"
-    };
+    public static readonly Themes: typeof Themes = Themes;
 
-    public static defineNewThemes(themesNames: Array<string>): typeof BasicLogic {
+    public static defineNewThemes(themesNames: ReadonlyArray<string>): typeof BasicLogic {
 
       for (const themeName of themesNames) {
-
-        const themeName__lowerCamelCase: string = toLowerCamelCase(themeName);
-
-        Themes[themeName__lowerCamelCase] = toScreamingSnakeCase(themeName);
-        BasicLogic.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button--YDF__${ toUpperCamelCase(themeName) }Theme`;
+        Themes[toLowerCamelCase(themeName)] = toScreamingSnakeCase(themeName);
       }
 
       return BasicLogic;
@@ -189,89 +209,93 @@ namespace Button {
 
 
     /* --- Geometric variations ------------------------------------------------------------------------------------- */
-    public static readonly GeometricVariationsCSS_ModifiersNames: { [ geometricVariationID: string ]: string; } = {
-      [GeometricVariations.regular]: "RegularGeometry",
-      [GeometricVariations.small]: "SmallGeometry"
-    };
+    public static readonly GeometricVariations: typeof GeometricVariations = GeometricVariations;
 
-    public static defineNewGeometricVariations(geometricVariationsNames: Array<string>): typeof BasicLogic {
+    public static defineNewGeometricVariations(geometricVariationsNames: ReadonlyArray<string>): typeof BasicLogic {
 
       for (const geometricVariationsName of geometricVariationsNames) {
-
-        const geometricVariationsName__lowerCamelCase: string = toLowerCamelCase(geometricVariationsName);
-
-        GeometricVariations[geometricVariationsName__lowerCamelCase] = toScreamingSnakeCase(geometricVariationsName);
-        BasicLogic.GeometricVariationsCSS_ModifiersNames[geometricVariationsName__lowerCamelCase] =
-            `Button--YDF__${ toUpperCamelCase(geometricVariationsName) }Geometry`;
+        GeometricVariations[toLowerCamelCase(geometricVariationsName)] = toScreamingSnakeCase(geometricVariationsName);
       }
 
       return BasicLogic;
+
     }
 
 
     /* --- Decorative variations ------------------------------------------------------------------------------------- */
-    public static readonly DecorativeVariationsCSS_ModifiersNames: { [ decorativeVariationID: string ]: string; } = {
-      [DecorativeVariations.regular]: "RegularDecoration",
-      [DecorativeVariations.small]: "AccentedDecoration"
-    };
+    public static readonly DecorativeVariations: typeof DecorativeVariations = DecorativeVariations;
 
-    public static defineNewDecorativeVariations(decorativeVariationsNames: Array<string>): typeof BasicLogic {
+    public static defineNewDecorativeVariations(decorativeVariationsNames: ReadonlyArray<string>): typeof BasicLogic {
 
       for (const decorativeVariationsName of decorativeVariationsNames) {
-
-        const decorativeVariationsName__lowerCamelCase: string = toLowerCamelCase(decorativeVariationsName);
-
-        DecorativeVariations[decorativeVariationsName__lowerCamelCase] = toScreamingSnakeCase(decorativeVariationsName);
-        BasicLogic.DecorativeVariationsCSS_ModifiersNames[decorativeVariationsName__lowerCamelCase] =
-            `Button--YDF__${ toUpperCamelCase(decorativeVariationsName) }Decorations`;
+        DecorativeVariations[toLowerCamelCase(decorativeVariationsName)] = toScreamingSnakeCase(decorativeVariationsName);
       }
 
       return BasicLogic;
+
     }
 
 
     /* === Auxiliaries ============================================================================================== */
-    /* eslint-disable-next-line @typescript-eslint/no-extra-parens --
-     * Parens are actually unnecessary but some IDEs could complain. */
-    protected IS_NUXT: boolean = ("$nuxt" in window);
-
     protected get rootElementModifierCSS_Classes(): Array<string> {
       return [
         ...(this.isAnchorTheTagNameOfRootElement || this.isRouterLinkTheRootElement) && this.disabled ?
             [ "Button--YDF__DisabledState" ] : [],
-        ...Object.entries(Themes).length > 1 ? [ `Button--YDF__${ BasicLogic.ThemesCSS_ModifiersNames[this.theme] }` ] : [],
-        ...Object.entries(GeometricVariations).length > 1 ? [
-          `Button--YDF__${ BasicLogic.GeometricVariationsCSS_ModifiersNames[this.geometry] }`
-        ] : [],
-        ...Object.entries(DecorativeVariations).length > 1 ? [
-          `Button--YDF__${ BasicLogic.DecorativeVariationsCSS_ModifiersNames[this.decoration] }`
-        ] : []
+        ...Object.entries(Themes).length > 1 && !this.areThemesExternal ?
+            [ `Button--YDF__${ toUpperCamelCase(this.theme) }Theme` ] : [],
+        ...Object.entries(GeometricVariations).length > 1 ?
+            [ `Button--YDF__${ toUpperCamelCase(this.geometry) }Geometry` ] : [],
+        ...this.geometricModifiers.includes(GeometricModifiers.pillShape) ?
+            [ "Button--YDF__PillShapeGeometricModifier" ] : [],
+        ...this.geometricModifiers.includes(GeometricModifiers.squareShape) ?
+            [ "Button--YDF__SquareShapeGeometricModifier" ] : [],
+        ...Object.entries(DecorativeVariations).length > 1 ?
+            [ `Badge--YDF__${ toUpperCamelCase(this.decoration) }Decoration` ] : []
       ];
     }
 
-
-    /* === Non-reactive class fields ================================================================================ */
     private initializeNonReactiveClassFields(): void {
+
       this.HTML_Types = HTML_Types;
+
+      /* eslint-disable-next-line @typescript-eslint/no-extra-parens --
+       * Parens are actually unnecessary but some IDEs could complain. */
+      this.IS_NUXT = ("$nuxt" in window);
+
     }
+
   }
 
 
+  /* === Providing ================================================================================================== */
   let Implementation: typeof VueComponent | null;
 
   export function setImplementation(_Implementation: typeof VueComponent): void {
     Implementation = _Implementation;
   }
 
-  export function getImplementation(): typeof VueComponent | null {
+  export function getImplementation(): typeof VueComponent {
 
     if (isNull(Implementation)) {
-      throw new Error("UHE1");
+      throw new VueComponentImplementationHasNotBeenSetError({ vueComponentName: "Button" });
     }
 
 
     return Implementation;
+
   }
+
+  export function registerImplementationLocally(parentComponent: VueComponent, withName: string = "Button"): void {
+
+    if (isUndefined(parentComponent.$options.components)) {
+      parentComponent.$options.components = {};
+    }
+
+
+    parentComponent.$options.components[withName] = getImplementation();
+
+  }
+
 }
 
 

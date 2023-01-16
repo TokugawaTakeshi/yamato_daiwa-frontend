@@ -1,0 +1,201 @@
+-
+
+  const ComboBox__YDF = {
+
+    CSS_NAMESPACE: "Combobox--YDF",
+
+
+    /* === Themes =================================================================================================== */
+    Themes: { regular: "REGULAR" },
+    selfAndCompoundControlShellThemesCorrespondence: { REGULAR: CompoundControlShell__YDF.Themes.regular },
+
+    defineNewThemes(ownAndCorrespondingCompoundControlShellThemes_Names) {
+      return ComponentsAuxiliaries.defineThemesAndAssociateThemWithParentCompoundControlShellOnes(
+        ownAndCorrespondingCompoundControlShellThemes_Names, this
+      );
+    },
+
+    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT,
+    considerThemesAsExternal() {
+      this.areThemesExternal = true;
+      return this;
+    },
+
+
+    /* --- Geometry ------------------------------------------------------------------------------------------------- */
+    GeometricVariations: {
+      regular: "REGULAR",
+      small: "SMALL"
+    },
+
+    selfAndCompoundControlShellGeometricVariationsCorrespondence: {
+      REGULAR: CompoundControlShell__YDF.GeometricVariations.regular,
+      SMALL: CompoundControlShell__YDF.GeometricVariations.small
+    },
+
+    defineNewGeometricVariations(ownAndCorrespondingCompoundControlShellGeometricVariations_Names) {
+      return ComponentsAuxiliaries.defineGeometricVariationAndAssociateThemWithParentCompoundControlShellOnes(
+        ownAndCorrespondingCompoundControlShellGeometricVariations_Names, this
+      );
+    },
+
+
+    /* --- Decorative variations ------------------------------------------------------------------------------------ */
+    DecorativeVariations: {regular: "REGULAR"},
+
+    selfAndCompoundControlShellDecorativeVariationsCorrespondence: {
+      REGULAR: CompoundControlShell__YDF.DecorativeVariations.regular
+    },
+
+    defineNewDecorativeVariation(ownAndCorrespondingCompoundControlShellDecorativeVariations_Names) {
+      return ComponentsAuxiliaries.defineDecorativeVariationAndAssociateThemWithParentCompoundControlShellOnes(
+        ownAndCorrespondingCompoundControlShellDecorativeVariations_Names, this
+      );
+    },
+
+
+    /* === Properties specification ================================================================================= */
+    get propertiesSpecification() {
+      return {
+
+        label: {
+          type: String,
+          required: false,
+          minimalCharactersCount: 1
+        },
+
+        accessibilityGuidance: {
+          type: String,
+          required: false,
+          minimalCharactersCount: 1
+        },
+
+        externalLabelHTML_ID: {
+          type: String,
+          required: false,
+          minimalCharactersCount: 1
+        },
+
+        guidance: {
+          type: String,
+          required: false,
+          minimalCharactersCount: 1
+        },
+
+        nothingSelectedText: {
+          type: String,
+          required: false,
+          minimalCharactersCount: 1
+        },
+
+        disabled: {
+          type: Boolean,
+          required: false
+        },
+
+        readonly: {
+          type: Boolean,
+          required: false
+        },
+
+        required: {
+          type: Boolean,
+          required: false
+        },
+
+        mustDisplayAppropriateBadgeIfInputIsRequired: {
+          type: Boolean,
+          required: false
+        },
+
+        mustDisplayAppropriateBadgeIfInputIsOptional: {
+          type: Boolean,
+          required: false
+        },
+
+        labelElementHTML_ID: {
+          type: String,
+          required: false,
+          minimalCharactersCount: 1
+        },
+
+        optionsListElementHTML_ID: {
+          type: String,
+          required: false,
+          minimalCharactersCount: 1
+        },
+
+        theme: {
+          type: String,
+          required: false,
+          allowedAlternatives: Object.values(this.Themes)
+        },
+
+        areThemesExternal: {
+          type: Boolean,
+          required: false
+        },
+
+        geometry: {
+          type: String,
+          required: false,
+          allowedAlternatives: Object.values(this.GeometricVariations)
+        },
+
+        decoration: {
+          type: String,
+          required: false,
+          allowedAlternatives: Object.values(this.DecorativeVariations)
+        }
+
+      };
+    },
+
+
+    /* === State simulations specification ========================================================================== */
+    stateSimulationsSpecification: {
+
+      isExpanded: {
+        type: Boolean,
+        required: false
+      },
+
+      invalidInputHighlightingIfAnyErrorsMessages: {
+        type: Boolean,
+        required: false
+      },
+
+      validValueHighlightingIfNoErrorsMessages: {
+        type: Boolean,
+        required: false
+      },
+
+      errorsMessages: {
+        type: Array,
+        required: false,
+        element: {
+          type: String,
+          minimalCharactersCount: 1
+        }
+      }
+
+    },
+
+
+    /* === Localization ============================================================================================= */
+    localization: {
+      placeholders: {
+        selectingOfOneOption: "Please select one option",
+        selectingOfOneOrMultipleOptions: "Please select one or more options"
+      }
+    },
+
+
+    /* === ID generating ============================================================================================ */
+    counterForID_Generating: 0,
+    generateComponentID() {
+      this.counterForID_Generating++;
+      return `COMBOBOX--YDF-${this.counterForID_Generating}`;
+    }
+
+  };

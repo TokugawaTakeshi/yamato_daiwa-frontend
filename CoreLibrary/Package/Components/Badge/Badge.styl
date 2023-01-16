@@ -59,7 +59,13 @@ provideBadgeYDF_Component(
   options = {
     themeIndependentStylesOnly: false,
     externalThemes: false,
-    loadingPlaceholder: true
+    loadingPlaceholder: true,
+    geometricModifiers: {
+      pillShape: true
+    },
+    decorativeModifiers: {
+      bordersDisguising: true
+    }
   },
   restParameters__MUST_NOT_BE...
 )
@@ -82,6 +88,26 @@ provideBadgeYDF_Component(
       loadingPlaceholder: {
         type: DataTypes.boolean,
         required: true
+      },
+      geometricModifiers: {
+        type: DataTypes.object,
+        required: true,
+        properties: {
+          pillShape: {
+            type: DataTypes.boolean,
+            required: true
+          }
+        }
+      },
+      decorativeModifiers: {
+        type: DataTypes.object,
+        required: true,
+        properties: {
+          bordersDisguising: {
+            type: DataTypes.boolean,
+            required: true
+          }
+        }
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
@@ -117,6 +143,13 @@ provideBadgeYDF_Component(
     .Badge--YDF-SVG_Icon
 
       flex-shrink 0
+
+
+    if options.decorativeModifiers.bordersDisguising
+
+      &.Badge--YDF__BordersDisguisingDecorativeModifier
+
+        border-color transparent
 
 
     if options.loadingPlaceholder
@@ -175,19 +208,21 @@ provideBadgeYDF_Component(
       applyMixinStoredInObjectIfItIsNotNull(variation.rootElement.customDeclarations)
 
 
-    &.Badge--YDF__PillShapeGeometricModifier
+    if options.geometricModifiers.pillShape
 
-      TEXT_SIZE_TO_BORDER_RADIUS_RATIO = extractAndValidateObjectProperties({
-        targetObject: variation,
-        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
-        extracts: {
-          textSizeToBorderRadiusRatio: {
-            dotSeparatedPath: "rootElement.modifiers.pillShape.textSizeToBorderRadiusRatio", required: true
+      &.Badge--YDF__PillShapeGeometricModifier
+
+        TEXT_SIZE_TO_BORDER_RADIUS_RATIO = extractAndValidateObjectProperties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          extracts: {
+            textSizeToBorderRadiusRatio: {
+              dotSeparatedPath: "rootElement.modifiers.pillShape.textSizeToBorderRadiusRatio", required: true
+            }
           }
-        }
-      }).textSizeToBorderRadiusRatio
+        }).textSizeToBorderRadiusRatio
 
-      border-radius cachedValidReusables.labelTextSize * TEXT_SIZE_TO_BORDER_RADIUS_RATIO
+        border-radius cachedValidReusables.labelTextSize * TEXT_SIZE_TO_BORDER_RADIUS_RATIO
 
 
     .Badge--YDF-SVG_Icon

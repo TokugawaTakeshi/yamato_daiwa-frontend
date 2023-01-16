@@ -10,6 +10,7 @@ mixin TextBox--YDF(properties, statesSimulations)
     const {
 
       HTML_Type = TextBox__YDF.HTML_Types.text,
+
       label,
       accessibilityGuidance,
       externalLabelHTML_ID,
@@ -18,23 +19,23 @@ mixin TextBox--YDF(properties, statesSimulations)
 
       value = "",
 
+      multiline = false,
+      disabled = false,
+      readonly = false,
+
       required = false,
-      displayAppropriateBadgeIfInputIsRequired = false,
-      displayAppropriateBadgeIfInputIsOptional = false,
+      mustDisplayAppropriateBadgeIfInputIsRequired = false,
+      mustDisplayAppropriateBadgeIfInputIsOptional = false,
       minimalCharactersCount,
       maximalCharactersCount,
       minimalNumericValue,
       maximalNumericValue,
 
-      multiline = false,
-      disabled = false,
-      readonly = false,
-
       inputOrTextAreaElementHTML_ID = `${ COMPONENT_ID }-INPUT_OR_TEXTAREA`,
       labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
 
       theme = TextBox__YDF.Themes.regular,
-      externalThemes = TextBox__YDF.areThemesExternal,
+      areThemesExternal = TextBox__YDF.areThemesExternal,
       geometry = TextBox__YDF.GeometricVariations.regular,
       decoration = TextBox__YDF.GeometricVariations.regular,
 
@@ -46,8 +47,35 @@ mixin TextBox--YDF(properties, statesSimulations)
       mixinName: "TextBox--YDF"
     });
 
+    // TODO 何れかのlabel、accessibilityGuidance、externalLabelHTML_IDは必須
+    // TODO こちらをバリデーションに抽出した方が
+    if (
+      Number.isInteger(minimalCharactersCount) &&
+      Number.isInteger(maximalCharactersCount) &&
+      minimalCharactersCount > maximalCharactersCount
+    ) {
+      throw new Error(
+        `"TextBox--YDF", the specified "minimalCharactersCount" (${ minimalCharactersCount }) is greater than ` +
+        `"maximalCharactersCount" (${ maximalCharactersCount })`
+      );
+    }
+
+
+    if (
+      Number.isInteger(minimalNumericValue) &&
+      Number.isInteger(maximalNumericValue) &&
+      minimalNumericValue > maximalNumericValue
+    ) {
+      throw new Error(
+        `"TextBox--YDF", the specified "minimalNumericValue" (${ minimalNumericValue }) is greater than ` +
+        `"maximalNumericValue" (${ maximalNumericValue })`
+      );
+    }
+
+
     const {
-      invalidInputHighlightIfAnyErrorsMessages = false,
+      invalidInputHighlightingIfAnyErrorsMessages = false,
+      validValueHighlightingIfNoErrorsMessages = false,
       errorsMessages = []
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
       rawParameter: statesSimulations,
@@ -58,14 +86,16 @@ mixin TextBox--YDF(properties, statesSimulations)
     });
 
     const rootElementModifierCSS_Classes = [
-      ...Object.entries(TextBox__YDF.Themes).length > 1 && !externalThemes ?
-          [ TextBox__YDF.ThemesCSS_ModifiersNames[theme] ] : [],
+      ...Object.entries(TextBox__YDF.Themes).length > 1 && !areThemesExternal ?
+          [ ComponentsAuxiliaries.generateThemeCSS_Class(TextBox__YDF.CSS_NAMESPACE, theme) ] : [],
       ...Object.entries(TextBox__YDF.GeometricVariations).length > 1 ?
-          [ TextBox__YDF.GeometricVariationsCSS_ModifiersNames[geometry] ] : [],
+          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(TextBox__YDF.CSS_NAMESPACE, geometry) ] : [],
       ...Object.entries(TextBox__YDF.DecorativeVariations).length > 1 ?
-          [ TextBox__YDF.DecorativeVariationsCSS_Modifiers[decoration] ] : [],
-      ...invalidInputHighlightIfAnyErrorsMessages && errorsMessages.length > 0 ?
-          [ "TextBox--YDF-InvalidInputState" ] : []
+          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(TextBox__YDF.CSS_NAMESPACE, decoration) ] : [],
+      ...invalidInputHighlightingIfAnyErrorsMessages && errorsMessages.length > 0 ?
+          [ `${ TextBox__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
+      ...validValueHighlightingIfNoErrorsMessages && errorsMessages.length === 0 ?
+          [ `${ TextBox__YDF.CSS_NAMESPACE }__ValueState` ] : []
     ];
 
 
@@ -76,19 +106,20 @@ mixin TextBox--YDF(properties, statesSimulations)
       guidance,
 
       required,
-      displayAppropriateBadgeIfInputIsRequired,
-      displayAppropriateBadgeIfInputIsOptional,
+      mustDisplayAppropriateBadgeIfInputIsRequired,
+      mustDisplayAppropriateBadgeIfInputIsOptional,
       coreElementHTML_ID: inputOrTextAreaElementHTML_ID,
       labelElementHTML_ID: labelElementHTML_ID,
 
       theme: TextBox__YDF.selfAndCompoundControlShellThemesCorrespondence[theme],
-      externalThemes,
+      areThemesExternal,
       geometry: TextBox__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[geometry],
       decoration: TextBox__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[decoration]
 
     },
     {
-      invalidInputHighlightIfAnyErrorsMessages,
+      invalidInputHighlightingIfAnyErrorsMessages,
+      validValueHighlightingIfNoErrorsMessages,
       errorsMessages,
     }
   ).TextBox--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
@@ -97,12 +128,13 @@ mixin TextBox--YDF(properties, statesSimulations)
 
       textarea.TextBox--YDF-InputOrTextAreaElement(
         placeholder= placeholder
+        readonly= readonly
+        disabled= disabled
+        required= required
         minlength= minimalCharactersCount
         maxlength= maximalCharactersCount
         min= minimalNumericValue
         max= maximalNumericValue
-        readonly= readonly
-        disabled= disabled
         id= inputOrTextAreaElementHTML_ID
         aria-label= accessibilityGuidance
         aria-labelledby= externalLabelHTML_ID
@@ -114,12 +146,13 @@ mixin TextBox--YDF(properties, statesSimulations)
         type= HTML_Type
         value= value
         placeholder= placeholder
+        readonly= readonly
+        disabled= disabled
+        required= required
         minlength= minimalCharactersCount
         maxlength= maximalCharactersCount
         min= minimalNumericValue
         max= maximalNumericValue
-        readonly= readonly
-        disabled= disabled
         id= inputOrTextAreaElementHTML_ID
         aria-label= accessibilityGuidance
         aria-labelledby= externalLabelHTML_ID

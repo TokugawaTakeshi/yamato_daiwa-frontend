@@ -1,7 +1,7 @@
 {
   "Components.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-11T01:14:46.805Z"
+    "modificationDatetime__ISO_8601": "2023-02-02T05:18:01.619Z"
   },
   "Functionality.pug": {
     "issues": [],
@@ -9,7 +9,7 @@
   },
   "Components/ComponentsAuxiliaries.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.889Z"
+    "modificationDatetime__ISO_8601": "2023-02-02T04:36:13.257Z"
   },
   "PagesTemplates/RegularWebPage.pug": {
     "issues": [],
@@ -33,11 +33,11 @@
   },
   "Components/Badge/Badge.class.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.368Z"
+    "modificationDatetime__ISO_8601": "2023-02-02T03:58:21.968Z"
   },
   "Components/Badge/Badge.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.980Z"
+    "modificationDatetime__ISO_8601": "2023-01-26T00:58:42.072Z"
   },
   "Components/InformationSourceReference/InformationSourceReference.pug": {
     "issues": [],
@@ -61,7 +61,7 @@
   },
   "Components/Typography/Link.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.747Z"
+    "modificationDatetime__ISO_8601": "2023-01-26T06:34:51.831Z"
   },
   "Markup/Assets/Dummies.pug": {
     "issues": [],
@@ -89,19 +89,19 @@
   },
   "Components/Controls/CompoundControlShell/CompoundControlShell.class.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.383Z"
+    "modificationDatetime__ISO_8601": "2023-02-02T04:32:29.356Z"
   },
   "Components/Controls/CompoundControlShell/CompoundControlShell.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.383Z"
+    "modificationDatetime__ISO_8601": "2023-02-03T04:58:24.837Z"
   },
   "Components/Controls/TextBox/TextBox.class.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.385Z"
+    "modificationDatetime__ISO_8601": "2023-02-02T05:10:14.156Z"
   },
   "Components/Controls/TextBox/TextBox.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.386Z"
+    "modificationDatetime__ISO_8601": "2023-02-02T06:53:11.318Z"
   },
   "Components/Controls/DropdownList/DropdownList.class.pug": {
     "issues": [],
@@ -109,7 +109,7 @@
   },
   "Components/Controls/DropdownList/DropdownList.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.920Z"
+    "modificationDatetime__ISO_8601": "2023-02-01T04:43:26.215Z"
   },
   "Components/Images/SingleImageViewer/SingleImageViewer.pug": {
     "issues": [],
@@ -145,7 +145,7 @@
   },
   "Tests/Components/Badge/Badge.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:26.006Z"
+    "modificationDatetime__ISO_8601": "2023-02-02T04:25:32.511Z"
   },
   "Tests/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.pug": {
     "issues": [],
@@ -161,11 +161,11 @@
   },
   "Components/Controls/Buttons/Plain/Button.class.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.376Z"
+    "modificationDatetime__ISO_8601": "2023-02-02T03:58:21.941Z"
   },
   "Components/Controls/Buttons/Plain/Button.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.377Z"
+    "modificationDatetime__ISO_8601": "2023-01-25T01:22:37.532Z"
   },
   "Markup/Assets/SVG_Icons/Achievement/AchievementIcon__Filled.pug": {
     "issues": [],
@@ -465,7 +465,7 @@
   },
   "Markup/Assets/SVG_Icons/MapAndLocation/MapIcon__Clock.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.422Z"
+    "modificationDatetime__ISO_8601": "2023-01-12T00:56:56.955Z"
   },
   "Markup/Assets/SVG_Icons/Menu/MenuIcon__ThreeDots__Horizontal.pug": {
     "issues": [],
@@ -697,7 +697,7 @@
   },
   "Tests/Components/Controls/TextBox/TextBox.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.459Z"
+    "modificationDatetime__ISO_8601": "2023-02-01T04:43:26.259Z"
   },
   "Tests/Components/Viewers/CodeViewer/CodeViewer.test.pug": {
     "issues": [],
@@ -810,5 +810,21 @@
   "Components/ModalDialog/ModalDialog.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-10T06:41:07.766Z"
+  },
+  "Tests/Components/Badge/BadgeDemo.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-30T01:43:28.253Z"
+  },
+  "Tests/Components/Badge/_BadgeDemo.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-02-01T02:58:40.832Z"
+  },
+  "Components/Controls/ComboBox/ComboBox.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-02-03T04:12:29.070Z"
+  },
+  "Components/Controls/ComboBox/ComboBox.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-02-03T04:17:36.101Z"
   }
 }

@@ -202,12 +202,11 @@ namespace TextBox {
 
     /* === Interface ================================================================================================ */
     public focus(): this {
-      // TODO
       return this;
     }
 
     public resetStateToInitial(): void {
-      // TODO
+      // eslint-disable-next-line no-void -- 時間的実装
     }
 
 

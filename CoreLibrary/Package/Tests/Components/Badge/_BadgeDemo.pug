@@ -1,0 +1,214 @@
+mixin BadgeDemo(options)
+
+  -
+
+    options = options ?? {
+      headings: true,
+      partials: {
+        valuesOnly: true,
+        keysAndValues: true,
+        iconsAndKeysAndValues: true,
+        iconsAndValues: true,
+        geometricModifiers: {
+          pillShape: true
+        },
+        decorativeModifiers: {
+          bordersDisguising: true
+        },
+        overflowTesting: {
+          multiline: true,
+          singleLine: true
+        },
+        loadingPlaceholder: true
+      }
+    }
+
+
+  if options.headings
+
+    h1.Heading1 Badge component testing
+
+
+  //- === Values only ==================================================================================================
+  if options.partials.valuesOnly
+
+    if options.headings
+
+      h2.Heading2 Value only
+
+    each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+      .BadgeDemo-BadgesFlow
+
+        each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
+
+          +Badge--YDF({
+            value: "Sample",
+            geometry: geometricVariation,
+            decoration: decorativeVariation
+          })
+
+
+  //- === Keys and values ==============================================================================================
+  if options.partials.keysAndValues
+
+    if options.headings
+
+      h2.Heading2 Keys and values
+
+    each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+      .BadgeDemo-BadgesFlow
+
+        each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
+
+          +Badge--YDF({
+            key: "Key",
+            value: "Value",
+            geometry: geometricVariation,
+            decoration: decorativeVariation
+          })
+
+
+  //- === Icons, keys and values =======================================================================================
+  if options.partials.iconsAndKeysAndValues
+
+    if options.headings
+
+      h2.Heading2 Icons, keys and values
+
+    each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+      .BadgeDemo-BadgesFlow
+
+        each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
+
+          +Badge--YDF({
+            key: "Key",
+            value: "value",
+            geometry: geometricVariation,
+            decoration: decorativeVariation
+          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
+
+
+  //- === Icons and values =============================================================================================
+  if options.partials.iconsAndValues
+
+    if options.headings
+
+      h2.Heading2 Icons and values
+
+    each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+      .BadgeDemo-BadgesFlow
+
+        each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
+
+          +Badge--YDF({
+            value: "value",
+            geometry: geometricVariation,
+            decoration: decorativeVariation
+          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
+
+
+  //- === Geometric modifiers ==========================================================================================
+  if options.partials.geometricModifiers.pillShape
+
+    if options.headings
+
+      h2.Heading2 Geometric modifiers
+
+      h3.Heading3 Pill shape
+
+    each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+      .BadgeDemo-BadgesFlow
+
+        each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
+
+          +Badge--YDF({
+            value: "Value",
+            decoration: decorativeVariation,
+            geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ]
+          })
+
+    //- === Decorative modifiers =========================================================================================
+    if options.partials.decorativeModifiers.bordersDisguising
+
+      if options.headings
+
+        h2.Heading2 Decorative modifiers
+
+        h3.Heading3 Borders disguising
+
+      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+        .BadgeDemo-BadgesFlow
+
+          each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
+
+            +Badge--YDF({
+              value: "Value",
+              decoration: decorativeVariation,
+              decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ]
+            })
+
+
+  //- === Overflow testing =============================================================================================
+  if options.partials.overflowTesting.multiline || options.partials.overflowTesting.singleLine
+
+    if options.headings
+
+      h2.Heading2 Overflow safety
+
+
+    if options.partials.overflowTesting.multiline
+
+      if options.headings
+
+        h3.Heading3 Multiline
+
+      .BadgeDemo-BadgesFlow
+
+        +Badge--YDF({
+          key: textOverflowSafetyTest,
+          value: textOverflowSafetyTest,
+          decoration: Badge__YDF.DecorativeVariations.achromaticPastel
+        })
+
+
+    if options.partials.overflowTesting.singleLine
+
+      if options.headings
+
+        h3.Heading3 Single line
+
+      .BadgeDemo-BadgesFlow.BadgeDemo-BadgesFlow__LimitedChildrenMaximalWidth
+
+        +Badge--YDF({
+          key: textOverflowSafetyTest,
+          value: textOverflowSafetyTest,
+          mustForceSingleLine: true,
+          decoration: Badge__YDF.DecorativeVariations.achromaticPastel
+        })
+
+
+  //- === Loading placeholder ==========================================================================================
+  if options.partials.loadingPlaceholder
+
+    if options.headings
+
+      h2.Heading2 Loading placeholder
+
+    .BadgeDemo-BadgesFlow
+
+      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+
+        +Badge--YDF-LoadingPlaceholder({
+          geometry: geometricVariation,
+        })
+
+        +Badge--YDF-LoadingPlaceholder({
+          geometry: geometricVariation,
+          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ]
+        })

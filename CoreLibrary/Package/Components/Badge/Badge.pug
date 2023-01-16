@@ -9,9 +9,9 @@ mixin Badge--YDF(properties)
 
       key,
       value,
-      forbidMultiLine = false,
+      mustForceSingleLine = false,
 
-      theme,
+      theme = Badge__YDF.Themes.regular,
       areThemesExternal = Badge__YDF.areThemesExternal,
       geometry = Badge__YDF.GeometricVariations.regular,
       geometricModifiers = [],
@@ -28,7 +28,7 @@ mixin Badge--YDF(properties)
 
     const rootElementModifierCSS_Classes = [
 
-      ...forbidMultiLine ? [ `${ Badge__YDF.CSS_NAMESPACE }__SingleLineMode` ] : [],
+      ...mustForceSingleLine ? [ `${ Badge__YDF.CSS_NAMESPACE }__SingleLineMode` ] : [],
 
       ...Object.entries(Badge__YDF.Themes).length > 1 && !areThemesExternal ?
           [ ComponentsAuxiliaries.generateThemeCSS_Class(Badge__YDF.CSS_NAMESPACE, theme) ] : [],
@@ -74,7 +74,7 @@ mixin Badge--YDF-LoadingPlaceholder(properties)
   -
 
     const {
-      theme,
+      theme = Badge__YDF.Themes.regular,
       areThemesExternal = Badge__YDF.areThemesExternal,
       geometry = Badge__YDF.GeometricVariations.regular,
       geometricModifiers = []
@@ -83,10 +83,12 @@ mixin Badge--YDF-LoadingPlaceholder(properties)
       parameterNumber: 1,
       parameterName: "properties",
       parameterPropertiesSpecification: {
+        theme: Badge__YDF.propertiesSpecification.theme,
+        areThemesExternal: Badge__YDF.propertiesSpecification.areThemesExternal,
         geometry: Badge__YDF.propertiesSpecification.geometry,
         geometricModifiers: Badge__YDF.propertiesSpecification.geometricModifiers
       },
-      mixinName: "Badge--YDF-LoadingPlaceholder"
+      mixinName: `${ Badge__YDF.CSS_NAMESPACE }-LoadingPlaceholder`
     })
 
     const rootElementModifierCSS_Classes = [
@@ -95,7 +97,7 @@ mixin Badge--YDF-LoadingPlaceholder(properties)
       ...Object.entries(Badge__YDF.GeometricVariations).length > 1 ?
           [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(Badge__YDF.CSS_NAMESPACE, geometry) ] : [],
       ...geometricModifiers.includes(Badge__YDF.GeometricModifiers.pillShape) ?
-          [ "Badge--YDF__PillShapeGeometricModifier" ] : []
+          [ `${ Badge__YDF.CSS_NAMESPACE }__PillShapeGeometricModifier` ] : []
     ];
 
 

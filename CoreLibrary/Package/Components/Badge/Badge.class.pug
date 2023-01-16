@@ -12,7 +12,7 @@
       return ComponentsAuxiliaries.defineNewThemes(themesNames, this);
     },
 
-    areThemesExternal: false,
+    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT,
     considerThemesAsExternal() {
       this.areThemesExternal = true;
       return this;
@@ -68,7 +68,7 @@
           required: true
         },
 
-        forbidMultiLine: {
+        mustForceSingleLine: {
           type: Boolean,
           required: false
         },

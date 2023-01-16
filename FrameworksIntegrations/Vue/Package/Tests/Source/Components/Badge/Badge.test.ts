@@ -1,9 +1,9 @@
 import { createApp as createVueApplication } from "vue";
 import { Badge, BadgeBasicImplementation } from "@Source/index";
-import ButtonTestSite from "./BadgeTestSite.vue";
+import BadgeDemo from "./BadgeDemo.vue";
 
 
 Badge.setImplementation(BadgeBasicImplementation);
 
 
-createVueApplication(ButtonTestSite).mount("#APPLICATION");
+createVueApplication(BadgeDemo).mount("#APPLICATION");

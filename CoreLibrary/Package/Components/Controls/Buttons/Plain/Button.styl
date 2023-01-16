@@ -1,6 +1,7 @@
 @require "Themes/Regular/GeometricVariations/Button-RegularGeometry.styl"
 @require "Themes/Regular/GeometricVariations/Button-SmallGeometry.styl"
 @require "Themes/Regular/GeometricVariations/Button-LinkLikeGeometry.styl"
+
 @require "Themes/Regular/DecorativeVariations/Button-RegularDecoration.styl"
 @require "Themes/Regular/DecorativeVariations/Button-AccentedDecoration.styl"
 @require "Themes/Regular/DecorativeVariations/Button-LinkLikeDecoration.styl"
@@ -125,6 +126,13 @@ provideButtonYDF_Component(
     .Button--YDF-SVG_Icon
 
       flex-shrink 0
+
+
+    if options.loadingPlaceholder
+
+      .Badge--YDF__LoadingPlaceholder
+
+        display inline-block
 
 
   // --- Geometry ------------------------------------------------------------------------------------------------------

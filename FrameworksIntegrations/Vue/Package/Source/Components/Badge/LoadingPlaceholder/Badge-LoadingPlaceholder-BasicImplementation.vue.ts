@@ -7,7 +7,7 @@ import { Options as VueComponentConfiguration } from "vue-property-decorator";
 
 
 @VueComponentConfiguration({
-  name: "Badge--YDF",
+  name: "Badge--YDF-LoadingPlaceholder",
   template: componentTemplate
 })
 export default class BadgeLoadingPlaceholderBasicImplementation extends BadgeLoadingPlaceholder {}

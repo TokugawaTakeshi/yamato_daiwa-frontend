@@ -1,9 +1,8 @@
+/* --- Constants and enumerations ----------------------------------------------------------------------------------- */
+import YDF_ComponentsCoordinator from "@Components/YDF_ComponentsCoordinator";
+
 /* --- Framework ---------------------------------------------------------------------------------------------------- */
-import {
-  Options as VueComponentConfiguration,
-  Vue as VueComponent,
-  Prop as VueProperty
-} from "vue-property-decorator";
+import { Options as VueComponentConfiguration, Vue as VueComponent, Prop as VueProperty } from "vue-property-decorator";
 
 /* --- Utils -------------------------------------------------------------------------------------------------------- */
 import {
@@ -11,6 +10,7 @@ import {
   toUpperCamelCase,
   toScreamingSnakeCase,
   isString,
+  isUndefined,
   isNull
 } from "@yamato-daiwa/es-extensions";
 import VueComponentImplementationHasNotBeenSetError from
@@ -25,6 +25,12 @@ namespace Badge {
   };
 
   export const Themes: Themes = { regular: "REGULAR" };
+
+  export let areThemesExternal: boolean = YDF_ComponentsCoordinator.areThemesExternalByDefault;
+
+  export function considerThemesAsExternal(): void {
+    areThemesExternal = true;
+  }
 
 
   export type GeometricVariations = {
@@ -92,7 +98,8 @@ namespace Badge {
     protected readonly valueLabel!: string;
 
     @VueProperty({ type: Boolean, default: false })
-    private readonly forbidMultiline!: boolean;
+    protected readonly mustForceSingleLine!: boolean;
+
 
     @VueProperty({
       type: String,
@@ -101,8 +108,9 @@ namespace Badge {
     })
     protected readonly theme!: string;
 
-    @VueProperty({ type: Boolean, default: false })
-    private readonly areThemesExternal!: boolean;
+    @VueProperty({ type: Boolean, default: areThemesExternal })
+    protected readonly areThemesExternal!: boolean;
+
 
     @VueProperty({
       type: String,
@@ -112,7 +120,8 @@ namespace Badge {
     protected readonly geometry!: string;
 
     @VueProperty({ type: Array, default: (): Array<GeometricModifiers> => [] })
-    private readonly geometricModifiers!: Array<GeometricModifiers>;
+    protected readonly geometricModifiers!: Array<GeometricModifiers>;
+
 
     @VueProperty({
       type: String,
@@ -122,7 +131,7 @@ namespace Badge {
     protected readonly decoration!: string;
 
     @VueProperty({ type: Array, default: (): Array<DecorativeModifiers> => [] })
-    private readonly decorativeModifiers!: Array<DecorativeModifiers>;
+    protected readonly decorativeModifiers!: Array<DecorativeModifiers>;
 
 
     /* === Themes =================================================================================================== */
@@ -170,12 +179,13 @@ namespace Badge {
     /* === Auxiliaries ============================================================================================== */
     protected get rootElementModifierCSS_Classes(): Array<string> {
       return [
-        ...this.forbidMultiline ? [ "Badge--YDF__SingleLineMode" ] : [],
-        ...Object.entries(Themes).length > 1 && this.areThemesExternal ?
+        ...this.mustForceSingleLine ? [ "Badge--YDF__SingleLineMode" ] : [],
+        ...Object.entries(Themes).length > 1 && !this.areThemesExternal ?
             [ `Badge--YDF__${ toUpperCamelCase(this.theme) }Theme` ] : [],
         ...Object.entries(GeometricVariations).length > 1 ?
             [ `Badge--YDF__${ toUpperCamelCase(this.geometry) }Geometry` ] : [],
-        ...this.geometricModifiers.includes(GeometricModifiers.pillShape) ? [ "Badge--YDF__PillShapeGeometricModifier" ] : [],
+        ...this.geometricModifiers.includes(GeometricModifiers.pillShape) ?
+            [ "Badge--YDF__PillShapeGeometricModifier" ] : [],
         ...Object.entries(DecorativeVariations).length > 1 ?
             [ `Badge--YDF__${ toUpperCamelCase(this.decoration) }Decoration` ] : [],
         ...this.decorativeModifiers.includes(DecorativeModifiers.bordersDisguising) ?
@@ -187,7 +197,7 @@ namespace Badge {
 
 
   /* === Providing ================================================================================================== */
-  let Implementation: typeof VueComponent | null;
+  let Implementation: typeof VueComponent | null = null;
 
   export function setImplementation(_Implementation: typeof VueComponent): void {
     Implementation = _Implementation;
@@ -204,10 +214,15 @@ namespace Badge {
 
   }
 
-  export function registerImplementationLocally(targetComponent: VueComponent): void {
-    /* eslint-disable-next-line @typescript-eslint/prefer-optional-chain --
-    * The bug of @typescript-eslint: the optional chaining could not be on the left side of assigment. */
-    (targetComponent.$options.components ?? {}).Badge = getImplementation();
+  export function registerImplementationLocally(parentComponent: VueComponent, withName: string = "Badge"): void {
+
+    if (isUndefined(parentComponent.$options.components)) {
+      parentComponent.$options.components = {};
+    }
+
+
+    parentComponent.$options.components[withName] = getImplementation();
+
   }
 
 }

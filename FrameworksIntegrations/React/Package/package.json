@@ -7,7 +7,9 @@
   "dependencies": {
     "@yamato-daiwa/es-extensions": "1.6.0-alpha.5",
     "@yamato-daiwa/es-extensions-browserjs": "1.6.0-alpha.0",
-    "@yamato-daiwa/frontend": "2.0.0-alpha.1"
+    "@yamato-daiwa/frontend": "2.0.0-alpha.1",
+    "prop-types": "15.8.1",
+    "react-router-dom": "6.8.0"
   },
   "devDependencies": {
     "@types/react": "18.0.26",

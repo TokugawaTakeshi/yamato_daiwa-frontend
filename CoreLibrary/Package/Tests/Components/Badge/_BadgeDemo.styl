@@ -1,0 +1,22 @@
+.BadgeDemo
+
+  &-BadgesFlow
+
+    display flex
+    flex-wrap wrap
+    gap 6px 6px
+
+    PositionalRelationship({
+      definitions:\
+          (".Heading2" { retireFromIt: { y: 8px }, pushItFromSelf: { y: 16px } })\
+          (".Heading3" { retireFromIt: { y: 8px }, pushItFromSelf: { y: 16px } })
+    })
+
+    retireFromElementWithSameSelector({ y: 8px })
+
+
+    &__LimitedChildrenMaximalWidth
+
+      >*
+
+        max-width 200px

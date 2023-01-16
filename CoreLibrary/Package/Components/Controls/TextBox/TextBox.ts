@@ -2,7 +2,7 @@
  * The members of this class has been organized semantically. */
 
 /* --- Constants ---------------------------------------------------------------------------------------------------- */
-import BUG_TRACKER_URI from "../../_Auxiliaries/BUG_TRACKER_URI";
+import YDF_BUG_REPORTING_PAGE_URI from "../../_Auxiliaries/YDF_BUG_REPORTING_PAGE_URI";
 
 /* --- Validation --------------------------------------------------------------------------------------------------- */
 import ValidatableControl from "../_Validation/ValidatableControl";
@@ -88,7 +88,7 @@ class TextBox<
           politeExplanation: "When trying to pick the native 'input' or 'textarea' element, we did expected that it will " +
               "be the instance of 'HTMLInputElement'/'HTMLTextAreaElement' respectively and during test is was such as. " +
               "This bug means that we has missed some combination of circumstances so we must to investigate it.",
-          bugTrackerURI: BUG_TRACKER_URI
+          bugTrackerURI: YDF_BUG_REPORTING_PAGE_URI
         })),
         title: UnexpectedEventError.localization.defaultTitle,
         occurrenceLocation: "TextBox.constructor(properties)"
@@ -223,7 +223,7 @@ class TextBox<
         errorType: UnexpectedEventError.NAME,
         title: UnexpectedEventError.localization.defaultTitle,
         description: PoliteErrorsMessagesBuilder.buildMessage({
-          bugTrackerURI: BUG_TRACKER_URI,
+          bugTrackerURI: YDF_BUG_REPORTING_PAGE_URI,
           politeExplanation: "Adding the event listener to input accepting element ('HTMLInputElement' " +
               "or 'HTMLTextAreaElement') we was expected that event of 'InputEvent' subtype will be emitted. " +
               "This bug occurrence means that under certain combination of circumstances the emitted Event could not " +

@@ -18,7 +18,7 @@ export default class BadgeLoadingPlaceholder extends VueComponent {
   })
   protected readonly theme!: string;
 
-  @VueProperty({ type: Boolean, default: false })
+  @VueProperty({ type: Boolean, default: Badge.areThemesExternal })
   private readonly areThemesExternal!: boolean;
 
   @VueProperty({
@@ -34,7 +34,7 @@ export default class BadgeLoadingPlaceholder extends VueComponent {
 
   protected get rootElementModifierCSS_Classes(): Array<string> {
     return [
-      ...Object.entries(Badge.Themes).length > 1 && this.areThemesExternal ?
+      ...Object.entries(Badge.Themes).length > 1 && !this.areThemesExternal ?
           [ `Badge--YDF__${ toUpperCamelCase(this.theme) }Theme` ] : [],
       ...Object.entries(Badge.GeometricVariations).length > 1 ?
           [ `Badge--YDF__${ toUpperCamelCase(this.geometry) }` ] : [],

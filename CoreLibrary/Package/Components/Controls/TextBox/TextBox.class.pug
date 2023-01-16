@@ -17,7 +17,6 @@
 
     /* === Themes =================================================================================================== */
     Themes: { regular: "REGULAR" },
-    ThemesCSS_ModifiersNames: { REGULAR: "TextBox--YDF__RegularTheme" },
     selfAndCompoundControlShellThemesCorrespondence: { REGULAR: CompoundControlShell__YDF.Themes.regular },
 
     defineNewThemes(ownAndCorrespondingCompoundControlShellThemes_Names) {
@@ -26,22 +25,17 @@
       );
     },
 
-    areThemesExternal: false,
+    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT,
     considerThemesAsExternal() {
       this.areThemesExternal = true;
       return this;
     },
 
 
-    /* --- Geometric variations ------------------------------------------------------------------------------------- */
+    /* --- Geometry ------------------------------------------------------------------------------------------------- */
     GeometricVariations: {
       regular: "REGULAR",
       small: "SMALL"
-    },
-
-    GeometricVariationsCSS_ModifiersNames: {
-      REGULAR: "TextBox--YDF__RegularGeometry",
-      SMALL: "TextBox--YDF__SmallGeometry"
     },
 
     selfAndCompoundControlShellGeometricVariationsCorrespondence: {
@@ -56,9 +50,8 @@
     },
 
 
-    /* --- Decorative variations ------------------------------------------------------------------------------------ */
+    /* --- Decoration ----------------------------------------------------------------------------------------------- */
     DecorativeVariations: { regular: "REGULAR" },
-    DecorativeVariationsCSS_Modifiers: { REGULAR: "TextBox--YDF__RegularDecoration" },
 
     selfAndCompoundControlShellDecorativeVariationsCorrespondence: {
       REGULAR: CompoundControlShell__YDF.DecorativeVariations.regular
@@ -84,36 +77,65 @@
         label: {
           type: String,
           required: false,
-          minimalCharactersCount: 0
+          minimalCharactersCount: 1
         },
 
         accessibilityGuidance: {
           type: String,
           required: false,
-          minimalCharactersCount: 0
+          minimalCharactersCount: 1
         },
 
         externalLabelHTML_ID: {
           type: String,
           required: false,
-          minimalCharactersCount: 0
+          minimalCharactersCount: 1
         },
 
         guidance: {
           type: String,
           required: false,
-          minimalCharactersCount: 0
+          minimalCharactersCount: 1
         },
 
         placeholder: {
           type: String,
           required: false,
-          minimalCharactersCount: 0
+          minimalCharactersCount: 1
         },
 
         value: {
-          preValidationModifications: rawValue => isNeitherUndefinedNorNull(rawValue) ? String(rawValue) : rawValue,
           type: String,
+          required: false
+        },
+
+        multiline: {
+          type: Boolean,
+          required: false
+        },
+
+        disabled: {
+          type: Boolean,
+          required: false
+        },
+
+        readonly: {
+          type: Boolean,
+          required: false
+        },
+
+        required: {
+          type: Boolean,
+          required: false
+        },
+
+        mustDisplayAppropriateBadgeIfInputIsRequired: {
+          type: Boolean,
+          required: false
+        },
+
+        mustDisplayAppropriateBadgeIfInputIsOptional: {
+          type: Boolean,
           required: false
         },
 
@@ -141,21 +163,6 @@
           required: false
         },
 
-        multiline: {
-          type: Boolean,
-          required: false
-        },
-
-        disabled: {
-          type: Boolean,
-          required: false
-        },
-
-        readonly: {
-          type: Boolean,
-          required: false
-        },
-
         inputOrTextAreaElementHTML_ID: {
           type: String,
           required: false,
@@ -174,7 +181,7 @@
           allowedAlternatives: Object.values(this.Themes)
         },
 
-        externalThemes: {
+        areThemesExternal: {
           type: Boolean,
           required: false
         },
@@ -190,14 +197,20 @@
           required: false,
           allowedAlternatives: Object.values(this.DecorativeVariations)
         }
-      }
+
+      };
     },
 
 
     /* === State simulations specification ========================================================================== */
     stateSimulationsSpecification: {
 
-      invalidInputHighlightIfAnyErrorsMessages: {
+      invalidInputHighlightingIfAnyErrorsMessages: {
+        type: Boolean,
+        required: false
+      },
+
+      validValueHighlightingIfNoErrorsMessages: {
         type: Boolean,
         required: false
       },
@@ -210,13 +223,15 @@
           minimalCharactersCount: 1
         }
       }
+
     },
 
 
-    /* === ID ======================================================================================================= */
+    /* === ID generating ============================================================================================ */
     counterForID_Generating: 0,
     generateComponentID() {
       this.counterForID_Generating++;
       return `TEXT_BOX--YDF-${ this.counterForID_Generating }`;
     }
+
   };

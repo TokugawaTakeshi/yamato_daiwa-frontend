@@ -131,16 +131,6 @@ YDF_TypographyDefaultDefinitions = {
         subheading6: { whenItJustBefore: 16px }
       }
     }),
-    abstract: deeplyCloneAndOverrideObject(AbstractDefaultProperties--YDF, {
-      class: "Abstract",
-      mixin: Abstract--YDF,
-      skip: false,
-      positionalRelationship: {
-        heading1: { whenItJustBefore: 12px },
-        subheading1: { whenItJustBefore: 12px },
-        paragraph: { whenItJustAfter: 12px }
-      }
-    }),
 
     unorderedList: deeplyCloneAndOverrideObject(UnorderedListDefaultProperties--YDF, {
       class: "UnorderedList",
@@ -148,7 +138,9 @@ YDF_TypographyDefaultDefinitions = {
       skip: false,
       positionalRelationship: {
         heading1: { whenItJustBefore: 12px },
-        paragraph: { whenItJustBefore: 12px }
+        heading2: { whenItJustBefore: 10px, whenItJustAfter: 14px },
+        paragraph: { whenItJustBefore: 12px },
+        unorderedList: { whenItJustBefore: 12px }
       }
     }),
 
@@ -158,6 +150,19 @@ YDF_TypographyDefaultDefinitions = {
       skip: false,
       positionalRelationship: {
         heading1: { whenItJustBefore: 12px },
+        heading2: { whenItJustBefore: 10px, whenItJustAfter: 14px },
+        paragraph: { whenItJustBefore: 12px },
+        unorderedList: { whenItJustBefore: 12px }
+      }
+    }),
+
+    descriptionList: deeplyCloneAndOverrideObject(DescriptionListDefaultProperties--YDF, {
+      class: "DescriptionList",
+      mixin: DescriptionList--YDF,
+      skip: false,
+      positionalRelationship: {
+        heading1: { whenItJustBefore: 12px },
+        heading2: { whenItJustBefore: 10px, whenItJustAfter: 14px },
         paragraph: { whenItJustBefore: 12px },
         unorderedList: { whenItJustBefore: 12px }
       }
@@ -185,7 +190,7 @@ generateTypographyElementsKeysAndCSS_ClassesMap(typographyDefinition)
   return elementsKeysAndCSS_ClassesMap
 
 
-provideTypography(
+provideYDF_Typography(
   preset = YDF_TypographyDefaultDefinitions,
   overridings = {},
   options = {

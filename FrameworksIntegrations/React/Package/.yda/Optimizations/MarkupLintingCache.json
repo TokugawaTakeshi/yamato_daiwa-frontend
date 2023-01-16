@@ -1,10 +1,14 @@
 {
   "Tests/Source/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2022-09-26T09:24:51.724Z"
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.495Z"
   },
   "Tests/Source/Tests.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2022-09-26T09:25:34.320Z"
+    "modificationDatetime__ISO_8601": "2023-01-17T01:40:58.225Z"
+  },
+  "Tests/Source/Components/Badge/Badge.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-13T01:29:46.663Z"
   }
 }

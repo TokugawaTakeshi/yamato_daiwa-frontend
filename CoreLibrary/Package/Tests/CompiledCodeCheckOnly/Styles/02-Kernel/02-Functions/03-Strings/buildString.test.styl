@@ -17,3 +17,8 @@ p(buildString("Good morning, ${givenName} ${familyName}", {
   givenName: "Takeshi",
   familyName: "Tokugawa"
 })) // => "Good morning, Takeshi Tokugawa"
+
+p(buildString("Good morning, ${ givenName } ${ familyName }", {
+  givenName: "Takeshi",
+  familyName: "Tokugawa"
+})) // => "Good morning, Takeshi Tokugawa"

@@ -7,26 +7,20 @@
 
     /* === Themes =================================================================================================== */
     Themes: { regular: "REGULAR" },
-    ThemesCSS_ModifiersNames: { REGULAR: "CompoundControlShell--YDF__RegularTheme" },
 
     defineNewThemes(themesNames) { return ComponentsAuxiliaries.defineNewThemes(themesNames, this); },
 
-    areThemesExternal: false,
+    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT,
     considerThemesAsExternal() {
       this.areThemesExternal = true;
       return this;
     },
 
 
-    /* --- Geometric variations ------------------------------------------------------------------------------------- */
+    /* --- Geometry ------------------------------------------------------------------------------------------------- */
     GeometricVariations: {
       regular: "REGULAR",
       small: "SMALL"
-    },
-
-    GeometricVariationsCSS_ModifiersNames: {
-      REGULAR: "CompoundControlShell--YDF__RegularGeometry",
-      SMALL: "CompoundControlShell--YDF__SmallGeometry"
     },
 
     defineNewGeometricVariations(geometricVariationsNames) {
@@ -34,11 +28,10 @@
     },
 
 
-    /* --- Decorative variations ------------------------------------------------------------------------------------ */
+    /* --- Decoration ----------------------------------------------------------------------------------------------- */
     DecorativeVariations: { regular: "REGULAR" },
-    DecorativeVariationsCSS_Modifiers: { REGULAR: "CompoundControlShell--YDF__RegularDecoration" },
 
-    defineNewDecorativeVariation(decorativeVariationsNames) {
+    defineNewDecorativeVariations(decorativeVariationsNames) {
       return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, this);
     },
 
@@ -64,12 +57,12 @@
           required: false
         },
 
-        displayAppropriateBadgeIfInputIsRequired: {
+        mustDisplayAppropriateBadgeIfInputIsRequired: {
           type: Boolean,
           required: false
         },
 
-        displayAppropriateBadgeIfInputIsOptional: {
+        mustDisplayAppropriateBadgeIfInputIsOptional: {
           type: Boolean,
           required: false
         },
@@ -77,13 +70,13 @@
         coreElementHTML_ID: {
           type: String,
           required: false,
-          minimalCharactersCount: 0
+          minimalCharactersCount: 1
         },
 
         labelElementHTML_ID: {
           type: String,
           required: false,
-          minimalCharactersCount: 0
+          minimalCharactersCount: 1
         },
 
         mainSlotWrapperAdditionalCSS_Classes: {
@@ -101,7 +94,7 @@
           allowedAlternatives: Object.values(this.Themes)
         },
 
-        externalThemes: {
+        areThemesExternal: {
           type: Boolean,
           required: false
         },
@@ -117,14 +110,20 @@
           required: false,
           allowedAlternatives: Object.values(this.DecorativeVariations)
         }
-      }
+
+      };
     },
 
 
     /* === State simulations specification ========================================================================== */
     stateSimulationsSpecification: {
 
-      invalidInputHighlightIfAnyErrorsMessages: {
+      invalidInputHighlightingIfAnyErrorsMessages: {
+        type: Boolean,
+        required: false
+      },
+
+      validValueHighlightingIfNoErrorsMessages: {
         type: Boolean,
         required: false
       },
@@ -137,6 +136,7 @@
           minimalCharactersCount: 1
         }
       }
+
     },
 
 
@@ -147,4 +147,5 @@
         optional: "Optional"
       }
     }
+
   };

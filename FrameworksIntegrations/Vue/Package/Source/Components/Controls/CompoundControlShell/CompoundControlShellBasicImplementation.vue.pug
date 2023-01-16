@@ -1,36 +1,42 @@
-.CompoundControlShell
+.CompoundControlShell--YDF(
+  :class=""
+)
 
-  .CompoundControlShell-Header(
-    v-if="label || displayAppropriateBadgeIfInputIsRequired || displayAppropriateBadgeIfInputIsOptional"
+  .CompoundControlShell--YDF-Header(
+    v-if="label || mustDisplayAppropriateBadgeIfInputIsRequired || mustDisplayAppropriateBadgeIfInputIsOptional"
   )
 
-    label.CompoundControlShell-Label(
+    label.CompoundControlShell--YDF-Label(
       v-if="label"
       :for="coreElementHTML_ID"
       :id="labelElementHTML_ID"
     ) {{ label }}
 
-    span.CompoundControlShell-Badge.CompoundControlShell-Badge__RequiredInput(
-      v-if="required && displayAppropriateBadgeIfInputIsRequired"
-    ) Required
+    span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__RequiredInput(
+      v-if="required && mustDisplayAppropriateBadgeIfInputIsRequired"
+    ) {{ localization.requirementBadges.required }}
 
-    span.CompoundControlShell-Badge.CompoundControlShell-Badge__OptionalInput(
-      v-else-if="!required && displayAppropriateBadgeIfInputIsOptional"
-    ) Optional
+    span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__OptionalInput(
+      v-else-if="!required && mustDisplayAppropriateBadgeIfInputIsOptional"
+    ) {{ localization.requirementBadges.optional }}
 
-  p.CompoundControlShell-Guidance(
+
+  p.CompoundControlShell--YDF-Guidance(
     v-if="guidance"
     v-html="guidance"
   )
 
-  .CompoundControlShell-MainSlotCustomizableWrapper(
+
+  .CompoundControlShell--YDF-MainSlotCustomizableWrapper(
     :class="mainSlotWrapperAdditionalCSS_Classes"
   ): slot
 
-  .CompoundControlShell-ErrorsMessagesCollapsableContainer(
-    v-if="mustActivateAppropriateHighlightIfAnyErrorsMessages && errorsMessages.length > 0"
+
+  ul.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer(
+    v-if="invalidInputHighlightingIfAnyErrorsMessages && errorsMessages.length > 0"
   )
-    p.CompoundControlShell-ErrorMessage(
-      v-for="(errorMessage, index) of errorsMessages"
-      :key="`ERROR_MESSAGE-${index}`"
+
+    li.CompoundControlShell--YDF-ErrorMessage(
+      v-for="errorMessage of errorsMessages"
+      :key="`ERROR_MESSAGE-${ errorMessage }`"
     ) {{ errorMessage }}

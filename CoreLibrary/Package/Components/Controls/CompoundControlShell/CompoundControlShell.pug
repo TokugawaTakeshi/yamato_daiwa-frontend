@@ -11,14 +11,16 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
       guidance,
 
       required = false,
-      displayAppropriateBadgeIfInputIsRequired = false,
-      displayAppropriateBadgeIfInputIsOptional = false,
+      mustDisplayAppropriateBadgeIfInputIsRequired = false,
+      mustDisplayAppropriateBadgeIfInputIsOptional = false,
+
       coreElementHTML_ID,
       labelElementHTML_ID,
+
       mainSlotWrapperAdditionalCSS_Classes = [],
 
       theme = CompoundControlShell__YDF.Themes.regular,
-      externalThemes = CompoundControlShell__YDF.areThemesExternal,
+      areThemesExternal = CompoundControlShell__YDF.areThemesExternal,
       geometry = CompoundControlShell__YDF.GeometricVariations.regular,
       decoration = CompoundControlShell__YDF.DecorativeVariations.regular
 
@@ -27,11 +29,12 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
       parameterNumber: 1,
       parameterName: "properties",
       parameterPropertiesSpecification: CompoundControlShell__YDF.propertiesSpecification,
-      mixinName: "CompoundControlShell--YDF"
+      mixinName: CompoundControlShell__YDF.CSS_NAMESPACE
     });
 
     const {
-      invalidInputHighlightIfAnyErrorsMessages = false,
+      invalidInputHighlightingIfAnyErrorsMessages = false,
+      validValueHighlightingIfNoErrorsMessages = false,
       errorsMessages = []
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
       rawParameter: statesSimulations,
@@ -44,18 +47,22 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
     const { localization } = CompoundControlShell__YDF;
 
     const rootElementModifierCSS_Classes = [
-      ...Object.entries(CompoundControlShell__YDF.Themes).length > 1 && !externalThemes ?
-          [ CompoundControlShell__YDF.ThemesCSS_ModifiersNames[theme] ] : [],
+      ...Object.entries(CompoundControlShell__YDF.Themes).length > 1 && !areThemesExternal ?
+          [ ComponentsAuxiliaries.generateThemeCSS_Class(CompoundControlShell__YDF.CSS_NAMESPACE, theme) ] : [],
       ...Object.entries(CompoundControlShell__YDF.GeometricVariations).length > 1 ?
-          [ CompoundControlShell__YDF.GeometricVariationsCSS_ModifiersNames[geometry] ] : [],
+          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(CompoundControlShell__YDF.CSS_NAMESPACE, geometry) ] : [],
       ...Object.entries(CompoundControlShell__YDF.DecorativeVariations).length > 1 ?
-          [ CompoundControlShell__YDF.DecorativeVariationsCSS_Modifiers[decoration] ] : []
+          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(CompoundControlShell__YDF.CSS_NAMESPACE, decoration) ] : [],
+      ...invalidInputHighlightingIfAnyErrorsMessages && errorsMessages.length > 0 ?
+          [ `${ CompoundControlShell__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
+      ...validValueHighlightingIfNoErrorsMessages && errorsMessages.length === 0 ?
+          [ `${ CompoundControlShell__YDF.CSS_NAMESPACE }__ValueState` ] : []
     ];
 
 
   .CompoundControlShell--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
 
-    if label || displayAppropriateBadgeIfInputIsRequired || displayAppropriateBadgeIfInputIsOptional
+    if label || mustDisplayAppropriateBadgeIfInputIsRequired || mustDisplayAppropriateBadgeIfInputIsOptional
 
       .CompoundControlShell--YDF-Header
 
@@ -66,12 +73,12 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
             id= labelElementHTML_ID
           )= label
 
-        if required && displayAppropriateBadgeIfInputIsRequired
+        if required && mustDisplayAppropriateBadgeIfInputIsRequired
 
           span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__RequiredInput
             | #{ localization.requirementBadges.required }
 
-        if !required && displayAppropriateBadgeIfInputIsOptional
+        if !required && mustDisplayAppropriateBadgeIfInputIsOptional
 
           span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__OptionalInput
             | #{ localization.requirementBadges.optional }
@@ -81,6 +88,7 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
 
       p.CompoundControlShell--YDF-Guidance!= guidance
 
+
     .CompoundControlShell--YDF-MainSlotCustomizableWrapper(
       class= mainSlotWrapperAdditionalCSS_Classes
     )
@@ -88,7 +96,7 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
       block
 
 
-    if invalidInputHighlightIfAnyErrorsMessages && errorsMessages.length > 0
+    if invalidInputHighlightingIfAnyErrorsMessages && errorsMessages.length > 0
       ul.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer
         each errorMessage in errorsMessages
           li.CompoundControlShell--YDF-ErrorMessage= errorMessage

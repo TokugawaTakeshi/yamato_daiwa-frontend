@@ -2,7 +2,7 @@
 
   const Button__YDF = {
 
-    CSS_NAMESPACE: "DropDownList--YDF",
+    CSS_NAMESPACE: "Button--YDF",
 
     HTML_Types: {
       regular: "BUTTON",
@@ -15,28 +15,23 @@
 
     /* === Themes =================================================================================================== */
     Themes: { regular: "REGULAR" },
-    ThemesCSS_ModifiersNames: { REGULAR: "Button--YDF__RegularTheme" },
 
-    defineNewThemes(themesNames) { return ComponentsAuxiliaries.defineNewThemes(themesNames, this); },
+    defineNewThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, this);
+    },
 
-    areThemesExternal: false,
+    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT,
     considerThemesAsExternal() {
       this.areThemesExternal = true;
       return this;
     },
 
 
-    /* --- Geometric variations ------------------------------------------------------------------------------------- */
+    /* --- Geometry ------------------------------------------------------------------------------------------------- */
     GeometricVariations: {
       regular: "REGULAR",
       small: "SMALL",
       linkLike: "LINK_LIKE"
-    },
-
-    GeometricVariationsCSS_ModifiersNames: {
-      REGULAR: "Button--YDF__RegularGeometry",
-      SMALL: "Button--YDF__SmallGeometry",
-      LINK_LIKE: "Button--YDF__LinkLikeGeometry"
     },
 
     defineNewGeometricVariations(geometricVariationsNames) {
@@ -48,20 +43,15 @@
       pillShape: "PILL_SHAPE"
     },
 
-    /* --- Decorative variations ------------------------------------------------------------------------------------ */
+
+    /* --- Decoration ----------------------------------------------------------------------------------------------- */
     DecorativeVariations: {
       regular: "REGULAR",
       accented: "ACCENTED",
       linkLike: "LINK_LIKE"
     },
 
-    DecorativeVariationsCSS_Modifiers: {
-      REGULAR: "Button--YDF__RegularDecoration",
-      ACCENTED: "Button--YDF__AccentedDecoration",
-      LINK_LIKE: "Button--YDF__LinkLikeDecoration"
-    },
-
-    defineNewDecorativeVariation(decorativeVariationsNames) {
+    defineNewDecorativeVariations(decorativeVariationsNames) {
       return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, this);
     },
 
@@ -111,7 +101,7 @@
           allowedAlternatives: Object.values(this.Themes)
         },
 
-        externalThemes: {
+        areThemesExternal: {
           type: Boolean,
           required: false
         },
@@ -133,6 +123,8 @@
           required: false,
           allowedAlternatives: Object.values(this.DecorativeVariations)
         }
-      }
+
+      };
     }
+
   };
