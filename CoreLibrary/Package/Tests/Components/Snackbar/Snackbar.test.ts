@@ -12,6 +12,5 @@ addLeftClickEventHandler({
       messageTextOrHTML: "Working fine!",
       decorativeVariation: Snackbar.DecorativeVariations.success
     });
-  },
-  handleParentElementFirst: false
+  }
 });
