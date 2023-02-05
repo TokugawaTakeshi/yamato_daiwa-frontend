@@ -1,5 +1,56 @@
 @require "../_ComponentTestingPage.styl"
 
-provideBadgeYDF_Component()
+badgeComponentDefaultPropertiesOverriding = {};
+
+// <==  [ Testing ] Comment out if need to display standard themes only
+//badgeComponentDefaultPropertiesOverriding = {
+//  themes: {
+//    regular: {
+//      geometricVariations: {
+//        small: deeplyCloneAndOverrideObject(
+//          Badge-RegularGeometry--YDF,
+//          {
+//            SVG_Icon: { hegiht: 0.8em },
+//            keyLabel: { text: { size: 0.8em } },
+//            valueLabel: { text: { size: 0.8em } }
+//          }
+//        )
+//      },
+//      decorativeVariations: {
+//        glamour: {
+//          rootElement: {
+//            borders: {
+//              style: solid,
+//              color: #ff7cd8
+//            },
+//            background: {
+//              image: linear-gradient(to bottom, rgba(252,236,252,1) 0%, rgba(251,166,225,1) 50%, rgba(253,137,215,1) 51%, rgba(255,124,216,1) 100%)
+//            }
+//          },
+//          SVG_Icon: { color: white },
+//          keyLabel: {
+//            text: {
+//              fontWeight: null,
+//              color: #fcecfc
+//            }
+//          },
+//          valueLabel: {
+//            text: {
+//              fontWeight: bold,
+//              color: #fcecfc
+//            }
+//          }
+//        }
+//      }
+//    }
+//  }
+//}
+// ==> =================================================================================================================
+
+
+provideBadgeYDF_Component(
+  overridings: badgeComponentDefaultPropertiesOverriding
+)
+
 
 @require "_BadgeDemo.styl"
