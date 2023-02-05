@@ -74,13 +74,6 @@ namespace ValidatableControl {
       }
     }
 
-    /* [ Theory ] Actually, it will be the mutation of Vue property, but currently no negative effect has been confirmed. */
-    public completeInitialization(
-      { getComponentInstanceMethodImplementation }: { getComponentInstanceMethodImplementation: () => ValidatableControl; }
-    ): void {
-      this.getComponentInstanceMethodImplementation = getComponentInstanceMethodImplementation;
-    }
-
     public getComponentInstance(): ValidatableControl {
 
       if (isUndefined(this.getComponentInstanceMethodImplementation)) {
@@ -156,14 +149,9 @@ namespace ValidatableControl {
 
 
   export function VModelChecker(rawVModel: unknown, valueChecker: (rawValue: unknown) => boolean): boolean {
-
-    if (!isArbitraryObject(rawVModel)) {
-      return false;
-    }
-
-
-    return valueChecker(rawVModel.value);
+    return isArbitraryObject(rawVModel) ? valueChecker(rawVModel.value) : false;
   }
+
 }
 
 

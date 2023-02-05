@@ -1,5 +1,8 @@
+/* --- Constants and enumerations ----------------------------------------------------------------------------------- */
+import YDF_ComponentsCoordinator from "@Components/YDF_ComponentsCoordinator";
+
 /* --- Other components --------------------------------------------------------------------------------------------- */
-import Control from "../Control";
+import InputtableControl from "../InputtableControl";
 
 /* --- Validations -------------------------------------------------------------------------------------------------- */
 import ValidatableControl from "../_Validation/ValidatableControl";
@@ -24,11 +27,13 @@ import {
   toScreamingSnakeCase,
   toUpperCamelCase
 } from "@yamato-daiwa/es-extensions";
+import getExpectedToBeMountedElementByVueReferenceID from "@Source/Functions/getExpectedToBeMountedElementByVueReferenceID";
 
 
 namespace TextBox {
 
   export type SupportedValidatablePayloadValuesTypes = string | number | null;
+
 
   export enum HTML_Types {
     text = "text",
@@ -48,35 +53,27 @@ namespace TextBox {
 
   export type Themes = {
     readonly regular: "REGULAR";
-    [themeID: string]: string;
+    [themeName: string]: string;
   };
 
   export const Themes: Themes = { regular: "REGULAR" };
 
-  export type CustomThemeDefinition = {
-    key: string;
-    ID?: string;
-    correspondingCompoundControlBaseThemeID: string;
-    CSS_ModifierName: string;
-  };
+  export let areThemesExternal: boolean = YDF_ComponentsCoordinator.areThemesExternalByDefault;
+
+  export function considerThemesAsExternal(): void {
+    areThemesExternal = true;
+  }
 
 
   export type GeometricVariations = {
     readonly regular: "REGULAR";
     readonly small: "SMALL";
-    [geometricVariationID: string]: string;
+    [geometricVariationName: string]: string;
   };
 
   export const GeometricVariations: GeometricVariations = {
     regular: "REGULAR",
     small: "SMALL"
-  };
-
-  export type CustomGeometricVariationDefinition = {
-    key: string;
-    ID?: string;
-    correspondingCompoundControlGeometricVariationID: string;
-    CSS_ModifierName: string;
   };
 
 
@@ -90,26 +87,16 @@ namespace TextBox {
     accented: "ACCENTED"
   };
 
-  export type CustomDecorativeVariationDefinition = {
-    key: string;
-    ID?: string;
-    correspondingCompoundControlDecorativeVariationID: string;
-    CSS_ModifierName: string;
-  };
 
-
-  @VueComponentConfiguration({
-    name: "TextBox"
-  })
-  export class BasicLogic extends Control implements ValidatableControl {
+  @VueComponentConfiguration({})
+  export class BasicLogic extends InputtableControl implements ValidatableControl {
 
     @VModel("payload", {
       required: true,
-      validator(rawVModel: unknown): boolean {
-        return ValidatableControl.VModelChecker(
-          rawVModel, (rawValue: unknown): boolean => isString(rawValue) || isNumber(rawValue) || isNull(rawValue)
-        );
-      }
+      validator: (rawVModel: unknown): boolean =>
+          ValidatableControl.VModelChecker(
+              rawVModel, (rawValue: unknown): boolean => isString(rawValue) || isNumber(rawValue) || isNull(rawValue)
+          )
     })
     private readonly validatablePayload!: ValidatableControl.Payload<
       SupportedValidatablePayloadValuesTypes,
@@ -126,12 +113,24 @@ namespace TextBox {
     })
     protected readonly HTML_Type!: string;
 
-    @VueProperty({ type: Boolean, default: false })
-    protected readonly multiline!: boolean;
 
-    @VueProperty({ type: Boolean, default: false })
-    protected readonly readonly!: boolean;
+    /* --- Textings ------------------------------------------------------------------------------------------------- */
+    @VueProperty({ type: String })
+    protected readonly placeholder?: string | null;
 
+
+    /* --- Invalid value inputting preventing ----------------------------------------------------------------------- */
+    @VueProperty({ type: Number, validator: Number.isInteger })
+    protected readonly minimalCharactersCount?: number | null;
+
+    @VueProperty({ type: Number, validator: Number.isInteger })
+    protected readonly maximalCharactersCount?: number | null;
+
+    @VueProperty({ type: Number, validator: Number.isInteger })
+    protected readonly minimalNumericValue?: number | null;
+
+    @VueProperty({ type: Number, validator: Number.isInteger })
+    protected readonly maximalNumericValue?: number | null;
 
     @VueProperty({ type: Boolean, default: false })
     protected readonly valueMustBeTheNonNegativeIntegerOfRegularNotation!: boolean;
@@ -140,6 +139,7 @@ namespace TextBox {
     protected readonly valueMustBeTheDigitsSequence!: boolean;
 
 
+    /* --- Value converters ----------------------------------------------------------------------------------------- */
     @VueProperty({ type: Boolean, default: false })
     protected readonly convertEmptyValueToZero!: boolean;
 
@@ -147,27 +147,34 @@ namespace TextBox {
     protected readonly convertEmptyValueToNull!: boolean;
 
 
-    @VueProperty({ type: String })
-    protected readonly placeholder?: string;
-
-
-    @VueProperty({ type: Number })
-    protected readonly minimalCharactersCount?: number;
-
-    @VueProperty({ type: Number })
-    protected readonly maximalCharactersCount?: number;
-
-    @VueProperty({ type: Number })
-    protected readonly minimalNumericValue?: number;
-
-    @VueProperty({ type: Number })
-    protected readonly maximalNumericValue?: number;
-
+    /* --- Validation ----------------------------------------------------------------------------------------------- */
+    @VueProperty({ type: Boolean, default: false })
+    protected readonly mustHighlightInvalidInputImmediately!: boolean;
 
     @VueProperty({ type: Boolean, default: false })
-    protected readonly validateOnFirstInput!: boolean;
+    protected readonly mustHighlightValidInputImmediately!: boolean;
 
 
+    /* --- Other boolean flags -------------------------------------------------------------------------------------- */
+    @VueProperty({ type: Boolean, default: false })
+    protected readonly multiline!: boolean;
+
+    @VueProperty({ type: Boolean, default: false })
+    protected readonly readonly!: boolean;
+
+
+    /* --- HTML IDs ------------------------------------------------------------------------------------------------- */
+    @VueProperty({
+      type: String,
+      default: BasicLogic.generateInputOrTextareaElementHTML_ID()
+    })
+    protected readonly inputOrTextareaElementHTML_ID!: string;
+
+    @VueProperty({ type: String, required: false })
+    protected readonly labelElementHTML_ID?: string | null;
+
+
+    /* --- Themes --------------------------------------------------------------------------------------------------- */
     @VueProperty({
       type: String,
       default: Themes.regular,
@@ -175,6 +182,11 @@ namespace TextBox {
     })
     protected readonly theme!: string;
 
+    @VueProperty({ type: Boolean, default: areThemesExternal })
+    protected readonly areThemesExternal!: boolean;
+
+
+    /* --- Geometry ------------------------------------------------------------------------------------------------- */
     @VueProperty({
       type: String,
       default: GeometricVariations.regular,
@@ -182,6 +194,8 @@ namespace TextBox {
     })
     protected readonly geometry!: string;
 
+
+    /* --- Decoration ----------------------------------------------------------------------------------------------- */
     @VueProperty({
       type: String,
       default: DecorativeVariations.regular,
@@ -190,29 +204,27 @@ namespace TextBox {
     protected readonly decoration!: string;
 
 
-    @VueProperty({
-      type: String,
-      default: BasicLogic.generateInputOrTextareaElementHTML_ID()
-    }) protected readonly inputOrTextareaElementHTML_ID?: string;
-
-
     /* === State ==================================================================================================== */
     private rawInput: string = "";
 
 
     /* === Interface ================================================================================================ */
     public focus(): this {
-      return this;
-    }
 
-    public resetStateToInitial(): void {
-      // eslint-disable-next-line no-void -- 時間的実装
+      getExpectedToBeMountedElementByVueReferenceID({
+        vueReferenceID: this.INPUT_OR_TEXTAREA_ELEMENT_VUE_REFERENCE_ID,
+        parentVueComponent: this,
+        TargetElementSubtype: HTMLElement
+      }).focus();
+
+      return this;
+
     }
 
 
     /* === Lifecycle hooks ========================================================================================== */
     public beforeCreate(): void {
-      this.mustActivateAppropriateHighlightIfAnyErrorsMessages = this.validateOnFirstInput;
+      this.invalidInputHighlightingIfAnyErrorsMessages = this.mustHighlightInvalidInputImmediately;
     }
 
     public created(): void {
@@ -225,9 +237,8 @@ namespace TextBox {
         this.rawInput = "";
       }
 
-      this.validatablePayload.completeInitialization({
-        getComponentInstanceMethodImplementation: (): this => this
-      });
+      // todo minimal chars countのバリデーション
+
     }
 
 
@@ -235,17 +246,21 @@ namespace TextBox {
     /* [ Vue theory ] The events sequence is "keydown" → "input" → "keyup". The "keydown" could be used for preventing
      *    of inputting of forbidden characters, but filtering out except allowed character is difficult because it is
      *    required to respect the "Enter", "Backspace", arrow keys etc. */
-    // TODO それでもこれをやっている！
     protected onKeyDown(event: KeyboardEvent): void {
 
-      // TODO
       /* 〔 理論 〕 妥当数入力処理（valueMustBeTheNonNegativeIntegerOfRegularNotation: true）〔 1 〕
        * 1) 此処では利用者が先に行く不正０の入力を予防する事が出来ない。例えば、利用者は「123」を入力してからカーソルを最初位置に動かして、「0」を入力しても、
        * 此方ではカーソルの位置が判らないので、「onInput」で不正０の入力を遮る。
        * 2) 読める文字と他に、利用者は半角空白やバックスペースや方向ボタンが押せるので、「!/^[0-9]$/u.test(event.key)」の様な正規表現では入力を予防出来ない。
        * 3) 負号はボタンで入力するとは限らなく、ブラウザーに付けられたボタンにより入力も可能である。
        * */
-      if ((this.valueMustBeTheNonNegativeIntegerOfRegularNotation || this.valueMustBeTheDigitsSequence) && /^[+\-e.]$/u.test(event.key)) {
+      if (
+        (
+          this.valueMustBeTheNonNegativeIntegerOfRegularNotation ||
+          this.valueMustBeTheDigitsSequence
+        ) &&
+        /^[+\-e.]$/u.test(event.key)
+      ) {
         event.preventDefault();
       }
     }
@@ -269,7 +284,6 @@ namespace TextBox {
       }
 
 
-      // TODO 動作確認
       if (this.HTML_Type === HTML_Types.number && this.convertEmptyValueToZero && this.rawInput.startsWith("0")) {
 
         const inputtedValueWithoutPrependedZeros: string = this.rawInput.replace(/^0+/u, "");
@@ -299,12 +313,12 @@ namespace TextBox {
 
     @emitEvent(Events.blur)
     protected onBlur(): void {
-      this.mustActivateAppropriateHighlightIfAnyErrorsMessages = true;
+      this.invalidInputHighlightingIfAnyErrorsMessages = true;
     }
 
 
     /* === Constants and enumerations =============================================================================== */
-    protected readonly INPUT_ELEMENT_OR_AUTORESIZABLE_TEXTAREA_COMPONENT_VUE_REFERENCE_ID: string =
+    protected readonly INPUT_OR_TEXTAREA_ELEMENT_VUE_REFERENCE_ID: string =
         "INPUT_ELEMENT_OR_AUTORESIZABLE_TEXTAREA_COMPONENT";
 
 
@@ -319,7 +333,7 @@ namespace TextBox {
           BasicLogic.DecorativeVariationsCSS_ModifiersNames[this.decoration]
         ] : [],
         ...this.multiline ? [ "TextBox__Multiline" ] : [],
-        ...this.mustActivateAppropriateHighlightIfAnyErrorsMessages && this.validatablePayload.isInvalid ? [
+        ...this.invalidInputHighlightingIfAnyErrorsMessages && this.validatablePayload.isInvalid ? [
           "TextBox__InvalidValueState"
         ] : [],
         ...this.disabled ? [ "TextBox__DisabledState" ] : []

@@ -1,3 +1,6 @@
+/* --- Constants and enumerations ----------------------------------------------------------------------------------- */
+import YDF_ComponentsCoordinator from "@Components/YDF_ComponentsCoordinator";
+
 /* --- Framework ---------------------------------------------------------------------------------------------------- */
 import {
   Options as VueComponentConfiguration,
@@ -40,7 +43,7 @@ namespace Button {
 
   export const Themes: Themes = { regular: "REGULAR" };
 
-  export let areThemesExternal: boolean = false;
+  export let areThemesExternal: boolean = YDF_ComponentsCoordinator.areThemesExternalByDefault;
 
   export function considerThemesAsExternal(): void {
     areThemesExternal = true;
@@ -107,7 +110,7 @@ namespace Button {
     protected readonly route?: VueRouterRawLocation | null;
 
     @VueProperty({ type: String })
-    protected readonly externalLinkURI?: string | null;
+    protected readonly externalURI?: string | null;
 
     @VueProperty({ type: Boolean, default: false })
     protected readonly mustOpenExternalLinkInCurrentTab!: string;
@@ -152,13 +155,13 @@ namespace Button {
     /* === Computing of tag name of root element ==================================================================== */
     protected get isButtonTheTagNameOfRootElement(): boolean {
       return isEitherUndefinedOrNull(this.route) &&
-          isEitherUndefinedOrNull(this.externalLinkURI) &&
+          isEitherUndefinedOrNull(this.externalURI) &&
           (this.HTML_Type === HTML_Types.regular || this.HTML_Type === HTML_Types.submit);
     }
 
     protected get isInputTheTagNameOfRootElement(): boolean {
       return isEitherUndefinedOrNull(this.route) &&
-          isEitherUndefinedOrNull(this.externalLinkURI) &&
+          isEitherUndefinedOrNull(this.externalURI) &&
           (
             this.HTML_Type === HTML_Types.inputButton ||
             this.HTML_Type === HTML_Types.inputSubmit ||
@@ -171,7 +174,7 @@ namespace Button {
     }
 
     private get isAnchorTheTagNameOfRootElement(): boolean {
-      return isNeitherUndefinedNorNull(this.externalLinkURI);
+      return isNeitherUndefinedNorNull(this.externalURI);
     }
 
 
