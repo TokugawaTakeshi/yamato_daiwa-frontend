@@ -56,7 +56,7 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
       ...invalidInputHighlightingIfAnyErrorsMessages && errorsMessages.length > 0 ?
           [ `${ CompoundControlShell__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
       ...validValueHighlightingIfNoErrorsMessages && errorsMessages.length === 0 ?
-          [ `${ CompoundControlShell__YDF.CSS_NAMESPACE }__ValueState` ] : []
+          [ `${ CompoundControlShell__YDF.CSS_NAMESPACE }__ValidValueState` ] : []
     ];
 
 
@@ -69,8 +69,8 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
         if label
 
           label.CompoundControlShell--YDF-Label(
-            for= coreElementHTML_ID
-            id= labelElementHTML_ID
+            for=coreElementHTML_ID
+            id=labelElementHTML_ID
           )= label
 
         if required && mustDisplayAppropriateBadgeIfInputIsRequired

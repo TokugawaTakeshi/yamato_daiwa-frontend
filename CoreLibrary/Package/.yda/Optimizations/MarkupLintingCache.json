@@ -1,7 +1,7 @@
 {
   "Components.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-02T05:18:01.619Z"
+    "modificationDatetime__ISO_8601": "2023-02-03T06:46:07.582Z"
   },
   "Functionality.pug": {
     "issues": [],
@@ -101,7 +101,7 @@
   },
   "Components/Controls/TextBox/TextBox.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-02T06:53:11.318Z"
+    "modificationDatetime__ISO_8601": "2023-02-05T01:17:04.611Z"
   },
   "Components/Controls/DropdownList/DropdownList.class.pug": {
     "issues": [],
@@ -817,7 +817,7 @@
   },
   "Tests/Components/Badge/_BadgeDemo.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-01T02:58:40.832Z"
+    "modificationDatetime__ISO_8601": "2023-02-03T07:14:56.552Z"
   },
   "Components/Controls/ComboBox/ComboBox.class.pug": {
     "issues": [],
@@ -826,5 +826,31 @@
   "Components/Controls/ComboBox/ComboBox.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-02-03T04:17:36.101Z"
+  },
+  "Components/Testing/ThemesShowcase.pug": {
+    "issues": [
+      {
+        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
+        "message": "One space required after buffered code operator",
+        "sourceListing": "-\n\n  const ThemesShowcase__YDF = {\n\n    initializeCurrentIterationData() {\n      return {\n        theme: { key: null, value: null },\n        geometricVariation: { key: null, value: null },\n        decorativeVariation: { key: null, value: null }\n      };\n    }\n\n  };\n\n\nmixin ThemesShowcase--YDF(properties)\n\n  if Object.entries(properties.themes).length > 0\n\n    ul\n\n      each themeValue, themeKey in properties.themes\n\n        -\n          properties.iterationData.theme = {\n            key: themeKey,\n            value: themeValue\n          };\n\n        li\n\n          span=`Themes.${ themeKey }`\n\n          if Object.entries(properties.geometricVariations).length > 0\n\n            ul\n\n              each geometricVariationValue, geometricVariationKey in properties.geometricVariations\n\n                -\n                  properties.iterationData.geometricVariation = {\n                    key: geometricVariationKey,\n                    value: geometricVariationValue\n                  };\n\n                li\n\n                  span=`GeometricVariations.${ geometricVariationKey }`\n\n                  if Object.entries(properties.decorativeVariations).length > 0\n\n                    ul\n\n                      each decorativeVariationValue, decorativeVariationKey in properties.decorativeVariations\n\n                        -\n                          properties.iterationData.decorativeVariation = {\n                            key: decorativeVariationKey,\n                            value: decorativeVariationValue\n                          };\n\n                        li\n\n                          span=`DecorativeVariations.${ decorativeVariationKey }`\n\n                          block\n",
+        "lineNumber": 32,
+        "columnNumber": 16
+      },
+      {
+        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
+        "message": "One space required after buffered code operator",
+        "sourceListing": "-\n\n  const ThemesShowcase__YDF = {\n\n    initializeCurrentIterationData() {\n      return {\n        theme: { key: null, value: null },\n        geometricVariation: { key: null, value: null },\n        decorativeVariation: { key: null, value: null }\n      };\n    }\n\n  };\n\n\nmixin ThemesShowcase--YDF(properties)\n\n  if Object.entries(properties.themes).length > 0\n\n    ul\n\n      each themeValue, themeKey in properties.themes\n\n        -\n          properties.iterationData.theme = {\n            key: themeKey,\n            value: themeValue\n          };\n\n        li\n\n          span=`Themes.${ themeKey }`\n\n          if Object.entries(properties.geometricVariations).length > 0\n\n            ul\n\n              each geometricVariationValue, geometricVariationKey in properties.geometricVariations\n\n                -\n                  properties.iterationData.geometricVariation = {\n                    key: geometricVariationKey,\n                    value: geometricVariationValue\n                  };\n\n                li\n\n                  span=`GeometricVariations.${ geometricVariationKey }`\n\n                  if Object.entries(properties.decorativeVariations).length > 0\n\n                    ul\n\n                      each decorativeVariationValue, decorativeVariationKey in properties.decorativeVariations\n\n                        -\n                          properties.iterationData.decorativeVariation = {\n                            key: decorativeVariationKey,\n                            value: decorativeVariationValue\n                          };\n\n                        li\n\n                          span=`DecorativeVariations.${ decorativeVariationKey }`\n\n                          block\n",
+        "lineNumber": 48,
+        "columnNumber": 24
+      },
+      {
+        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
+        "message": "One space required after buffered code operator",
+        "sourceListing": "-\n\n  const ThemesShowcase__YDF = {\n\n    initializeCurrentIterationData() {\n      return {\n        theme: { key: null, value: null },\n        geometricVariation: { key: null, value: null },\n        decorativeVariation: { key: null, value: null }\n      };\n    }\n\n  };\n\n\nmixin ThemesShowcase--YDF(properties)\n\n  if Object.entries(properties.themes).length > 0\n\n    ul\n\n      each themeValue, themeKey in properties.themes\n\n        -\n          properties.iterationData.theme = {\n            key: themeKey,\n            value: themeValue\n          };\n\n        li\n\n          span=`Themes.${ themeKey }`\n\n          if Object.entries(properties.geometricVariations).length > 0\n\n            ul\n\n              each geometricVariationValue, geometricVariationKey in properties.geometricVariations\n\n                -\n                  properties.iterationData.geometricVariation = {\n                    key: geometricVariationKey,\n                    value: geometricVariationValue\n                  };\n\n                li\n\n                  span=`GeometricVariations.${ geometricVariationKey }`\n\n                  if Object.entries(properties.decorativeVariations).length > 0\n\n                    ul\n\n                      each decorativeVariationValue, decorativeVariationKey in properties.decorativeVariations\n\n                        -\n                          properties.iterationData.decorativeVariation = {\n                            key: decorativeVariationKey,\n                            value: decorativeVariationValue\n                          };\n\n                        li\n\n                          span=`DecorativeVariations.${ decorativeVariationKey }`\n\n                          block\n",
+        "lineNumber": 64,
+        "columnNumber": 32
+      }
+    ],
+    "modificationDatetime__ISO_8601": "2023-02-03T07:14:56.510Z"
   }
 }

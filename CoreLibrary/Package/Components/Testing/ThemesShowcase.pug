@@ -1,0 +1,113 @@
+-
+
+  const ThemesShowcase__YDF = {
+
+    initializeCurrentIterationData() {
+      return {
+        theme: { key: null, value: null },
+        geometricVariation: { key: null, value: null },
+        decorativeVariation: { key: null, value: null }
+      };
+    },
+
+
+    defaultThemeKeyLabelPrefix: "",
+
+    setDefaultThemeKeyLabelPrefix(themeKeyLabelPrefix) {
+      this.defaultThemeKeyLabelPrefix = themeKeyLabelPrefix;
+      return this;
+    },
+
+
+    defaultGeometricVariationLabelPrefix: "",
+
+    setDefaultGeometricVariationLabelPrefix(geometricVariationLabelPrefix) {
+      this.defaultThemeKeyLabelPrefix = geometricVariationLabelPrefix;
+      return this;
+    },
+
+
+    defaultDecorativeVariationLabelPrefix: "",
+
+    setDefaultGeometricVariationLabelPrefix(decorativeVariationLabelPrefix) {
+      this.defaultThemeKeyLabelPrefix = decorativeVariationLabelPrefix;
+      return this;
+    }
+
+  };
+
+
+mixin ThemesShowcase--YDF(properties)
+
+  -
+
+    const {
+      themes,
+      themeKeyLabelPrefix = ThemesShowcase__YDF.defaultThemeKeyLabelPrefix,
+      geometricVariations,
+      geometricVariationLabelPrefix = ThemesShowcase__YDF.defaultGeometricVariationLabelPrefix,
+      decorativeVariations,
+      decorativeVariationLabelPrefix = ThemesShowcase__YDF.defaultDecorativeVariationLabelPrefix,
+      iterationData,
+      decorativeVariationsWrapperTag = "ul",
+      decorativeVariationsWrapperAdditionalCSS_Classes
+    } = properties;
+
+
+  if Object.entries(themes).length > 0
+
+    ul.ThemesShowcase--YDF
+
+      each themeValue, themeKey in themes
+
+        -
+          iterationData.theme = {
+            key: themeKey,
+            value: themeValue
+          };
+
+        li
+
+          span.ThemesShowcase--YDF-Label=`${ themeKeyLabelPrefix }${ themeKey }`
+
+          if Object.entries(geometricVariations).length > 0
+
+            ul.ThemesShowcase--YDF-ChildList
+
+              each geometricVariationValue, geometricVariationKey in geometricVariations
+
+                -
+                  iterationData.geometricVariation = {
+                    key: geometricVariationKey,
+                    value: geometricVariationValue
+                  };
+
+                li
+
+                  span.ThemesShowcase--YDF-Label=`${ geometricVariationLabelPrefix }${ geometricVariationKey }`
+
+                  if Object.entries(decorativeVariations).length > 0
+
+                    #{decorativeVariationsWrapperTag}.ThemesShowcase--YDF-ChildList(
+                      class=decorativeVariationsWrapperAdditionalCSS_Classes
+                    )
+
+                      each decorativeVariationValue, decorativeVariationKey in decorativeVariations
+
+                        -
+                          iterationData.decorativeVariation = {
+                            key: decorativeVariationKey,
+                            value: decorativeVariationValue
+                          };
+
+                        if decorativeVariationsWrapperTag === "ul"
+
+                          li
+
+                            span.ThemesShowcase--YDF-Label=`${ decorativeVariationLabelPrefix }${ decorativeVariationKey }`
+
+                            block
+
+                        else
+
+                          block

@@ -23,6 +23,8 @@ mixin BadgeDemo(options)
       }
     }
 
+    const themeShowcaseCurrentIternationData = ThemesShowcase__YDF.initializeCurrentIterationData()
+
 
   if options.headings
 
@@ -34,19 +36,25 @@ mixin BadgeDemo(options)
 
     if options.headings
 
-      h2.Heading2 Value only
+      h2.Heading2 Values only
 
-    each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+    +ThemesShowcase--YDF({
+      themes: Badge__YDF.Themes,
+      geometricVariations: Badge__YDF.GeometricVariations,
+      decorativeVariations: Badge__YDF.DecorativeVariations,
+      decorativeVariationsWrapperTag: "dl",
+      decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeDemo-BadgesTwoColumnsTable" ],
+      iterationData: themeShowcaseCurrentIternationData
+    })
 
-      .BadgeDemo-BadgesFlow
-
-        each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
-
-          +Badge--YDF({
-            value: "Sample",
-            geometry: geometricVariation,
-            decoration: decorativeVariation
-          })
+      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`
+      dd
+        +Badge--YDF({
+          value: "Sample",
+          theme: themeShowcaseCurrentIternationData.theme.value,
+          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,
+          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value
+        })
 
 
   //- === Keys and values ==============================================================================================
@@ -56,18 +64,24 @@ mixin BadgeDemo(options)
 
       h2.Heading2 Keys and values
 
-    each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+    +ThemesShowcase--YDF({
+      themes: Badge__YDF.Themes,
+      geometricVariations: Badge__YDF.GeometricVariations,
+      decorativeVariations: Badge__YDF.DecorativeVariations,
+      decorativeVariationsWrapperTag: "dl",
+      decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeDemo-BadgesTwoColumnsTable" ],
+      iterationData: themeShowcaseCurrentIternationData
+    })
 
-      .BadgeDemo-BadgesFlow
-
-        each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
-
-          +Badge--YDF({
-            key: "Key",
-            value: "Value",
-            geometry: geometricVariation,
-            decoration: decorativeVariation
-          })
+      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`
+      dd
+        +Badge--YDF({
+          key: "Key",
+          value: "Sample",
+          theme: themeShowcaseCurrentIternationData.theme.value,
+          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,
+          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value
+        })
 
 
   //- === Icons, keys and values =======================================================================================
@@ -77,18 +91,24 @@ mixin BadgeDemo(options)
 
       h2.Heading2 Icons, keys and values
 
-    each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+    +ThemesShowcase--YDF({
+      themes: Badge__YDF.Themes,
+      geometricVariations: Badge__YDF.GeometricVariations,
+      decorativeVariations: Badge__YDF.DecorativeVariations,
+      decorativeVariationsWrapperTag: "dl",
+      decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeDemo-BadgesTwoColumnsTable" ],
+      iterationData: themeShowcaseCurrentIternationData
+    })
 
-      .BadgeDemo-BadgesFlow
-
-        each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
-
-          +Badge--YDF({
-            key: "Key",
-            value: "value",
-            geometry: geometricVariation,
-            decoration: decorativeVariation
-          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
+      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`
+      dd
+        +Badge--YDF({
+          key: "Date",
+          value: new Date().toLocaleDateString(),
+          theme: themeShowcaseCurrentIternationData.theme.value,
+          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,
+          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value
+        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
 
 
   //- === Icons and values =============================================================================================
@@ -98,17 +118,23 @@ mixin BadgeDemo(options)
 
       h2.Heading2 Icons and values
 
-    each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+    +ThemesShowcase--YDF({
+      themes: Badge__YDF.Themes,
+      geometricVariations: Badge__YDF.GeometricVariations,
+      decorativeVariations: Badge__YDF.DecorativeVariations,
+      decorativeVariationsWrapperTag: "dl",
+      decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeDemo-BadgesTwoColumnsTable" ],
+      iterationData: themeShowcaseCurrentIternationData
+    })
 
-      .BadgeDemo-BadgesFlow
-
-        each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
-
-          +Badge--YDF({
-            value: "value",
-            geometry: geometricVariation,
-            decoration: decorativeVariation
-          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
+      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`
+      dd
+        +Badge--YDF({
+          value: new Date().toLocaleDateString(),
+          theme: themeShowcaseCurrentIternationData.theme.value,
+          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,
+          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value
+        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
 
 
   //- === Geometric modifiers ==========================================================================================
@@ -120,17 +146,24 @@ mixin BadgeDemo(options)
 
       h3.Heading3 Pill shape
 
-    each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+    +ThemesShowcase--YDF({
+      themes: Badge__YDF.Themes,
+      geometricVariations: Badge__YDF.GeometricVariations,
+      decorativeVariations: Badge__YDF.DecorativeVariations,
+      decorativeVariationsWrapperTag: "dl",
+      decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeDemo-BadgesTwoColumnsTable" ],
+      iterationData: themeShowcaseCurrentIternationData
+    })
 
-      .BadgeDemo-BadgesFlow
+      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`
+      dd
+        +Badge--YDF({
+          value: "Value",
+          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,
+          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ],
+          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value
+        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
 
-        each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
-
-          +Badge--YDF({
-            value: "Value",
-            decoration: decorativeVariation,
-            geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ]
-          })
 
     //- === Decorative modifiers =========================================================================================
     if options.partials.decorativeModifiers.bordersDisguising
@@ -141,17 +174,23 @@ mixin BadgeDemo(options)
 
         h3.Heading3 Borders disguising
 
-      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
+      +ThemesShowcase--YDF({
+        themes: Badge__YDF.Themes,
+        geometricVariations: Badge__YDF.GeometricVariations,
+        decorativeVariations: Badge__YDF.DecorativeVariations,
+        decorativeVariationsWrapperTag: "dl",
+        decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeDemo-BadgesTwoColumnsTable" ],
+        iterationData: themeShowcaseCurrentIternationData
+      })
 
-        .BadgeDemo-BadgesFlow
-
-          each decorativeVariation in Object.values(Badge__YDF.DecorativeVariations)
-
-            +Badge--YDF({
-              value: "Value",
-              decoration: decorativeVariation,
-              decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ]
-            })
+        dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`
+        dd
+          +Badge--YDF({
+            value: "Value",
+            geometry: themeShowcaseCurrentIternationData.geometricVariation.value,
+            decoration: themeShowcaseCurrentIternationData.decorativeVariation.value,
+            decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ]
+          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
 
 
   //- === Overflow testing =============================================================================================
