@@ -18,7 +18,6 @@ import {
   delegateClickEventHandling,
   cloneDOM_Element
 } from "@yamato-daiwa/es-extensions-browserjs";
-// import Snackbar from "../../Snackbar/Snackbar";
 
 /* --- Temporary ---------------------------------------------------------------------------------------------------- */
 import "prismjs/components/prism-typescript.js";
@@ -317,7 +316,6 @@ export class CodeViewer {
     this.activeTabPanel = this.tabsPanels[targetTabPanelIndex];
   }
 
-  // TODO　コードを訳てから仕上げ
   private initializeActionBar(): this {
 
     const actionBar: Element = getExpectedToBeSingleDOM_Element({
@@ -366,11 +364,6 @@ export class CodeViewer {
         description: "Copied!"
       });
 
-      // Snackbar.mountAndDisplayForAWhile({
-      //   decorativeVariation: Snackbar.DecorativeVariations.success,
-      //   messageTextOrHTML: "Code has been copied to clipboard"
-      // });
-
     });
 
     return this;
@@ -412,12 +405,14 @@ export class CodeViewer {
 
   /* === Auxiliaries ============================================================================================== */
   /* --- IDs generating ------------------------------------------------------------------------------------------- */
+  /* eslint-disable-next-line @typescript-eslint/member-ordering -- This secondary function should be at the end of class. */
   protected static counterForSelfID_Generating: number = 0;
 
   protected static generateSelfID(): string {
     CodeViewer.counterForSelfID_Generating++;
     return `CODE_VIEWER--YDF-${ CodeViewer.counterForSelfID_Generating }`;
   }
+
 }
 
 

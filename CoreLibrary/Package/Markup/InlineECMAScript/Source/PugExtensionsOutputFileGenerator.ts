@@ -22,7 +22,7 @@ import { Logger } from "@yamato-daiwa/es-extensions";
   }).
 
       on("line", (line: string): void => {
-        outputPugFileAccumulatingContentWithJavaScript = `${ outputPugFileAccumulatingContentWithJavaScript }  ${line}\n`;
+        outputPugFileAccumulatingContentWithJavaScript = `${ outputPugFileAccumulatingContentWithJavaScript }  ${ line }\n`;
       }).
 
       on("close", (): void => {
@@ -31,7 +31,7 @@ import { Logger } from "@yamato-daiwa/es-extensions";
         FileSystem.unlinkSync(PUG_EXTENSIONS_INTERIM_JAVA_SCRIPT_FILE_ABSOLUTE_PATH);
 
         Logger.logSuccess({
-          title: "Pug extensions file generated",
+          title: "Pug extensions output file generating",
           description: `'${ PUG_EXTENSIONS_INTERIM_JAVA_SCRIPT_FILE_ABSOLUTE_PATH }' has been successfully generated.`
         });
       });

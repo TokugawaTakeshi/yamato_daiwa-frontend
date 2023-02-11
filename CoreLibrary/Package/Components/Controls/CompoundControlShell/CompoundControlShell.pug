@@ -13,6 +13,7 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
       required = false,
       mustDisplayAppropriateBadgeIfInputIsRequired = false,
       mustDisplayAppropriateBadgeIfInputIsOptional = false,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge = false,
 
       coreElementHTML_ID,
       labelElementHTML_ID,
@@ -33,9 +34,9 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
     });
 
     const {
-      invalidInputHighlightingIfAnyErrorsMessages = false,
-      validValueHighlightingIfNoErrorsMessages = false,
-      errorsMessages = []
+      invalidInputHighlightingIfAnyValidationErrorsMessages = false,
+      validValueHighlightingIfNoValidationErrorsMessages = false,
+      validationErrorsMessages = []
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
       rawParameter: statesSimulations,
       parameterNumber: 2,
@@ -53,9 +54,9 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
           [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(CompoundControlShell__YDF.CSS_NAMESPACE, geometry) ] : [],
       ...Object.entries(CompoundControlShell__YDF.DecorativeVariations).length > 1 ?
           [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(CompoundControlShell__YDF.CSS_NAMESPACE, decoration) ] : [],
-      ...invalidInputHighlightingIfAnyErrorsMessages && errorsMessages.length > 0 ?
+      ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
           [ `${ CompoundControlShell__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
-      ...validValueHighlightingIfNoErrorsMessages && errorsMessages.length === 0 ?
+      ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
           [ `${ CompoundControlShell__YDF.CSS_NAMESPACE }__ValidValueState` ] : []
     ];
 
@@ -78,10 +79,14 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
           span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__RequiredInput
             | #{ localization.requirementBadges.required }
 
-        if !required && mustDisplayAppropriateBadgeIfInputIsOptional
+        else if !required && mustDisplayAppropriateBadgeIfInputIsOptional
 
           span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__OptionalInput
             | #{ localization.requirementBadges.optional }
+
+        else if mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge
+
+          span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__Invisible
 
 
     if guidance
@@ -96,9 +101,9 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
       block
 
 
-    if invalidInputHighlightingIfAnyErrorsMessages && errorsMessages.length > 0
+    if invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0
       ul.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer
-        each errorMessage in errorsMessages
+        each errorMessage in validationErrorsMessages
           li.CompoundControlShell--YDF-ErrorMessage= errorMessage
 
     template.CompoundControlShell--YDF-ErrorMessagesTemplate

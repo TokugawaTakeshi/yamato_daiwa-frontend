@@ -1,12 +1,15 @@
 import { createApp as createVueApplication } from "vue";
 import {
+  CompoundControlShell,
   CompoundControlShellBasicImplementation,
+  TextBox,
   TextBoxBasicImplementation
-} from "../../../../../Source";
+} from "@Source/index";
 import TextBoxComponentTestSite from "./TextBoxComponentTestSite.vue";
 
 
-createVueApplication(TextBoxComponentTestSite).
-    component("CompoundControlShell", CompoundControlShellBasicImplementation).
-    component("TextBox", TextBoxBasicImplementation).
-    mount("#APPLICATION");
+CompoundControlShell.setImplementation(CompoundControlShellBasicImplementation);
+TextBox.setImplementation(TextBoxBasicImplementation);
+
+
+createVueApplication(TextBoxComponentTestSite).mount("#APPLICATION");

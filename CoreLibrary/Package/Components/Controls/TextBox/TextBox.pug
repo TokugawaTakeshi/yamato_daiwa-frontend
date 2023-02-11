@@ -26,6 +26,7 @@ mixin TextBox--YDF(properties, statesSimulations)
       required = false,
       mustDisplayAppropriateBadgeIfInputIsRequired = false,
       mustDisplayAppropriateBadgeIfInputIsOptional = false,
+      mustEqualizeHeightWithOtherInstancesWithBadgesWhenNoBadge = false,
       minimalCharactersCount,
       maximalCharactersCount,
       minimalNumericValue,
@@ -47,8 +48,7 @@ mixin TextBox--YDF(properties, statesSimulations)
       mixinName: "TextBox--YDF"
     });
 
-    // TODO 何れかのlabel、accessibilityGuidance、externalLabelHTML_IDは必須
-    // TODO こちらをバリデーションに抽出した方が
+    // === TODO 抽出 ===================================================================================================
     if (
       Number.isInteger(minimalCharactersCount) &&
       Number.isInteger(maximalCharactersCount) &&
@@ -71,12 +71,13 @@ mixin TextBox--YDF(properties, statesSimulations)
         `"maximalNumericValue" (${ maximalNumericValue })`
       );
     }
+    // =================================================================================================================
 
 
     const {
-      invalidInputHighlightingIfAnyErrorsMessages = false,
-      validValueHighlightingIfNoErrorsMessages = false,
-      errorsMessages = []
+      invalidInputHighlightingIfAnyValidationErrorsMessages = false,
+      validValueHighlightingIfNoValidationErrorsMessages = false,
+      validationErrorsMessages = []
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
       rawParameter: statesSimulations,
       parameterNumber: 2,
@@ -92,9 +93,9 @@ mixin TextBox--YDF(properties, statesSimulations)
           [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(TextBox__YDF.CSS_NAMESPACE, geometry) ] : [],
       ...Object.entries(TextBox__YDF.DecorativeVariations).length > 1 ?
           [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(TextBox__YDF.CSS_NAMESPACE, decoration) ] : [],
-      ...invalidInputHighlightingIfAnyErrorsMessages && errorsMessages.length > 0 ?
+      ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
           [ `${ TextBox__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
-      ...validValueHighlightingIfNoErrorsMessages && errorsMessages.length === 0 ?
+      ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
           [ `${ TextBox__YDF.CSS_NAMESPACE }__ValueState` ] : []
     ];
 
@@ -108,6 +109,7 @@ mixin TextBox--YDF(properties, statesSimulations)
       required,
       mustDisplayAppropriateBadgeIfInputIsRequired,
       mustDisplayAppropriateBadgeIfInputIsOptional,
+      mustEqualizeHeightWithOtherInstancesWithBadgesWhenNoBadge,
       coreElementHTML_ID: inputOrTextAreaElementHTML_ID,
       labelElementHTML_ID: labelElementHTML_ID,
 
@@ -118,9 +120,9 @@ mixin TextBox--YDF(properties, statesSimulations)
 
     },
     {
-      invalidInputHighlightingIfAnyErrorsMessages,
-      validValueHighlightingIfNoErrorsMessages,
-      errorsMessages
+      invalidInputHighlightingIfAnyValidationErrorsMessages,
+      validValueHighlightingIfNoValidationErrorsMessages,
+      validationErrorsMessages
     }
   ).TextBox--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
 

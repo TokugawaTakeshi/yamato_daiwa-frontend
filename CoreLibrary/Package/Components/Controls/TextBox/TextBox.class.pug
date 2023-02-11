@@ -139,6 +139,11 @@
           required: false
         },
 
+        mustEqualizeHeightWithOtherInstancesWithBadgesWhenNoBadge: {
+          type: Boolean,
+          required: false
+        },
+
         minimalCharactersCount: {
           type: Number,
           numbersSet: RawObjectDataProcessor.NumbersSets.nonNegativeInteger,
@@ -205,17 +210,17 @@
     /* === State simulations specification ========================================================================== */
     stateSimulationsSpecification: {
 
-      invalidInputHighlightingIfAnyErrorsMessages: {
+      invalidInputHighlightingIfAnyValidationErrorsMessages: {
         type: Boolean,
         required: false
       },
 
-      validValueHighlightingIfNoErrorsMessages: {
+      validValueHighlightingIfNoValidationErrorsMessages: {
         type: Boolean,
         required: false
       },
 
-      errorsMessages: {
+      validationErrorsMessages: {
         type: Array,
         required: false,
         element: {

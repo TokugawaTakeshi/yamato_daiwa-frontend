@@ -8,6 +8,10 @@ projectBuilding:
         tasksAndSourceFilesSelection:
           ECMA_ScriptLogicProcessing: [ PugExtensions ]
 
+      Logic:
+        tasksAndSourceFilesSelection:
+          ECMA_ScriptLogicProcessing: [ Logic ]
+
       StylesAndComponentsTesting:
 
         tasksAndSourceFilesSelection:
@@ -72,10 +76,29 @@ projectBuilding:
             outputTopDirectoryRelativePath: PagesTemplates/StaticPreviewAnywherePage
 
 
-  # === フロントエンド挙動制御記法事前処理 ======================================================================================
+  # === ECMAScript logic processing ====================================================================================
   ECMA_ScriptLogicProcessing:
 
     entryPointsGroups:
+
+      Logic:
+
+        singleEntryPointRelativePath: index.ts
+
+        targetRuntime:
+          type: BROWSER
+
+        distributing:
+          exposingOfExportsFromEntryPoints:
+            mustExpose: true
+          typeScriptTypesDeclarations:
+            mustGenerate: true
+
+        buildingModeDependent:
+
+          PRODUCTION:
+            outputTopDirectoryRelativePath: "LogicDistributable"
+            revisioning: { disable: true }
 
       ComponentsTesting:
 

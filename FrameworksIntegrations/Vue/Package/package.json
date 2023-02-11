@@ -1,7 +1,24 @@
 {
   "name": "@yamato-daiwa/frontend-vue",
-  "private": true,
   "version": "0.0.0",
+  "description": "The adaptation of '@yamato-daiwa/frontend' package for Vue framework and also some additional functionality.",
+  "keywords": [
+    "frontend",
+    "vue"
+  ],
+  "author": {
+    "name": "Takeshi Tokugawa",
+    "email": "tokugawa.takesi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/issues",
+    "email": "tokugawa.takesi@gmail.com"
+  },
   "module": "./Distributable/index.js",
   "types": "./Distributable/index.d.ts",
   "dependencies": {
@@ -12,6 +29,7 @@
     "vue-class-component": "8.0.0-rc.1",
     "vue-property-decorator": "10.0.0-rc.3",
     "vue-router": "4.1.6",
+    "vue3-slide-up-down": "1.2.5",
     "vuex-module-decorators": "2.0.0"
   },
   "devDependencies": {

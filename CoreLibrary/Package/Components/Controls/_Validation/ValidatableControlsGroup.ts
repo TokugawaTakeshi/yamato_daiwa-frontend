@@ -161,7 +161,10 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject>
 
     }
 
+
+    /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- The validity of data has been guaranteed. */
     return payload as ValidData;
+
   }
 
 

@@ -1,4 +1,4 @@
-import { CollapsingAnimation } from "../../Components";
+import CollapsingAnimation from "@Animations/CollapsingAnimation";
 
 import { isNull } from "@yamato-daiwa/es-extensions";
 import { addLeftClickEventHandler } from "@yamato-daiwa/es-extensions-browserjs";

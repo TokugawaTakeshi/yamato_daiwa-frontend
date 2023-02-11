@@ -26,33 +26,35 @@ import { getExpectedToBeSingleDOM_Element } from "@yamato-daiwa/es-extensions-br
 
 
 class TextBox<
-  ValidValue extends number | string | null,
-  InvalidValue extends number | string | null,
+  ValidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
+  InvalidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
   Validation extends ValueValidation
 > implements ValidatableControl {
 
-  static readonly #NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR: string = ".TextBox--YDF-InputOrTextAreaElement";
-  static readonly #INVALID_VALUE_STATE_CSS_CLASS: string = "TextBox--YDF__InvalidInputState";
+  protected static readonly NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR: string = ".TextBox--YDF-InputOrTextAreaElement";
+  protected static readonly INVALID_VALUE_STATE_CSS_CLASS: string = "TextBox--YDF__InvalidInputState";
 
-  readonly #ID: string = TextBox.#generateSelfID();
 
-  readonly #payload: ValidatableControl.Payload<ValidValue, InvalidValue, Validation>;
+  public readonly payload: ValidatableControl.Payload<ValidValue, InvalidValue, Validation>;
 
-  readonly #rawInputModifier: (rawValue: string) => ValidValue | InvalidValue;
 
-  readonly #shellComponent: CompoundControlShell;
-  readonly #nativeInputAcceptingElement: HTMLInputElement | HTMLTextAreaElement;
+  protected readonly ID: string = TextBox.generateSelfID();
 
-  #mustActivateAppropriateHighlightIfAnyErrorsMessages: boolean = false;
+  protected readonly rawInputModifier: (rawValue: string) => ValidValue | InvalidValue;
 
-  readonly #payloadInitialValue: ValidValue | InvalidValue;
-  readonly #mustActivateInvalidHighlightImmediatelyInitially: boolean;
+  protected readonly shellComponent: CompoundControlShell;
+  protected readonly nativeInputAcceptingElement: HTMLInputElement | HTMLTextAreaElement;
+
+  protected invalidInputHighlightingIfAnyValidationErrorsMessages: boolean = false;
+
+  protected readonly payloadInitialValue: ValidValue | InvalidValue;
+  protected readonly mustHighlightInvalidInputImmediately: boolean;
 
 
   /* === Static methods ============================================================================================= */
   public static pickOneBySelector<
-    ValidValue extends number | string | null,
-    InvalidValue extends number | string | null,
+    ValidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
+    InvalidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
     Validation extends ValueValidation
   >(
     properties: TextBox.InitializationProperties<ValidValue, InvalidValue, Validation>
@@ -64,29 +66,29 @@ class TextBox<
   /* === Constructor ================================================================================================ */
   private constructor(properties: TextBox.InitializationProperties<ValidValue, InvalidValue, Validation>) {
 
-    this.#shellComponent = CompoundControlShell.pickOneBySelector(properties.selector);
+    this.shellComponent = CompoundControlShell.pickOneBySelector(properties.selector);
 
     const nativeInputAcceptingElement: Element = getExpectedToBeSingleDOM_Element({
-      selector: TextBox.#NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR,
-      context: this.#shellComponent.rootElement
+      selector: TextBox.NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR,
+      context: this.shellComponent.rootElement
     });
 
     if (nativeInputAcceptingElement instanceof HTMLInputElement) {
 
-      this.#nativeInputAcceptingElement = nativeInputAcceptingElement;
+      this.nativeInputAcceptingElement = nativeInputAcceptingElement;
 
     } else if (nativeInputAcceptingElement instanceof HTMLTextAreaElement) {
 
-      this.#nativeInputAcceptingElement = nativeInputAcceptingElement;
+      this.nativeInputAcceptingElement = nativeInputAcceptingElement;
 
     } else {
 
       Logger.throwErrorAndLog({
         errorInstance: new UnexpectedEventError(PoliteErrorsMessagesBuilder.buildMessage({
-          technicalDetails: `The element corresponding to selector ${ TextBox.#NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR } ` +
-              "must be the instance either of 'HTMLInputElement' or 'HTMLTextAreaElement' while actually none of them.",
-          politeExplanation: "When trying to pick the native 'input' or 'textarea' element, we did expected that it will " +
-              "be the instance of 'HTMLInputElement'/'HTMLTextAreaElement' respectively and during test is was such as. " +
+          technicalDetails: `The element corresponding to selector "${ TextBox.NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR }" ` +
+              "must be the instance either of \"HTMLInputElement\" or \"HTMLTextAreaElement\" while actually none of them.",
+          politeExplanation: "When trying to pick the native \"input\" or \"textarea\" element, we did expected that it will " +
+              "be the instance of \"HTMLInputElement\"/\"HTMLTextAreaElement\" respectively and during test is was such as. " +
               "This bug means that we has missed some combination of circumstances so we must to investigate it.",
           bugTrackerURI: YDF_BUG_REPORTING_PAGE_URI
         })),
@@ -105,15 +107,15 @@ class TextBox<
 
       if (isString(properties.overridingPreInputtedInitialValue)) {
 
-        this.#nativeInputAcceptingElement.value = properties.overridingPreInputtedInitialValue;
+        this.nativeInputAcceptingElement.value = properties.overridingPreInputtedInitialValue;
 
       } else if (isNumber(properties.overridingPreInputtedInitialValue)) {
 
-        this.#nativeInputAcceptingElement.value = properties.overridingPreInputtedInitialValue.toString();
+        this.nativeInputAcceptingElement.value = properties.overridingPreInputtedInitialValue.toString();
 
       } else if (isNull(properties.overridingPreInputtedInitialValue)) {
 
-        this.#nativeInputAcceptingElement.value = "";
+        this.nativeInputAcceptingElement.value = "";
 
       } else {
 
@@ -132,87 +134,88 @@ class TextBox<
 
     } else {
 
-      payloadInitialValue = properties.rawInputModifier(this.#nativeInputAcceptingElement.value);
+      payloadInitialValue = properties.rawInputModifier(this.nativeInputAcceptingElement.value);
 
     }
 
 
-    this.#payload = new ValidatableControl.Payload<ValidValue, InvalidValue, Validation>({
+    this.payload = new ValidatableControl.Payload<ValidValue, InvalidValue, Validation>({
       initialValue: payloadInitialValue,
       getComponentInstance: (): ValidatableControl => this,
       validation: properties.validation
     });
 
-    this.#payload.addOnHasBecomeValidEventHandler({
+    this.payload.addOnHasBecomeValidEventHandler({
       handler: this.onPayloadHasBecomeValidEventListener.bind(this),
-      ID: TextBox.#generateOnPayloadHasBecomeValidEventHandlerID(this.#ID)
+      ID: TextBox.generateOnPayloadHasBecomeValidEventHandlerID(this.ID)
     });
-    this.#payload.addOnHasBecomeInvalidEventHandler({
+    this.payload.addOnHasBecomeInvalidEventHandler({
       handler: this.onPayloadHasBecomeInvalidEventListener.bind(this),
-      ID: TextBox.#generateOnPayloadHasBecomeInvalidEventHandlerID(this.#ID)
+      ID: TextBox.generateOnPayloadHasBecomeInvalidEventHandlerID(this.ID)
     });
 
-    this.#rawInputModifier = properties.rawInputModifier;
+    this.rawInputModifier = properties.rawInputModifier;
 
-    this.#mustActivateInvalidHighlightImmediatelyInitially = properties.mustActivateInvalidHighlightImmediately;
-    this.#mustActivateAppropriateHighlightIfAnyErrorsMessages = this.#mustActivateInvalidHighlightImmediatelyInitially;
+    this.mustHighlightInvalidInputImmediately = properties.mustActivateInvalidHighlightImmediately;
+    this.invalidInputHighlightingIfAnyValidationErrorsMessages = this.mustHighlightInvalidInputImmediately;
 
-    this.#shellComponent.setErrorsMessagesAndDisplayIfMust(this.#payload.validationErrorsMessages);
+    this.shellComponent.setErrorsMessagesAndDisplayIfMust(this.payload.validationErrorsMessages);
 
-    if (this.#mustActivateAppropriateHighlightIfAnyErrorsMessages) {
-      this.#shellComponent.beginDisplayingOfErrorsMessagesIfAny();
+    if (this.invalidInputHighlightingIfAnyValidationErrorsMessages) {
+      this.shellComponent.beginDisplayingOfErrorsMessagesIfAny();
     }
 
-    this.#nativeInputAcceptingElement.addEventListener("input", this.onInputEventListener.bind(this));
-    this.#nativeInputAcceptingElement.addEventListener("blur", this.onFocusOutEventListener.bind(this));
+    this.nativeInputAcceptingElement.addEventListener("input", this.onInputEventListener.bind(this));
+    this.nativeInputAcceptingElement.addEventListener("blur", this.onFocusOutEventListener.bind(this));
 
-    this.#payloadInitialValue = payloadInitialValue;
+    this.payloadInitialValue = payloadInitialValue;
+
   }
 
 
   /* === Interface implementation =================================================================================== */
   public highlightInvalidInput(): this {
 
-    this.#mustActivateAppropriateHighlightIfAnyErrorsMessages = true;
+    this.invalidInputHighlightingIfAnyValidationErrorsMessages = true;
 
-    if (this.#payload.isInvalid) {
-      this.#shellComponent.rootElement.classList.add(TextBox.#INVALID_VALUE_STATE_CSS_CLASS);
+    if (this.payload.isInvalid) {
+      this.shellComponent.rootElement.classList.add(TextBox.INVALID_VALUE_STATE_CSS_CLASS);
     }
 
-    this.#shellComponent.beginDisplayingOfErrorsMessagesIfAny();
+    this.shellComponent.beginDisplayingOfErrorsMessagesIfAny();
 
     return this;
+
   }
 
   public focus(): this {
-    this.#nativeInputAcceptingElement.focus();
+    this.nativeInputAcceptingElement.focus();
     return this;
   }
 
   public getRootElement(): HTMLElement {
-    return this.#shellComponent.rootElement;
+    return this.shellComponent.rootElement;
   }
 
   public resetStateToInitial(): void {
 
-    if (!this.#mustActivateInvalidHighlightImmediatelyInitially) {
-      this.#mustActivateAppropriateHighlightIfAnyErrorsMessages = false;
-      this.#shellComponent.stopDisplayingOfErrorsMessages();
-      this.#shellComponent.rootElement.classList.remove(TextBox.#INVALID_VALUE_STATE_CSS_CLASS);
+    if (!this.mustHighlightInvalidInputImmediately) {
+      this.invalidInputHighlightingIfAnyValidationErrorsMessages = false;
+      this.shellComponent.stopDisplayingOfErrorsMessages();
+      this.shellComponent.rootElement.classList.remove(TextBox.INVALID_VALUE_STATE_CSS_CLASS);
     }
 
-    this.payload.value = this.#payloadInitialValue;
+    this.payload.value = this.payloadInitialValue;
+
   }
 
 
   /* === Other public methods and getters =========================================================================== */
-  public activateToReadOnlyMode(): this { this.#nativeInputAcceptingElement.readOnly = true; return this; }
-  public disactiveReadOnlyMode(): this { this.#nativeInputAcceptingElement.readOnly = false; return this; }
+  public activateToReadOnlyMode(): this { this.nativeInputAcceptingElement.readOnly = true; return this; }
+  public disactiveReadOnlyMode(): this { this.nativeInputAcceptingElement.readOnly = false; return this; }
 
-  public disable(): this { this.#nativeInputAcceptingElement.disabled = true; return this; }
-  public enable(): this { this.#nativeInputAcceptingElement.disabled = false; return this; }
-
-  public get payload(): ValidatableControl.Payload<ValidValue, InvalidValue, Validation> { return this.#payload; }
+  public disable(): this { this.nativeInputAcceptingElement.disabled = true; return this; }
+  public enable(): this { this.nativeInputAcceptingElement.disabled = false; return this; }
 
 
   /* === Events ===================================================================================================== */
@@ -235,66 +238,69 @@ class TextBox<
     }
 
 
-    this.#payload.value = this.#rawInputModifier(this.#nativeInputAcceptingElement.value);
-    this.#shellComponent.setErrorsMessagesAndDisplayIfMust(this.#payload.validationErrorsMessages);
+    this.payload.value = this.rawInputModifier(this.nativeInputAcceptingElement.value);
+    this.shellComponent.setErrorsMessagesAndDisplayIfMust(this.payload.validationErrorsMessages);
   }
 
   private onFocusOutEventListener(): void {
 
-    this.#mustActivateAppropriateHighlightIfAnyErrorsMessages = true;
+    this.invalidInputHighlightingIfAnyValidationErrorsMessages = true;
 
-    if (this.#payload.isInvalid) {
-      this.#shellComponent.rootElement.classList.add(TextBox.#INVALID_VALUE_STATE_CSS_CLASS);
+    if (this.payload.isInvalid) {
+      this.shellComponent.rootElement.classList.add(TextBox.INVALID_VALUE_STATE_CSS_CLASS);
     }
 
-    this.#shellComponent.beginDisplayingOfErrorsMessagesIfAny();
+    this.shellComponent.beginDisplayingOfErrorsMessagesIfAny();
   }
 
   private onPayloadHasBecomeValidEventListener(): void {
-    this.#shellComponent.rootElement.classList.remove(TextBox.#INVALID_VALUE_STATE_CSS_CLASS);
+    this.shellComponent.rootElement.classList.remove(TextBox.INVALID_VALUE_STATE_CSS_CLASS);
   }
 
   private onPayloadHasBecomeInvalidEventListener(): void {
-    if (this.#mustActivateAppropriateHighlightIfAnyErrorsMessages) {
-      this.#shellComponent.rootElement.classList.add(TextBox.#INVALID_VALUE_STATE_CSS_CLASS);
+    if (this.invalidInputHighlightingIfAnyValidationErrorsMessages) {
+      this.shellComponent.rootElement.classList.add(TextBox.INVALID_VALUE_STATE_CSS_CLASS);
     }
   }
 
 
-  /* === Auxiliaries ============================================================================================== */
-  /* --- IDs generating ------------------------------------------------------------------------------------------- */
-  static #counterForSelfID_Generating: number = 0;
+  /* === Routines =================================================================================================== */
+  /* --- IDs generating --------------------------------------------------------------------------------------------- */
+  protected static counterForSelfID_Generating: number = 0;
 
-  static #generateSelfID(): string {
-    TextBox.#counterForSelfID_Generating++;
-    return `TEXT-BOX--YDF-${ TextBox.#counterForSelfID_Generating }`;
+  protected static generateSelfID(): string {
+    TextBox.counterForSelfID_Generating++;
+    return `TEXT_BOX--YDF-${ TextBox.counterForSelfID_Generating }`;
   }
 
 
-  static #counterForOnPayloadHasBecomeValidEventHandlerID_Generating: number = 0;
+  protected static counterForOnPayloadHasBecomeValidEventHandlerID_Generating: number = 0;
 
-  static #generateOnPayloadHasBecomeValidEventHandlerID(componentID: string): string {
-    TextBox.#counterForOnPayloadHasBecomeValidEventHandlerID_Generating++;
+  protected static generateOnPayloadHasBecomeValidEventHandlerID(componentID: string): string {
+    TextBox.counterForOnPayloadHasBecomeValidEventHandlerID_Generating++;
     return `${ componentID }-ON_PAYLOAD_HAS_BECOME_VALID_EVENT_HANDLER-` +
-        `${ TextBox.#counterForOnPayloadHasBecomeValidEventHandlerID_Generating }`;
+        `${ TextBox.counterForOnPayloadHasBecomeValidEventHandlerID_Generating }`;
   }
 
 
-  static #counterForOnPayloadHasBecomeInvalidEventHandlerID_Generating: number = 0;
+  protected static counterForOnPayloadHasBecomeInvalidEventHandlerID_Generating: number = 0;
 
-  static #generateOnPayloadHasBecomeInvalidEventHandlerID(componentID: string): string {
-    TextBox.#counterForOnPayloadHasBecomeInvalidEventHandlerID_Generating++;
+  protected static generateOnPayloadHasBecomeInvalidEventHandlerID(componentID: string): string {
+    TextBox.counterForOnPayloadHasBecomeInvalidEventHandlerID_Generating++;
     return `${ componentID }-ON_PAYLOAD_HAS_BECOME_INVALID_EVENT_HANDLER-` +
-        `${ TextBox.#counterForOnPayloadHasBecomeInvalidEventHandlerID_Generating }`;
+        `${ TextBox.counterForOnPayloadHasBecomeInvalidEventHandlerID_Generating }`;
   }
+
 }
 
 
 namespace TextBox {
 
+  export type SupportedValidatablePayloadValuesTypes = number | string | null;
+
   export type InitializationProperties<
-    ValidValue extends number | string | null,
-    InvalidValue extends number | string | null,
+    ValidValue extends SupportedValidatablePayloadValuesTypes,
+    InvalidValue extends SupportedValidatablePayloadValuesTypes,
     Validation extends ValueValidation
   > = Readonly<{
     selector: string;
@@ -315,6 +321,7 @@ namespace TextBox {
     export function convertToIntegerOrNull(rawValue: string): number | null {
       return rawValue.length > 0 ? Number(rawValue) : null;
     }
+
   }
 
 }

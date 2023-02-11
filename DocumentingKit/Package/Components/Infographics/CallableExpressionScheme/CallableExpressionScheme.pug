@@ -6,6 +6,7 @@ mixin CallableExpressionScheme(properties)
   -
     const {
       technicalName,
+      headingTag = "div",
       localizedDescriptiveHeading,
       parametersSpecification = [],
       returnedValue,
@@ -13,9 +14,9 @@ mixin CallableExpressionScheme(properties)
     } = properties
 
 
-  .CallableExpressionScheme&attributes(attributes)
+  figure.CallableExpressionScheme&attributes(attributes)
 
-    .CallableExpressionScheme-TechnicalNameHeading= `${ technicalName }`
+    #{headingTag}.CallableExpressionScheme-TechnicalNameHeading= `${ technicalName }`
 
     if localizedDescriptiveHeading
 
