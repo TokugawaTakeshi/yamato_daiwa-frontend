@@ -1,9 +1,9 @@
 .CompoundControlShell--YDF(
-  :class=""
+  :class="rootElementModifierCSS_Classes"
 )
 
   .CompoundControlShell--YDF-Header(
-    v-if="label || mustDisplayAppropriateBadgeIfInputIsRequired || mustDisplayAppropriateBadgeIfInputIsOptional"
+    v-if="mustDisplayHeader"
   )
 
     label.CompoundControlShell--YDF-Label(
@@ -20,6 +20,10 @@
       v-else-if="!required && mustDisplayAppropriateBadgeIfInputIsOptional"
     ) {{ localization.requirementBadges.optional }}
 
+    span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__Invisible(
+      v-else-if="mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge"
+    )
+
 
   p.CompoundControlShell--YDF-Guidance(
     v-if="guidance"
@@ -32,11 +36,13 @@
   ): slot
 
 
-  ul.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer(
-    v-if="invalidInputHighlightingIfAnyErrorsMessages && errorsMessages.length > 0"
+  HorizontallySlidingContainer.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer(
+    :expanded="invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0"
+    HTML_Tag="ul"
+    :mustAnimateHeightWhenContentsAreChanged="true"
   )
 
     li.CompoundControlShell--YDF-ErrorMessage(
-      v-for="errorMessage of errorsMessages"
-      :key="`ERROR_MESSAGE-${ errorMessage }`"
-    ) {{ errorMessage }}
+      v-for="validationErrorMessage of validationErrorsMessages"
+      :key="`VALIDATION_ERROR_MESSAGE-${ validationErrorMessage }`"
+    ) {{ validationErrorMessage }}

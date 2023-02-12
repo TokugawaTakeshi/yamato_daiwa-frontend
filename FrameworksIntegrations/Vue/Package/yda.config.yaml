@@ -24,6 +24,10 @@ projectBuilding:
   # === Markup =========================================================================================================
   markupProcessing:
 
+    common:
+      buildingModeDependent:
+        LOCAL_DEVELOPMENT: { mustResolveResourceReferencesToRelativePaths: true }
+
     entryPointsGroups:
 
       Tests:

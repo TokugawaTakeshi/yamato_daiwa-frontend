@@ -9,9 +9,16 @@ import {
 } from "vue-property-decorator";
 
 /* --- Utils -------------------------------------------------------------------------------------------------------- */
-import { isString, isNonEmptyString, toUpperCamelCase, isNull, isUndefined } from "@yamato-daiwa/es-extensions";
+import {
+  isString,
+  isNonEmptyString,
+  toUpperCamelCase,
+  isNull,
+  isUndefined,
+  isNeitherUndefinedNorNull
+} from "@yamato-daiwa/es-extensions";
 import VueComponentImplementationHasNotBeenSetError from
-      "@Components/_Errors/VueComponentImplementationHasNotBeenSet/VueComponentImplementationHasNotBeenSet";
+    "@Components/_Errors/VueComponentImplementationHasNotBeenSet/VueComponentImplementationHasNotBeenSet";
 
 /* --- Localization ------------------------------------------------------------------------------------------------- */
 import CompoundControlShellLocalization__English from
@@ -36,7 +43,7 @@ namespace CompoundControlShell {
 
   export type GeometricVariations = {
     readonly regular: "REGULAR";
-    [themeName: string]: string;
+    [geometricVariationName: string]: string;
   };
 
   export const GeometricVariations: GeometricVariations = {
@@ -46,7 +53,7 @@ namespace CompoundControlShell {
 
   export type DecorativeVariations = {
     readonly regular: "REGULAR";
-    [themeName: string]: string;
+    [decorativeVariationName: string]: string;
   };
 
   export const DecorativeVariations: DecorativeVariations = {
@@ -90,6 +97,9 @@ namespace CompoundControlShell {
     @VueProperty({ type: Boolean, default: false })
     protected readonly mustDisplayAppropriateBadgeIfInputIsOptional!: boolean;
 
+    @VueProperty({ type: Boolean, default: false })
+    protected readonly mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge!: boolean;
+
 
     /* --- HTML IDs ------------------------------------------------------------------------------------------------- */
     @VueProperty({
@@ -112,13 +122,13 @@ namespace CompoundControlShell {
 
     /* --- Inputting validation ------------------------------------------------------------------------------------- */
     @VueProperty({ type: Boolean, default: false })
-    protected readonly invalidInputHighlightingIfAnyErrorsMessages!: boolean;
+    protected readonly invalidInputHighlightingIfAnyValidationErrorsMessages!: boolean;
 
     @VueProperty({ type: Boolean, default: false })
-    protected readonly validValueHighlightingIfNoErrorsMessages!: boolean;
+    protected readonly validValueHighlightingIfNoValidationErrorsMessages!: boolean;
 
     @VueProperty({ type: Array, default: (): ReadonlyArray<string> => [] })
-    protected readonly errorsMessages!: ReadonlyArray<string>;
+    protected readonly validationErrorsMessages!: ReadonlyArray<string>;
 
 
     /* --- Themes --------------------------------------------------------------------------------------------------- */
@@ -142,7 +152,7 @@ namespace CompoundControlShell {
     protected readonly geometry!: string;
 
 
-    /* --- Decoration ------------------------------------------------------------------------------------------------- */
+    /* --- Decoration ----------------------------------------------------------------------------------------------- */
     @VueProperty({
       type: String,
       default: DecorativeVariations.regular,
@@ -160,14 +170,22 @@ namespace CompoundControlShell {
             [ `CompoundControlShell--YDF__${ toUpperCamelCase(this.geometry) }Geometry` ] : [],
         ...Object.entries(DecorativeVariations).length > 1 ?
             [ `CompoundControlShell--YDF__${ toUpperCamelCase(this.decoration) }Decoration` ] : [],
-        ...this.invalidInputHighlightingIfAnyErrorsMessages && this.errorsMessages.length > 0 ?
+        ...this.invalidInputHighlightingIfAnyValidationErrorsMessages && this.validationErrorsMessages.length > 0 ?
             [ `CompoundControlShell--YDF__${ toUpperCamelCase(this.decoration) }__InvalidValueState` ] : [],
-        ...this.validValueHighlightingIfNoErrorsMessages && this.errorsMessages.length === 0 ?
+        ...this.validValueHighlightingIfNoValidationErrorsMessages && this.validationErrorsMessages.length === 0 ?
             [ `CompoundControlShell--YDF__${ toUpperCamelCase(this.decoration) }__ValidValueState` ] : []
       ];
     }
 
-    /* === Localization ============================================================================================= */
+    protected get mustDisplayHeader(): boolean {
+      return isNeitherUndefinedNorNull(this.label) ||
+          this.mustDisplayAppropriateBadgeIfInputIsRequired ||
+          this.mustDisplayAppropriateBadgeIfInputIsOptional ||
+          this.mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge;
+    }
+
+
+    /* --- Localization --------------------------------------------------------------------------------------------- */
     public static localization: Localization = CompoundControlShellLocalization__English;
     protected localization: Localization = BasicLogic.localization;
 
@@ -202,7 +220,6 @@ namespace CompoundControlShell {
     parentComponent.$options.components[withName] = getImplementation();
 
   }
-
 
 }
 

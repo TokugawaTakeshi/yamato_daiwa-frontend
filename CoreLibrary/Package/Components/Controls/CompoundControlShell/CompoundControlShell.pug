@@ -60,10 +60,15 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
           [ `${ CompoundControlShell__YDF.CSS_NAMESPACE }__ValidValueState` ] : []
     ];
 
+    const mustDisplayHeader = label ||
+      mustDisplayAppropriateBadgeIfInputIsRequired ||
+      mustDisplayAppropriateBadgeIfInputIsOptional ||
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge;
+
 
   .CompoundControlShell--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
 
-    if label || mustDisplayAppropriateBadgeIfInputIsRequired || mustDisplayAppropriateBadgeIfInputIsOptional
+    if mustDisplayHeader
 
       .CompoundControlShell--YDF-Header
 
@@ -103,8 +108,8 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
 
     if invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0
       ul.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer
-        each errorMessage in validationErrorsMessages
-          li.CompoundControlShell--YDF-ErrorMessage= errorMessage
+        each validationErrorMessage in validationErrorsMessages
+          li.CompoundControlShell--YDF-ErrorMessage= validationErrorMessage
 
     template.CompoundControlShell--YDF-ErrorMessagesTemplate
       ul.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer
