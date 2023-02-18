@@ -1,6 +1,6 @@
 {
   "name": "@yamato-daiwa/frontend",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0-alpha.2",
   "description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
   "keywords": [
     "frontend",
@@ -46,8 +46,8 @@
   },
   "devDependencies": {
     "@types/prismjs": "1.26.0",
-    "@yamato-daiwa/automation": "0.2.0-alpha.5",
-    "@yamato-daiwa/style_guides": "0.0.41",
+    "@yamato-daiwa/automation": "0.2.0-alpha.8",
+    "@yamato-daiwa/style_guides": "0.0.44",
     "rimraf": "4.1.2",
     "ts-node": "10.9.1",
     "typescript": "4.9.5"

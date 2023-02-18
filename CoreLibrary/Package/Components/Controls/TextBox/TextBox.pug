@@ -26,7 +26,7 @@ mixin TextBox--YDF(properties, statesSimulations)
       required = false,
       mustDisplayAppropriateBadgeIfInputIsRequired = false,
       mustDisplayAppropriateBadgeIfInputIsOptional = false,
-      mustEqualizeHeightWithOtherInstancesWithBadgesWhenNoBadge = false,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge = false,
       minimalCharactersCount,
       maximalCharactersCount,
       minimalNumericValue,
@@ -47,32 +47,6 @@ mixin TextBox--YDF(properties, statesSimulations)
       parameterPropertiesSpecification: TextBox__YDF.propertiesSpecification,
       mixinName: "TextBox--YDF"
     });
-
-    // === TODO 抽出 ===================================================================================================
-    if (
-      Number.isInteger(minimalCharactersCount) &&
-      Number.isInteger(maximalCharactersCount) &&
-      minimalCharactersCount > maximalCharactersCount
-    ) {
-      throw new Error(
-        `"TextBox--YDF", the specified "minimalCharactersCount" (${ minimalCharactersCount }) is greater than ` +
-        `"maximalCharactersCount" (${ maximalCharactersCount })`
-      );
-    }
-
-
-    if (
-      Number.isInteger(minimalNumericValue) &&
-      Number.isInteger(maximalNumericValue) &&
-      minimalNumericValue > maximalNumericValue
-    ) {
-      throw new Error(
-        `"TextBox--YDF", the specified "minimalNumericValue" (${ minimalNumericValue }) is greater than ` +
-        `"maximalNumericValue" (${ maximalNumericValue })`
-      );
-    }
-    // =================================================================================================================
-
 
     const {
       invalidInputHighlightingIfAnyValidationErrorsMessages = false,
@@ -109,7 +83,7 @@ mixin TextBox--YDF(properties, statesSimulations)
       required,
       mustDisplayAppropriateBadgeIfInputIsRequired,
       mustDisplayAppropriateBadgeIfInputIsOptional,
-      mustEqualizeHeightWithOtherInstancesWithBadgesWhenNoBadge,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
       coreElementHTML_ID: inputOrTextAreaElementHTML_ID,
       labelElementHTML_ID: labelElementHTML_ID,
 

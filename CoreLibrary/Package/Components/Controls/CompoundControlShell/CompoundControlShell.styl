@@ -156,7 +156,7 @@ provideCompoundControlShellYDF_Component(
         })
 
 
-    .CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer
+    .CompoundControlShell--YDF-ValidationErrorsMessagesList
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
@@ -167,7 +167,7 @@ provideCompoundControlShellYDF_Component(
       })
 
 
-    .CompoundControlShell--YDF-ErrorMessage
+    .CompoundControlShell--YDF-ValidationErrorMessage
 
       MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(
         extractAndValidateObjectProperties({
@@ -183,7 +183,7 @@ provideCompoundControlShellYDF_Component(
 
       retireFromElementWithSameSelector({
         contextSelector: ROOT_ELEMENT_SELECTOR,
-        referenceElementSelector: ".CompoundControlShell--YDF-ErrorMessage"
+        referenceElementSelector: ".CompoundControlShell--YDF-ValidationErrorMessage"
         y: extractAndValidateObjectProperties({
           targetObject: variation,
           targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
@@ -229,7 +229,7 @@ provideCompoundControlShellYDF_Component(
       })
 
 
-    .CompoundControlShell--YDF-ErrorMessage
+    .CompoundControlShell--YDF-ValidationErrorMessage
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,

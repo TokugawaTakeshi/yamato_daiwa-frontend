@@ -5,11 +5,15 @@ import YDF_ComponentsCoordinator from "@Components/YDF_ComponentsCoordinator";
 import {
   Options as VueComponentConfiguration,
   Vue as VueComponent,
-  Prop as VueProperty
+  Prop as VueProperty,
+  Watch as onVueComponentFieldUpdated
 } from "vue-property-decorator";
 
 /* --- Utils -------------------------------------------------------------------------------------------------------- */
 import {
+  secondsToMilliseconds,
+  toLowerCamelCase,
+  toScreamingSnakeCase,
   isString,
   isNonEmptyString,
   toUpperCamelCase,
@@ -43,11 +47,13 @@ namespace CompoundControlShell {
 
   export type GeometricVariations = {
     readonly regular: "REGULAR";
+    readonly small: "SMALL";
     [geometricVariationName: string]: string;
   };
 
   export const GeometricVariations: GeometricVariations = {
-    regular: "REGULAR"
+    regular: "REGULAR",
+    small: "SMALL"
   };
 
 
@@ -161,7 +167,67 @@ namespace CompoundControlShell {
     protected readonly decoration!: string;
 
 
+    /* === Validation errors messages animating ===================================================================== */
+    /* [ Theory ] Even if `validationErrorsMessages` became to empty array, the validation errors messages are still
+    *   require to animate the expanding. */
+    protected validationErrorsMessagesCopyForAnimating: ReadonlyArray<string> = [ ...this.validationErrorsMessages ];
+    protected readonly VALIDATION_ERRORS_MESSAGES_ANIMATION_DURATION__SECONDS: number = 0.5;
+
+    @onVueComponentFieldUpdated("validationErrorsMessages")
+    protected onValidationErrorsMessagesUpdated(newValidationErrorsMessages: ReadonlyArray<string>): void {
+
+      if (newValidationErrorsMessages.length > 0) {
+        this.validationErrorsMessagesCopyForAnimating = [ ...newValidationErrorsMessages ];
+        return;
+      }
+
+
+      setTimeout(
+        (): void => { this.validationErrorsMessagesCopyForAnimating = []; },
+        secondsToMilliseconds(this.VALIDATION_ERRORS_MESSAGES_ANIMATION_DURATION__SECONDS)
+      );
+
+    }
+
+
     /* === Auxiliaries ============================================================================================== */
+    /* --- Themes --------------------------------------------------------------------------------------------------- */
+    public static defineNewThemes(themesNames: ReadonlyArray<string>): typeof BasicLogic {
+
+      for (const themeName of themesNames) {
+        Themes[toLowerCamelCase(themeName)] = toScreamingSnakeCase(themeName);
+      }
+
+      return BasicLogic;
+
+    }
+
+
+    /* --- Geometry ------------------------------------------------------------------------------------------------- */
+    public static defineNewGeometricVariations(geometricVariationsNames: ReadonlyArray<string>): typeof BasicLogic {
+
+      for (const geometricVariationsName of geometricVariationsNames) {
+        GeometricVariations[toLowerCamelCase(geometricVariationsName)] = toScreamingSnakeCase(geometricVariationsName);
+      }
+
+      return BasicLogic;
+
+    }
+
+
+    /* --- Decoration ----------------------------------------------------------------------------------------------- */
+    public static defineNewDecorativeVariations(decorativeVariationsNames: ReadonlyArray<string>): typeof BasicLogic {
+
+      for (const decorativeVariationsName of decorativeVariationsNames) {
+        DecorativeVariations[toLowerCamelCase(decorativeVariationsName)] = toScreamingSnakeCase(decorativeVariationsName);
+      }
+
+      return BasicLogic;
+
+    }
+
+
+    /* --- CSS ------------------------------------------------------------------------------------------------------ */
     protected get rootElementModifierCSS_Classes(): ReadonlyArray<string> {
       return [
         ...Object.entries(Themes).length > 1 && !this.areThemesExternal ?
@@ -177,6 +243,8 @@ namespace CompoundControlShell {
       ];
     }
 
+
+    /* --- Displaying of elements ----------------------------------------------------------------------------------- */
     protected get mustDisplayHeader(): boolean {
       return isNeitherUndefinedNorNull(this.label) ||
           this.mustDisplayAppropriateBadgeIfInputIsRequired ||

@@ -34,6 +34,21 @@ Please note that `@yamato-daiwa/frontend-vue` suggests only the logic for the Vu
 |                             |                                                                                                                                                                                                     |                                                      |
 
 
+### Helper functions
+
+<dl>
+
+  <dt><code>getExpectedToBeMountedDOM_ElementByVueReferenceID</code></dt>
+  <dd>
+    Retrieves by Vue reference expected to be mounted DOM element owned by specific Vue component.
+    The default return type is <code>Element</code> however with <code>TargetElementSubtype</code> property
+      of sole object type parameter has been specified any inheritor of <code>Element</code> could be retrieved
+      type safely.
+  </dd>
+
+</dl>
+
+
 ## Dependencies
 
 <dl>

@@ -107,10 +107,10 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
 
 
     if invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0
-      ul.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer
+      ul.CompoundControlShell--YDF-ValidationErrorsMessagesList
         each validationErrorMessage in validationErrorsMessages
-          li.CompoundControlShell--YDF-ErrorMessage= validationErrorMessage
+          li.CompoundControlShell--YDF-ValidationErrorMessage= validationErrorMessage
 
-    template.CompoundControlShell--YDF-ErrorMessagesTemplate
-      ul.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer
-        li.CompoundControlShell--YDF-ErrorMessage
+    template.CompoundControlShell--YDF-ValidationErrorMessagesListTemplate
+      ul.CompoundControlShell--YDF-ValidationErrorsMessagesList
+        li.CompoundControlShell--YDF-ValidationErrorMessage

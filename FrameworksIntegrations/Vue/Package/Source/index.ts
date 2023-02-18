@@ -210,3 +210,13 @@ export { default as TriangleIcon__Upward__Circled__Filled } from
     "@SVG_Icons/Triangle/TriangleIcon__Upward__Circled__Filled.vue";
 export { default as TriangleIcon__Upward__Filled } from
     "@SVG_Icons/Triangle/TriangleIcon__Upward__Filled.vue";
+
+
+/* === Functions ==================================================================================================== */
+/* --- Routing ------------------------------------------------------------------------------------------------------ */
+export { default as extractVueRouteQueryParameterValueAsArrayOfStrings } from
+    "@Source/Functions/Routing/extractVueRouteQueryParameterAsArray";
+
+/* --- Retrieving of elements or components by Vue reference -------------------------------------------------------- */
+export { default as getExpectedToBeMountedDOM_ElementByVueReferenceID } from
+    "@Source/Functions/getExpectedToBeMountedDOM_ElementByVueReferenceID";

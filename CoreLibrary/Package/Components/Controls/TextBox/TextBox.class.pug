@@ -139,7 +139,7 @@
           required: false
         },
 
-        mustEqualizeHeightWithOtherInstancesWithBadgesWhenNoBadge: {
+        mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge: {
           type: Boolean,
           required: false
         },
@@ -153,7 +153,16 @@
         maximalCharactersCount: {
           type: Number,
           numbersSet: RawObjectDataProcessor.NumbersSets.nonNegativeInteger,
-          required: false
+          required: false,
+          customValidators: {
+            validationFunction: ({ currentPropertyValue: maximalCharactersCount, rawData__currentObjectDepth }) =>
+                isUndefined(rawData__currentObjectDepth.minimalCharactersCount) ||
+                (
+                  Number.isInteger(rawData__currentObjectDepth.minimalCharactersCount) &&
+                  maximalCharactersCount >= rawData__currentObjectDepth.minimalCharactersCount
+                ),
+            descriptionForLogging: "\"maximalCharactersCount\" could not be less than \"minimalCharactersCount\"."
+          }
         },
 
         minimalNumericValue: {
@@ -165,7 +174,16 @@
         maximalNumericValue: {
           type: Number,
           numbersSet: RawObjectDataProcessor.NumbersSets.nonNegativeInteger,
-          required: false
+          required: false,
+          customValidators: {
+            validationFunction: ({ currentPropertyValue: maximalNumericValue, rawData__currentObjectDepth }) =>
+                isUndefined(rawData__currentObjectDepth.minimalNumericValue) ||
+                (
+                  Number.isInteger(rawData__currentObjectDepth.minimalNumericValue) &&
+                  maximalNumericValue >= rawData__currentObjectDepth.minimalNumericValue
+                ),
+            descriptionForLogging: "\"maximalNumericValue\" could not be less than \"minimalNumericValue\"."
+          }
         },
 
         inputOrTextAreaElementHTML_ID: {

@@ -1,4 +1,5 @@
-CompoundControlShell.TextBox(
+CompoundControlShell.TextBox--YDF(
+
   :label="label"
   :guidance="guidance"
   :required="required"
@@ -7,15 +8,21 @@ CompoundControlShell.TextBox(
   :coreElementHTML_ID="inputOrTextareaElementHTML_ID"
   :labelElementHTML_ID="labelElementHTML_ID"
 
-  :invalidInputHighlightingIfAnyErrorsMessages="invalidInputHighlightingIfAnyErrorsMessages"
-  :validValueHighlightingIfNoErrorsMessages="validValueHighlightingIfNoErrorsMessages"
+  :invalidInputHighlightingIfAnyValidationErrorsMessages="invalidInputHighlightingIfAnyValidationErrorsMessages"
+  :validValueHighlightingIfNoValidationErrorsMessages="validInputHighlightingIfAnyErrorsMessages"
 
-  :errorsMessages="validatablePayload.validationErrorsMessages"
+  :validationErrorsMessages="validatablePayload.validationErrorsMessages"
   :class="rootElementModifiersCSS_Classes"
+
+  :theme="compoundControlShellTheme"
+  :areThemesExternal="areThemesExternal"
+  :geometry="compoundControlShellGeometricVariation"
+  :decoration="compoundControlShellDecorativeVariation"
+
 )
 
-  //- TODO Theme
-  textarea.TextBox-InputOrTextareaElement(
+  textarea.TextBox--YDF-InputOrTextAreaElement(
+    v-if="multiline"
     v-model="rawInput"
     :placeholder="placeholder"
     :readonly="readonly"
@@ -29,10 +36,12 @@ CompoundControlShell.TextBox(
     @input="$event => { onInput($event.target.value) }"
     @blur="$event => { onBlur($event.target.value) } "
     @keydown="$event => { onKeyDown($event.target.value) } "
-    :ref="INPUT_OR_TEXTAREA_ELEMENT_VUE_REFERENCE_ID"
+    :ref="INPUT_OR_TEXT_AREA_ELEMENT_VUE_REFERENCE_ID"
   )
 
-  input.TextBox-InputOrTextareaElement(
+  //- [ Bundler bug ] The `v-else` is being compiled to `v-else="v-else"`
+  input.TextBox--YDF-InputOrTextAreaElement(
+    v-else-if="!multiline"
     :type="HTML_Type"
     v-model="rawInput"
     :placeholder="placeholder"
@@ -49,5 +58,5 @@ CompoundControlShell.TextBox(
     @input="$event => { onInput($event.target.value) }"
     @blur="$event => { onBlur($event.target.value) } "
     @keydown="$event => { onKeyDown($event.target.value) } "
-    :ref="INPUT_OR_TEXTAREA_ELEMENT_VUE_REFERENCE_ID"
+    :ref="INPUT_OR_TEXT_AREA_ELEMENT_VUE_REFERENCE_ID"
   )

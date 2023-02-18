@@ -10,12 +10,12 @@ import CollapsingAnimation from "@Animations/CollapsingAnimation";
 
 export default class CompoundControlShell {
 
-  protected static readonly ERRORS_MESSAGES_COLLAPSABLE_LIST_TEMPLATE_SELECTOR: string =
-      ".CompoundControlShell--YDF-ErrorMessagesTemplate";
-  protected static readonly ERROR_MESSAGES_COLLAPSABLE_LIST_SELECTOR: string =
-      ".CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer";
-  protected static readonly ERROR_MESSAGES_LIST_ITEM_SELECTOR: string =
-      ".CompoundControlShell--YDF-ErrorMessage";
+  protected static readonly VALIDATION_ERRORS_MESSAGES_LIST_TEMPLATE_SELECTOR: string =
+      ".CompoundControlShell--YDF-ValidationErrorMessagesListTemplate";
+  protected static readonly VALIDATION_ERROR_MESSAGES_LIST_SELECTOR: string =
+      ".CompoundControlShell--YDF-ValidationErrorsMessagesList";
+  protected static readonly VALIDATION_ERROR_MESSAGE_LIST_ITEM_SELECTOR: string =
+      ".CompoundControlShell--YDF-ValidationErrorMessage";
 
 
   protected static readonly ERRORS_LIST_EXPANDING_ANIMATION_DURATION_PER_ONE_ERROR_MESSAGE__SECONDS: number = 0.2;
@@ -46,21 +46,21 @@ export default class CompoundControlShell {
     });
 
     this.errorsMessagesCollapsableList = getExpectedToBeSingleChildOfTemplateElement({
-      templateElementSelector: CompoundControlShell.ERRORS_MESSAGES_COLLAPSABLE_LIST_TEMPLATE_SELECTOR,
+      templateElementSelector: CompoundControlShell.VALIDATION_ERRORS_MESSAGES_LIST_TEMPLATE_SELECTOR,
       expectedChildElementSubtype: HTMLElement,
       context: this.rootElement,
       mustReplaceTemplateElementOnceDoneWith: this.errorsMessagesCollapsableListMountingPoint
     });
 
     this.emptyErrorMessagesListItem = getExpectedToBeSingleDOM_Element({
-      selector: CompoundControlShell.ERROR_MESSAGES_LIST_ITEM_SELECTOR,
+      selector: CompoundControlShell.VALIDATION_ERROR_MESSAGE_LIST_ITEM_SELECTOR,
       context: this.errorsMessagesCollapsableList
     });
 
     this.emptyErrorMessagesListItem.remove();
 
     /* [ Theory ] There could be pre-mounted errors by state simulations, but they could not correspond to inputted value. */
-    this.rootElement.querySelector(CompoundControlShell.ERROR_MESSAGES_COLLAPSABLE_LIST_SELECTOR)?.remove();
+    this.rootElement.querySelector(CompoundControlShell.VALIDATION_ERROR_MESSAGES_LIST_SELECTOR)?.remove();
 
   }
 

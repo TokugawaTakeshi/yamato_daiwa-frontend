@@ -36,13 +36,14 @@
   ): slot
 
 
-  HorizontallySlidingContainer.CompoundControlShell--YDF-ErrorsMessagesCollapsableContainer(
-    :expanded="invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0"
+  HorizontallySlidingContainer.CompoundControlShell--YDF-ValidationErrorsMessagesList(
+    :expanded="invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessagesCopyForAnimating.length > 0"
     HTML_Tag="ul"
     :mustAnimateHeightWhenContentsAreChanged="true"
+    :animationDuration__seconds="VALIDATION_ERRORS_MESSAGES_ANIMATION_DURATION__SECONDS"
   )
 
-    li.CompoundControlShell--YDF-ErrorMessage(
-      v-for="validationErrorMessage of validationErrorsMessages"
+    li.CompoundControlShell--YDF-ValidationErrorMessage(
+      v-for="validationErrorMessage of validationErrorsMessagesCopyForAnimating"
       :key="`VALIDATION_ERROR_MESSAGE-${ validationErrorMessage }`"
     ) {{ validationErrorMessage }}

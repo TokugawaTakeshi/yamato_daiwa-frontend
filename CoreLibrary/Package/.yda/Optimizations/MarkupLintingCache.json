@@ -7,10 +7,6 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.397Z"
   },
-  "Components/ComponentsAuxiliaries.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-02T04:36:13.257Z"
-  },
   "PagesTemplates/RegularWebPage.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:56.050Z"
@@ -23,14 +19,6 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.462Z"
   },
-  "Components/AttentionBox/AttentionBox.class.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.361Z"
-  },
-  "Components/AttentionBox/AttentionBox.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.362Z"
-  },
   "Components/Badge/Badge.class.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-02-02T03:58:21.968Z"
@@ -39,9 +27,25 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-26T00:58:42.072Z"
   },
+  "Components/AttentionBox/AttentionBox.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.361Z"
+  },
+  "Components/AttentionBox/AttentionBox.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.362Z"
+  },
+  "Components/AttentionBox/AttentionBoxLocalization.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.363Z"
+  },
   "Components/InformationSourceReference/InformationSourceReference.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.742Z"
+  },
+  "Components/ModalDialog/ModalDialog.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-10T06:41:07.766Z"
   },
   "Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.pug": {
     "issues": [],
@@ -63,15 +67,27 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-26T06:34:51.831Z"
   },
-  "Markup/Assets/Dummies.pug": {
+  "Components/Testing/ThemesShowcase.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.398Z"
+    "modificationDatetime__ISO_8601": "2023-02-05T03:51:14.288Z"
+  },
+  "Components/_Auxiliaries/ComponentsAuxiliaries.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-02-02T04:36:13.257Z"
   },
   "Markup/BuildInPlugins/YamatoDaiwaInformationDesign.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.433Z"
   },
+  "Markup/Assets/Dummies.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.398Z"
+  },
   "Markup/InlineECMAScript/PugExtensions.generated.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.435Z"
+  },
+  "Markup/InlineECMAScript/RoutingEmulator.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.435Z"
   },
@@ -89,43 +105,43 @@
   },
   "Components/Controls/CompoundControlShell/CompoundControlShell.class.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-11T01:09:12.013Z"
+    "modificationDatetime__ISO_8601": "2023-02-11T11:38:11.349Z"
   },
   "Components/Controls/CompoundControlShell/CompoundControlShell.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-11T01:09:12.030Z"
+    "modificationDatetime__ISO_8601": "2023-02-23T01:42:02.997Z"
   },
-  "Components/Controls/TextBox/TextBox.class.pug": {
+  "Components/Controls/ComboBox/ComboBox.class.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-11T01:12:26.379Z"
+    "modificationDatetime__ISO_8601": "2023-02-11T01:09:11.995Z"
   },
-  "Components/Controls/TextBox/TextBox.pug": {
+  "Components/Controls/ComboBox/ComboBox.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-11T01:17:14.469Z"
+    "modificationDatetime__ISO_8601": "2023-02-11T01:09:12.039Z"
   },
-  "Components/Controls/DropdownList/DropdownList.class.pug": {
+  "Components/Controls/Tabs/Tabs.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.914Z"
-  },
-  "Components/Controls/DropdownList/DropdownList.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-01T04:43:26.215Z"
+    "modificationDatetime__ISO_8601": "2023-01-09T05:19:49.020Z"
   },
   "Components/Images/SingleImageViewer/SingleImageViewer.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.953Z"
   },
+  "Components/Controls/TextBox/TextBox.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-02-15T23:42:13.661Z"
+  },
+  "Components/Controls/TextBox/TextBox.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-02-23T02:02:33.129Z"
+  },
   "Components/Prototyping/DummyLogoLink/DummyLogoLink.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2022-07-30T03:15:56.134Z"
   },
-  "Components/Viewers/CodeViewer/CodeViewer.class.pug": {
+  "Components/Typography/ArticleAbstract/ArticleAbstract.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.393Z"
-  },
-  "Components/Viewers/CodeViewer/CodeViewer.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.393Z"
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.975Z"
   },
   "Components/Typography/ImprovedBlockquote/ImprovedBlockquote.pug": {
     "issues": [],
@@ -135,9 +151,25 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.991Z"
   },
+  "Components/Viewers/CodeViewer/CodeViewer.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.393Z"
+  },
+  "Components/Viewers/CodeViewer/CodeViewer.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.393Z"
+  },
+  "Components/Viewers/CodeViewer/CodeViewerLocalization.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.394Z"
+  },
   "Markup/Assets/SVG_Icons/SVG_Icons.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.995Z"
+  },
+  "Tests/Assets/Colors/YDF_ColorPalette.test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-10T01:13:58.794Z"
   },
   "Tests/Components/AttentionBox/AttentionBox.test.pug": {
     "issues": [],
@@ -146,6 +178,10 @@
   "Tests/Components/Badge/Badge.test.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-02-05T04:17:55.631Z"
+  },
+  "Tests/Components/Badge/_BadgeDemo.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-02-05T04:08:35.543Z"
   },
   "Tests/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.test.pug": {
     "issues": [],
@@ -175,33 +211,33 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.399Z"
   },
-  "Markup/Assets/SVG_Icons/Brackets/CurlyBracketIcon__Closing.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.433Z"
-  },
-  "Markup/Assets/SVG_Icons/Brackets/CurlyBracketIcon__Opening.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.511Z"
-  },
-  "Markup/Assets/SVG_Icons/Brackets/RoundBracketIcon__Closing.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.543Z"
-  },
-  "Markup/Assets/SVG_Icons/Brackets/RoundBracketIcon__Opening.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.503Z"
-  },
-  "Markup/Assets/SVG_Icons/Brackets/SquareBracketIcon__Closing.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.534Z"
-  },
-  "Markup/Assets/SVG_Icons/Brackets/SquareBracketIcon__Opening.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-31T01:13:21.415Z"
-  },
   "Markup/Assets/SVG_Icons/Bell/BellIcon__Filled.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.399Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/CurlyBracketIcon__Closing.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.991Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/CurlyBracketIcon__Opening.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.992Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/RoundBracketIcon__Closing.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.992Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/RoundBracketIcon__Opening.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.992Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/SquareBracketIcon__Closing.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.993Z"
+  },
+  "Markup/Assets/SVG_Icons/Bracket/SquareBracketIcon__Opening.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.993Z"
   },
   "Markup/Assets/SVG_Icons/Calendar/CalendarIcon.pug": {
     "issues": [],
@@ -251,6 +287,38 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.406Z"
   },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.411Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Circled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.412Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Octagoned__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.413Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Octagoned__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.413Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Rectangled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.414Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Rectangled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.414Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Triangled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.415Z"
+  },
+  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Triangled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.415Z"
+  },
   "Markup/Assets/SVG_Icons/Comment/CommentIcon__Dots__Filled.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.408Z"
@@ -299,37 +367,9 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.411Z"
   },
-  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Circled__Filled.pug": {
+  "Markup/Assets/SVG_Icons/Filtering/FilteringIcon__Outlined.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.411Z"
-  },
-  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Circled__Outlined.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.412Z"
-  },
-  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Octagoned__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.413Z"
-  },
-  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Octagoned__Outlined.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.413Z"
-  },
-  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Rectangled__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.414Z"
-  },
-  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Rectangled__Outlined.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.414Z"
-  },
-  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Triangled__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.415Z"
-  },
-  "Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Triangled__Outlined.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.415Z"
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.615Z"
   },
   "Markup/Assets/SVG_Icons/Folder/FolderIcon__ExclamationMark__Filled.pug": {
     "issues": [],
@@ -354,10 +394,6 @@
   "Markup/Assets/SVG_Icons/Folder/FolderIcon__Stationery.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.418Z"
-  },
-  "Markup/Assets/SVG_Icons/Filtering/FilteringIcon__Outlined.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.615Z"
   },
   "Markup/Assets/SVG_Icons/HamburgerMenu/HamburgerMenuIcon.pug": {
     "issues": [],
@@ -399,25 +435,25 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.618Z"
   },
-  "Markup/Assets/SVG_Icons/Likes/LikeIcon__Filled.pug": {
+  "Markup/Assets/SVG_Icons/Like/LikeIcon__Filled.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.861Z"
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.993Z"
   },
-  "Markup/Assets/SVG_Icons/Likes/LikeIcon__Outlined.pug": {
+  "Markup/Assets/SVG_Icons/Like/LikeIcon__Outlined.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-31T01:07:52.210Z"
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.994Z"
   },
-  "Markup/Assets/SVG_Icons/Likes/UnlikeIcon__Filled.pug": {
+  "Markup/Assets/SVG_Icons/Like/UnlikeIcon__Filled.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.595Z"
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.994Z"
   },
-  "Markup/Assets/SVG_Icons/Likes/UnlikeIcon__Outlined.pug": {
+  "Markup/Assets/SVG_Icons/Like/UnlikeIcon__Outlined.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.631Z"
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.994Z"
   },
-  "Markup/Assets/SVG_Icons/Lists/ChecklistIcon.pug": {
+  "Markup/Assets/SVG_Icons/List/ChecklistIcon.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.647Z"
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.995Z"
   },
   "Markup/Assets/SVG_Icons/MagnifyingGlass/MagnifyingGlassIcon.pug": {
     "issues": [
@@ -559,14 +595,6 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.423Z"
   },
-  "Markup/Assets/SVG_Icons/QuestionMark/QuestionMarkIcon__Circled__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.635Z"
-  },
-  "Markup/Assets/SVG_Icons/QuestionMark/QuestionMarkIcon__Circled__Outlined.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.636Z"
-  },
   "Markup/Assets/SVG_Icons/Phone/PhoneIcon__Filled.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.634Z"
@@ -578,6 +606,14 @@
   "Markup/Assets/SVG_Icons/Phone/TelephoneIcon__Filled.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.635Z"
+  },
+  "Markup/Assets/SVG_Icons/QuestionMark/QuestionMarkIcon__Circled__Filled.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.635Z"
+  },
+  "Markup/Assets/SVG_Icons/QuestionMark/QuestionMarkIcon__Circled__Outlined.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.636Z"
   },
   "Markup/Assets/SVG_Icons/QuoteMark/QuoteMarkIcon__Downward__Filled.pug": {
     "issues": [],
@@ -651,10 +687,6 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.428Z"
   },
-  "Markup/Assets/SVG_Icons/Timeline/TimelineIcon.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.430Z"
-  },
   "Markup/Assets/SVG_Icons/TrashCan/TrashCanIcon__Filled.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.636Z"
@@ -662,114 +694,6 @@
   "Markup/Assets/SVG_Icons/TrashCan/TrashCanIcon__Outlined.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2022-06-25T02:41:18.637Z"
-  },
-  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Downward__Circled__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.588Z"
-  },
-  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Downward__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:24.041Z"
-  },
-  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Leftward__Circled__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.724Z"
-  },
-  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Leftward__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.911Z"
-  },
-  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Rightward__Circled__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.869Z"
-  },
-  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Rightward__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:24.036Z"
-  },
-  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Upward__Circled__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.960Z"
-  },
-  "Markup/Assets/SVG_Icons/Triangles/TriangleIcon__Upward__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-10-19T01:55:23.982Z"
-  },
-  "Tests/Components/Controls/TextBox/TextBox.test.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-11T01:08:58.149Z"
-  },
-  "Tests/Components/Viewers/CodeViewer/CodeViewer.test.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:56.058Z"
-  },
-  "Tests/Components/Controls/Buttons/Plain/Button.test.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.458Z"
-  },
-  "Components/AttentionBox/AttentionBoxLocalization.english.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.363Z"
-  },
-  "Tests/Assets/Colors/YDF_ColorPalette.test.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-10T01:13:58.794Z"
-  },
-  "Markup/InlineECMAScript/RoutingEmulator.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.435Z"
-  },
-  "Components/Viewers/CodeViewer/CodeViewerLocalization.english.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.394Z"
-  },
-  "Markup/Assets/SVG_Icons/Bracket/CurlyBracketIcon__Closing.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.991Z"
-  },
-  "Markup/Assets/SVG_Icons/Bracket/CurlyBracketIcon__Opening.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.992Z"
-  },
-  "Markup/Assets/SVG_Icons/Bracket/RoundBracketIcon__Closing.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.992Z"
-  },
-  "Markup/Assets/SVG_Icons/Bracket/RoundBracketIcon__Opening.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.992Z"
-  },
-  "Markup/Assets/SVG_Icons/Bracket/SquareBracketIcon__Closing.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.993Z"
-  },
-  "Markup/Assets/SVG_Icons/Bracket/SquareBracketIcon__Opening.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.993Z"
-  },
-  "Markup/Assets/SVG_Icons/Like/LikeIcon__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.993Z"
-  },
-  "Markup/Assets/SVG_Icons/Like/LikeIcon__Outlined.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.994Z"
-  },
-  "Markup/Assets/SVG_Icons/Like/UnlikeIcon__Filled.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.994Z"
-  },
-  "Markup/Assets/SVG_Icons/Like/UnlikeIcon__Outlined.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.994Z"
-  },
-  "Markup/Assets/SVG_Icons/List/ChecklistIcon.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.995Z"
-  },
-  "Components/Typography/ArticleAbstract/ArticleAbstract.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.975Z"
   },
   "Markup/Assets/SVG_Icons/Triangle/TriangleIcon__Downward__Circled__Filled.pug": {
     "issues": [],
@@ -803,101 +727,24 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-01-06T02:46:25.998Z"
   },
-  "Components/Controls/Tabs/Tabs.pug": {
+  "Markup/Assets/SVG_Icons/Timeline/TimelineIcon.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-09T05:19:49.020Z"
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.430Z"
   },
-  "Components/ModalDialog/ModalDialog.pug": {
+  "Tests/Components/Controls/TextBox/TextBox.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-10T06:41:07.766Z"
+    "modificationDatetime__ISO_8601": "2023-02-18T03:17:50.122Z"
   },
-  "Tests/Components/Badge/BadgeDemo.pug": {
+  "Tests/Components/Viewers/CodeViewer/CodeViewer.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-30T01:43:28.253Z"
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:56.058Z"
   },
-  "Tests/Components/Badge/_BadgeDemo.pug": {
-    "issues": [
-      {
-        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
-        "message": "One space required after buffered code operator",
-        "sourceListing": "mixin BadgeDemo(options)\n\n  -\n\n    options = options ?? {\n      headings: true,\n      partials: {\n        valuesOnly: true,\n        keysAndValues: true,\n        iconsAndKeysAndValues: true,\n        iconsAndValues: true,\n        geometricModifiers: {\n          pillShape: true\n        },\n        decorativeModifiers: {\n          bordersDisguising: true\n        },\n        overflowTesting: {\n          multiline: true,\n          singleLine: true\n        },\n        loadingPlaceholder: true\n      }\n    }\n\n    ThemesShowcase__YDF.\n        setDefaultThemeKeyLabelPrefix(\"Badge__YDF.Themes.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.GeometricVariations.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.DecorativeVariations.\");\n\n    const themeShowcaseCurrentIternationData = ThemesShowcase__YDF.initializeCurrentIterationData()\n\n\n  if options.headings\n\n    h1.Heading1 Badge component testing\n\n\n  //- === Values only ==================================================================================================\n  if options.partials.valuesOnly\n\n    if options.headings\n\n      h2.Heading2 Values only\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Keys and values ==============================================================================================\n  if options.partials.keysAndValues\n\n    if options.headings\n\n      h2.Heading2 Keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Key\",\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Icons, keys and values =======================================================================================\n  if options.partials.iconsAndKeysAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons, keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Date\",\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Icons and values =============================================================================================\n  if options.partials.iconsAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Geometric modifiers ==========================================================================================\n  if options.partials.geometricModifiers.pillShape\n\n    if options.headings\n\n      h2.Heading2 Geometric modifiers\n\n      h3.Heading3 Pill shape\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Value\",\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ],\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n    //- === Decorative modifiers =========================================================================================\n    if options.partials.decorativeModifiers.bordersDisguising\n\n      if options.headings\n\n        h2.Heading2 Decorative modifiers\n\n        h3.Heading3 Borders disguising\n\n      +ThemesShowcase--YDF({\n        themes: Badge__YDF.Themes,\n        geometricVariations: Badge__YDF.GeometricVariations,\n        decorativeVariations: Badge__YDF.DecorativeVariations,\n        decorativeVariationsWrapperTag: \"dl\",\n        decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n        iterationData: themeShowcaseCurrentIternationData\n      })\n\n        dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n        dd\n          +Badge--YDF({\n            value: \"Value\",\n            geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n            decoration: themeShowcaseCurrentIternationData.decorativeVariation.value,\n            decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ]\n          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Overflow testing =============================================================================================\n  if options.partials.overflowTesting.multiline || options.partials.overflowTesting.singleLine\n\n    if options.headings\n\n      h2.Heading2 Overflow safety\n\n\n    if options.partials.overflowTesting.multiline\n\n      if options.headings\n\n        h3.Heading3 Multiline\n\n      .BadgeDemo-BadgesFlow\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n    if options.partials.overflowTesting.singleLine\n\n      if options.headings\n\n        h3.Heading3 Single line\n\n      .BadgeDemo-BadgesFlow.BadgeDemo-BadgesFlow__LimitedChildrenMaximalWidth\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          mustForceSingleLine: true,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n  //- === Loading placeholder ==========================================================================================\n  if options.partials.loadingPlaceholder\n\n    if options.headings\n\n      h2.Heading2 Loading placeholder\n\n    .BadgeDemo-BadgesFlow\n\n      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n        })\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ]\n        })\n",
-        "lineNumber": 55,
-        "columnNumber": 10
-      },
-      {
-        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
-        "message": "One space required after buffered code operator",
-        "sourceListing": "mixin BadgeDemo(options)\n\n  -\n\n    options = options ?? {\n      headings: true,\n      partials: {\n        valuesOnly: true,\n        keysAndValues: true,\n        iconsAndKeysAndValues: true,\n        iconsAndValues: true,\n        geometricModifiers: {\n          pillShape: true\n        },\n        decorativeModifiers: {\n          bordersDisguising: true\n        },\n        overflowTesting: {\n          multiline: true,\n          singleLine: true\n        },\n        loadingPlaceholder: true\n      }\n    }\n\n    ThemesShowcase__YDF.\n        setDefaultThemeKeyLabelPrefix(\"Badge__YDF.Themes.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.GeometricVariations.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.DecorativeVariations.\");\n\n    const themeShowcaseCurrentIternationData = ThemesShowcase__YDF.initializeCurrentIterationData()\n\n\n  if options.headings\n\n    h1.Heading1 Badge component testing\n\n\n  //- === Values only ==================================================================================================\n  if options.partials.valuesOnly\n\n    if options.headings\n\n      h2.Heading2 Values only\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Keys and values ==============================================================================================\n  if options.partials.keysAndValues\n\n    if options.headings\n\n      h2.Heading2 Keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Key\",\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Icons, keys and values =======================================================================================\n  if options.partials.iconsAndKeysAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons, keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Date\",\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Icons and values =============================================================================================\n  if options.partials.iconsAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Geometric modifiers ==========================================================================================\n  if options.partials.geometricModifiers.pillShape\n\n    if options.headings\n\n      h2.Heading2 Geometric modifiers\n\n      h3.Heading3 Pill shape\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Value\",\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ],\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n    //- === Decorative modifiers =========================================================================================\n    if options.partials.decorativeModifiers.bordersDisguising\n\n      if options.headings\n\n        h2.Heading2 Decorative modifiers\n\n        h3.Heading3 Borders disguising\n\n      +ThemesShowcase--YDF({\n        themes: Badge__YDF.Themes,\n        geometricVariations: Badge__YDF.GeometricVariations,\n        decorativeVariations: Badge__YDF.DecorativeVariations,\n        decorativeVariationsWrapperTag: \"dl\",\n        decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n        iterationData: themeShowcaseCurrentIternationData\n      })\n\n        dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n        dd\n          +Badge--YDF({\n            value: \"Value\",\n            geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n            decoration: themeShowcaseCurrentIternationData.decorativeVariation.value,\n            decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ]\n          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Overflow testing =============================================================================================\n  if options.partials.overflowTesting.multiline || options.partials.overflowTesting.singleLine\n\n    if options.headings\n\n      h2.Heading2 Overflow safety\n\n\n    if options.partials.overflowTesting.multiline\n\n      if options.headings\n\n        h3.Heading3 Multiline\n\n      .BadgeDemo-BadgesFlow\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n    if options.partials.overflowTesting.singleLine\n\n      if options.headings\n\n        h3.Heading3 Single line\n\n      .BadgeDemo-BadgesFlow.BadgeDemo-BadgesFlow__LimitedChildrenMaximalWidth\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          mustForceSingleLine: true,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n  //- === Loading placeholder ==========================================================================================\n  if options.partials.loadingPlaceholder\n\n    if options.headings\n\n      h2.Heading2 Loading placeholder\n\n    .BadgeDemo-BadgesFlow\n\n      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n        })\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ]\n        })\n",
-        "lineNumber": 81,
-        "columnNumber": 10
-      },
-      {
-        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
-        "message": "One space required after buffered code operator",
-        "sourceListing": "mixin BadgeDemo(options)\n\n  -\n\n    options = options ?? {\n      headings: true,\n      partials: {\n        valuesOnly: true,\n        keysAndValues: true,\n        iconsAndKeysAndValues: true,\n        iconsAndValues: true,\n        geometricModifiers: {\n          pillShape: true\n        },\n        decorativeModifiers: {\n          bordersDisguising: true\n        },\n        overflowTesting: {\n          multiline: true,\n          singleLine: true\n        },\n        loadingPlaceholder: true\n      }\n    }\n\n    ThemesShowcase__YDF.\n        setDefaultThemeKeyLabelPrefix(\"Badge__YDF.Themes.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.GeometricVariations.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.DecorativeVariations.\");\n\n    const themeShowcaseCurrentIternationData = ThemesShowcase__YDF.initializeCurrentIterationData()\n\n\n  if options.headings\n\n    h1.Heading1 Badge component testing\n\n\n  //- === Values only ==================================================================================================\n  if options.partials.valuesOnly\n\n    if options.headings\n\n      h2.Heading2 Values only\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Keys and values ==============================================================================================\n  if options.partials.keysAndValues\n\n    if options.headings\n\n      h2.Heading2 Keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Key\",\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Icons, keys and values =======================================================================================\n  if options.partials.iconsAndKeysAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons, keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Date\",\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Icons and values =============================================================================================\n  if options.partials.iconsAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Geometric modifiers ==========================================================================================\n  if options.partials.geometricModifiers.pillShape\n\n    if options.headings\n\n      h2.Heading2 Geometric modifiers\n\n      h3.Heading3 Pill shape\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Value\",\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ],\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n    //- === Decorative modifiers =========================================================================================\n    if options.partials.decorativeModifiers.bordersDisguising\n\n      if options.headings\n\n        h2.Heading2 Decorative modifiers\n\n        h3.Heading3 Borders disguising\n\n      +ThemesShowcase--YDF({\n        themes: Badge__YDF.Themes,\n        geometricVariations: Badge__YDF.GeometricVariations,\n        decorativeVariations: Badge__YDF.DecorativeVariations,\n        decorativeVariationsWrapperTag: \"dl\",\n        decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n        iterationData: themeShowcaseCurrentIternationData\n      })\n\n        dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n        dd\n          +Badge--YDF({\n            value: \"Value\",\n            geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n            decoration: themeShowcaseCurrentIternationData.decorativeVariation.value,\n            decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ]\n          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Overflow testing =============================================================================================\n  if options.partials.overflowTesting.multiline || options.partials.overflowTesting.singleLine\n\n    if options.headings\n\n      h2.Heading2 Overflow safety\n\n\n    if options.partials.overflowTesting.multiline\n\n      if options.headings\n\n        h3.Heading3 Multiline\n\n      .BadgeDemo-BadgesFlow\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n    if options.partials.overflowTesting.singleLine\n\n      if options.headings\n\n        h3.Heading3 Single line\n\n      .BadgeDemo-BadgesFlow.BadgeDemo-BadgesFlow__LimitedChildrenMaximalWidth\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          mustForceSingleLine: true,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n  //- === Loading placeholder ==========================================================================================\n  if options.partials.loadingPlaceholder\n\n    if options.headings\n\n      h2.Heading2 Loading placeholder\n\n    .BadgeDemo-BadgesFlow\n\n      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n        })\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ]\n        })\n",
-        "lineNumber": 108,
-        "columnNumber": 10
-      },
-      {
-        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
-        "message": "One space required after buffered code operator",
-        "sourceListing": "mixin BadgeDemo(options)\n\n  -\n\n    options = options ?? {\n      headings: true,\n      partials: {\n        valuesOnly: true,\n        keysAndValues: true,\n        iconsAndKeysAndValues: true,\n        iconsAndValues: true,\n        geometricModifiers: {\n          pillShape: true\n        },\n        decorativeModifiers: {\n          bordersDisguising: true\n        },\n        overflowTesting: {\n          multiline: true,\n          singleLine: true\n        },\n        loadingPlaceholder: true\n      }\n    }\n\n    ThemesShowcase__YDF.\n        setDefaultThemeKeyLabelPrefix(\"Badge__YDF.Themes.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.GeometricVariations.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.DecorativeVariations.\");\n\n    const themeShowcaseCurrentIternationData = ThemesShowcase__YDF.initializeCurrentIterationData()\n\n\n  if options.headings\n\n    h1.Heading1 Badge component testing\n\n\n  //- === Values only ==================================================================================================\n  if options.partials.valuesOnly\n\n    if options.headings\n\n      h2.Heading2 Values only\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Keys and values ==============================================================================================\n  if options.partials.keysAndValues\n\n    if options.headings\n\n      h2.Heading2 Keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Key\",\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Icons, keys and values =======================================================================================\n  if options.partials.iconsAndKeysAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons, keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Date\",\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Icons and values =============================================================================================\n  if options.partials.iconsAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Geometric modifiers ==========================================================================================\n  if options.partials.geometricModifiers.pillShape\n\n    if options.headings\n\n      h2.Heading2 Geometric modifiers\n\n      h3.Heading3 Pill shape\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Value\",\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ],\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n    //- === Decorative modifiers =========================================================================================\n    if options.partials.decorativeModifiers.bordersDisguising\n\n      if options.headings\n\n        h2.Heading2 Decorative modifiers\n\n        h3.Heading3 Borders disguising\n\n      +ThemesShowcase--YDF({\n        themes: Badge__YDF.Themes,\n        geometricVariations: Badge__YDF.GeometricVariations,\n        decorativeVariations: Badge__YDF.DecorativeVariations,\n        decorativeVariationsWrapperTag: \"dl\",\n        decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n        iterationData: themeShowcaseCurrentIternationData\n      })\n\n        dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n        dd\n          +Badge--YDF({\n            value: \"Value\",\n            geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n            decoration: themeShowcaseCurrentIternationData.decorativeVariation.value,\n            decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ]\n          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Overflow testing =============================================================================================\n  if options.partials.overflowTesting.multiline || options.partials.overflowTesting.singleLine\n\n    if options.headings\n\n      h2.Heading2 Overflow safety\n\n\n    if options.partials.overflowTesting.multiline\n\n      if options.headings\n\n        h3.Heading3 Multiline\n\n      .BadgeDemo-BadgesFlow\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n    if options.partials.overflowTesting.singleLine\n\n      if options.headings\n\n        h3.Heading3 Single line\n\n      .BadgeDemo-BadgesFlow.BadgeDemo-BadgesFlow__LimitedChildrenMaximalWidth\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          mustForceSingleLine: true,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n  //- === Loading placeholder ==========================================================================================\n  if options.partials.loadingPlaceholder\n\n    if options.headings\n\n      h2.Heading2 Loading placeholder\n\n    .BadgeDemo-BadgesFlow\n\n      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n        })\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ]\n        })\n",
-        "lineNumber": 135,
-        "columnNumber": 10
-      },
-      {
-        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
-        "message": "One space required after buffered code operator",
-        "sourceListing": "mixin BadgeDemo(options)\n\n  -\n\n    options = options ?? {\n      headings: true,\n      partials: {\n        valuesOnly: true,\n        keysAndValues: true,\n        iconsAndKeysAndValues: true,\n        iconsAndValues: true,\n        geometricModifiers: {\n          pillShape: true\n        },\n        decorativeModifiers: {\n          bordersDisguising: true\n        },\n        overflowTesting: {\n          multiline: true,\n          singleLine: true\n        },\n        loadingPlaceholder: true\n      }\n    }\n\n    ThemesShowcase__YDF.\n        setDefaultThemeKeyLabelPrefix(\"Badge__YDF.Themes.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.GeometricVariations.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.DecorativeVariations.\");\n\n    const themeShowcaseCurrentIternationData = ThemesShowcase__YDF.initializeCurrentIterationData()\n\n\n  if options.headings\n\n    h1.Heading1 Badge component testing\n\n\n  //- === Values only ==================================================================================================\n  if options.partials.valuesOnly\n\n    if options.headings\n\n      h2.Heading2 Values only\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Keys and values ==============================================================================================\n  if options.partials.keysAndValues\n\n    if options.headings\n\n      h2.Heading2 Keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Key\",\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Icons, keys and values =======================================================================================\n  if options.partials.iconsAndKeysAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons, keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Date\",\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Icons and values =============================================================================================\n  if options.partials.iconsAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Geometric modifiers ==========================================================================================\n  if options.partials.geometricModifiers.pillShape\n\n    if options.headings\n\n      h2.Heading2 Geometric modifiers\n\n      h3.Heading3 Pill shape\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Value\",\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ],\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n    //- === Decorative modifiers =========================================================================================\n    if options.partials.decorativeModifiers.bordersDisguising\n\n      if options.headings\n\n        h2.Heading2 Decorative modifiers\n\n        h3.Heading3 Borders disguising\n\n      +ThemesShowcase--YDF({\n        themes: Badge__YDF.Themes,\n        geometricVariations: Badge__YDF.GeometricVariations,\n        decorativeVariations: Badge__YDF.DecorativeVariations,\n        decorativeVariationsWrapperTag: \"dl\",\n        decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n        iterationData: themeShowcaseCurrentIternationData\n      })\n\n        dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n        dd\n          +Badge--YDF({\n            value: \"Value\",\n            geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n            decoration: themeShowcaseCurrentIternationData.decorativeVariation.value,\n            decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ]\n          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Overflow testing =============================================================================================\n  if options.partials.overflowTesting.multiline || options.partials.overflowTesting.singleLine\n\n    if options.headings\n\n      h2.Heading2 Overflow safety\n\n\n    if options.partials.overflowTesting.multiline\n\n      if options.headings\n\n        h3.Heading3 Multiline\n\n      .BadgeDemo-BadgesFlow\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n    if options.partials.overflowTesting.singleLine\n\n      if options.headings\n\n        h3.Heading3 Single line\n\n      .BadgeDemo-BadgesFlow.BadgeDemo-BadgesFlow__LimitedChildrenMaximalWidth\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          mustForceSingleLine: true,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n  //- === Loading placeholder ==========================================================================================\n  if options.partials.loadingPlaceholder\n\n    if options.headings\n\n      h2.Heading2 Loading placeholder\n\n    .BadgeDemo-BadgesFlow\n\n      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n        })\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ]\n        })\n",
-        "lineNumber": 163,
-        "columnNumber": 10
-      },
-      {
-        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
-        "message": "One space required after buffered code operator",
-        "sourceListing": "mixin BadgeDemo(options)\n\n  -\n\n    options = options ?? {\n      headings: true,\n      partials: {\n        valuesOnly: true,\n        keysAndValues: true,\n        iconsAndKeysAndValues: true,\n        iconsAndValues: true,\n        geometricModifiers: {\n          pillShape: true\n        },\n        decorativeModifiers: {\n          bordersDisguising: true\n        },\n        overflowTesting: {\n          multiline: true,\n          singleLine: true\n        },\n        loadingPlaceholder: true\n      }\n    }\n\n    ThemesShowcase__YDF.\n        setDefaultThemeKeyLabelPrefix(\"Badge__YDF.Themes.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.GeometricVariations.\").\n        setDefaultGeometricVariationLabelPrefix(\"Badge__YDF.DecorativeVariations.\");\n\n    const themeShowcaseCurrentIternationData = ThemesShowcase__YDF.initializeCurrentIterationData()\n\n\n  if options.headings\n\n    h1.Heading1 Badge component testing\n\n\n  //- === Values only ==================================================================================================\n  if options.partials.valuesOnly\n\n    if options.headings\n\n      h2.Heading2 Values only\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Keys and values ==============================================================================================\n  if options.partials.keysAndValues\n\n    if options.headings\n\n      h2.Heading2 Keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Key\",\n          value: \"Sample\",\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        })\n\n\n  //- === Icons, keys and values =======================================================================================\n  if options.partials.iconsAndKeysAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons, keys and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          key: \"Date\",\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Icons and values =============================================================================================\n  if options.partials.iconsAndValues\n\n    if options.headings\n\n      h2.Heading2 Icons and values\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: new Date().toLocaleDateString(),\n          theme: themeShowcaseCurrentIternationData.theme.value,\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Geometric modifiers ==========================================================================================\n  if options.partials.geometricModifiers.pillShape\n\n    if options.headings\n\n      h2.Heading2 Geometric modifiers\n\n      h3.Heading3 Pill shape\n\n    +ThemesShowcase--YDF({\n      themes: Badge__YDF.Themes,\n      geometricVariations: Badge__YDF.GeometricVariations,\n      decorativeVariations: Badge__YDF.DecorativeVariations,\n      decorativeVariationsWrapperTag: \"dl\",\n      decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n      iterationData: themeShowcaseCurrentIternationData\n    })\n\n      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n      dd\n        +Badge--YDF({\n          value: \"Value\",\n          geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ],\n          decoration: themeShowcaseCurrentIternationData.decorativeVariation.value\n        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n    //- === Decorative modifiers =========================================================================================\n    if options.partials.decorativeModifiers.bordersDisguising\n\n      if options.headings\n\n        h2.Heading2 Decorative modifiers\n\n        h3.Heading3 Borders disguising\n\n      +ThemesShowcase--YDF({\n        themes: Badge__YDF.Themes,\n        geometricVariations: Badge__YDF.GeometricVariations,\n        decorativeVariations: Badge__YDF.DecorativeVariations,\n        decorativeVariationsWrapperTag: \"dl\",\n        decorativeVariationsWrapperAdditionalCSS_Classes: [ \"BadgeDemo-BadgesTwoColumnsTable\" ],\n        iterationData: themeShowcaseCurrentIternationData\n      })\n\n        dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`\n        dd\n          +Badge--YDF({\n            value: \"Value\",\n            geometry: themeShowcaseCurrentIternationData.geometricVariation.value,\n            decoration: themeShowcaseCurrentIternationData.decorativeVariation.value,\n            decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ]\n          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon\n\n\n  //- === Overflow testing =============================================================================================\n  if options.partials.overflowTesting.multiline || options.partials.overflowTesting.singleLine\n\n    if options.headings\n\n      h2.Heading2 Overflow safety\n\n\n    if options.partials.overflowTesting.multiline\n\n      if options.headings\n\n        h3.Heading3 Multiline\n\n      .BadgeDemo-BadgesFlow\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n    if options.partials.overflowTesting.singleLine\n\n      if options.headings\n\n        h3.Heading3 Single line\n\n      .BadgeDemo-BadgesFlow.BadgeDemo-BadgesFlow__LimitedChildrenMaximalWidth\n\n        +Badge--YDF({\n          key: textOverflowSafetyTest,\n          value: textOverflowSafetyTest,\n          mustForceSingleLine: true,\n          decoration: Badge__YDF.DecorativeVariations.achromaticPastel\n        })\n\n\n  //- === Loading placeholder ==========================================================================================\n  if options.partials.loadingPlaceholder\n\n    if options.headings\n\n      h2.Heading2 Loading placeholder\n\n    .BadgeDemo-BadgesFlow\n\n      each geometricVariation in Object.values(Badge__YDF.GeometricVariations)\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n        })\n\n        +Badge--YDF-LoadingPlaceholder({\n          geometry: geometricVariation,\n          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ]\n        })\n",
-        "lineNumber": 191,
-        "columnNumber": 12
-      }
-    ],
-    "modificationDatetime__ISO_8601": "2023-02-05T04:08:35.543Z"
-  },
-  "Components/Controls/ComboBox/ComboBox.class.pug": {
+  "Tests/Components/Controls/Buttons/Plain/Button.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-11T01:09:11.995Z"
+    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.458Z"
   },
-  "Components/Controls/ComboBox/ComboBox.pug": {
+  "Components/Snackbar/test.renderer.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-11T01:09:12.039Z"
-  },
-  "Components/Testing/ThemesShowcase.pug": {
-    "issues": [
-      {
-        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
-        "message": "One space required after buffered code operator",
-        "sourceListing": "-\n\n  const ThemesShowcase__YDF = {\n\n    initializeCurrentIterationData() {\n      return {\n        theme: { key: null, value: null },\n        geometricVariation: { key: null, value: null },\n        decorativeVariation: { key: null, value: null }\n      };\n    },\n\n\n    defaultThemeKeyLabelPrefix: \"\",\n\n    setDefaultThemeKeyLabelPrefix(themeKeyLabelPrefix) {\n      this.defaultThemeKeyLabelPrefix = themeKeyLabelPrefix;\n      return this;\n    },\n\n\n    defaultGeometricVariationLabelPrefix: \"\",\n\n    setDefaultGeometricVariationLabelPrefix(geometricVariationLabelPrefix) {\n      this.defaultThemeKeyLabelPrefix = geometricVariationLabelPrefix;\n      return this;\n    },\n\n\n    defaultDecorativeVariationLabelPrefix: \"\",\n\n    setDefaultGeometricVariationLabelPrefix(decorativeVariationLabelPrefix) {\n      this.defaultThemeKeyLabelPrefix = decorativeVariationLabelPrefix;\n      return this;\n    }\n\n  };\n\n\nmixin ThemesShowcase--YDF(properties)\n\n  -\n\n    const {\n      themes,\n      themeKeyLabelPrefix = ThemesShowcase__YDF.defaultThemeKeyLabelPrefix,\n      geometricVariations,\n      geometricVariationLabelPrefix = ThemesShowcase__YDF.defaultGeometricVariationLabelPrefix,\n      decorativeVariations,\n      decorativeVariationLabelPrefix = ThemesShowcase__YDF.defaultDecorativeVariationLabelPrefix,\n      iterationData,\n      decorativeVariationsWrapperTag = \"ul\",\n      decorativeVariationsWrapperAdditionalCSS_Classes\n    } = properties;\n\n\n  if Object.entries(themes).length > 0\n\n    ul.ThemesShowcase--YDF\n\n      each themeValue, themeKey in themes\n\n        -\n          iterationData.theme = {\n            key: themeKey,\n            value: themeValue\n          };\n\n        li\n\n          span.ThemesShowcase--YDF-Label=`${ themeKeyLabelPrefix }${ themeKey }`\n\n          if Object.entries(geometricVariations).length > 0\n\n            ul.ThemesShowcase--YDF-ChildList\n\n              each geometricVariationValue, geometricVariationKey in geometricVariations\n\n                -\n                  iterationData.geometricVariation = {\n                    key: geometricVariationKey,\n                    value: geometricVariationValue\n                  };\n\n                li\n\n                  span.ThemesShowcase--YDF-Label=`${ geometricVariationLabelPrefix }${ geometricVariationKey }`\n\n                  if Object.entries(decorativeVariations).length > 0\n\n                    #{decorativeVariationsWrapperTag}.ThemesShowcase--YDF-ChildList(\n                      class=decorativeVariationsWrapperAdditionalCSS_Classes\n                    )\n\n                      each decorativeVariationValue, decorativeVariationKey in decorativeVariations\n\n                        -\n                          iterationData.decorativeVariation = {\n                            key: decorativeVariationKey,\n                            value: decorativeVariationValue\n                          };\n\n                        if decorativeVariationsWrapperTag === \"ul\"\n\n                          li\n\n                            span.ThemesShowcase--YDF-Label=`${ decorativeVariationLabelPrefix }${ decorativeVariationKey }`\n\n                            block\n\n                        else\n\n                          block\n",
-        "lineNumber": 71,
-        "columnNumber": 42
-      },
-      {
-        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
-        "message": "One space required after buffered code operator",
-        "sourceListing": "-\n\n  const ThemesShowcase__YDF = {\n\n    initializeCurrentIterationData() {\n      return {\n        theme: { key: null, value: null },\n        geometricVariation: { key: null, value: null },\n        decorativeVariation: { key: null, value: null }\n      };\n    },\n\n\n    defaultThemeKeyLabelPrefix: \"\",\n\n    setDefaultThemeKeyLabelPrefix(themeKeyLabelPrefix) {\n      this.defaultThemeKeyLabelPrefix = themeKeyLabelPrefix;\n      return this;\n    },\n\n\n    defaultGeometricVariationLabelPrefix: \"\",\n\n    setDefaultGeometricVariationLabelPrefix(geometricVariationLabelPrefix) {\n      this.defaultThemeKeyLabelPrefix = geometricVariationLabelPrefix;\n      return this;\n    },\n\n\n    defaultDecorativeVariationLabelPrefix: \"\",\n\n    setDefaultGeometricVariationLabelPrefix(decorativeVariationLabelPrefix) {\n      this.defaultThemeKeyLabelPrefix = decorativeVariationLabelPrefix;\n      return this;\n    }\n\n  };\n\n\nmixin ThemesShowcase--YDF(properties)\n\n  -\n\n    const {\n      themes,\n      themeKeyLabelPrefix = ThemesShowcase__YDF.defaultThemeKeyLabelPrefix,\n      geometricVariations,\n      geometricVariationLabelPrefix = ThemesShowcase__YDF.defaultGeometricVariationLabelPrefix,\n      decorativeVariations,\n      decorativeVariationLabelPrefix = ThemesShowcase__YDF.defaultDecorativeVariationLabelPrefix,\n      iterationData,\n      decorativeVariationsWrapperTag = \"ul\",\n      decorativeVariationsWrapperAdditionalCSS_Classes\n    } = properties;\n\n\n  if Object.entries(themes).length > 0\n\n    ul.ThemesShowcase--YDF\n\n      each themeValue, themeKey in themes\n\n        -\n          iterationData.theme = {\n            key: themeKey,\n            value: themeValue\n          };\n\n        li\n\n          span.ThemesShowcase--YDF-Label=`${ themeKeyLabelPrefix }${ themeKey }`\n\n          if Object.entries(geometricVariations).length > 0\n\n            ul.ThemesShowcase--YDF-ChildList\n\n              each geometricVariationValue, geometricVariationKey in geometricVariations\n\n                -\n                  iterationData.geometricVariation = {\n                    key: geometricVariationKey,\n                    value: geometricVariationValue\n                  };\n\n                li\n\n                  span.ThemesShowcase--YDF-Label=`${ geometricVariationLabelPrefix }${ geometricVariationKey }`\n\n                  if Object.entries(decorativeVariations).length > 0\n\n                    #{decorativeVariationsWrapperTag}.ThemesShowcase--YDF-ChildList(\n                      class=decorativeVariationsWrapperAdditionalCSS_Classes\n                    )\n\n                      each decorativeVariationValue, decorativeVariationKey in decorativeVariations\n\n                        -\n                          iterationData.decorativeVariation = {\n                            key: decorativeVariationKey,\n                            value: decorativeVariationValue\n                          };\n\n                        if decorativeVariationsWrapperTag === \"ul\"\n\n                          li\n\n                            span.ThemesShowcase--YDF-Label=`${ decorativeVariationLabelPrefix }${ decorativeVariationKey }`\n\n                            block\n\n                        else\n\n                          block\n",
-        "lineNumber": 87,
-        "columnNumber": 50
-      },
-      {
-        "code": "PUG:LINT_REQUIRESPACEAFTERCODEOPERATOR",
-        "message": "One space required after buffered code operator",
-        "sourceListing": "-\n\n  const ThemesShowcase__YDF = {\n\n    initializeCurrentIterationData() {\n      return {\n        theme: { key: null, value: null },\n        geometricVariation: { key: null, value: null },\n        decorativeVariation: { key: null, value: null }\n      };\n    },\n\n\n    defaultThemeKeyLabelPrefix: \"\",\n\n    setDefaultThemeKeyLabelPrefix(themeKeyLabelPrefix) {\n      this.defaultThemeKeyLabelPrefix = themeKeyLabelPrefix;\n      return this;\n    },\n\n\n    defaultGeometricVariationLabelPrefix: \"\",\n\n    setDefaultGeometricVariationLabelPrefix(geometricVariationLabelPrefix) {\n      this.defaultThemeKeyLabelPrefix = geometricVariationLabelPrefix;\n      return this;\n    },\n\n\n    defaultDecorativeVariationLabelPrefix: \"\",\n\n    setDefaultGeometricVariationLabelPrefix(decorativeVariationLabelPrefix) {\n      this.defaultThemeKeyLabelPrefix = decorativeVariationLabelPrefix;\n      return this;\n    }\n\n  };\n\n\nmixin ThemesShowcase--YDF(properties)\n\n  -\n\n    const {\n      themes,\n      themeKeyLabelPrefix = ThemesShowcase__YDF.defaultThemeKeyLabelPrefix,\n      geometricVariations,\n      geometricVariationLabelPrefix = ThemesShowcase__YDF.defaultGeometricVariationLabelPrefix,\n      decorativeVariations,\n      decorativeVariationLabelPrefix = ThemesShowcase__YDF.defaultDecorativeVariationLabelPrefix,\n      iterationData,\n      decorativeVariationsWrapperTag = \"ul\",\n      decorativeVariationsWrapperAdditionalCSS_Classes\n    } = properties;\n\n\n  if Object.entries(themes).length > 0\n\n    ul.ThemesShowcase--YDF\n\n      each themeValue, themeKey in themes\n\n        -\n          iterationData.theme = {\n            key: themeKey,\n            value: themeValue\n          };\n\n        li\n\n          span.ThemesShowcase--YDF-Label=`${ themeKeyLabelPrefix }${ themeKey }`\n\n          if Object.entries(geometricVariations).length > 0\n\n            ul.ThemesShowcase--YDF-ChildList\n\n              each geometricVariationValue, geometricVariationKey in geometricVariations\n\n                -\n                  iterationData.geometricVariation = {\n                    key: geometricVariationKey,\n                    value: geometricVariationValue\n                  };\n\n                li\n\n                  span.ThemesShowcase--YDF-Label=`${ geometricVariationLabelPrefix }${ geometricVariationKey }`\n\n                  if Object.entries(decorativeVariations).length > 0\n\n                    #{decorativeVariationsWrapperTag}.ThemesShowcase--YDF-ChildList(\n                      class=decorativeVariationsWrapperAdditionalCSS_Classes\n                    )\n\n                      each decorativeVariationValue, decorativeVariationKey in decorativeVariations\n\n                        -\n                          iterationData.decorativeVariation = {\n                            key: decorativeVariationKey,\n                            value: decorativeVariationValue\n                          };\n\n                        if decorativeVariationsWrapperTag === \"ul\"\n\n                          li\n\n                            span.ThemesShowcase--YDF-Label=`${ decorativeVariationLabelPrefix }${ decorativeVariationKey }`\n\n                            block\n\n                        else\n\n                          block\n",
-        "lineNumber": 107,
-        "columnNumber": 60
-      }
-    ],
-    "modificationDatetime__ISO_8601": "2023-02-05T03:51:14.288Z"
-  },
-  "Components/_Auxiliaries/ComponentsAuxiliaries.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-02T04:36:13.257Z"
+    "modificationDatetime__ISO_8601": "2023-02-25T07:25:07.165Z"
   }
 }

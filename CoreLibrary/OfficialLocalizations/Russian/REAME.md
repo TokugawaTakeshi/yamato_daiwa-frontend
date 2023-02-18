@@ -1,8 +1,8 @@
 # Русификация `@yamato-daiwa/frontend`
 
-## StaticPreviewAnywherePage（Индекская страница этапа вёрстки）
+## StaticPreviewAnywherePage（Индексная страница этапа вёрстки）
 
-Для того, чтобы изменить текст значков перед называнием страницы, в файле, являющимя индексной страницей этапа вёрстки,
+Для того, чтобы изменить текст значков перед называнием страницы, в файле, являющиеся индексной страницей этапа вёрстки,
 
 1. Импортируйте файл `StaticPreviewAnywherePageLocalization.pug` командой `include`
 2. В JavaScript-блоке вызовите `StaticPreviewAnywherePage.setLocalization()` с параметром  

@@ -3,6 +3,7 @@ import YDF_ComponentsCoordinator from "@Components/YDF_ComponentsCoordinator";
 
 /* --- Other components --------------------------------------------------------------------------------------------- */
 import InputtableControl from "../InputtableControl";
+import CompoundControlShell from "@Components/Controls/CompoundControlShell/CompoundControlShell.vue";
 
 /* --- Validations -------------------------------------------------------------------------------------------------- */
 import ValidatableControl from "../_Validation/ValidatableControl";
@@ -19,15 +20,19 @@ import type { Vue as VueComponent } from "vue-property-decorator";
 
 /* --- Utils -------------------------------------------------------------------------------------------------------- */
 import {
+  toLowerCamelCase,
+  toUpperCamelCase,
+  toScreamingSnakeCase,
   isString,
   isNumber,
-  isNull,
   isElementOfEnumeration,
-  toLowerCamelCase,
-  toScreamingSnakeCase,
-  toUpperCamelCase
+  isUndefined,
+  isNull
 } from "@yamato-daiwa/es-extensions";
-import getExpectedToBeMountedElementByVueReferenceID from "@Source/Functions/getExpectedToBeMountedElementByVueReferenceID";
+import getExpectedToBeMountedDOM_ElementByVueReferenceID from
+    "@Source/Functions/getExpectedToBeMountedDOM_ElementByVueReferenceID";
+import VueComponentImplementationHasNotBeenSetError from
+    "@Components/_Errors/VueComponentImplementationHasNotBeenSet/VueComponentImplementationHasNotBeenSet";
 
 
 namespace TextBox {
@@ -95,7 +100,7 @@ namespace TextBox {
       required: true,
       validator: (rawVModel: unknown): boolean =>
           ValidatableControl.VModelChecker(
-              rawVModel, (rawValue: unknown): boolean => isString(rawValue) || isNumber(rawValue) || isNull(rawValue)
+            rawVModel, (rawValue: unknown): boolean => isString(rawValue) || isNumber(rawValue) || isNull(rawValue)
           )
     })
     private readonly validatablePayload!: ValidatableControl.Payload<
@@ -119,7 +124,7 @@ namespace TextBox {
     protected readonly placeholder?: string | null;
 
 
-    /* --- Invalid value inputting preventing ----------------------------------------------------------------------- */
+    /* --- Preventing of inputting of invalid value ----------------------------------------------------------------- */
     @VueProperty({ type: Number, validator: Number.isInteger })
     protected readonly minimalCharactersCount?: number | null;
 
@@ -166,7 +171,7 @@ namespace TextBox {
     /* --- HTML IDs ------------------------------------------------------------------------------------------------- */
     @VueProperty({
       type: String,
-      default: BasicLogic.generateInputOrTextareaElementHTML_ID()
+      default: BasicLogic.generateInputOrTextAreaElementHTML_ID()
     })
     protected readonly inputOrTextareaElementHTML_ID!: string;
 
@@ -211,8 +216,8 @@ namespace TextBox {
     /* === Interface ================================================================================================ */
     public focus(): this {
 
-      getExpectedToBeMountedElementByVueReferenceID({
-        vueReferenceID: this.INPUT_OR_TEXTAREA_ELEMENT_VUE_REFERENCE_ID,
+      getExpectedToBeMountedDOM_ElementByVueReferenceID({
+        vueReferenceID: this.INPUT_OR_TEXT_AREA_ELEMENT_VUE_REFERENCE_ID,
         parentVueComponent: this,
         TargetElementSubtype: HTMLElement
       }).focus();
@@ -224,7 +229,8 @@ namespace TextBox {
 
     /* === Lifecycle hooks ========================================================================================== */
     public beforeCreate(): void {
-      this.invalidInputHighlightingIfAnyErrorsMessages = this.mustHighlightInvalidInputImmediately;
+      this.invalidInputHighlightingIfAnyValidationErrorsMessages = this.mustHighlightInvalidInputImmediately;
+      this.executeAdditionalValidationsOfProperties();
     }
 
     public created(): void {
@@ -236,8 +242,6 @@ namespace TextBox {
       } else {
         this.rawInput = "";
       }
-
-      // todo minimal chars countのバリデーション
 
     }
 
@@ -263,9 +267,11 @@ namespace TextBox {
       ) {
         event.preventDefault();
       }
+
     }
 
-    /* [ Theory ] Event "input" element has type 'number', the "rawValue" will be the empty string */
+    /* [ Theory ] Even "input" element has type "number", if nothing has been input the "rawValue" will be
+     *    the empty string. */
     protected onInput(rawValue: string): void {
 
       if (rawValue.length === 0) {
@@ -313,107 +319,170 @@ namespace TextBox {
 
     @emitEvent(Events.blur)
     protected onBlur(): void {
-      this.invalidInputHighlightingIfAnyErrorsMessages = true;
+      this.invalidInputHighlightingIfAnyValidationErrorsMessages = true;
     }
 
 
     /* === Constants and enumerations =============================================================================== */
-    protected readonly INPUT_OR_TEXTAREA_ELEMENT_VUE_REFERENCE_ID: string =
-        "INPUT_ELEMENT_OR_AUTORESIZABLE_TEXTAREA_COMPONENT";
+    protected readonly INPUT_OR_TEXT_AREA_ELEMENT_VUE_REFERENCE_ID: string = "INPUT_OR_TEXT_AREA_ELEMENT";
 
 
     /* === Auxiliaries ============================================================================================== */
-    protected get rootElementModifiersCSS_Classes(): Array<string> {
-      return [
-        ...Object.values(Themes).length > 1 ? [ BasicLogic.ThemesCSS_ModifiersNames[this.theme] ] : [],
-        ...Object.values(GeometricVariations).length ? [
-          BasicLogic.GeometricVariationsCSS_ModifiersNames[this.geometry]
-        ] : [],
-        ...Object.values(DecorativeVariations).length ? [
-          BasicLogic.DecorativeVariationsCSS_ModifiersNames[this.decoration]
-        ] : [],
-        ...this.multiline ? [ "TextBox__Multiline" ] : [],
-        ...this.invalidInputHighlightingIfAnyErrorsMessages && this.validatablePayload.isInvalid ? [
-          "TextBox__InvalidValueState"
-        ] : [],
-        ...this.disabled ? [ "TextBox__DisabledState" ] : []
-      ];
-    }
-
-    private static counterForInputOrTextareaElementHTML_ID_Generating: number = 0;
-    private static generateInputOrTextareaElementHTML_ID(): string {
-      BasicLogic.counterForInputOrTextareaElementHTML_ID_Generating++;
-      return `TEXT_BOX-INPUT_OR_TEXTAREA_ELEMENT-${ BasicLogic.counterForInputOrTextareaElementHTML_ID_Generating }`;
-    }
-
-
-    /* === Themes =================================================================================================== */
-    protected static ThemesCSS_ModifiersNames: { [themeID: string]: string; } = {
-      [Themes.regular]: "RegularTheme"
+    /* --- Themes --------------------------------------------------------------------------------------------------- */
+    protected static readonly selfAndCompoundControlShellThemesCorrespondence: { [selfTheme: string]: string; } = {
+      [Themes.regular]: CompoundControlShell.Themes.regular
     };
 
-    public static defineNewThemes(themesNames: Array<string>): typeof BasicLogic {
+    protected get compoundControlShellTheme(): string {
+      return BasicLogic.selfAndCompoundControlShellThemesCorrespondence[this.theme];
+    }
 
-      for (const themeName of themesNames) {
+    public static defineNewThemes(
+      ownAndCorrespondingCompoundControlShellThemes_Names: Readonly<{ [newOwnThemeName: string]: string; }>
+    ): typeof BasicLogic {
 
-        const themeName__lowerCamelCase: string = toLowerCamelCase(themeName);
+      for (
+        const [ ownThemeName, correspondingCompoundControlShellThemeName ] of
+        Object.entries(ownAndCorrespondingCompoundControlShellThemes_Names)
+      ) {
 
-        Themes[themeName__lowerCamelCase] = toScreamingSnakeCase(themeName);
-        BasicLogic.ThemesCSS_ModifiersNames[themeName__lowerCamelCase] = `Button__${ toUpperCamelCase(themeName) }Theme`;
+        const ownThemeName__screamingSnakeCase: string = toScreamingSnakeCase(ownThemeName);
+
+        Themes[toLowerCamelCase(ownThemeName)] = ownThemeName__screamingSnakeCase;
+        BasicLogic.selfAndCompoundControlShellThemesCorrespondence[ownThemeName__screamingSnakeCase] =
+            correspondingCompoundControlShellThemeName;
+
       }
 
       return BasicLogic;
+
     }
 
 
     /* --- Geometric variations ------------------------------------------------------------------------------------- */
-    protected static GeometricVariationsCSS_ModifiersNames: { [ geometricVariationID: string ]: string; } = {
-      [GeometricVariations.regular]: "RegularGeometry",
-      [GeometricVariations.small]: "SmallGeometry"
+    protected static readonly selfAndCompoundControlShellGeometricVariationsCorrespondence: { [selfTheme: string]: string; } = {
+      [GeometricVariations.regular]: CompoundControlShell.GeometricVariations.regular,
+      [GeometricVariations.small]: CompoundControlShell.GeometricVariations.small
     };
 
-    public static defineNewGeometricVariations(geometricVariationsNames: Array<string>): typeof BasicLogic {
+    protected get compoundControlShellGeometricVariation(): string {
+      return BasicLogic.selfAndCompoundControlShellThemesCorrespondence[this.theme];
+    }
 
-      for (const geometricVariationsName of geometricVariationsNames) {
+    public static defineNewGeometricVariations(
+      ownAndCorrespondingCompoundControlShellGeometricVariations_Names: Readonly<{
+        [ownGeometricVariationsName: string]: string;
+      }>
+    ): typeof BasicLogic {
 
-        const geometricVariationsName__lowerCamelCase: string = toLowerCamelCase(geometricVariationsName);
+      for (
+        const [ ownGeometricVariationName, correspondingCompoundControlGeometricVariationName ] of
+        Object.entries(ownAndCorrespondingCompoundControlShellGeometricVariations_Names)
+      ) {
 
-        GeometricVariations[geometricVariationsName__lowerCamelCase] = toScreamingSnakeCase(geometricVariationsName);
-        BasicLogic.GeometricVariationsCSS_ModifiersNames[geometricVariationsName__lowerCamelCase] =
-            `Button__${ toUpperCamelCase(geometricVariationsName) }Geometry`;
+        const ownGeometricVariationName__screamingSnakeCase: string = toScreamingSnakeCase(ownGeometricVariationName);
+
+        GeometricVariations[toLowerCamelCase(ownGeometricVariationName)] = ownGeometricVariationName__screamingSnakeCase;
+        BasicLogic.selfAndCompoundControlShellGeometricVariationsCorrespondence[ownGeometricVariationName__screamingSnakeCase] =
+            correspondingCompoundControlGeometricVariationName;
+
       }
 
       return BasicLogic;
+
     }
 
 
     /* --- Decorative variations ------------------------------------------------------------------------------------- */
-    protected static DecorativeVariationsCSS_ModifiersNames: { [ decorativeVariationID: string ]: string; } = {
-      [DecorativeVariations.regular]: "RegularDecoration",
-      [DecorativeVariations.small]: "AccentedDecoration"
+    protected static readonly selfAndCompoundControlShellDecorativeVariationsCorrespondence: { [selfTheme: string]: string; } = {
+      [DecorativeVariations.regular]: CompoundControlShell.DecorativeVariations.regular
     };
 
-    public static defineNewDecorativeVariations(decorativeVariationsNames: Array<string>): typeof BasicLogic {
+    protected get compoundControlShellDecorativeVariation(): string {
+      return BasicLogic.selfAndCompoundControlShellDecorativeVariationsCorrespondence[this.decoration];
+    }
 
-      for (const decorativeVariationsName of decorativeVariationsNames) {
+    public static defineNewDecorativeVariations(
+      ownAndCorrespondingCompoundControlShellDecorativeVariations_Names: Readonly<{
+        [ownDecorativeVariationsName: string]: string;
+      }>
+    ): typeof BasicLogic {
 
-        const decorativeVariationsName__lowerCamelCase: string = toLowerCamelCase(decorativeVariationsName);
+      for (
+        const [ ownDecorativeVariationName, correspondingCompoundControlDecorativeVariationName ] of
+        Object.entries(ownAndCorrespondingCompoundControlShellDecorativeVariations_Names)
+      ) {
 
-        DecorativeVariations[decorativeVariationsName__lowerCamelCase] = toScreamingSnakeCase(decorativeVariationsName);
-        BasicLogic.DecorativeVariationsCSS_ModifiersNames[decorativeVariationsName__lowerCamelCase] =
-            `TextBox__${ toUpperCamelCase(decorativeVariationsName) }Decorations`;
+        const ownGeometricVariationName__screamingSnakeCase: string = toScreamingSnakeCase(ownDecorativeVariationName);
+
+        GeometricVariations[toLowerCamelCase(ownDecorativeVariationName)] = ownGeometricVariationName__screamingSnakeCase;
+        BasicLogic.selfAndCompoundControlShellGeometricVariationsCorrespondence[ownGeometricVariationName__screamingSnakeCase] =
+            correspondingCompoundControlDecorativeVariationName;
+
       }
 
       return BasicLogic;
+
     }
+
+
+    /* --- CSS ------------------------------------------------------------------------------------------------------ */
+    protected get rootElementModifiersCSS_Classes(): Array<string> {
+      return [
+        ...this.multiline ? [ "TextBox--YDF__Multiline" ] : [],
+        ...Object.entries(Themes).length > 1 && !this.areThemesExternal ?
+            [ `TextBox--YDF__${ toUpperCamelCase(this.theme) }Theme` ] : [],
+        ...Object.entries(GeometricVariations).length > 1 ?
+            [ `TextBox--YDF__${ toUpperCamelCase(this.geometry) }Geometry` ] : [],
+        ...Object.entries(DecorativeVariations).length > 1 ?
+            [ `TextBox--YDF__${ toUpperCamelCase(this.decoration) }Decoration` ] : [],
+        ...this.invalidInputHighlightingIfAnyValidationErrorsMessages && this.validatablePayload.isInvalid ?
+            [ "TextBox--YDF__InvalidValueState" ] : [],
+        ...this.validInputHighlightingIfAnyErrorsMessages && !this.validatablePayload.isInvalid ?
+            [ "TextBox--YDF__ValidValueState" ] : []
+      ];
+    }
+
+
+    /* --- Generating of IDs ---------------------------------------------------------------------------------------- */
+    private static counterForInputOrTextAreaElementHTML_ID_Generating: number = 0;
+    private static generateInputOrTextAreaElementHTML_ID(): string {
+      BasicLogic.counterForInputOrTextAreaElementHTML_ID_Generating++;
+      return `TEXT_BOX-INPUT_OR_TEXT_AREA_ELEMENT-${ BasicLogic.counterForInputOrTextAreaElementHTML_ID_Generating }`;
+    }
+
   }
 
 
+  /* === Providing ================================================================================================== */
   export let Implementation: typeof VueComponent | null;
 
   export function setImplementation(_Implementation: typeof VueComponent): void {
     Implementation = _Implementation;
   }
+
+  export function getImplementation(): typeof VueComponent {
+
+    if (isNull(Implementation)) {
+      throw new VueComponentImplementationHasNotBeenSetError({ vueComponentName: "Badge" });
+    }
+
+
+    return Implementation;
+
+  }
+
+  export function registerImplementationLocally(parentComponent: VueComponent, withName: string = "TextBox"): void {
+
+    if (isUndefined(parentComponent.$options.components)) {
+      parentComponent.$options.components = {};
+    }
+
+
+    parentComponent.$options.components[withName] = getImplementation();
+
+  }
+
 }
 
 
