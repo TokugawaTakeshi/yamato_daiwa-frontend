@@ -1,0 +1,285 @@
+extends ../../../../Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../SharedAssets/Markup/Assets.russian.pug
+  include ../../../../Components/Components.russian.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "ru";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("Validatable controls");
+    HTML_PageMetaData = {
+      description: "",
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "@Common" ];
+
+    RoutingEmulator.setCurrentRoute(
+      "frameworksAdaptations.children.vue.children.components.children.controls.children.validatable"
+    );
+
+    LanguageDropDownList.setLinks({
+      [LanguageDropDownList.supportedLanguages.english]: "#",
+      [LanguageDropDownList.supportedLanguages.japanese]: "#"
+    });
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1  Простейший случай: интегрированный набор принимающих ввод компонентов
+
+    p.Article-Paragraph.
+      Здесь слово "интегрированный" означает, для принимающих ввод компонентов #[+Keyword--YDID не] создаётся
+        отдельный #[+Term--YDID группирующий компонент] (#[+Term--YDID compound controls group]).
+
+    p.Article-Paragraph На словах, для обеспечения групповой валидации нужно сделать следующее:
+
+    ol.Article-OrderedList
+
+      li.
+        Подготовить классы #[+Term--YDID валидаций] ввода, унаследованные от #[+ImportantEntity__Code--YDID ValueValidation].
+
+      li.
+        Инициализировать #[+Term--YDID реактивную переменную], содержащую экземпляры
+          #[+ImportantEntity__Code--YDID ValidatableControl.Payload] для каждого #[+Term--YDID элемента ввода].
+        В ней будут храниться все введённые данные, а также их валидность.
+
+      li.
+        Перед отправкой данных проверить с помощью статического метода #[+ImportantEntity__Code--YDID hasInvalidInputs]
+          класса #[+ImportantEntity__Code--YDID ValidatableControlsGroup], остались ли пропущенные обязательные или
+          введённые невалидные данные и если да, то вызывать статический метод #[+ImportantEntity__Code--YDID pointOutValidationErrors].
+        Последний переведёт все элементы ввода в режим агрессивной валидации, поместит фокус в первый элемент ввода и выполнит
+          автоматическую прокрутку, если указан HTML ID элемента, который надо прокручивать.
+
+    p.Article-Paragraph.
+      Рассмотрим это на примере формы авторизации в двумя полями: адрес электронной почты и пароль.
+
+    h2.Article-Heading2 Шаг 1: Подготовка классов валидации
+
+    +CodeViewer--YDF.Article-CodeViewer
+      +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.TypeScript })
+
+        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+          export default class InputtedEmailValidation extends ValueValidation {
+
+            private static readonly REQUIRED_VALUE_IS_MISSING_DEFAULT_VALIDATION_ERROR_MESSAGE: string =
+                "Вы не указали адрес электронной почты. Пожалуйста, введите Вас электронный адрес.";
+
+            public constructor(
+              compoundParameter: Readonly<{
+                isInputRequired: boolean;
+                requiredValueIsMissingCustomValidationErrorMessage?: string;
+              }>
+        +CodeViewer-Explanation--YDF
+
+          p.Article-Paragraph.
+            В форме авторизации адрес электронной почты обязателен.
+            Тем не менее, мы можем сделать обязательность ввода параметром, чтобы можно этот же класс можно было
+              использовать в других формах ввода, где адрес электронной почты не является обязательным.
+            В таких случаях лучше значение по умолчанию лучше не указывать, так как эту опцию станет возможным
+              забыть указать.
+
+          p.Article-Paragraph.
+            А вот сообщение о пропущенном значение почти всегда одинаковое, потому мы можем подготовить значение по
+              умолчанию (правда, в случае с интернационализацией приложения будет посложнее).
+
+        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+          ) {
+
+            super({
+              inputIsRequired: compoundParameter.isInputRequired,
+              omittedValueChecker: isEmptyString,
+        +CodeViewer-Explanation--YDF.
+          При необходимости можно и проверщик пустого значения сделать параметром конструктора, но в случае с адресом
+            электронной почты усложнять не стоит.
+
+        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+              requiredValueIsMissingCustomValidationErrorMessage:
+                  compoundParameter.requiredValueIsMissingCustomValidationErrorMessage ??
+                  InputtedEmailValidation.REQUIRED_VALUE_IS_MISSING_DEFAULT_VALIDATION_ERROR_MESSAGE,
+              contextIndependentValidationRules: {
+                validEmail: {
+                  checker: (rawValue: unknown): boolean => EmailAddress.isValid(String(rawValue)),
+                  errorMessage: "Такого адреса электронной почты быть не может. Пожалуйста, проверьте введённый адрес."
+                }
+              }
+            });
+
+          }
+
+
+    +CodeViewer--YDF.Article-CodeViewer
+      +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
+
+        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+          form.SimpleForm
+
+            h1.SimpleForm-Heading Авторизация
+
+            TextBox.SimpleForm-TextBox(
+              :HTML_Type="TextBox.HTML_Types.email"
+              label="Email address"
+              v-model="controlsPayload.email"
+              :required="controlsPayload.email.validation.isInputRequired"
+              :ref="controlsPayload.email.VUE_REFERENCE_ID"
+            )
+
+            TextBox.SimpleForm-TextBox(
+              :HTML_Type="TextBox.HTML_Types.password"
+              label="Password"
+              v-model="controlsPayload.password"
+              :required="controlsPayload.password.validation.isInputRequired"
+              :minimalCharactersCount="controlsPayload.password.validation.MINIMAL_CHARACTERS_COUNT"
+              :maximalCharactersCount="controlsPayload.password.validation.MAXIMAL_CHARACTERS_COUNT"
+              :ref="controlsPayload.password.VUE_REFERENCE_ID"
+            )
+
+            HorizontallySlidingContainer.SimpleForm-Message(
+              HTML_Tag="p"
+              :expanded="hasUserTriedToSubmitDataAtLeastOnce && hasInvalidInputs"
+            ) Omitted required fields and/or invalid inputs left. Please check the inputted information.
+        +CodeViewer-Explanation--YDF.
+          В принципе, в такой маленькой форме ввода без этого обобщающего сообщения можно обойтись.
+          Но всё-таки нужно, что этот пример легко масштабировался на произвольное количество полей ввода.
+
+        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+            Button.SimpleForm-Button(
+              label="Sign in"
+              @click="attemptSigningIn"
+            )
+
+
+    +CodeViewer--YDF.Article-CodeViewer
+      +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.TypeScript })
+
+        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+          /* --- Children components ---------------------------------------------------------------------------------------- */
+          import {
+            Button,
+            TextBox,
+            ValidatableControl,
+            ValidatableControlsGroup,
+            ValueValidation,
+            HorizontallySlidingContainer
+          } from "@yamato-daiwa/frontend-vue";
+
+          /* --- Validations ------------------------------------------------------------------------------------------------ */
+          import InputtedEmailValidation from "./Validations/InputtedEmailValidation";
+          import PasswordValidation from "./Validations/PasswordValidation";
+
+          /* --- Framework -------------------------------------------------------------------------------------------------- */
+          import { Options as VueComponentConfiguration, Vue as VueComponent } from "vue-property-decorator";
+
+          /* --- Utils ------------------------------------------------------------------------------------------------------ */
+          import { Logger, DataSubmittingFailedError } from "@yamato-daiwa/es-extensions";
+
+
+          @VueComponentConfiguration({
+            name: "SimpleIntegratedForm",
+            components: {
+              HorizontallySlidingContainer
+            }
+          })
+          export default class SimpleIntegratedForm extends VueComponent {
+
+            /* === Fields =================================================================================================== */
+            private controlsPayload: Readonly<{
+              email: ValidatableControl.Payload<string, string, ValueValidation>;
+              password: ValidatableControl.Payload<string, string, ValueValidation>;
+            }> = {
+              email: ValidatableControl.Payload.createInitialInstance({
+                initialValue: "",
+                validation: new InputtedEmailValidation({ isInputRequired: true })
+              }),
+              password: ValidatableControl.Payload.createInitialInstance({
+                initialValue: "",
+                validation: new PasswordValidation({ isInputRequired: true })
+              })
+            };
+
+
+            /* === Lifecycle hooks ========================================================================================== */
+            public beforeCreate(): void {
+              TextBox.registerImplementationLocally(this);
+              Button.registerImplementationLocally(this);
+            }
+
+            public created(): void {
+              this.initializeNonReactiveClassFields();
+            }
+
+
+            /* === Actions handling ========================================================================================= */
+            protected hasUserTriedToSubmitDataAtLeastOnce: boolean = false;
+
+            protected get hasInvalidInputs(): boolean {
+              return ValidatableControlsGroup.hasInvalidInputs(this.controlsPayload);
+            }
+
+
+            protected async attemptSigningIn(): Promise<void> {
+
+              this.hasUserTriedToSubmitDataAtLeastOnce = true;
+
+              if (this.hasInvalidInputs) {
+
+                ValidatableControlsGroup.pointOutValidationErrors({
+                  controlsPayload: this.controlsPayload,
+                  parentVueComponentInstance: this
+                });
+
+                return;
+
+              }
+
+
+              try {
+
+                await Promise.resolve({
+                  email: this.controlsPalyload.email.getExpectedToBeValidValue(),
+                  password: this.controlsPalyload.password.getExpectedToBeValidValue()
+                });
+
+              } catch (error: unknown) {
+
+                Logger.logError({
+                  errorType: DataSubmittingFailedError.NAME,
+                  title: DataSubmittingFailedError.localization.defaultTitle,
+                  description: "Signing in failed.",
+                  occurrenceLocation: "simpleIntegratedForm.attemptSigningIn()",
+                  caughtError: error
+                });
+
+                return;
+
+              }
+
+
+              Logger.logSuccess({
+                title: "Sign in success",
+                description: "The simulation of singing in is complete."
+              });
+
+            }
+
+
+            /* === Routines ================================================================================================= */
+            /* --- Non-reactive class fields -------------------------------------------------------------------------------- */
+            protected TextBox!: typeof TextBox;
+
+            private initializeNonReactiveClassFields(): void {
+              this.TextBox = TextBox;
+            }
+
+          }

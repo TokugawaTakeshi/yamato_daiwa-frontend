@@ -1,20 +1,21 @@
-import type ValueValidation from "./ValueValidation";
+/* eslint-disable @typescript-eslint/member-ordering -- The secondary members has been organized to the end of the class. */
 
 import {
   Logger,
   UnexpectedEventError,
   isArbitraryObject,
   isUndefined,
-  isNotUndefined
+  isFunctionLike
 } from "@yamato-daiwa/es-extensions";
+import type { ComponentPublicInstance as VueComponentPublicInstance } from "vue";
+import type { InputtedValueValidation } from "@yamato-daiwa/frontend";
 
 
 interface ValidatableControl {
 
   highlightInvalidInput: () => this;
 
-  /* [ Theory ] In general case, the scrolled element is not "body". */
-  getRootElementForScrollingProviding: () => Element;
+  getRootElement: () => Element;
 
   focus: () => this;
 
@@ -25,42 +26,85 @@ interface ValidatableControl {
 
 namespace ValidatableControl {
 
-  export class Payload<ValidValue, InvalidValue, Validation extends ValueValidation> {
+  export function isValidatableControl(potentialValidatableControl: unknown): potentialValidatableControl is ValidatableControl {
+    return isArbitraryObject(potentialValidatableControl) &&
+        isFunctionLike(potentialValidatableControl.highlightInvalidInput) &&
+        isFunctionLike(potentialValidatableControl.getRootElement) &&
+        isFunctionLike(potentialValidatableControl.focus) &&
+        isFunctionLike(potentialValidatableControl.resetStateToInitial);
+  }
+
+  export function getValidatableControlInstanceByVueReferenceID(
+    compoundParameter: Readonly<{
+      parentVueComponentInstance: VueComponentPublicInstance;
+      vueReferenceID: string;
+    }>
+  ): ValidatableControl | null;
+
+  export function getValidatableControlInstanceByVueReferenceID(
+    compoundParameter: Readonly<{
+      parentVueComponentInstance: VueComponentPublicInstance;
+      vueReferenceID: string;
+      mustThrowErrorIsNotFoundOrNotValidatableControl: true;
+    }>
+  ): ValidatableControl;
+
+  export function getValidatableControlInstanceByVueReferenceID(
+    compoundParameter: Readonly<{
+      parentVueComponentInstance: VueComponentPublicInstance;
+      vueReferenceID: string;
+      mustThrowErrorIsNotFoundOrNotValidatableControl?: true;
+    }>
+  ): ValidatableControl | null {
+
+    const potentialValidatableControl: unknown = compoundParameter.parentVueComponentInstance.
+        $refs[compoundParameter.vueReferenceID];
+
+    if (isUndefined(potentialValidatableControl)) {
+      return null;
+    }
+
+
+    if (!isValidatableControl(potentialValidatableControl)) {
+      return null;
+    }
+
+    return potentialValidatableControl;
+
+  }
+
+
+  export class Payload<ValidValue, InvalidValue, Validation extends InputtedValueValidation> {
+
+    public readonly VUE_REFERENCE_ID: string;
 
     public readonly value: ValidValue | InvalidValue;
     public readonly validation: Validation;
     public readonly isValidationPending: boolean;
 
-    private readonly validationResult: ValueValidation.ValidationResult;
-
-    /* [ Theory ]
-     * The saving of control component instance inside validatable control payload could cause the infinite
-     * recursion ("RangeError: Maximum call stack size exceeded") */
-    private getComponentInstanceMethodImplementation?: () => ValidatableControl;
+    private readonly validationResult: InputtedValueValidation.Result;
 
 
-    public static createInitialInstance<ValidValue, InvalidValue, Validation extends ValueValidation>(
-      {
-        initialValue,
-        validation
-      }: {
+    public static createInitialInstance<ValidValue, InvalidValue, Validation extends InputtedValueValidation>(
+      compoundParameter: Readonly<{
         initialValue: ValidValue | InvalidValue;
         validation: Validation;
-      }
+      }>
     ): Payload<ValidValue, InvalidValue, Validation> {
-      return new Payload<ValidValue, InvalidValue, Validation>({ initialValue, validation });
+      return new Payload<ValidValue, InvalidValue, Validation>(compoundParameter);
     }
+
 
     private constructor(
       {
         initialValue,
         validation,
-        getComponentInstance
-      }: {
+        vueReferenceID
+      }: Readonly<{
         initialValue: ValidValue | InvalidValue;
         validation: Validation;
-        getComponentInstance?: () => ValidatableControl;
-      }
+        vueReferenceID?: string;
+      }>
     ) {
 
       this.value = initialValue;
@@ -69,26 +113,10 @@ namespace ValidatableControl {
       this.validationResult = validation.validate(this.value);
       this.isValidationPending = false;
 
-      if (isNotUndefined(getComponentInstance)) {
-        this.getComponentInstanceMethodImplementation = getComponentInstance;
-      }
+      this.VUE_REFERENCE_ID = vueReferenceID ?? Payload.generateAssociatedComponentVueReferenceID();
+
     }
 
-    public getComponentInstance(): ValidatableControl {
-
-      if (isUndefined(this.getComponentInstanceMethodImplementation)) {
-        Logger.throwErrorAndLog({
-          errorType: "IncompleteInitializationError",
-          title: "Incomplete initialization",
-          description: "The component instance is still unavailable. Call 'completeInitialization' inside 'created' hook " +
-              "of target 'ValidatableControl'.",
-          occurrenceLocation: "validatableControl.getComponentInstance()"
-        });
-      }
-
-
-      return this.getComponentInstanceMethodImplementation();
-    }
 
     public get validationErrorsMessages(): Array<string> {
       return this.validationResult.errorsMessages;
@@ -124,27 +152,20 @@ namespace ValidatableControl {
     ): Payload<ValidValue, InvalidValue, Validation> {
       return new Payload<ValidValue, InvalidValue, Validation>({
         initialValue: newValue,
-        validation: this.validation,
-        getComponentInstance: this.getComponentInstanceMethodImplementation
+        validation: this.validation
       });
     }
 
-    public resetSelfAndAssociatedComponentImmutably(
-      {
-        newValue
-      }: {
-        newValue: ValidValue | InvalidValue;
-      }
-    ): Payload<ValidValue, InvalidValue, Validation> {
 
-      this.getComponentInstanceMethodImplementation?.().resetStateToInitial();
+    /* === Auxiliaries ============================================================================================== */
+    /* --- IDs generating ------------------------------------------------------------------------------------------- */
+    protected static counterForAssociatedComponentVueReferenceID_Generating: number = 0;
 
-      return new Payload<ValidValue, InvalidValue, Validation>({
-        initialValue: newValue,
-        validation: this.validation,
-        getComponentInstance: this.getComponentInstanceMethodImplementation
-      });
+    protected static generateAssociatedComponentVueReferenceID(): string {
+      Payload.counterForAssociatedComponentVueReferenceID_Generating++;
+      return `VALIDATABLE_CONTROL-${ Payload.counterForAssociatedComponentVueReferenceID_Generating }`;
     }
+
   }
 
 

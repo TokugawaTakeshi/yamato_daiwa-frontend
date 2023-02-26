@@ -15,6 +15,7 @@ class VueComponentImplementationHasNotBeenSetError extends Error {
     this.name = VueComponentImplementationHasNotBeenSetError.NAME;
     this.message = VueComponentImplementationHasNotBeenSetError.localization.generateMessage(namedParameters);
   }
+
 }
 
 

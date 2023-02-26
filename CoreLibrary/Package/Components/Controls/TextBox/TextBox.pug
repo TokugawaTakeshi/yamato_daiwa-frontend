@@ -32,7 +32,7 @@ mixin TextBox--YDF(properties, statesSimulations)
       minimalNumericValue,
       maximalNumericValue,
 
-      inputOrTextAreaElementHTML_ID = `${ COMPONENT_ID }-INPUT_OR_TEXTAREA`,
+      inputOrTextAreaElementHTML_ID = `${ COMPONENT_ID }-INPUT_OR_TEXT_AREA`,
       labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
 
       theme = TextBox__YDF.Themes.regular,
@@ -61,16 +61,18 @@ mixin TextBox--YDF(properties, statesSimulations)
     });
 
     const rootElementModifierCSS_Classes = [
+      ...multiline ? [ `${ TextBox__YDF.CSS_NAMESPACE }__Multiline` ] : [],
+      ...disabled ? [ `${ TextBox__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
+      ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
+          [ `${ TextBox__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
+      ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
+          [ `${ TextBox__YDF.CSS_NAMESPACE }__ValueState` ] : [],
       ...Object.entries(TextBox__YDF.Themes).length > 1 && !areThemesExternal ?
           [ ComponentsAuxiliaries.generateThemeCSS_Class(TextBox__YDF.CSS_NAMESPACE, theme) ] : [],
       ...Object.entries(TextBox__YDF.GeometricVariations).length > 1 ?
           [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(TextBox__YDF.CSS_NAMESPACE, geometry) ] : [],
       ...Object.entries(TextBox__YDF.DecorativeVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(TextBox__YDF.CSS_NAMESPACE, decoration) ] : [],
-      ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
-          [ `${ TextBox__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
-      ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
-          [ `${ TextBox__YDF.CSS_NAMESPACE }__ValueState` ] : []
+          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(TextBox__YDF.CSS_NAMESPACE, decoration) ] : []
     ];
 
 

@@ -5,6 +5,7 @@
   TextBox(
     v-model:payload="samplePayload"
     label="Test"
+    :minimalCharactersCount="samplePayload.validation.MINIMAL_CHARACTERS_COUNT"
   )
 
 </template>
@@ -15,7 +16,7 @@
   /* eslint-disable max-classes-per-file -- For the testing purposes */
 
   /* --- Other components ------------------------------------------------------------------------------------------- */
-  import { TextBox } from "@Source/index";
+  import { TextBox, TextBoxBasicImplementation } from "@Source/index";
 
   /* --- Validations ------------------------------------------------------------------------------------------------ */
   import ValidatableControl from "@Components/Controls/_Validation/ValidatableControl";
@@ -26,17 +27,51 @@
 
   /* --- Utils ------------------------------------------------------------------------------------------------------ */
   import { isEmptyString } from "@yamato-daiwa/es-extensions";
+  import {
+    minimalCharactersCountValidationRule,
+    maximalCharactersCountValidationRule
+  } from "@yamato-daiwa/frontend";
 
 
   /* eslint-disable max-classes-per-file */
   export class TestValidation extends ValueValidation {
+
+    public readonly MINIMAL_CHARACTERS_COUNT: number;
+    public readonly MAXIMAL_CHARACTERS_COUNT: number;
+
     public constructor() {
-      super({ omittedValueChecker: isEmptyString, inputIsRequired: true });
+
+      const MINIMAL_CHARACTERS_COUNT: number = 2;
+      const MAXIMAL_CHARACTERS_COUNT: number = 5;
+
+      super({
+        inputIsRequired: true,
+        omittedValueChecker: isEmptyString,
+        contextIndependentValidationRules: {
+          ...minimalCharactersCountValidationRule({
+            minimalCharactersCount: MINIMAL_CHARACTERS_COUNT,
+            errorMessage: `This value must have minimum ${ MINIMAL_CHARACTERS_COUNT } characters.`,
+            finishValidationIfInvalid: true
+          }),
+          ...maximalCharactersCountValidationRule({
+            maximalCharactersCount: MAXIMAL_CHARACTERS_COUNT,
+            errorMessage: `This value must have maximum ${ MAXIMAL_CHARACTERS_COUNT } characters.`
+          })
+        }
+      });
+
+      this.MINIMAL_CHARACTERS_COUNT = MINIMAL_CHARACTERS_COUNT;
+      this.MAXIMAL_CHARACTERS_COUNT = MAXIMAL_CHARACTERS_COUNT;
+
     }
   }
 
 
-  @VueComponentConfiguration({})
+  @VueComponentConfiguration({
+    components: {
+      TextBox: TextBoxBasicImplementation
+    }
+  })
   export default class TextBoxComponentTestSite extends VueComponent {
 
     public created(): void {

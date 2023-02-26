@@ -1,0 +1,19 @@
+include HTML_PageMetadata/HTML_PageMetadata.pug
+include Routing/generateLocalizedRouting.pug
+include ExternalLinks/generateSharedExternalLinks.pug
+
+include Localizations/Japanese/RoutingLocalization.japanese.pug
+include Localizations/Japanese/SharedExternalLinksLocalizaiton.japanese.pug
+
+
+-
+
+  const localizedRouting = generateLocalizedRouting(routingJapaneseLocalization);
+  RoutingEmulator.initialize(localizedRouting);
+
+  const sharedExternalLinks = generateSharedExternalLinks(sharedExternalLinksJapaneseLocalization);
+
+
+include CountriesFlags/GreatBritanFlag2x3.pug
+include CountriesFlags/JapanFlag2x3.pug
+include CountriesFlags/RussiaFlag2x3.pug

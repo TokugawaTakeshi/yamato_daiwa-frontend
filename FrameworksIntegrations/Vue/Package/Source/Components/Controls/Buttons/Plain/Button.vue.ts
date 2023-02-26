@@ -253,7 +253,7 @@ namespace Button {
         ...this.geometricModifiers.includes(GeometricModifiers.squareShape) ?
             [ "Button--YDF__SquareShapeGeometricModifier" ] : [],
         ...Object.entries(DecorativeVariations).length > 1 ?
-            [ `Badge--YDF__${ toUpperCamelCase(this.decoration) }Decoration` ] : []
+            [ `Button--YDF__${ toUpperCamelCase(this.decoration) }Decoration` ] : []
       ];
     }
 

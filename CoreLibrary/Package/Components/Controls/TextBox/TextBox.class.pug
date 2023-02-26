@@ -105,6 +105,7 @@
         },
 
         value: {
+          preValidationModifications: rawValue => isString(rawValue) ? rawValue : String(rawValue),
           type: String,
           required: false
         },

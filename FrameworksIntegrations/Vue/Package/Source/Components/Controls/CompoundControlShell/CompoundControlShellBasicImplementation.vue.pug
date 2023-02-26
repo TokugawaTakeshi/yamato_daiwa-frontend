@@ -13,11 +13,11 @@
     ) {{ label }}
 
     span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__RequiredInput(
-      v-if="required && mustDisplayAppropriateBadgeIfInputIsRequired"
+      v-if="mustDisplayRequiredInputBadge"
     ) {{ localization.requirementBadges.required }}
 
     span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__OptionalInput(
-      v-else-if="!required && mustDisplayAppropriateBadgeIfInputIsOptional"
+      v-else-if="mustDisplayOptionalInputBadge"
     ) {{ localization.requirementBadges.optional }}
 
     span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__Invisible(

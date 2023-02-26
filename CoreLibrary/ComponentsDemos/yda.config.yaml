@@ -1,0 +1,47 @@
+projectBuilding:
+
+
+  # === Markup =========================================================================================================
+  markupProcessing:
+    entryPointsGroups:
+
+      Demos:
+        topDirectoryRelativePath: Pages
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Build
+
+
+  # === Styles =========================================================================================================
+  stylesProcessing:
+
+    entryPointsGroups:
+
+      Demos:
+
+        topDirectoryRelativePath: Pages
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Build
+
+
+  # === Development server =============================================================================================
+  browserLiveReloading:
+
+    setups:
+
+      StylesAndComponentsTesting:
+
+        localServer:
+
+          rootDirectoryRelativePath: Build
+
+        openInBrowsers: chrome

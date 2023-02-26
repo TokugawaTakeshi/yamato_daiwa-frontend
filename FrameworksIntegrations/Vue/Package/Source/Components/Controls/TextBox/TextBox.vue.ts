@@ -20,17 +20,21 @@ import type { Vue as VueComponent } from "vue-property-decorator";
 
 /* --- Utils -------------------------------------------------------------------------------------------------------- */
 import {
+  Logger,
   toLowerCamelCase,
   toUpperCamelCase,
   toScreamingSnakeCase,
   isString,
   isNumber,
+  isNonNegativeInteger,
   isElementOfEnumeration,
   isUndefined,
   isNull
 } from "@yamato-daiwa/es-extensions";
 import getExpectedToBeMountedDOM_ElementByVueReferenceID from
     "@Source/Functions/getExpectedToBeMountedDOM_ElementByVueReferenceID";
+import InvalidVuePropertiesCombinationError from
+    "@Components/_Errors/InvalidVuePropertiesCombination/InvalidVuePropertiesCombinationError";
 import VueComponentImplementationHasNotBeenSetError from
     "@Components/_Errors/VueComponentImplementationHasNotBeenSet/VueComponentImplementationHasNotBeenSet";
 
@@ -51,7 +55,7 @@ namespace TextBox {
   }
 
   export enum Events {
-    input = "update:payload",
+    input = "update:modelValue",
     blur = "BLUR"
   }
 
@@ -96,14 +100,14 @@ namespace TextBox {
   @VueComponentConfiguration({})
   export class BasicLogic extends InputtableControl implements ValidatableControl {
 
-    @VModel("payload", {
+    @VModel("modelValue", {
       required: true,
       validator: (rawVModel: unknown): boolean =>
           ValidatableControl.VModelChecker(
             rawVModel, (rawValue: unknown): boolean => isString(rawValue) || isNumber(rawValue) || isNull(rawValue)
           )
     })
-    private readonly validatablePayload!: ValidatableControl.Payload<
+    protected readonly validatablePayload!: ValidatableControl.Payload<
       SupportedValidatablePayloadValuesTypes,
       SupportedValidatablePayloadValuesTypes,
       ValueValidation
@@ -169,11 +173,11 @@ namespace TextBox {
 
 
     /* --- HTML IDs ------------------------------------------------------------------------------------------------- */
-    @VueProperty({
-      type: String,
-      default: BasicLogic.generateInputOrTextAreaElementHTML_ID()
-    })
-    protected readonly inputOrTextareaElementHTML_ID!: string;
+    /* [ Theory ]
+     *`{ default: BasicLogic.generateInputOrTextAreaElementHTML_ID() }` will be called only one time;
+     * it is required to substitute the default value. */
+    @VueProperty({ type: String })
+    protected readonly inputOrTextareaElementHTML_ID?: string;
 
     @VueProperty({ type: String, required: false })
     protected readonly labelElementHTML_ID?: string | null;
@@ -210,7 +214,7 @@ namespace TextBox {
 
 
     /* === State ==================================================================================================== */
-    private rawInput: string = "";
+    protected rawInput: string = "";
 
 
     /* === Interface ================================================================================================ */
@@ -230,7 +234,6 @@ namespace TextBox {
     /* === Lifecycle hooks ========================================================================================== */
     public beforeCreate(): void {
       this.invalidInputHighlightingIfAnyValidationErrorsMessages = this.mustHighlightInvalidInputImmediately;
-      this.executeAdditionalValidationsOfProperties();
     }
 
     public created(): void {
@@ -243,8 +246,9 @@ namespace TextBox {
         this.rawInput = "";
       }
 
-    }
+      this.executeAdditionalValidationsOfProperties();
 
+    }
 
     /* === Processing of user's actions ============================================================================= */
     /* [ Vue theory ] The events sequence is "keydown" → "input" → "keyup". The "keydown" could be used for preventing
@@ -253,7 +257,8 @@ namespace TextBox {
     protected onKeyDown(event: KeyboardEvent): void {
 
       /* 〔 理論 〕 妥当数入力処理（valueMustBeTheNonNegativeIntegerOfRegularNotation: true）〔 1 〕
-       * 1) 此処では利用者が先に行く不正０の入力を予防する事が出来ない。例えば、利用者は「123」を入力してからカーソルを最初位置に動かして、「0」を入力しても、
+       * 1) 此処では利用者が先に行く不正０の入力を予防する事が出来ない。（本当？既存の値を確認すれば？）
+       * 例えば、利用者は「123」を入力してからカーソルを最初位置に動かして、「0」を入力しても、
        * 此方ではカーソルの位置が判らないので、「onInput」で不正０の入力を遮る。
        * 2) 読める文字と他に、利用者は半角空白やバックスペースや方向ボタンが押せるので、「!/^[0-9]$/u.test(event.key)」の様な正規表現では入力を予防出来ない。
        * 3) 負号はボタンで入力するとは限らなく、ブラウザーに付けられたボタンにより入力も可能である。
@@ -270,7 +275,7 @@ namespace TextBox {
 
     }
 
-    /* [ Theory ] Even "input" element has type "number", if nothing has been input the "rawValue" will be
+    /* [ Theory ] Even "input" element has type "number", if nothing has been inputted, the "rawValue" will be
      *    the empty string. */
     protected onInput(rawValue: string): void {
 
@@ -287,6 +292,7 @@ namespace TextBox {
           this.$emit(Events.input, this.validatablePayload.updateImmutably({ newValue: null }));
           return;
         }
+
       }
 
 
@@ -305,6 +311,7 @@ namespace TextBox {
           newValue: Number(inputtedValueWithoutPrependedZeros)
         }));
         return;
+
       }
 
 
@@ -315,6 +322,7 @@ namespace TextBox {
 
 
       this.$emit(Events.input, this.validatablePayload.updateImmutably({ newValue: rawValue }));
+
     }
 
     @emitEvent(Events.blur)
@@ -328,6 +336,42 @@ namespace TextBox {
 
 
     /* === Auxiliaries ============================================================================================== */
+    /* --- Additional validation of properties ---------------------------------------------------------------------- */
+    protected executeAdditionalValidationsOfProperties(): void {
+
+      if (
+        isNonNegativeInteger(this.minimalCharactersCount) &&
+        isNonNegativeInteger(this.maximalCharactersCount) &&
+        this.maximalCharactersCount < this.minimalCharactersCount
+      ) {
+        Logger.throwErrorAndLog({
+          errorInstance: new InvalidVuePropertiesCombinationError({
+            vueComponentName: "TextBox.BasicLogic",
+            messageSpecificPart: "The \"maximalCharactersCount\" has value smaller than \"minimalCharactersCount\"."
+          }),
+          title: InvalidVuePropertiesCombinationError.localization.defaultTitle,
+          occurrenceLocation: "textBox.executeAdditionalValidationsOfProperties()"
+        });
+      }
+
+      if (
+        isNonNegativeInteger(this.minimalNumericValue) &&
+        isNonNegativeInteger(this.maximalNumericValue) &&
+        this.minimalNumericValue < this.maximalNumericValue
+      ) {
+        Logger.throwErrorAndLog({
+          errorInstance: new InvalidVuePropertiesCombinationError({
+            vueComponentName: "TextBox.BasicLogic",
+            messageSpecificPart: "The \"maximalNumericValue\" has value smaller than \"minimalNumericValue\"."
+          }),
+          title: InvalidVuePropertiesCombinationError.localization.defaultTitle,
+          occurrenceLocation: "textBox.executeAdditionalValidationsOfProperties()"
+        });
+      }
+
+    }
+
+
     /* --- Themes --------------------------------------------------------------------------------------------------- */
     protected static readonly selfAndCompoundControlShellThemesCorrespondence: { [selfTheme: string]: string; } = {
       [Themes.regular]: CompoundControlShell.Themes.regular
@@ -430,26 +474,31 @@ namespace TextBox {
     protected get rootElementModifiersCSS_Classes(): Array<string> {
       return [
         ...this.multiline ? [ "TextBox--YDF__Multiline" ] : [],
+        ...this.disabled ? [ "TextBox--YDF__DisabledState" ] : [],
+        ...this.invalidInputHighlightingIfAnyValidationErrorsMessages && this.validatablePayload.isInvalid ?
+            [ "TextBox--YDF__InvalidValueState" ] : [],
+        ...this.validInputHighlightingIfAnyErrorsMessages && !this.validatablePayload.isInvalid ?
+            [ "TextBox--YDF__ValidValueState" ] : [],
         ...Object.entries(Themes).length > 1 && !this.areThemesExternal ?
             [ `TextBox--YDF__${ toUpperCamelCase(this.theme) }Theme` ] : [],
         ...Object.entries(GeometricVariations).length > 1 ?
             [ `TextBox--YDF__${ toUpperCamelCase(this.geometry) }Geometry` ] : [],
         ...Object.entries(DecorativeVariations).length > 1 ?
-            [ `TextBox--YDF__${ toUpperCamelCase(this.decoration) }Decoration` ] : [],
-        ...this.invalidInputHighlightingIfAnyValidationErrorsMessages && this.validatablePayload.isInvalid ?
-            [ "TextBox--YDF__InvalidValueState" ] : [],
-        ...this.validInputHighlightingIfAnyErrorsMessages && !this.validatablePayload.isInvalid ?
-            [ "TextBox--YDF__ValidValueState" ] : []
+            [ `TextBox--YDF__${ toUpperCamelCase(this.decoration) }Decoration` ] : []
       ];
     }
 
 
     /* --- Generating of IDs ---------------------------------------------------------------------------------------- */
-    private static counterForInputOrTextAreaElementHTML_ID_Generating: number = 0;
-    private static generateInputOrTextAreaElementHTML_ID(): string {
+    protected static counterForInputOrTextAreaElementHTML_ID_Generating: number = 0;
+
+    protected static generateInputOrTextAreaElementHTML_ID(): string {
       BasicLogic.counterForInputOrTextAreaElementHTML_ID_Generating++;
       return `TEXT_BOX-INPUT_OR_TEXT_AREA_ELEMENT-${ BasicLogic.counterForInputOrTextAreaElementHTML_ID_Generating }`;
     }
+
+    protected readonly INPUT_OR_TEXTAREA_ELEMENT_HTML_ID: string =
+        this.inputOrTextareaElementHTML_ID ?? BasicLogic.generateInputOrTextAreaElementHTML_ID();
 
   }
 

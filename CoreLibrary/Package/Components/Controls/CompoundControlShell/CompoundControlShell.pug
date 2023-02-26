@@ -60,10 +60,14 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
           [ `${ CompoundControlShell__YDF.CSS_NAMESPACE }__ValidValueState` ] : []
     ];
 
+
+    const mustDisplayRequiredInputBadge = required && mustDisplayAppropriateBadgeIfInputIsRequired;
+    const mustDisplayOptionalInputBadge = !required && mustDisplayAppropriateBadgeIfInputIsOptional;
+
     const mustDisplayHeader = label ||
-      mustDisplayAppropriateBadgeIfInputIsRequired ||
-      mustDisplayAppropriateBadgeIfInputIsOptional ||
-      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge;
+        mustDisplayRequiredInputBadge ||
+        mustDisplayOptionalInputBadge ||
+        mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge;
 
 
   .CompoundControlShell--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
@@ -79,12 +83,12 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
             id=labelElementHTML_ID
           )= label
 
-        if required && mustDisplayAppropriateBadgeIfInputIsRequired
+        if mustDisplayRequiredInputBadge
 
           span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__RequiredInput
             | #{ localization.requirementBadges.required }
 
-        else if !required && mustDisplayAppropriateBadgeIfInputIsOptional
+        else if mustDisplayOptionalInputBadge
 
           span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__OptionalInput
             | #{ localization.requirementBadges.optional }

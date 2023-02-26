@@ -1,0 +1,14 @@
+{
+  "Pages/index.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-03-04T00:53:31.148Z"
+  },
+  "Components/Badge/BadgeDemo.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-02-05T04:08:35.543Z"
+  },
+  "Pages/Badge/Badge.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-03-04T00:59:39.518Z"
+  }
+}

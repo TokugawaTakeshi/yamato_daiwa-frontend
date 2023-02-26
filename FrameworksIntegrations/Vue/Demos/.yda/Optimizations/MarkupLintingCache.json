@@ -1,0 +1,18 @@
+{
+  "01-Source/index.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-03-19T04:13:11.356Z"
+  },
+  "01-Source/Assemblies/Forms/Simple/SimpleForm.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-03-04T01:29:22.523Z"
+  },
+  "01-Source/Assemblies/Forms/Simple/Integrated/SimpleIntegratedForm.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-03-19T04:24:48.835Z"
+  },
+  "01-Source/Components/Badge/Badge.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-03-19T04:13:40.178Z"
+  }
+}

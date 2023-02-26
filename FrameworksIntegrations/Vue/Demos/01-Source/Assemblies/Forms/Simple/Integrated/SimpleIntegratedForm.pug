@@ -1,0 +1,17 @@
+extends ../../../../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "en";
+    HTML_PAGE_TITLE = "Simple form";
+
+    styleSheetsURIs = [ "@All/Assemblies/Forms/Simple/Integrated/SimpleIntegratedForm" ]
+    scriptsURIs.endOfBody = [ "@All/Assemblies/Forms/Simple/Integrated/SimpleIntegratedForm" ]
+
+
+block append PageContent
+
+  .SimpleFormPage#APPLICATION

@@ -1,0 +1,31 @@
+extends ../node_modules/@yamato-daiwa/frontend/PagesTemplates/StaticPreviewAnywherePage.pug
+
+
+block append Metadata
+
+  -
+    HTML_PAGE_LANGUAGE = "en";
+    HTML_PAGE_TITLE = "YDF Vue - index page";
+
+
+block append TableOfContents
+
+  h1.AnywherePage-TopHeading= HTML_PAGE_TITLE
+
+  h2.AnywherePage-PagesGroupHeading Components
+
+  +PageLink({
+    label: "Badge",
+    URI: "@All/Components/Badge/Badge",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+
+  h2.AnywherePage-PagesGroupHeading Assemblies
+
+  +PageLink({
+    label: "Simple integrated form",
+    URI: "@All/Assemblies/Forms/Simple/Integrated/SimpleIntegratedForm",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+

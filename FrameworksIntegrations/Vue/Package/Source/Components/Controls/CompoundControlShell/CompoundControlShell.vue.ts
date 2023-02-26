@@ -168,7 +168,7 @@ namespace CompoundControlShell {
 
 
     /* === Validation errors messages animating ===================================================================== */
-    /* [ Theory ] Even if `validationErrorsMessages` became to empty array, the validation errors messages are still
+    /* [ Theory ] Even if `validationErrorsMessages` has become to empty array, the validation errors messages are still
     *   require to animate the expanding. */
     protected validationErrorsMessagesCopyForAnimating: ReadonlyArray<string> = [ ...this.validationErrorsMessages ];
     protected readonly VALIDATION_ERRORS_MESSAGES_ANIMATION_DURATION__SECONDS: number = 0.5;
@@ -245,10 +245,18 @@ namespace CompoundControlShell {
 
 
     /* --- Displaying of elements ----------------------------------------------------------------------------------- */
+    private get mustDisplayRequiredInputBadge(): boolean {
+      return this.required && this.mustDisplayAppropriateBadgeIfInputIsRequired;
+    }
+
+    private get mustDisplayOptionalInputBadge(): boolean {
+      return !this.required && this.mustDisplayAppropriateBadgeIfInputIsOptional;
+    }
+
     protected get mustDisplayHeader(): boolean {
       return isNeitherUndefinedNorNull(this.label) ||
-          this.mustDisplayAppropriateBadgeIfInputIsRequired ||
-          this.mustDisplayAppropriateBadgeIfInputIsOptional ||
+          this.mustDisplayRequiredInputBadge ||
+          this.mustDisplayOptionalInputBadge ||
           this.mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge;
     }
 
