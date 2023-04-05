@@ -18,20 +18,20 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
 
   public readonly isInvalid: boolean;
   public readonly payload: ValidData | null;
-  public readonly scrollingContainerHTML_ID?: string;
+  public readonly SCROLLING_CONTAINER_HTML_ID?: string;
 
-  private readonly controlsPayload: ValidatableControlsGroup.GeneralizedControlsPayload;
+  protected readonly controlsPayload: ValidatableControlsGroup.GeneralizedControlsPayload;
 
 
   /* === Static methods ============================================================================================= */
   public static initialize<ValidData extends ArbitraryObject | Array<unknown>>(
-    parametersObject: Readonly<{ scrollingContainerHTML_ID?: string; }>
+    compoundParameter: Readonly<{ scrollingContainerHTML_ID?: string; }>
   ): ValidatableControlsGroup<ValidData> {
     return new ValidatableControlsGroup<ValidData>({
       isInvalid: true,
       payload: null,
       controlsPayload: {},
-      scrollingContainerHTML_ID: parametersObject.scrollingContainerHTML_ID
+      scrollingContainerHTML_ID: compoundParameter.scrollingContainerHTML_ID
     });
   }
 
@@ -141,8 +141,8 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
 
     this.controlsPayload = "controlsPayload" in compoundParameter ? compoundParameter.controlsPayload : {};
 
-    if (isNotUndefined(this.scrollingContainerHTML_ID)) {
-      this.scrollingContainerHTML_ID = compoundParameter.scrollingContainerHTML_ID;
+    if (isNotUndefined(this.SCROLLING_CONTAINER_HTML_ID)) {
+      this.SCROLLING_CONTAINER_HTML_ID = compoundParameter.scrollingContainerHTML_ID;
     }
 
   }
@@ -153,7 +153,7 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
 
     if (isNull(this.payload)) {
       Logger.throwErrorAndLog({
-        errorInstance: new UnexpectedEventError("Contrary to expectations the \"payload\" is still \"null\"."),
+        errorInstance: new UnexpectedEventError("Contrary to expectations the payload is still invalid."),
         title: UnexpectedEventError.localization.defaultTitle,
         occurrenceLocation: "validatableControlsGroup.getExpectedToBeValidPayload()"
       });
@@ -168,7 +168,7 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
     ValidatableControlsGroup.pointOutValidationErrors({
       controlsPayload: this.controlsPayload,
       parentVueComponentInstance,
-      scrollingContainerHTML_ID: this.scrollingContainerHTML_ID
+      scrollingContainerHTML_ID: this.SCROLLING_CONTAINER_HTML_ID
     });
   }
 

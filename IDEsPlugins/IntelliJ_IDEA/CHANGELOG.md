@@ -2,6 +2,12 @@
 
 # Yamato-Daiwa Frontend IntelliJ IDEA plugin changelog
 
+## [0.0.5]
+### Changed
+
+- Support the IntelliJ IDEA platform 2023.1
+
+
 ## [0.0.4]
 ### Added
 

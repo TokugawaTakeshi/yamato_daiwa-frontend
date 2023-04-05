@@ -1,0 +1,34 @@
+-
+
+  function generateSharedExternalLinks(localization) {
+
+    return {
+
+      pug: {
+        homePage: {
+          top: "https://pugjs.org/api/getting-started.html",
+          mixins: "https://pugjs.org/language/mixins.html",
+          includes: "https://pugjs.org/language/includes.html"
+        }
+      },
+
+      stylus: {
+        homePage: {
+          top: "https://stylus-lang.com",
+          mixins: "https://stylus-lang.com/docs/mixins.html"
+        }
+      },
+
+      YDEE: {
+        top: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-ES-Extensions/blob/master/CoreLibrary/Package/README.md"
+      },
+
+      jetBrains: {
+        intelliJ_IDEA_FamilyIDEs: "https://www.jetbrains.com/products/#type=ide",
+        liveTemplates: localization.jetBrains.liveTemplates,
+        YDF_Plugin: "https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend"
+      }
+
+    };
+
+  }

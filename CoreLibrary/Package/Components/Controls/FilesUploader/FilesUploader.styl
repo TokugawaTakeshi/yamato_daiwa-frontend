@@ -1,0 +1,112 @@
+@require "Themes/Regular/GeometricVariations/FilesUploader-RegularGeometry.styl"
+@require "Themes/Regular/DecorativeVariations/FilesUploader-RegularDecoration.styl"
+
+
+FilesUploader--YDF = {
+
+  defaultProperties: {
+
+    themes: {
+      regular: {
+
+        geometricVariations: {
+          regular: FilesUploader-RegularGeometry--YDF
+        },
+
+        decorativeVariations: {
+          regular: FilesUploader-RegularDecoration--YDF
+        }
+      }
+    }
+  }
+}
+
+
+provideFilesUploaderYDF_Component(preset = FilesUploader--YDF.defaultProperties, overridings = {})
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+
+
+  // === Methods =======================================================================================================
+  applyBasicRules()
+
+    .FilesUploader--YDF-UploadingButtonComposition
+
+      position relative
+
+
+  // --- Geometry ------------------------------------------------------------------------------------------------------
+  applyGeometricVariation(themeName, variationName, variation)
+
+    VARIATION_DATA_FOR_LOGGING = buildString(
+      "FilesUploader.${themeName}Theme.${variationName}Geometry",
+      {
+        themeName: themeName,
+        variationName: variationName
+      }
+    )
+
+    +provideDefaultSelectorWhenRootAndApply(".FilesUploader--YDF")
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        assigments: {
+          min-width: {
+            dotSeparatedPath: "rootElement.minimalWidth",
+            required: false
+          }
+        }
+      })
+
+
+    .FilesUploader--YDF-UploadingButtonComposition
+
+      border-width 1px
+      border-radius 5px
+
+
+  // --- Decoration ----------------------------------------------------------------------------------------------------
+  applyDecorativeVariation(themeName, variationName, variation)
+
+    VARIATION_DATA_FOR_LOGGING = buildString(
+      "FilesUploader.${themeName}Theme.${variationName}Decoration",
+      {
+        themeName: themeName,
+        variationName: variationName
+      }
+    )
+
+
+    +provideDefaultSelectorWhenRootAndApply(".FilesUploader--YDF")
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        assigments: {
+          background-color: { dotSeparatedPath: "rootElement.background.color", required: false }
+        }
+      })
+
+
+    .FilesUploader--YDF-UploadingButtonComposition
+
+      border-style solid
+      border-color JQueryUI_BaseTheme.clickableElements.defaultState.borderColor
+
+
+      &:hover,
+      &__DragOverState
+
+        border-color JQueryUI_BaseTheme.clickableElements.hoverState.borderColor
+
+
+  // === Applying ======================================================================================================
+  applyBasicRules()
+
+  applyComponentThemes({
+    CSS_Namespace: "FilesUploader--YDF",
+    themes: properties.themes,
+    applyGeometricVariation: applyGeometricVariation,
+    applyDecorativeVariation: applyDecorativeVariation
+  })

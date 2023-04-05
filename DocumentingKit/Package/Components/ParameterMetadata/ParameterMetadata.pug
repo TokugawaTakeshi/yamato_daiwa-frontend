@@ -1,45 +1,45 @@
 include ParameterMetadata.class.pug
 
 
-mixin ParameterMetadata--YDF(parameterSpecification)
+mixin ParameterMetadata--YDF_DK(parameterSpecification)
 
-  .ParameterMetadata
+  .ParameterMetadata--YDF_DK
 
-    .ParameterMetadata-Header
+    .ParameterMetadata--YDF_DK-Header
 
-      .ParameterMetadata-ParameterNumberTitle
-        | #{ ParameterMetadata__YDF.localization.buildParametersNumberLabel({ parameterNumber: parameterSpecification.number }) }
+      .ParameterMetadata--YDF_DK-ParameterNumberTitle
+        | #{ ParameterMetadata__YDF_DK.localization.buildParametersNumberLabel({ parameterNumber: parameterSpecification.number }) }
 
       if parameterSpecification.required === true
 
         +Badge--YDF({
-          value: ParameterMetadata__YDF.localization.requirementLabels.required,
+          value: ParameterMetadata__YDF_DK.localization.requirementLabels.required,
           decoration: Badge__YDF.DecorativeVariations.veryCatchyPastel
-        }).ParameterMetadata-RequirementBadge
+        }).ParameterMetadata--YDF_DK-RequirementBadge
 
       else if parameterSpecification.required === false
 
         +Badge--YDF({
-          value: ParameterMetadata__YDF.localization.requirementLabels.optional,
+          value: ParameterMetadata__YDF_DK.localization.requirementLabels.optional,
           decoration: Badge__YDF.DecorativeVariations.calmingPastel
-        }).ParameterMetadata-RequirementBadge
+        }).ParameterMetadata--YDF_DK-RequirementBadge
 
       else if typeof argumentSpecification.defaultValue !== "undefined"
 
         +Badge--YDF({
-          value: ParameterMetadata__YDF.localization.requirementLabels.hasDefaultValue,
+          value: ParameterMetadata__YDF_DK.localization.requirementLabels.hasDefaultValue,
           decoration: Badge__YDF.DecorativeVariations.neutralPastel
-        }).ParameterMetadata-RequirementBadge
+        }).ParameterMetadata--YDF_DK-RequirementBadge
 
-    dl.ParameterMetadata-MetadataTable
+    dl.ParameterMetadata--YDF_DK-MetadataTable
 
-      dt.ParameterMetadata-MetadataTable-Key= ParameterMetadata__YDF.localization.tableKeys.genericTechnicalName
-      dd.ParameterMetadata-MetadataTable-Value= parameterSpecification.genericTechnicalName
+      dt.ParameterMetadata--YDF_DK-MetadataTable-Key= ParameterMetadata__YDF_DK.localization.tableKeys.genericTechnicalName
+      dd.ParameterMetadata--YDF_DK-MetadataTable-Value= parameterSpecification.genericTechnicalName
 
       if parameterSpecification.localizedName
-        dt.ParameterMetadata-MetadataTable-Key= ParameterMetadata__YDF.localization.tableKeys.localizedName
-        dd.ParameterMetadata-MetadataTable-Value= parameterSpecification.localizedName
+        dt.ParameterMetadata--YDF_DK-MetadataTable-Key= ParameterMetadata__YDF_DK.localization.tableKeys.localizedName
+        dd.ParameterMetadata--YDF_DK-MetadataTable-Value= parameterSpecification.localizedName
 
-      dt.ParameterMetadata-MetadataTable-Key= ParameterMetadata__YDF.localization.tableKeys.type
-      dd.ParameterMetadata-MetadataTable-Value.ParameterMetadata-MetadataTable-Value__Type
+      dt.ParameterMetadata--YDF_DK-MetadataTable-Key= ParameterMetadata__YDF_DK.localization.tableKeys.type
+      dd.ParameterMetadata--YDF_DK-MetadataTable-Value.ParameterMetadata--YDF_DK-MetadataTable-Value__Type
         | #{ parameterSpecification.type }

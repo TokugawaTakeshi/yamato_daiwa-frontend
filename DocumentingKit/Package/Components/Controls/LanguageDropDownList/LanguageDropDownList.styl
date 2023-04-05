@@ -1,0 +1,94 @@
+provideLanguageDropDownListComponent()
+
+  .LanguageDropDownList
+
+    position relative
+
+
+    &-CurrentlySelectedOption
+
+      display flex
+      align-items center
+
+      border-width 1px
+      border-radius 3px
+      padding 8px 12px
+
+      border-style solid
+      border-color: YDF_ColorPalette.deepSkyBlue.light
+      background-color: YDF_ColorPalette.deepSkyBlue.slightlyDark
+
+
+      &-Flag
+
+        height 1rem
+
+        flex-shrink 0
+
+
+      &-Label
+
+        font-size 1rem
+
+        font-weight bold
+        color white
+
+        margin-left 0.8rem
+
+
+    &-ListBox
+
+      width 100%
+      border-radius 3px
+
+      background white
+      box-shadow 0 0 4px 4px alpha(black, 0.25)
+
+      position absolute
+      bottom 0
+      transform translateY(100%)
+
+
+    &-Option
+
+      &-Link
+
+        display flex
+        align-items center
+
+        padding 8px 12px
+        font-size 1rem
+
+        color: ShadesOfGray__39ColorsW3C_Palette[10]
+        cursor pointer
+
+
+        &:hover
+
+          background lightgoldenrodyellow
+
+
+        &:focus
+
+          background lightpink
+
+
+        &:active
+
+          background lightcoral
+
+
+      &-Flag
+
+        height 1rem
+
+        flex-shrink 0
+
+
+      &-Label
+
+        font-size 1rem
+
+        color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+        margin-left 0.8rem

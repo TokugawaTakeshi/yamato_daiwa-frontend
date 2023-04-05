@@ -1,4 +1,4 @@
-import { CodeViewer } from "../../../../Components";
+import { CodeViewer } from "../../../../index";
 
 
 CodeViewer.initializeAllInstances();

@@ -1,0 +1,44 @@
+include Footnote.class.pug
+
+
+mixin FootnoteReferenceMark--YDF(properties)
+
+  -
+
+    const {
+      footnotesData,
+      text,
+      link
+    } = properties
+
+    const newFootnoteIndex = footnotesData.items.length;
+
+    const newFootnoteData = {
+      referenceMarkID: `FOOTNOTE-REFERENCE_MARK-${ footnotesData.ID }-${ newFootnoteIndex }--YDF`,
+      listItemID: `FOOTNOTE-LIST_ITEM-${ footnotesData.ID }-${ newFootnoteIndex }--YDF`,
+      text,
+      link
+    };
+
+    footnotesData.items.push(newFootnoteData)
+
+
+  a.FootnoteReferenceMark--YDF(
+    id=`${ newFootnoteData.referenceMarkID }`
+    href=`#${ newFootnoteData.listItemID }`
+  )= `[${ newFootnoteIndex + 1 }]`
+
+
+mixin FootnotesList--YDF(footnotesData)
+
+  ol
+
+    each footnoteData in footnotesData.items
+
+      li
+        | #{ footnoteData.text } -
+        a(
+          href=footnoteData.link.URI
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        )= footnoteData.link.text

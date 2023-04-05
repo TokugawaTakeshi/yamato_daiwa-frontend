@@ -1,0 +1,135 @@
+extends ../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../SharedAssets/Markup/Assets.russian.pug
+  include ../../../../Components/Components.russian.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "ru";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("Badge (Значок)");
+    HTML_PageMetaData = {
+      description: "",
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "@Common" ];
+
+    RoutingEmulator.setCurrentRoute("coreLibrary.components.badge");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      [LanguageDropDownList__YDF_DK.supportedLanguages.english]: "#",
+      [LanguageDropDownList__YDF_DK.supportedLanguages.japanese]: "#"
+    });
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1 Значок (Badge)
+
+    h2.Article-Heading2 Определение
+
+    p.Article-Paragraph.
+      В рамках #[+ImportantEntity--YDID YDF], #[+DefinableTerm--YDID значок (badge)] - информационный
+        #[+Keyword--YDID неинтерактивный] компонент, отображающий внутри геометрической фигуры слово, фразу и/или иконку.
+      Как правило, содержит какую-либо вспомогательную информацию, такую как категория чего-либо, относительная дата
+        и так далее.
+
+    p.Article-Paragraph.
+      В других фреймворках схожие компоненты могут иметь другие названия: #[+Term--YDID Chip], #[+Term--YDID Pill],
+        #[+Term--YDID Tag].
+      Официальных определений у этих компонентов, а также официально установленных чётких различий #[+Keyword--YDID нет]:
+        иногда в зависимости от фреймворка один и тот же компонент называется разными словами, а некоторые фреймворки
+        дают свои определения, право чего оставляет за собой и #[+ImportantEntity--YDID YDF].
+
+    p.Article-Paragraph.
+      #[+ImportantEntity--YDID YDF] называет #[+Term--YDID значком] именно #[+Keyword--YDID неинтерактивный] компонент,
+        который лишь отображает информацию.
+      Его следует отличать от аналогичных компонентов, с которыми можно взаимодействовать: использовать в качестве
+        кнопки или ссылки, скрывать по клику на соответствующую внутреннюю кнопку и так далее.
+
+
+    h2.Article-Heading2 Сводка
+
+    dl.Article-DescriptionList
+
+      dt Pug-примесь
+      dd #[+ImportantEntity__Code--YDID Badge--YDF]
+
+      dt Stylus-примесь
+      dd #[+ImportantEntity__Code--YDID provideBadgeYDF_Component]
+
+      dt Готовые темы
+      dd
+        ul
+          li #[+ImportantEntity__Code--YDID Badge__YDF.Themes.regular] (по умолчанию)
+
+      dt Готовые геометрические вариации
+        dd
+          ul
+            li #[+ImportantEntity__Code--YDID Badge__YDF.GeometricVariations.regular] (по умолчанию)
+
+      dt Готовые декоративные вариации
+        dd
+          ul
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.veryCatchyBright]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.catchyBright]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCatchyBright]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.neutralBright]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCalmingBright]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.calmingBright]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.achromaticBright]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.veryCatchyPastel]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.catchyPastel]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCatchyPastel]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.neutralPastel]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCalmingPastel]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.calmingPastel]
+            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.achromaticPastel]
+
+
+    h2.Article-Heading2 Использование
+    h3.Article-Heading3 Разметка
+
+    h4.Article-Heading4 Подключение в проект
+
+    p.Article-Paragraph.
+      Данный компонент поставляется в виде
+        #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.mixins }).Article-Link Pug-примеси]
+        #[+ImportantEntity__Code--YDID Badge--YDF].
+
+      Способ подключения -
+        #[+Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.components.$sections.providingOfMarkup.$URI }).Article-Link стандартный]:
+        путём #[+Link--YDF({ internalURI: sharedExternalLinks.pug.homePage.includes }).Article-Link подключения Pug-файла]
+        #[+ImportantEntity__Code--YDID Components.pug] в проект, при этом #[+Keyword--YDID предварительно] должен
+        был подключен файл #[+ImportantEntity__Code--YDID Functionality.pug] (последний уже подключён в шаблоны страниц,
+        предоставляемых #[+ImportantEntity--YDID YDF]).
+
+    +CodeViewer--YDF.Article-CodeViewer
+      +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
+        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+          include ../../node_modules/@yamato-daiwa/frontend/Functionality.pug
+          include ../../node_modules/@yamato-daiwa/frontend/Components.pug
+        +CodeViewer-Explanation--YDF.
+          В Вашем случае относительный путь к директории #[+ImportantEntity--YDID node_modules] может быть другим в
+            в зависимости от того, насколько глубже главной директории проекта находится Pug-файл.
+
+
+    h4.Article-Heading4 Программный интерфейс
+
+    //- Данные миксина
+
+
+    h3.Article-Heading3 Стили
+
+

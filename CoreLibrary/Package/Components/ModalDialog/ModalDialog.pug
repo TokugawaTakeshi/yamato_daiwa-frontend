@@ -1,4 +1,4 @@
-mixin ModalDialog(properties, statesSimulations)
+mixin ModalDialog--YDF(properties, statesSimulations)
 
   -
 
@@ -11,34 +11,39 @@ mixin ModalDialog(properties, statesSimulations)
     } = properties
 
     const {
-
+      mustDisplay = true
     } = statesSimulations
 
     const rootElementModifierCSS_Classes = [
-      "ModalDialog__FillingOfScreenWithSmallGapGeometry"
+      "ModalDialog--YDF__FillingOfScreenWithSmallGapGeometry"
     ];
 
 
-  .ModalDialog(
-    role="dialog"
-    tabindex="-1"
-    class= rootElementModifierCSS_Classes
-  )&attributes(attributes)
 
-    .ModalDialog-Body(
-      role="document"
-    )
+  //- [ Reference ] https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog
 
-      if title || !noDismissingButton
+  if mustDisplay
 
-        .ModalDialog-Header
+    .ModalDialog--YDF(
+      role="dialog"
+      tabindex="-1"
+      class= rootElementModifierCSS_Classes
+    )&attributes(attributes)
 
-          .ModalDialog-Title= title
+      .ModalDialog--YDF-Body(
+        role="document"
+      )
 
-          +Button--YDF({
-            geometry: Button__YDF.GeometricVariations.small
-          }).ModalDialog-DismissingButton
-            +MultiplicationSign--YDF_Icon.Button--YDF-SVG_Icon
-            span.Button--YDF-Label 閉じる
+        if title || !noDismissingButton
 
-      block
+          .ModalDialog--YDF-Header
+
+            .ModalDialog--YDF-Title= title
+
+            +Button--YDF({
+              geometry: Button__YDF.GeometricVariations.small
+            }).ModalDialog--YDF-DismissingButton
+              +MultiplicationSign--YDF_Icon.Button--YDF-SVG_Icon
+              span.Button--YDF-Label 閉じる
+
+        block

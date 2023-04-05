@@ -1,0 +1,95 @@
+include ${NAME}.class.pug
+
+
+mixin ${NAME}--YDF(properties, statesSimulations)
+
+  -
+
+    const COMPONENT_ID = ${NAME}__YDF.generateComponentID();
+
+    const {
+
+      label,
+      accessibilityGuidance,
+      externalLabelHTML_ID,
+      guidance,
+      placeholder,
+
+      disabled = false,
+      readonly = false,
+
+      required = false,
+      mustDisplayAppropriateBadgeIfInputIsRequired = false,
+      mustDisplayAppropriateBadgeIfInputIsOptional = false,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge = false,
+      
+      coreElementHTML_ID = `${ COMPONENT_ID }-INPUT_OR_TEXT_AREA`, // TODO Replace "core" with more specific element name
+      labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
+
+      theme = ${NAME}__YDF.Themes.regular,
+      areThemesExternal = ${NAME}__YDF.areThemesExternal,
+      geometry = ${NAME}__YDF.GeometricVariations.regular,
+      decoration = ${NAME}__YDF.GeometricVariations.regular,
+
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: ${NAME}__YDF.propertiesSpecification,
+      mixinName: "${NAME}--YDF"
+    });
+
+    const {
+      invalidInputHighlightingIfAnyValidationErrorsMessages = false,
+      validValueHighlightingIfNoValidationErrorsMessages = false,
+      validationErrorsMessages = []
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: statesSimulations,
+      parameterNumber: 2,
+      parameterName: "statesSimulations",
+      parameterPropertiesSpecification: ${NAME}__YDF.stateSimulationsSpecification,
+      mixinName: "${NAME}--YDF"
+    });
+
+    const rootElementModifierCSS_Classes = [
+      ...disabled ? [ `${ ${NAME}__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
+      ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
+          [ `${ ${NAME}__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
+      ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
+          [ `${ ${NAME}__YDF.CSS_NAMESPACE }__ValueState` ] : [],
+      ...Object.entries(${NAME}__YDF.Themes).length > 1 && !areThemesExternal ?
+          [ ComponentsAuxiliaries.generateThemeCSS_Class(${NAME}__YDF.CSS_NAMESPACE, theme) ] : [],
+      ...Object.entries(${NAME}__YDF.GeometricVariations).length > 1 ?
+          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(${NAME}__YDF.CSS_NAMESPACE, geometry) ] : [],
+      ...Object.entries(${NAME}__YDF.DecorativeVariations).length > 1 ?
+          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(${NAME}__YDF.CSS_NAMESPACE, decoration) ] : []
+    ];
+
+
+  +CompoundControlShell--YDF(
+    {
+
+      label,
+      guidance,
+
+      required,
+      mustDisplayAppropriateBadgeIfInputIsRequired,
+      mustDisplayAppropriateBadgeIfInputIsOptional,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
+      coreElementHTML_ID: coreElementHTML_ID,
+      labelElementHTML_ID: labelElementHTML_ID,
+
+      theme: ${NAME}__YDF.selfAndCompoundControlShellThemesCorrespondence[theme],
+      areThemesExternal,
+      geometry: ${NAME}__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[geometry],
+      decoration: ${NAME}__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[decoration]
+
+    },
+    {
+      invalidInputHighlightingIfAnyValidationErrorsMessages,
+      validValueHighlightingIfNoValidationErrorsMessages,
+      validationErrorsMessages
+    }
+  ).${NAME}--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
+
+    

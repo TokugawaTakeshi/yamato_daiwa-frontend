@@ -16,49 +16,4 @@
       return RoutingEmulator;
     }
 
-
-    static isRouteExactlyMatchingWithCurrentOne(targetRoute) {
-
-      const pathSegments = targetRoute.split(".");
-
-      let routingOfCurrentDepth = RoutingEmulator.routing[pathSegments[0]];
-      pathSegments.shift();
-
-      let isLastPathSegment = false;
-
-      for (const [index, pathSegment] of pathSegments.entries()) {
-
-        isLastPathSegment = index === pathSegments.length - 1;
-
-        if (isLastPathSegment) {
-
-          return typeof routingOfCurrentDepth[pathSegment] === "object" &&
-                  typeof routingOfCurrentDepth[pathSegment].children === "undefined";
-
-        } else {
-
-          if (typeof routingOfCurrentDepth.children === "undefined") {
-            return false;
-          }
-
-
-          routingOfCurrentDepth = routingOfCurrentDepth.children[pathSegment];
-
-          if (typeof routingOfCurrentDepth === "undefined") {
-            return false;
-          }
-
-        }
-
-      }
-
-
-      return false;
-
-    }
-
-    static isRouteFullyQualifiedNameStartsWithNameOfCurrentOne(targetRoute) {
-      return RoutingEmulator.currentRoute.startsWith(targetRoute);
-    }
-
   }

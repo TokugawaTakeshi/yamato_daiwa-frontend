@@ -3,6 +3,22 @@
   <component name="ExportableFileTemplateSettings">
     <default_templates>
       <template name="SVG Icon file.pug" reformat="false" live-template-enabled="false" />
+      <template name="YDF GUI component.pug" file-name="${NAME}" reformat="false" live-template-enabled="false">
+        <template name="YDF GUI component.pug.child.4.pug" file-name="${NAME}Localization.english" reformat="false" live-template-enabled="false" />
+        <template name="YDF GUI component.pug.child.3.styl" file-name="Themes/Regular/DecorativeVariations/${NAME}-RegularDecoration" reformat="false" live-template-enabled="false" />
+        <template name="YDF GUI component.pug.child.2.styl" file-name="Themes/Regular/GeometricVariations/${NAME}-RegularGeometry" reformat="false" live-template-enabled="false" />
+        <template name="YDF GUI component.pug.child.1.styl" file-name="${NAME}" reformat="false" live-template-enabled="false" />
+        <template name="YDF GUI component.pug.child.0.pug" file-name="${NAME}.class" reformat="false" live-template-enabled="false" />
+        <template name="YDF GUI component.pug.child.4.pug.child.0.pug" file-name="${NAME}Localization.japanese" reformat="false" live-template-enabled="false" />
+        <template name="YDF GUI component.pug.child.4.pug.child.0.pug.child.0.pug" file-name="${NAME}Localization.russian" reformat="false" live-template-enabled="false" />
+      </template>
+      <template name="YDF GUI component.pug.child.0.pug" file-name="${NAME}.class" reformat="false" live-template-enabled="false" />
+      <template name="YDF GUI component.pug.child.1.styl" file-name="${NAME}" reformat="false" live-template-enabled="false" />
+      <template name="YDF GUI component.pug.child.2.styl" file-name="Themes/Regular/GeometricVariations/${NAME}-RegularGeometry" reformat="false" live-template-enabled="false" />
+      <template name="YDF GUI component.pug.child.3.styl" file-name="Themes/Regular/DecorativeVariations/${NAME}-RegularDecoration" reformat="false" live-template-enabled="false" />
+      <template name="YDF GUI component.pug.child.4.pug" file-name="${NAME}Localization.english" reformat="false" live-template-enabled="false" />
+      <template name="YDF GUI component.pug.child.4.pug.child.0.pug" file-name="${NAME}Localization.japanese" reformat="false" live-template-enabled="false" />
+      <template name="YDF GUI component.pug.child.4.pug.child.0.pug.child.0.pug" file-name="${NAME}Localization.russian" reformat="false" live-template-enabled="false" />
     </default_templates>
   </component>
 </project>

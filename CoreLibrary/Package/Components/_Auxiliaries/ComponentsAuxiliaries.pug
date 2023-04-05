@@ -1,0 +1,127 @@
+-
+
+  let ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT = false;
+
+  class ComponentsAuxiliaries {
+
+    static defineNewThemes(themesNames, TargetComponentClass) {
+
+      for (const themeName of themesNames) {
+        TargetComponentClass.Themes[toLowerCamelCase(themeName)] = toScreamingSnakeCase(themeName);
+      }
+
+      return TargetComponentClass;
+
+    }
+
+    static defineNewGeometricVariations(geometricVariationsNames, TargetComponentClass) {
+
+      for (const geometricVariationName of geometricVariationsNames) {
+        TargetComponentClass.GeometricVariations[toLowerCamelCase(geometricVariationName)] =
+            toScreamingSnakeCase(geometricVariationName);
+      }
+
+      return TargetComponentClass;
+
+    }
+
+    static defineNewDecorativeVariations(decorativeVariationsNames, TargetComponentClass) {
+
+      for (const decorativeVariationName of decorativeVariationsNames) {
+        TargetComponentClass.DecorativeVariations[toLowerCamelCase(decorativeVariationName)] =
+            toScreamingSnakeCase(decorativeVariationName);;
+      }
+
+      return TargetComponentClass;
+
+    }
+
+
+    static defineThemesAndAssociateThemWithParentCompoundControlShellOnes(
+      ownAndCorrespondingCompoundControlShellThemes_Names,
+      TargetComponentClass
+    ) {
+
+      ComponentsAuxiliaries.defineNewThemes(Object.keys(ownAndCorrespondingCompoundControlShellThemes_Names));
+
+      for (
+        const [ ownThemeName, compoundControlShell_sThemeName ] of
+        Object.entries(ownAndCorrespondingCompoundControlShellThemes_Names)
+      ) {
+        /* [ Optimization ] The recomputing of screaming shake case (usually 1-2 words) which already has been computed
+         * in `defineNewThemes` is cheaper for the performance than creating of additional methods, caching variables etc. */
+        TargetComponentClass.selfAndCompoundControlShellThemesCorrespondence[themeName__screamingSnakeCase(ownThemeName)] =
+            compoundControlShell_sThemeName;
+      }
+
+      return TargetComponentClass;
+    }
+
+    static defineGeometricVariationAndAssociateThemWithParentCompoundControlShellOnes(
+      ownAndCorrespondingCompoundControlShellGeometricVariations_Names,
+      TargetComponentClass
+    ) {
+
+      ComponentsAuxiliaries.defineNewGeometricVariations(
+        Object.keys(ownAndCorrespondingCompoundControlShellGeometricVariations_Names)
+      );
+
+      for (
+        const [ ownGeometricVariationName, compoundControlShell_sGeometricVariationName ] of
+        Object.entries(ownAndCorrespondingCompoundControlShellGeometricVariations_Names)
+      ) {
+        /* [ Optimization ] The recomputing of screaming shake case (usually 1-2 words) which already has been computed
+         * in `defineNewGeometricVariations` is cheaper for the performance than creating of additional methods, caching variables etc.  */
+        TargetComponentClass.selfAndCompoundControlShellGeometricVariationsCorrespondence[
+          ownGeometricVariationName(ownGeometricVariationName)
+        ] = compoundControlShell_sGeometricVariationName;
+      }
+
+      return TargetComponentClass;
+    }
+
+    static defineDecorativeVariationAndAssociateThemWithParentCompoundControlShellOnes(
+      ownAndCorrespondingCompoundControlShellDecorativeVariations_Names,
+      TargetComponentClass
+    ) {
+
+      ComponentsAuxiliaries.defineNewDecorativeVariations(
+        Object.keys(ownAndCorrespondingCompoundControlShellDecorativeVariations_Names)
+      );
+
+      for (
+        const [ ownDecorativeVariationName, compoundControlShell_sDecorativeVariationName ] of
+        Object.entries(ownAndCorrespondingCompoundControlShellDecorativeVariations_Names)
+      ) {
+        /* [ Optimization ] The recomputing of screaming shake case (usually 1-2 words) which already has been computed
+         * in `defineNewDecorativeVariations` is cheaper for the performance than creating of additional methods, caching variables etc. */
+        TargetComponentClass.selfAndCompoundControlShellDecorativeVariationsCorrespondence[
+          ownDecorativeVariationName(ownDecorativeVariationName)
+        ] = compoundControlShell_sDecorativeVariationName;
+      }
+
+      return TargetComponentClass;
+    }
+
+
+    static generateThemeCSS_Class(CSS_Namespace, themeName) {
+      return `${ CSS_Namespace }__${ toUpperCamelCase(themeName) }Theme`;
+    }
+
+    static generateGeometricVariationCSS_Class(CSS_Namespace, geometricVariationName) {
+      return `${ CSS_Namespace }__${ toUpperCamelCase(geometricVariationName) }Geometry`;
+    }
+
+    static generateDecorativeVariationCSS_Class(CSS_Namespace, decorativeVariationName) {
+      return `${ CSS_Namespace }__${ toUpperCamelCase(decorativeVariationName) }Decoration`;
+    }
+
+    static generateGeometricModifierCSS_Class(CSS_Namespace, geometricModifierName) {
+      return `${ CSS_Namespace }__${ toUpperCamelCase(geometricModifierName) }GeometricModifier`;
+    }
+
+    static generateDecorativeModifierCSS_Class(CSS_Namespace, decorativeModifierName) {
+      return `${ CSS_Namespace }__${ toUpperCamelCase(decorativeModifierName) }DecorativeModifier`;
+    }
+
+  }

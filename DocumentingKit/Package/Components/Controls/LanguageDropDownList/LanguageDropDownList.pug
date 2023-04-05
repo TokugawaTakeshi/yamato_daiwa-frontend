@@ -1,0 +1,105 @@
+-
+
+  const LanguageDropDownList = {
+
+    supportedLanguages: {
+      english: "ENGLISH",
+      japanese: "JAPANESE",
+      russian: "RUSSIAN"
+    },
+
+    links: {},
+    setLinks(links) {
+      this.links = links;
+    },
+
+    localization: {
+      accessibilityGuidance: "Select the language"
+    },
+
+    counterForID_Generating: 0,
+    generateID() {
+      this.counterForID_Generating++;
+      return `LANGUAGE_DROP_DOWN_LIST-${ this.counterForID_Generating }`;
+    }
+
+  }
+
+
+mixin LanguageDropDownList()
+
+  -
+
+    const isExpanded = false;
+
+    const COMPONENT_ID = LanguageDropDownList.generateID();
+    const LISTBOX_ID = `${ COMPONENT_ID }-LIST_BOX`
+
+
+  .LanguageDropDownList&attributes(attributes)
+
+    //-
+       aria-labelledby="combo1-label"
+       id="combo1"
+
+    .LanguageDropDownList-CurrentlySelectedOption(
+      role="combobox"
+      tabindex="0"
+      aria-controls= LISTBOX_ID
+      aria-expanded= isExpanded ? "true" : "false"
+      aria-haspopup="listbox"
+    )
+
+      case HTML_PAGE_LANGUAGE
+
+        when "en"
+
+          +GreatBritanFlag2x3.LanguageDropDownList-CurrentlySelectedOption-Flag
+          span.LanguageDropDownList-CurrentlySelectedOption-Label English
+
+        when "ja"
+
+          +JapanFlag2x3.LanguageDropDownList-CurrentlySelectedOption-Flag
+          span.LanguageDropDownList-CurrentlySelectedOption-Label 日本語
+
+        when "ru"
+
+          +RussiaFlag2x3.LanguageDropDownList-CurrentlySelectedOption-Flag
+          span.LanguageDropDownList-CurrentlySelectedOption-Label Русский
+
+
+    //- aria-labelledby="combo1-label"
+    .LanguageDropDownList-ListBox(
+      id= LISTBOX_ID
+      role="listbox"
+      tabindex="-1"
+    )
+
+      //- <div  id="combo1-0" aria-selected="false">Choose a Fruit</div>
+
+      each link, language in LanguageDropDownList.links
+
+        .LanguageDropDownList-Option(
+          role="option"
+        )
+
+          a.LanguageDropDownList-Option-Link(
+            href= link
+          )
+
+            case language
+
+              when LanguageDropDownList.supportedLanguages.english
+
+                +GreatBritanFlag2x3.LanguageDropDownList-Option-Flag
+                span.LanguageDropDownList-Option-Label English
+
+              when LanguageDropDownList.supportedLanguages.japanese
+
+                +JapanFlag2x3.LanguageDropDownList-Option-Flag
+                span.LanguageDropDownList-Option-Label 日本語
+
+              when LanguageDropDownList.supportedLanguages.russian
+
+                +RussiaFlag2x3.LanguageDropDownList-Option-Flag
+                span.LanguageDropDownList-Option-Label Русский

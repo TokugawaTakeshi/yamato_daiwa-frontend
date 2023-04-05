@@ -6,7 +6,7 @@ import YDF_BUG_REPORTING_PAGE_URI from "../../_Auxiliaries/YDF_BUG_REPORTING_PAG
 
 /* --- Validation --------------------------------------------------------------------------------------------------- */
 import ValidatableControl from "../_Validation/ValidatableControl";
-import type ValueValidation from "../_Validation/ValueValidation";
+import type InputtedValueValidation from "../_Validation/InputtedValueValidation";
 
 /* --- Children components ------------------------------------------------------------------------------------------ */
 import CompoundControlShell from "../CompoundControlShell/CompoundControlShell";
@@ -28,7 +28,7 @@ import { getExpectedToBeSingleDOM_Element } from "@yamato-daiwa/es-extensions-br
 class TextBox<
   ValidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
   InvalidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
-  Validation extends ValueValidation
+  Validation extends InputtedValueValidation
 > implements ValidatableControl {
 
   protected static readonly NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR: string = ".TextBox--YDF-InputOrTextAreaElement";
@@ -55,7 +55,7 @@ class TextBox<
   public static pickOneBySelector<
     ValidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
     InvalidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
-    Validation extends ValueValidation
+    Validation extends InputtedValueValidation
   >(
     properties: TextBox.InitializationProperties<ValidValue, InvalidValue, Validation>
   ): TextBox<ValidValue, InvalidValue, Validation> {
@@ -301,7 +301,7 @@ namespace TextBox {
   export type InitializationProperties<
     ValidValue extends SupportedValidatablePayloadValuesTypes,
     InvalidValue extends SupportedValidatablePayloadValuesTypes,
-    Validation extends ValueValidation
+    Validation extends InputtedValueValidation
   > = Readonly<{
     selector: string;
     rawInputModifier: (rawInput: string) => ValidValue | InvalidValue;

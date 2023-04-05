@@ -119,10 +119,15 @@
           minimalCharactersCount: 1
         },
 
-        optionsListElementHTML_ID: {
+        listBoxElementHTML_ID: {
           type: String,
           required: false,
           minimalCharactersCount: 1
+        },
+
+        listBoxElementAccessibilityGuidance: {
+          type: String,
+          required: false
         },
 
         theme: {
@@ -152,20 +157,20 @@
     },
 
 
-    /* === State simulations specification ========================================================================== */
+    /* === Status simulations specification ========================================================================== */
     stateSimulationsSpecification: {
 
-      isExpanded: {
+      expanded: {
         type: Boolean,
         required: false
       },
 
-      invalidInputHighlightingIfAnyErrorsMessages: {
+      invalidInputHighlightingIfAnyValidationErrorsMessages: {
         type: Boolean,
         required: false
       },
 
-      validValueHighlightingIfNoErrorsMessages: {
+      validValueHighlightingIfNoValidationErrorsMessages: {
         type: Boolean,
         required: false
       },

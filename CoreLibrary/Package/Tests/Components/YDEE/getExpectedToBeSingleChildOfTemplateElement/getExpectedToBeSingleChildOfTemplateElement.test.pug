@@ -1,0 +1,24 @@
+extends ../../../../PagesTemplates/RegularWebPage.pug
+
+
+block append Requirements
+
+  include ../../../../Components.pug
+
+
+block append Metadata
+
+  -
+    HTML_PAGE_TITLE = "'getExpectedToBeSingleChildOfTemplateElement' function testing"
+
+    HTML_PAGE_LANGUAGE = "en";
+    scriptsURIs.endOfBody = [ "./getExpectedToBeSingleChildOfTemplateElement.test.js" ]
+
+
+block append PageContent
+
+  .PageContent
+
+    template#CardTemplate
+
+      .Card

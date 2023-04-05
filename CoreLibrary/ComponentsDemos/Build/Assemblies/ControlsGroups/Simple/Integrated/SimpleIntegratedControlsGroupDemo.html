@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Simple integrated controls group demo - YDF</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="SimpleIntegratedControlsGroupDemo.css" rel="stylesheet">
+</head>
+
+<body>
+  <main class="SimpleIntegratedControlsGroupDemo">
+    <form class="SimpleIntegratedControlsGroupDemo-Form" id="SCROLLABLE_CONTAINER">
+      <h1 class="SimpleIntegratedControlsGroupDemo-Heading">Simple integrated controls group demo - YDF</h1>
+      <div class="CompoundControlShell--YDF CompoundControlShell--YDF__RegularGeometry TextBox--YDF TextBox--YDF__RegularGeometry SimpleIntegratedControlsGroupDemo-TextBox" id="USER_NAME_TEXTBOX">
+        <div class="CompoundControlShell--YDF-Header">
+          <label class="CompoundControlShell--YDF-Label" for="TEXT_BOX--YDF-1-INPUT_OR_TEXT_AREA" id="TEXT_BOX--YDF-1-LABEL">User name</label>
+        </div>
+        <div class="CompoundControlShell--YDF-MainSlotCustomizableWrapper">
+          <input class="TextBox--YDF-InputOrTextAreaElement" value id="TEXT_BOX--YDF-1-INPUT_OR_TEXT_AREA">
+        </div>
+        <template class="CompoundControlShell--YDF-ValidationErrorMessagesListTemplate">
+          <ul class="CompoundControlShell--YDF-ValidationErrorsMessagesList">
+            <li class="CompoundControlShell--YDF-ValidationErrorMessage"></li>
+          </ul>
+        </template>
+      </div>
+      <div class="CompoundControlShell--YDF CompoundControlShell--YDF__RegularGeometry TextBox--YDF TextBox--YDF__RegularGeometry SimpleIntegratedControlsGroupDemo-TextBox" id="PASSWORD_TEXTBOX">
+        <div class="CompoundControlShell--YDF-Header">
+          <label class="CompoundControlShell--YDF-Label" for="TEXT_BOX--YDF-2-INPUT_OR_TEXT_AREA" id="TEXT_BOX--YDF-2-LABEL">Password</label>
+        </div>
+        <div class="CompoundControlShell--YDF-MainSlotCustomizableWrapper">
+          <input class="TextBox--YDF-InputOrTextAreaElement" type="password" value id="TEXT_BOX--YDF-2-INPUT_OR_TEXT_AREA">
+        </div>
+        <template class="CompoundControlShell--YDF-ValidationErrorMessagesListTemplate">
+          <ul class="CompoundControlShell--YDF-ValidationErrorsMessagesList">
+            <li class="CompoundControlShell--YDF-ValidationErrorMessage"></li>
+          </ul>
+        </template>
+      </div>
+      <template id="ERROR_MESSAGE_TEMPLATE">
+        <p class="SimpleIntegratedControlsGroupDemo-ErrorMessage">Invalid or omitted required field left. Please check your inputs.</p>
+      </template>
+      <button class="Button--YDF Button--YDF__RegularGeometry Button--YDF__RegularDecoration SimpleIntegratedControlsGroupDemo-SubmittingButton" type="submit" id="SUBMITTING_BUTTON"><span class="Button--YDF-Label">Sign in</span>
+      </button>
+    </form>
+  </main>
+  <script src="SimpleIntegratedControlsGroupDemo.js"></script>
+</body>
+
+</html>

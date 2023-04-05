@@ -26,7 +26,7 @@ mixin BadgeDemo(options)
     ThemesShowcase__YDF.
         setDefaultThemeKeyLabelPrefix("Badge__YDF.Themes.").
         setDefaultGeometricVariationLabelPrefix("Badge__YDF.GeometricVariations.").
-        setDefaultGeometricVariationLabelPrefix("Badge__YDF.DecorativeVariations.");
+        setDefaultDecorativeVariationLabelPrefix("Badge__YDF.DecorativeVariations.");
 
     const themeShowcaseCurrentIternationData = ThemesShowcase__YDF.initializeCurrentIterationData()
 
@@ -52,7 +52,7 @@ mixin BadgeDemo(options)
       iterationData: themeShowcaseCurrentIternationData
     })
 
-      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.theme.key }`
+      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIternationData.decorativeVariation.key }`
       dd
         +Badge--YDF({
           value: "Sample",

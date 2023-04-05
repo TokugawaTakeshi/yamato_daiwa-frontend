@@ -1,0 +1,112 @@
+include FilesUploader.class.pug
+
+
+mixin FilesUploader--YDF(properties, statesSimulations)
+
+  -
+
+    const COMPONENT_ID = FilesUploader__YDF.generateComponentID();
+
+    const {
+
+      label,
+      accessibilityGuidance,
+      externalLabelHTML_ID,
+      guidance,
+      placeholder,
+
+      disabled = false,
+      readonly = false,
+
+      required = false,
+      mustDisplayAppropriateBadgeIfInputIsRequired = false,
+      mustDisplayAppropriateBadgeIfInputIsOptional = false,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge = false,
+
+      coreElementHTML_ID = `${ COMPONENT_ID }-INPUT_OR_TEXT_AREA`, // TODO Replace "core" with more specific element name
+      labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
+
+      theme = FilesUploader__YDF.Themes.regular,
+      areThemesExternal = FilesUploader__YDF.areThemesExternal,
+      geometry = FilesUploader__YDF.GeometricVariations.regular,
+      decoration = FilesUploader__YDF.GeometricVariations.regular,
+
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: FilesUploader__YDF.propertiesSpecification,
+      mixinName: "FilesUploader--YDF"
+    });
+
+    const {
+      dragOverState = false,
+      blockingLoadingIndicator = false,
+      invalidInputHighlightingIfAnyValidationErrorsMessages = false,
+      validValueHighlightingIfNoValidationErrorsMessages = false,
+      validationErrorsMessages = []
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: statesSimulations,
+      parameterNumber: 2,
+      parameterName: "statesSimulations",
+      parameterPropertiesSpecification: FilesUploader__YDF.stateSimulationsSpecification,
+      mixinName: "FilesUploader--YDF"
+    });
+
+    const rootElementModifierCSS_Classes = [
+      ...disabled ? [ `${ FilesUploader__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
+      ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
+          [ `${ FilesUploader__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
+      ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
+          [ `${ FilesUploader__YDF.CSS_NAMESPACE }__ValueState` ] : [],
+      ...Object.entries(FilesUploader__YDF.Themes).length > 1 && !areThemesExternal ?
+          [ ComponentsAuxiliaries.generateThemeCSS_Class(FilesUploader__YDF.CSS_NAMESPACE, theme) ] : [],
+      ...Object.entries(FilesUploader__YDF.GeometricVariations).length > 1 ?
+          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(FilesUploader__YDF.CSS_NAMESPACE, geometry) ] : [],
+      ...Object.entries(FilesUploader__YDF.DecorativeVariations).length > 1 ?
+          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(FilesUploader__YDF.CSS_NAMESPACE, decoration) ] : []
+    ];
+
+
+  +CompoundControlShell--YDF(
+    {
+
+      label,
+      guidance,
+
+      required,
+      mustDisplayAppropriateBadgeIfInputIsRequired,
+      mustDisplayAppropriateBadgeIfInputIsOptional,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
+      coreElementHTML_ID: coreElementHTML_ID,
+      labelElementHTML_ID: labelElementHTML_ID,
+
+      theme: FilesUploader__YDF.selfAndCompoundControlShellThemesCorrespondence[theme],
+      areThemesExternal,
+      geometry: FilesUploader__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[geometry],
+      decoration: FilesUploader__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[decoration]
+
+    },
+    {
+      invalidInputHighlightingIfAnyValidationErrorsMessages,
+      validValueHighlightingIfNoValidationErrorsMessages,
+      validationErrorsMessages
+    }
+  ).FilesUploader--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
+
+    .FilesUploader--YDF-UploadingButtonGroup&attributes({
+      class: [
+        ...dragOverState ? [ "FilesUploader--YDF-UploadingButtonGroup__DragOverState" ] : [],
+        ...blockingLoadingIndicator ? [ "FilesUploader--YDF-UploadingButtonComposition__LoadingState" ] : []
+      ],
+      tabIndex: blockingLoadingIndicator ? -1 : 0
+    })
+
+      //-
+        [ Theory ]　From the viewpoint of HTML validity, the "label" element could not have the attribute [role="button"]
+          and block children elements like "div" and "p".
+      .FilesUploader--YDF-UploadingButtonComposition-VisibleContent(
+        role="button"
+      )
+        +Comment__Plus__Filled--YDF_Icon.FilesUploader--YDF-UploadingActionIcon
+        p.FilesUploader--YDF-Guidance= FilesUploader__YDF.localization.uploadSingleFileByDragAndDropGuidance

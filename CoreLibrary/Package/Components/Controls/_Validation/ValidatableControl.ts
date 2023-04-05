@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/member-ordering --
-* The members of this class has been organized semantically. */
+/* eslint-disable @typescript-eslint/member-ordering -- The secondary members has been organized to the end of the class. */
+/* eslint-disable no-underscore-dangle -- There are eponymous protected fields and public accessors in "Payload" class. */
 
-import type ValueValidation from "./ValueValidation";
+import type InputtedValueValidation from "./InputtedValueValidation";
 import { Logger, UnexpectedEventError } from "@yamato-daiwa/es-extensions";
 
 
@@ -9,7 +9,6 @@ interface ValidatableControl {
 
   highlightInvalidInput: () => this;
 
-  /* [ Theory ] In general case, the scrolled element is not the "body". */
   getRootElement: () => HTMLElement;
 
   focus: () => this;
@@ -21,48 +20,48 @@ interface ValidatableControl {
 
 namespace ValidatableControl {
 
-  /* [ Approach ] This class could be used by JavaScript thus it is required to provide the encapsulations as possible. */
-  export class Payload<ValidValue, InvalidValue, Validation extends ValueValidation> {
+  export class Payload<ValidValue, InvalidValue, Validation extends InputtedValueValidation> {
 
-    readonly #ID: string = Payload.#generateSelfID();
-    readonly #getComponentInstance: () => ValidatableControl;
+    public readonly ID: string = Payload.generateSelfID();
+    public readonly getComponentInstance: () => ValidatableControl;
 
-    #value: ValidValue | InvalidValue;
-    #validation: Validation;
-    #isValidationPending: boolean;
-    #validationResult: ValueValidation.ValidationResult;
+    protected _value: ValidValue | InvalidValue;
 
-    readonly #onHasBecomeValidEventHandlers: { [ID: string]: (() => unknown); } = {};
-    readonly #onHasBecomeInvalidEventHandlers: { [ID: string]: (() => unknown); } = {};
+    protected validation: Validation;
+    protected validationResult: InputtedValueValidation.Result;
+    protected isValidationPending: boolean;
+
+    protected onHasBecomeValidEventHandlers: { [ID: string]: (() => unknown); } = {};
+    protected onHasBecomeInvalidEventHandlers: { [ID: string]: (() => unknown); } = {};
 
 
-    public constructor(namedParameters: Payload.ConstructorNamedParameters<ValidValue, InvalidValue, Validation>) {
+    public constructor(compoundParameter: Payload.ConstructorCompoundParameter<ValidValue, InvalidValue, Validation>) {
 
-      this.#getComponentInstance = namedParameters.getComponentInstance;
+      this.getComponentInstance = compoundParameter.getComponentInstance;
 
-      this.#value = namedParameters.initialValue;
-      this.#validation = namedParameters.validation;
+      this._value = compoundParameter.initialValue;
 
-      this.#validationResult = this.#validation.validate(this.#value);
-      this.#isValidationPending = false;
+      this.validation = compoundParameter.validation;
+      this.validationResult = this.validation.validate(this._value);
+      this.isValidationPending = false;
+
     }
 
 
     /* === Value ==================================================================================================== */
-    public get value(): ValidValue | InvalidValue { return this.#value; }
+    public get value(): ValidValue | InvalidValue { return this._value; }
 
     public set value(newValue: ValidValue | InvalidValue) {
 
-      this.#value = newValue;
+      this._value = newValue;
 
-      const wasValidPreviously: boolean = this.#validationResult.isValid;
-
-      this.#validationResult = this.#validation.validate(this.#value);
-      const isValidNow: boolean = this.#validationResult.isValid;
+      const wasValidPreviously: boolean = this.validationResult.isValid;
+      this.validationResult = this.validation.validate(this._value);
+      const isValidNow: boolean = this.validationResult.isValid;
 
       if (!wasValidPreviously && isValidNow) {
 
-        for (const [ handlerID, handler ] of Object.entries(this.#onHasBecomeValidEventHandlers)) {
+        for (const [ handlerID, handler ] of Object.entries(this.onHasBecomeValidEventHandlers)) {
 
           try {
 
@@ -84,7 +83,7 @@ namespace ValidatableControl {
 
       } else if (wasValidPreviously && !isValidNow) {
 
-        for (const [ handlerID, handler ] of Object.entries(this.#onHasBecomeInvalidEventHandlers)) {
+        for (const [ handlerID, handler ] of Object.entries(this.onHasBecomeInvalidEventHandlers)) {
 
           try {
 
@@ -105,7 +104,8 @@ namespace ValidatableControl {
         }
       }
 
-      this.#isValidationPending = false;
+      this.isValidationPending = false;
+
     }
 
 
@@ -120,13 +120,14 @@ namespace ValidatableControl {
 
       if ("handler" in variadicParameter) {
         handler = variadicParameter.handler;
-        HANDLER_ID = variadicParameter.ID ?? Payload.#generateOnHasBecomeValidEventHandlerID();
+        HANDLER_ID = variadicParameter.ID ?? Payload.generateOnHasBecomeValidEventHandlerID();
       } else {
         handler = variadicParameter;
-        HANDLER_ID = Payload.#generateOnHasBecomeValidEventHandlerID();
+        HANDLER_ID = Payload.generateOnHasBecomeValidEventHandlerID();
       }
 
-      this.#onHasBecomeValidEventHandlers[HANDLER_ID] = handler;
+      this.onHasBecomeValidEventHandlers[HANDLER_ID] = handler;
+
     }
 
     public addOnHasBecomeInvalidEventHandler(
@@ -138,19 +139,14 @@ namespace ValidatableControl {
 
       if ("handler" in variadicParameter) {
         handler = variadicParameter.handler;
-        HANDLER_ID = variadicParameter.ID ?? Payload.#generateOnHasBecomeInvalidEventHandlerID();
+        HANDLER_ID = variadicParameter.ID ?? Payload.generateOnHasBecomeInvalidEventHandlerID();
       } else {
         handler = variadicParameter;
-        HANDLER_ID = Payload.#generateOnHasBecomeInvalidEventHandlerID();
+        HANDLER_ID = Payload.generateOnHasBecomeInvalidEventHandlerID();
       }
 
-      this.#onHasBecomeInvalidEventHandlers[HANDLER_ID] = handler;
-    }
+      this.onHasBecomeInvalidEventHandlers[HANDLER_ID] = handler;
 
-
-    /* --- Other ---------------------------------------------------------------------------------------------------- */
-    public getComponentInstance(): ValidatableControl {
-      return this.#getComponentInstance();
     }
 
 
@@ -159,7 +155,7 @@ namespace ValidatableControl {
 
       if (this.isInvalid) {
         Logger.throwErrorAndLog({
-          errorInstance: new UnexpectedEventError("Contrary to expectations, the value is still 'null'."),
+          errorInstance: new UnexpectedEventError("Contrary to expectations, the value is still invalid."),
           title: UnexpectedEventError.localization.defaultTitle,
           occurrenceLocation: "ValidatableControl.Payload.getExpectedToBeValidValue()"
         });
@@ -169,54 +165,48 @@ namespace ValidatableControl {
       /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
        * In this case, we are guarantee the ValidValue by "this.isInvalid" check */
       return this.value as ValidValue;
+
     }
 
     public get isInvalid(): boolean {
-      return !this.#validationResult.isValid;
+      return !this.validationResult.isValid;
     }
 
-    public get isValidationPending(): boolean {
-      return this.#isValidationPending;
-    }
-
-    public get validationErrorsMessages(): Array<string> {
-      return this.#validationResult.errorsMessages;
-    }
-
-    public get ID(): string {
-      return this.#ID;
+    public get validationErrorsMessages(): ReadonlyArray<string> {
+      return this.validationResult.errorsMessages;
     }
 
 
-    /* === Auxiliaries ============================================================================================== */
+    /* === Routines ================================================================================================= */
     /* --- IDs generating ------------------------------------------------------------------------------------------- */
-    static #counterForSelfID_Generating: number = 0;
+    protected static counterForSelfID_Generating: number = 0;
 
-    static #generateSelfID(): string {
-      Payload.#counterForSelfID_Generating++;
-      return `${ Payload.#counterForSelfID_Generating }`;
+    protected static generateSelfID(): string {
+      Payload.counterForSelfID_Generating++;
+      return `${ Payload.counterForSelfID_Generating }`;
     }
 
 
-    static #counterForOnHasBecomeValidEventHandlerID_Generating: number = 0;
+    protected static counterForOnHasBecomeValidEventHandlerID_Generating: number = 0;
 
-    static #generateOnHasBecomeValidEventHandlerID(): string {
-      Payload.#counterForOnHasBecomeValidEventHandlerID_Generating++;
-      return `${ Payload.#counterForOnHasBecomeValidEventHandlerID_Generating }`;
+    protected static generateOnHasBecomeValidEventHandlerID(): string {
+      Payload.counterForOnHasBecomeValidEventHandlerID_Generating++;
+      return `GENERATED-${ Payload.counterForOnHasBecomeValidEventHandlerID_Generating }`;
     }
 
 
-    static #counterForOnHasBecomeInvalidEventHandlerID_Generating: number = 0;
+    protected static counterForOnHasBecomeInvalidEventHandlerID_Generating: number = 0;
 
-    static #generateOnHasBecomeInvalidEventHandlerID(): string {
-      Payload.#counterForOnHasBecomeInvalidEventHandlerID_Generating++;
-      return `${ Payload.#counterForOnHasBecomeInvalidEventHandlerID_Generating }`;
+    protected static generateOnHasBecomeInvalidEventHandlerID(): string {
+      Payload.counterForOnHasBecomeInvalidEventHandlerID_Generating++;
+      return `GENERATED-${ Payload.counterForOnHasBecomeInvalidEventHandlerID_Generating }`;
     }
+
   }
 
 
   export namespace Payload {
-    export type ConstructorNamedParameters<ValidValue, InvalidValue, Validation extends ValueValidation> = Readonly<{
+    export type ConstructorCompoundParameter<ValidValue, InvalidValue, Validation extends InputtedValueValidation> = Readonly<{
       initialValue: ValidValue | InvalidValue;
       validation: Validation;
       getComponentInstance: () => ValidatableControl;

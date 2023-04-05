@@ -1,0 +1,52 @@
+mixin Link--YDF(properties)
+
+  -
+
+    const {
+      endorsedExternalURI,
+      unendorsedExternalURI,
+      internalURI,
+      anchor
+    } = properties;
+
+
+    let hrefAttributeValue;
+
+    if (endorsedExternalURI) {
+      hrefAttributeValue = endorsedExternalURI;
+    } else if (unendorsedExternalURI) {
+      hrefAttributeValue = unendorsedExternalURI;
+    } else if (internalURI) {
+      hrefAttributeValue = internalURI;
+    } else if (anchor) {
+      hrefAttributeValue = `#${anchor}`;
+    }
+
+    let targetAttributeValue;
+
+    if (endorsedExternalURI || unendorsedExternalURI) {
+      targetAttributeValue = "_blank"
+    }
+
+    let relAttributeValue;
+    const relations = [];
+
+    if (endorsedExternalURI || unendorsedExternalURI) {
+      relations.push("noopener", "noreferrer");
+    }
+
+    if (unendorsedExternalURI) {
+      relations.push("nofollow");
+    }
+
+    if (relations.length > 0) {
+      relAttributeValue = relations.join(" ");
+    }
+
+
+  a&attributes(attributes)(
+    href= hrefAttributeValue
+    target= targetAttributeValue
+    rel= relAttributeValue
+  )
+    block

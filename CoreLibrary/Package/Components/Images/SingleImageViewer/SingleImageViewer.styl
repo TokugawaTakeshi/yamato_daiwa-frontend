@@ -1,6 +1,6 @@
 SingleImageViewer--YDF = {
 
-  CSS_Namespace: "SingleImageViewer--YDF",
+  CSS_NAMESPACE: "SingleImageViewer--YDF",
 
   defaultProperties: {
 
@@ -25,42 +25,48 @@ provideSingleImageViewerYDF_Component(preset = SingleImageViewer--YDF.defaultPro
 
   .SingleImageViewer--YDF
 
-    &-Image
+    border 1px solid ShadesOfGray__39ColorsW3C_Palette[32]
+    padding 10px
+
+
+    &-SizingAndDefaultBackgroundProvidingContainer
 
       display block
-      max-width 100%
 
       margin-left auto
       margin-right auto
 
+      background aliceblue
+
+
+    &-Image
+
+      display block
+      width 100%
+
 
     &-Caption
 
-      Paddings({ horizontalSymmetric: 12px })
-      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineHeight: 1.3 })
+      Paddings({
+        horizontalSymmetric: 8px
+        top: 8px
+      })
+
+      border-top 1px solid ShadesOfGray__39ColorsW3C_Palette[32]
+
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineSpacing: 4px })
 
       color: ShadesOfGray__39ColorsW3C_Palette[14]
 
       margin-top 8px
 
 
-    &-InformationSourceReference
-
-      margin-top 6px
-
-
     &-OperationingGuidance
 
       display none
-      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 12px, lineHeight: 1.3 })
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({ fontSize: 12px, lineSpacing: 4px })
       text-align center
 
       color: ShadesOfGray__39ColorsW3C_Palette[18]
 
       margin-top 6px
-
-
-  providePositionalRelationshipWithTypographyElements({
-    presets: properties.positionalRelationship.withTypographyElements,
-    componentRootClass: SingleImageViewer--YDF.CSS_Namespace
-  })

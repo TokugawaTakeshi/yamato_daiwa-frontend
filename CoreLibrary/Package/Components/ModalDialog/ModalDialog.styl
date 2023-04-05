@@ -1,57 +1,63 @@
-.ModalDialog
+provideModalDialogYDF_Component()
 
-  display grid
-  place-items center
+  .ModalDialog--YDF
 
-  FixedTranslucentDimLayer()
+    display grid
+    place-items center
 
-
-  &-Body
-
-    display flex
-    flex-direction column
-
-    border-radius 5px
-    Paddings({ horizontalSymmetric: 12px })
-
-    background white
+    FixedTranslucentDimLayer()
 
 
-    /.ModalDialog__FullScreenGeometry &
+    &-Body
 
-      justify-self stretch
-      align-self stretch
+      display flex
+      flex-direction column
 
+      border-radius 5px
+      Paddings({ horizontalSymmetric: 12px })
 
-    /.ModalDialog__FillingOfScreenWithSmallGapGeometry &
-
-      LEFT_OR_RIGHT_EQUAL_PADDINGS = 12px
-      VERTICAL_SPACE_BETWEEN_MODAL_BORDER_AND_VIEWPORT_EDGE = 10px
-      BORDER_RADIUS__NON_FULL_SCREEN_SIZING = 8px
-
-      width "calc(100% - %s)" % LEFT_OR_RIGHT_EQUAL_PADDINGS
-      height "calc(100% - 2*%s)" % VERTICAL_SPACE_BETWEEN_MODAL_BORDER_AND_VIEWPORT_EDGE
-      border-radius BORDER_RADIUS__NON_FULL_SCREEN_SIZING
+      background white
 
 
-  &-Header
+      /.ModalDialog--YDF__FullScreenGeometry &
 
-    display flex
-    justify-content space-between
-    align-items center
-    column-gap 12px
-
-    margin-top 6px
+        justify-self stretch
+        align-self stretch
 
 
-  &-Title
+      /.ModalDialog--YDF__FillingOfScreenWithSmallGapGeometry &
 
-    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({ fontSize: 16px, lineHeight: 20px })
+        LEFT_OR_RIGHT_EQUAL_PADDINGS = 12px
+        VERTICAL_SPACE_BETWEEN_MODAL_BORDER_AND_VIEWPORT_EDGE = 10px
+        BORDER_RADIUS__NON_FULL_SCREEN_SIZING = 8px
 
-    font-weight bold
-    color #123d52
+        width "calc(100% - %s)" % LEFT_OR_RIGHT_EQUAL_PADDINGS
+        height "calc(100% - 2*%s)" % VERTICAL_SPACE_BETWEEN_MODAL_BORDER_AND_VIEWPORT_EDGE
+        border-radius BORDER_RADIUS__NON_FULL_SCREEN_SIZING
 
 
-  &-DismissingButton
+    &-Header
 
-    flex-shrink 0
+      display flex
+      justify-content space-between
+      align-items center
+      column-gap 12px
+
+      margin-top 6px
+
+
+    &-Title
+
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+        fontSize: 16px,
+        lineSpacing: 4px,
+        mustAllowWordBreakingAnywhere: true
+      })
+
+      font-weight bold
+      color #123d52
+
+
+    &-DismissingButton
+
+      flex-shrink 0

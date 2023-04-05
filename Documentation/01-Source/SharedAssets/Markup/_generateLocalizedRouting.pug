@@ -1,0 +1,85 @@
+-
+
+  function generateLocalizedRouting(localization) {
+
+    const localizedRouting = {
+
+      top: {
+        $tableOfContentsTitle: localization.top.tableOfContentsTitle,
+        $URI: localization.top.URI
+      },
+
+      coreLibrary: {
+
+        $tableOfContentsTitle: localization.coreLibrary.tableOfContentsTitle,
+
+        $children: {
+
+          components: {
+
+            $tableOfContentsTitle: localization.coreLibrary.components.tableOfContentsTitle,
+            $URI: "@All/CoreLibrary/Components/Components.russian",
+
+            $sections: {
+              providingOfMarkup: {
+                $anchor: "providingOfMarkup",
+                get $URI() { return `${ localizedRouting.coreLibrary.$children.components.$URI }#${ this.$anchor }`; }
+              }
+            },
+
+            $children: {
+
+              badge: {
+
+                $tableOfContentsTitle: localization.coreLibrary.components.badge.tableOfContentsTitle,
+                $URI: "@All/CoreLibrary/Components/Badge/Badge.russian",
+
+              },
+
+              controls: {
+
+                $tableOfContentsTitle: localization.coreLibrary.components.controls.tableOfContentsTitle,
+
+                $children: {
+
+                  validatable: {
+
+                    $tableOfContentsTitle: "Validatable",
+                    $URI: "@All/CoreLibrary/Components/Controls/Validatable/ValidatableControls.russian"
+
+                  }
+
+                }
+
+              }
+
+            }
+
+
+          }
+
+        }
+
+      },
+
+      frameworksAdaptations: {
+
+        $tableOfContentsTitle: localization.frameworksAdaptations.tableOfContentsTitle,
+
+        $children: {
+
+          vue: {
+
+            $tableOfContentsTitle: "Vue",
+
+          }
+
+        }
+
+      }
+
+    };
+
+    return localizedRouting;
+
+  }
