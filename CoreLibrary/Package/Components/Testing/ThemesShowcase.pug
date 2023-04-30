@@ -48,6 +48,7 @@ mixin ThemesShowcase--YDF(properties)
       geometricVariationLabelPrefix = ThemesShowcase__YDF.defaultGeometricVariationLabelPrefix,
       decorativeVariations,
       decorativeVariationLabelPrefix = ThemesShowcase__YDF.defaultDecorativeVariationLabelPrefix,
+      skipDecorativeVariationIf = () => false,
       iterationData,
       decorativeVariationsWrapperTag = "ul",
       decorativeVariationsWrapperAdditionalCSS_Classes
@@ -100,14 +101,16 @@ mixin ThemesShowcase--YDF(properties)
                             value: decorativeVariationValue
                           };
 
-                        if decorativeVariationsWrapperTag === "ul"
+                        if !skipDecorativeVariationIf(iterationData)
 
-                          li
+                          if decorativeVariationsWrapperTag === "ul"
 
-                            span.ThemesShowcase--YDF-Label=`${ decorativeVariationLabelPrefix }${ decorativeVariationKey }`
+                            li
+
+                              span.ThemesShowcase--YDF-Label=`${ decorativeVariationLabelPrefix }${ decorativeVariationKey }`
+
+                              block
+
+                          else
 
                             block
-
-                        else
-
-                          block

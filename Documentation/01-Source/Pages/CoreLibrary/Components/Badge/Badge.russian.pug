@@ -35,7 +35,7 @@ block append SpecificContent
 
   article
 
-    h1.Article-Heading1 Значок (Badge)
+    h1.Article-Heading1 Badge - значок
 
     h2.Article-Heading2 Определение
 
@@ -66,6 +66,9 @@ block append SpecificContent
       dt Pug-примесь
       dd #[+ImportantEntity__Code--YDID Badge--YDF]
 
+      dt Live template Pug-примеси
+      dd #[kbd badge--ydf]
+
       dt Stylus-примесь
       dd #[+ImportantEntity__Code--YDID provideBadgeYDF_Component]
 
@@ -75,27 +78,42 @@ block append SpecificContent
           li #[+ImportantEntity__Code--YDID Badge__YDF.Themes.regular] (по умолчанию)
 
       dt Готовые геометрические вариации
-        dd
-          ul
-            li #[+ImportantEntity__Code--YDID Badge__YDF.GeometricVariations.regular] (по умолчанию)
+      dd
+        ul
+          li #[+ImportantEntity__Code--YDID Badge__YDF.GeometricVariations.regular] (по умолчанию)
+
+      dt Геометрические модификаторы
+      dd
+        dl
+          dt #[+ImportantEntity__Code--YDID Badge__YDF.GeometricModifiers.pillShape]
+          dd Максимальное скругление углов
 
       dt Готовые декоративные вариации
-        dd
-          ul
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.veryCatchyBright]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.catchyBright]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCatchyBright]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.neutralBright]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCalmingBright]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.calmingBright]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.achromaticBright]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.veryCatchyPastel]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.catchyPastel]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCatchyPastel]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.neutralPastel]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCalmingPastel]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.calmingPastel]
-            li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.achromaticPastel]
+      dd
+        ul
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.veryCatchyBright]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.catchyBright]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCatchyBright]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.neutralBright]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCalmingBright]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.calmingBright]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.achromaticBright]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.veryCatchyPastel]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.catchyPastel]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCatchyPastel]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.neutralPastel]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCalmingPastel]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.calmingPastel]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.achromaticPastel]
+
+      dt Декоративные модификаторы
+      dd
+        dl
+          dt #[+ImportantEntity__Code--YDID Badge__YDF.GeometricModifiers.bordersDisguising]
+          dd Эффект отсутствия обводки без изменения размеров
+
+      dt Loading placeholder
+      dd Доступен
 
 
     h2.Article-Heading2 Использование
@@ -103,33 +121,67 @@ block append SpecificContent
 
     h4.Article-Heading4 Подключение в проект
 
-    p.Article-Paragraph.
-      Данный компонент поставляется в виде
-        #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.mixins }).Article-Link Pug-примеси]
-        #[+ImportantEntity__Code--YDID Badge--YDF].
-
-      Способ подключения -
-        #[+Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.components.$sections.providingOfMarkup.$URI }).Article-Link стандартный]:
-        путём #[+Link--YDF({ internalURI: sharedExternalLinks.pug.homePage.includes }).Article-Link подключения Pug-файла]
-        #[+ImportantEntity__Code--YDID Components.pug] в проект, при этом #[+Keyword--YDID предварительно] должен
-        был подключен файл #[+ImportantEntity__Code--YDID Functionality.pug] (последний уже подключён в шаблоны страниц,
-        предоставляемых #[+ImportantEntity--YDID YDF]).
-
-    +CodeViewer--YDF.Article-CodeViewer
-      +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
-        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
-          include ../../node_modules/@yamato-daiwa/frontend/Functionality.pug
-          include ../../node_modules/@yamato-daiwa/frontend/Components.pug
-        +CodeViewer-Explanation--YDF.
-          В Вашем случае относительный путь к директории #[+ImportantEntity--YDID node_modules] может быть другим в
-            в зависимости от того, насколько глубже главной директории проекта находится Pug-файл.
+    +ComponentMarkupProvidingGuidanceFragment({ pugMixinName: "Badge--YDF" })
 
 
     h4.Article-Heading4 Программный интерфейс
 
-    //- Данные миксина
+    //- TODO 再開点
+    +CallableExpressionScheme--YDF_DK({
+      technicalName: "Badge--YDF",
+      parametersSpecification: [
+        {
+          genericTechnicalName: "properties",
+          localizedName: "Свойства",
+          type: "Properties",
+          required: true
+        }
+      ],
+      hiddenReturnValue: true
+    })
+      +ObjectTypeAbstract--YDF_DK({
+        typeName: "Properties",
+        localizedDescriptiveHeading: "Свойства",
+        propertiesSpecification: {
+          key: {
+            localizedInterpretation: "Ключ",
+            typeName: "Строка",
+            required: false
+          },
+          value: {
+            localizedInterpretation: "Значение",
+            typeName: "Строка",
+            required: true
+          }
+        }
+      })
 
 
     h3.Article-Heading3 Стили
 
 
+    h2.Article-Heading2 Сборник примеров
+
+    h3.Article-Heading3 Простейший случай
+
+    p.Article-Paragraph.
+      В простейшем случае отображается только значение, которое нужно указать в свойстве #[+ImportantEntity__Code--YDID value].
+
+    ul.AnywherePage-UnorderedList
+
+      li.
+        #[+Term--YDID Тема] и #[+Term--YDID геометрическая вариация] предлагаются по одной, а потому если дополнительных
+          не было импортировано, то можно соответствующие свойства не указывать.
+      li.
+        #[+Keyphrase--YDID В случае данного компонента], #[+Term--YDID декоративной вариации] по умолчанию #[+Keyword--YDID нет],
+          а потому её необходимо указать в соответствующем свойстве #[+ImportantEntity__Code--YDID decoration].
+
+
+    h3.Article-Heading3 Ключ-значение
+
+    p.Article-Paragraph.
+      Значение может быть лишено смысла без контекста, например, какое-либо числовое значение.
+      В таких случаях следует вдобавок к значению следует указать ключ.
+
+
+    h3.Article-Heading3 Иконка, ключ и значение

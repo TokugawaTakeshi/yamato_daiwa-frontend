@@ -1,10 +1,10 @@
-@require "Themes/Regular/GeometricVariations/Button-RegularGeometry.styl"
-@require "Themes/Regular/GeometricVariations/Button-SmallGeometry.styl"
-@require "Themes/Regular/GeometricVariations/Button-LinkLikeGeometry.styl"
+@require "Themes/Regular/GeometricVariations/Button-RegularTheme-RegularGeometry.styl"
+@require "Themes/Regular/GeometricVariations/Button-RegularTheme-SmallGeometry.styl"
+@require "Themes/Regular/GeometricVariations/Button-RegularTheme-LinkLikeGeometry.styl"
 
-@require "Themes/Regular/DecorativeVariations/Button-RegularDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Button-AccentedDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Button-LinkLikeDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Button-RegularTheme-RegularDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Button-RegularTheme-AccentedDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Button-RegularTheme-LinkLikeDecoration.styl"
 
 
 Button--YDF = {
@@ -15,15 +15,15 @@ Button--YDF = {
       regular: {
 
         geometricVariations: {
-          regular: Button-RegularGeometry--YDF,
-          small: Button-SmallGeometry--YDF,
-          linkLike: Button-LinkLikeGeometry--YDF
+          regular: Button-RegularTheme-RegularGeometry--YDF,
+          small: Button-RegularTheme-SmallGeometry--YDF,
+          linkLike: Button-RegularTheme-LinkLikeGeometry--YDF
         },
 
         decorativeVariations: {
-          regular: Button-RegularDecoration--YDF,
-          accented: Button-AccentedDecoration--YDF,
-          linkLike: Button-LinkLikeDecoration--YDF
+          regular: Button-RegularTheme-RegularDecoration--YDF,
+          accented: Button-RegularTheme-AccentedDecoration--YDF,
+          linkLike: Button-RegularTheme-LinkLikeDecoration--YDF
         }
 
       }
@@ -39,6 +39,7 @@ provideButtonYDF_Component(
     themeIndependentStylesOnly: false,
     externalThemes: false,
     loadingPlaceholder: true,
+    themeIndependentGeometricVariations: true,
     geometricModifiers: {
       pillShape: true,
       squareShape: true
@@ -63,6 +64,10 @@ provideButtonYDF_Component(
         required: true
       },
       loadingPlaceholder: {
+        type: DataTypes.boolean,
+        required: true
+      },
+      themeIndependentGeometricVariations: {
         type: DataTypes.boolean,
         required: true
       },
@@ -108,6 +113,11 @@ provideButtonYDF_Component(
       align-items center
 
 
+    a.Button--YDF
+
+      text-align center
+
+
     input.Button--YDF
 
       white-space break-spaces
@@ -141,13 +151,12 @@ provideButtonYDF_Component(
 
     VARIATION_DATA_FOR_LOGGING = buildString(
       "Button.${themeName}Theme.${variationName}Geometry",
-      {
-        themeName: themeName,
-        variationName: variationName
-      }
+      { themeName: themeName, variationName: variationName }
     )
 
-    extractedValidProperties = extractAndValidateObjectProperties({
+    ROOT_ELEMENT_SELECTOR = getCurrentSelectorSubstitutingRoot(".Button--YDF")
+
+    cachedValidReusables = extractAndValidateObjectProperties({
       targetObject: variation,
       targetObjectName: VARIATION_DATA_FOR_LOGGING,
       extracts: {
@@ -178,40 +187,40 @@ provideButtonYDF_Component(
       }
     })
 
-    textSize = extractedValidProperties.textSize
+    textSize = cachedValidReusables.textSize
 
-    lineHeight = isNotNull(extractedValidProperties.lineHeight) ? extractedValidProperties.lineHeight :\
+    lineHeight = isNotNull(cachedValidReusables.lineHeight) ? cachedValidReusables.lineHeight :\
         getLineHeightByFontSizeAndLineSpacing({
           fontSize: textSize,
-          lineSpacing: extractedValidProperties.lineSpacing
+          lineSpacing: cachedValidReusables.lineSpacing
         })
 
-    lineSpacing = isNotNull(extractedValidProperties.lineSpacing) ? extractedValidProperties.lineSpacing :\
+    lineSpacing = isNotNull(cachedValidReusables.lineSpacing) ? cachedValidReusables.lineSpacing :\
         getLineSpacingByFontSizeAndLineHeight({
           fontSize: textSize,
-          lineHeight: extractedValidProperties.lineHeight
+          lineHeight: cachedValidReusables.lineHeight
         })
 
     topSpacing = buildCalcExpression(
       "${topSpacing} - ${lineSpacing}/2 - ${upwardShifting}",
       {
-        topSpacing: nullToZero(extractedValidProperties.topSpacing),
+        topSpacing: nullToZero(cachedValidReusables.topSpacing),
         lineSpacing: lineSpacing,
-        upwardShifting: nullToZero(extractedValidProperties.labelUpwardShifting)
+        upwardShifting: nullToZero(cachedValidReusables.labelUpwardShifting)
       }
     )
 
     bottomSpacing = buildCalcExpression(
       "${topSpacing} - ${lineSpacing}/2 + ${upwardShifting}",
       {
-        topSpacing: nullToZero(extractedValidProperties.topSpacing),
+        topSpacing: nullToZero(cachedValidReusables.topSpacing),
         lineSpacing: lineSpacing,
-        upwardShifting: nullToZero(extractedValidProperties.labelUpwardShifting)
+        upwardShifting: nullToZero(cachedValidReusables.labelUpwardShifting)
       }
     )
 
 
-    +provideDefaultSelectorWhenRootAndApply(".Button--YDF")
+    +provideDefaultSelectorWhenRootAndApply(ROOT_ELEMENT_SELECTOR)
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
@@ -224,7 +233,7 @@ provideButtonYDF_Component(
         }
       })
 
-      BordersSizing(extractedValidProperties.bordersSizing)
+      BordersSizing(cachedValidReusables.bordersSizing)
 
 
     /a{selector()} .Button--YDF-Label,
@@ -381,6 +390,7 @@ provideButtonYDF_Component(
             applier: applyObjectTypeUnderlineDefinition
           },
           background-color: { dotSeparatedPath: "rootElement.background.color", required: false },
+          background-image: { dotSeparatedPath: "rootElement.background.image", required: false },
           border-style: { dotSeparatedPath: "rootElement.borders.style", required: false },
           border-color: { dotSeparatedPath: "rootElement.borders.color", required: false },
           outline: {
@@ -425,6 +435,7 @@ provideButtonYDF_Component(
               applier: applyObjectTypeUnderlineDefinition
             },
             background-color: { dotSeparatedPath: "stateDependent." + state + ".rootElement.background.color", required: false },
+            background-image: { dotSeparatedPath: "stateDependent." + state + ".rootElement.background.image", required: false },
             border-style: { dotSeparatedPath: "stateDependent." + state + ".rootElement.borders.style", required: false },
             border-color: { dotSeparatedPath: "stateDependent." + state + ".rootElement.borders.color", required: false },
             outline: {
@@ -489,6 +500,7 @@ provideButtonYDF_Component(
       CSS_Namespace: "Button--YDF",
       themes: properties.themes,
       areThemesTheExternal: properties.externalThemes,
+      themeIndependentGeometricVariations: properties.themeIndependentGeometricVariations,
       applyGeometricVariation: applyGeometricVariation,
       applyDecorativeVariation: applyDecorativeVariation
     })

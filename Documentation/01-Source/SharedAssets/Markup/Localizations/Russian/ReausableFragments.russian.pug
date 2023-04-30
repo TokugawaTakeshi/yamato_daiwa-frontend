@@ -1,0 +1,26 @@
+mixin ComponentMarkupProvidingGuidanceFragment(properties)
+
+  -
+    const {
+      pugMixinName
+    } = properties
+
+  p.Article-Paragraph.
+    Данный компонент поставляется в виде
+      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.mixins }).Article-Link Pug-примеси]
+      #[+ImportantEntity__Code--YDID #{pugMixinName}].
+    Способ подключения -
+      #[+Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.components.$sections.providingOfMarkup.$URI }).Article-Link стандартный]:
+      путём #[+Link--YDF({ internalURI: sharedExternalLinks.pug.homePage.includes }).Article-Link включения Pug-файла]
+      #[+ImportantEntity__Code--YDID Components.pug] в #[+Term--YDID точку входа], при этом туда же
+      #[+Keyword--YDID предварительно] должен был включён файл #[+ImportantEntity__Code--YDID Functionality.pug]
+      (последний уже входит в шаблоны страниц, предоставляемых #[+ImportantEntity--YDID YDF]).
+
+  +CodeViewer--YDF.Article-CodeViewer
+    +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
+      +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+        include ../../node_modules/@yamato-daiwa/frontend/Functionality.pug
+        include ../../node_modules/@yamato-daiwa/frontend/Components.pug
+      +CodeViewer-Explanation--YDF.
+        В Вашем случае относительный путь к директории #[+ImportantEntity--YDID node_modules] может быть другим в
+          в зависимости от того, насколько глубже главной директории проекта находится Pug-файл.

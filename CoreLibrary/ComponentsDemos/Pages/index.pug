@@ -16,11 +16,30 @@ block append TableOfContents
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 
+  h2.AnywherePage-PagesGroupHeading Controls
+
+  h3.AnywherePage-PagesSubgroupHeading Buttons
+
+  +PageLink({
+    label: "Plain",
+    URI: "@Demos/Controls/Buttons/Plain/Button",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
 
   h2.AnywherePage-PagesGroupHeading Controls groups
 
   +PageLink({
     label: "Simple integrated",
     URI: "@Demos/Assemblies/ControlsGroups/Simple/Integrated/SimpleIntegratedControlsGroupDemo",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+
+  h2.AnywherePage-PagesGroupHeading Other
+
+  +PageLink({
+    label: "External themes switching",
+    URI: "@Demos/ExternalThemesSwitching/ExternalThemesSwitching.pug",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })

@@ -1,23 +1,23 @@
 {
   "Components.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-05T04:50:57.356Z"
+    "modificationDatetime__ISO_8601": "2023-04-30T04:08:57.472Z"
   },
   "Functionality.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.397Z"
+    "modificationDatetime__ISO_8601": "2023-05-03T03:07:53.244Z"
   },
   "PagesTemplates/RegularWebPage.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-10T06:50:27.094Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:35.072Z"
   },
   "PagesTemplates/StaticPreviewAnywherePage.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2021-12-08T01:04:36.996Z"
+    "modificationDatetime__ISO_8601": "2023-04-29T03:25:24.756Z"
   },
   "Tests/Tests.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-07T00:41:18.796Z"
+    "modificationDatetime__ISO_8601": "2023-04-30T06:40:21.429Z"
   },
   "Components/Badge/Badge.class.pug": {
     "issues": [],
@@ -33,7 +33,7 @@
   },
   "Components/AttentionBox/AttentionBox.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.362Z"
+    "modificationDatetime__ISO_8601": "2023-05-03T03:05:32.492Z"
   },
   "Components/AttentionBox/AttentionBoxLocalization.english.pug": {
     "issues": [],
@@ -41,11 +41,11 @@
   },
   "Components/InformationSourceReference/InformationSourceReference.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.742Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:35.124Z"
   },
   "Components/ModalDialog/ModalDialog.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-10T06:41:07.766Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:34.823Z"
   },
   "Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.pug": {
     "issues": [],
@@ -65,15 +65,15 @@
   },
   "Components/Typography/Link.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-26T06:34:51.831Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:34.538Z"
   },
   "Components/Testing/ThemesShowcase.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-05T03:51:14.288Z"
+    "modificationDatetime__ISO_8601": "2023-04-30T06:32:23.026Z"
   },
   "Components/_Auxiliaries/ComponentsAuxiliaries.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-02T04:36:13.257Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:34.937Z"
   },
   "Markup/BuildInPlugins/YamatoDaiwaInformationDesign.pug": {
     "issues": [],
@@ -85,11 +85,11 @@
   },
   "Markup/InlineECMAScript/PugExtensions.generated.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:23.435Z"
+    "modificationDatetime__ISO_8601": "2023-05-03T03:01:53.411Z"
   },
   "Markup/InlineECMAScript/RoutingEmulator.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-07T07:45:28.786Z"
+    "modificationDatetime__ISO_8601": "2023-04-19T04:19:06.755Z"
   },
   "PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePageLocalization.English.pug": {
     "issues": [],
@@ -97,7 +97,7 @@
   },
   "Tests/05-Typography/Typography.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:56.084Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:34.767Z"
   },
   "Tests/PagesTemplates/StaticPreviewAnywherePageDemo.test.pug": {
     "issues": [],
@@ -105,35 +105,35 @@
   },
   "Components/Controls/CompoundControlShell/CompoundControlShell.class.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-03T01:42:50.145Z"
+    "modificationDatetime__ISO_8601": "2023-04-30T05:40:40.802Z"
   },
   "Components/Controls/CompoundControlShell/CompoundControlShell.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-03-19T03:47:42.176Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:30.733Z"
   },
   "Components/Controls/ComboBox/ComboBox.class.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-03T01:42:50.180Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:35.327Z"
   },
   "Components/Controls/ComboBox/ComboBox.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-11T01:09:12.039Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:35.323Z"
   },
   "Components/Controls/Tabs/Tabs.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-09T05:19:49.020Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:35.185Z"
   },
   "Components/Images/SingleImageViewer/SingleImageViewer.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-01T02:08:23.769Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:35.101Z"
   },
   "Components/Controls/TextBox/TextBox.class.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-03T01:42:50.169Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:33.449Z"
   },
   "Components/Controls/TextBox/TextBox.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-26T05:23:06.907Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:30.733Z"
   },
   "Components/Prototyping/DummyLogoLink/DummyLogoLink.pug": {
     "issues": [],
@@ -145,7 +145,7 @@
   },
   "Components/Typography/ImprovedBlockquote/ImprovedBlockquote.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.776Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:34.688Z"
   },
   "Components/Typography/ImprovedList/ImprovedList.pug": {
     "issues": [],
@@ -169,11 +169,11 @@
   },
   "Tests/Assets/Colors/YDF_ColorPalette.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-10T01:13:58.794Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:35.334Z"
   },
   "Tests/Components/AttentionBox/AttentionBox.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:55.680Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:34.570Z"
   },
   "Tests/Components/Badge/Badge.test.pug": {
     "issues": [],
@@ -201,7 +201,7 @@
   },
   "Components/Controls/Buttons/Plain/Button.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-25T01:22:37.532Z"
+    "modificationDatetime__ISO_8601": "2023-05-02T10:46:29.606Z"
   },
   "Markup/Assets/SVG_Icons/Achievement/AchievementIcon__Filled.pug": {
     "issues": [],
@@ -733,11 +733,11 @@
   },
   "Tests/Components/Controls/TextBox/TextBox.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-18T03:17:50.122Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:30.736Z"
   },
   "Tests/Components/Viewers/CodeViewer/CodeViewer.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-06T02:46:56.058Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:35.450Z"
   },
   "Tests/Components/Controls/Buttons/Plain/Button.test.pug": {
     "issues": [],
@@ -753,6 +753,26 @@
   },
   "Tests/Components/YDEE/getExpectedToBeSingleChildOfTemplateElement/getExpectedToBeSingleChildOfTemplateElement.test.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-07T00:43:22.737Z"
+    "modificationDatetime__ISO_8601": "2023-04-15T05:04:35.418Z"
+  },
+  "Components/Controls/FilesUploader/FilesUploader.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-04-30T04:52:52.208Z"
+  },
+  "Components/Controls/FilesUploader/FilesUploader.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-04-30T04:55:42.227Z"
+  },
+  "Components/Controls/FilesUploader/FileUploaderLocalization.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-04-30T04:55:42.234Z"
+  },
+  "Components/Typography/Footnote/Footnote.class.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-04-22T07:18:08.305Z"
+  },
+  "Components/Typography/Footnote/Footnote.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-04-22T07:13:26.999Z"
   }
 }

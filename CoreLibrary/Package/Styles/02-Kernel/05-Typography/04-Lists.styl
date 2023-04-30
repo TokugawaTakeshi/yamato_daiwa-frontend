@@ -1,43 +1,64 @@
 UnorderedListDefaultProperties--YDF = {
   geometry: {
-    fontSize: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
-    lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS,
+    text: {
+      size: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
+      lineSpacing: null,
+      lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS
+    },
     paddings: { left: 28px },
-    verticalSpaceBetweenItems: 8px
+    verticalSpaceBetweenItems: 8px,
+    customDeclarations: null
+  },
+  decoration: {
+    text: {
+      fontWeight: null,
+      color: null
+    },
+    customDeclarations: null
   }
 }
 
-UnorderedList--YDF(preset = UnorderedListDefaultProperties--YDF, overridings = {})
+UnorderedList--YDF(
+  preset = UnorderedListDefaultProperties--YDF,
+  overridings = {},
+  options = {
+    geometryOnly: false,
+    decorationOnly: false
+  }
+)
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
-  geometry = properties.geometry
 
+  mustGenerateGeometry = isTrue(options.geometryOnly) || isFalse(options.decorationOnly)
+  mustGenerateDecoration = isTrue(options.decorationOnly) || isFalse(options.geometryOnly)
 
   list-style-type disc
-  list-style-position outside
-
-  Paddings(geometry.paddings)
-
-  applyIfNotNull(geometry.customDeclarations)
+  list-style-position inside
 
 
   li
 
-    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
-      fontSize: geometry.fontSize,
-      lineHeight: geometry.lineHeight
+    // [ Theory ] We can not use ::before and ::auto pseudo elements with "list-style-position inside"
+    applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+      fontSize: properties.geometry.text.size,
+      lineHeight: properties.geometry.text.lineHeight,
+      mustApplyNegativeMarginsToRootElement: true,
+      mustTryToProvideHyphenations: true
     })
 
 
     +li
 
-      margin-top: geometry.verticalSpaceBetweenItems
+      // [ Theory ] The margins are already has been used by `applyTextGeometryWithoutExtraSpaceCausedByLineHeight`.
+      //   As exclusion, using paddings instead
+      padding-top: properties.geometry.verticalSpaceBetweenItems
 
 
   ul
 
     padding-left 10px
     list-style-type circle
+    Paddings(properties.geometry.paddings)
 
 
     ul
@@ -90,3 +111,41 @@ OrderedList--YDF(preset = OrderedListDefaultProperties--YDF, overridings = {})
     ol
 
       list-style-type lower-roman
+
+
+DescriptionListDefaultProperties--YDF = {
+
+}
+
+DescriptionList--YDF(preset = DescriptionListDefaultProperties--YDF, overridings = {})
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+
+  CONTEXT_SELECTOR = selector()
+
+  dt
+
+    font-weight bold
+
+    applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+      fontSize: 1rem,
+      lineSpacing: 0.2rem,
+      mustTryToProvideHyphenations: true
+    })
+
+
+  dd
+
+    applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+      fontSize: 1rem,
+      lineSpacing: 0.2rem,
+      mustTryToProvideHyphenations: true
+    })
+
+    padding-left 10px
+
+    PositionalRelationship({
+      definitions: ("dt" { retireFromIt: { y: 6px }, pushItFromSelf: { y: 12px } }),
+      referenceElementSelector: "dd",
+      contextSelector: CONTEXT_SELECTOR
+    })

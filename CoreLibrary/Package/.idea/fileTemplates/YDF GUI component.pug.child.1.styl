@@ -32,7 +32,7 @@ provide${NAME}YDF_Component(preset = ${NAME}--YDF.defaultProperties, overridings
   applyBasicRules()
 
     .${NAME}
-    
+
        // TODO Apply variation independent rules
        display flex
 
@@ -42,11 +42,10 @@ provide${NAME}YDF_Component(preset = ${NAME}--YDF.defaultProperties, overridings
 
     VARIATION_DATA_FOR_LOGGING = buildString(
       "${NAME}.\${themeName}Theme.\${variationName}Geometry",
-      {
-        themeName: themeName,
-        variationName: variationName
-      }
+      { themeName: themeName, variationName: variationName }
     )
+
+    ROOT_ELEMENT_SELECTOR = getCurrentSelectorSubstitutingRoot(".${NAME}--YDF")
 
     +provideDefaultSelectorWhenRootAndApply(".${NAME}--YDF")
 

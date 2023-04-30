@@ -16,7 +16,7 @@ mixin Button--YDF(properties)
       disabled = false,
 
       theme = Button__YDF.Themes.regular,
-      areThemesExternal = Button__YDF.areThemesExternal,
+      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT || Button__YDF.areThemesExternal,
       geometry = Button__YDF.GeometricVariations.regular,
       geometricModifiers = [],
       decoration = Button__YDF.DecorativeVariations.regular

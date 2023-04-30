@@ -38,7 +38,7 @@
   "module": "./LogicDistributable/index.js",
   "types": "./LogicDistributable/index.d.ts",
   "dependencies": {
-    "@yamato-daiwa/es-extensions": "1.6.4",
+    "@yamato-daiwa/es-extensions": "1.6.9",
     "@yamato-daiwa/es-extensions-browserjs": "../../../YamatoDaiwaES_Extensions/BrowserJS/Package",
     "clipboard": "2.0.11",
     "prismjs": "1.29.0",

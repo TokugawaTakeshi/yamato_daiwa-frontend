@@ -7,7 +7,11 @@
   },
   "packages": [
     "CoreLibrary/Package",
-    "FrameworksIntegrations/**",
+    "CoreLibrary/ComponentsDemos",
+    "CoreLibrary/AdditionalThemes",
+    "FrameworksIntegrations/Vue/Package/",
+    "FrameworksIntegrations/Vue/Demos",
+    "FrameworksIntegrations/React/Package/",
     "DocumentingKit/Package",
     "DocumentingKit/OfficialLocalizations/**"
   ]

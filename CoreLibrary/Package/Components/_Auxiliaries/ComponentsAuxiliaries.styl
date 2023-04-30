@@ -31,6 +31,10 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
       areThemesTheExternal: {
         type: DataTypes.boolean,
         defaultValue: false
+      },
+      themeIndependentGeometricVariations: {
+        type: DataTypes.boolean,
+        defaultValue: false
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
@@ -67,6 +71,10 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
 
         if (selector() == "&" || areThemesTheExternal) {
           .{geometricVariationCSS_Class} {
+            applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
+          }
+        } else if (themeIndependentGeometricVariations) {
+          /.{geometricVariationCSS_Class} {
             applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
           }
         } else {
@@ -134,8 +142,15 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
 
         themeCSS_Class = theme.externalCSS_Class
 
-      } else if () {
-        themeCSS_Class = buildBEM_Class({ block: CSS_Namespace, modifier: themeName + "Theme" })
+      } else {
+
+        themeCSS_Class = buildBEM_ClassName({
+          block: CSS_Namespace,
+          modifier: capitalizeFirstLatinCharacter(themeName) + "Theme",
+          elementSeparator: "-",
+          modifierSeparator: "__"
+        })
+
       }
 
       .{themeCSS_Class} {

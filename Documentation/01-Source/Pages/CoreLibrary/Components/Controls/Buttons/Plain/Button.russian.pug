@@ -1,0 +1,164 @@
+extends ../../../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../../../SharedAssets/Markup/Assets.russian.pug
+  include ../../../../../../Components/Components.russian.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "ru";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("Button (Простая кнопка)");
+    HTML_PageMetaData = {
+      description: "",
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "@Common" ];
+
+    RoutingEmulator.setCurrentRoute("coreLibrary.components.controls.buttons.plain");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      [LanguageDropDownList__YDF_DK.supportedLanguages.english]: "#",
+      [LanguageDropDownList__YDF_DK.supportedLanguages.japanese]: "#"
+    });
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1 Button - простая кнопка
+
+    h2.Article-Heading2 Введение
+
+    p.Article-Paragraph.
+      Будучи на вид неприметным прямоугольничком с надписью, этот компонент очень обманчив своей простотой.
+
+    p.Article-Paragraph.
+      Его вид могу принимают целых #[+ImportantEntity--YDID 3] #[+Term--YDID HTML-тэга]: #[+ImportantEntity__Code--YDID button],
+        некоторые виды #[+ImportantEntity__Code--YDID input], наконец часто вид кнопки придаёт элементу #[+ImportantEntity__Code--YDID a].
+      При работе с каждым из этих тэгов свои особенности: например иметь вложенное содержимое могут только
+        #[+ImportantEntity__Code--YDID button] и #[+ImportantEntity__Code--YDID a], а #[+Term--YDID аттрибут]
+        #[+ImportantEntity__Code--YDID disabled] может быть добавлен только для #[+ImportantEntity__Code--YDID button]
+        и #[+ImportantEntity__Code--YDID input].
+
+    p.Article-Paragraph.
+      Что же со стилями?
+      Да, поменять цвет обводки или фона несложно, но по мере приближения к созданию реальных сайтов приложений переменных
+        в уравнении становится всё больше.
+      Во-первых, будучи элементом управления, кнопка имеет множество состояний: #[+ImportantEntity__Code--YDID hover],
+        #[+ImportantEntity__Code--YDID focus], #[+ImportantEntity__Code--YDID active], #[+ImportantEntity__Code--YDID disabled],
+        и все эти состояния должны быть визуально различимы для каждой #[+Term--YDID темы] (тут даже неважно, в понимании
+        YDF или нет).
+      А если надпись на кнопке не помещается?
+      А если нужно добавить к надписи SVG-иконку?
+      А у всех иконок разные размеры, да ещё и поля в SVG-холсте!
+      А если нужно, чтобы кнопка была квадратной, когда на ней одна иконка без надписи?
+      (Хотя мы не рекомендуем иконки без надписей в силу того что они могут быть непонятны пользователями с малым опытом,
+        не всегда удаётся переубедить заказчика добавить надпись).
+
+    p.Article-Paragraph.
+      Со своей стороны, мы сделали всё возможное, чтобы скрыть от Вас эти сложности, в чём очень помог препроцессор
+        #[+ImportantEntity--YDID Pug] - Вы лишь указываете опции, а дальше генерируется нужный HTML-код с учётом
+        #[+ImportantEntity__Code--YDID доступности].
+
+
+    h2.Article-Heading2 Сводка
+
+    dl.Article-DescriptionList
+
+      dt Pug-примесь
+      dd #[+ImportantEntity__Code--YDID Button--YDF]
+
+      dt Live template Pug-примеси
+      dd #[kbd button--ydf]
+
+      dt Stylus-примесь
+      dd #[+ImportantEntity__Code--YDID provideButtonYDF_Component]
+
+      dt Готовые темы
+      dd
+        ul
+          li #[+ImportantEntity__Code--YDID Badge__YDF.Themes.regular] (по умолчанию)
+
+      dt Готовые геометрические вариации
+      dd
+        ul
+          li #[+ImportantEntity__Code--YDID Button__YDF.GeometricVariations.regular] (по умолчанию)
+          li #[+ImportantEntity__Code--YDID Button__YDF.GeometricVariations.small]
+          li #[+ImportantEntity__Code--YDID Button__YDF.GeometricVariations.linkLike]
+
+      dd
+        ul
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.regular]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.accented]
+          li #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.linkLike]
+
+      dt Геометрические модификаторы
+      dd
+        dl
+
+          dt #[+ImportantEntity__Code--YDID Button__YDF.GeometricModifiers.squareShape]
+          dd Квадратная форма
+
+          dt #[+ImportantEntity__Code--YDID Button__YDF.GeometricModifiers.pillShape]
+          dd Максимальное скругление углов
+
+      dt Готовые декоративные вариации
+      dd
+        ul
+          li #[+ImportantEntity__Code--YDID Button__YDF.DecorativeVariations.regular] (по умолчанию)
+          li #[+ImportantEntity__Code--YDID Button__YDF.DecorativeVariations.accented]
+          li #[+ImportantEntity__Code--YDID Button__YDF.DecorativeVariations.linkLike]
+
+      dt Loading placeholder
+      dd Доступен
+
+
+    h2.Article-Heading2 Использование
+    h3.Article-Heading3 Разметка
+
+    h4.Article-Heading4 Подключение в проект
+
+    +ComponentMarkupProvidingGuidanceFragment({ pugMixinName: "Button--YDF" })
+
+
+    h4.Article-Heading4 Программный интерфейс
+
+    +CallableExpressionScheme--YDF_DK({
+      technicalName: "Button--YDF",
+      parametersSpecification: [
+        {
+          genericTechnicalName: "properties",
+          localizedName: "Свойства",
+          type: "Properties",
+          required: true
+        }
+      ],
+      hiddenReturnValue: true
+    })
+      +ObjectTypeAbstract--YDF_DK({
+        typeName: "Properties",
+        localizedDescriptiveHeading: "Свойства",
+        propertiesSpecification: {
+          HTML_Type: {
+            localizedInterpretation: "HTML-тип",
+            typeName: "Элемент перечисления",
+            defaultValue: "Button__YDF.HTML_Types.regular",
+          },
+          label: {
+            localizedInterpretation: "Надпись",
+            typeName: "Строка",
+            required: true,
+            minimalCharactersCount: 1
+          }
+        }
+      })

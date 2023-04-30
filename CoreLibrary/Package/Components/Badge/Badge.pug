@@ -12,7 +12,7 @@ mixin Badge--YDF(properties)
       mustForceSingleLine = false,
 
       theme = Badge__YDF.Themes.regular,
-      areThemesExternal = Badge__YDF.areThemesExternal,
+      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT || Button__YDF.areThemesExternal,
       geometry = Badge__YDF.GeometricVariations.regular,
       geometricModifiers = [],
       decoration,
