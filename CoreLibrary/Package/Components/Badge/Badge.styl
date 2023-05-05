@@ -1,20 +1,20 @@
-@require "Themes/Regular/GeometricVariations/Badge-RegularGeometry.styl"
+@require "Themes/Regular/GeometricVariations/Badge-RegularTheme-RegularGeometry.styl"
 
-@require "Themes/Regular/DecorativeVariations/Bright/Badge-VeryCatchyBrightDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Bright/Badge-CatchyBrightDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Bright/Badge-ModestlyCatchyBrightDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Bright/Badge-NeutralBrightDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Bright/Badge-CalmingBrightDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Bright/Badge-ModestlyCalmingBrightDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Bright/Badge-AchromaticBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-VeryCatchyBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-CatchyBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-ModestlyCatchyBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-NeutralBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-CalmingBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-ModestlyCalmingBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-AchromaticBrightDecoration.styl"
 
-@require "Themes/Regular/DecorativeVariations/Pastel/Badge-VeryCatchyPastelDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Pastel/Badge-CatchyPastelDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Pastel/Badge-ModestlyCatchyPastelDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Pastel/Badge-NeutralPastelDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Pastel/Badge-CalmingPastelDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Pastel/Badge-ModestlyCalmingPastelDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Pastel/Badge-AchromaticPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-VeryCatchyPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-CatchyPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-ModestlyCatchyPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-NeutralPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-CalmingPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-ModestlyCalmingPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-AchromaticPastelDecoration.styl"
 
 
 Badge--YDF = {
@@ -24,27 +24,30 @@ Badge--YDF = {
     themes: {
       regular: {
 
+        componentIndependentCSS_Class: "RegularTheme--YDF"
+
         geometricVariations: {
-          regular: Badge-RegularGeometry--YDF
+          regular: Badge-RegularTheme-RegularGeometry--YDF
         },
 
         decorativeVariations: {
 
-          veryCatchyBright: Badge-VeryCatchyBrightDecoration--YDF,
-          catchyBright: Badge-CatchyBrightDecoration--YDF,
-          modestlyCatchyBright: Badge-ModestlyCatchyBrightDecoration--YDF,
-          neutralBright: Badge-NeutralBrightDecoration--YDF,
-          modestlyCalmingBright: Badge-ModestlyCalmingBrightDecoration--YDF,
-          calmingBright: Badge-CalmingBrightDecoration--YDF,
-          achromaticBright: Badge-AchromaticBrightDecoration--YDF,
+          veryCatchyBright: Badge-RegularTheme-VeryCatchyBrightDecoration--YDF,
+          catchyBright: Badge-RegularTheme-CatchyBrightDecoration--YDF,
+          modestlyCatchyBright: Badge-RegularTheme-ModestlyCatchyBrightDecoration--YDF,
+          neutralBright: Badge-RegularTheme-NeutralBrightDecoration--YDF,
+          modestlyCalmingBright: Badge-RegularTheme-ModestlyCalmingBrightDecoration--YDF,
+          calmingBright: Badge-RegularTheme-CalmingBrightDecoration--YDF,
+          achromaticBright: Badge-RegularTheme-AchromaticBrightDecoration--YDF,
 
-          veryCatchyPastel: Badge-VeryCatchyPastelDecoration--YDF,
-          catchyPastel: Badge-CatchyPastelDecoration--YDF,
-          modestlyCatchyPastel: Badge-ModestlyCatchyPastelDecoration--YDF,
-          neutralPastel: Badge-NeutralPastelDecoration--YDF,
-          modestlyCalmingPastel: Badge-ModestlyCalmingPastelDecoration--YDF,
-          calmingPastel: Badge-CalmingPastelDecoration--YDF,
-          achromaticPastel: Badge-AchromaticPastelDecoration--YDF
+          veryCatchyPastel: Badge-RegularTheme-VeryCatchyPastelDecoration--YDF,
+          catchyPastel: Badge-RegularTheme-CatchyPastelDecoration--YDF,
+          modestlyCatchyPastel: Badge-RegularTheme-ModestlyCatchyPastelDecoration--YDF,
+          neutralPastel: Badge-RegularTheme-NeutralPastelDecoration--YDF,
+          modestlyCalmingPastel: Badge-RegularTheme-ModestlyCalmingPastelDecoration--YDF,
+          calmingPastel: Badge-RegularTheme-CalmingPastelDecoration--YDF,
+          achromaticPastel: Badge-RegularTheme-AchromaticPastelDecoration--YDF
+
         }
 
       }
@@ -60,6 +63,7 @@ provideBadgeYDF_Component(
     themeIndependentStylesOnly: false,
     externalThemes: false,
     loadingPlaceholder: true,
+    themeIndependentGeometricVariations: true,
     geometricModifiers: {
       pillShape: true
     },
@@ -79,34 +83,43 @@ provideBadgeYDF_Component(
     schema: {
       themeIndependentStylesOnly: {
         type: DataTypes.boolean,
-        required: true
+        defaultValue: false
       },
       externalThemes: {
         type: DataTypes.boolean,
-        required: true
+        defaultValue: false
       },
       loadingPlaceholder: {
         type: DataTypes.boolean,
-        required: true
+        defaultValue: true
+      },
+      themeIndependentGeometricVariations: {
+        type: DataTypes.boolean,
+        defaultValue: true
       },
       geometricModifiers: {
         type: DataTypes.object,
-        required: true,
         properties: {
           pillShape: {
             type: DataTypes.boolean,
             required: true
           }
+        },
+        defaultValue: {
+          pillShape: true
         }
       },
       decorativeModifiers: {
         type: DataTypes.object,
-        required: true,
         properties: {
           bordersDisguising: {
             type: DataTypes.boolean,
             required: true
           }
+        },
+        defaultValue: {
+          pillShape: true,
+          squareShape: true
         }
       }
     },
@@ -528,6 +541,8 @@ provideBadgeYDF_Component(
     applyComponentThemes({
       CSS_Namespace: "Badge--YDF",
       themes: properties.themes,
+      areThemesTheExternal: options.externalThemes,
+      themeIndependentGeometricVariations: options.themeIndependentGeometricVariations,
       applyGeometricVariation: applyGeometricVariation,
       applyDecorativeVariation: applyDecorativeVariation
     })
