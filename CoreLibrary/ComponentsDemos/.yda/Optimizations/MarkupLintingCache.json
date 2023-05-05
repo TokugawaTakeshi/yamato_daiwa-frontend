@@ -1,7 +1,7 @@
 {
   "Pages/index.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-05-03T01:23:43.681Z"
+    "modificationDatetime__ISO_8601": "2023-05-05T01:52:38.966Z"
   },
   "Components/Badge/BadgeDemo.pug": {
     "issues": [],
@@ -9,11 +9,11 @@
   },
   "Pages/ExternalThemesSwitching/ExternalThemesSwitching.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-05-03T01:26:14.203Z"
+    "modificationDatetime__ISO_8601": "2023-05-05T01:17:40.290Z"
   },
   "Pages/Components/Badge/Badge.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-05-04T02:40:53.511Z"
+    "modificationDatetime__ISO_8601": "2023-05-05T01:15:40.796Z"
   },
   "Components/Controls/Buttons/Plain/ButtonDemo.pug": {
     "issues": [],
@@ -26,5 +26,9 @@
   "Pages/Assemblies/ControlsGroups/Simple/Integrated/SimpleIntegratedControlsGroupDemo.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-04-15T05:04:33.443Z"
+  },
+  "Pages/Components/Controls/Buttons/Plain/Button.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-05-05T01:56:43.144Z"
   }
 }

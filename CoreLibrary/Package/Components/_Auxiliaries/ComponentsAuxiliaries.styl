@@ -69,12 +69,12 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
           modifierSeparator: "__"
         })
 
-        if (selector() == "&" || areThemesTheExternal) {
-          .{geometricVariationCSS_Class} {
+        if (themeIndependentGeometricVariations) {
+          /.{geometricVariationCSS_Class} {
             applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
           }
-        } else if (themeIndependentGeometricVariations) {
-          /.{geometricVariationCSS_Class} {
+        } else if (selector() == "&" || areThemesTheExternal) {
+          .{geometricVariationCSS_Class} {
             applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
           }
         } else {
@@ -122,16 +122,19 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
   iterateObjectSkippingNullValues(themes, @(themeName, theme) {
 
     if (nonEmptyThemesCount == 1) {
+
       applyTheme(themeName, theme)
+
     } else {
 
       if (areThemesTheExternal) {
 
-        if (!isNonEmptyString(theme.externalCSS_Class)) {
+        if (!isNonEmptyString(theme.componentIndependentCSS_Class)) {
           error(
             buildString(
-              "The specification of theme '${themeName}' of component with CSS namespace '${CSS_Namespace}' must have "+\
-              "the property 'externalCSS_Class' of non empty-stirng type.",
+              "The themes of the component with CSS namespace '${ CSS_Namespace }' has been set to external however " +\
+              "the property 'componentIndependentCSS_Class' on the theme specification has not been defined. "+\
+              "Please define it with non-empty string.",
               {
                 themeName: themeName,
                 CSS_Namespace: CSS_Namespace
@@ -140,7 +143,7 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
           )
         }
 
-        themeCSS_Class = theme.externalCSS_Class
+        themeCSS_Class = theme.componentIndependentCSS_Class
 
       } else {
 
@@ -156,6 +159,7 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
       .{themeCSS_Class} {
         applyTheme(themeName, theme)
       }
+
     }
   })
 
