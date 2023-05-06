@@ -1,55 +1,51 @@
-/* --- Validations -------------------------------------------------------------------------------------------------- */
+/* ─── Services ───────────────────────────────────────────────────────────────────────────────────────────────────── */
+import AccessControlService from "./_Partials/AccessControlService";
+
+/* ─── Validations ────────────────────────────────────────────────────────────────────────────────────────────────── */
 import InputtedSignInDataValidations from "./_Partials/InputtedSignInDataValidations";
 
-/* --- Framework ---------------------------------------------------------------------------------------------------- */
+/* ─── Framework ──────────────────────────────────────────────────────────────────────────────────────────────────── */
 import {
   ValidatableControlsGroup,
   TextBox,
   Button,
   CollapsingAnimation,
   ExpandingAnimation
-} from "@yamato-daiwa/frontend";
+} from "../../../../../../Package/index";
 
-/* --- Utils -------------------------------------------------------------------------------------------------------- */
+/* ─── Utils ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
 import { Logger, DataSubmittingFailedError } from "@yamato-daiwa/es-extensions";
 import { getExpectedToBeSingleChildOfTemplateElement, BasicFrontEndLogger } from "@yamato-daiwa/es-extensions-browserjs";
 
 
-type InputtedData = Readonly<{
-  userName: string;
-  password: string;
-}>;
-
 let hasUserTriedToSubmitDataAtLeastOnce: boolean = false;
 
-const errorMessageMountingPoint: Comment = document.createComment("ERROR_MESSAGE_MOUNTING_POINT");
+const invalidOrOmittedDataLeftErrorMessageMountingPoint: Comment = document.createComment("ERROR_MESSAGE_MOUNTING_POINT");
 const invalidOrOmittedDataLeftErrorMessage: HTMLElement = getExpectedToBeSingleChildOfTemplateElement({
   templateElementSelector: "#ERROR_MESSAGE_TEMPLATE",
-  mustReplaceTemplateElementOnceDoneWith: errorMessageMountingPoint,
+  mustReplaceTemplateElementOnceDoneWith: invalidOrOmittedDataLeftErrorMessageMountingPoint,
   expectedChildElementSubtype: HTMLElement
 });
 
 
-const controlsGroup: ValidatableControlsGroup<InputtedData> = new ValidatableControlsGroup({
+const controlsGroup: ValidatableControlsGroup<AccessControlService.SigningIn.Payload> = new ValidatableControlsGroup({
 
   controlsPayload: {
-    userName: TextBox.pickOneBySelector<string, string, InputtedSignInDataValidations.UserName>({
-      selector: "#USER_NAME_TEXTBOX",
-      rawInputModifier: TextBox.RawInputModifiers.keepStringValueAsIs,
+    userName: TextBox.pickOneBySelector<InputtedSignInDataValidations.UserName>({
+      selector: "#USER_NAME--TEXT_BOX",
       validation: new InputtedSignInDataValidations.UserName(),
-      mustActivateInvalidHighlightImmediately: false
+      validityHighlightingActivationMode: TextBox.ValidityHighlightingActivationModes.onFocusOut
     }).payload,
-    password: TextBox.pickOneBySelector<string, string, InputtedSignInDataValidations.Password>({
-      selector: "#PASSWORD_TEXTBOX",
-      rawInputModifier: TextBox.RawInputModifiers.keepStringValueAsIs,
+    password: TextBox.pickOneBySelector<InputtedSignInDataValidations.Password>({
+      selector: "#PASSWORD--TEXT_BOX",
       validation: new InputtedSignInDataValidations.Password(),
-      mustActivateInvalidHighlightImmediately: false
+      validityHighlightingActivationMode: TextBox.ValidityHighlightingActivationModes.onFocusOut
     }).payload
   },
 
   onHasBecomeValid(): void {
     CollapsingAnimation.animate({
-      replaceWithOnComplete: errorMessageMountingPoint,
+      replaceWithOnComplete: invalidOrOmittedDataLeftErrorMessageMountingPoint,
       animatedElement: invalidOrOmittedDataLeftErrorMessage,
       duration__seconds: 0.2
     });
@@ -59,7 +55,7 @@ const controlsGroup: ValidatableControlsGroup<InputtedData> = new ValidatableCon
     if (hasUserTriedToSubmitDataAtLeastOnce) {
       ExpandingAnimation.replaceNodeAndAnimate({
         animatedElement: invalidOrOmittedDataLeftErrorMessage,
-        replacedNode: errorMessageMountingPoint,
+        replacedNode: invalidOrOmittedDataLeftErrorMessageMountingPoint,
         duration__seconds: 0.2
       });
     }
@@ -69,9 +65,12 @@ const controlsGroup: ValidatableControlsGroup<InputtedData> = new ValidatableCon
 
 });
 
+
 Button.pickOneBySelector({
-  selector: "#SUBMITTING_BUTTON",
-  onClick(): void {
+
+  selector: "#SIGNING_IN--BUTTON",
+
+  async onClick(): Promise<void> {
 
     hasUserTriedToSubmitDataAtLeastOnce = true;
 
@@ -81,22 +80,24 @@ Button.pickOneBySelector({
 
       ExpandingAnimation.replaceNodeAndAnimate({
         animatedElement: invalidOrOmittedDataLeftErrorMessage,
-        replacedNode: errorMessageMountingPoint,
+        replacedNode: invalidOrOmittedDataLeftErrorMessageMountingPoint,
         duration__seconds: 0.2
       });
 
       return;
+
     }
 
 
     try {
 
-      const inputtedData: InputtedData = controlsGroup.getExpectedToBeValidData();
+      const inputtedData: AccessControlService.SigningIn.Payload = controlsGroup.getExpectedToBeValidData();
+
+      await AccessControlService.signIn(inputtedData);
 
       Logger.logSuccess({
-        title: "Sign in success",
-        description: "",
-        additionalData: inputtedData
+        title: "Signing in success",
+        description: "The simulation of signing is complete."
       });
 
     } catch (error: unknown) {
@@ -104,13 +105,14 @@ Button.pickOneBySelector({
       Logger.logError({
         errorType: DataSubmittingFailedError.NAME,
         title: DataSubmittingFailedError.localization.defaultTitle,
-        description: "",
-        occurrenceLocation: "runApplication()",
+        description: "The error has occurred during signing in",
+        occurrenceLocation: "Signing up button event handler",
         caughtError: error
       });
 
     }
   }
+
 });
 
 

@@ -1,24 +1,27 @@
-/* --- Constants and enumerations ----------------------------------------------------------------------------------- */
-import YDF_ComponentsCoordinator from "@Components/YDF_ComponentsCoordinator";
+/* ━━━ Imports ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ─── Framework ───────────────────────────────────────────────────────────────────────────────────────────────────────────── */
+import { ComponentBase as VueComponentConfiguration, Vue as VueComponent, Prop as VueProperty } from "vue-facing-decorator";
+import type { ComponentPublicInstance as VueComponentPublicInstance } from "vue";
 
-/* --- Framework ---------------------------------------------------------------------------------------------------- */
-import { Options as VueComponentConfiguration, Vue as VueComponent, Prop as VueProperty } from "vue-property-decorator";
-
-/* --- Utils -------------------------------------------------------------------------------------------------------- */
+/* ─── Framework ───────────────────────────────────────────────────────────────────────────────────────────────────────────── */
 import {
   toLowerCamelCase,
   toUpperCamelCase,
   toScreamingSnakeCase,
   isString,
   isUndefined,
-  isNull
+  isNotUndefined,
+  isNull,
+  isNotNull
 } from "@yamato-daiwa/es-extensions";
 import VueComponentImplementationHasNotBeenSetError from
-    "@Components/_Errors/VueComponentImplementationHasNotBeenSet/VueComponentImplementationHasNotBeenSet";
+    "../_Errors/VueComponentImplementationHasNotBeenSet/VueComponentImplementationHasNotBeenSet";
+import YDF_ComponentsCoordinator from "../YDF_ComponentsCoordinator";
 
 
 namespace Badge {
 
+  /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   export type Themes = {
     readonly regular: "REGULAR";
     [themeName: string]: string;
@@ -26,13 +29,14 @@ namespace Badge {
 
   export const Themes: Themes = { regular: "REGULAR" };
 
-  export let areThemesExternal: boolean = YDF_ComponentsCoordinator.areThemesExternalByDefault;
+  export let areThemesCSS_ClassesCommon: boolean = YDF_ComponentsCoordinator.areThemesCSS_ClassesCommon;
 
-  export function considerThemesAsExternal(): void {
-    areThemesExternal = true;
+  export function considerThemesAsCommon(): void {
+    areThemesCSS_ClassesCommon = true;
   }
 
 
+  /* ─── Geometry ──────────────────────────────────────────────────────────────────────────────────────────────────────────── */
   export type GeometricVariations = {
     readonly regular: "REGULAR";
     [variationName: string]: string;
@@ -43,10 +47,12 @@ namespace Badge {
   };
 
   export enum GeometricModifiers {
-    pillShape = "PILL_SHAPE"
+    pillShape = "PILL_SHAPE",
+    singleLine = "SINGLE_LINE"
   }
 
 
+  /* ─── Decoration ────────────────────────────────────────────────────────────────────────────────────────────────────────── */
   export type DecorativeVariations = {
     readonly veryCatchyBright: "VERY_CATCHY_BRIGHT";
     readonly catchyBright: "CATCHY_BRIGHT";
@@ -90,15 +96,12 @@ namespace Badge {
   @VueComponentConfiguration({})
   export class BasicLogic extends VueComponent {
 
-    /* === Properties =============================================================================================== */
+    /* ━━━ Properties ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     @VueProperty({ type: String })
     protected readonly keyLabel?: string | null;
 
     @VueProperty({ type: String, required: true })
     protected readonly valueLabel!: string;
-
-    @VueProperty({ type: Boolean, default: false })
-    protected readonly mustForceSingleLine!: boolean;
 
 
     @VueProperty({
@@ -108,8 +111,8 @@ namespace Badge {
     })
     protected readonly theme!: string;
 
-    @VueProperty({ type: Boolean, default: areThemesExternal })
-    protected readonly areThemesExternal!: boolean;
+    @VueProperty({ type: Boolean, default: YDF_ComponentsCoordinator.areThemesCSS_ClassesCommon || areThemesCSS_ClassesCommon })
+    protected readonly areThemesCSS_ClassesCommon!: boolean;
 
 
     @VueProperty({
@@ -134,10 +137,10 @@ namespace Badge {
     protected readonly decorativeModifiers!: Array<DecorativeModifiers>;
 
 
-    /* === Themes =================================================================================================== */
+    /* ━━━ Themes ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     public static readonly Themes: typeof Themes = Themes;
 
-    public static defineNewThemes(themesNames: ReadonlyArray<string>): typeof BasicLogic {
+    public static defineCustomThemes(themesNames: ReadonlyArray<string>): typeof BasicLogic {
 
       for (const themeName of themesNames) {
         Themes[toLowerCamelCase(themeName)] = toScreamingSnakeCase(themeName);
@@ -148,10 +151,10 @@ namespace Badge {
     }
 
 
-    /* --- Geometric variations ------------------------------------------------------------------------------------- */
+    /* ─── Geometric variations ────────────────────────────────────────────────────────────────────────────────────────────── */
     public static readonly GeometricVariations: typeof GeometricVariations = GeometricVariations;
 
-    public static defineNewGeometricVariations(geometricVariationsNames: ReadonlyArray<string>): typeof BasicLogic {
+    public static defineCustomGeometricVariations(geometricVariationsNames: ReadonlyArray<string>): typeof BasicLogic {
 
       for (const geometricVariationsName of geometricVariationsNames) {
         GeometricVariations[toLowerCamelCase(geometricVariationsName)] = toScreamingSnakeCase(geometricVariationsName);
@@ -162,10 +165,10 @@ namespace Badge {
     }
 
 
-    /* --- Decorative variations ------------------------------------------------------------------------------------- */
+    /* ───  Decorative variations ──────────────────────────────────────────────────────────────────────────────────────────── */
     public static readonly DecorativeVariations: typeof DecorativeVariations = DecorativeVariations;
 
-    public static defineNewDecorativeVariations(decorativeVariationsNames: ReadonlyArray<string>): typeof BasicLogic {
+    public static defineCustomDecorativeVariations(decorativeVariationsNames: ReadonlyArray<string>): typeof BasicLogic {
 
       for (const decorativeVariationsName of decorativeVariationsNames) {
         DecorativeVariations[toLowerCamelCase(decorativeVariationsName)] = toScreamingSnakeCase(decorativeVariationsName);
@@ -176,31 +179,45 @@ namespace Badge {
     }
 
 
-    /* === Auxiliaries ============================================================================================== */
-    protected get rootElementModifierCSS_Classes(): Array<string> {
+    /* ━━━ Auxiliaries ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    protected get rootElementModifierCSS_Classes(): Readonly<string> {
       return [
-        ...this.mustForceSingleLine ? [ "Badge--YDF__SingleLineMode" ] : [],
-        ...Object.entries(Themes).length > 1 && !this.areThemesExternal ?
+
+        ...Object.entries(Themes).length > 1 && !this.areThemesCSS_ClassesCommon ?
             [ `Badge--YDF__${ toUpperCamelCase(this.theme) }Theme` ] : [],
+
         ...Object.entries(GeometricVariations).length > 1 ?
             [ `Badge--YDF__${ toUpperCamelCase(this.geometry) }Geometry` ] : [],
         ...this.geometricModifiers.includes(GeometricModifiers.pillShape) ?
             [ "Badge--YDF__PillShapeGeometricModifier" ] : [],
+        ...this.geometricModifiers.includes(GeometricModifiers.singleLine) ?
+            [ "Badge--YDF__SingleLineGeometricModifier" ] : [],
+
         ...Object.entries(DecorativeVariations).length > 1 ?
             [ `Badge--YDF__${ toUpperCamelCase(this.decoration) }Decoration` ] : [],
         ...this.decorativeModifiers.includes(DecorativeModifiers.bordersDisguising) ?
             [ "Badge--YDF__BordersDisguisingDecorativeModifier" ] : []
+
       ];
     }
 
   }
 
 
-  /* === Providing ================================================================================================== */
+  /* ━━━ Providing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   let Implementation: typeof VueComponent | null = null;
+  let LoadingPlaceholderImplementation: typeof VueComponent | null = null;
 
-  export function setImplementation(_Implementation: typeof VueComponent): void {
+  export function setImplementation(
+    _Implementation: typeof VueComponent, _LoadingPlaceholderImplementation?: typeof VueComponent
+  ): void {
+
     Implementation = _Implementation;
+
+    if (isNotUndefined(_LoadingPlaceholderImplementation)) {
+      LoadingPlaceholderImplementation = _LoadingPlaceholderImplementation;
+    }
+
   }
 
   export function getImplementation(): typeof VueComponent {
@@ -214,14 +231,22 @@ namespace Badge {
 
   }
 
-  export function registerImplementationLocally(parentComponent: VueComponent, withName: string = "Badge"): void {
+  export function registerImplementationLocally(
+    parentComponent: VueComponentPublicInstance,
+    names: Readonly<{ main: string; loadingPlaceholder: string; }> =
+        { main: "Badge", loadingPlaceholder: "BadgeLoadingPlaceholder" }
+  ): void {
 
     if (isUndefined(parentComponent.$options.components)) {
       parentComponent.$options.components = {};
     }
 
 
-    parentComponent.$options.components[withName] = getImplementation();
+    parentComponent.$options.components[names.main] = getImplementation();
+
+    if (isNotNull(LoadingPlaceholderImplementation)) {
+      parentComponent.$options.components[names.loadingPlaceholder] = LoadingPlaceholderImplementation;
+    }
 
   }
 

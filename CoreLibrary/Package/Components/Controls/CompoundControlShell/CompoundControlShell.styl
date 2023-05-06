@@ -1,6 +1,7 @@
-@require "Themes/Regular/GeometricVariations/CompoundControlShell-RegularGeometry.styl"
-@require "Themes/Regular/GeometricVariations/CompoundControlShell-SmallGeometry.styl"
-@require "Themes/Regular/DecorativeVariations/CompoundControlShell-RegularDecoration.styl"
+@require "Themes/Regular/GeometricVariations/CompoundControlShell-RegularTheme-RegularGeometry.styl"
+
+@require "Themes/Regular/GeometricVariations/CompoundControlShell-RegularTheme-SmallGeometry.styl"
+@require "Themes/Regular/DecorativeVariations/CompoundControlShell-RegularTheme-RegularDecoration.styl"
 
 
 CompoundControlShell--YDF = {
@@ -10,28 +11,36 @@ CompoundControlShell--YDF = {
     themes: {
       regular: {
 
+        componentIndependentCSS_Class: "RegularTheme--YDF",
+
         geometricVariations: {
-          regular: CompoundControlShell-RegularGeometry--YDF,
-          small: CompoundControlShell-SmallGeometry--YDF
+          regular: CompoundControlShell-RegularTheme-RegularGeometry--YDF,
+          small: CompoundControlShell-RegularTheme-SmallGeometry--YDF
         },
 
         decorativeVariations: {
-          regular: CompoundControlShell-RegularDecoration--YDF
+          regular: CompoundControlShell-RegularTheme-RegularDecoration--YDF
         }
+
       }
     }
+
+  },
+
+  defaultOptions: {
+    themeIndependentStylesOnly: false,
+    areThemesCSS_ClassesCommon: false,
+    loadingPlaceholder: true,
+    themeIndependentGeometricVariations: true
   }
+
 }
 
 
 provideCompoundControlShellYDF_Component(
   preset = CompoundControlShell--YDF.defaultProperties,
   overridings = {},
-  options = {
-    themeIndependentStylesOnly: false,
-    externalThemes: false,
-    loadingPlaceholder: true
-  },
+  options = CompoundControlShell--YDF.defaultOptions,
   restParameters__MUST_NOT_BE...
 )
 
@@ -44,22 +53,26 @@ provideCompoundControlShellYDF_Component(
     schema: {
       themeIndependentStylesOnly: {
         type: DataTypes.boolean,
-        required: true
+        defaultValue: CompoundControlShell--YDF.defaultOptions.themeIndependentStylesOnly
       },
-      externalThemes: {
+      areThemesCSS_ClassesCommon: {
         type: DataTypes.boolean,
-        required: true
+        defaultValue: CompoundControlShell--YDF.defaultOptions.externalThemes
       },
       loadingPlaceholder: {
         type: DataTypes.boolean,
-        required: true
+        defaultValue: CompoundControlShell--YDF.defaultOptions.loadingPlaceholder
+      },
+      themeIndependentGeometricVariations: {
+        type: DataTypes.boolean,
+        defaultValue: CompoundControlShell--YDF.defaultOptions.themeIndependentGeometricVariations
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
   })
 
 
-  // === Methods =======================================================================================================
+  // ━━━ Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   applyBasicRules()
 
     .CompoundControlShell--YDF-Header
@@ -68,54 +81,101 @@ provideCompoundControlShellYDF_Component(
       align-items center
 
 
-  // --- Geometry ------------------------------------------------------------------------------------------------------
+    .CompoundControlShell--YDF-Badge
+
+      flex-shrink 0
+
+
+    .CompoundControlShell--YDF-Badge__Invisible
+
+      visibility none
+
+
+  // ─── Geometry ──────────────────────────────────────────────────────────────────────────────────────────────────────
   applyGeometricVariation(themeName, variationName, variation)
 
     VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
-      "CompoundControlShell.${themeName}Theme.${variationName}Geometry",
-      {
-        themeName: themeName,
-        variationName: variationName
-      }
+      "CompoundControlShell.${ themeName }Theme.${ variationName }Geometry",
+      { themeName: themeName, variationName: variationName }
     )
 
-    ROOT_ELEMENT_SELECTOR = getCurrentSelectorSubstitutingRoot(".CompoundControlShell--YDF")
+    CONTEXT_SELECTOR = selector() == "&" ? null : selector()
+
+
+    +provideDefaultSelectorWhenRootAndApply(".Badge--YDF")
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.rootElement.customDeclarations)
+
 
     .CompoundControlShell--YDF-Label
 
-      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(
-        extractAndValidateObjectProperties({
-          targetObject: variation,
-          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
-          extracts: {
-            fontSize: { dotSeparatedPath: "label.text.size", required: true },
-            lineSpacing: { dotSeparatedPath: "label.text.lineSpacing", required: false },
-            lineHeight: { dotSeparatedPath: "label.text.lineHeight", mustBeInsteadOf: "label.text.lineSpacing" }
-          }
-        })
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight(
+        merge(
+          extractAndValidateObjectProperties({
+            targetObject: variation,
+            targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+            extracts: {
+              fontSize: { dotSeparatedPath: "label.text.size", required: true },
+              lineSpacing: { dotSeparatedPath: "label.text.lineSpacing", required: false },
+              lineHeight: { dotSeparatedPath: "label.text.lineHeight", mustBeInsteadOf: "label.text.lineSpacing" }
+            }
+          }),
+          { mustAllowWordsBreakingAnywhere: true }
+        )
       )
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.label.customDeclarations)
+
+
+    .CompoundControlShell--YDF-Badge
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          bordersSizing: {
+            dotSeparatedPath: "badge.borders",
+            applier: @(bordersSizngSpecification) { BordersSizing(bordersSizngSpecification) }
+          },
+          paddings: {
+            dotSeparatedPath: "badge.paddings",
+            applier: @(paddingsSpecification) { Paddings(paddingsSpecification) }
+          },
+          margin-left: {
+            dotSeparatedPath: "badge.spacing.left",
+            required: true
+          }
+        }
+      })
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.badge.customDeclarations)
 
 
     .CompoundControlShell--YDF-Guidance
 
-      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(
-        extractAndValidateObjectProperties({
-          targetObject: variation,
-          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
-          extracts: {
-            fontSize: { dotSeparatedPath: "guidance.text.size", required: true },
-            lineSpacing: { dotSeparatedPath: "guidance.text.lineSpacing", required: false },
-            lineHeight: { dotSeparatedPath: "guidance.text.lineHeight", mustBeInsteadOf: "guidance.text.lineSpacing" }
-          }
-        })
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight(
+        merge(
+          extractAndValidateObjectProperties({
+            targetObject: variation,
+            targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+            extracts: {
+              fontSize: { dotSeparatedPath: "guidance.text.size", required: true },
+              lineSpacing: { dotSeparatedPath: "guidance.text.lineSpacing", required: false },
+              lineHeight: { dotSeparatedPath: "guidance.text.lineHeight", mustBeInsteadOf: "guidance.text.lineSpacing" }
+            }
+          }),
+          { mustAllowWordsBreakingAnywhere: true }
+        )
       )
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.guidance.customDeclarations)
 
 
       /
 
         retireFrom({
           targetElementSelector: ".CompoundControlShell--YDF-Header",
-          contextSelector: ROOT_ELEMENT_SELECTOR,
+          contextSelector: CONTEXT_SELECTOR,
           referenceElementSelector: ".CompoundControlShell--YDF-Guidance",
           y: extractAndValidateObjectProperties({
             targetObject: variation,
@@ -152,7 +212,7 @@ provideCompoundControlShellYDF_Component(
                 }).spacingAfterHeading
               }),
           referenceElementSelector: ".CompoundControlShell--YDF-MainSlotCustomizableWrapper",
-          contextSelector: ROOT_ELEMENT_SELECTOR
+          contextSelector: CONTEXT_SELECTOR
         })
 
 
@@ -169,20 +229,23 @@ provideCompoundControlShellYDF_Component(
 
     .CompoundControlShell--YDF-ValidationErrorMessage
 
-      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight(
-        extractAndValidateObjectProperties({
-          targetObject: variation,
-          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
-          extracts: {
-            fontSize: { dotSeparatedPath: "errorsList.item.text.size", required: true },
-            lineSpacing: { dotSeparatedPath: "errorsList.item.text.lineSpacing", required: false },
-            lineHeight: { dotSeparatedPath: "errorsList.item.text.lineHeight", mustBeInsteadOf: "errorsList.item.text.lineSpacing" }
-          }
-        })
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight(
+        merge(
+          extractAndValidateObjectProperties({
+            targetObject: variation,
+            targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+            extracts: {
+              fontSize: { dotSeparatedPath: "errorsList.item.text.size", required: true },
+              lineSpacing: { dotSeparatedPath: "errorsList.item.text.lineSpacing", required: false },
+              lineHeight: { dotSeparatedPath: "errorsList.item.text.lineHeight", mustBeInsteadOf: "errorsList.item.text.lineSpacing" }
+            }
+          }),
+          { mustAllowWordsBreakingAnywhere: true }
+        )
       )
 
       retireFromElementWithSameSelector({
-        contextSelector: ROOT_ELEMENT_SELECTOR,
+        contextSelector: CONTEXT_SELECTOR,
         referenceElementSelector: ".CompoundControlShell--YDF-ValidationErrorMessage"
         y: extractAndValidateObjectProperties({
           targetObject: variation,
@@ -194,11 +257,11 @@ provideCompoundControlShellYDF_Component(
       })
 
 
-  // --- Decoration ----------------------------------------------------------------------------------------------------
+  // ─── Decoration ────────────────────────────────────────────────────────────────────────────────────────────────────
   applyDecorativeVariation(themeName, variationName, variation)
 
     VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
-      "CompoundControlShell.${themeName}Theme.${variationName}Decoration",
+      "CompoundControlShell.${ themeName }Theme.${ variationName }Decoration",
       {
         themeName: themeName,
         variationName: variationName
@@ -215,6 +278,42 @@ provideCompoundControlShellYDF_Component(
           color: { dotSeparatedPath: "label.text.color", required: false }
         }
       })
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.label.customDeclarations)
+
+
+    .CompoundControlShell--YDF-Badge__Required
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          border-style: { dotSeparatedPath: "badge.required.borders.style", required: true },
+          border-color: { dotSeparatedPath: "badge.required.borders.color", required: true },
+          background-color: { dotSeparatedPath: "badge.required.background.color", required: true },
+          font-weight: { dotSeparatedPath: "badge.required.text.fontWeight", required: false },
+          color: { dotSeparatedPath: "badge.required.text.color", required: true }
+        }
+      })
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.badge.required.customDeclarations)
+
+
+    .CompoundControlShell--YDF-Badge__Optional
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          border-style: { dotSeparatedPath: "badge.optional.borders.style", required: true },
+          border-color: { dotSeparatedPath: "badge.optional.borders.color", required: true },
+          background-color: { dotSeparatedPath: "badge.optional.background.color", required: true },
+          font-weight: { dotSeparatedPath: "badge.optional.text.fontWeight", required: false },
+          color: { dotSeparatedPath: "badge.optional.text.color", required: true }
+        }
+      })
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.badge.optional.customDeclarations)
 
 
     .CompoundControlShell--YDF-Guidance
@@ -241,7 +340,80 @@ provideCompoundControlShellYDF_Component(
       })
 
 
-  // === Applying ======================================================================================================
+    .CompoundControlShell--YDF-AsynchronousValidationsStatusesList
+
+      margin-top 0.8rem
+
+
+    .CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item
+
+      display flex
+      align-items center
+      column-gap 8px
+
+
+      &-LoadingIndicator
+
+        setCustomColorForLoadingIndicatorYDF_Component(LoadingIndicator--YDF.Types.variableWidthArcSpinner, YDF_ColorPalette.deepSkyBlue.slightlyDark)
+
+        flex-shrink 0
+
+
+      &-Icon
+
+        width 24px
+        height 24px
+
+        flex-shrink 0
+
+
+        ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__InProgressState &
+
+          fill: YDF_ColorPalette.deepSkyBlue.slightlyDark
+
+
+        ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__SucceededAndValidState &
+
+          fill: YDF_ColorPalette.mint.slightlyDark
+
+
+        ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__SucceededButInvalidState &
+
+          fill: YDF_ColorPalette.red.slightlyDark
+
+
+        ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__MalfunctionState &
+
+          fill: YDF_ColorPalette.amber.slightlyDark
+
+
+      &-Text
+
+        font-size 14px
+        font-weight bold
+
+
+        ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__InProgressState &
+
+          color: YDF_ColorPalette.deepSkyBlue.slightlyDark
+
+
+        ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__SucceededAndValidState &
+
+          color: YDF_ColorPalette.mint.slightlyDark
+
+
+        ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__SucceededButInvalidState &
+
+          color: YDF_ColorPalette.red.slightlyDark
+
+
+        ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__MalfunctionState &
+
+          color: YDF_ColorPalette.amber.slightlyDark
+
+
+  // ━━━ Applying ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   applyBasicRules()
 
   if !options.themeIndependentStylesOnly

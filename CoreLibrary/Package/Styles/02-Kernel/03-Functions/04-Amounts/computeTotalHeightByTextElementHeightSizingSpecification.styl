@@ -1,0 +1,55 @@
+computeTotalHeightByTextElementHeightSizingSpecification(textElementHeightSizingSpecification, restParameters__MUST_NOT_BE...)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "computeTotalHeightByTextElementHeightSizingSpecification",
+    targetParameterNumber: 1,
+    targetParameter: textElementHeightSizingSpecification,
+    schema: TextElementHeightSizingSpecificationSchema,
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+  if isNotNull(textElementHeightSizingSpecification.fixedHeight)
+
+    return textElementHeightSizingSpecification.fixedHeight
+
+
+  verticalBorderThicknessSum = null
+
+  borders = textElementHeightSizingSpecification.borders
+  paddings = textElementHeightSizingSpecification.paddings
+
+  lineHeight = textElementHeightSizingSpecification.lineHeight
+
+  if (isNull(lineHeight)) {
+    lineHeight = buildCalcExpression(
+      "${fontSize} + ${lineSpacing}",
+      { fontSize: textElementHeightSizingSpecification.fontSize, lineSpacing: textElementHeightSizingSpecification.lineSpacing }
+    )
+  }
+
+  heightOfAllLines = buildCalcExpression(
+    "${ fixedLinesCount } * ${ lineHeight }",
+    {
+      fixedLinesCount: substituteNull(textElementHeightSizingSpecification.fixedLinesCount, 1),
+      lineHeight: lineHeight
+    }
+  )
+
+  summands = createYDF_Array()
+
+  addElementsToEndOfYDF_ArrayIf(
+    summands,
+    @(summand) { return isNotNull(summand) },
+    isNotNull(borders.all) ? 2 * borders.all : null,
+    isNotNull(borders.verticalSymmetric) ? 2 * borders.verticalSymmetric : null,
+    borders.top,
+    borders.bottom,
+    isNotNull(paddings.all) ? 2 * paddings.all : null,
+    isNotNull(paddings.verticalSymmetric) ? 2 * paddings.verticalSymmetric : null,
+    paddings.top,
+    paddings.bottom,
+    heightOfAllLines
+  )
+
+
+  return unquote("calc(" + join(" + ", values(summands)) + ")")

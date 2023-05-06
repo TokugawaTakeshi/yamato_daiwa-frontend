@@ -1,5 +1,4 @@
-import type NumericMaximumInputtedValueValidationRule from
-    "@Controls/_Validation/PreMadeRules/Numeric/NumericMaximumInputtedValueValidationRule";
+import type NumericMaximumInputtedValueValidationRule from "./NumericMaximumInputtedValueValidationRule";
 
 
 const numericMaximumInputtedValueValidationRuleLocalization__english:

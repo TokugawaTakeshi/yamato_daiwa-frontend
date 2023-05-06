@@ -6,7 +6,8 @@ mixin Link--YDF(properties)
       endorsedExternalURI,
       unendorsedExternalURI,
       internalURI,
-      anchor
+      anchor,
+      accessibilityGuidance
     } = properties;
 
 
@@ -19,7 +20,7 @@ mixin Link--YDF(properties)
     } else if (internalURI) {
       hrefAttributeValue = internalURI;
     } else if (anchor) {
-      hrefAttributeValue = `#${anchor}`;
+      hrefAttributeValue = `#${ anchor }`;
     }
 
     let targetAttributeValue;
@@ -45,8 +46,9 @@ mixin Link--YDF(properties)
 
 
   a&attributes(attributes)(
-    href= hrefAttributeValue
-    target= targetAttributeValue
-    rel= relAttributeValue
+    href=hrefAttributeValue
+    target=targetAttributeValue
+    rel=relAttributeValue
+    aria-label= accessibilityGuidance
   )
     block

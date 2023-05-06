@@ -2,25 +2,29 @@
 
   function generateSharedExternalLinks(localization) {
 
-    return {
+    /* [ Methodology ] Keep this variable to easily copy the qualified name by IntelliJ IDEA IDEs functionality. */
+    const sharedExternalLinks = {
 
       pug: {
         homePage: {
           top: "https://pugjs.org/api/getting-started.html",
           mixins: "https://pugjs.org/language/mixins.html",
-          includes: "https://pugjs.org/language/includes.html"
+          includes: "https://pugjs.org/language/includes.html",
+          inlineJavaScript: "https://pugjs.org/language/code.html"
         }
       },
 
       stylus: {
         homePage: {
           top: "https://stylus-lang.com",
-          mixins: "https://stylus-lang.com/docs/mixins.html"
+          mixins: "https://stylus-lang.com/docs/mixins.html",
+          includes: "https://stylus-lang.com/docs/import.html"
         }
       },
 
-      YDEE: {
-        top: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-ES-Extensions/blob/master/CoreLibrary/Package/README.md"
+      YamatoDaiwaES_Extensions: {
+        top: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-ES-Extensions/blob/master/CoreLibrary/Package/README.md",
+        RawObjectDataProcessor: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-ES-Extensions/blob/master/CoreLibrary/Package/Documentation/RawObjectDataProcessor/RawObjectDataProcessor.md"
       },
 
       jetBrains: {
@@ -30,5 +34,7 @@
       }
 
     };
+
+    return sharedExternalLinks;
 
   }

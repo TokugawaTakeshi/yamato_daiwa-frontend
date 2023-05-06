@@ -1,0 +1,64 @@
+include LoadingIndicator.class.pug
+
+
+mixin LoadingIndicator--YDF(properties, statesSimulations)
+
+  -
+
+    const {
+      type,
+      theme = LoadingIndicator__YDF.Themes.regular,
+      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || LoadingIndicator__YDF.areThemesCSS_ClassesCommon,
+      geometry = LoadingIndicator__YDF.GeometricVariations.dark,
+      decoration = LoadingIndicator__YDF.DecorativeVariations.regular,
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: LoadingIndicator__YDF.propertiesSpecification,
+      mixinName: "LoadingIndicator--YDF"
+    });
+
+    const commonCSS_Classes = [
+
+      LoadingIndicator__YDF.CSS_NAMESPACE,
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: LoadingIndicator__YDF.Themes,
+        CSS_Namespace: LoadingIndicator__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: LoadingIndicator__YDF.GeometricVariations,
+        CSS_Namespace: LoadingIndicator__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decoration,
+        allDecorativeVariations: LoadingIndicator__YDF.DecorativeVariations,
+        CSS_Namespace: LoadingIndicator__YDF.CSS_NAMESPACE
+      }),
+
+    ];
+
+  case type
+
+    when LoadingIndicator__YDF.Types.variableWidthArcSpinner
+
+      .LoadingIndicator--YDF__VariableWidthArcSpinnerType(
+        class=commonCSS_Classes
+      )&attributes(attributes)
+        div
+        div
+        div
+        div
+
+
+    when LoadingIndicator__YDF.Types.twoConstantWidthArcsSpinner
+
+      .LoadingIndicator--YDF__TwoConstantWidthArcsSpinnerType(
+        class=commonCSS_Classes
+      )&attributes(attributes)

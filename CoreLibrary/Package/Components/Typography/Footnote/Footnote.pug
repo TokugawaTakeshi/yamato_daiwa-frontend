@@ -26,7 +26,13 @@ mixin FootnoteReferenceMark--YDF(properties)
   a.FootnoteReferenceMark--YDF(
     id=`${ newFootnoteData.referenceMarkID }`
     href=`#${ newFootnoteData.listItemID }`
-  )= `[${ newFootnoteIndex + 1 }]`
+  )
+
+    if block
+
+      block
+
+    | [#{ newFootnoteIndex + 1 }]
 
 
 mixin FootnotesList--YDF(footnotesData)
@@ -35,8 +41,13 @@ mixin FootnotesList--YDF(footnotesData)
 
     each footnoteData in footnotesData.items
 
-      li
-        | #{ footnoteData.text } -
+      li(
+        id=footnoteData.listItemID
+      )
+
+        if footnoteData.text
+          | #{ footnoteData.text } -
+          |
         a(
           href=footnoteData.link.URI
           target="_blank"

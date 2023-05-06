@@ -1,6 +1,6 @@
-import type InputtedValueValidationRule from "@Controls/_Validation/InputtedValueValidationRule";
+import type InputtedValueValidation from "../../InputtedValueValidation";
 import allowedCharactersInputtedValueValidationRuleLocalization__english from
-    "@Controls/_Validation/PreMadeRules/Strings/AllowedCharactersInputtedValueValidationRuleLocalization.english";
+    "./AllowedCharactersInputtedValueValidationRuleLocalization.english";
 import {
   isString,
   splitString,
@@ -12,7 +12,7 @@ import {
 } from "@yamato-daiwa/es-extensions";
 
 
-class AllowedCharactersInputtedValueValidationRule implements InputtedValueValidationRule {
+class AllowedCharactersInputtedValueValidationRule implements InputtedValueValidation.Rule {
 
   public static localization: AllowedCharactersInputtedValueValidationRule.Localization =
       allowedCharactersInputtedValueValidationRuleLocalization__english;
@@ -25,7 +25,7 @@ class AllowedCharactersInputtedValueValidationRule implements InputtedValueValid
 
   public constructor(
     compoundParameter:
-        InputtedValueValidationRule.ConstructorParameter &
+        InputtedValueValidation.Rule.ConstructorParameter &
         Readonly<{
           allowedCharacters: Readonly<{
             latinLowercase?: boolean;
@@ -69,7 +69,7 @@ class AllowedCharactersInputtedValueValidationRule implements InputtedValueValid
 
   }
 
-  public check(rawValue: unknown): InputtedValueValidationRule.CheckingResult {
+  public check(rawValue: unknown): InputtedValueValidation.Rule.CheckingResult {
 
     if (!isString(rawValue)) {
 

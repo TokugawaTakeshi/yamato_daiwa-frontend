@@ -6,12 +6,18 @@ mixin AttentionBox--YDF(properties)
   -
 
     const {
+
+      title,
+      customSVGIcon,
+
       theme = AttentionBox__YDF.Themes.regular,
-      areThemesExternal = AttentionBox__YDF.areThemesExternal,
+      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || AttentionBox__YDF.areThemesExternal,
       geometry = AttentionBox__YDF.GeometricVariations.regular,
       decoration,
+
       hasPrependedSVG_Icon = false,
       hasDismissingButton = false
+
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
       rawParameter: properties,
       parameterNumber: 1,
@@ -29,9 +35,17 @@ mixin AttentionBox--YDF(properties)
           [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(AttentionBox__YDF.CSS_NAMESPACE, decoration) ] : []
     ];
 
+    let BASIC_ID;
+    let TITLE_HTML_ID;
+
+    if (title) {
+      BASIC_ID = AttentionBox__YDF.generateComponentID();
+      TITLE_HTML_ID = `${ BASIC_ID }-TITLE`;
+    }
+
 
   .AttentionBox--YDF&attributes(attributes)(
-    class= rootElementModifierCSS_Classes
+    class=rootElementModifierCSS_Classes
     role="alert"
   )
 
@@ -57,7 +71,21 @@ mixin AttentionBox--YDF(properties)
         when AttentionBox__YDF.DecorativeVariations.question
           +QuestionMark__Circled__Filled--YDF_Icon.AttentionBox--YDF-SVG_Icon
 
-    .AttentionBox--YDF-MainSection
+        default
+          if customSVGIcon
+            svg.AttentionBox--YDF-SVG_Icon(viewBox=customSVGIcon.viewBox)
+              use(xlink:href=customSVGIcon.innerElementID)
+
+
+    if title
+
+      .AttentionBox--YDF-Title(
+        id=TITLE_HTML_ID
+      )= title
+
+    .AttentionBox--YDF-MainContent(
+      aria-labelledby=(title ? TITLE_HTML_ID : null)
+    )
 
       block
 

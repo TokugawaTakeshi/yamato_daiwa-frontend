@@ -1,43 +1,66 @@
 Button-RegularTheme-LinkLikeGeometry--YDF = {
 
   rootElement: {
+
     minimalWidth: null,
-    borders: null
+
+    borders: null,
+
+    modifiers: {
+      pillShape: {
+        textSizeToBorderRadiusRatio: 2
+      }
+    },
+
+    customDeclarations: null
+
   },
 
   label: {
+
     text: {
       size: 1rem,
       lineSpacing: 0.1rem,
       lineHeight: null
     },
+
     spacing: {
-      left: null,
-      right: null,
+      horizontalSymmetricWhenLone: 0,
+      leftWhenGoingFirst: 0,
+      rightWhenGoingLast: 0,
+      verticalSymmetric: 0,
       top: null,
+      bottom: null,
       upwardShifting: null
-    }
+    },
+
+    customDeclarations: null
+
   },
 
   SVG_Icon: {
 
-    standard: {
+    default: {
+
       width: null,
       height: 1rem,
+
       spacing: {
-        top: 0.25rem,
-        bottom: 0.25rem,
+        leftWhenGoingFirst: null,
+        rightWhenGoingLast: null,
         beforeLabel: 0.4rem,
         afterLabel: 0.5rem,
-        leftWhenGoingFirst: null,
-        rightWhenGoingLast: null
-      }
+
+        horizontalSymmetricWhenLone: null
+
+      },
+
+      customDeclarations: null
+
     },
 
-    specials: {
-      Button-SVG_Icon__Menu__ThreeDots__Horizontal: {
-        width: 1rem
-      }
-    }
+    specials: {}
+
   }
+
 }

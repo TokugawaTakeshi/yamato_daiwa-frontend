@@ -280,7 +280,7 @@ export {
 
 } from "@yamato-daiwa/es-extensions";
 
-export { default as buildEmailLinkHREF_AttributeValue } from "./PugExtensions/buildEmailLinkHREF_AttributeValue";
-export { default as buildPhoneNumberLinkHREF_AttributeValue } from "./PugExtensions/buildPhoneNumberLinkHREF_AttributeValue";
+export { default as buildEmailLinkHrefAttributeValue } from "./PugExtensions/buildEmailLinkHrefAttributeValue";
+export { default as buildPhoneNumberLinkHrefAttributeValue } from "./PugExtensions/buildPhoneNumberLinkHrefAttributeValue";
 
 export { default as PugMixinsObjectTypeParametersProcessor } from "./PugExtensions/PugMixinsObjectTypeParametersProcessor";

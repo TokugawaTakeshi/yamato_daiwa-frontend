@@ -19,13 +19,13 @@
 <script lang="ts">
 
   /* --- Other components ------------------------------------------------------------------------------------------- */
-  import { OverflowSafeSingleLineLabel } from "@Source/index";
+  import { OverflowSafeSingleLineLabel } from "../../../../Source";
 
   /* --- Framework -------------------------------------------------------------------------------------------------- */
-  import { Options as VueComponentConfiguration, Vue as VueComponent } from "vue-property-decorator";
+  import { Component as VueComponentOptions, Vue as VueComponent } from "vue-facing-decorator";
 
 
-  @VueComponentConfiguration({
+  @VueComponentOptions({
     components: {
       OverflowSafeSingleLineLabel
     }

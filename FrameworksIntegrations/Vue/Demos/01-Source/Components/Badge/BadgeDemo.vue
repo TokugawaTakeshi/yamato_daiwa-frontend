@@ -5,7 +5,7 @@ h1.Heading1(
 ) Badge component testing
 
 
-//- === Values only ====================================================================================================
+//- ━━━ Values only ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 template(
   v-if="valuesOnly"
 )
@@ -14,20 +14,30 @@ template(
     v-if="headings"
   ) Value only
 
-  .BadgeDemo-BadgesFlow(
-    v-for="geometricVariation of Object.values(Badge.GeometricVariations)"
-    :key="`BADGES_FLOW-VALUE_ONLY-${ geometricVariation }`"
+  ThemesShowcase(
+    :themes="Badge.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Badge.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Badge.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    decorativeVariationsWrapperTag="dl"
+    :decorativeVariationsWrapperAdditionalCSS_Classes="[ 'BadgeDemo-BadgesTwoColumnsTable' ]"
   )
-    Badge(
-      v-for="decorativeVariation of Object.values(Badge.DecorativeVariations)"
-      :key="`BADGE-VALUE_ONLY-${ geometricVariation }-${ decorativeVariation }`"
-      valueLabel="Sample"
-      :geometry="geometricVariation"
-      :decoration="decorativeVariation"
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
     )
+      dt Badge__YDF.DecorativeVariations.{{ decorativeVariation.key }}
+      dd
+        Badge(
+          valueLabel="Value"
+          :theme="theme.value"
+          :geometry="geometricVariation.value"
+          :decoration="decorativeVariation.value"
+        )
 
 
-//- === Keys and values ================================================================================================
+//- ━━━ Keys and values ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 template(
   v-if="keysAndValues"
 )
@@ -36,21 +46,48 @@ template(
     v-if="headings"
   ) Keys and values
 
-  .BadgeDemo-BadgesFlow(
-    v-for="geometricVariation of Object.values(Badge.GeometricVariations)"
-    :key="`BADGES_FLOW-KEY_AND_VALUE-${ geometricVariation }`"
+  ThemesShowcase(
+    :themes="Badge.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Badge.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Badge.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    decorativeVariationsWrapperTag="dl"
+    :decorativeVariationsWrapperAdditionalCSS_Classes="[ 'BadgeDemo-BadgesTwoColumnsTable' ]"
   )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+      dt Badge__YDF.DecorativeVariations.{{ decorativeVariation.key }}
+      dd
+        Badge(
+          keyLabel="Key"
+          valueLabel="Value"
+          :theme="theme.value"
+          :geometry="geometricVariation.value"
+          :decoration="decorativeVariation.value"
+        )
+
+
+//- ━━━ Long labels ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+template(
+  v-if="longLabels"
+)
+
+  h2.Heading2(
+    v-if="headings"
+  ) Long labels
+
+  .BadgeDemo-BadgesFlow
     Badge(
-      v-for="decorativeVariation of Object.values(Badge.DecorativeVariations)"
-      :key="`BADGE-KEY_AND_VALUE-${ geometricVariation }-${ decorativeVariation }`"
-      keyLabel="Key"
-      valueLabel="Sample"
-      :geometry="geometricVariation"
-      :decoration="decorativeVariation"
+      :keyLabel="textOverflowSafetyTest"
+      :valueLabel="textOverflowSafetyTest"
+      :decoration="Badge.DecorativeVariations.achromaticPastel"
     )
 
 
-//- === Icons, keys and values =========================================================================================
+//- ━━━ Icons, keys and values ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 template(
   v-if="iconsAndKeysAndValues"
 )
@@ -59,21 +96,31 @@ template(
     v-if="headings"
   ) Icons, keys and values
 
-  .BadgeDemo-BadgesFlow(
-    v-for="geometricVariation of Object.values(Badge.GeometricVariations)"
-    :key="`BADGES_FLOW-ICON_KEY_VALUE-${ geometricVariation }`"
+  ThemesShowcase(
+    :themes="Badge.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Badge.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Badge.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    decorativeVariationsWrapperTag="dl"
+    :decorativeVariationsWrapperAdditionalCSS_Classes="[ 'BadgeDemo-BadgesTwoColumnsTable' ]"
   )
-    Badge(
-      v-for="decorativeVariation of Object.values(Badge.DecorativeVariations)"
-      :key="`BADGE-ICON_KEY_VALUE-${ geometricVariation }-${ decorativeVariation }`"
-      keyLabel="Key"
-      valueLabel="Sample"
-      :geometry="geometricVariation"
-      :decoration="decorativeVariation"
-    ): template(v-slot:SVG_Icon): CalendarIcon.Badge--YDF-SVG_Icon
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+      dt Badge__YDF.DecorativeVariations.{{ decorativeVariation.key }}
+      dd
+        Badge(
+          keyLabel="Date"
+          :valueLabel="todayDate__localized__stringified"
+          :theme="theme.value"
+          :geometry="geometricVariation.value"
+          :decoration="decorativeVariation.value"
+        ): template(v-slot:SVG_Icon): CalendarIcon.Badge--YDF-SVG_Icon
 
 
-//- === Icons and values ===============================================================================================
+//- ━━━ Icons and values ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 template(
   v-if="iconsAndValues"
 )
@@ -82,114 +129,123 @@ template(
     v-if="headings"
   ) Icons and values
 
-  .BadgeDemo-BadgesFlow(
-    v-for="geometricVariation of Object.values(Badge.GeometricVariations)"
-    :key="`BADGES_FLOW-ICON_AND_VALUE-${ geometricVariation }`"
+  ThemesShowcase(
+    :themes="Badge.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Badge.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Badge.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    decorativeVariationsWrapperTag="dl"
+    :decorativeVariationsWrapperAdditionalCSS_Classes="[ 'BadgeDemo-BadgesTwoColumnsTable' ]"
   )
-    Badge(
-      v-for="decorativeVariation of Object.values(Badge.DecorativeVariations)"
-      :key="`BADGE-ICON_AND_VALUE-${ geometricVariation }-${ decorativeVariation }`"
-      valueLabel="Sample"
-      :geometry="geometricVariation"
-      :decoration="decorativeVariation"
-    ): template(v-slot:SVG_Icon): CalendarIcon.Badge--YDF-SVG_Icon
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+      dt Badge__YDF.DecorativeVariations.{{ decorativeVariation.key }}
+      dd
+        Badge(
+          :valueLabel="todayDate__localized__stringified"
+          :theme="theme.value"
+          :geometry="geometricVariation.value"
+          :decoration="decorativeVariation.value"
+        ): template(v-slot:SVG_Icon): CalendarIcon.Badge--YDF-SVG_Icon
 
 
-//- === Geometric modifiers ============================================================================================
+//- ━━━ Geometric modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+h2.Heading2(
+  v-if="headings && Array.from(Object.values(geometricModifiers)).some(isRequired => isRequired)"
+) Geometric modifiers
+
+
+//- ─── Pill shape ─────────────────────────────────────────────────────────────────────────────────────────────────────
 template(
   v-if="geometricModifiers.pillShape"
 )
 
-  template(
+  h3.Heading3(
     v-if="headings"
+  ) Pill shape
+
+  ThemesShowcase(
+    :themes="Badge.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Badge.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Badge.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    decorativeVariationsWrapperTag="dl"
+    :decorativeVariationsWrapperAdditionalCSS_Classes="[ 'BadgeDemo-BadgesTwoColumnsTable' ]"
   )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+      dt Badge__YDF.DecorativeVariations.{{ decorativeVariation.key }}
+      dd
+        Badge(
+          valueLabel="Sample"
+          :theme="theme.value"
+          :geometry="geometricVariation.value"
+          :geometricModifiers="[ Badge.GeometricModifiers.pillShape ]"
+          :decoration="decorativeVariation.value"
+        )
 
-    h2.Heading2 Geometric modifiers
 
-    h3.Heading3 Pill shape
+//- ─── Single line ────────────────────────────────────────────────────────────────────────────────────────────────────
+template(
+  v-if="geometricModifiers.singleLine"
+)
 
-  .BadgeDemo-BadgesFlow(
-    v-for="geometricVariation of Object.values(Badge.GeometricVariations)"
-    :key="`BADGES_FLOW-PILL_SHAPE-${ geometricVariation }`"
-  )
+  h3.Heading3(
+    v-if="headings"
+  ) Single line
+
+  .BadgeDemo-BadgesFlow.BadgeDemo-BadgesFlow__LimitedChildrenMaximalWidth
     Badge(
-      v-for="decorativeVariation of Object.values(Badge.DecorativeVariations)"
-      :key="`BADGE-PILL_SHAPE-${ geometricVariation }-${ decorativeVariation }`"
-      valueLabel="Sample"
-      :geometry="geometricVariation"
-      :geometricModifiers="[ Badge.GeometricModifiers.pillShape ]"
-      :decoration="decorativeVariation"
+      :key="textOverflowSafetyTest"
+      :valueLabel="textOverflowSafetyTest"
+      :geometricModifiers="[ Badge.GeometricModifiers.singleLine ]"
+      :decoration="Badge.DecorativeVariations.achromaticPastel"
     )
 
 
-//- === Decorative modifiers ===========================================================================================
+//- ━━━ Decorative modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+h2.Heading2(
+  v-if="headings && Array.from(Object.values(decorativeModifiers)).some(isRequired => isRequired)"
+) Decorative modifiers
+
+
+//- ─── Borders disguising ─────────────────────────────────────────────────────────────────────────────────────────────
 template(
   v-if="decorativeModifiers.bordersDisguising"
 )
 
-  template(
+  h3.Heading3(
     v-if="headings"
+  ) Borders disguising
+
+  ThemesShowcase(
+    :themes="Badge.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Badge.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Badge.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    decorativeVariationsWrapperTag="dl"
+    :decorativeVariationsWrapperAdditionalCSS_Classes="[ 'BadgeDemo-BadgesTwoColumnsTable' ]"
   )
-
-    h2.Heading2 Decorative modifiers
-
-    h3.Heading3 Borders disguising
-
-  .BadgeDemo-BadgesFlow(
-    v-for="geometricVariation of Object.values(Badge.GeometricVariations)"
-    :key="`BADGES_FLOW-BORDERS_DISGUISING-${ geometricVariation }`"
-  )
-    Badge(
-      v-for="decorativeVariation of Object.values(Badge.DecorativeVariations)"
-      :key="`BADGE-BORDERS_DISGUISING-${ geometricVariation }-${ decorativeVariation }`"
-      valueLabel="Sample"
-      :geometry="geometricVariation"
-      :decorativeModifiers="[ Badge.DecorativeModifiers.bordersDisguising ]"
-      :decoration="decorativeVariation"
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
     )
-
-
-//- === Overflow testing ===============================================================================================
-template(
-  v-if="overflowTesting.singleLine || overflowTesting.multiline"
-)
-
-  h2.Heading2(
-    v-if="headings"
-  ) Overflow testing
-
-  template(
-    v-if="overflowTesting.multiline"
-  )
-
-    h3.Heading3(
-      v-if="headings"
-    ) Multiline
-
-    .BadgeDemo-BadgesFlow
-
-      Badge(
-        :keyLabel="textOverflowSafetyTest"
-        :valueLabel="textOverflowSafetyTest"
-        :decoration="Badge.DecorativeVariations.achromaticPastel"
-      )
-
-  template(
-    v-if="overflowTesting.singleLine"
-  )
-
-    h3.Heading3(
-      v-if="headings"
-    ) Single line
-
-    .BadgeDemo-BadgesFlow.BadgeDemo-BadgesFlow__LimitedChildrenMaximalWidth
-
-      Badge(
-        :keyLabel="textOverflowSafetyTest"
-        :valueLabel="textOverflowSafetyTest"
-        :mustForceSingleLine="true"
-        :decoration="Badge.DecorativeVariations.achromaticPastel"
-      )
+      dt Badge__YDF.DecorativeVariations.{{ decorativeVariation.key }}
+      dd
+        Badge(
+          valueLabel="Sample"
+          :theme="theme.value"
+          :geometry="geometricVariation.value"
+          :decoration="decorativeVariation.value"
+          :decorativeModifiers="[ Badge.DecorativeModifiers.bordersDisguising ]"
+        )
 
 
 //- === Loading placeholder ============================================================================================
@@ -223,22 +279,24 @@ template(
 
   /* --- Other components ------------------------------------------------------------------------------------------- */
   import {
+    ThemesShowcase,
     Badge,
     BadgeLoadingPlaceholderBasicImplementation as BadgeLoadingPlaceholder,
     CalendarIcon
   } from "@yamato-daiwa/frontend-vue";
 
   /* --- Framework -------------------------------------------------------------------------------------------------- */
-  import { Options as VueComponentConfiguration, Vue as VueComponent, Prop as VueProperty } from "vue-property-decorator";
+  import { Component as VueComponentOptions, Vue as VueComponent, Prop as VueProperty } from "vue-facing-decorator";
 
   /* --- Utils ------------------------------------------------------------------------------------------------------ */
   import { getRandomString } from "@yamato-daiwa/es-extensions";
 
 
-  @VueComponentConfiguration({
+  @VueComponentOptions({
     components: {
       BadgeLoadingPlaceholder,
-      CalendarIcon
+      CalendarIcon,
+      ThemesShowcase
     }
   })
   export default class BadgeDemo extends VueComponent {
@@ -251,6 +309,9 @@ template(
     protected readonly valuesOnly!: boolean;
 
     @VueProperty({ type: Boolean, default: true })
+    protected readonly longLabels!: boolean;
+
+    @VueProperty({ type: Boolean, default: true })
     protected readonly keysAndValues!: boolean;
 
     @VueProperty({ type: Boolean, default: true })
@@ -259,8 +320,8 @@ template(
     @VueProperty({ type: Boolean, default: true })
     protected readonly iconsAndValues!: boolean;
 
-    @VueProperty({ type: Object, default: { pillShape: true } })
-    protected readonly geometricModifiers!: Readonly<{ pillShape: boolean; }>;
+    @VueProperty({ type: Object, default: { pillShape: true, singleLine: true } })
+    protected readonly geometricModifiers!: Readonly<{ pillShape: boolean; singleLine: boolean; }>;
 
     @VueProperty({ type: Object, default: { bordersDisguising: true } })
     protected readonly decorativeModifiers!: Readonly<{ bordersDisguising: boolean; }>;
@@ -273,12 +334,16 @@ template(
 
 
     /* === Fields =================================================================================================== */
-    /* --- Reactive ------------------------------------------------------------------------------------------------- */
-    protected textOverflowSafetyTest: string = `OVERFLOW_TEST-gh${ getRandomString({ minimalCharactersCount: 100 }) }`;
-
-
     /* --- Non-reactive --------------------------------------------------------------------------------------------- */
     protected Badge!: typeof Badge;
+
+    protected THEME_KEY_LABEL_PREFIX!: string;
+    protected GEOMETRIC_VARIATION_KEY_LABEL_PREFIX!: string;
+    protected DECORATIVE_VARIATION_KEY_LABEL_PREFIX!: string;
+
+    protected todayDate__localized__stringified!: string;
+
+    protected textOverflowSafetyTest!: string;
 
 
     /* === Lifecycle hooks ========================================================================================== */
@@ -292,7 +357,17 @@ template(
 
     /* === Routines ================================================================================================= */
     private initializeNonReactiveClassFields(): void {
+
       this.Badge = Badge;
+
+      this.THEME_KEY_LABEL_PREFIX = "Badge__YDF.Themes.";
+      this.GEOMETRIC_VARIATION_KEY_LABEL_PREFIX = "Badge__YDF.GeometricVariations.";
+      this.DECORATIVE_VARIATION_KEY_LABEL_PREFIX = "Badge__YDF.DecorativeVariations.";
+
+      this.todayDate__localized__stringified = new Date().toLocaleDateString();
+
+      this.textOverflowSafetyTest = `OVERFLOW_TEST-gh${ getRandomString({ minimalCharactersCount: 100 }) }`;
+
     }
 
   }

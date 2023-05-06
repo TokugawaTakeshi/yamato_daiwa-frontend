@@ -2,11 +2,10 @@ import {
   RawObjectDataProcessor,
   Logger,
   InvalidParameterValueError,
-  InvalidExternalDataError,
-  isArbitraryObject,
-  isUndefined,
+  stringifyAndFormatArbitraryValue,
   isEitherUndefinedOrNull,
-  stringifyAndFormatArbitraryValue
+  isArbitraryObject,
+  isNotUndefined
 } from "@yamato-daiwa/es-extensions";
 import type { ParsedJSON_Object } from "@yamato-daiwa/es-extensions";
 
@@ -18,19 +17,23 @@ export default abstract class PugMixinsObjectTypeParametersProcessor {
       rawParameter: rawMixinParameter,
       parameterNumber: mixinParameterNumber,
       parameterName: mixinParameterName,
-      parameterPropertiesSpecification: mixinParametersPropertiesSpecification,
+      parameterPropertiesSpecification: mixinParameterPropertiesSpecification,
       mixinName
-    }: {
+    }: Readonly<{
       rawParameter: unknown;
       parameterNumber: number;
       parameterName: string;
       parameterPropertiesSpecification: RawObjectDataProcessor.PropertiesSpecification;
       mixinName: string;
-    }
+    }>
   ): ParsedJSON_Object {
 
-    const mixinParameterRequiredPropertiesNames: Array<string> = PugMixinsObjectTypeParametersProcessor.
-        getMixinParameterRequiredPropertiesNames(mixinParametersPropertiesSpecification);
+    const mixinParameterRequiredPropertiesNames: ReadonlyArray<string> = Object.entries(mixinParameterPropertiesSpecification).
+        filter(
+          ([ _propertyName, propertySpecification ]: [ string, RawObjectDataProcessor.CertainPropertySpecification ]): boolean =>
+              propertySpecification.required === true
+        ).
+        map(([ propertyName ]: [ string, RawObjectDataProcessor.CertainPropertySpecification ]): string => propertyName);
 
     if (isEitherUndefinedOrNull(rawMixinParameter)) {
 
@@ -39,21 +42,38 @@ export default abstract class PugMixinsObjectTypeParametersProcessor {
           errorInstance: new InvalidParameterValueError({
             parameterName: mixinName,
             parameterNumber: 1,
-            messageSpecificPart: `Object type parameter No. ${ mixinParameterNumber } (named as '${ mixinParameterName }') ` +
-                `of mixin '${ mixinName }' has been omitted while it has required properties: ` +
-                `\n ${ stringifyAndFormatArbitraryValue(mixinParameterRequiredPropertiesNames) }`
+            customMessage:
+                `Object-type parameter No. ${ mixinParameterNumber } (named as "${ mixinParameterName }") ` +
+                  `of the Pug mixin "${ mixinName }" has been omitted or null while must be because it has required ` +
+                  "properties:\n" +
+                  `${
+                    mixinParameterRequiredPropertiesNames.
+                        map((requiredPropertyName: string): string => `● ${ requiredPropertyName }`).
+                        join("\n")
+                  }`
           }),
           title: InvalidParameterValueError.localization.defaultTitle,
-          occurrenceLocation: "PugMixinsObjectTypeParametersProcessor.processParameter(namedParameters)"
+          occurrenceLocation: "PugMixinsObjectTypeParametersProcessor.processParameter(compoundParameter)"
         });
       }
 
-      const processedObjectTypeParameter: ParsedJSON_Object = {};
 
-      PugMixinsObjectTypeParametersProcessor.
-          substituteDefaultValues(processedObjectTypeParameter, mixinParametersPropertiesSpecification);
+      return Array.from(Object.entries(mixinParameterPropertiesSpecification)).reduce(
+        (
+          processedMixinParameter: ParsedJSON_Object,
+          [ propertyName, propertySpecification ]: [ string, RawObjectDataProcessor.CertainPropertySpecification ]
+        ): ParsedJSON_Object => {
 
-      return processedObjectTypeParameter;
+          if (isNotUndefined(propertySpecification.defaultValue)) {
+            processedMixinParameter[propertyName] = propertySpecification.defaultValue;
+          }
+
+          return processedMixinParameter;
+
+        },
+        {}
+      );
+
     }
 
 
@@ -62,61 +82,41 @@ export default abstract class PugMixinsObjectTypeParametersProcessor {
         errorInstance: new InvalidParameterValueError({
           parameterName: mixinParameterName,
           parameterNumber: 1,
-          messageSpecificPart: `The parameter No. ${ mixinParameterNumber } (named as '${ mixinParameterName }') ` +
-              `of mixin '${ mixinName }' must be an object.`
+          customMessage:
+              `Object-type No. ${ mixinParameterNumber } (named as "${ mixinParameterName }") ` +
+                `of the Pug mixin "${ mixinName }" must be an object while actually has type ` +
+                `"${ typeof rawMixinParameter }" and value:\n` +
+                `${ stringifyAndFormatArbitraryValue(rawMixinParameter) }`
         }),
         title: InvalidParameterValueError.localization.defaultTitle,
-        occurrenceLocation: "PugMixinsObjectTypeParametersProcessor.processParameter(namedParameters)"
+        occurrenceLocation: "PugMixinsObjectTypeParametersProcessor.processParameter(compoundParameter)"
       });
     }
 
 
-    const validationResults: RawObjectDataProcessor.ProcessingResult<ParsedJSON_Object> =
+    const mixinParameterProcessingResult: RawObjectDataProcessor.ProcessingResult<ParsedJSON_Object> =
         RawObjectDataProcessor.process(rawMixinParameter, {
-          nameForLogging: "MixinParameterProperties",
+          nameForLogging: `Parameter No. ${ mixinParameterNumber } of "${ mixinName }" mixin`,
           subtype: RawObjectDataProcessor.ObjectSubtypes.fixedKeyAndValuePairsObject,
-          properties: mixinParametersPropertiesSpecification
+          properties: mixinParameterPropertiesSpecification
         });
 
-    if (validationResults.rawDataIsInvalid) {
+    if (mixinParameterProcessingResult.rawDataIsInvalid) {
       Logger.throwErrorAndLog({
-        errorInstance: new InvalidExternalDataError({
-          mentionToExpectedData: `Parameter No. ${ mixinParameterNumber } of mixin '${ mixinName }'`,
-          messageSpecificPart: RawObjectDataProcessor.formatValidationErrorsList(validationResults.validationErrorsMessages)
+        errorInstance: new InvalidParameterValueError({
+          customMessage:
+              `Object-type parameter No. ${ mixinParameterNumber } (named as '${ mixinParameterName }') ` +
+                `of the Pug mixin "${ mixinName }" has one or more invalid properties:\n` +
+                `${ RawObjectDataProcessor.formatValidationErrorsList(mixinParameterProcessingResult.validationErrorsMessages) }`
         }),
-        title: InvalidExternalDataError.localization.defaultTitle,
-        occurrenceLocation: "PugMixinsObjectTypeParametersProcessor.processParameter(namedParameters)"
+        title: InvalidParameterValueError.localization.defaultTitle,
+        occurrenceLocation: "PugMixinsObjectTypeParametersProcessor.processParameter(compoundParameter)"
       });
     }
 
-    return validationResults.processedData;
+
+    return mixinParameterProcessingResult.processedData;
+
   }
 
-
-  private static getMixinParameterRequiredPropertiesNames(
-    mixinParametersPropertiesSpecification: RawObjectDataProcessor.PropertiesSpecification
-  ): Array<string> {
-
-    const mixinParameterRequiredPropertiesNames: Array<string> = [];
-
-    for (const [ propertyName, propertySpecification ] of Object.entries(mixinParametersPropertiesSpecification)) {
-      if (propertySpecification.required === true) {
-        mixinParameterRequiredPropertiesNames.push(propertyName);
-      }
-    }
-
-    return mixinParameterRequiredPropertiesNames;
-  }
-
-
-  private static substituteDefaultValues(
-    parametersObject: ParsedJSON_Object,
-    mixinParametersPropertiesSpecification: RawObjectDataProcessor.PropertiesSpecification
-  ): void {
-    for (const [ propertyName, propertySpecification ] of Object.entries(mixinParametersPropertiesSpecification)) {
-      if (!isUndefined(propertySpecification.defaultValue) && isUndefined(parametersObject[propertyName])) {
-        parametersObject[propertyName] = propertySpecification.defaultValue;
-      }
-    }
-  }
 }

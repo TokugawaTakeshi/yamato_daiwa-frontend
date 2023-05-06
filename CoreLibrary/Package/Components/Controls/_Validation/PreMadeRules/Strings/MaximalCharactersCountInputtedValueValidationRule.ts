@@ -1,10 +1,10 @@
-import type InputtedValueValidationRule from "@Controls/_Validation/InputtedValueValidationRule";
+import type InputtedValueValidation from "../../InputtedValueValidation";
 import maximalCharactersCountInputtedValueValidationRuleLocalization__english from
-    "@Controls/_Validation/PreMadeRules/Strings/MaximalCharactersCountInputtedValueValidationRuleLocalization.english";
+    "./MaximalCharactersCountInputtedValueValidationRuleLocalization.english";
 import { isString, isNotUndefined, Logger, InvalidParameterValueError } from "@yamato-daiwa/es-extensions";
 
 
-class MaximalCharactersCountInputtedValueValidationRule implements InputtedValueValidationRule {
+class MaximalCharactersCountInputtedValueValidationRule implements InputtedValueValidation.Rule {
 
   public static localization: MaximalCharactersCountInputtedValueValidationRule.Localization =
       maximalCharactersCountInputtedValueValidationRuleLocalization__english;
@@ -17,7 +17,7 @@ class MaximalCharactersCountInputtedValueValidationRule implements InputtedValue
 
   public constructor(
     compoundParameter:
-        InputtedValueValidationRule.ConstructorParameter &
+        InputtedValueValidation.Rule.ConstructorParameter &
         Readonly<{
           maximalCharactersCount: number;
           errorMessageBuilder?: MaximalCharactersCountInputtedValueValidationRule.ErrorMessage.Builder;
@@ -42,7 +42,7 @@ class MaximalCharactersCountInputtedValueValidationRule implements InputtedValue
   }
 
 
-  public check(rawValue: unknown): InputtedValueValidationRule.CheckingResult {
+  public check(rawValue: unknown): InputtedValueValidation.Rule.CheckingResult {
 
     if (!isString(rawValue)) {
 

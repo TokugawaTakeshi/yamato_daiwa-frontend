@@ -1,0 +1,80 @@
+include HamburgerMenuButtonLocalization.english.pug
+
+
+-
+
+  class HamburgerMenuButton__YDF {
+
+    static CSS_NAMESPACE = "HamburgerMenu--YDF";
+
+    static LabelLetterCases = {
+      uppercase: "UPPERCASE",
+      lowercase: "LOWERCASE",
+      capitalisation: "CAPITALISATION"
+    };
+
+
+    /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static Themes = { regular: "REGULAR" };
+
+    static defineCustomThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, Button__YDF);
+    }
+
+    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+
+    static considerThemesAsCommon() {
+      Button__YDF.areThemesCSS_ClassesCommon = true;
+      return Button__YDF;
+    }
+
+
+    /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
+    static GeometricVariations = { regular: "REGULAR" };
+
+    static defineCustomGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, HamburgerMenuButton__YDF);
+    }
+
+
+    /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
+    static DecorativeVariations = {
+      regular: "REGULAR",
+      lightForeground: "LIGHT_FOREGROUND"
+    };
+
+    static defineCustomDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, HamburgerMenuButton__YDF);
+    }
+
+
+    /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static propertiesSpecification = {
+
+      noLabel: {
+        type: Boolean,
+        required: false
+      },
+
+      englishLabel: {
+        type: Boolean,
+        required: false
+      },
+
+      animation: {
+        type: Boolean,
+        required: false
+      },
+
+      labelLetterCase: {
+        type: String,
+        allowedAlternatives: HamburgerMenuButton__YDF.LabelLetterCases
+      }
+
+    };
+
+
+    /* ━━━ Localization ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static localization = hamburgerMenuButtonLocalization__english;
+
+  }

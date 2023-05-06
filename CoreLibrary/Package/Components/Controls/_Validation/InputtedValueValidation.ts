@@ -1,14 +1,8 @@
 /* eslint-disable max-classes-per-file --
 * This limitation is unsolicited for the namespaced classes, however there is no ESLint option allowing this case. */
-
-import type InputtedValueValidationRule from "@Controls/_Validation/InputtedValueValidationRule";
-import type InputtedValueValidationAsynchronousRule from
-    "@Controls/_Validation/InputtedValueValidationAsynchronousRule";
-
 import { isBoolean, isNonEmptyString, Logger } from "@yamato-daiwa/es-extensions";
 
-import inputtedValueValidationLocalization__english from
-    "@Controls/_Validation/InputtedValueValidationLocaization.english";
+import inputtedValueValidationLocalization__english from "./InputtedValueValidationLocaization.english";
 
 
 abstract class InputtedValueValidation {
@@ -16,32 +10,36 @@ abstract class InputtedValueValidation {
   public static localization: InputtedValueValidation.Localization = inputtedValueValidationLocalization__english;
 
 
-  protected readonly omittedValueChecker: InputtedValueValidation.OmittedValueChecker;
-  protected readonly isInputRequired: boolean;
+  public readonly isInputRequired: InputtedValueValidation.InputRequirementChecker;
+
+  protected readonly hasValueBeenOmitted: InputtedValueValidation.OmittedValueChecker;
   protected readonly requiredInputIsMissingValidationErrorMessage: string;
 
-  protected readonly staticRules: ReadonlyArray<InputtedValueValidationRule>;
-  protected readonly contextDependentRules: ReadonlyArray<InputtedValueValidationRule>;
-  protected readonly asynchronousRules: ReadonlyArray<InputtedValueValidationAsynchronousRule>;
+  protected readonly staticRules: ReadonlyArray<InputtedValueValidation.Rule>;
+  protected readonly contextDependentRules: ReadonlyArray<InputtedValueValidation.Rule>;
+  protected readonly asynchronousRules: ReadonlyArray<InputtedValueValidation.AsynchronousRule>;
   protected readonly asynchronousChecksCallback?: InputtedValueValidation.AsynchronousChecks.Callback;
 
 
   protected constructor(compoundParameter: InputtedValueValidation.ConstructorCompoundParameter) {
 
-    this.omittedValueChecker = compoundParameter.omittedValueChecker;
-    this.isInputRequired = isBoolean(compoundParameter.isInputRequired) ?
-        compoundParameter.isInputRequired :
-        compoundParameter.isInputRequired();
+    this.hasValueBeenOmitted = compoundParameter.omittedValueChecker;
+
+    if (isBoolean(compoundParameter.isInputRequired)) {
+      const isInputRequired: boolean = compoundParameter.isInputRequired;
+      this.isInputRequired = (): boolean => isInputRequired;
+    } else {
+      this.isInputRequired = compoundParameter.isInputRequired;
+    }
 
     this.requiredInputIsMissingValidationErrorMessage =
-        compoundParameter.requiredValueIsMissingCustomValidationErrorMessage ??
+        compoundParameter.requiredInputIsMissingValidationErrorMessage ??
         InputtedValueValidation.localization.requiredInputIsMissingValidationErrorMessage;
 
-    this.staticRules = compoundParameter.staticValidationRules ?? [];
-    this.contextDependentRules = compoundParameter.contextDependentValidationRules ?? [];
+    this.staticRules = compoundParameter.staticRules ?? [];
+    this.contextDependentRules = compoundParameter.contextDependentRules ?? [];
 
-    this.asynchronousRules = compoundParameter.asynchronousValidationRules ?? [];
-
+    this.asynchronousRules = compoundParameter.asynchronousRules ?? [];
     this.asynchronousChecksCallback = compoundParameter.asynchronousValidationsCallback;
 
   }
@@ -49,27 +47,29 @@ abstract class InputtedValueValidation {
 
   public validate(rawValue: unknown): InputtedValueValidation.Result {
 
-    if (this.omittedValueChecker(rawValue)) {
-      return {
-        isValid: !this.isInputRequired,
-        errorsMessages: this.isInputRequired ? [ this.requiredInputIsMissingValidationErrorMessage ] : []
-      };
+    const isInputRequired: boolean = this.isInputRequired();
+
+    if (this.hasValueBeenOmitted(rawValue)) {
+      return isInputRequired ?
+          {
+            isValid: false,
+            errorsMessages: [ this.requiredInputIsMissingValidationErrorMessage ]
+          } :
+          { isValid: true };
     }
 
 
-    let isValueStillValid: boolean = true;
     const validationErrorsMessages: Array<string> = [];
 
-    for (const validationRule of this.staticRules) {
+    for (const staticValidationRule of this.staticRules) {
 
-      const checkingResult: InputtedValueValidationRule.CheckingResult = validationRule.check(rawValue);
+      const checkingResult: InputtedValueValidation.Rule.CheckingResult = staticValidationRule.check(rawValue);
 
       if (!checkingResult.isValid) {
 
-        isValueStillValid = false;
         validationErrorsMessages.push(checkingResult.errorMessage);
 
-        if (validationRule.mustFinishValidationIfValueIsInvalid) {
+        if (staticValidationRule.mustFinishValidationIfValueIsInvalid) {
           break;
         }
 
@@ -77,7 +77,7 @@ abstract class InputtedValueValidation {
 
     }
 
-    if (!isValueStillValid) {
+    if (validationErrorsMessages.length > 0) {
       return {
         isValid: false,
         errorsMessages: validationErrorsMessages
@@ -85,16 +85,15 @@ abstract class InputtedValueValidation {
     }
 
 
-    for (const validationRule of this.contextDependentRules) {
+    for (const contextDependentValidationRule of this.contextDependentRules) {
 
-      const checkingResult: InputtedValueValidationRule.CheckingResult = validationRule.check(rawValue);
+      const checkingResult: InputtedValueValidation.Rule.CheckingResult = contextDependentValidationRule.check(rawValue);
 
       if (!checkingResult.isValid) {
 
-        isValueStillValid = false;
         validationErrorsMessages.push(checkingResult.errorMessage);
 
-        if (validationRule.mustFinishValidationIfValueIsInvalid) {
+        if (contextDependentValidationRule.mustFinishValidationIfValueIsInvalid) {
           break;
         }
 
@@ -102,7 +101,7 @@ abstract class InputtedValueValidation {
 
     }
 
-    if (!isValueStillValid) {
+    if (validationErrorsMessages.length > 0) {
       return {
         isValid: false,
         errorsMessages: validationErrorsMessages
@@ -114,8 +113,7 @@ abstract class InputtedValueValidation {
 
 
     return {
-      isValid: true,
-      errorsMessages: []
+      isValid: true
     };
 
   }
@@ -127,10 +125,10 @@ abstract class InputtedValueValidation {
     }
 
 
-    const checksStatus: InputtedValueValidation.AsynchronousChecks = this.asynchronousRules.reduce(
+    const asynchronousChecks: InputtedValueValidation.AsynchronousChecks = this.asynchronousRules.reduce(
       (
         accumulatingValue: InputtedValueValidation.AsynchronousChecks,
-        asynchronousValidationRule: InputtedValueValidationAsynchronousRule
+        asynchronousValidationRule: InputtedValueValidation.AsynchronousRule
       ): InputtedValueValidation.AsynchronousChecks => {
 
         accumulatingValue[asynchronousValidationRule.ID] = {
@@ -150,23 +148,25 @@ abstract class InputtedValueValidation {
 
       validationRule.
 
-          isValid(rawValue).
+          check(rawValue).
 
-          then((checkingResult: InputtedValueValidationAsynchronousRule.CheckingResult): void => {
+          then((checkingResult: InputtedValueValidation.AsynchronousRule.CheckingResult): void => {
 
-            checksStatus[validationRule.ID] = {
-              isPending: false,
-              hasValidValueBeenConfirmed: checkingResult.isValid,
-              hasInvalidValueBeenConfirmed: !checkingResult.isValid,
-              hasErrorOccurred: false,
-              message: checkingResult.isValid ?
-                  validationRule.messages.validValueHasBeenConfirmed :
-                  checkingResult.errorMessage ?? validationRule.messages.errorHasOccurred
-            };
+						asynchronousChecks[validationRule.ID] = {
+							isPending: false,
+							hasValidValueBeenConfirmed: checkingResult.isValid,
+							hasInvalidValueBeenConfirmed: !checkingResult.isValid,
+							hasErrorOccurred: false,
+							message: checkingResult.isValid ?
+									validationRule.messages.validValueHasBeenConfirmed :
+									checkingResult.errorMessage ?? validationRule.messages.errorHasOccurred
+						};
 
-            this.asynchronousChecksCallback?.(new InputtedValueValidation.AsynchronousChecks.Status(checksStatus));
+						this.asynchronousChecksCallback?.(
+              new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks)
+            );
 
-          }).
+					}).
 
           catch((error: Error): void => {
 
@@ -178,7 +178,7 @@ abstract class InputtedValueValidation {
               caughtError: error
             });
 
-            checksStatus[validationRule.ID] = {
+            asynchronousChecks[validationRule.ID] = {
               isPending: false,
               hasValidValueBeenConfirmed: false,
               hasInvalidValueBeenConfirmed: false,
@@ -186,7 +186,7 @@ abstract class InputtedValueValidation {
               message: validationRule.messages.errorHasOccurred
             };
 
-            this.asynchronousChecksCallback?.(new InputtedValueValidation.AsynchronousChecks.Status(checksStatus));
+            this.asynchronousChecksCallback?.(new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks));
 
           });
     }
@@ -204,21 +204,78 @@ namespace InputtedValueValidation {
 
 
   export type ConstructorCompoundParameter = Readonly<{
-    isInputRequired: boolean | ((...parameters: Array<unknown>) => boolean);
+    isInputRequired: boolean | InputRequirementChecker;
     omittedValueChecker: OmittedValueChecker;
-    requiredValueIsMissingCustomValidationErrorMessage?: string;
-    staticValidationRules?: ReadonlyArray<InputtedValueValidationRule>;
-    contextDependentValidationRules?: ReadonlyArray<InputtedValueValidationRule>;
-    asynchronousValidationRules?: ReadonlyArray<InputtedValueValidationAsynchronousRule>;
+    requiredInputIsMissingValidationErrorMessage?: string;
+    staticRules?: ReadonlyArray<Rule>;
+    contextDependentRules?: ReadonlyArray<Rule>;
+    asynchronousRules?: ReadonlyArray<AsynchronousRule>;
     asynchronousValidationsCallback?: AsynchronousChecks.Callback;
   }>;
 
-  export type OmittedValueChecker = (rawValue: unknown) => boolean;
 
-  export type Result = Readonly<{
-    isValid: boolean;
-    errorsMessages: ReadonlyArray<string>;
-  }>;
+  export type OmittedValueChecker = (rawValue: unknown) => boolean;
+  export type InputRequirementChecker = () => boolean;
+
+
+  export interface Rule {
+
+    readonly mustFinishValidationIfValueIsInvalid: boolean;
+
+    readonly check: (rawValue: unknown) => Rule.CheckingResult;
+
+  }
+
+  export namespace Rule {
+
+    export type CheckingResult = Readonly<
+      {
+        isValid: true;
+      } | {
+        isValid: false;
+        errorMessage: string;
+      }
+    >;
+
+    export type ConstructorParameter = Readonly<{
+      mustFinishValidationIfValueIsInvalid?: boolean;
+    }>;
+
+  }
+
+
+  export interface AsynchronousRule {
+    readonly ID: string;
+    readonly messages: AsynchronousRule.Messages;
+    readonly check: (rawValue: unknown) => Promise<AsynchronousRule.CheckingResult>;
+  }
+
+  export namespace AsynchronousRule {
+
+    export type Messages = Readonly<{
+      checkingInProgress: string;
+      validValueHasBeenConfirmed: string;
+      invalidValueHasBeenConfirmed: string;
+      errorHasOccurred: string;
+    }>;
+
+    export type CheckingResult = Readonly<{
+      isValid: boolean;
+      errorMessage?: string;
+    }>;
+
+  }
+
+
+  export type Result = Readonly<
+    {
+      isValid: true;
+    } |
+    {
+      isValid: false;
+      errorsMessages: ReadonlyArray<string>;
+    }
+  >;
 
 
   export type AsynchronousChecks = { [validationRuleName: string]: AsynchronousCheck.Status; };

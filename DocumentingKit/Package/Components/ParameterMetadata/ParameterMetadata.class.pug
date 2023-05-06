@@ -3,8 +3,18 @@ include ParameterMetadataLocalization.english.pug
 
 -
 
-  const ParameterMetadata__YDF_DK = {
+  class ParameterMetadata__YDF_DK {
 
-    localization: parameterMetadataYDF_DK_ComponentEnglishLocalization
+    static localization = parameterMetadataYDF_DK_ComponentLocalization__english;
+
+
+    /* ━━━ Routines ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── ID generating ──────────────────────────────────────────────────────────────────────────────────────────── */
+    static counterForID_Generating = 0;
+
+    static generateComponentID() {
+      ParameterMetadata__YDF_DK.counterForID_Generating++;
+      return `PARAMETER_METADATA--YDF-${ ParameterMetadata__YDF_DK.counterForID_Generating }`;
+    }
 
   }

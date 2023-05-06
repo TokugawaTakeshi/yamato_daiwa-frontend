@@ -22,7 +22,7 @@ mixin ${NAME}--YDF(properties, statesSimulations)
       mustDisplayAppropriateBadgeIfInputIsRequired = false,
       mustDisplayAppropriateBadgeIfInputIsOptional = false,
       mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge = false,
-      
+
       coreElementHTML_ID = `${ COMPONENT_ID }-INPUT_OR_TEXT_AREA`, // TODO Replace "core" with more specific element name
       labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
 
@@ -36,7 +36,7 @@ mixin ${NAME}--YDF(properties, statesSimulations)
       parameterNumber: 1,
       parameterName: "properties",
       parameterPropertiesSpecification: ${NAME}__YDF.propertiesSpecification,
-      mixinName: "${NAME}--YDF"
+      mixinName: ${NAME}__YDF.CSS_NAMESPACE
     });
 
     const {
@@ -48,23 +48,41 @@ mixin ${NAME}--YDF(properties, statesSimulations)
       parameterNumber: 2,
       parameterName: "statesSimulations",
       parameterPropertiesSpecification: ${NAME}__YDF.stateSimulationsSpecification,
-      mixinName: "${NAME}--YDF"
+      mixinName: ${NAME}__YDF.CSS_NAMESPACE
     });
 
     const rootElementModifierCSS_Classes = [
+
       ...disabled ? [ `${ ${NAME}__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
       ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
-          [ `${ ${NAME}__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
+          [ `${ ${NAME}.CSS_NAMESPACE }__InvalidValueState` ] : [],
       ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
-          [ `${ ${NAME}__YDF.CSS_NAMESPACE }__ValueState` ] : [],
-      ...Object.entries(${NAME}__YDF.Themes).length > 1 && !areThemesExternal ?
-          [ ComponentsAuxiliaries.generateThemeCSS_Class(${NAME}__YDF.CSS_NAMESPACE, theme) ] : [],
-      ...Object.entries(${NAME}__YDF.GeometricVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(${NAME}__YDF.CSS_NAMESPACE, geometry) ] : [],
-      ...Object.entries(${NAME}__YDF.DecorativeVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(${NAME}__YDF.CSS_NAMESPACE, decoration) ] : []
-    ];
+          [ `${ ${NAME}.CSS_NAMESPACE }__ValueState` ] : [],
 
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: ${NAME}__YDF.Themes,
+        CSS_Namespace: ${NAME}__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: ${NAME}__YDF.GeometricVariations,
+        CSS_Namespace: ${NAME}__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.generateDemandedGeometricModifiersCSS_Classes(${NAME}__YDF.CSS_NAMESPACE, geometricModifiers),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decoration,
+        allDecorativeVariations: ${NAME}__YDF.DecorativeVariations,
+        CSS_Namespace: ${NAME}__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.generateDemandedDecorativeModifiersCSS_Classes(${NAME}__YDF.CSS_NAMESPACE, decorativeModifiers)
+
+    ];
 
   +CompoundControlShell--YDF(
     {
@@ -91,5 +109,3 @@ mixin ${NAME}--YDF(properties, statesSimulations)
       validationErrorsMessages
     }
   ).${NAME}--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
-
-    

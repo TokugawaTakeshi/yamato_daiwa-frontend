@@ -1,10 +1,52 @@
-provideLanguageDropDownListComponent()
+provideLanguageDropDownListYDF_DK_Component(customization = {})
 
-  .LanguageDropDownList
+  properties = deeplyCloneAndOverrideObject(
+    {
+
+      borderColor: ShadesOfGray__39ColorsW3C_Palette[16]
+      textColor: white,
+      backgroundColor: ShadesOfGray__39ColorsW3C_Palette[24],
+
+      stateDependent: {
+        hover: {
+          backgroundColor: ShadesOfGray__39ColorsW3C_Palette[26]
+        },
+        focus: {
+          shadowColor: black
+        },
+        active: {
+          textColor: white,
+          backgroundColor: ShadesOfGray__39ColorsW3C_Palette[26]
+        }
+      }
+
+    },
+    customization
+  )
+
+
+  .LanguageDropDownList--YDF_DK
 
     position relative
 
 
+    // === Reusables ===================================================================================================
+    &-CountryFlagPlaceholder
+
+      height 1rem
+      aspect-ratio 3/2
+
+      background-color white
+
+
+    &-CountryFlag
+
+      height 1rem
+
+      flex-shrink 0
+
+
+    // === Others ======================================================================================================
     &-CurrentlySelectedOption
 
       display flex
@@ -15,15 +57,26 @@ provideLanguageDropDownListComponent()
       padding 8px 12px
 
       border-style solid
-      border-color: YDF_ColorPalette.deepSkyBlue.light
-      background-color: YDF_ColorPalette.deepSkyBlue.slightlyDark
+      border-color: properties.borderColor
+      background-color: properties.backgroundColor
+
+      cursor pointer
 
 
-      &-Flag
+      &:hover
 
-        height 1rem
+        background-color: properties.stateDependent.hover.backgroundColor
 
-        flex-shrink 0
+
+      &:focus
+
+        box-shadow: 0 0 4px 2px properties.stateDependent.focus.shadowColor
+        outline none
+
+
+      &:active
+
+        background-color: properties.stateDependent.active.backgroundColor
 
 
       &-Label
@@ -31,9 +84,14 @@ provideLanguageDropDownListComponent()
         font-size 1rem
 
         font-weight bold
-        color white
+        color: properties.textColor
 
         margin-left 0.8rem
+
+
+        ../:active &
+
+          color: properties.stateDependent.active.textColor
 
 
     &-ListBox
@@ -41,54 +99,70 @@ provideLanguageDropDownListComponent()
       width 100%
       border-radius 3px
 
-      background white
+      background-color white
       box-shadow 0 0 4px 4px alpha(black, 0.25)
 
       position absolute
       bottom 0
       transform translateY(100%)
+      z-index: ZIndexes.floatingBelowModalsComponents
 
 
-    &-Option
+      &__Hidden
 
-      &-Link
-
-        display flex
-        align-items center
-
-        padding 8px 12px
-        font-size 1rem
-
-        color: ShadesOfGray__39ColorsW3C_Palette[10]
-        cursor pointer
+        display none
 
 
-        &:hover
+      &-Item
 
-          background lightgoldenrodyellow
+        a
 
+          display flex
+          align-items center
 
-        &:focus
-
-          background lightpink
-
-
-        &:active
-
-          background lightcoral
+          padding 8px 12px
+          font-size 1rem
 
 
-      &-Flag
+          ../:not(.LanguageDropDownList--YDF_DK-ListBox-Item__Selected) a
 
-        height 1rem
+            background-color: properties.backgroundColor
+            color: properties.textColor
 
-        flex-shrink 0
+            cursor pointer
 
 
-      &-Label
+            &:hover
 
-        font-size 1rem
+              background-color: properties.stateDependent.hover.backgroundColor
 
-        color: ShadesOfGray__39ColorsW3C_Palette[12]
 
-        margin-left 0.8rem
+            &:focus
+
+              box-shadow: inset 0 0 0 2px properties.stateDependent.focus.shadowColor
+
+
+            &:active
+
+              background-color: properties.stateDependent.active.backgroundColor
+
+
+          /.LanguageDropDownList--YDF_DK-ListBox-Item__Selected a
+
+            font-weight bold
+            background-color: properties.stateDependent.active.backgroundColor
+            color: properties.stateDependent.active.textColor
+
+            pointer-events none
+
+
+          /.LanguageDropDownList--YDF_DK-ListBox-Item:active a
+
+            color: properties.stateDependent.active.textColor
+
+
+        &-Label
+
+          font-size 1rem
+
+          margin-left 0.8rem

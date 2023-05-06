@@ -3,8 +3,8 @@ extends ../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts
 
 block append Requirements
 
-  include ../../../SharedAssets/Markup/Assets.russian.pug
-  include ../../../Components/Components.russian.pug
+  include ../../../SharedAssets/Markup/SharedAssets.russian.pug
+  include ../../../SharedComponents/SharedComponents.russian.pug
 
 
 block append Metadata
@@ -26,9 +26,16 @@ block append Metadata
     RoutingEmulator.setCurrentRoute("coreLibrary.components");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      [LanguageDropDownList__YDF_DK.supportedLanguages.english]: "#",
-      [LanguageDropDownList__YDF_DK.supportedLanguages.japanese]: "#"
+      english: "#",
+      japanese: "#"
     });
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
 
 
 block append SpecificContent
@@ -60,7 +67,7 @@ block append SpecificContent
               не обращаясь к документации при понимании английского технического текста со словарём.
             В том числе и для этого было необходимо интегрировать в Pug-код #[+ImportantEntity--YDID YDF] функциональность
               библиотеки
-              #[+Link--YDF({ unendorsedExternalURI: "sharedExternalLinks.YDEE.top" }).Article-Link @yamato-daiwa/es-extensions].
+              #[+Link--YDF({ unendorsedExternalURI: "sharedExternalLinks.YamatoDaiwaES_Extensions.top" }).Article-Link @yamato-daiwa/es-extensions].
 
           li.
             Разметка компонентов написана с учётом доступности и поисковой оптимизации, однако ввиду того, что эта разметка
@@ -112,7 +119,7 @@ block append SpecificContent
     h2.Article-Heading2 Разметка
 
     h3.Article-Heading3(
-      id=localizedRouting.coreLibrary.$children.components.$sections.providingOfMarkup.$anchor
+      id=localizedRouting.coreLibrary.$children.components.$sectioning.providingOfMarkup.$anchor
     ) Подключение функциональности
 
     p.Article-Paragraph.
@@ -215,3 +222,41 @@ block append SpecificContent
     h2.Article-Heading2 Логика
 
     h3.Article-Heading3 Подключение функциональности
+
+
+    h2.Article-Heading2(
+      id=localizedRouting.coreLibrary.$children.components.$sectioning.themes.$anchor
+    ) Темы
+
+    p.Article-Paragraph.
+      Согласно стереотипному представлению о темах, тема - изменение декоративного оформления (сайта, пользовательского
+        интерфейса приложения и т. д.) без вмешательства в геометрию.
+      Типичный пример - светлая и тёмная темы, при переключение которых меняются в основном цвета фонов, шрифтов и обводок.
+
+    p.Article-Paragraph.
+      Действительно, во многих случаях оно так и есть, однако реальность показывает, что зачастую заказчики хотят большего.
+      Например, при изменении темы должны меняться радиус скруглений или толщина обводки.
+      В общем случае это может быть и вовсе переключение между разнородными направлениями в дизайне:
+        сквеоморфизм, флэт, минималистичность и так далее.
+      Для того, чтобы отвечать всем этим запросам, необходимо изменить понимание термина "тема".
+      Так, YDF пришёл к нижеследующиему определению темы
+
+    p.Article-Paragraph.
+      Тема - это набор геометрических и декоративных вариаций.
+
+
+    h3.Article-Heading3 Внешние темы
+
+    p.Article-Paragraph.
+      Если определено несколько тем (а основной npm-пакет предлагает только одну), то по умолчанию каждому компоненту
+        необходимо в явном виде указывать тему.
+      При таком раскладе переключение темы может быть затруднительным, и чаще требует того, чтобы в зависимости от
+        конкретного CSS-класса, применяемого ...
+      При этом, один класс, обозначающих тему, общий для всех компоеннтов.
+      В YDF Это называется вне
+
+
+
+    h2.Article-Heading2(
+      id=localizedRouting.coreLibrary.$children.components.$sectioning.customization.$anchor
+    ) Кастомизация компонентов

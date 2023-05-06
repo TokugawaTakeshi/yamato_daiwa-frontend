@@ -1,8 +1,68 @@
 -
 
-  let ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT = false;
+  let ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT = false;
 
   class ComponentsAuxiliaries {
+
+    static validatableControlGeneralStatesSimulationsSpecification = {
+
+      invalidInputHighlightingIfAnyValidationErrorsMessages: {
+        type: Boolean,
+        required: false
+      },
+
+      validValueHighlightingIfNoValidationErrorsMessages: {
+        type: Boolean,
+        required: false
+      },
+
+      validationErrorsMessages: {
+        type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
+        required: false,
+        alternatives: [
+          {
+            type: Array,
+            element: {
+              type: String,
+              minimalCharactersCount: 1
+            }
+          },
+          {
+            type: Boolean
+          }
+        ]
+      },
+
+      asynchronousValidationsStatuses: {
+        type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
+        required: false,
+        alternatives: [
+          {
+            type: Array,
+            element: {
+              type: Object,
+              properties: {
+                ID: {
+                  type: String,
+                  required: true,
+                  allowedAlternatives: [ "IN_PROGRESS", "FINISHED_BUT_INVALID", "FINISHED_AND_VALID", "MALFUNCTION" ]
+                },
+                message: {
+                  type: String,
+                  required: true,
+                  minimalCharactersCount: 1
+                }
+              }
+            }
+          },
+          {
+            type: Boolean
+          }
+        ]
+      }
+
+    };
+
 
     static defineNewThemes(themesNames, TargetComponentClass) {
 
@@ -104,24 +164,77 @@
     }
 
 
+    static addThemeCSS_ClassToArrayIfMust(
+      {
+        theme,
+        allThemes,
+        areThemesCSS_ClassesCommon,
+        CSS_Namespace
+      }
+    ) {
+      return Object.entries(allThemes).length > 1 && !areThemesCSS_ClassesCommon ?
+          [ `${ CSS_Namespace }__${ toUpperCamelCase(theme) }Theme` ] : [];
+    }
+
+    static addGeometricVariationCSS_ClassToArrayIfMust(
+      {
+        geometry,
+        allGeometricVariations,
+        CSS_Namespace
+      }
+    ) {
+      return Object.entries(allGeometricVariations).length > 1 ?
+          [ `${ CSS_Namespace }__${ toUpperCamelCase(geometry) }Geometry` ] : []
+    }
+
+    static addDecorativeVariationCSS_ClassToArrayIfMust(
+      {
+        decoration,
+        allDecorativeVariations,
+        CSS_Namespace
+      }
+    ) {
+      return Object.entries(allDecorativeVariations).length > 1 ?
+          [ `${ CSS_Namespace }__${ toUpperCamelCase(decoration)}Decoration` ] : []
+    }
+
+
+    /**
+     * @param { string } CSS_Namespace
+     * @param { Array<string> } demandedGeometricModifiersNames
+     * @return Array<string>
+     * */
+    static generateDemandedGeometricModifiersCSS_Classes(CSS_Namespace, demandedGeometricModifiersNames) {
+      return demandedGeometricModifiersNames.map(
+        geometricModifierName => `${ CSS_Namespace }__${ toUpperCamelCase(geometricModifierName) }GeometricModifier`
+      )
+    }
+
+    /**
+     * @param { string } CSS_Namespace
+     * @param { Array<string> } demandedDecorativeModifiersNames
+     * @return Array<string>
+     * */
+    static generateDemandedDecorativeModifiersCSS_Classes(CSS_Namespace, demandedDecorativeModifiersNames) {
+      return demandedDecorativeModifiersNames.map(
+        decorativeModifierName => `${ CSS_Namespace }__${ toUpperCamelCase(decorativeModifierName) }DecorativeModifier`
+      )
+    }
+
+
+    /** @deprecated Use `addThemeCSS_ClassToArrayIfMust` instead. */
     static generateThemeCSS_Class(CSS_Namespace, themeName) {
-      return `${ CSS_Namespace }__${ toUpperCamelCase(themeName) }Theme`;
+      return `${CSS_Namespace}__${toUpperCamelCase(themeName)}Theme`;
     }
 
+    /** @deprecated Use `addGeometricVariationCSS_ClassToArrayIfMust` instead. */
     static generateGeometricVariationCSS_Class(CSS_Namespace, geometricVariationName) {
-      return `${ CSS_Namespace }__${ toUpperCamelCase(geometricVariationName) }Geometry`;
+      return `${CSS_Namespace}__${toUpperCamelCase(geometricVariationName)}Geometry`;
     }
 
+    /** @deprecated Use `generateDecorativeVariationCSS_Class` instead. */
     static generateDecorativeVariationCSS_Class(CSS_Namespace, decorativeVariationName) {
-      return `${ CSS_Namespace }__${ toUpperCamelCase(decorativeVariationName) }Decoration`;
-    }
-
-    static generateGeometricModifierCSS_Class(CSS_Namespace, geometricModifierName) {
-      return `${ CSS_Namespace }__${ toUpperCamelCase(geometricModifierName) }GeometricModifier`;
-    }
-
-    static generateDecorativeModifierCSS_Class(CSS_Namespace, decorativeModifierName) {
-      return `${ CSS_Namespace }__${ toUpperCamelCase(decorativeModifierName) }DecorativeModifier`;
+      return `${CSS_Namespace}__${toUpperCamelCase(decorativeVariationName)}Decoration`;
     }
 
   }

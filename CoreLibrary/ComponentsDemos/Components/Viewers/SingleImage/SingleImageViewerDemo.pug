@@ -1,0 +1,133 @@
+mixin SingleImageViewerDemo(options)
+
+  -
+
+    options = options ?? {
+      headings: true,
+      partials: {
+        minimal: true,
+        caption: true,
+        noFullScreenView: true,
+        explicitAspectRatio: true
+      }
+    }
+
+    ThemesShowcase__YDF.
+        setDefaultThemeKeyLabelPrefix("SingleImageViewer__YDF.Themes.").
+        setDefaultGeometricVariationLabelPrefix("SingleImageViewer__YDF.GeometricVariations.").
+        setDefaultDecorativeVariationLabelPrefix("SingleImageViewer__YDF.DecorativeVariations.");
+
+    const themeShowcaseCurrentIterationData = ThemesShowcase__YDF.initializeCurrentIterationData()
+
+    function skipDecorativeVariationIf(iterationData) {
+      return (
+        iterationData.decorativeVariation.value === SingleImageViewer__YDF.DecorativeVariations.regular &&
+        iterationData.geometricVariation.value !== SingleImageViewer__YDF.GeometricVariations.regular
+      ) ||
+      (
+        iterationData.decorativeVariation.value === SingleImageViewer__YDF.DecorativeVariations.minimalistic &&
+        iterationData.geometricVariation.value !== SingleImageViewer__YDF.GeometricVariations.minimalistic
+      );
+    }
+
+
+
+  if options.headings
+
+    h1.Heading1 SingleImageViewer component testing
+
+
+    //- ━━━ Minimal ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    if options.partials.minimal
+
+      if options.headings
+
+        h2.Heading2 Minimal
+
+      +ThemesShowcase--YDF({
+        themes: SingleImageViewer__YDF.Themes,
+        geometricVariations: SingleImageViewer__YDF.GeometricVariations,
+        decorativeVariations: SingleImageViewer__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData,
+        skipDecorativeVariationIf: skipDecorativeVariationIf
+      })
+        +SingleImageViewer--YDF({
+          imageURI: "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_640.jpg",
+          imageAlternateText: "The autumn",
+          theme: themeShowcaseCurrentIterationData.theme.value,
+          geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+          decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+        })
+
+
+
+    //- ━━━ Caption ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    if options.partials.caption
+
+      if options.headings
+
+        h2.Heading2 Caption
+
+      +ThemesShowcase--YDF({
+        themes: SingleImageViewer__YDF.Themes,
+        geometricVariations: SingleImageViewer__YDF.GeometricVariations,
+        decorativeVariations: SingleImageViewer__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData,
+        skipDecorativeVariationIf: skipDecorativeVariationIf
+      })
+        +SingleImageViewer--YDF({
+          imageURI: "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_640.jpg",
+          imageAlternateText: "The autumn",
+          theme: themeShowcaseCurrentIterationData.theme.value,
+          geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+          decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+        }).
+          The autumn. Very beautiful, isn't it?
+
+
+    //- ━━━ No full-screen view ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    if options.partials.noFullScreenView
+
+      if options.headings
+
+        h2.Heading2 No full-screen view
+
+      +ThemesShowcase--YDF({
+        themes: SingleImageViewer__YDF.Themes,
+        geometricVariations: SingleImageViewer__YDF.GeometricVariations,
+        decorativeVariations: SingleImageViewer__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData,
+        skipDecorativeVariationIf: skipDecorativeVariationIf
+      })
+        +SingleImageViewer--YDF({
+          imageURI: "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_640.jpg",
+          imageAlternateText: "The autumn",
+          theme: themeShowcaseCurrentIterationData.theme.value,
+          geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+          decoration: themeShowcaseCurrentIterationData.decorativeVariation.value,
+          noFullScreenView: true
+        })
+
+
+    //- ━━━ Explicit aspect ratio ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    if options.partials.noFullScreenView
+
+      if options.headings
+
+        h2.Heading2 No full-screen view
+
+      +ThemesShowcase--YDF({
+        themes: SingleImageViewer__YDF.Themes,
+        geometricVariations: SingleImageViewer__YDF.GeometricVariations,
+        decorativeVariations: SingleImageViewer__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData,
+        skipDecorativeVariationIf: skipDecorativeVariationIf
+      })
+        +SingleImageViewer--YDF({
+          imageURI: "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_640.jpg--ERROR",
+          imageAlternateText: "The autumn",
+          theme: themeShowcaseCurrentIterationData.theme.value,
+          geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+          decoration: themeShowcaseCurrentIterationData.decorativeVariation.value,
+          explicitAspectRatio: "293/171"
+        })

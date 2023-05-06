@@ -18,14 +18,18 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
 
 
   protected readonly controlsPayload: ValidatableControlsGroup.GeneralizedControlsPayload;
-  protected readonly controlsPayloadAndValidityMap: { [controlPayloadID: string]: boolean; };
-  protected readonly SCROLLING_CONTAINER_HTML_ID?: string;
+  protected readonly isEachControlPayloadValid: { [controlPayloadID: string]: boolean; };
+  protected readonly SCROLLABLE_CONTAINER_HTML_ID?: string;
 
-  protected _isInvalid: boolean;
+  protected readonly onHasBecomeValid?: ValidatableControlsGroup.GeneralizedEventHandler;
+  protected readonly onHasBecomeInvalid?: ValidatableControlsGroup.GeneralizedEventHandler;
+  protected readonly onAnyChange?: (wasGroupValidPreviously: boolean) => void;
+
+  private _isInvalid: boolean;
 
 
-  /* === Static methods ============================================================================================= */
-  public static hasInvalidInputs(
+  /* ━━━  Static methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  public static hasAtLeastOneInvalidPayload(
     controlsAccess: ValidatableControlsGroup.GeneralizedControlsPayload
   ): boolean {
     return (Array.isArray(controlsAccess) ? controlsAccess : Object.values(controlsAccess)).
@@ -38,19 +42,16 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
   public static pointOutValidationErrors(
     compoundParameter: Readonly<{
       controlsPayload: ValidatableControlsGroup.GeneralizedControlsPayload;
-      scrollingContainerHTML_ID?: string;
+      scrollableContainerHTML_ID?: string;
     }>
   ): void {
 
     const {
       controlsPayload,
-      scrollingContainerHTML_ID
-    }: {
-      controlsPayload: ValidatableControlsGroup.GeneralizedControlsPayload;
-      scrollingContainerHTML_ID?: string;
-    } = compoundParameter;
+      scrollableContainerHTML_ID
+    }: Parameters<typeof ValidatableControlsGroup.pointOutValidationErrors>["0"] = compoundParameter;
 
-    let isCurrentControlTheFirstInvalidOne: boolean = true;
+    let isCurrentInvalidControlPayloadTheFirstInvalidOne: boolean = true;
 
     for (const validatableControlPayload of Array.isArray(controlsPayload) ? controlsPayload : Object.values(controlsPayload)) {
 
@@ -60,19 +61,19 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
 
         componentInstance.highlightInvalidInput();
 
-        if (isCurrentControlTheFirstInvalidOne) {
+        if (isCurrentInvalidControlPayloadTheFirstInvalidOne) {
 
           componentInstance.focus();
 
           /* eslint-disable-next-line max-depth -- Here are all conditions are required. */
-          if (isNotUndefined(scrollingContainerHTML_ID)) {
-            getExpectedToBeSingleDOM_Element({ selector: `#${ scrollingContainerHTML_ID }` }).scroll({
-              top: componentInstance.getRootElement().offsetTop,
+          if (isNotUndefined(scrollableContainerHTML_ID)) {
+            getExpectedToBeSingleDOM_Element({ selector: `#${ scrollableContainerHTML_ID }` }).scroll({
+              top: componentInstance.getRootElementOffsetCoordinates().top,
               behavior: "smooth"
             });
           }
 
-          isCurrentControlTheFirstInvalidOne = false;
+          isCurrentInvalidControlPayloadTheFirstInvalidOne = false;
 
         }
 
@@ -83,20 +84,25 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
   }
 
 
-  /* === Instancing ================================================================================================= */
+  /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public constructor(
     compoundParameter: Readonly<{
       controlsPayload: ValidatableControlsGroup.GeneralizedControlsPayload;
       scrollingContainerHTML_ID?: string;
-      onHasBecomeValid?: () => unknown;
-      onHasBecomeInvalid?: () => unknown;
+      onHasBecomeValid?: ValidatableControlsGroup.GeneralizedEventHandler;
+      onHasBecomeInvalid?: ValidatableControlsGroup.GeneralizedEventHandler;
+      onAnyChange?: (wasGroupValidPreviously: boolean) => void;
     }>
   ) {
 
     ValidatableControlsGroup.counterForID_Generating++;
-    this.ID = `${ ValidatableControlsGroup.counterForID_Generating }`;
+    this.ID = `VALIDATABLE_CONTROLS_GROUP-${ ValidatableControlsGroup.counterForID_Generating }`;
 
     this.controlsPayload = compoundParameter.controlsPayload;
+
+    this.onHasBecomeValid = compoundParameter.onHasBecomeValid;
+    this.onHasBecomeInvalid = compoundParameter.onHasBecomeInvalid;
+    this.onAnyChange = compoundParameter.onAnyChange;
 
     const controlsPayloadAndValidityMap: { [controlPayloadID: string]: boolean; } = {};
 
@@ -107,43 +113,16 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
 
       controlsPayloadAndValidityMap[controlPayload.ID] = !controlPayload.isInvalid;
 
-      controlPayload.addOnHasBecomeValidEventHandler({
+      controlPayload.setOnAnyChangeEventHandlers({
         ID: `VALIDATABLE-CONTROL_GROUP-${ this.ID }--CONTROL-${ controlPayload.ID }`,
-        handler: (): void => {
-
-          const wasInvalidPreviously: boolean = this._isInvalid;
-
-          this.controlsPayloadAndValidityMap[controlPayload.ID] = true;
-          this._isInvalid = this.isAtLeastOneControlPayloadInvalid();
-
-          if (wasInvalidPreviously && !this._isInvalid) {
-            compoundParameter.onHasBecomeValid?.();
-          }
-
-        }
-      });
-
-      controlPayload.addOnHasBecomeInvalidEventHandler({
-        ID: `VALIDATABLE-CONTROL_GROUP-${ this.ID }--CONTROL-${ controlPayload.ID }`,
-        handler: (): void => {
-
-          const wasValidPreviously: boolean = !this._isInvalid;
-
-          this.controlsPayloadAndValidityMap[controlPayload.ID] = false;
-          this._isInvalid = true;
-
-          if (wasValidPreviously) {
-            compoundParameter.onHasBecomeInvalid?.();
-          }
-
-        }
+        handler: (): void => { this.onAnyChangeOfSpecificControlEventHandler(controlPayload); }
       });
 
     }
 
-    this.controlsPayloadAndValidityMap = controlsPayloadAndValidityMap;
+    this.isEachControlPayloadValid = controlsPayloadAndValidityMap;
     this._isInvalid = this.isAtLeastOneControlPayloadInvalid();
-    this.SCROLLING_CONTAINER_HTML_ID = compoundParameter.scrollingContainerHTML_ID;
+    this.SCROLLABLE_CONTAINER_HTML_ID = compoundParameter.scrollingContainerHTML_ID;
 
   }
 
@@ -152,11 +131,11 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
   }
 
 
-  /* === Instance methods =========================================================================================== */
+  /* ━━━ Public instance methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public pointOutValidationErrors(): void {
     ValidatableControlsGroup.pointOutValidationErrors({
       controlsPayload: this.controlsPayload,
-      scrollingContainerHTML_ID: this.SCROLLING_CONTAINER_HTML_ID
+      scrollableContainerHTML_ID: this.SCROLLABLE_CONTAINER_HTML_ID
     });
   }
 
@@ -184,12 +163,92 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
   }
 
 
-  /* === Auxiliary methods =========================================================================================== */
+  /* ━━━ Routines ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* eslint-disable @typescript-eslint/member-ordering -- No need to hoist the secondary static fields. */
+
+  /* ─── Events handlers ─────────────────────────────────────────────────────────────────────────────────────────── */
+  private onAnyChangeOfSpecificControlEventHandler(
+    controlPayload: ValidatableControlsGroup.GeneralizedControlPayload
+  ): void {
+
+    const wasGroupValidPreviously: boolean = !this._isInvalid;
+    this.isEachControlPayloadValid[controlPayload.ID] = !controlPayload.isInvalid;
+    this._isInvalid = this.isAtLeastOneControlPayloadInvalid();
+
+    const hasBecomeValid: boolean = !wasGroupValidPreviously && !this._isInvalid;
+    const hasBecomeInvalid: boolean = wasGroupValidPreviously && this._isInvalid;
+
+    if (hasBecomeValid) {
+
+      try {
+
+        this.onHasBecomeValid?.();
+
+      } catch (error: unknown) {
+
+        Logger.logError({
+          errorType: "CustomEventHandlerExecutionFailure",
+          title: "Custom event handler execution failure",
+          description: "The error occurred during the execution of \"OnHasBecomeValid\" event handler",
+          occurrenceLocation: "validatableControl.onHasBecomeValid()",
+          caughtError: error
+        });
+
+      }
+
+    } else if (hasBecomeInvalid) {
+
+      try {
+
+        this.onHasBecomeInvalid?.();
+
+      } catch (error: unknown) {
+
+        Logger.logError({
+          errorType: "CustomEventHandlerExecutionFailure",
+          title: "Custom event handler execution failure",
+          description: "The error occurred during the execution of \"OnHasBecomeInvalid\" event handler",
+          occurrenceLocation: "validatableControl.onHasBecomeInvalid()",
+          caughtError: error
+        });
+
+      }
+
+    }
+
+    try {
+
+      this.onAnyChange?.(wasGroupValidPreviously);
+
+    } catch (error: unknown) {
+
+      Logger.logError({
+        errorType: "CustomEventHandlerExecutionFailure",
+        title: "Custom event handler execution failure",
+        description: "The error occurred during the execution of \"OnAnyChange\" event handler",
+        occurrenceLocation: "validatableControl.onAnyChange()",
+        caughtError: error
+      });
+
+    }
+
+  }
+
+
   /* [ Approach ] This method has not been made getter because of recomputing on each invocation while here the value
    *  of "_isInvalid" is cached. */
-  private isAtLeastOneControlPayloadInvalid(): boolean {
-    return Object.values(this.controlsPayloadAndValidityMap).
+  protected isAtLeastOneControlPayloadInvalid(): boolean {
+    return Object.values(this.isEachControlPayloadValid).
         some((isCurrentControlPayloadValid: boolean): boolean => !isCurrentControlPayloadValid);
+  }
+
+
+  /* ─── ID generating ────────────────────────────────────────────────────────────────────────────────────────────── */
+  protected static counterForOnAnyChangeEventHandlersIDsGenerating: number = 0;
+
+  protected static generateOnAnyChangeEventHandlerID(): string {
+    ValidatableControlsGroup.counterForOnAnyChangeEventHandlersIDsGenerating++;
+    return `ON_ANY_CHANGE-GENERATED-${ ValidatableControlsGroup.counterForOnAnyChangeEventHandlersIDsGenerating }`;
   }
 
 }
@@ -198,7 +257,11 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
 namespace ValidatableControlsGroup {
 
   export type GeneralizedControlsPayload =
-      Readonly<{ [controlKey: string]: ValidatableControl.Payload<unknown, unknown, InputtedValueValidation>; }> |
-      Array<ValidatableControl.Payload<unknown, unknown, InputtedValueValidation>>;
+      Readonly<{ [controlKey: string]: GeneralizedControlPayload; }> |
+      Array<GeneralizedControlPayload>;
+
+  export type GeneralizedControlPayload = ValidatableControl.Payload<unknown, unknown, InputtedValueValidation>;
+
+  export type GeneralizedEventHandler = () => void;
 
 }

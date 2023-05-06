@@ -1,0 +1,44 @@
+mixin ${COMPONENT_NAME}Demo(options)
+
+  -
+
+    options = options ?? {
+      headings: true,
+      partials: {
+        defaultOptionals: true,
+        longLabel: true,
+        geometricModifiers: {
+          pillShape: true,
+          squareShape: true
+        }
+      }
+    }
+
+    ThemesShowcase__YDF.
+        setDefaultThemeKeyLabelPrefix("${COMPONENT_NAME}__YDF.Themes.").
+        setDefaultGeometricVariationLabelPrefix("${COMPONENT_NAME}__YDF.GeometricVariations.").
+        setDefaultDecorativeVariationLabelPrefix("${COMPONENT_NAME}__YDF.DecorativeVariations.");
+
+    const themeShowcaseCurrentIterationData = ThemesShowcase__YDF.initializeCurrentIterationData()
+
+    
+  if options.headings
+
+    h1.Heading1 ${COMPONENT_NAME} component testing
+
+
+  //- ━━━ Default optionals ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  if options.partials.defaultOptionals
+
+    if options.headings
+
+      h2.Heading2 Default optionals
+
+    +ThemesShowcase--YDF({
+      themes: Button__YDF.Themes,
+      geometricVariations: Button__YDF.GeometricVariations,
+      decorativeVariations: Button__YDF.DecorativeVariations,
+      iterationData: themeShowcaseCurrentIterationData,
+      skipDecorativeVariationIf: skipDecorativeVariationIf
+    })
+       

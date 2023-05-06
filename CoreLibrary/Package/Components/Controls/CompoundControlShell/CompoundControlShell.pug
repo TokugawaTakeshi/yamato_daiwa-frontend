@@ -21,7 +21,7 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
       mainSlotWrapperAdditionalCSS_Classes = [],
 
       theme = CompoundControlShell__YDF.Themes.regular,
-      areThemesExternal = CompoundControlShell__YDF.areThemesExternal,
+      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || CompoundControlShell__YDF.areThemesCSS_ClassesCommon,
       geometry = CompoundControlShell__YDF.GeometricVariations.regular,
       decoration = CompoundControlShell__YDF.DecorativeVariations.regular
 
@@ -34,30 +34,65 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
     });
 
     const {
-      invalidInputHighlightingIfAnyValidationErrorsMessages = false,
-      validValueHighlightingIfNoValidationErrorsMessages = false,
-      validationErrorsMessages = []
+      validationErrorsMessages = false,
+      asynchronousValidationsStatuses = false
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
       rawParameter: statesSimulations,
       parameterNumber: 2,
       parameterName: "statesSimulations",
-      parameterPropertiesSpecification: CompoundControlShell__YDF.stateSimulationsSpecification,
-      mixinName: "CompoundControlShell--YDF"
+      parameterPropertiesSpecification: CompoundControlShell__YDF.statesSimulationsSpecification,
+      mixinName: CompoundControlShell__YDF.CSS_NAMESPACE
     });
+
+
+    let formattedGuidance;
+
+    if (isNotUndefined(guidance)) {
+
+      const guidanceSegments = guidance.split("**");
+
+      if (guidanceSegments.length > 0) {
+
+        for (let segmentIndex = 0; segmentIndex <= guidanceSegments.length - 1; segmentIndex++) {
+
+          const currentSegment = guidanceSegments[segmentIndex];
+
+          if (segmentIndex % 2 !== 0) {
+            guidanceSegments[segmentIndex] =
+                `<span class="CompoundControlShell--YDF-Guidance-AccentedFragment">${ currentSegment }</span>`
+          }
+
+        }
+
+      }
+
+      formattedGuidance = guidanceSegments.join("")
+
+    }
 
     const { localization } = CompoundControlShell__YDF;
 
     const rootElementModifierCSS_Classes = [
-      ...Object.entries(CompoundControlShell__YDF.Themes).length > 1 && !areThemesExternal ?
-          [ ComponentsAuxiliaries.generateThemeCSS_Class(CompoundControlShell__YDF.CSS_NAMESPACE, theme) ] : [],
-      ...Object.entries(CompoundControlShell__YDF.GeometricVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(CompoundControlShell__YDF.CSS_NAMESPACE, geometry) ] : [],
-      ...Object.entries(CompoundControlShell__YDF.DecorativeVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(CompoundControlShell__YDF.CSS_NAMESPACE, decoration) ] : [],
-      ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
-          [ `${ CompoundControlShell__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
-      ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
-          [ `${ CompoundControlShell__YDF.CSS_NAMESPACE }__ValidValueState` ] : []
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: CompoundControlShell__YDF.Themes,
+        CSS_Namespace: CompoundControlShell__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: CompoundControlShell__YDF.GeometricVariations,
+        CSS_Namespace: CompoundControlShell__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decoration,
+        allDecorativeVariations: CompoundControlShell__YDF.DecorativeVariations,
+        CSS_Namespace: CompoundControlShell__YDF.CSS_NAMESPACE
+      })
+
     ];
 
 
@@ -72,6 +107,7 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
 
   .CompoundControlShell--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
 
+    //- ━━━ Header ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     if mustDisplayHeader
 
       .CompoundControlShell--YDF-Header
@@ -85,24 +121,27 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
 
         if mustDisplayRequiredInputBadge
 
-          span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__RequiredInput
+          span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__Required
             | #{ localization.requirementBadges.required }
 
         else if mustDisplayOptionalInputBadge
 
-          span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__OptionalInput
+          span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__Optional
             | #{ localization.requirementBadges.optional }
 
         else if mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge
 
           span.CompoundControlShell--YDF-Badge.CompoundControlShell--YDF-Badge__Invisible
+            | #{ required ? localization.requirementBadges.required : localization.requirementBadges.optional }
 
 
-    if guidance
+    //- ━━━ Guidance ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    if formattedGuidance
 
-      p.CompoundControlShell--YDF-Guidance!= guidance
+      p.CompoundControlShell--YDF-Guidance!=formattedGuidance
 
 
+    //- ━━━ Main slot ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     .CompoundControlShell--YDF-MainSlotCustomizableWrapper(
       class= mainSlotWrapperAdditionalCSS_Classes
     )
@@ -110,11 +149,66 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
       block
 
 
-    if invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0
+    //- ━━━ (Non-asynchronous) validations ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    if validationErrorsMessages === true
+      ul.CompoundControlShell--YDF-ValidationErrorsMessagesList
+        each sampleValidationErrorMessage in CompoundControlShell__YDF.localization.sampleValidationErrorsMessages
+          li.CompoundControlShell--YDF-ValidationErrorMessage= sampleValidationErrorMessage
+
+    else if Array.isArray(validationErrorsMessages) && validationErrorsMessages.length > 0
       ul.CompoundControlShell--YDF-ValidationErrorsMessagesList
         each validationErrorMessage in validationErrorsMessages
           li.CompoundControlShell--YDF-ValidationErrorMessage= validationErrorMessage
 
-    template.CompoundControlShell--YDF-ValidationErrorMessagesListTemplate
-      ul.CompoundControlShell--YDF-ValidationErrorsMessagesList
-        li.CompoundControlShell--YDF-ValidationErrorMessage
+    <!--COMPOUND_CONTROL_SHELL__YDF-VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT-->
+
+
+    //- ━━━ Asynchronous validations ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    if asynchronousValidationsStatuses === true || isNonEmptyArray(asynchronousValidationsStatuses)
+
+      ul.CompoundControlShell--YDF-AsynchronousValidationsStatusesList
+
+        -
+          const _asynchronousValidationsStatuses = asynchronousValidationsStatuses === true ?
+              CompoundControlShell__YDF.localization.sampleAsynchronousValidationsStatuses : asynchronousValidationsStatuses;
+
+        each asynchronousValidationsStatus in _asynchronousValidationsStatuses
+
+          case asynchronousValidationsStatus.ID
+
+            when "IN_PROGRESS"
+
+              li.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item(
+                class="CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__InProgressState"
+              )
+                +LoadingIndicator--YDF({
+                  type: LoadingIndicator__YDF.Types.variableWidthArcSpinner,
+                  geometry: LoadingIndicator__YDF.GeometricVariations.small
+                }).CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-LoadingIndicator
+                p.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Text= asynchronousValidationsStatus.message
+
+            when "FINISHED_BUT_INVALID"
+
+              li.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item(
+                class="CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__SucceededButInvalidState"
+              )
+                +ExclamationMark__Circled__Filled--YDF_Icon.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Icon
+                p.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Text= asynchronousValidationsStatus.message
+
+            when "FINISHED_AND_VALID"
+
+              li.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item(
+                class="CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__SucceededAndValidState"
+              )
+                +Checkmark__Circled__Filled--YDF_Icon.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Icon
+                p.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Text= asynchronousValidationsStatus.message
+
+            when "MALFUNCTION"
+
+              li.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item(
+                class="CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__MalfunctionState"
+              )
+                +MultiplicationSign__Boxed__Filled--YDF_Icon.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Icon
+                p.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Text= asynchronousValidationsStatus.message
+
+    <!--COMPOUND_CONTROL_SHELL__YDF-ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MOUNTING_POINT-->

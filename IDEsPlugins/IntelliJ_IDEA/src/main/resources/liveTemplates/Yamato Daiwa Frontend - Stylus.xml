@@ -708,7 +708,7 @@
       <option name="CSS_RULESET_LIST" value="true" />
     </context>
   </template>
-  <template name="med2p" value="WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 500px    &#10;    &#10;WideScreensConfiguration()&#10;  @media screen and (min-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH)&#10;    {block}&#10;&#10;NarrowScreensConfiguration()&#10;  @media screen and (max-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}" description="Media queries definitions for 2-pattern layout" toReformat="false" toShortenFQNames="true">
+  <template name="med2p" value="WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 500px    &#10;    &#10;WideScreensConfiguration()&#10;  @media screen and (min-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH)&#10;    {block}&#10;&#10;NarrowScreensConfiguration()&#10;  @media screen and (max-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;    &#10;    &#10;+WideScreensConfiguration()&#10;&#10;  // ...&#10;  &#10;  &#10;+NarrowScreensConfiguration()&#10;&#10;  // ..." description="Media queries definitions for 2-pattern layout" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS_DECLARATION_BLOCK" value="true" />
     </context>

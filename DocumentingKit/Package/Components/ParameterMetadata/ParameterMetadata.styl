@@ -1,68 +1,113 @@
-.ParameterMetadata--YDF_DK
+provideParameterMetadataYDF_DK_Component()
 
-  border-width 1px
-  border-radius 3px
-  padding 6px 10px
+  .ParameterMetadata--YDF_DK
 
-  border-style solid
-  border-color: JQueryUI_BaseTheme.content.borderColor
+    WIDE_CONTAINERS_CONFIGURATION_MINIMAL_WIDTH = 300px
 
+    WideContainersConfiguration()
+      @media container and (min-width: WIDE_CONTAINERS_CONFIGURATION_MINIMAL_WIDTH)
+        {block}
 
-  &-Header
+    NarrowContainersConfiguration()
+      @media container and (max-width: WIDE_CONTAINERS_CONFIGURATION_MINIMAL_WIDTH - 1)
+        {block}
 
-    display flex
-    align-items center
-
-
-  &-ParameterNumberTitle
-
-    font-family "Arial Black", "Arial Bold", "Gadget", sans-serif
-    font-size 1.2rem
-    color: ShadesOfGray__39ColorsW3C_Palette[12]
-
-
-  &-RequirementBadge
-
-    font-size 0.8rem
-    margin-left 0.8rem
-
-
-  &-MetadataTable
 
     display grid
-    grid-template-columns minmax(0, 40%) minmax(0, 1fr)
-    column-gap 10px
-    row-gap 6px
+    grid-template-areas\
+        "TITLE REQUIREMENT_BADGE"\
+        "METADATA METADATA"
+    grid-template-rows auto 1fr
+    grid-template-columns auto minmax(0, 1fr)
+    justify-items start
+    align-items center
+    row-gap 0.4rem
+    column-gap 0.6rem
 
-    margin-top 6px
+    container-type inline-size
+
+    border-width 1px
+    border-radius 3px
+    padding 0.3rem 0.5rem
+
+    border-style solid
+    border-color: JQueryUI_BaseTheme.content.borderColor
 
 
-    &-Key
+    &-ParameterNumberTitle
 
-      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
-        fontSize: 1rem,
-        lineSpacing: 0.2rem,
-        mustAllowWordBreakingAnywhere: true
-      })
-      text-align right
+      font-family "Arial Black", "Arial Bold", "Gadget", sans-serif
+      font-size 1.2rem
 
-      color: ShadesOfGray__39ColorsW3C_Palette[16]
-
-
-    &-Value
-
-      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
-        fontSize: 1rem,
-        lineSpacing: 0.2rem,
-        mustAllowWordBreakingAnywhere: true
-      })
-
+      font-weight bold // [ Theory ] Required for non-alphabet languages
       color: ShadesOfGray__39ColorsW3C_Palette[12]
 
+      grid-area TITLE
 
-      &__Type
 
-        font-family Consolas, monaco, monospace
+    &-RequirementBadge
+
+      font-size 0.8rem
+
+      grid-area REQUIREMENT_BADGE
+
+
+    &-Metadata
+
+      grid-area METADATA
+
+
+      +WideContainersConfiguration()
+
+        display grid
+        grid-template-columns minmax(0, 1fr) minmax(0, 2fr)
+        column-gap 0.8rem
+        row-gap 0.6rem
+        align-items baseline
+
+
+      &-Key
+
+        applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+          fontSize: 1rem,
+          lineSpacing: 0.2rem,
+          mustAllowWordsBreakingAnywhere: true
+        })
 
         font-weight bold
-        color darkred
+        color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+
+        +WideContainersConfiguration()
+
+          text-align right
+
+
+      &-Value
+
+        applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+          fontSize: 1rem,
+          lineSpacing: 0.2rem,
+          mustAllowWordsBreakingAnywhere: true
+        })
+
+        color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+
+        +NarrowContainersConfiguration()
+
+          margin-left 1rem
+          PositionalRelationship({
+            definitions: (".ParameterMetadata--YDF_DK-Metadata-Key" { retireFromIt: { y: 0.2rem }, pushItFromSelf: { y: 0.8rem } })
+          })
+
+
+        &__ProgrammaticFont
+
+          font-family Consolas, monaco, monospace
+
+
+        &__Accented
+
+          font-weight bold
+          color: YDF_ColorPalette.red.mediumDark

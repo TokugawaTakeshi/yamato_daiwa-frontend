@@ -1,105 +1,104 @@
+include LanguageDropDownListLocalization.english.pug
+
+
 -
 
-  const LanguageDropDownList = {
+  const LanguageDropDownList__YDF_DK = {
 
-    supportedLanguages: {
-      english: "ENGLISH",
-      japanese: "JAPANESE",
-      russian: "RUSSIAN"
+
+    /** @type {Object.<string, { localizedName: string, SVG_FlagHTML_ID: string }>} */
+    languagesData: {},
+
+    /** @type {Array.<string>} */
+    supportedLanguagesKeys: [],
+
+    /** @param {Object.<string, { localizedName: string, SVG_FlagHTML_ID: string }>} languagesData */
+    initialize(languagesData) {
+      this.languagesData = languagesData;
+      this.supportedLanguagesKeys = Array.from(Object.keys(languagesData));
     },
 
+
+    /** @type {Object.<string, string>}
+     * Key is the language key which must be defined in supportedLanguagesKeys`.
+     * Value is the URI. */
     links: {},
     setLinks(links) {
       this.links = links;
-    },
-
-    localization: {
-      accessibilityGuidance: "Select the language"
     },
 
     counterForID_Generating: 0,
     generateID() {
       this.counterForID_Generating++;
       return `LANGUAGE_DROP_DOWN_LIST-${ this.counterForID_Generating }`;
-    }
+    },
+
+    localization: languageDropDownListYDF_DK_ComponentEnglishLocalization
 
   }
 
 
-mixin LanguageDropDownList()
+mixin LanguageDropDownList--YDF_DK
 
   -
 
-    const isExpanded = false;
+    const COMPONENT_ID = LanguageDropDownList__YDF_DK.generateID();
+    const LIST_BOX_HTML_ID = `${ COMPONENT_ID }-LIST_BOX`
+    const CURRENTLY_SELECTED_OPTION_HTML_ID = `${ COMPONENT_ID }-CURRENTLY_SELECTED_OPTION`;
 
-    const COMPONENT_ID = LanguageDropDownList.generateID();
-    const LISTBOX_ID = `${ COMPONENT_ID }-LIST_BOX`
+    const currentlySelectedLanguageKey = LanguageDropDownList__YDF_DK.
+        supportedLanguagesKeys.
+        find(languageKey => !Object.keys(LanguageDropDownList__YDF_DK.links).includes(languageKey));
+
+    const currentlySelectedLanguageData = LanguageDropDownList__YDF_DK.languagesData[currentlySelectedLanguageKey];
 
 
-  .LanguageDropDownList&attributes(attributes)
+  //- [ Reference ] https://www.w3.org/WAI/ARIA/apg/patterns/combobox/examples/combobox-select-only/
+  .LanguageDropDownList--YDF_DK&attributes(attributes)
 
-    //-
-       aria-labelledby="combo1-label"
-       id="combo1"
-
-    .LanguageDropDownList-CurrentlySelectedOption(
+    .LanguageDropDownList--YDF_DK-CurrentlySelectedOption(
       role="combobox"
       tabindex="0"
-      aria-controls= LISTBOX_ID
-      aria-expanded= isExpanded ? "true" : "false"
+      aria-controls=LIST_BOX_HTML_ID
+      aria-expanded="false"
       aria-haspopup="listbox"
+      aria-label=LanguageDropDownList__YDF_DK.localization.accessibilityGuidance
+      id=CURRENTLY_SELECTED_OPTION_HTML_ID
     )
-
-      case HTML_PAGE_LANGUAGE
-
-        when "en"
-
-          +GreatBritanFlag2x3.LanguageDropDownList-CurrentlySelectedOption-Flag
-          span.LanguageDropDownList-CurrentlySelectedOption-Label English
-
-        when "ja"
-
-          +JapanFlag2x3.LanguageDropDownList-CurrentlySelectedOption-Flag
-          span.LanguageDropDownList-CurrentlySelectedOption-Label 日本語
-
-        when "ru"
-
-          +RussiaFlag2x3.LanguageDropDownList-CurrentlySelectedOption-Flag
-          span.LanguageDropDownList-CurrentlySelectedOption-Label Русский
+      span.LanguageDropDownList--YDF_DK-CountryFlagPlaceholder(
+        data-target_image_id= currentlySelectedLanguageData.SVG_FlagHTML_ID
+      )
+      span.LanguageDropDownList--YDF_DK-CurrentlySelectedOption-Label= currentlySelectedLanguageData.localizedName
 
 
-    //- aria-labelledby="combo1-label"
-    .LanguageDropDownList-ListBox(
-      id= LISTBOX_ID
+    .LanguageDropDownList--YDF_DK-ListBox(
       role="listbox"
       tabindex="-1"
+      aria-label=LanguageDropDownList__YDF_DK.localization.accessibilityGuidance
+      id=LIST_BOX_HTML_ID
+      class="LanguageDropDownList--YDF_DK-ListBox__Hidden"
     )
 
-      //- <div  id="combo1-0" aria-selected="false">Choose a Fruit</div>
+      each languageData, languageKey in LanguageDropDownList__YDF_DK.languagesData
 
-      each link, language in LanguageDropDownList.links
+        -
+          const isLanguageSelected = languageKey === currentlySelectedLanguageKey;
+          const currentLinkURI/* : string | undefined */ = LanguageDropDownList__YDF_DK.links[languageKey];
 
-        .LanguageDropDownList-Option(
+        .LanguageDropDownList--YDF_DK-ListBox-Item(
           role="option"
+          aria-selected=isLanguageSelected ? "true" : "false"
+          class=isLanguageSelected ? "LanguageDropDownList--YDF_DK-ListBox-Item__Selected": []
         )
-
-          a.LanguageDropDownList-Option-Link(
-            href= link
+          //- [ Theory ] Currently, the "a" without href the valid and means "current".
+          a(
+            href= currentLinkURI
           )
+            span.LanguageDropDownList--YDF_DK-CountryFlagPlaceholder(
+              data-target_image_id=languageData.SVG_FlagHTML_ID
+            )
+            span.LanguageDropDownList--YDF_DK-ListBox-Item-Label= languageData.localizedName
 
-            case language
+      template.LanguageDropDownList--YDF_DK-FlagsImagesHolder
 
-              when LanguageDropDownList.supportedLanguages.english
-
-                +GreatBritanFlag2x3.LanguageDropDownList-Option-Flag
-                span.LanguageDropDownList-Option-Label English
-
-              when LanguageDropDownList.supportedLanguages.japanese
-
-                +JapanFlag2x3.LanguageDropDownList-Option-Flag
-                span.LanguageDropDownList-Option-Label 日本語
-
-              when LanguageDropDownList.supportedLanguages.russian
-
-                +RussiaFlag2x3.LanguageDropDownList-Option-Flag
-                span.LanguageDropDownList-Option-Label Русский
+        block

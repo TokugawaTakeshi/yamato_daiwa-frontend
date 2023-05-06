@@ -1,130 +1,149 @@
 -
 
-  const Button__YDF = {
+  class Button__YDF {
 
-    CSS_NAMESPACE: "Button--YDF",
+    static CSS_NAMESPACE = "Button--YDF";
 
-    HTML_Types: {
+    static HTML_Types = {
       regular: "BUTTON",
       submit: "SUBMIT",
       inputButton: "INPUT_BUTTON",
       inputSubmit: "INPUT_SUBMIT",
       inputReset: "INPUT_RESET"
-    },
+    };
 
 
-    /* === Themes =================================================================================================== */
-    Themes: { regular: "REGULAR" },
+    /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static Themes = { regular: "REGULAR" };
 
-    defineNewThemes(themesNames) {
-      return ComponentsAuxiliaries.defineNewThemes(themesNames, this);
-    },
+    static defineCustomThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, Button__YDF);
+    }
 
-    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT,
-    considerThemesAsExternal() {
-      this.areThemesExternal = true;
-      return this;
-    },
+    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+
+    static considerThemesAsCommon() {
+      Button__YDF.areThemesCSS_ClassesCommon = true;
+      return Button__YDF;
+    }
 
 
-    /* --- Geometry ------------------------------------------------------------------------------------------------- */
-    GeometricVariations: {
+    /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
+    static GeometricVariations = {
       regular: "REGULAR",
       small: "SMALL",
       linkLike: "LINK_LIKE"
-    },
+    };
 
-    defineNewGeometricVariations(geometricVariationsNames) {
-      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, this);
-    },
+    static defineCustomGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, Button__YDF);
+    }
 
-    GeometricModifiers: {
+    static GeometricModifiers = {
+      pillShape: "PILL_SHAPE",
       squareShape: "SQUARE_SHAPE",
-      pillShape: "PILL_SHAPE"
-    },
+      singleLine: "SINGLE_LINE",
+      noLeftBorderAndRoundings: "NO_LEFT_BORDER_AND_ROUNDINGS",
+      noRightBorderAndRoundings: "NO_RIGHT_BORDER_AND_ROUNDINGS"
+    };
 
 
-    /* --- Decoration ----------------------------------------------------------------------------------------------- */
-    DecorativeVariations: {
+    /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
+    static DecorativeVariations = {
       regular: "REGULAR",
       accented: "ACCENTED",
       linkLike: "LINK_LIKE"
-    },
+    };
 
-    defineNewDecorativeVariations(decorativeVariationsNames) {
-      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, this);
-    },
-
-
-    /* === Properties specification ================================================================================= */
-    get propertiesSpecification() {
-      return {
-
-        HTML_Type: {
-          type: String,
-          required: false,
-          allowedAlternatives: Object.values(this.HTML_Types)
-        },
-
-        label: {
-          type: String,
-          requiredIf: {
-            predicate: properties => properties.HTML_Type === this.HTML_Types.inputButton ||
-              properties.HTML_Type === this.HTML_Types.inputSubmit ||
-              properties.HTML_Type === this.HTML_Types.inputReset,
-            descriptionForLogging: "'HTML_Type' is 'inputButton', 'inputSubmit' or 'inputReset'"
-          },
-          minimalCharactersCount: 1
-        },
-
-        accessibilityGuidance: {
-          type: String,
-          required: false,
-          minimalCharactersCount: 1
-        },
-
-        URI: {
-          type: String,
-          required: false,
-          /* [ Theory ] It could be the "#" */
-          minimalCharactersCount: 1
-        },
-
-        disabled: {
-          type: Boolean,
-          required: false
-        },
-
-        theme: {
-          type: String,
-          required: false,
-          allowedAlternatives: Object.values(this.Themes)
-        },
-
-        areThemesExternal: {
-          type: Boolean,
-          required: false
-        },
-
-        geometry: {
-          type: String,
-          required: false,
-          allowedAlternatives: Object.values(this.GeometricVariations)
-        },
-
-        geometricModifiers: {
-          type: Array,
-          required: false,
-          allowedAlternatives: Object.values(this.GeometricModifiers)
-        },
-
-        decoration: {
-          type: String,
-          required: false,
-          allowedAlternatives: Object.values(this.DecorativeVariations)
-        }
-
-      };
+    static defineCustomDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, Button__YDF);
     }
 
-  };
+    static DecorativeModifiers = {
+      bordersDisguising: "BORDERS_DISGUISING",
+      noBackground: "NO_BACKGROUND"
+    };
+
+
+    /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static propertiesSpecification = {
+
+      HTML_Type: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(Button__YDF.HTML_Types)
+      },
+
+      label: {
+        type: String,
+        requiredIf: {
+          predicate: properties => properties.HTML_Type === Button__YDF.HTML_Types.inputButton ||
+            properties.HTML_Type === Button__YDF.HTML_Types.inputSubmit ||
+            properties.HTML_Type === Button__YDF.HTML_Types.inputReset,
+          descriptionForLogging: "'HTML_Type' is 'inputButton', 'inputSubmit' or 'inputReset'"
+        },
+        minimalCharactersCount: 1
+      },
+
+      accessibilityGuidance: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
+      URI: {
+        type: String,
+        required: false,
+        /* [ Theory ] It could be the "#" */
+        minimalCharactersCount: 1
+      },
+
+      disabled: {
+        type: Boolean,
+        required: false
+      },
+
+      theme: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(Button__YDF.Themes)
+      },
+
+      areThemesCSS_ClassesCommon: {
+        type: Boolean,
+        required: false
+      },
+
+      geometry: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(Button__YDF.GeometricVariations)
+      },
+
+      geometricModifiers: {
+        type: Array,
+        required: false,
+        element: {
+          type: String,
+          allowedAlternatives: Object.values(Button__YDF.GeometricModifiers)
+        }
+      },
+
+      decoration: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(Button__YDF.DecorativeVariations)
+      },
+
+      decorativeModifiers: {
+        type: Array,
+        required: false,
+        element: {
+          type: String,
+          allowedAlternatives: Object.values(Button__YDF.DecorativeModifiers)
+        }
+      }
+
+    }
+
+  }

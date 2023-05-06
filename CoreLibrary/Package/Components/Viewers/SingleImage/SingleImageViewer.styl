@@ -1,0 +1,164 @@
+SingleImageViewer--YDF = {
+
+  CSS_NAMESPACE: "SingleImageViewer--YDF",
+
+  defaultProperties: {
+
+    positionalRelationship: {
+      withTypographyElements: {
+        mainPreset: {
+          typographyDefinition: null,
+          spacingDefinitions: {
+            paragraph: { whenItJustBefore: 12px, whenItJustAfter: 16px }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+provideSingleImageViewerYDF_Component(preset = SingleImageViewer--YDF.defaultProperties, overridings = {})
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+
+
+  .SingleImageViewer--YDF
+
+    &.SingleImageViewer--YDF__RegularGeometry
+
+      border: 1px solid ShadesOfGray__39ColorsW3C_Palette[32]
+      Paddings({ horizontalSymmetric: 0.6rem })
+
+
+    &-ActionBar
+
+      display flex
+      flex-direction row-reverse
+
+      border-bottom-width 1px
+      padding-bottom 4px
+
+      border-bottom-style solid
+      border-bottom-color ShadesOfGray__39ColorsW3C_Palette[32]
+
+      margin-top 0.2rem
+
+
+    &-Figure
+
+      retireFrom({ targetElementSelector: ".SingleImageViewer--YDF-ActionBar", y: 0.4rem })
+
+
+      /.SingleImageViewer--YDF__RegularGeometry &
+
+        whenItGoingFirst({ verticalSpaceAbove: 0.6rem })
+        whenItGoingLast({ verticalSpaceBelow: 0.6rem })
+
+
+    &-Underlay
+
+      background aliceblue
+
+
+    &-Image
+
+      display block
+
+      // [ Approach ] As default, the image always takes 100% of available space however the maximal width could be limited.
+      width 100%
+
+      background lightgoldenrodyellow
+
+      margin-left auto
+      margin-right auto
+
+
+    &-Caption
+
+      Paddings({
+        horizontalSymmetric: 8px
+        top: 8px
+      })
+
+      border-top 1px solid ShadesOfGray__39ColorsW3C_Palette[32]
+
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineSpacing: 4px })
+
+      color: ShadesOfGray__39ColorsW3C_Palette[14]
+
+      margin-top 8px
+
+
+    &-ModalView
+
+      display flex
+      flex-direction column
+      row-gap 0.4rem
+
+      position fixed
+      left 0
+      right 0
+      top 0
+      bottom 0
+      z-index: ZIndexes.modalsUnderlay
+
+      background-color alpha(black, 50%)
+
+
+      &__HiddenState
+
+        display none
+
+
+      &-UpperButton
+
+        margin-top 0.2rem
+        margin-right 0.4rem
+        align-self flex-end
+        flex-shrink 0
+
+
+      &-PositioningWrapper
+
+        display flex
+        justify-content center
+        align-items center
+
+        overflow auto
+
+        background-color aliceblue
+
+        flex-grow 1
+
+
+      &-Image
+
+        flex-shrink 0
+
+
+        &__FullWidth
+
+          width 100%
+          height auto
+
+
+        &__FullHeight
+
+          height 100%
+          width auto
+
+
+      &-BottomActionBar
+
+        display flex
+        flex-direction row-reverse
+        row-gap 0.4rem
+        column-gap 0.6rem
+
+        Paddings({
+          horizontalSymmetric: 0.4rem,
+          bottom: 0.2rem
+        })
+
+        flex-shrink 0

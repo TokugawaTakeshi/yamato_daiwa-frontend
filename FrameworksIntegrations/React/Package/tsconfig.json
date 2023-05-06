@@ -6,20 +6,16 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
 
     "jsx": "react",
 
     "strict": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": false, /* Actual for Vue3; see https://github.com/vuejs/vue-next/issues/4668 */
+    "noUnusedParameters": false,
     "experimentalDecorators": true,
 
     "baseUrl": "./",
-    "paths": {
-      "@Source/*": [ "./Source/*" ],
-      "@Components/*": [ "./Source/Components/*"],
-      "@SVG_Icons/*": [ "./Source/SVG_Icons/*"]
-    },
     "declaration": true,
     "sourceMap": false
   },

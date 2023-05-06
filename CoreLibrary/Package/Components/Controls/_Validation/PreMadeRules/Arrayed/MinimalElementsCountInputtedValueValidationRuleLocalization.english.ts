@@ -1,5 +1,4 @@
-import type MinimalElementsCountInputtedValueValidationRule from
-    "@Controls/_Validation/PreMadeRules/Arrayed/MinimalElementsCountInputtedValueValidationRule";
+import type MinimalElementsCountInputtedValueValidationRule from "./MinimalElementsCountInputtedValueValidationRule";
 
 
 const minimalElementsCountInputtedValueValidationRuleLocalization__english:

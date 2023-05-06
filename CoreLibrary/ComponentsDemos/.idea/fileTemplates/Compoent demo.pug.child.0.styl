@@ -1,0 +1,25 @@
+.${COMPONENT_NAME}Demo
+
+  &-Example
+
+    display grid
+    grid-auto-flow column
+    grid-template-rows auto 1fr
+    grid-template-columns repeat(3, minmax(0, 1fr));
+    column-gap 6px
+    row-gap 4px
+    justify-items center
+    align-items center
+
+    margin-top 6px
+
+
+    dt
+
+      font-weight bold
+
+
+    dd
+
+      // [ Theory ] Request to test the overflowed single line buttons. Here, "100%" refers to column's width, not girds width.
+      max-width 100%

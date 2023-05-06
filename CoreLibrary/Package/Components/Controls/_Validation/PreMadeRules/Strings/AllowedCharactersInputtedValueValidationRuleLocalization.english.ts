@@ -1,5 +1,4 @@
-import type AllowedCharactersInputtedValueValidationRule from
-    "@Controls/_Validation/PreMadeRules/Strings/AllowedCharactersInputtedValueValidationRule";
+import type AllowedCharactersInputtedValueValidationRule from "./AllowedCharactersInputtedValueValidationRule";
 
 
 const allowedCharactersInputtedValueValidationRuleLocalization__english:

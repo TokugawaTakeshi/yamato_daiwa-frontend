@@ -180,6 +180,7 @@ abstract class Snackbar {
     await new BrowserJS_Timer({ period__seconds: displayingDuration__seconds }).countDown();
 
     return Snackbar.hideAndUnmount();
+
   }
 }
 

@@ -83,7 +83,7 @@ If this parameter is optional, specify the empty object as default value, or Sty
 validation start:
 
 ```
-argument "parametersObject" required for buildBEM_Class(parametersObject, restParameters__MUST_NOT_BE)
+argument "parametersObject" required for buildBEM_ClassName(parametersObject, restParameters__MUST_NOT_BE)
 ```
 
 
@@ -157,7 +157,7 @@ buildBEM_ClassName(compoundParameter, restParameters__MUST_NOT_BE...)
 If the required property will be omitted like:
 
 ```stylus
-buildBEM_Class({ element: "Icon" })
+buildBEM_ClassName({ element: "Icon" })
 ```
 
 the error like below will be thrown:
@@ -290,7 +290,7 @@ buildBEM_ClassName(compoundParameter, restParameters__MUST_NOT_BE...)
 Testing:
 
 ```stylus
-p(buildBEM_Class({
+p(buildBEM_ClassName({
   block: "Component",
   element: "Element",
   modifier: "Modifier"
@@ -469,7 +469,7 @@ buildBEM_ClassName(compoundParameter, restParameters__MUST_NOT_BE...)
 If it will be violated like:
 
 ```stylus
-p(buildBEM_Class({ block: 1 }))
+p(buildBEM_ClassName({ block: 1 }))
 ```
 
 the error as below will be thrown:

@@ -1,0 +1,130 @@
+include SingleImageViewerLocalization.english.pug
+
+
+-
+
+  class SingleImageViewer__YDF {
+
+    static CSS_NAMESPACE = "SingleImageViewer--YDF";
+
+
+    /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static Themes = { regular: "REGULAR" };
+
+    static defineCustomThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, CompoundControlShell__YDF);
+    }
+
+    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+
+    static considerThemesAsCommon() {
+      CompoundControlShell__YDF.areThemesCSS_ClassesCommon = true;
+      return CompoundControlShell__YDF;
+    }
+
+
+    /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
+    static GeometricVariations = {
+      regular: "REGULAR",
+      minimalistic: "MINIMALISTIC"
+    };
+
+    static defineNewGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, CompoundControlShell__YDF);
+    }
+
+
+    /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
+    static DecorativeVariations = {
+      regular: "REGULAR",
+      minimalistic: "MINIMALISTIC"
+    };
+
+    defineNewDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, CompoundControlShell__YDF);
+    }
+
+
+    /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static propertiesSpecification = {
+
+      imageURI: {
+        type: String,
+        required: true,
+        minimalCharactersCount: 1
+      },
+
+      imageAlternateText: {
+        type: String,
+        required: false
+      },
+
+      noFullScreenView: {
+        type: Boolean,
+        required: false
+      },
+
+      aspectRatio: {
+        type: String,
+        required: false,
+        validValueRegularExpression: /^\d+\/\d+$/u
+      },
+
+      autoAspectRatioByYDA: {
+        type: Boolean,
+        required: false
+      },
+
+      maximalWidth__anyValidCSS_Value: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
+      maximalHeight__anyValidCSS_Value: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
+      theme: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(SingleImageViewer__YDF.Themes)
+      },
+
+      areThemesCSS_ClassesCommon: {
+        type: Boolean,
+        required: false
+      },
+
+      geometry: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(SingleImageViewer__YDF.GeometricVariations)
+      },
+
+      decoration: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(SingleImageViewer__YDF.DecorativeVariations)
+      }
+
+    };
+
+
+    /* ━━━ State simulations specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static statesSimulationsSpecification = {
+
+      fullScreenView: {
+        type: Boolean,
+        required: false
+      }
+
+    };
+
+
+    /* ━━━ Localization ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static localization = singleImageViewerYDF_ComponentLocalization__english;
+
+  };

@@ -2,7 +2,7 @@
   "private": true,
   "name": "@yamato-daiwa/frontend-documenting_kit-localization-japanese",
   "version": "0.0.0",
-  "description": "Japanese localization for '@yamato-daiwa/frontend-documenting-kit' package.",
+  "description": "Japanese localization for '@yamato-daiwa/frontend-documenting_kit' package.",
   "keywords": [
     "frontend",
     "pug",

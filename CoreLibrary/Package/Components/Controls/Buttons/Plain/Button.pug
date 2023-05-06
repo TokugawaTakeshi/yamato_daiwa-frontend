@@ -16,10 +16,11 @@ mixin Button--YDF(properties)
       disabled = false,
 
       theme = Button__YDF.Themes.regular,
-      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT || Button__YDF.areThemesExternal,
+      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || Button__YDF.areThemesCSS_ClassesCommon,
       geometry = Button__YDF.GeometricVariations.regular,
       geometricModifiers = [],
-      decoration = Button__YDF.DecorativeVariations.regular
+      decoration = Button__YDF.DecorativeVariations.regular,
+      decorativeModifiers = []
 
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
       rawParameter: properties,
@@ -89,18 +90,34 @@ mixin Button--YDF(properties)
     }
 
     const commonCSS_Classes = [
+
       Button__YDF.CSS_NAMESPACE,
+
       ...isAnchorTheTagNameOfRootElement && disabled ? [ `${ Button__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
-      ...Object.entries(Button__YDF.Themes).length > 1 && !areThemesExternal ?
-          [ ComponentsAuxiliaries.generateThemeCSS_Class(Button__YDF.CSS_NAMESPACE, theme) ] : [],
-      ...Object.entries(Button__YDF.GeometricVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(Button__YDF.CSS_NAMESPACE, geometry) ] : [],
-      ...geometricModifiers.includes(Button__YDF.GeometricModifiers.squareShape) ?
-          [ `${ Button__YDF.CSS_NAMESPACE }__SquareShapeGeometricModifier` ] : [],
-      ...geometricModifiers.includes(Button__YDF.GeometricModifiers.pillShape) ?
-          [ `${Button__YDF.CSS_NAMESPACE}__PillShapeGeometricModifier` ] : [],
-      ...Object.entries(Button__YDF.DecorativeVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(Button__YDF.CSS_NAMESPACE, decoration)]  : []
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: Button__YDF.Themes,
+        CSS_Namespace: Button__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: Button__YDF.GeometricVariations,
+        CSS_Namespace: Button__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.generateDemandedGeometricModifiersCSS_Classes(Button__YDF.CSS_NAMESPACE, geometricModifiers),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decoration,
+        allDecorativeVariations: Button__YDF.DecorativeVariations,
+        CSS_Namespace: Button__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.generateDemandedDecorativeModifiersCSS_Classes(Button__YDF.CSS_NAMESPACE, decorativeModifiers)
+
     ];
 
 
@@ -155,7 +172,7 @@ mixin Button--YDF-LoadingPlaceholder(properties)
 
     const {
       theme = Button__YDF.Themes.regular,
-      areThemesExternal = Button__YDF.areThemesExternal,
+      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || Button__YDF.areThemesCSS_ClassesCommon,
       geometry = Button__YDF.GeometricVariations.regular,
       geometricModifiers = []
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
@@ -164,7 +181,7 @@ mixin Button--YDF-LoadingPlaceholder(properties)
       parameterName: "properties",
       parameterPropertiesSpecification: {
         theme: Button__YDF.propertiesSpecification.theme,
-        areThemesExternal: Button__YDF.propertiesSpecification.areThemesExternal,
+        areThemesCSS_ClassesCommon: Button__YDF.propertiesSpecification.areThemesCSS_ClassesCommon,
         geometry: Button__YDF.propertiesSpecification.geometry,
         geometricModifiers: Button__YDF.propertiesSpecification.geometricModifiers
       },
@@ -172,12 +189,20 @@ mixin Button--YDF-LoadingPlaceholder(properties)
     });
 
     const rootElementModifierCSS_Classes = [
-      ...Object.entries(Button__YDF.Themes).length > 1 && !areThemesExternal ?
-          [ ComponentsAuxiliaries.generateThemeCSS_Class(Button__YDF.CSS_NAMESPACE, theme) ] : [],
-      ...Object.entries(Button__YDF.GeometricVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(Button__YDF.CSS_NAMESPACE, geometry) ] : [],
-      ...geometricModifiers.includes(Button__YDF.GeometricModifiers.squareShape) ?
-          [ `${Button__YDF.CSS_NAMESPACE}__SquareShapeGeometricModifier` ] : [],
-      ...geometricModifiers.includes(Button__YDF.GeometricModifiers.pillShape) ?
-          [ `${Button__YDF.CSS_NAMESPACE}__PillShapeGeometricModifier` ] : []
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: Button__YDF.Themes,
+        CSS_Namespace: Button__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: Button__YDF.GeometricVariations,
+        CSS_Namespace: Button__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.generateDemandedGeometricModifiersCSS_Classes(Button__YDF.CSS_NAMESPACE, geometricModifiers)
+
     ];

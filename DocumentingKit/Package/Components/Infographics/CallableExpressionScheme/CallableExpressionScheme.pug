@@ -8,6 +8,7 @@ mixin CallableExpressionScheme--YDF_DK(properties)
       technicalName,
       headingTag = "div",
       localizedDescriptiveHeading,
+      genericParameters = [],
       parametersSpecification = [],
       returnedValue,
       signatures
@@ -29,7 +30,10 @@ mixin CallableExpressionScheme--YDF_DK(properties)
 
         each signature, index in signatures
 
-          - const overloadNumberLabel = CallableExpressionScheme__YDF_DK.localization.buildOverloadNumberLabel(index + 1);
+          -
+            const overloadNumberLabel = CallableExpressionScheme__YDF_DK.localization.buildOverloadNumberLabel({
+              overloadNumber: index + 1
+            });
 
           .CallableExpressionScheme--YDF_DK-Signature
 
@@ -62,7 +66,49 @@ mixin CallableExpressionScheme--YDF_DK(properties)
 
       .CallableExpressionScheme--YDF_DK-ParametersAndReturnedValuesGroup
 
-        span.CallableExpressionScheme--YDF_DK-OpeningCurlyBracket (
+        - const genericParametersCount = genericParameters.length;
+
+        if genericParametersCount === 1
+
+          - const genericParameter = genericParameters[0];
+
+          span.CallableExpressionScheme--YDF_DK-Bracket= "&lt;"
+
+            if isString(genericParameter)
+
+              span.CallableExpressionScheme--YDF_DK-GenericParameter-Name= genericParameter
+
+            else
+
+              span.CallableExpressionScheme--YDF_DK-GenericParameter-Name= genericParameter.name
+              span.CallableExpressionScheme--YDF_DK-GenericParameter-ExtendingNotation ➝
+              span.CallableExpressionScheme--YDF_DK-GenericParameter-Name= genericParameter.extends
+
+          span.CallableExpressionScheme--YDF_DK-Bracket= "&gt;"
+
+        else if genericParametersCount > 1
+
+          span.CallableExpressionScheme--YDF_DK-Bracket.CallableExpressionScheme--YDF_DK-Bracket__OneLine= "&lt;"
+
+          each genericParameter, index in genericParameters
+
+            if isString(genericParameter)
+
+              span.CallableExpressionScheme--YDF_DK-GenericParameter-Name= genericParameter
+
+            else
+
+              span.CallableExpressionScheme--YDF_DK-GenericParameter-Name= genericParameter.name
+              span.CallableExpressionScheme--YDF_DK-GenericParameter-ExtendingNotation ➝
+              span.CallableExpressionScheme--YDF_DK-GenericParameter-Name= genericParameter.extends
+
+            if index < genericParametersCount - 1
+
+              span.CallableExpressionScheme--YDF_DK-GenericParameter-Comma ,
+
+          span.CallableExpressionScheme--YDF_DK-Bracket= "&gt;"
+
+        span.CallableExpressionScheme--YDF_DK-Bracket (
 
         if isNonEmptyArray(parametersSpecification)
 

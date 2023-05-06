@@ -1,4 +1,4 @@
-import type InputtedValueValidation from "@Controls/_Validation/InputtedValueValidation";
+import type InputtedValueValidation from "./InputtedValueValidation";
 
 
 const inputtedValueValidationLocalization__english: InputtedValueValidation.Localization = {

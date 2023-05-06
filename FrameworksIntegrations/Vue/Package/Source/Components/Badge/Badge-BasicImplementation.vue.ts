@@ -1,12 +1,12 @@
 /* --- Assets ------------------------------------------------------------------------------------------------------- */
 import componentTemplate from "./Badge-BasicImplementation.vue.pug";
-import Badge from "@Components/Badge/Badge.vue";
+import Badge from "./Badge.vue";
 
 /* --- Framework ---------------------------------------------------------------------------------------------------- */
-import { Options as VueComponentConfiguration } from "vue-property-decorator";
+import { Component as VueComponentOptions } from "vue-facing-decorator";
 
 
-@VueComponentConfiguration({
+@VueComponentOptions({
   name: "Badge--YDF",
   template: componentTemplate
 })

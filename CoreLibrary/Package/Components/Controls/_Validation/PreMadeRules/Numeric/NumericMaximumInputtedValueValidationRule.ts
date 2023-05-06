@@ -1,10 +1,10 @@
-import type InputtedValueValidationRule from "@Controls/_Validation/InputtedValueValidationRule";
+import type InputtedValueValidation from "../../InputtedValueValidation";
 import numericMaximumInputtedValueValidationRuleLocalization__english from
-    "@Controls/_Validation/PreMadeRules/Numeric/NumericMaximumInputtedValueValidationRuleLocalization.english";
+    "./NumericMaximumInputtedValueValidationRuleLocalization.english";
 import { isNumber, isNotUndefined, Logger, InvalidParameterValueError } from "@yamato-daiwa/es-extensions";
 
 
-class NumericMaximumInputtedValueValidationRule implements InputtedValueValidationRule {
+class NumericMaximumInputtedValueValidationRule implements InputtedValueValidation.Rule {
 
   public static localization: NumericMaximumInputtedValueValidationRule.Localization =
       numericMaximumInputtedValueValidationRuleLocalization__english;
@@ -17,7 +17,7 @@ class NumericMaximumInputtedValueValidationRule implements InputtedValueValidati
 
   public constructor(
     compoundParameter:
-        InputtedValueValidationRule.ConstructorParameter &
+        InputtedValueValidation.Rule.ConstructorParameter &
         Readonly<{
           maximalNumericValue: number;
           errorMessageBuilder?: NumericMaximumInputtedValueValidationRule.ErrorMessage.Builder;
@@ -42,7 +42,7 @@ class NumericMaximumInputtedValueValidationRule implements InputtedValueValidati
   }
 
 
-  public check(rawValue: unknown): InputtedValueValidationRule.CheckingResult {
+  public check(rawValue: unknown): InputtedValueValidation.Rule.CheckingResult {
 
     if (!isNumber(rawValue)) {
 

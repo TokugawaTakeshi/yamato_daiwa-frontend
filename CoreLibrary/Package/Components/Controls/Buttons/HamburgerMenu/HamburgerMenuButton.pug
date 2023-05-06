@@ -1,6 +1,13 @@
+//-
+  [ References ]
+  Animation: https://www.w3schools.com/howto/howto_css_menu_icon.asp
+  Accessibility: https://www.accede-web.com/en/guidelines/rich-interface-components/hamburger-menu/
+
 mixin HamburgerMenuButton--YDF
 
-  button.HamburgerMenuButton--YDF&attributes(attributes)
+  button.HamburgerMenuButton--YDF(
+    type="button"
+  )&attributes(attributes)
 
     +HamburgerMenu--YDF_Icon.HamburgerMenuButton--YDF-Icon
 

@@ -1,0 +1,225 @@
+TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MUST_NOT_BE...)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "TextElementHeightSizing",
+    targetParameterNumber: 1,
+    targetParameter: textElementHeightSizingSpecification,
+    schema: TextElementHeightSizingSpecificationSchema,
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+  sizingType = textElementHeightSizingSpecification.type
+  fixedHeight = textElementHeightSizingSpecification.fixedHeight
+
+
+  // ━━━ Font ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  fontFamily = textElementHeightSizingSpecification.fontFamily
+  fontSize = textElementHeightSizingSpecification.fontSize
+  fixedLinesCount = textElementHeightSizingSpecification.fixedLinesCount
+
+
+  font-family fontFamily
+  font-size fontSize
+
+
+  // ━━━ Line height / line spacing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  lineHeight = isNull(textElementHeightSizingSpecification.lineHeight) ?\
+    getLineHeightByFontSizeAndLineSpacing({
+      fontSize: fontSize,
+      lineSpacing: textElementHeightSizingSpecification.lineSpacing,
+      mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0:
+          textElementHeightSizingSpecification.mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0,
+      mustOutputDimensionalQuantityIfPossible: textElementHeightSizingSpecification.mustApplyDimensionalLineHeightIfPossible
+    }) :
+    textElementHeightSizingSpecification.lineHeight
+
+
+  line-height lineHeight
+
+
+  // ━━━ Paddings ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  topBasicPadding = getFirstNonNullArrayElement(
+    arrayConstructor__POLYFILL(
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.paddings, "all"),
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.paddings, "verticalSymmetric"),
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.paddings, "top")
+    )
+  )
+
+  bottomBasicPadding = getFirstNonNullArrayElement(
+    arrayConstructor__POLYFILL(
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.paddings, "all"),
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.paddings, "verticalSymmetric"),
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.paddings, "bottom")
+    )
+  )
+
+  isExplicitPaddingZeroDeclarationRequired = textElementHeightSizingSpecification.isExplicitPaddingZeroDeclarationRequired
+  paddingsVerticalUpwardShifting = getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.paddings, "upwardShifting")
+
+  extraSpaceCausedByLineHeightAtTopOrBottom = null
+
+  if textElementHeightSizingSpecification.mustReduceVerticalPaddingsByExtraSpaceCausedByLineHeight
+
+    extraSpaceCausedByLineHeightAtTopOrBottom = computeExtraSpaceCausedByLineHeightAtTopOrBottom({
+      fontSize: fontSize,
+      lineHeight: textElementHeightSizingSpecification.lineHeight,
+      lineSpacing: textElementHeightSizingSpecification.lineSpacing
+    })
+
+
+  if isNull(topBasicPadding) || removeUnitFromAmount(topBasicPadding) == 0
+
+    if isExplicitPaddingZeroDeclarationRequired
+
+      padding-top 0
+
+  else
+
+    correctedTopPaddings = buildCalcExpressionFromFragments({
+      topBasicPadding: nullToZero(topBasicPadding),
+      paddingsVerticalUpwardShifting: @() {
+        if (isNotNull(paddingsVerticalUpwardShifting)) {
+          return " - " + paddingsVerticalUpwardShifting
+        }
+      }
+      mustReduceVerticalPaddingsByExtraSpaceCausedByLineHeight: @() {
+        if (isNotNull(extraSpaceCausedByLineHeightAtTopOrBottom)) {
+          return " - " + lineHeight
+        }
+      }
+    })
+
+    padding-top correctedTopPaddings
+
+
+  if isNull(topBasicPadding) || removeUnitFromAmount(bottomBasicPadding) == 0
+
+    if isExplicitPaddingZeroDeclarationRequired
+
+      padding-bottom 0
+
+  else
+
+    correctedBottomPaddings = buildCalcExpressionFromFragments({
+      topBasicPadding: nullToZero(bottomBasicPadding),
+      paddingsVerticalUpwardShifting: @() {
+        if (isNotNull(paddingsVerticalUpwardShifting)) {
+          return " + " + paddingsVerticalUpwardShifting
+        }
+      }
+      mustReduceVerticalPaddingsByExtraSpaceCausedByLineHeight: @() {
+        if (isNotNull(extraSpaceCausedByLineHeightAtTopOrBottom)) {
+          return " - " + lineHeight
+        }
+      }
+    })
+
+    padding-bottom correctedBottomPaddings
+
+
+  // ━━━ Borders ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  topBorder = getFirstNonNullArrayElement(
+    arrayConstructor__POLYFILL(
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.borders, "all"),
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.borders, "verticalSymmetric"),
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.borders, "top")
+    )
+  )
+
+  bottomBorder = getFirstNonNullArrayElement(
+    arrayConstructor__POLYFILL(
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.borders, "all"),
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.borders, "verticalSymmetric"),
+      getObjectValueByDotSeparatedPathSafely(textElementHeightSizingSpecification.borders, "bottom")
+    )
+  )
+
+  isExplicitBorderNoneDeclarationRequired = textElementHeightSizingSpecification.isExplicitBorderNoneDeclarationRequired
+
+  if isNull(topBorder) || removeUnitFromAmount(topBorder) == 0
+
+    if isExplicitBorderNoneDeclarationRequired
+
+      border-top-width 0
+
+  else
+
+    border-top-width topBorder
+
+
+  if isNull(bottomBorder) || removeUnitFromAmount(bottomBorder) == 0
+
+    if isExplicitBorderNoneDeclarationRequired
+
+      border-bottom-width 0
+
+  else
+
+    border-bottom-width bottomBorder
+
+
+
+  // ━━━ Height ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  if sizingType == TextElementHeightSizingTypes.natural && textElementHeightSizingSpecification.mustFixateHeight
+
+    height = buildCalcExpression(\
+      "${topBorderWidth} + ${bottomBorderWidth} + " +\
+      "${topPadding} + ${bottomPadding} + " +\
+      "${linesCount}*${fontSize} + ${lineSpacing}*(${linesCount} - 1)",\
+      {
+        topBorderWidth: nullToZero(topBorderWidth),
+        bottomBorderWidth: nullToZero(bottomBorderWidth),
+        topPadding: nullToZero(topPadding),
+        bottomPadding: nullToZero(bottomPadding),
+        linesCount: linesCount,
+        fontSize: fontSize,
+        lineSpacing: lineSpacing
+      }
+    )
+
+    height: computeTotalHeightByTextElementHeightSizingSpecification(textElementHeightSizingSpecification)
+
+  else if sizingType == TextElementHeightSizingTypes.fixed
+
+    height fixedHeight
+
+
+specifyTextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MUST_NOT_BE...)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "specifyTextElementHeightSizing",
+    targetParameterNumber: 1,
+    targetParameter: textElementHeightSizingSpecification,
+    schema: TextElementHeightSizingSpecificationSchema,
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+  return {
+
+    type: textElementHeightSizingSpecification.type,
+    fixedHeight: textElementHeightSizingSpecification.fixedHeight,
+
+    topOrBottomSymmetricBordersWidths: textElementHeightSizingSpecification.topOrBottomSymmetricBordersWidths,
+    topBorderWidth: textElementHeightSizingSpecification.topBorderWidth,
+    bottomBorderWidth: textElementHeightSizingSpecification.bottomBorderWidth,
+    isExplicitBorderNoneDeclarationRequired: textElementHeightSizingSpecification.isExplicitBorderNoneDeclarationRequired,
+
+    topOrBottomSymmetricPaddings: textElementHeightSizingSpecification.topOrBottomSymmetricPaddings,
+    topPadding: textElementHeightSizingSpecification.topPadding,
+    bottomPadding: textElementHeightSizingSpecification.bottomPadding,
+    paddingsOffset: textElementHeightSizingSpecification.paddingsOffset,
+    isExplicitPaddingZeroDeclarationRequired: textElementHeightSizingSpecification.isExplicitPaddingZeroDeclarationRequired,
+
+    fontFamily: textElementHeightSizingSpecification.fontFamily,
+    fontSize: textElementHeightSizingSpecification.fontSize,
+    lineSpacing: textElementHeightSizingSpecification.lineSpacing,
+    lineHeight: textElementHeightSizingSpecification.lineHeight,
+    mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0: textElementHeightSizingSpecification.mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0,
+    mustApplyDimensionalLineHeightIfPossible: textElementHeightSizingSpecification.mustApplyDimensionalLineHeightIfPossible,
+    fixedLinesCount: textElementHeightSizingSpecification.fixedLinesCount,
+
+    mustFixateHeight: textElementHeightSizingSpecification.mustFixateHeight
+
+  }

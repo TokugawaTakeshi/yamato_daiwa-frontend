@@ -5,6 +5,8 @@
 
 ${NAME}--YDF = {
 
+  componentIndependentCSS_Class: "RegularTheme--YDF",
+
   defaultProperties: {
 
     themes: {
@@ -19,16 +21,90 @@ ${NAME}--YDF = {
         }
       }
     }
+  },
+  
+  defaultOptions: {
+    themeIndependentStylesOnly: false,
+    areThemesCSS_ClassesCommon: false,
+    loadingPlaceholder: true,
+    themeIndependentGeometricVariations: true,
+    geometricModifiers: {
+      pillShape: true,
+      squareShape: true,
+      singleLine: true
+    },
+    decorativeModifiers: {
+      bordersDisguising: true
+    }
   }
+  
 }
 
 
-provide${NAME}YDF_Component(preset = ${NAME}--YDF.defaultProperties, overridings = {})
+provide${NAME}YDF_Component(
+  preset = Button--YDF.defaultProperties,
+  overridings = {},
+  options = Button--YDF.defaultOptions,
+  restParameters__MUST_NOT_BE...
+)
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
+  
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "provide${NAME}YDF_Component",
+    targetParameterNumber: 3,
+    targetParameter: options,
+    schema: {
+      themeIndependentStylesOnly: {
+        type: DataTypes.boolean,
+        defaultValue: ${NAME}--YDF.defaultOptions.themeIndependentStylesOnly
+      },
+      areThemesCSS_ClassesCommon: {
+        type: DataTypes.boolean,
+        defaultValue: ${NAME}--YDF.defaultOptions.externalThemes
+      },
+      loadingPlaceholder: {
+        type: DataTypes.boolean,
+        defaultValue: ${NAME}--YDF.defaultOptions.loadingPlaceholder
+      },
+      themeIndependentGeometricVariations: {
+        type: DataTypes.boolean,
+        defaultValue: ${NAME}--YDF.defaultOptions.themeIndependentGeometricVariations
+      },
+      geometricModifiers: {
+        type: DataTypes.object,
+        properties: {
+          pillShape: {
+            type: DataTypes.boolean,
+            defaultValue: ${NAME}--YDF.defaultOptions.geometricModifiers.pillShape
+          },
+          squareShape: {
+            type: DataTypes.boolean,
+            defaultValue: ${NAME}--YDF.defaultOptions.geometricModifiers.squareShape
+          },
+          singleLine: {
+            type: DataTypes.boolean,
+            defaultValue: ${NAME}--YDF.defaultOptions.geometricModifiers.singleLine
+          }
+        },
+        defaultValue: ${NAME}--YDF.defaultOptions.geometricModifiers
+      },
+      decorativeModifiers: {
+        type: DataTypes.object,
+        properties: {
+          bordersDisguising: {
+            type: DataTypes.boolean,
+            defaultValue: ${NAME}--YDF.defaultOptions.decorativeModifiers.bordersDisguising
+          }
+        },
+        defaultValue: ${NAME}--YDF.defaultOptions.decorativeModifiers.bordersDisguising
+      }
+    },
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
 
 
-  // === Methods =======================================================================================================
+  // ━━━ Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   applyBasicRules()
 
     .${NAME}
@@ -37,11 +113,11 @@ provide${NAME}YDF_Component(preset = ${NAME}--YDF.defaultProperties, overridings
        display flex
 
 
-  // --- Geometry ------------------------------------------------------------------------------------------------------
+  // ─── Geometry ──────────────────────────────────────────────────────────────────────────────────────────────────────
   applyGeometricVariation(themeName, variationName, variation)
 
     VARIATION_DATA_FOR_LOGGING = buildString(
-      "${NAME}.\${themeName}Theme.\${variationName}Geometry",
+      "${NAME}.\${ themeName }Theme.\${ variationName }Geometry",
       { themeName: themeName, variationName: variationName }
     )
 
@@ -75,11 +151,11 @@ provide${NAME}YDF_Component(preset = ${NAME}--YDF.defaultProperties, overridings
       })
 
 
-  // --- Decoration ----------------------------------------------------------------------------------------------------
+  // ─── Decoration ────────────────────────────────────────────────────────────────────────────────────────────────────
   applyDecorativeVariation(themeName, variationName, variation)
 
     VARIATION_DATA_FOR_LOGGING = buildString(
-      "${NAME}.\${themeName}Theme.\${variationName}Decoration",
+      "${NAME}.\${ themeName }Theme.\${ variationName }Decoration",
       {
         themeName: themeName,
         variationName: variationName
@@ -109,7 +185,7 @@ provide${NAME}YDF_Component(preset = ${NAME}--YDF.defaultProperties, overridings
       })
 
 
-  // === Applying ======================================================================================================
+  // ━━━ Applying ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   applyBasicRules()
 
   applyComponentThemes({

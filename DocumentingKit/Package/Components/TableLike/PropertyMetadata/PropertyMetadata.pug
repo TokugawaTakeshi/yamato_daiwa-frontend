@@ -1,0 +1,64 @@
+include PropertyMetadata.class.pug
+
+
+mixin PropertyMetadata--YDF_DK(propertySpecification)
+
+  dl.PropertyMetadata--YDF_DK
+
+    if propertySpecification.localizedInterpretation
+
+      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.localizedInterpretation
+      dd.PropertyMetadata--YDF_DK-Value= propertySpecification.localizedInterpretation
+
+    dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.type
+    dd.PropertyMetadata--YDF_DK-Value(
+      class="PropertyMetadata--YDF_DK-Value__Accented"
+    )
+
+      case propertySpecification.type
+
+        when Number
+          | number
+
+        when String
+          | string
+
+        when Boolean
+          | boolean
+
+        default
+
+          | #{ propertySpecification.type }
+
+
+    //- [ Theory ] "defaultValue" could be added in the documentation above `required.false`.
+    if isNotUndefined(propertySpecification.defaultValue)
+
+      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.defaultvalue
+      dd.PropertyMetadata--YDF_DK-Value= propertySpecification.defaultValue
+
+    else if propertySpecification.required === true
+
+      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.required
+      dd.PropertyMetadata--YDF_DK-Value= PropertyMetadata__YDF_DK.localization.yes
+
+    else if propertySpecification.required === false
+
+      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.required
+      dd.PropertyMetadata--YDF_DK-Value= PropertyMetadata__YDF_DK.localization.no
+
+
+    if propertySpecification.allowedAlternatives
+      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.allowedAlternatives
+      dd.PropertyMetadata--YDF_DK-Value
+        ul
+          each allowedAlternative in propertySpecification.allowedAlternatives
+            li
+              if isString(allowedAlternative)
+                | #{ allowedAlternative }
+              else if Array.isArray(allowedAlternative)
+                each segment in allowedAlternative
+                  if segment.text
+                    | #{ segment.text }
+                  else if segment.code
+                    code= segment.code

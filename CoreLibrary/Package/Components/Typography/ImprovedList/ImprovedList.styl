@@ -73,7 +73,8 @@ provideImprovedListYDF_Component(preset = ImprovedList--YDF.defaultProperties, o
 
     &-TargetContent
 
-      MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
         fontSize: BASIC_FONT_SIZE,
-        lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS
+        lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS,
+        mustAllowWordsBreakingAnywhere: true
       })

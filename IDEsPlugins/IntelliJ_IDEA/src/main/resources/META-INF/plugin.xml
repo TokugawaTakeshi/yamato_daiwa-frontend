@@ -12,6 +12,8 @@
         <defaultLiveTemplates file="liveTemplates/Yamato Daiwa Frontend - Stylus.xml"/>
         <defaultLiveTemplates file="liveTemplates/Yamato Daiwa Frontend - Vue_TypeScript.xml"/>
 
+        <fileTemplateGroup implementation="com.yamato_daiwa.ydf.intellij_idea_plugin.YDF_GUI_ComponentsTemplatesGroupFactory"/>
+
     </extensions>
 
 </idea-plugin>

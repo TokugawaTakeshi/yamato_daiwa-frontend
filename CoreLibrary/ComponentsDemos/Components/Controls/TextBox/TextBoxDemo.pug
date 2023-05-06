@@ -1,0 +1,198 @@
+mixin TextBoxDemo(options)
+
+  -
+
+    options = options ?? {
+      headings: true,
+      partials: {
+        defaultOptionals: true,
+        guidanceAndPlaceholder: true,
+        statesSimulations: {
+          invalidInput: true,
+          asynchronousValidation: true
+        }
+      }
+    }
+
+    ThemesShowcase__YDF.
+        setDefaultThemeKeyLabelPrefix("TextBox__YDF.Themes.").
+        setDefaultGeometricVariationLabelPrefix("TextBox__YDF.GeometricVariations.").
+        setDefaultDecorativeVariationLabelPrefix("TextBox__YDF.DecorativeVariations.");
+
+    const themeShowcaseCurrentIterationData = ThemesShowcase__YDF.initializeCurrentIterationData()
+
+
+  if options.headings
+
+    h1.Heading1 TextBox component testing
+
+
+  //- ━━━ Default optionals ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  if options.partials.defaultOptionals
+
+    if options.headings
+
+      h2.Heading2 Default optionals
+
+    +ThemesShowcase--YDF({
+      themes: TextBox__YDF.Themes,
+      geometricVariations: TextBox__YDF.GeometricVariations,
+      decorativeVariations: TextBox__YDF.DecorativeVariations,
+      iterationData: themeShowcaseCurrentIterationData
+    })
+
+      .TextBoxDemo-LinearFlow
+
+        +TextBox--YDF({
+          label: "Sample",
+          theme: themeShowcaseCurrentIterationData.theme.value,
+          geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+          decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+        })
+
+        +TextBox--YDF({
+          HTML_Type: TextBox__YDF.HTML_Types.email,
+          label: "Email",
+          value: "example@examplemail.com",
+          theme: themeShowcaseCurrentIterationData.theme.value,
+          geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+          decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+        })
+
+        +TextBox--YDF({
+          HTML_Type: TextBox__YDF.HTML_Types.number,
+          label: "Number",
+          value: "8",
+          theme: themeShowcaseCurrentIterationData.theme.value,
+          geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+          decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+        })
+
+
+    //- ━━━ Guidance and placeholder ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    if options.partials.guidanceAndPlaceholder
+
+      if options.headings
+
+        h2.Heading2 Guidance and placeholder
+
+      +ThemesShowcase--YDF({
+        themes: TextBox__YDF.Themes,
+        geometricVariations: TextBox__YDF.GeometricVariations,
+        decorativeVariations: TextBox__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData
+      })
+
+        .TextBoxDemo-LinearFlow
+
+          +TextBox--YDF({
+            label: "Sample",
+            guidance: "Please input **8-16** characters",
+            placeholder: "Input here please",
+            theme: themeShowcaseCurrentIterationData.theme.value,
+            geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+            decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+          })
+
+          +TextBox--YDF({
+            label: "Sample",
+            guidance: "Please input **8-16** characters",
+            placeholder: "Input here please",
+            required: true,
+            mustDisplayAppropriateBadgeIfInputIsRequired: true,
+            theme: themeShowcaseCurrentIterationData.theme.value,
+            geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+            decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+          })
+
+          +TextBox--YDF({
+            label: "Sample",
+            guidance: "Please input **8-16** characters",
+            placeholder: "Input here please",
+            required: false,
+            mustDisplayAppropriateBadgeIfInputIsOptional: true,
+            theme: themeShowcaseCurrentIterationData.theme.value,
+            geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+            decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+          })
+
+          +TextBox--YDF({
+            label: "Very-very long label test: The job requires extra pluck and zeal from every young wage earner.",
+            guidance: "Very-very long guidance text: Jaded zombies acted quaintly but kept driving their oxen forward.",
+            placeholder: "Input here please",
+            theme: themeShowcaseCurrentIterationData.theme.value,
+            geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+            decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+          })
+
+          +TextBox--YDF({
+            label: textOverflowSafetyTest,
+            guidance: textOverflowSafetyTest,
+            placeholder: textOverflowSafetyTest,
+            theme: themeShowcaseCurrentIterationData.theme.value,
+            geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+            decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+          })
+
+
+    //- ━━━ States simulations ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    if options.headings && Array.from(Object.values(options.partials.statesSimulations)).some(isRequired => isRequired)
+
+      h2.Heading2 States simulations
+
+
+    //- ─── Invalid input ─────────────────────────────────────────────────────────────────────────────────────────────
+    if options.partials.statesSimulations.invalidInput
+
+      if options.headings
+
+        h3.Heading3 Invalid input
+
+      +ThemesShowcase--YDF({
+        themes: TextBox__YDF.Themes,
+        geometricVariations: TextBox__YDF.GeometricVariations,
+        decorativeVariations: TextBox__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData
+      })
+
+        +TextBox--YDF(
+          {
+            label: "Sample",
+            guidance: "Input here please",
+            theme: themeShowcaseCurrentIterationData.theme.value,
+            geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+            decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+          },
+          {
+            invalidInputHighlightingIfAnyValidationErrorsMessages: true,
+            validationErrorsMessages: true
+          }
+        )
+
+
+    //- ─── Invalid input ─────────────────────────────────────────────────────────────────────────────────────────────
+    if options.partials.statesSimulations.asynchronousValidation
+
+      if options.headings
+
+        h3.Heading3 Asynchronous validation
+
+      +ThemesShowcase--YDF({
+        themes: TextBox__YDF.Themes,
+        geometricVariations: TextBox__YDF.GeometricVariations,
+        decorativeVariations: TextBox__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData
+      })
+
+        +TextBox--YDF(
+          {
+            label: "Sample",
+            guidance: "Input here please",
+            theme: themeShowcaseCurrentIterationData.theme.value,
+            geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+            decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+          },
+          {
+            asynchronousValidationsStatuses: true
+          }
+        )

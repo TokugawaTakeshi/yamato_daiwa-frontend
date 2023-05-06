@@ -1,10 +1,10 @@
-import type InputtedValueValidationRule from "@Controls/_Validation/InputtedValueValidationRule";
+import type InputtedValueValidation from "../../InputtedValueValidation";
 import numericMinimumInputtedValueValidationRuleLocalization__english from
-    "@Controls/_Validation/PreMadeRules/Numeric/NumericMinimumInputtedValueValidationRuleLocalization.english";
+    "./NumericMinimumInputtedValueValidationRuleLocalization.english";
 import { isNumber, isNotUndefined, Logger, InvalidParameterValueError } from "@yamato-daiwa/es-extensions";
 
 
-class NumericMinimumInputtedValueValidationRule implements InputtedValueValidationRule {
+class NumericMinimumInputtedValueValidationRule implements InputtedValueValidation.Rule {
 
   public static localization: NumericMinimumInputtedValueValidationRule.Localization =
       numericMinimumInputtedValueValidationRuleLocalization__english;
@@ -16,7 +16,7 @@ class NumericMinimumInputtedValueValidationRule implements InputtedValueValidati
 
   public constructor(
     compoundParameter:
-        InputtedValueValidationRule.ConstructorParameter &
+        InputtedValueValidation.Rule.ConstructorParameter &
         Readonly<{
           minimalNumericValue: number;
           errorMessageBuilder?: NumericMinimumInputtedValueValidationRule.ErrorMessage.Builder;
@@ -41,7 +41,7 @@ class NumericMinimumInputtedValueValidationRule implements InputtedValueValidati
   }
 
 
-  public check(rawValue: unknown): InputtedValueValidationRule.CheckingResult {
+  public check(rawValue: unknown): InputtedValueValidation.Rule.CheckingResult {
 
     if (!isNumber(rawValue)) {
 

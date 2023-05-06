@@ -9,16 +9,6 @@ The toolkit for the frontend development with [Pug](https://pugjs.org/api/gettin
 ![Hero image of @yamato-daiwa/frontend](https://repository-images.githubusercontent.com/376180981/885d8a83-98a8-47d0-b2e2-5abf042ef184)
 
 
-## ⚠️ Request to Stack Overflow users with `>=1500` reputation
-
-[My account](https://stackoverflow.com/users/4818123/takeshi-tokugawa-yd) has not enough reputation to create the tag
-for `@yamato-daiwa/frontend` and start to answer the related questions. Please create it instead of me and notify
-me to [tokugawa.takesi@gmail.com](mailto:tokugawa.takesi@gmail.com).
-
-* **Tag name**: `@yamato-daiwa/frontend`
-* **Description**: The toolkit for the frontend development with Pug and Stylus pre-processors.
-
-
 ## Installation
 
 ```

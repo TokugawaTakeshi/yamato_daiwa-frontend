@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExportableFileTemplateSettings">
+    <default_templates>
+      <template name="Compoent demo.pug" file-name="${COMPONENT_NAME}Demo" reformat="false" live-template-enabled="false">
+        <template name="Compoent demo.pug.child.0.styl" file-name="${COMPONENT_NAME}Demo" reformat="false" live-template-enabled="false" />
+      </template>
+      <template name="Compoent demo.pug.child.0.styl" file-name="${COMPONENT_NAME}Demo" reformat="false" live-template-enabled="false" />
+      <template name="Page.pug" file-name="${COMPONENT_NAME}" reformat="false" live-template-enabled="false">
+        <template name="Page.pug.child.0.styl" file-name="${COMPONENT_NAME}" reformat="false" live-template-enabled="false" />
+      </template>
+      <template name="Page.pug.child.0.styl" file-name="${COMPONENT_NAME}" reformat="false" live-template-enabled="false" />
+    </default_templates>
+  </component>
+</project>

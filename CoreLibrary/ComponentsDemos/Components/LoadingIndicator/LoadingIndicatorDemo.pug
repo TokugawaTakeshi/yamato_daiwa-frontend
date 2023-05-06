@@ -1,0 +1,32 @@
+mixin LoadingIndicatorDemo
+
+  -
+
+    ThemesShowcase__YDF.
+        setDefaultThemeKeyLabelPrefix("LoadingIndicator__YDF.Themes.").
+        setDefaultGeometricVariationLabelPrefix("LoadingIndicator__YDF.GeometricVariations.").
+        setDefaultDecorativeVariationLabelPrefix("LoadingIndicator__YDF.DecorativeVariations.");
+
+    const themeShowcaseCurrentIterationData = ThemesShowcase__YDF.initializeCurrentIterationData();
+
+
+  +ThemesShowcase--YDF({
+    themes: LoadingIndicator__YDF.Themes,
+    geometricVariations: LoadingIndicator__YDF.GeometricVariations,
+    decorativeVariations: LoadingIndicator__YDF.DecorativeVariations,
+    iterationData: themeShowcaseCurrentIterationData
+  })
+
+    +LoadingIndicator--YDF({
+      type: LoadingIndicator__YDF.Types.variableWidthArcSpinner,
+      theme: themeShowcaseCurrentIterationData.theme.value,
+      geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+      decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+    })
+
+    +LoadingIndicator--YDF({
+      type: LoadingIndicator__YDF.Types.twoConstantWidthArcsSpinner,
+      theme: themeShowcaseCurrentIterationData.theme.value,
+      geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
+      decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
+    })

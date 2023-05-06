@@ -1,10 +1,12 @@
-@require "Themes/Regular/GeometricVariations/AttentionBox-RegularGeometry.styl"
-@require "Themes/Regular/DecorativeVariations/AttentionBox-NoticeDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/AttentionBox-ErrorDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/AttentionBox-WarningDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/AttentionBox-SuccessDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/AttentionBox-GuidanceDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/AttentionBox-QuestionDecoration.styl"
+@require "Themes/Regular/GeometricVariations/AttentionBox-RegularTheme-RegularGeometry.styl"
+@require "Themes/Regular/GeometricVariations/AttentionBox-RegularTheme-StickyNoteLikeGeometry.styl"
+
+@require "Themes/Regular/DecorativeVariations/AttentionBox-RegularTheme-NoticeDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-RegularTheme-ErrorDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-RegularTheme-WarningDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-RegularTheme-SuccessDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-RegularTheme-GuidanceDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/AttentionBox-RegularTheme-QuestionDecoration.styl"
 
 
 AttentionBox--YDF = {
@@ -17,33 +19,38 @@ AttentionBox--YDF = {
       regular: {
 
         geometricVariations: {
-          regular: AttentionBox-RegularGeometry--YDF
+          regular: AttentionBox-RegularTheme-RegularGeometry--YDF,
+          stickyNoteLike: AttentionBox-RegularTheme-StickyNoteLikeGeometry--YDF
         },
 
         decorativeVariations: {
-          notice: AttentionBox__NoticeDecoration--YDF,
-          error: AttentionBox__ErrorDecoration--YDF,
-          warning: AttentionBox__WarningDecoration--YDF,
-          success: AttentionBox__SuccessDecoration--YDF,
-          guidance: AttentionBox__GuidanceDecoration--YDF,
-          question: AttentionBox__QuestionDecoration--YDF
+          notice: AttentionBox-RegularTheme-NoticeDecoration--YDF,
+          error: AttentionBox-RegularTheme-ErrorDecoration--YDF,
+          warning: AttentionBox-RegularTheme-WarningDecoration--YDF,
+          success: AttentionBox-RegularTheme-SuccessDecoration--YDF,
+          guidance: AttentionBox-RegularTheme-GuidanceDecoration--YDF,
+          question: AttentionBox-RegularTheme-QuestionDecoration--YDF
         }
 
       }
     }
+
+  },
+
+  defaultOptions: {
+    themeIndependentStylesOnly: false,
+    externalThemes: false,
+    themeIndependentGeometricVariations: true,
+    typographyAssimilation: false
   }
+
 }
 
 
 provideAttentionBoxYDF_Component(
   preset = AttentionBox--YDF.defaultProperties,
   overridings = {},
-  options = {
-    themeIndependentStylesOnly: false,
-    typographyAssimilation: false,
-    externalThemes: false,
-    loadingPlaceholder: true
-  },
+  options = AttentionBox--YDF.defaultOptions,
   restParameters__MUST_NOT_BE...
 )
 
@@ -56,38 +63,52 @@ provideAttentionBoxYDF_Component(
     schema: {
       themeIndependentStylesOnly: {
         type: DataTypes.boolean,
-        required: true
+        defaultValue: AttentionBox--YDF.defaultOptions.themeIndependentStylesOnly
       },
       externalThemes: {
         type: DataTypes.boolean,
-        required: true
+        defaultValue: AttentionBox--YDF.defaultOptions.externalThemes
       },
-      loadingPlaceholder: {
+      themeIndependentGeometricVariations: {
         type: DataTypes.boolean,
-        required: true
+        defaultValue: AttentionBox--YDF.defaultOptions.themeIndependentGeometricVariations
+      },
+      typographyAssimilation: {
+        type: DataTypes.boolean,
+        defaultValue: AttentionBox--YDF.defaultOptions.typographyAssimilation
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
   })
 
 
-  // === Methods declarations ==========================================================================================
+  // === Methods =======================================================================================================
   applyBasicRules()
 
     .AttentionBox--YDF
 
-      display flex
+      display grid
+      grid-template-areas\
+          "PREPENDED_SVG_ICON TITLE DISMISSING_BUTTON"\
+          "PREPENDED_SVG_ICON MAIN_CONTENT DISMISSING_BUTTON"
+      grid-template-rows auto 1fr
+      grid-template-columns auto minmax(0, 1fr) auto
       align-items center
 
 
       &-SVG_Icon
 
-        flex-shrink 0
+        grid-area PREPENDED_SVG_ICON
 
 
-      &-MainSection
+      &-Title
 
-        flex-grow 1
+        grid-area TITLE
+
+
+      &-MainContent
+
+        grid-area MAIN_CONTENT
 
 
       &-DismissingButton
@@ -95,6 +116,8 @@ provideAttentionBoxYDF_Component(
         ButtonLikeElementsPrimer()
 
         cursor pointer
+
+        grid-area DISMISSING_BUTTON
 
 
         &-Icon
@@ -121,11 +144,10 @@ provideAttentionBoxYDF_Component(
 
     VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
       "AttentionBox.${themeName}Theme.${variationName}Geometry",
-      {
-        themeName: themeName,
-        variationName: variationName
-      }
+      { themeName: themeName, variationName: variationName }
     )
+
+    CONTEXT_SELECTOR = selector() == "&" ? null : selector()
 
 
     +provideDefaultSelectorWhenRootAndApply(".AttentionBox--YDF")
@@ -166,28 +188,70 @@ provideAttentionBoxYDF_Component(
       })
 
 
-    .AttentionBox--YDF-MainSection
+    .AttentionBox--YDF-Title
 
       applyTextGeometryWithoutExtraSpaceCausedByLineHeight(
         extractAndValidateObjectProperties({
           targetObject: variation,
           targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
           extracts: {
-            fontSize: { dotSeparatedPath: "mainSection.text.size", required: true },
-            lineSpacing: { dotSeparatedPath: "mainSection.text.lineSpacing", required: false },
-            lineHeight: { dotSeparatedPath: "mainSection.text.lineHeight", mustBeInsteadOf: "mainSection.text.lineSpacing" }
+            fontSize: { dotSeparatedPath: "title.text.size", required: true },
+            lineSpacing: { dotSeparatedPath: "title.text.lineSpacing", required: false },
+            lineHeight: { dotSeparatedPath: "title.text.lineHeight", mustBeInsteadOf: "title.text.lineSpacing" }
           }
         })
       )
 
       retireFrom({
         targetElementSelector: ".AttentionBox--YDF-SVG_Icon",
-        referenceElementSelector: selector(),
+        referenceElementSelector: ".AttentionBox--YDF-Title",
+        contextSelector: CONTEXT_SELECTOR,
         x: extractAndValidateObjectProperties({
           targetObject: variation,
           targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
           extracts: {
-            afterSVG_Icon: { dotSeparatedPath: "mainSection.spacing.afterSVG_Icon", required: true }
+            spacingAfterMainSection: { dotSeparatedPath: "title.spacing.afterSVG_Icon", required: true }
+          }
+        }).spacingAfterMainSection
+      })
+
+
+    .AttentionBox--YDF-MainContent
+
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight(
+        extractAndValidateObjectProperties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          extracts: {
+            fontSize: { dotSeparatedPath: "mainContent.text.size", required: true },
+            lineSpacing: { dotSeparatedPath: "mainContent.text.lineSpacing", required: false },
+            lineHeight: { dotSeparatedPath: "mainContent.text.lineHeight", mustBeInsteadOf: "mainContent.text.lineSpacing" }
+          }
+        })
+      )
+
+      retireFrom({
+        targetElementSelector: ":is(.AttentionBox--YDF-SVG_Icon, .AttentionBox--YDF-Title)",
+        referenceElementSelector: ".AttentionBox--YDF-MainContent",
+        contextSelector: CONTEXT_SELECTOR,
+        x: extractAndValidateObjectProperties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          extracts: {
+            afterSVG_Icon: { dotSeparatedPath: "mainContent.spacing.afterSVG_Icon", required: true }
+          }
+        }).afterSVG_Icon
+      })
+
+      retireFrom({
+        targetElementSelector: ".AttentionBox--YDF-Title",
+        referenceElementSelector: ".AttentionBox--YDF-MainContent",
+        contextSelector: CONTEXT_SELECTOR,
+        y: extractAndValidateObjectProperties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          extracts: {
+            afterSVG_Icon: { dotSeparatedPath: "mainContent.spacing.afterTitle", required: true }
           }
         }).afterSVG_Icon
       })
@@ -195,16 +259,15 @@ provideAttentionBoxYDF_Component(
 
     .AttentionBox--YDF-DismissingButton
 
-      retireFrom({
-        targetElementSelector: ".AttentionBox--YDF-MainSection",
-        referenceElementSelector: selector(),
-        x: extractAndValidateObjectProperties({
-          targetObject: variation,
-          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
-          extracts: {
-            spacingAfterMainSection: { dotSeparatedPath: "dismissingButton.spacing.afterMainSection", required: true }
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          margin-left: {
+            dotSeparatedPath: "dismissingButton.spacing.afterMainContent",
+            required: true
           }
-        }).spacingAfterMainSection
+        }
       })
 
 
@@ -288,14 +351,26 @@ provideAttentionBoxYDF_Component(
       })
 
 
-    .AttentionBox--YDF-MainSection
+    .AttentionBox--YDF-Title
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
-          font-weight: { dotSeparatedPath: "mainSection.font.weight", required: false },
-          color: { dotSeparatedPath: "mainSection.font.color", required: false }
+          font-weight: { dotSeparatedPath: "title.text.fontWeight", required: false },
+          color: { dotSeparatedPath: "title.text.color", required: false }
+        }
+      })
+
+
+    .AttentionBox--YDF-MainContent
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          font-weight: { dotSeparatedPath: "mainContent.font.weight", required: false },
+          color: { dotSeparatedPath: "mainContent.font.color", required: false }
         }
       })
 

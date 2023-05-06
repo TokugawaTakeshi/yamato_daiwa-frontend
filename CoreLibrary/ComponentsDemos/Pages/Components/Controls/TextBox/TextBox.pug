@@ -1,0 +1,30 @@
+extends ../../../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+block append Requirements
+
+  include ../../../../node_modules/@yamato-daiwa/frontend/Components.pug
+  include ../../../../Components/Controls/TextBox/TextBoxDemo.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_TITLE = "TextBox component demo";
+
+    styleSheetsURIs = [ "@Demos/Components/Controls/TextBox/TextBox" ]
+    scriptsURIs.endOfBody = [ "@Demos/Components/Controls/TextBox/TextBox" ]
+
+
+block append PageContent
+
+  .ComponentTestingPageContent
+
+    +TextBox--YDF({
+      label: "Sample",
+      guidance: "Please input **8-16** characters",
+      placeholder: "Input here please",
+      required: true,
+      mustDisplayAppropriateBadgeIfInputIsRequired: true
+    })#SAMPLE

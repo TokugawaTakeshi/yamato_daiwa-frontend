@@ -1,13 +1,13 @@
 provideCompactTableOfContentsComponent()
 
-  .CompactTableOfContents
+  .CompactTableOfContents--YDF_DK
 
     &-Item
 
       retireFromElementWithSameSelector({ y: 6px })
 
 
-      &:has(.CompactTableOfContents-Item-CollapsingToggle)
+      &:has(.CompactTableOfContents--YDF_DK-Item-CollapsingToggle)
 
         display grid
         grid-template-areas "COLLAPSING_TOGGLE LINK_OR_TITLE" "CHILD_LIST CHILD_LIST"
@@ -31,7 +31,7 @@ provideCompactTableOfContentsComponent()
         applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
           fontSize: 14px,
           lineSpacing: 4px,
-          mustAllowWordBreakingAnywhere: true,
+          mustAllowWordsBreakingAnywhere: true,
           mustApplyNegativeMarginsToRootElement: true
         })
 
@@ -109,7 +109,7 @@ provideCompactTableOfContentsComponent()
             fill: YDF_ColorPalette.amber.bright
 
 
-      >.CompactTableOfContents
+      >.CompactTableOfContents--YDF_DK
 
         padding-left 4px
 

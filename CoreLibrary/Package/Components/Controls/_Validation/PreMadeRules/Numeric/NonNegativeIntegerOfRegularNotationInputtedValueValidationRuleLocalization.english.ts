@@ -1,5 +1,6 @@
 import type NonNegativeIntegerOfRegularNotationInputtedValueValidationRule from
-    "@Controls/_Validation/PreMadeRules/Numeric/NonNegativeIntegerOfRegularNotationInputtedValueValidationRule";
+    "./NonNegativeIntegerOfRegularNotationInputtedValueValidationRule";
+
 
 const nonNegativeIntegerOfRegularNotationInputtedValueValidationRuleLocalization__english:
     NonNegativeIntegerOfRegularNotationInputtedValueValidationRule.Localization =

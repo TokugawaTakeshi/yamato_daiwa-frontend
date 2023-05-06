@@ -1,12 +1,12 @@
 /* --- Assets ------------------------------------------------------------------------------------------------------- */
 import componentTemplate from "./Badge-LoadingPlaceholder-BasicImplementation.vue.pug";
-import BadgeLoadingPlaceholder from "@Components/Badge/LoadingPlaceholder/Badge-LoadingPlaceholder-BasicLogic.vue";
+import BadgeLoadingPlaceholder from "./Badge-LoadingPlaceholder-BasicLogic.vue";
 
 /* --- Framework ---------------------------------------------------------------------------------------------------- */
-import { Options as VueComponentConfiguration } from "vue-property-decorator";
+import { Component as VueComponentOptions } from "vue-facing-decorator";
 
 
-@VueComponentConfiguration({
+@VueComponentOptions({
   name: "Badge--YDF-LoadingPlaceholder",
   template: componentTemplate
 })

@@ -3,8 +3,8 @@ extends ../../../../../../../node_modules/@yamato-daiwa/programming_documentatio
 
 block append Requirements
 
-  include ../../../../../../SharedAssets/Markup/Assets.russian.pug
-  include ../../../../../../Components/Components.russian.pug
+  include ../../../../../../SharedAssets/Markup/SharedAssets.russian.pug
+  include ../../../../../../SharedComponents/SharedComponents.russian.pug
 
 
 block append Metadata
@@ -26,9 +26,16 @@ block append Metadata
     RoutingEmulator.setCurrentRoute("coreLibrary.components.controls.buttons.plain");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      [LanguageDropDownList__YDF_DK.supportedLanguages.english]: "#",
-      [LanguageDropDownList__YDF_DK.supportedLanguages.japanese]: "#"
+      english: "#",
+      japanese: "#"
     });
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
 
 
 block append SpecificContent
@@ -131,6 +138,7 @@ block append SpecificContent
     +ComponentMarkupProvidingGuidanceFragment({ pugMixinName: "Button--YDF" })
 
 
+    //- TODO 再開点
     h4.Article-Heading4 Программный интерфейс
 
     +CallableExpressionScheme--YDF_DK({
@@ -162,3 +170,68 @@ block append SpecificContent
           }
         }
       })
+
+
+    h3.Article-Heading3 Стили
+
+
+    h3.Article-Heading3 Логика
+
+    //- Должна быть, потому что с переключением в disable не всё однозначно
+
+
+    h2.Article-Heading2 Сборник примеров
+
+    h3.Article-Heading3 Простейший случай
+
+    p.Article-Paragraph.
+      В простейшем случае требуется:
+
+    ol.Article-OrderedList
+      li Определиться с типом кнопки и указать его, если это не тип по умолчанию
+      li Указать текст кнопки через свойство #[+Term--YDID label]
+      li Добавить кнопке обработчик события
+
+    //- Тут будет листинг с табами
+
+    div
+      +Button--YDF({ label: "Teksto 本文" })
+      //- Будет сгенерирован элемент button с аттрибутом type=button.
+      //- Такая кнопка никак не отреагирует на нажатие, пока не добавить ей обработчик события
+
+      +Button--YDF({
+        label: "Teksto 本文",
+        URI: "#"
+      })
+      //- Указанный URI приведёт к тому, что будет сгенерирован тэг a.
+      //- HTML_Type указывать в данном случае не имеет смысла
+
+      +Button--YDF({
+        label: "Teksto 本文",
+        HTML_Type: Button__YDF.HTML_Types.inputButton
+      })
+      //- Будет сгенерирован тэг input.
+      //- По умолчанию, такая кнопка попытается отправить данные формы form, если находится внутри неё.
+
+
+    h3.Article-Heading3 Устойчивость к переполнению текстом
+
+    h3.Article-Heading3 Иконки
+
+    p.Article-Paragraph.
+      Иконка внутри иконки - проблема, универсальное решение которой не может дать не один фреймворк.
+
+    p.Article-Paragraph.
+      Легче всего обращаться со шрифтовыми иконками, но это достоинство перевешивается огромными недостатками:
+
+    p.Article-Paragraph.
+      Что касается SVG-иконок, то наибольшая их проблема - ...
+      Если мы возьмём ...
+      Может показаться, что это хорошо: легко заменить одну на другую.
+      Но размер SVG-холста и размеры элементов внутри него - разные вещи.
+
+    p.Article-Paragraph.
+      В общем случае, если вы хотите чтобы все иконки, которые вы использовали, выглядели красиво, необходимо для
+        каждой геометрической вариации указать размер
+      Сложно и нужно, но ничего лучшего мир веб-разрабоки ещё не предложил.
+

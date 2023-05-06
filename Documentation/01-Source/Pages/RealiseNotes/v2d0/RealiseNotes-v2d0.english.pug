@@ -1,0 +1,186 @@
+extends ../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../SharedAssets/Markup/SharedAssets.english.pug
+  include ../../../SharedComponents/SharedComponents.english.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "en";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("v2d0");
+    HTML_PageMetaData = {
+      description: MetaDescriptionTemplates.realiseNotes({ version: "2.0" }),
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "@Common" ];
+
+    RoutingEmulator.setCurrentRoute("realiseNotes.v2d0");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      japanese: "./v2d0.japanese.html",
+      russian: "./v2d0.russian.html"
+    });
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1 Version2.0
+
+    h2.Article-Heading2 Core pachage (@yamato-daiwa/frontend)
+
+    h3.Article-Heading3 New functionality
+
+    h4.Article-Heading4 Markup
+
+    h5.Article-Heading5 Pug's inline JavaScript
+
+    h6.Article-Heading6 Functions and classes
+
+    ul.Article-UnorderedList
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            YDEE_Integration.$URI
+      }).Article-Link @yamato-daiwa/es-extensions (YDEE) integration
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            buildEmailLinkHrefAttributeValue.$URI
+      }).Article-Link buildEmailLinkHrefAttributeValue
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            buildPhoneNumberLinkHrefAttributeValue.$URI
+      }).Article-Link buildPhoneNumberLinkHrefAttributeValue
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            processPugMixinsObjectTypeParameter.$URI
+      }).Article-Link processPugMixinsObjectTypeParameter
+
+      //-
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              markup.$children.
+              functionality.$children.
+              inlineJavaScript.$children.
+              functionsAndClasses.$children.
+              RoutingEmulator.$URI
+        }).Article-Link RoutingEmulator
+
+
+    h6.Article-Heading6 Assets
+
+    //-
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              markup.$children.
+              functionality.$children.
+              inlineJavaScript.$children.
+              assets.$children.
+              textOverflowSafetyTest.$URI
+        }).Article-Link textOverflowSafetyTest
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              markup.$children.
+              functionality.$children.
+              inlineJavaScript.$children.
+              assets.$children.
+              DummyImagesURIs.$URI
+        }).Article-Link DummyImagesURIs
+
+
+    h5.Article-Heading5 Pug mixins
+
+    //-
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.
+              $children.markup.
+              $children.functionality.
+              $children.pugMixins.
+              $children.dummies.$URI
+        }).Article-Link WideDummy and HighDummy
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.
+              $children.markup.
+              $children.functionality.
+              $children.pugMixins.
+              $children.SVG_Icons.$URI
+        }).Article-Link SVGアイコン
+
+
+    h3.Article-Heading3 Breaking changes
+
+    h4.Article-Heading4 Styles
+
+    h5.Article-Heading5 Assets
+
+    h6.Article-Heading6 Changing of the elements of #[code DataTypes] enumeration
+
+    p.Article-Paragraph.
+      #[+Term--YDID Element] #[+ImportantEntity__Code--YDID dimensionalAmount] of the
+        #[+ImportantEntity__Code--YDID DataTypes] #[+Term--YDID enumeration] has been renamed to
+        #[+ImportantEntity__Code--YDID dimensionalQuantity], and
+        #[+ImportantEntity__Code--YDID dimensionlessAmount] — to #[+ImportantEntity__Code--YDID dimensionlessQuantity].
+
+    dl.Article-DescriptionList
+
+      dt Reason
+      dd The unifying to the canonical scientific terminology
+
+      dt Changes of your code will require if
+      dd.
+        You have accessed to the #[+Term--YDID element] #[+ImportantEntity__Code--YDID dimensionalAmount] and/or
+          #[+ImportantEntity__Code--YDID dimensionlessAmount] of the #[+ImportantEntity__Code--YDID DataTypes]
+          #[+Term--YDID enumeration]
+
+
+      dt Migration
+      dd.
+        Using the appropriate functionality of your code editor or IDE, replace
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionalAmount] with
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionalQuantity], and
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionlessAmount] with
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionlessQuantity].
+        For example, in the IDEs of IntelliJ IDEA family such functionality is available via
+          #[+SecondaryEntity__Code--YDID Ctrl + Shift + R] shortcut.
+

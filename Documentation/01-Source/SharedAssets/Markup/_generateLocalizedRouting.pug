@@ -15,14 +15,722 @@
 
         $children: {
 
+          markup: {
+
+            $tableOfContentsTitle: localization.coreLibrary.markup.tableOfContentsTitle,
+
+            $children: {
+
+              functionality: {
+
+                $tableOfContentsTitle: localization.coreLibrary.markup.functionality.tableOfContentsTitle,
+
+                $children: {
+
+                  inlineJavaScript: {
+
+                    $tableOfContentsTitle: localization.coreLibrary.markup.functionality.inlineJavaScript.tableOfContentsTitle,
+
+                    $children: {
+
+                      YDEE_Integration: {
+                        $tableOfContentsTitle: localization.coreLibrary.markup.functionality.inlineJavaScript.
+                            YDEE_Integration.tableOfContentsTitle,
+                        $URI: "@All/CoreLibrary/Markup/Functionality/InlineJavaScript/" +
+                            `YDEE_Integration/YDEE_Integration.${ localization.fileNameLocalizationExtensions }`
+                      },
+
+                      functionsAndClasses: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.markup.functionality.inlineJavaScript.
+                            functionsAndClasses.tableOfContentsTitle,
+
+                        $children: {
+
+                          buildEmailLinkHrefAttributeValue: {
+                            $tableOfContentsTitle: "<code>buildEmailLinkHrefAttributeValue</code>",
+                            $URI: "@All/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
+                                `buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.${ localization.fileNameLocalizationExtensions }`
+                          },
+
+                          buildPhoneNumberLinkHrefAttributeValue: {
+                            $tableOfContentsTitle: "<code>buildPhoneNumberLinkHrefAttributeValue</code>",
+                            $URI: "@All/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
+                                `buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.${ localization.fileNameLocalizationExtensions }`
+                          },
+
+                          processPugMixinsObjectTypeParameter: {
+                            $tableOfContentsTitle: "<code>processPugMixinsObjectTypeParameter</code>",
+                            $URI: "@All/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
+                                `processPugMixinsObjectTypeParameter/processPugMixinsObjectTypeParameter.${ localization.fileNameLocalizationExtensions }`
+                          }
+
+                          // RoutingEmulator: {
+                          //   $tableOfContentsTitle: "<code>RoutingEmulator</code>",
+                          //   $URI: "#"
+                          // }
+
+                        }
+
+                      },
+
+                      // assets: {
+                      //
+                      //   $tableOfContentsTitle: localization.coreLibrary.markup.functionality.inlineJavaScript.assets.tableOfContentsTitle,
+                      //
+                      //   $children: {
+                      //
+                      //     // textOverflowSafetyTest: {
+                      //     //   $tableOfContentsTitle: "<code>textOverflowSafetyTest</code>",
+                      //     //   $URI: "#"
+                      //     // },
+                      //
+                      //     // DummyImagesURIs: {
+                      //     //   $tableOfContentsTitle: "<code>DummyImagesURIs</code>",
+                      //     //   $URI: "#"
+                      //     // }
+                      //
+                      //   }
+                      //
+                      // }
+
+                    }
+
+                  },
+
+                  // pugMixins: {
+                  //
+                  //   $tableOfContentsTitle: localization.coreLibrary.markup.functionality.pugMixins.tableOfContentsTitle,
+                  //
+                  //   $children: {
+                  //
+                  //     // dummies: {
+                  //     //   $tableOfContentsTitle: localization.coreLibrary.markup.functionality.pugMixins.dummies.
+                  //     //       tableOfContentsTitle,
+                  //     //   $URI: "#"
+                  //     // },
+                  //
+                  //     // SVG_Icons: {
+                  //     //   $tableOfContentsTitle: localization.coreLibrary.markup.functionality.pugMixins.SVG_Icons.
+                  //     //       tableOfContentsTitle,
+                  //     //   $URI: "#"
+                  //     // }
+                  //
+                  //     // yamatoDaiwaInformationDesign: {
+                  //     //   $tableOfContentsTitle: localization.coreLibrary.markup.functionality.pugMixins.
+                  //     //       yamatoDaiwaInformationDesign.tableOfContentsTitle
+                  //     // }
+                  //
+                  //   }
+                  //
+                  // }
+
+                }
+
+              },
+
+              pagesTemplates: {
+
+                $tableOfContentsTitle: localization.coreLibrary.markup.functionality.pagesTemplates.tableOfContentsTitle,
+                $URI: `@All/CoreLibrary/Markup/PagesTemplates/PagesTemplates.${ localization.fileNameLocalizationExtensions }`,
+
+                $children: {
+
+                  RegularWebPage: {
+                    $tableOfContentsTitle: "<code>RegularWebPage</code>",
+                    $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/RegularWebPage.md"
+                  },
+
+                  StaticPreviewAnywherePage: {
+                    $tableOfContentsTitle: "<code>StaticPreviewAnywherePage</code>",
+                    $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md",
+                    $sectioning: {
+                      staticPreviewConcept: {
+                        $anchor: "providingOfStyles",
+                        get $URI() {
+                          return `${ localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.StaticPreviewAnywherePage.$URI }#${ this.$anchor }`
+                        }
+                      }
+                    }
+                  }
+
+                }
+
+              },
+
+              usageOnServerSide: {
+                $tableOfContentsTitle: localization.coreLibrary.markup.functionality.usageOnServerSide.tableOfContentsTitle,
+                $URI: `@All/CoreLibrary/Markup/UsageOnServerSide/UsageOnServerSide.${ localization.fileNameLocalizationExtensions }`
+              }
+
+            }
+
+          },
+
+          styles: {
+
+            $tableOfContentsTitle: localization.coreLibrary.styles.tableOfContentsTitle,
+            $children: {
+
+              assets: {
+
+                $tableOfContentsTitle: localization.coreLibrary.styles.assets.tableOfContentsTitle,
+                $children: {
+
+                  fundamentalConstantsAndEnums: {
+
+                    $tableOfContentsTitle: localization.coreLibrary.styles.assets.fundamentalConstantsAndEnums.tableOfContentsTitle,
+                    $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md",
+
+                    $children: {
+
+                      DataTypes: {
+                        $tableOfContentsTitle: "<code>DataTypes</code>",
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types"
+                        // $URI: `@All/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/DataTypes/DataTypes.${ localization.fileNameLocalizationExtensions }`
+                      },
+
+                      NARROWEST_SCREEN_WIDTH_UNIT: {
+                        $tableOfContentsTitle: "<code>NARROWEST_SCREEN_WIDTH_UNIT</code>",
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit---the-narrowest-screen-width-unit"
+                        // $URI: `@All/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/NARROWEST_SCREEN_WIDTH_UNIT/NARROWEST_SCREEN_WIDTH_UNIT.${ localization.fileNameLocalizationExtensions }`
+                      }
+                    }
+
+                  },
+
+                  colors: {
+
+                    $children: {
+
+                      PracticalColorCoordinateSystem: {
+                        $tableOfContentsTitle: localization.coreLibrary.styles.assets.colors.PracticalColorCoordinateSystem.tableOfContentsTitle,
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md"
+                      },
+
+                      ShadesOfGray__39ColorsW3C_Palette: {
+                        $tableOfContentsTitle: localization.coreLibrary.styles.assets.colors.ShadesOfGray__39ColorsW3C_Palette.tableOfContentsTitle,
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md"
+                      },
+
+                      TemporaryHighlighting: {
+                        $tableOfContentsTitle: "<code>TemporaryHighlighting</code>",
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md"
+                      }
+
+                      // YDF_ColorPalette: {
+                      //   $tableOfContentsTitle: localization.coreLibrary.styles.assets.colors.YDF_ColorPalette.tableOfContentsTitle,
+                      //   $URI: "#"
+                      // }
+
+                    }
+
+                  }
+
+                }
+
+              },
+
+              kernel: {
+
+                $tableOfContentsTitle: localization.coreLibrary.styles.kernel.tableOfContentsTitle,
+                $children: {
+
+
+                  basicVariables: {
+
+                    $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.tableOfContentsTitle,
+                    $children: {
+
+                      fontStacks: {
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.tableOfContentsTitle,
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#font-stacks"
+                      },
+
+                      dimensions: {
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.dimensions.tableOfContentsTitle,
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#dimensions"
+                      },
+
+                      zIndexes: {
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.zIndexes.tableOfContentsTitle,
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#zindexes"
+                      },
+
+                      BEM: {
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.BEM.tableOfContentsTitle,
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#bem-related"
+                      }
+
+                    }
+
+                  },
+
+                  functions: {
+
+                    $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.tableOfContentsTitle,
+                    $children: {
+
+                      valueCheckers: {
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.valueCheckers.tableOfContentsTitle,
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md"
+                      },
+
+
+                      strings: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.strings.tableOfContentsTitle,
+                        $children: {
+
+                          buildString: {
+                            $tableOfContentsTitle: "<code>buildString</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString.md"
+                          },
+
+                          capitalizeFirstLatinCharacter: {
+                            $tableOfContentsTitle: "<code>capitalizeFirstLatinCharacter</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md"
+                          }
+
+                        }
+
+                      },
+
+                      objects: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.objects.tableOfContentsTitle,
+                        $children: {
+
+                          deeplyCloneAndOverrideObject: {
+                            $tableOfContentsTitle: "<code>deeplyCloneAndOverrideObject</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject.md"
+                          },
+
+                          deeplyCloneObject: {
+                            $tableOfContentsTitle: "<code>deeplyCloneObject</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject.md"
+                          },
+
+                          formatObject: {
+                            $tableOfContentsTitle: "<code>formatObject</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/formatObject.md"
+                          },
+
+                          getObjectNonNullValuesCount: {
+                            $tableOfContentsTitle: "<code>getObjectNonNullValuesCount</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectNonNullValuesCount.md"
+                          },
+
+                          getObjectValueByDotSeparatedPathSafely: {
+                            $tableOfContentsTitle: "<code>getObjectValueByDotSeparatedPathSafely</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely.md"
+                          },
+
+                          iterateObjectSkippingNullValues: {
+                            $tableOfContentsTitle: "<code>iterateObjectSkippingNullValues</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues.md"
+                          },
+
+                          overrideObject: {
+                            $tableOfContentsTitle: "<code>overrideObject</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/overrideObject.md"
+                          }
+
+                        }
+
+                      },
+
+                      arrays: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.arrays.tableOfContentsTitle,
+                        $children: {
+
+                          arrayConstructor__POLYFILL: {
+                            $tableOfContentsTitle: "<code>arrayConstructor__POLYFILL</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/arrayConstructor__POLYFILL.md"
+                          },
+
+                          getFirstNonNullArrayElement: {
+                            $tableOfContentsTitle: "<code>getFirstNonNullArrayElement</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getFirstNonNullArrayElement.md"
+                          },
+
+                          getLengthOfPrimitivesArray: {
+                            $tableOfContentsTitle: "<code>getLengthOfPrimitivesArray</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getLengthOfPrimitivesArray.md"
+                          },
+
+                          hasPrimitivesArraySpecifiedElement: {
+                            $tableOfContentsTitle: "<code>hasPrimitivesArraySpecifiedElement</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/hasPrimitivesArraySpecifiedElement.md"
+                          },
+
+                          iterate2DimensionalArray: {
+                            $tableOfContentsTitle: "<code>iterate2DimensionalArray</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterate2DimensionalArray.md"
+                          },
+
+                          iterateAssociativeArray: {
+                            $tableOfContentsTitle: "<code>iterateAssociativeArray</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterateAssociativeArray.md"
+                          }
+
+                        }
+
+                      },
+
+                      parametersValidation: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.parametersValidation.tableOfContentsTitle,
+                        $children: {
+
+                          validateObjectTypeParameter: {
+                            $tableOfContentsTitle: "<code>validateObjectTypeParameter</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateObjectTypeParameter.md"
+                          }
+
+                        }
+
+                      },
+
+                      other: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.other.tableOfContentsTitle,
+                        $children: {
+
+                          buildBEM_ClassName: {
+                            $tableOfContentsTitle: "buildBEM_ClassName",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildBEM_ClassName.md"
+                          },
+
+                          substituteNull: {
+                            $tableOfContentsTitle: "substituteNull",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/substituteNull.md"
+                          },
+
+                          buildCalcExpression: {
+                            $tableOfContentsTitle: "buildCalcExpression",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildCalcExpression.md"
+                          },
+
+                          log: {
+                            $tableOfContentsTitle: "log",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/log.md"
+                          }
+
+                        }
+
+                      }
+
+                    }
+
+                  },
+
+                  utilityMixins: {
+
+                    $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins,
+
+                    $children: {
+
+                      general: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.general.tableOfContentsTitle,
+                        $children: {
+
+                          applyIfNotNull: {
+                            $tableOfContentsTitle: "<code>applyIfNotNull</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/00-GeneralUtils/applyIfNotNull.md"
+                          },
+
+                          applyIfNotZero: {
+                            $tableOfContentsTitle: "<code>applyIfNotZero</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/00-GeneralUtils/applyIfNotZero.md"
+                          }
+
+                        }
+
+                      },
+
+                      sizing: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.sizing.tableOfContentsTitle,
+                        $children: {
+
+                          width: {
+
+                            $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.sizing.width.tableOfContentsTitle,
+
+                            $children: {
+
+                              WidthSizing: {
+                                $tableOfContentsTitle: "<code>WidthSizing</code>",
+                                $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/WidthSizing.md"
+                              },
+
+                              fillViewportWidthIgnoringParentPaddings: {
+                                $tableOfContentsTitle: "<code>fillViewportWidthIgnoringParentPaddings</code>",
+                                $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/fillViewportWidthIgnoringParentPaddings.md"
+                              },
+
+                              TableCellWidthSizing: {
+                                $tableOfContentsTitle: "<code>TableCellWidthSizing</code>",
+                                $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/TableCellWidthSizing.md"
+                              }
+
+                            }
+
+                          },
+
+                          paddings: {
+                            $tableOfContentsTitle: "<code>Paddings</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/04-Paddings/Paddings.md"
+                          }
+
+                        }
+
+                      },
+
+                      positioning: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.positioning.tableOfContentsTitle,
+
+                        $children: {
+
+                          centerHorizontallyWithoutWrapper: {
+                            $tableOfContentsTitle: "<code>centerHorizontallyWithoutWrapper</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/centerHorizontallyWithoutWrapper.md"
+                          },
+
+                          placeToRight: {
+                            $tableOfContentsTitle: "<code>placeToRight</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/placeToRight.md"
+
+                          },
+
+                          VerticallyCenteredAbsolutelyPositionedBlock: {
+                            $tableOfContentsTitle: "<code>VerticallyCenteredAbsolutelyPositionedBlock</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md"
+                          }
+
+                        }
+
+                      },
+
+                      positionalRelationship: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.positionalRelationship.tableOfContentsTitle,
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md",
+
+                        $children: {
+
+                          PositionalRelationship: {
+                            $tableOfContentsTitle: "<code>PositionalRelationship</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#positionalrelationship-mixin"
+                          },
+
+                          retireFrom: {
+                            $tableOfContentsTitle: "<code>retireFrom</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefrom-mixin"
+                          },
+
+                          pushTargetFromSelf: {
+                            $tableOfContentsTitle: "<code>pushTargetFromSelf</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#pushtargetfromself-mixin"
+                          },
+
+                          retireFromElementWithSameSelector: {
+                            $tableOfContentsTitle: "<code>retireFromElementWithSameSelector</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefromelementwithsameselector-mixin"
+                          },
+
+                          whenItGoingFirst: {
+                            $tableOfContentsTitle: "<code>whenItGoingFirst</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoingfirst-mixin"
+                          },
+
+                          whenItGoingLast: {
+                            $tableOfContentsTitle: "<code>whenItGoingLast</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoinglast-mixin"
+                          },
+
+                          whenItJustAfter: {
+                            $tableOfContentsTitle: "<code>whenItJustAfter</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitjustafter"
+                          },
+
+                          whenTargetGoingJustAfterIt: {
+                            $tableOfContentsTitle: "<code>whenTargetGoingJustAfterIt</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetgoingjustafterit"
+                          },
+
+                          whenTargetWithSameSelectorGoingJustAfterIt: {
+                            $tableOfContentsTitle: "<code>whenTargetWithSameSelectorGoingJustAfterIt</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit"
+                          }
+
+                        }
+
+                      },
+
+                      layout: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.layout.tableOfContentsTitle,
+
+                        $children: {
+
+                          CenteredContentWithComputedHorizontalPaddings: {
+                            $tableOfContentsTitle: "<code>CenteredContentWithComputedHorizontalPaddings</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/CenteredContentWithComputedHorizontalPaddings.md"
+                          },
+
+                          Centerer: {
+                            $tableOfContentsTitle: "<code>Centerer</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/Centerer.md"
+                          },
+
+                          fillBodyVertically: {
+                            $tableOfContentsTitle: "<code>fillBodyVertically</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/fillBodyVertically.md"
+                          },
+
+                          FixedTranslucentDimLayer: {
+                            $tableOfContentsTitle: "<code>FixedTranslucentDimLayer</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/FixedTranslucentDimLayer.md"
+                          }
+
+                        }
+
+                      },
+
+                      typography: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.typography.tableOfContentsTitle,
+
+                        $children: {
+
+                          SingleLineTextElementOverflowSafety: {
+                            $tableOfContentsTitle: "<code>SingleLineTextElementOverflowSafety</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md"
+                          },
+
+                          MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight: {
+                            $tableOfContentsTitle: "<code>MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md"
+                          }
+
+                        }
+
+                      },
+
+                      other: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.other.tableOfContentsTitle,
+
+                        $children: {
+
+                          provideClippedShadowsAndOutlinesVisibility: {
+                            $tableOfContentsTitle: "<code>provideClippedShadowsAndOutlinesVisibility</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/provideClippedShadowsAndOutlinesVisibility.md"
+
+                          },
+
+                          Sprite: {
+                            $tableOfContentsTitle: "<code>Sprite</code>",
+                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/Sprite.md"
+                          }
+
+                        }
+
+                      }
+
+                    }
+
+                  },
+
+                  stylesInitialization: {
+
+                    $tableOfContentsTitle: localization.coreLibrary.styles.kernel.stylesInitialization.tableOfContentsTitle,
+
+                    $children: {
+
+                      CrossBrowserStylesReset: {
+                        $tableOfContentsTitle: "<code>CrossBrowserStylesReset</code>",
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/CrossBrowserStylesReset.md"
+                      },
+
+                      InitialGlobalCSS_Rules: {
+                        $tableOfContentsTitle: "<code>InitialGlobalCSS_Rules</code>",
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/InitialGlobalCSS_Rules.md"
+                      },
+
+                      ButtonLikeElementsPrimer: {
+                        $tableOfContentsTitle: "<code>ButtonLikeElementsPrimer</code>",
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/ButtonLikeElementsPrimer.md"
+                      }
+
+                    }
+
+                  }
+
+                }
+
+              },
+
+              buildInPlugins: {
+
+                $tableOfContentsTitle: localization.coreLibrary.styles.buildInPlugins.tableOfContentsTitle,
+
+                $children: {
+
+                  additionalColorPalettes: {
+
+                    $tableOfContentsTitle: localization.coreLibrary.styles.buildInPlugins.additionalColorPalettes.tableOfContentsTitle,
+
+                    $children: {
+
+                      FlatUI_Colors: {
+                        $tableOfContentsTitle: "<code>FlatUI_Colors</code>",
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md"
+                      },
+
+                      MaterialDesignColors: {
+                        $tableOfContentsTitle: "<code>MaterialDesignColors</code>",
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md"
+                      }
+
+                    }
+
+                  }
+
+                }
+
+              }
+
+            }
+
+          },
+
           components: {
 
             $tableOfContentsTitle: localization.coreLibrary.components.tableOfContentsTitle,
             $URI: "@All/CoreLibrary/Components/Components.russian",
 
-            $sections: {
+            // TODO Неверно - не соблюдается уровневость!
+            $sectioning: {
               providingOfMarkup: {
                 $anchor: "providingOfMarkup",
+                get $URI() { return `${ localizedRouting.coreLibrary.$children.components.$URI }#${ this.$anchor }`; }
+              },
+              providingOfStyles: {
+                $anchor: "providingOfStyles",
+                get $URI() { return `${ localizedRouting.coreLibrary.$children.components.$URI }#${ this.$anchor }`; }
+              },
+              themes: {
+                $anchor: "THEMES--SECTION",
+                get $URI() { return `${ localizedRouting.coreLibrary.$children.components.$URI }#${ this.$anchor }`; }
+              },
+              customization: {
+                $anchor: "CUSTOMIZATION--SECTION",
                 get $URI() { return `${ localizedRouting.coreLibrary.$children.components.$URI }#${ this.$anchor }`; }
               }
             },
@@ -65,6 +773,11 @@
 
                 }
 
+              },
+
+              OverflowSafeSingleLineLabel: {
+                $tableOfContentsTitle: "<code>OverflowSafeSingleLineLabel</code>",
+                $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md"
               }
 
             }
@@ -86,6 +799,21 @@
 
             $tableOfContentsTitle: "Vue",
 
+          }
+
+        }
+
+      },
+
+      realiseNotes: {
+
+        $tableOfContentsTitle: localization.realiseNotes.tableOfContentsTitle,
+
+        $children: {
+
+          v2d0: {
+            $tableOfContentsTitle: "2.0",
+            $URI: `@All/RealiseNotes/v2d0/RealiseNotes-v2d0.${ localization.fileNameLocalizationExtensions }.pug`
           }
 
         }

@@ -3,8 +3,11 @@
 
 export { default as AttentionBox } from "./Components/AttentionBox/AttentionBox";
 export { default as Button } from "./Components/Controls/Buttons/Plain/Button";
+export { default as FilesUploader } from "./Components/Controls/FilesUploader/FilesUploader";
 export { default as TextBox } from "./Components/Controls/TextBox/TextBox";
-export { default as CodeViewer } from "./Components/Viewers/CodeViewer/CodeViewer";
+
+export { default as CodeViewer } from "./Components/Viewers/Code/CodeViewer";
+export { default as SingleImageViewer } from "./Components/Viewers/SingleImage/SingleImageViewer";
 
 export { default as InputtedValueValidation } from "./Components/Controls/_Validation/InputtedValueValidation";
 export { default as ValidatableControl } from "./Components/Controls/_Validation/ValidatableControl";
@@ -32,11 +35,14 @@ export { default as NumericMinimumInputtedValueValidationRule } from
 export { default as numericMinimumInputtedValueValidationRuleLocalization__english } from
     "./Components/Controls/_Validation/PreMadeRules/Numeric/NumericMinimumInputtedValueValidationRuleLocalization.english";
 
-
 export { default as AllowedCharactersInputtedValueValidationRule } from
     "./Components/Controls/_Validation/PreMadeRules/Strings/AllowedCharactersInputtedValueValidationRule";
 export { default as allowedCharactersInputtedValueValidationRuleLocalization__english } from
     "./Components/Controls/_Validation/PreMadeRules/Strings/AllowedCharactersInputtedValueValidationRuleLocalization.english";
+export { default as EmailAddressInputtedValueValidationRule } from
+    "./Components/Controls/_Validation/PreMadeRules/Strings/EmailAddressInputtedValueValidationRule";
+export { default as emailAddressInputtedValueValidationRuleLocalization__english } from
+    "./Components/Controls/_Validation/PreMadeRules/Strings/EmailAddressInputtedValueValidationRuleLocalization.english";
 export { default as MinimalCharactersCountInputtedValueValidationRule } from
     "./Components/Controls/_Validation/PreMadeRules/Strings/MinimalCharactersCountInputtedValueValidationRule";
 export { default as minimalCharactersCountInputtedValueValidationRuleLocalization__english } from

@@ -1,0 +1,18 @@
+-
+
+  const MetaDescriptionTemplates = {
+
+    pugFunction: ({ functionName, whatFunctionDoes }) =>
+        `The function &quot;${ functionName }&quot; of &quot;Yamato Daiwa Frontend&quot; ` +
+          `(abbreviation: &quot;YDF;&quot;) library for the Pug pre-processor ${ whatFunctionDoes }`,
+
+    stylusFunction: ({ functionName, whatFunctionDoes }) =>
+        `The function &quot;${ functionName }&quot; of &quot;Yamato Daiwa Frontend&quot; ` +
+          `(abbreviation: &quot;YDF;&quot;) library for the Stylus pre-processor ${ whatFunctionDoes }`,
+
+    realiseNotes: ({ version }) =>
+        "The changes log (new functionality, changing of the existing functionality and removing of the previous one) of " +
+          `the version ${ version } of the library &quot;Yamato Daiwa Frontend&quot; (abbreviation: &quot;YDF&quot;) for ` +
+          "the frontend web development."
+
+  };

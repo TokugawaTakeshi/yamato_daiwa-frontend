@@ -1,46 +1,67 @@
 Button-RegularTheme-SmallGeometry--YDF = {
 
   rootElement: {
+
     minimalWidth: 4rem,
+
     borders: specifyBordersSizing({
       thickness: { all: 1px },
       radius: { all: 3px }
-    })
+    }),
+
+    modifiers: {
+      pillShape: {
+        textSizeToBorderRadiusRatio: 2
+      }
+    },
+
+    customDeclarations: null
+
   },
 
   label: {
+
     text: {
       size: 0.9rem,
-      lineSpacing: 0.1rem,
+      lineSpacing: 0.2rem,
       lineHeight: null
     },
+
     spacing: {
-      left: 0.6rem,
-      right: 0.6rem,
-      top: 0.3rem,
+      horizontalSymmetricWhenLone: 0.8rem,
+      leftWhenGoingFirst: 0.8rem,
+      rightWhenGoingLast: 0.8rem,
+      verticalSymmetric: 0.4rem,
+      top: null,
+      bottom: null,
       upwardShifting: 0.05rem
-    }
+    },
+
+    customDeclarations: null
+
   },
 
   SVG_Icon: {
 
-    standard: {
+    default: {
+
       width: null,
-      height: 0.8rem,
+      height: 0.9rem,
+
       spacing: {
-        top: 0.25rem,
-        bottom: 0.25rem,
+        leftWhenGoingFirst: 0.75rem,
+        rightWhenGoingLast: 0.75rem,
         beforeLabel: 0.4rem,
         afterLabel: 0.5rem,
-        leftWhenGoingFirst: 0.75rem,
-        rightWhenGoingLast: 0.75rem
-      }
+        horizontalSymmetricWhenLone: null
+      },
+
+      customDeclarations: null
+
     },
 
-    specials: {
-      Button--YDF-SVG_Icon__Menu__ThreeDots__Horizontal: {
-        width: 1rem
-      }
-    }
+    specials: {}
+
   }
+
 }

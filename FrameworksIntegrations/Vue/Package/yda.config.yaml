@@ -76,16 +76,17 @@ projectBuilding:
         distributing:
           exposingOfExportsFromEntryPoints:
             mustExpose: true
+          externalizingDependencies: [ vue ]
           typeScriptTypesDeclarations:
             mustGenerate: true
 
         buildingModeDependent:
 
           LOCAL_DEVELOPMENT:
-            outputTopDirectoryRelativePath: "Distributable"
+            outputTopDirectoryRelativePath: Distributable
 
           PRODUCTION:
-            outputTopDirectoryRelativePath: "Distributable"
+            outputTopDirectoryRelativePath: Distributable
             revisioning: { disable: true }
 
 

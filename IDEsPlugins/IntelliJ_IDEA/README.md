@@ -5,12 +5,17 @@
 
 
 <!-- Plugin description -->
-Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templates.html) for
-[@yamato-daiwa/frontend](https://www.npmjs.com/package/@yamato-daiwa/frontend) library.
+Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templates.html) and
+  [files templates](https://www.jetbrains.com/help/idea/using-file-and-code-templates.html) for the
+  [@yamato-daiwa/frontend](https://www.npmjs.com/package/@yamato-daiwa/frontend) library.
 
-Currently, below live templates are available:
+
+## Live templates
 
 * Markup
+  * Functions
+    * <kbd>buildEmailLinkHREF_AttributeValue</kbd> - autocomplete imitators for eponymous function
+    * <kbd>buildPhoneNumberLinkHrefAttributeValue</kbd> - autocomplete imitators for eponymous function
   * Constants assets
     * <kbd>tost</kbd> - live template for [**textOverflowSafetyTest** constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Markup/ConstantsAssets/textOverflowSafetyTest/textOverflowSafetyTest.md)
   * Pages templates
@@ -187,6 +192,12 @@ Currently, below live templates are available:
   * <kbd>ossll</kbd> - live template for Vue adaptation of **OverflowSafeSingleLineLabel** component
 
 <!-- Plugin description end -->
+
+## Files templates
+### Styles customizing 
+
+* **Files and Code Templates/Other/YDF GUI Components/Badge.styl**: 
+
 
 ## Installation
 

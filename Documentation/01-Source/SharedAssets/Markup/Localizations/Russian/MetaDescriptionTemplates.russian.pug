@@ -1,0 +1,17 @@
+-
+
+  const MetaDescriptionTemplates = {
+
+    pugFunction: ({ functionName, whatFunctionDoes }) =>
+        `Функция «${ functionName }» для использования в HTML-препроцессоре «Pug» библиотеки «Yamato Daiwa Frontend» ` +
+          `(сокращённо: «YDF») ${ whatFunctionDoes }`,
+
+    stylusFunction: ({ functionName, whatFunctionDoes }) =>
+        `Функция «${functionName}» для использования в CSS-препроцессоре «Stylus» библиотеки «Yamato Daiwa Frontend» ` +
+          `(сокращённо: «YDF») ${whatFunctionDoes}`,
+
+    realiseNotes: ({ version }) =>
+        "Список изменений (новая функциональность, изменение существующий функциональности и удаления прежней) версии " +
+          `${ version } библиотеки для фронтенд веб-разработки «Yamato Daiwa Frontend» (сокращённо: «YDF»).`
+
+  };

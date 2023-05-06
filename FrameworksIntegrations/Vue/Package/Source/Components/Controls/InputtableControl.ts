@@ -1,13 +1,8 @@
-import {
-  Options as VueComponentConfiguration,
-  Vue as VueComponent,
-  Prop as VueProperty
-} from "vue-property-decorator";
-import {
-  isEitherUndefinedOrNull,
-  isNonEmptyString,
-  Logger
-} from "@yamato-daiwa/es-extensions";
+/* --- Framework ---------------------------------------------------------------------------------------------------- */
+import { ComponentBase as VueComponentConfiguration, Vue as VueComponent, Prop as VueProperty } from "vue-facing-decorator";
+
+/* --- Utils -------------------------------------------------------------------------------------------------------- */
+import { Logger, isNonEmptyString, isEitherUndefinedOrNull } from "@yamato-daiwa/es-extensions";
 import InvalidVuePropertiesCombinationError from
     "../_Errors/InvalidVuePropertiesCombination/InvalidVuePropertiesCombinationError";
 
@@ -49,14 +44,6 @@ export default class InputtableControl extends VueComponent {
 
   @VueProperty({ type: Boolean, default: false })
   protected readonly mustDisplayAppropriateBadgeIfInputIsOptional!: boolean;
-
-
-  @VueProperty({
-    type: String,
-    validator: (rawValue: unknown): boolean => isNonEmptyString(rawValue)
-  })
-  protected readonly coreElementHTML_ID?: string;
-
 
   @VueProperty({ type: Boolean, default: false })
   protected readonly disabled!: boolean;
@@ -104,5 +91,7 @@ export default class InputtableControl extends VueComponent {
         occurrenceLocation: `${ inheritedComponentNameForLogging }.beforeCreate()`
       });
     }
+
   }
+
 }

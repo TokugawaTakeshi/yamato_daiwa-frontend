@@ -1,0 +1,81 @@
+mixin FilesUploaderDemo(options)
+
+  h1.Heading1 FilesUploader component testing
+
+  .TemporaryWrapper1
+
+    .TemporaryWrapper2
+
+      h2.Heading2 Default optionals
+
+      +FilesUploader--YDF({
+        label: "File",
+        guidance: "Please upload <span class='FilesUploader--YDF-Guidance-AccentedFragment'>1~5</span> files"
+      })#EXPERIMENTAL_SAMPLE
+
+
+    .TemporaryWrapper2
+
+      h2.Heading2 No drag & drop area
+
+      +FilesUploader--YDF({
+        label: "File",
+        guidance: "Please select the file",
+        noDragAndDropArea: true
+      })
+
+
+    .TemporaryWrapper2
+
+      h2.Heading2 No button
+
+      +FilesUploader--YDF({
+        label: "File",
+        guidance: "Please select the file",
+        noButton: true
+      })
+
+
+    .TemporaryWrapper2
+
+      h2.Heading2 Single image preview
+
+      +FilesUploader--YDF(
+        {
+          label: "File",
+          guidance: "Please select the file"
+        },
+        {
+          singleImagePreview: true
+        }
+      )
+
+
+    .TemporaryWrapper2
+
+      h2.Heading2 Multiple images preview
+
+      +FilesUploader--YDF(
+        {
+          label: "File",
+          guidance: "Please select the files"
+        },
+        {
+          imagesPreviewFlow: true
+        }
+      )
+
+
+    .TemporaryWrapper2
+
+      h2.Heading2 Status
+
+      +FilesUploader--YDF(
+        {
+          label: "File",
+          guidance: "Please select the files"
+        },
+        {
+          status: true
+        }
+      )

@@ -152,10 +152,11 @@ provideSnackbarYDF_Component(
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
           text: { dotSeparatedPath: "message.text", applier: @(textProperties) {
-            MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
+            applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
               fontSize: textProperties.size,
               lineSpacing: textProperties.lineSpacing,
-              lineHeight: textProperties.lineHeight
+              lineHeight: textProperties.lineHeight,
+              mustAllowWordsBreakingAnywhere: true
             })
           }}
         }

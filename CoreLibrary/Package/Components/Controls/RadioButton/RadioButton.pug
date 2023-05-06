@@ -1,0 +1,84 @@
+﻿include RadioButton.class.pug
+
+
+mixin RadioButton--YDF(properties)
+
+  -
+
+    const COMPONENT_ID = RadioButton__YDF.generateComponentID();
+
+    const {
+
+      label,
+      HTML_Name,
+      HTML_Value,
+      inputElementHTML_ID = `${ COMPONENT_ID }-INPUT`,
+      checked,
+      disabled = false,
+      readonly = false,
+
+      theme = RadioButton__YDF.Themes.regular,
+      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || RadioButton__YDF.areThemesCSS_ClassesCommon,
+      geometry = RadioButton__YDF.GeometricVariations.regular,
+      geometricModifiers = [],
+      decoration = RadioButton__YDF.DecorativeVariations.regular,
+      decorativeModifiers = []
+
+    } = properties ?? {};
+
+    const rootElementModifierCSS_Classes = [
+
+      ...checked ?
+        [ `${ RadioButton__YDF.CSS_NAMESPACE }__CheckedState` ] :
+        [ `${ RadioButton__YDF.CSS_NAMESPACE }__UncheckedState` ],
+
+      ...disabled ? [ `${ RadioButton__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
+      ...readonly ? [ `${ RadioButton__YDF.CSS_NAMESPACE }__ReadOnlyState` ] : [],
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: RadioButton__YDF.Themes,
+        CSS_Namespace: RadioButton__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: RadioButton__YDF.GeometricVariations,
+        CSS_Namespace: RadioButton__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.generateDemandedGeometricModifiersCSS_Classes(RadioButton__YDF.CSS_NAMESPACE, geometricModifiers),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decoration,
+        allDecorativeVariations: RadioButton__YDF.DecorativeVariations,
+        CSS_Namespace: RadioButton__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.generateDemandedDecorativeModifiersCSS_Classes(RadioButton__YDF.CSS_NAMESPACE, decorativeModifiers)
+
+    ];
+
+
+  .RadioButton--YDF&attributes(attributes)(
+    class=rootElementModifierCSS_Classes
+  )
+
+    span.RadioButton--YDF-Ring
+
+    if label
+
+      label.RadioButton--YDF-Label(
+        for= inputElementHTML_ID
+      )= label
+
+    input.RadioButton--YDF-HiddenInputElement(
+      type="radio"
+      name=HTML_Name
+      value=HTML_Value
+      checked=checked
+      disabled= disabled
+      readonly= readonly
+      id=inputElementHTML_ID
+    )

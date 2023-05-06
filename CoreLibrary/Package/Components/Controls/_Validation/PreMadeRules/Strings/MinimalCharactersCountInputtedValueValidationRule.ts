@@ -1,10 +1,10 @@
-import type InputtedValueValidationRule from "@Controls/_Validation/InputtedValueValidationRule";
+import type InputtedValueValidation from "../../InputtedValueValidation";
 import minimalCharactersCountInputtedValueValidationRuleLocalization__english from
-    "@Controls/_Validation/PreMadeRules/Strings/MinimalCharactersCountInputtedValueValidationRuleLocalization.english";
+    "./MinimalCharactersCountInputtedValueValidationRuleLocalization.english";
 import { isString, isNotUndefined, InvalidParameterValueError, Logger } from "@yamato-daiwa/es-extensions";
 
 
-class MinimalCharactersCountInputtedValueValidationRule implements InputtedValueValidationRule {
+class MinimalCharactersCountInputtedValueValidationRule implements InputtedValueValidation.Rule {
 
   public static localization: MinimalCharactersCountInputtedValueValidationRule.Localization =
       minimalCharactersCountInputtedValueValidationRuleLocalization__english;
@@ -17,7 +17,7 @@ class MinimalCharactersCountInputtedValueValidationRule implements InputtedValue
 
   public constructor(
     compoundParameter:
-        InputtedValueValidationRule.ConstructorParameter &
+        InputtedValueValidation.Rule.ConstructorParameter &
         Readonly<{
           minimalCharactersCount: number;
           errorMessageBuilder?: MinimalCharactersCountInputtedValueValidationRule.ErrorMessage.Builder;
@@ -39,14 +39,10 @@ class MinimalCharactersCountInputtedValueValidationRule implements InputtedValue
       this.errorMessageBuilder = MinimalCharactersCountInputtedValueValidationRule.localization.errorMessageBuilder;
     }
 
-    this.errorMessageBuilder =
-        compoundParameter.errorMessageBuilder ??
-        MinimalCharactersCountInputtedValueValidationRule.localization.errorMessageBuilder;
-
   }
 
 
-  public check(rawValue: unknown): InputtedValueValidationRule.CheckingResult {
+  public check(rawValue: unknown): InputtedValueValidation.Rule.CheckingResult {
 
     if (!isString(rawValue)) {
 

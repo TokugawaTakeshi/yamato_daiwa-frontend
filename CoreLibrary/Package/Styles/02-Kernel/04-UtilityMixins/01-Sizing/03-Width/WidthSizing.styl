@@ -1,0 +1,150 @@
+WidthSizing(compoundParameter, restParameters__MUST_NOT_BE...)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "WidthSizing",
+    targetParameterNumber: 1,
+    targetParameter: compoundParameter,
+    schema: WidthSizingSpecificationSchema,
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+  fixedWidth = compoundParameter.fixedWidth
+  minimalWidth = compoundParameter.minimalWidth
+  maximalWidth = compoundParameter.maximalWidth
+  takeMaximumSpaceAsPossible = compoundParameter.takeMaximumSpaceAsPossible
+
+  truncateOnOverflow = compoundParameter.truncateOnOverflow
+  displayEllipsisOnOverflow = compoundParameter.displayEllipsisOnOverflow
+
+  leftOrRightSymmetricBordersWidths = compoundParameter.leftOrRightSymmetricBordersWidths
+  leftBorderWidth = compoundParameter.leftBorderWidth
+  rightBorderWidth = compoundParameter.rightBorderWidth
+  isExplicitBorderNoneDeclarationRequired = compoundParameter.isExplicitBorderNoneDeclarationRequired
+
+  leftOrRightSymmetricPaddings = compoundParameter.leftOrRightSymmetricPaddings
+  leftPadding = compoundParameter.leftPadding
+  rightPadding = compoundParameter.rightPadding
+  isExplicitPaddingZeroDeclarationRequired = compoundParameter.isExplicitPaddingZeroDeclarationRequired
+
+
+  applyIfNotNull({
+    width: fixedWidth,
+    min-width: minimalWidth,
+    max-width: maximalWidth
+  })
+
+
+  if isTrue(takeMaximumSpaceAsPossible)
+
+    width 100%
+
+
+  // --- Borders -------------------------------------------------------------------------------------------------------
+  if isNull(leftOrRightSymmetricBordersWidths) && isNull(leftBorderWidth) &&\
+      isNull(rightBorderWidth) && isTrue(isExplicitBorderNoneDeclarationRequired)
+
+    border-left none
+    border-right none
+
+  else if isNotNull(leftOrRightSymmetricBordersWidths)
+
+    border-left-width leftOrRightSymmetricBordersWidths
+    border-right-width leftOrRightSymmetricBordersWidths
+
+  else
+
+    if isNotNull(leftBorderWidth)
+
+      border-left-width leftBorderWidth
+
+    else if isTrue(isExplicitBorderNoneDeclarationRequired)
+
+      border-left none
+
+
+    if isNotNull(rightBorderWidth)
+
+      border-right-width rightBorderWidth
+
+    else if isTrue(isExplicitBorderNoneDeclarationRequired)
+
+      border-right none
+
+
+  // --- Paddings ------------------------------------------------------------------------------------------------------
+  if isNull(leftOrRightSymmetricPaddings) && isNull(leftPadding) &&\
+      isNull(rightPadding) && isTrue(isExplicitPaddingZeroDeclarationRequired)
+
+    padding-left 0
+    padding-right 0
+
+  else if isNotNull(leftOrRightSymmetricPaddings)
+
+    padding-left leftOrRightSymmetricPaddings
+    padding-right leftOrRightSymmetricPaddings
+
+  else
+
+    if isNotNull(leftPadding)
+
+      padding-left leftPadding
+
+    else if isTrue(isExplicitPaddingZeroDeclarationRequired)
+
+      padding-left 0
+
+
+    if isNotNull(rightPadding)
+
+      padding-right rightPadding
+
+    else if isTrue(isExplicitPaddingZeroDeclarationRequired)
+
+      padding-right 0
+
+
+  if isTrue(truncateOnOverflow)
+
+    overflow hidden
+    white-space nowrap
+
+
+    if isTrue(displayEllipsisOnOverflow)
+
+      text-overflow ellipsis
+
+    else
+
+      text-overflow clip
+
+
+specifyWidthSizing(compoundParameter, restParameters__MUST_NOT_BE...)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "specifyWidthSizing",
+    targetParameterNumber: 1,
+    targetParameter: compoundParameter,
+    schema: WidthSizingSpecificationSchema,
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+  return {
+
+    fixedWidth: compoundParameter.fixedWidth,
+    minimalWidth: compoundParameter.minimalWidth,
+    maximalWidth: compoundParameter.maximalWidth,
+    takeMaximumSpaceAsPossible: compoundParameter.takeMaximumSpaceAsPossible,
+
+    truncateOnOverflow: compoundParameter.truncateOnOverflow,
+    displayEllipsisOnOverflow: compoundParameter.displayEllipsisOnOverflow,
+
+    leftOrRightSymmetricBordersWidths: compoundParameter.leftOrRightSymmetricBordersWidths,
+    leftBorderWidth: compoundParameter.leftBorderWidth,
+    rightBorderWidth: compoundParameter.rightBorderWidth,
+    isExplicitBorderNoneDeclarationRequired: compoundParameter.omitBorderNoneValue,
+
+    leftOrRightSymmetricPaddings: compoundParameter.leftOrRightSymmetricPaddings,
+    leftPadding: compoundParameter.leftPadding,
+    rightPadding: compoundParameter.rightPadding,
+    isExplicitPaddingZeroDeclarationRequired: compoundParameter.omitPaddingZeroDeclaration
+  }

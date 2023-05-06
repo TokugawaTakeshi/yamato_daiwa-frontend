@@ -1,157 +1,319 @@
+/* eslint-disable no-underscore-dangle -- [ CONVENTION ]
+* The instance files begins from the underscore MUST be changed only via setters. */
+
+import componentDynamicPartsHTML from "./CompoundControlShell.parts.pug";
+
 import {
   getExpectedToBeSingleDOM_Element,
-  getExpectedToBeSingleChildOfTemplateElement,
-  cloneDOM_Element
+  cloneDOM_Element,
+  createDOM_ElementFromHTML_Code
 } from "@yamato-daiwa/es-extensions-browserjs";
+import getCommentDOM_Node from "../../../Logic/UtilsIncubator/DOM/getCommentDOM_Node";
 
-import ExpandingAnimation from "@Animations/ExpandingAnimation";
-import CollapsingAnimation from "@Animations/CollapsingAnimation";
+import ExpandingAnimation from "../../../Animations/ExpandingAnimation";
+import CollapsingAnimation from "../../../Animations/CollapsingAnimation";
+
+import { isNotUndefined, isNull } from "@yamato-daiwa/es-extensions";
 
 
 export default class CompoundControlShell {
 
-  protected static readonly VALIDATION_ERRORS_MESSAGES_LIST_TEMPLATE_SELECTOR: string =
-      ".CompoundControlShell--YDF-ValidationErrorMessagesListTemplate";
-  protected static readonly VALIDATION_ERROR_MESSAGES_LIST_SELECTOR: string =
+  /* ━━━ Static fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── Accessing to DOM ─────────────────────────────────────────────────────────────────────────────────────────── */
+  protected static readonly VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT_PLACEHOLDER_CONTENT: string =
+      "COMPOUND_CONTROL_SHELL__YDF-VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT";
+  protected static readonly VALIDATION_ERRORS_MESSAGES_LIST_SELECTOR: string =
       ".CompoundControlShell--YDF-ValidationErrorsMessagesList";
-  protected static readonly VALIDATION_ERROR_MESSAGE_LIST_ITEM_SELECTOR: string =
+  protected static readonly VALIDATION_ERRORS_MESSAGES_LIST_ITEM_SELECTOR: string =
       ".CompoundControlShell--YDF-ValidationErrorMessage";
 
+  protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MOUNTING_POINT_PLACEHOLDER_CONTENT: string =
+      "COMPOUND_CONTROL_SHELL__YDF-ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MOUNTING_POINT";
+  protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_SELECTOR: string =
+      ".CompoundControlShell--YDF-AsynchronousValidationsStatusesList";
+  protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_IN_PROGRESS_STATE_ITEM_TEMPLATE_SELECTOR: string =
+      ".CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__InProgressState";
+  protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_SUCCEEDED_BUT_INVALID_STATE_ITEM_TEMPLATE_SELECTOR: string =
+      ".CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__SucceededButInvalidState";
+  protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_SUCCEEDED_AND_VALID_STATE_ITEM_TEMPLATE_SELECTOR: string =
+      ".CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__SucceededAndValidState";
+  protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MALFUNCTION_STATE_ITEM_TEMPLATE_SELECTOR: string =
+      ".CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__MalfunctionState";
 
+
+  /* ─── Others constants ─────────────────────────────────────────────────────────────────────────────────────────── */
   protected static readonly ERRORS_LIST_EXPANDING_ANIMATION_DURATION_PER_ONE_ERROR_MESSAGE__SECONDS: number = 0.2;
   protected static readonly ERRORS_LIST_COLLAPSING_ANIMATION_DURATION__SECONDS: number = 0.2;
 
 
+  /* ─── Initialization on demand ─────────────────────────────────────────────────────────────────────────────────── */
+  protected static dynamicParts: DocumentFragment | null = null;
+
+  protected static validationErrorsMessagesCollapsableList: HTMLElement;
+  protected static validationErrorsMessagesCollapsableListEmptyItem: Element;
+
+  protected static asynchronousValidationsStatusesCollapsableList: HTMLElement;
+  protected static asynchronousValidationsStatusesCollapsableListInProgressStateEmptyItem: Element;
+  protected static asynchronousValidationsStatusesCollapsableListInProgressSucceededButInvalidStateEmptyItem: Element;
+  protected static asynchronousValidationsStatusesCollapsableListInProgressSucceededAndValidStateEmptyItem: Element;
+  protected static asynchronousValidationsStatusesCollapsableListInProgressMalfunctionStateEmptyItem: Element;
+
+
+  /* ━━━ Instance fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public readonly rootElement: HTMLElement;
 
+  protected readonly validationErrorsMessagesCollapsableListMountingPoint: Comment;
 
-  protected readonly errorsMessagesCollapsableList: HTMLElement;
-  protected readonly errorsMessagesCollapsableListMountingPoint: Comment = document.
-      createComment("COLLAPSABLE_CONTAINER_MOUNTING_POINT");
-  protected readonly emptyErrorMessagesListItem: Element;
+  protected readonly validationErrorsMessagesCollapsableList: HTMLElement = cloneDOM_Element({
+    targetElement: CompoundControlShell.validationErrorsMessagesCollapsableList,
+    mustCopyAllChildren: false
+  });
 
-  protected errorsMessages: ReadonlyArray<string> = [];
-  protected mustDisplayErrorsMessagesIfAny: boolean = false;
+  protected readonly emptyValidationErrorMessagesListItem: Element = cloneDOM_Element({
+    targetElement: CompoundControlShell.validationErrorsMessagesCollapsableListEmptyItem,
+    mustCopyAllChildren: false
+  });
 
 
-  public static pickOneBySelector(selector: string): CompoundControlShell {
-    return new CompoundControlShell(selector);
+  /* ─── Must be changed only via setter or constructor ───────────────────────────────────────────────────────────── */
+  protected _mustDisplayErrorsMessagesIfAny: boolean;
+  protected _validationErrorsMessages: ReadonlyArray<string> = [];
+
+
+  /* ━━━ Public static methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  public static pickOneBySelector(
+    compoundParameter: Readonly<{
+      targetCompoundControlShellSelector: string;
+      mustDisplayErrorsMessagesIfAny: boolean;
+      contextElement?: Element;
+      contextElementSelector?: string;
+    }>
+  ): CompoundControlShell {
+
+    if (isNull(CompoundControlShell.dynamicParts)) {
+      CompoundControlShell.initializeCommonDOM_Parts();
+    }
+
+    const targetCompoundControlShellSelector: string = compoundParameter.targetCompoundControlShellSelector;
+    let contextElement: Element | undefined;
+
+    if (isNotUndefined(compoundParameter.contextElement)) {
+      contextElement = compoundParameter.contextElement;
+    } else if (isNotUndefined(compoundParameter.contextElementSelector)) {
+      contextElement = document.querySelectorAll(compoundParameter.contextElementSelector)[0];
+    }
+
+    const rootElement: HTMLElement = getExpectedToBeSingleDOM_Element<HTMLElement>({
+      selector: targetCompoundControlShellSelector,
+      context: contextElement,
+      expectedDOM_ElementSubtype: HTMLElement
+    });
+
+    return new CompoundControlShell({
+      rootElement,
+      mustDisplayErrorsMessagesIfAny: compoundParameter.mustDisplayErrorsMessagesIfAny
+    });
+
   }
 
 
-  private constructor(selector: string) {
+  /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  private constructor(
+    compoundParameter: Readonly<{
+      rootElement: HTMLElement;
+      mustDisplayErrorsMessagesIfAny: boolean;
+    }>
+  ) {
 
-    this.rootElement = getExpectedToBeSingleDOM_Element<HTMLElement>({
-      selector, expectedDOM_ElementSubtype: HTMLElement
+    this.rootElement = compoundParameter.rootElement;
+
+    this._mustDisplayErrorsMessagesIfAny = compoundParameter.mustDisplayErrorsMessagesIfAny;
+
+    this.validationErrorsMessagesCollapsableListMountingPoint = getCommentDOM_Node({
+      commentContent: CompoundControlShell.VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT_PLACEHOLDER_CONTENT,
+      directParent: this.rootElement,
+      mustThrowErrorIfCommentNotFound: true
     });
-
-    this.errorsMessagesCollapsableList = getExpectedToBeSingleChildOfTemplateElement({
-      templateElementSelector: CompoundControlShell.VALIDATION_ERRORS_MESSAGES_LIST_TEMPLATE_SELECTOR,
-      expectedChildElementSubtype: HTMLElement,
-      context: this.rootElement,
-      mustReplaceTemplateElementOnceDoneWith: this.errorsMessagesCollapsableListMountingPoint
-    });
-
-    this.emptyErrorMessagesListItem = getExpectedToBeSingleDOM_Element({
-      selector: CompoundControlShell.VALIDATION_ERROR_MESSAGE_LIST_ITEM_SELECTOR,
-      context: this.errorsMessagesCollapsableList
-    });
-
-    this.emptyErrorMessagesListItem.remove();
-
-    /* [ Theory ] There could be pre-mounted errors by state simulations, but they could not correspond to inputted value. */
-    this.rootElement.querySelector(CompoundControlShell.VALIDATION_ERROR_MESSAGES_LIST_SELECTOR)?.remove();
 
   }
 
 
-  /* === Public methods and getters ================================================================================= */
-  public beginDisplayingOfErrorsMessagesIfAny(): void {
+  /* ━━━ Reactivity ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* eslint-disable-next-line @typescript-eslint/member-ordering --
+  * From now, the private instance fields and public accessors/mutators are being grouped. */
+  public get $mustDisplayErrorsMessagesIfAny(): boolean {
+    return this._mustDisplayErrorsMessagesIfAny;
+  }
 
-    if (this.mustDisplayErrorsMessagesIfAny) {
+  public set $mustDisplayErrorsMessagesIfAny(value: boolean) {
+
+    if (this._mustDisplayErrorsMessagesIfAny === value) {
       return;
     }
 
 
-    this.mustDisplayErrorsMessagesIfAny = true;
-    this.mountAndSlideDownErrorsMessagesIfRequired();
+    this._mustDisplayErrorsMessagesIfAny = value;
+
+    if (this._mustDisplayErrorsMessagesIfAny) {
+
+      if (!this.validationErrorsMessagesCollapsableList.isConnected) {
+
+        if (this._validationErrorsMessages.length > 0) {
+          this.mountAndSlideDownErrorsMessagesList();
+        }
+
+      }
+
+      return;
+
+    }
+
+
+    if (this.validationErrorsMessagesCollapsableList.isConnected) {
+      this.collapseErrorsMessagesListAndUnmount({ mustClearValidationErrorsMessagesCollapsableListOnceAnimated: true });
+    }
 
   }
 
-  public stopDisplayingOfErrorsMessages(): void {
+  public get $validationErrorsMessages(): ReadonlyArray<string> {
+    return this._validationErrorsMessages;
+  }
 
-    if (!this.mustDisplayErrorsMessagesIfAny) {
+  public set $validationErrorsMessages(validationErrorsMessages: ReadonlyArray<string>) {
+
+    this._validationErrorsMessages = validationErrorsMessages;
+
+    if (!this.$mustDisplayErrorsMessagesIfAny) {
+      this.updateValidationErrorsMessagesCollapsableList();
       return;
     }
 
 
-    this.mustDisplayErrorsMessagesIfAny = false;
-    this.slideUpAndRemoveErrorMessagesIfRequired();
+    if (this.validationErrorsMessagesCollapsableList.isConnected) {
 
-  }
+      if (this._validationErrorsMessages.length > 0) {
+        this.updateValidationErrorsMessagesCollapsableList();
+      } else {
+        this.collapseErrorsMessagesListAndUnmount({ mustClearValidationErrorsMessagesCollapsableListOnceAnimated: true });
+      }
 
-  public setErrorsMessagesAndDisplayIfMust(newErrorsMessages: ReadonlyArray<string>): void {
+      return;
 
-    this.errorsMessages = newErrorsMessages;
+    }
 
-    if (this.errorsMessages.length > 0) {
-      this.mountAndSlideDownErrorsMessagesIfRequired();
-    } else {
-      this.slideUpAndRemoveErrorMessagesIfRequired();
+
+    if (this._validationErrorsMessages.length > 0) {
+      this.updateValidationErrorsMessagesCollapsableList();
+      this.mountAndSlideDownErrorsMessagesList();
     }
 
   }
 
 
-  /* === Protected methods and getters ============================================================================== */
-  protected mountAndSlideDownErrorsMessagesIfRequired(): void {
+  /* ━━━ Protected methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  protected updateValidationErrorsMessagesCollapsableList(): void {
+    this.validationErrorsMessagesCollapsableList.replaceChildren(
+      ...this.$validationErrorsMessages.map(
+          (errorMessage: string): Element => {
 
-    /* [ Theory ] Even if the errors count has not changed, the errors messages themselves could change. */
-    this.errorsMessagesCollapsableList.replaceChildren(
-      ...this.errorsMessages.map((errorMessage: string): Element => {
+            const listItem: Element = cloneDOM_Element({
+              targetElement: this.emptyValidationErrorMessagesListItem,
+              mustCopyAllChildren: false
+            });
 
-        const listItem: Element = cloneDOM_Element({
-          targetElement: this.emptyErrorMessagesListItem,
-          mustCopyAllChildren: false
-        });
+            listItem.textContent = errorMessage;
 
-        listItem.textContent = errorMessage;
+            return listItem;
 
-        return listItem;
-
-      })
+          }
+      )
     );
+  }
 
-    if (
-      this.errorsMessagesCollapsableList.isConnected ||
-      this.errorsMessages.length === 0 ||
-      !this.mustDisplayErrorsMessagesIfAny
-    ) {
-      return;
-    }
-
-
+  protected mountAndSlideDownErrorsMessagesList(): void {
     ExpandingAnimation.replaceNodeAndAnimate({
-      replacedNode: this.errorsMessagesCollapsableListMountingPoint,
-      animatedElement: this.errorsMessagesCollapsableList,
+      replacedNode: this.validationErrorsMessagesCollapsableListMountingPoint,
+      animatedElement: this.validationErrorsMessagesCollapsableList,
       duration__seconds: CompoundControlShell.ERRORS_LIST_EXPANDING_ANIMATION_DURATION_PER_ONE_ERROR_MESSAGE__SECONDS *
-          this.errorsMessages.length
+          this.$validationErrorsMessages.length
     });
   }
 
-
-  protected slideUpAndRemoveErrorMessagesIfRequired(): void {
-
-    if (this.errorsMessages.length > 0 || !this.errorsMessagesCollapsableList.isConnected) {
-      return;
-    }
-
-
+  protected collapseErrorsMessagesListAndUnmount(
+    {
+      mustClearValidationErrorsMessagesCollapsableListOnceAnimated
+    }: Readonly<{ mustClearValidationErrorsMessagesCollapsableListOnceAnimated: boolean; }>
+  ): void {
     CollapsingAnimation.animate({
-      animatedElement: this.errorsMessagesCollapsableList,
-      replaceWithOnComplete: this.errorsMessagesCollapsableListMountingPoint,
-      duration__seconds: CompoundControlShell.ERRORS_LIST_COLLAPSING_ANIMATION_DURATION__SECONDS
+      animatedElement: this.validationErrorsMessagesCollapsableList,
+      replaceWithOnComplete: this.validationErrorsMessagesCollapsableListMountingPoint,
+      duration__seconds: CompoundControlShell.ERRORS_LIST_COLLAPSING_ANIMATION_DURATION__SECONDS,
+      ...mustClearValidationErrorsMessagesCollapsableListOnceAnimated ? {
+        callback: this.updateValidationErrorsMessagesCollapsableList.bind(this)
+      } : null
     });
+  }
+
+  protected static initializeCommonDOM_Parts(): void {
+
+    CompoundControlShell.dynamicParts = createDOM_ElementFromHTML_Code({
+      HTML_Code: componentDynamicPartsHTML,
+      rootDOM_ElementSubtype: HTMLTemplateElement
+    }).content;
+
+
+    CompoundControlShell.validationErrorsMessagesCollapsableList = getExpectedToBeSingleDOM_Element({
+      selector: CompoundControlShell.VALIDATION_ERRORS_MESSAGES_LIST_SELECTOR,
+      context: CompoundControlShell.dynamicParts,
+      expectedDOM_ElementSubtype: HTMLElement
+    });
+
+    CompoundControlShell.validationErrorsMessagesCollapsableListEmptyItem = getExpectedToBeSingleDOM_Element({
+      selector: CompoundControlShell.VALIDATION_ERRORS_MESSAGES_LIST_ITEM_SELECTOR,
+      context: CompoundControlShell.validationErrorsMessagesCollapsableList
+    });
+    CompoundControlShell.validationErrorsMessagesCollapsableListEmptyItem.remove();
+
+
+    CompoundControlShell.asynchronousValidationsStatusesCollapsableList = getExpectedToBeSingleDOM_Element({
+      selector: CompoundControlShell.ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_SELECTOR,
+      context: CompoundControlShell.dynamicParts,
+      expectedDOM_ElementSubtype: HTMLElement
+    });
+
+    CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressStateEmptyItem =
+        getExpectedToBeSingleDOM_Element({
+          selector: CompoundControlShell.ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_IN_PROGRESS_STATE_ITEM_TEMPLATE_SELECTOR,
+          context: CompoundControlShell.asynchronousValidationsStatusesCollapsableList
+        });
+    CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressStateEmptyItem.remove();
+
+    CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressSucceededButInvalidStateEmptyItem =
+        getExpectedToBeSingleDOM_Element({
+          selector: CompoundControlShell.
+              ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_SUCCEEDED_BUT_INVALID_STATE_ITEM_TEMPLATE_SELECTOR,
+          context: CompoundControlShell.asynchronousValidationsStatusesCollapsableList
+        });
+    CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressSucceededButInvalidStateEmptyItem.remove();
+
+    CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressSucceededAndValidStateEmptyItem =
+        getExpectedToBeSingleDOM_Element({
+          selector: CompoundControlShell.
+              ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_SUCCEEDED_AND_VALID_STATE_ITEM_TEMPLATE_SELECTOR,
+          context: CompoundControlShell.asynchronousValidationsStatusesCollapsableList
+        });
+    CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressSucceededAndValidStateEmptyItem.remove();
+
+    CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressMalfunctionStateEmptyItem =
+        getExpectedToBeSingleDOM_Element({
+          selector: CompoundControlShell.
+              ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MALFUNCTION_STATE_ITEM_TEMPLATE_SELECTOR,
+          context: CompoundControlShell.asynchronousValidationsStatusesCollapsableList
+        });
+    CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressMalfunctionStateEmptyItem.remove();
+
+    CompoundControlShell.dynamicParts.replaceChildren();
+
   }
 
 }

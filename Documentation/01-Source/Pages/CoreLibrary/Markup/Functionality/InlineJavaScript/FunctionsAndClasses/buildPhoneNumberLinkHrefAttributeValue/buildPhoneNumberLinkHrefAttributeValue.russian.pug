@@ -1,0 +1,122 @@
+extends ../../../../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../../../../SharedAssets/Markup/SharedAssets.russian.pug
+  include ../../../../../../../SharedComponents/SharedComponents.russian.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "ru";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("buildPhoneNumberLinkHrefAttributeValue");
+    HTML_PageMetaData = {
+      description: MetaDescriptionTemplates.pugFunction({
+        functionName: "buildPhoneNumberLinkHrefAttributeValue",
+        whatFunctionDoes:
+            "генерирует такое значение HTML-аттрибута «href» для тэга «a», что при клике на ссылку, которая получится " +
+              "в итоге, будет открыто приложение, для обеспечения телефонной связи и предложено позвонить на номер " +
+              "телефона, указанный через первый и единственный параметр."
+      }),
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "@Common" ];
+
+    RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.buildPhoneNumberLinkHrefAttributeValue");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      english: "./buildPhoneNumberLinkHrefAttributeValue.english.html",
+      japanese: "./buildPhoneNumberLinkHrefAttributeValue.japanese.html"
+    });
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    +CallableExpressionScheme--YDF_DK({
+      technicalName: "buildPhoneNumberLinkHrefAttributeValue",
+      localizedDescriptiveHeading: "Сгенерировать значение аттрибута «href» для ссылки на номер телефона",
+      headingTag: "h1",
+      parametersSpecification: [
+        {
+          genericTechnicalName: "phoneNumber",
+          localizedName: "Номер телефона",
+          type: "string",
+          required: true
+        }
+      ],
+      returnedValue: "string"
+    })
+
+    p.Article-Paragraph.
+      Генерирует такое значение #[+Term--YDID HTML-аттрибута] #[+ImportantEntity__Code--YDID href] для #[+Term--YDID тэга]
+        #[+ImportantEntity__Code--YDID a], что при клике на ссылку, которая получится в итоге, будет открыто приложение
+        для обеспечения телефонной связи и предложено позвонить на номер телефона, указанный через
+        #[+Keyphrase--YDID первый и единственный] #[+Term--YDID параметр].
+      На #[+Term--YDID смартфонах] такое приложение гарантированно имеется, на других же типах устройств вероятно
+        будет преложено выбрать приложение для интернет-телефонии, такое как #[+SecondaryEntity--YDID Skype],
+        #[+SecondaryEntity--YDID People] и так далее, однако для звонка на номер телефона скорее всего потребуется
+        заплатить деньги.
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }).
+        a(
+          href=buildPhoneNumberLinkHrefAttributeValue("+79161234567")
+        ) +7-916-123-45-67
+
+    p.Article-Paragraph.
+      Всё, что делает эта функция — добавляет #[+ImportantEntity__Code--YDID tel:] к указанному
+        #[+Term--YDID строчному значению], которое, как ожидается, представляет собой желаемый номер телефона.
+      Если Ваш реактор кода или #[+Term--YDID интегрированная среды разработки] #[+Keyword--YDID не] имеет
+        функциональности автодополнения по шаблонам, то данная #[+Term--YDID функция] едва ли будет иметь для Вас ценность —
+        что #[+ImportantEntity__Code--YDID tel:] надо запоминать или каждый раз искать в справочниках, что имя
+        #[+Term--YDID функции] #[+ImportantEntity__Code--YDID buildPhoneNumberLinkHrefAttributeValue]
+        (хотя в #[+ImportantEntity__Code--YDID tel:] всего три буквы, на фоне большого количества другой информации и
+        они могут быть забыты).
+
+    p.Article-Paragraph
+      | Если же функциональность автодополнения по шаблонам имеется, то #[+Keyword--YDID достаточно]
+      |   #[+Keyword__Contrast--YDID начать] вводить #[+SecondaryEntity__Code--YDID buildP...], как появится вплывающая
+      |   подсказка, а далее всё зависит от того, как реализовано автодополнение в текстовом редакторе или
+      |   #[+Term--YDID интегрированной среде разработки].
+      | В случае с
+      |
+      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.liveTemplates }).Article-Link Live Template-ом
+      |
+      |   из
+      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.YDF_Plugin }).Article-Link Live официального плагина YDF
+      |
+      |   для
+      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.intelliJ_IDEA_FamilyIDEs }).Article-Link.
+        интегрированных сред разработки семейства IntelliJ IDEA
+      |   происходит автоматическая подстановка #[+Keyword--YDID предварительно] скопированного в буфер обмена значения
+      |   на место #[+Keyphrase--YDID единственного] #[+Term--YDID параметра],
+      |   а потому заполнение значения #[+Term--YDID аттрибута] #[+ImportantEntity__Code--YDID href] c использованием
+      |   функции #[+ImportantEntity__Code--YDID buildPhoneNumberLinkHrefAttributeValue] можно завершить в
+      |   3-4 нажатия клавиш (в зависимости от того, сколько других автодополнений будет предложено):
+
+    +SingleImageViewer--YDF({
+      imageURI: "@AssociatedWithPages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
+          "buildPhoneNumberLinkHrefAttributeValue/Images/buildPhoneNumberLinkHrefAttributeValue-LiveTemplate",
+      imageAlternateText:
+          "Быстрый ввод выражения вызова функции «buildPhoneNumberLinkHrefAttributeValue» из библиотеки " +
+          "«Yamato Daiwa Frontend» (сокращённо: «YDF») в интегрированных средах разработки семейства «IntelliJ IDEA» " +
+          "с помощью функциональности «Live Templates».",
+      maximalWidth__anyValidCSS_Value: "600px"
+    })
+

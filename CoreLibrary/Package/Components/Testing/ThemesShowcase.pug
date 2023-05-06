@@ -55,62 +55,56 @@ mixin ThemesShowcase--YDF(properties)
     } = properties;
 
 
-  if Object.entries(themes).length > 0
+  ul.ThemesShowcase--YDF
 
-    ul.ThemesShowcase--YDF
+    each themeValue, themeKey in themes
 
-      each themeValue, themeKey in themes
+      -
+        iterationData.theme = {
+          key: themeKey,
+          value: themeValue
+        };
 
-        -
-          iterationData.theme = {
-            key: themeKey,
-            value: themeValue
-          };
+      li
 
-        li
+        span.ThemesShowcase--YDF-Label= `${ themeKeyLabelPrefix }${ themeKey }`
 
-          span.ThemesShowcase--YDF-Label=`${ themeKeyLabelPrefix }${ themeKey }`
+        ul.ThemesShowcase--YDF-ChildList
 
-          if Object.entries(geometricVariations).length > 0
+          each geometricVariationValue, geometricVariationKey in geometricVariations
 
-            ul.ThemesShowcase--YDF-ChildList
+            -
+              iterationData.geometricVariation = {
+                key: geometricVariationKey,
+                value: geometricVariationValue
+              };
 
-              each geometricVariationValue, geometricVariationKey in geometricVariations
+            li
 
-                -
-                  iterationData.geometricVariation = {
-                    key: geometricVariationKey,
-                    value: geometricVariationValue
-                  };
+              span.ThemesShowcase--YDF-Label= `${ geometricVariationLabelPrefix }${ geometricVariationKey }`
 
-                li
+              #{decorativeVariationsWrapperTag}.ThemesShowcase--YDF-ChildList(
+                class=decorativeVariationsWrapperAdditionalCSS_Classes
+              )
 
-                  span.ThemesShowcase--YDF-Label=`${ geometricVariationLabelPrefix }${ geometricVariationKey }`
+                each decorativeVariationValue, decorativeVariationKey in decorativeVariations
 
-                  if Object.entries(decorativeVariations).length > 0
+                  -
+                    iterationData.decorativeVariation = {
+                      key: decorativeVariationKey,
+                      value: decorativeVariationValue
+                    };
 
-                    #{decorativeVariationsWrapperTag}.ThemesShowcase--YDF-ChildList(
-                      class=decorativeVariationsWrapperAdditionalCSS_Classes
-                    )
+                  if !skipDecorativeVariationIf(iterationData)
 
-                      each decorativeVariationValue, decorativeVariationKey in decorativeVariations
+                    if decorativeVariationsWrapperTag === "ul"
 
-                        -
-                          iterationData.decorativeVariation = {
-                            key: decorativeVariationKey,
-                            value: decorativeVariationValue
-                          };
+                      li
 
-                        if !skipDecorativeVariationIf(iterationData)
+                        span.ThemesShowcase--YDF-Label= `${ decorativeVariationLabelPrefix }${ decorativeVariationKey }`
 
-                          if decorativeVariationsWrapperTag === "ul"
+                        block
 
-                            li
+                    else
 
-                              span.ThemesShowcase--YDF-Label=`${ decorativeVariationLabelPrefix }${ decorativeVariationKey }`
-
-                              block
-
-                          else
-
-                            block
+                      block

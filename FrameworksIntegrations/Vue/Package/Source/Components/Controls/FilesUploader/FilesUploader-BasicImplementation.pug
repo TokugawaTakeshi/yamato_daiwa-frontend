@@ -1,0 +1,12 @@
+.FilesUploader--YDF
+
+  input.FilesUploader--YDF-HiddenInputElement(
+    type="file"
+    :accept="acceptAttributeValueForInputTag"
+    :multiple="maximalFilesCount !== 1"
+    :required="required"
+    :aria-label="accessibilityGuidance"
+    :aria-labelledby="externalLabelHTML_ID"
+    :id="INPUT_ELEMENT_HTML_ID"
+    @change="onSelectNewFilesByNativeExplorerSession"
+  )

@@ -11,10 +11,23 @@ block append TableOfContents
   h1.AnywherePage-TopHeading= HTML_PAGE_TITLE
 
   +PageLink({
+    label: "AttentionBox",
+    URI: "@Demos/Components/AttentionBox/AttentionBox",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+  +PageLink({
     label: "Badge",
     URI: "@Demos/Components/Badge/Badge",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
+
+  +PageLink({
+    label: "LoadingIndicator",
+    URI: "@Demos/Components/LoadingIndicator/LoadingIndicator",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
 
   h2.AnywherePage-PagesGroupHeading Controls
 
@@ -27,11 +40,44 @@ block append TableOfContents
   })
 
 
+  h3.AnywherePage-PagesSubgroupHeading Inputting
+
+  +PageLink({
+    label: "TextBox",
+    URI: "@Demos/Components/Controls/TextBox/TextBox",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+
+  h3.AnywherePage-PagesSubgroupHeading Other
+
+  +PageLink({
+    label: "FilesUploader",
+    URI: "@Demos/Components/Controls/FilesUploader/FilesUploader",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+
   h2.AnywherePage-PagesGroupHeading Controls groups
 
   +PageLink({
     label: "Simple integrated",
     URI: "@Demos/Assemblies/ControlsGroups/Simple/Integrated/SimpleIntegratedControlsGroupDemo",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+  +PageLink({
+    label: "Basic integrated",
+    URI: "@Demos/Assemblies/ControlsGroups/Basic/Integrated/BasicIntegratedControlsGroupDemo",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+
+  h2.AnywherePage-PagesGroupHeading Viewers
+
+  +PageLink({
+    label: "SingleImageViewer",
+    URI: "@Demos/Components/Viewers/SingleImage/SingleImageViewer",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 

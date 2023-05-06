@@ -1,156 +1,142 @@
+include CompoundControlShellLocalization.english.pug
+
+
 -
 
-  const CompoundControlShell__YDF = {
+  class CompoundControlShell__YDF {
 
-    CSS_NAMESPACE: "CompoundControlShell--YDF",
-
-
-    /* === Themes =================================================================================================== */
-    Themes: { regular: "REGULAR" },
-
-    defineNewThemes(themesNames) { return ComponentsAuxiliaries.defineNewThemes(themesNames, this); },
-
-    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT,
-    considerThemesAsExternal() {
-      this.areThemesExternal = true;
-      return this;
-    },
+    static CSS_NAMESPACE = "CompoundControlShell--YDF";
 
 
-    /* --- Geometry ------------------------------------------------------------------------------------------------- */
-    GeometricVariations: {
+    /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static Themes = { regular: "REGULAR" };
+
+    static defineCustomThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, CompoundControlShell__YDF);
+    }
+
+    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+
+    static considerThemesAsCommon() {
+      CompoundControlShell__YDF.areThemesCSS_ClassesCommon = true;
+      return CompoundControlShell__YDF;
+    }
+
+
+    /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
+    static GeometricVariations = {
       regular: "REGULAR",
       small: "SMALL"
-    },
+    };
 
-    defineNewGeometricVariations(geometricVariationsNames) {
-      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, this);
-    },
+    static defineNewGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, CompoundControlShell__YDF);
+    }
 
 
-    /* --- Decoration ----------------------------------------------------------------------------------------------- */
-    DecorativeVariations: { regular: "REGULAR" },
+    /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
+    static DecorativeVariations = { regular: "REGULAR" };
 
     defineNewDecorativeVariations(decorativeVariationsNames) {
-      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, this);
-    },
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, CompoundControlShell__YDF);
+    }
 
 
-    /* === Properties specification ================================================================================= */
-    get propertiesSpecification() {
-      return {
+    /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static propertiesSpecification = {
 
-        label: {
-          type: String,
-          required: false,
-          minimalCharactersCount: 1
-        },
+      label: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
 
-        guidance: {
-          type: String,
-          required: false,
-          minimalCharactersCount: 1
-        },
+      guidance: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
 
-        required: {
-          type: Boolean,
-          required: false
-        },
-
-        mustDisplayAppropriateBadgeIfInputIsRequired: {
-          type: Boolean,
-          required: false
-        },
-
-        mustDisplayAppropriateBadgeIfInputIsOptional: {
-          type: Boolean,
-          required: false
-        },
-
-        mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge: {
-          type: Boolean,
-          required: false
-        },
-
-        coreElementHTML_ID: {
-          type: String,
-          required: false,
-          minimalCharactersCount: 1
-        },
-
-        labelElementHTML_ID: {
-          type: String,
-          required: false,
-          minimalCharactersCount: 1
-        },
-
-        mainSlotWrapperAdditionalCSS_Classes: {
-          type: Array,
-          required: false,
-          element: {
-            type: String,
-            minimalCharactersCount: 1
-          }
-        },
-
-        theme: {
-          type: String,
-          required: false,
-          allowedAlternatives: Object.values(this.Themes)
-        },
-
-        areThemesExternal: {
-          type: Boolean,
-          required: false
-        },
-
-        geometry: {
-          type: String,
-          required: false,
-          allowedAlternatives: Object.values(this.GeometricVariations)
-        },
-
-        decoration: {
-          type: String,
-          required: false,
-          allowedAlternatives: Object.values(this.DecorativeVariations)
-        }
-
-      };
-    },
-
-
-    /* === State simulations specification ========================================================================== */
-    stateSimulationsSpecification: {
-
-      invalidInputHighlightingIfAnyValidationErrorsMessages: {
+      required: {
         type: Boolean,
         required: false
       },
 
-      validValueHighlightingIfNoValidationErrorsMessages: {
+      mustDisplayAppropriateBadgeIfInputIsRequired: {
         type: Boolean,
         required: false
       },
 
-      validationErrorsMessages: {
+      mustDisplayAppropriateBadgeIfInputIsOptional: {
+        type: Boolean,
+        required: false
+      },
+
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge: {
+        type: Boolean,
+        required: false
+      },
+
+      coreElementHTML_ID: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
+      labelElementHTML_ID: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
+      mainSlotWrapperAdditionalCSS_Classes: {
         type: Array,
         required: false,
         element: {
           type: String,
           minimalCharactersCount: 1
         }
+      },
+
+      theme: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(CompoundControlShell__YDF.Themes)
+      },
+
+      areThemesCSS_ClassesCommon: {
+        type: Boolean,
+        required: false
+      },
+
+      geometry: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(CompoundControlShell__YDF.GeometricVariations)
+      },
+
+      decoration: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(CompoundControlShell__YDF.DecorativeVariations)
       }
 
-    },
+    };
 
 
-    /* === Localization ============================================================================================= */
-    localization: {
-      requirementBadges: {
-        required: "Required",
-        optional: "Optional"
-      }
-    }
+    /* ━━━ State simulations specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static statesSimulationsSpecification = {
 
-  };
+      validationErrorsMessages: ComponentsAuxiliaries.validatableControlGeneralStatesSimulationsSpecification.
+          validationErrorsMessages,
+
+      asynchronousValidationsStatuses: ComponentsAuxiliaries.validatableControlGeneralStatesSimulationsSpecification.
+          asynchronousValidationsStatuses
+
+    };
+
+
+    /* ━━━ Localization ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static localization = compoundControlShellLocalization__english;
+
+  }

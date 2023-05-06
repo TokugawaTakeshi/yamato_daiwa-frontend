@@ -2,7 +2,7 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import { isNotNull } from "@yamato-daiwa/es-extensions";
 
-import OverflowSafeSingleLineLabel from "@Components/OverflowSafeSingleLineLabel";
+import { OverflowSafeSingleLineLabel } from "../../../../Source";
 
 import "./OverflowSafeSingleLineLabel.test.styl";
 

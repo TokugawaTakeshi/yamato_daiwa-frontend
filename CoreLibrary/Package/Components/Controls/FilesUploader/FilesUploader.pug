@@ -13,7 +13,6 @@ mixin FilesUploader--YDF(properties, statesSimulations)
       accessibilityGuidance,
       externalLabelHTML_ID,
       guidance,
-      placeholder,
 
       disabled = false,
       readonly = false,
@@ -22,14 +21,20 @@ mixin FilesUploader--YDF(properties, statesSimulations)
       mustDisplayAppropriateBadgeIfInputIsRequired = false,
       mustDisplayAppropriateBadgeIfInputIsOptional = false,
       mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge = false,
+      minimalFilesCount = 0,
+      maximalFilesCount,
+      supportedFilesNamesExtensions = [],
 
-      coreElementHTML_ID = `${ COMPONENT_ID }-INPUT_OR_TEXT_AREA`, // TODO Replace "core" with more specific element name
+      noButton = false,
+      noDragAndDropArea = false,
+
+      inputElementHTML_ID = `${ COMPONENT_ID }-INPUT`,
       labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
 
       theme = FilesUploader__YDF.Themes.regular,
-      areThemesExternal = FilesUploader__YDF.areThemesExternal,
+      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || FilesUploader__YDF.areThemesExternal,
       geometry = FilesUploader__YDF.GeometricVariations.regular,
-      decoration = FilesUploader__YDF.GeometricVariations.regular,
+      decoration = FilesUploader__YDF.GeometricVariations.regular
 
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
       rawParameter: properties,
@@ -39,33 +44,50 @@ mixin FilesUploader--YDF(properties, statesSimulations)
       mixinName: "FilesUploader--YDF"
     });
 
-    const {
-      dragOverState = false,
-      blockingLoadingIndicator = false,
-      invalidInputHighlightingIfAnyValidationErrorsMessages = false,
-      validValueHighlightingIfNoValidationErrorsMessages = false,
-      validationErrorsMessages = []
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    statesSimulations = PugMixinsObjectTypeParametersProcessor.processParameter({
       rawParameter: statesSimulations,
       parameterNumber: 2,
       parameterName: "statesSimulations",
-      parameterPropertiesSpecification: FilesUploader__YDF.stateSimulationsSpecification,
+      parameterPropertiesSpecification: FilesUploader__YDF.statesSimulationsSpecification,
       mixinName: "FilesUploader--YDF"
     });
 
+    const {
+      singleImagePreview = false,
+      imagesPreviewFlow = false,
+      invalidInputHighlightingIfAnyValidationErrorsMessages,
+      validValueHighlightingIfNoValidationErrorsMessages,
+      validationErrorsMessages
+    } = statesSimulations;
+
     const rootElementModifierCSS_Classes = [
+
       ...disabled ? [ `${ FilesUploader__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
+
       ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
           [ `${ FilesUploader__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
       ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
           [ `${ FilesUploader__YDF.CSS_NAMESPACE }__ValueState` ] : [],
+
       ...Object.entries(FilesUploader__YDF.Themes).length > 1 && !areThemesExternal ?
           [ ComponentsAuxiliaries.generateThemeCSS_Class(FilesUploader__YDF.CSS_NAMESPACE, theme) ] : [],
       ...Object.entries(FilesUploader__YDF.GeometricVariations).length > 1 ?
           [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(FilesUploader__YDF.CSS_NAMESPACE, geometry) ] : [],
       ...Object.entries(FilesUploader__YDF.DecorativeVariations).length > 1 ?
           [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(FilesUploader__YDF.CSS_NAMESPACE, decoration) ] : []
+
     ];
+
+    const supportedFilesNamesExtensionsWihtoutLeadingDots = supportedFilesNamesExtensions.map(
+      fileNameExtension => removeSpecificCharacterFromCertainPosition({
+        targetString: fileNameExtension,
+        targetCharacter: ".",
+        fromFirstPosition: true
+      })
+    )
+
+    const acceptAttributeValueForInputTag = supportedFilesNamesExtensionsWihtoutLeadingDots.length > 0 ?
+        `.${ supportedFilesNamesExtensionsWihtoutLeadingDots.join(", .") }` : "*";
 
 
   +CompoundControlShell--YDF(
@@ -78,7 +100,7 @@ mixin FilesUploader--YDF(properties, statesSimulations)
       mustDisplayAppropriateBadgeIfInputIsRequired,
       mustDisplayAppropriateBadgeIfInputIsOptional,
       mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
-      coreElementHTML_ID: coreElementHTML_ID,
+      coreElementHTML_ID: inputElementHTML_ID,
       labelElementHTML_ID: labelElementHTML_ID,
 
       theme: FilesUploader__YDF.selfAndCompoundControlShellThemesCorrespondence[theme],
@@ -92,21 +114,88 @@ mixin FilesUploader--YDF(properties, statesSimulations)
       validValueHighlightingIfNoValidationErrorsMessages,
       validationErrorsMessages
     }
-  ).FilesUploader--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
+  ).FilesUploader--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
 
-    .FilesUploader--YDF-UploadingButtonGroup&attributes({
-      class: [
-        ...dragOverState ? [ "FilesUploader--YDF-UploadingButtonGroup__DragOverState" ] : [],
-        ...blockingLoadingIndicator ? [ "FilesUploader--YDF-UploadingButtonComposition__LoadingState" ] : []
-      ],
-      tabIndex: blockingLoadingIndicator ? -1 : 0
-    })
+    if statesSimulations.status
 
-      //-
-        [ Theory ]　From the viewpoint of HTML validity, the "label" element could not have the attribute [role="button"]
-          and block children elements like "div" and "p".
-      .FilesUploader--YDF-UploadingButtonComposition-VisibleContent(
-        role="button"
+      table.FilesUploader--YDF-StatusTable
+        tbody
+          tr.FilesUploader--YDF-StatusTable-Row.FilesUploader--YDF-StatusTable-Row__InProgressState
+            td: +QuestionMark__Circled__Filled--YDF_Icon.FilesUploader--YDF-StatusTable-Icon
+            td.FilesUploader--YDF-StatusTable-FileNameCell File1.png
+            td.FilesUploader--YDF-StatusTable-TextingCell Reading file ...
+
+          tr.FilesUploader--YDF-StatusTable-Row.FilesUploader--YDF-StatusTable-Row__InProgressState
+            td: +QuestionMark__Circled__Filled--YDF_Icon.FilesUploader--YDF-StatusTable-Icon
+            td.FilesUploader--YDF-StatusTable-FileNameCell File2.png
+            td.FilesUploader--YDF-StatusTable-TextingCell Uploading file ...
+
+          tr.FilesUploader--YDF-StatusTable-Row.FilesUploader--YDF-StatusTable-Row__FailedState
+            td: +MultiplicationSign--YDF_Icon.FilesUploader--YDF-StatusTable-Icon
+            td.FilesUploader--YDF-StatusTable-FileNameCell File3.png
+            td.FilesUploader--YDF-StatusTable-TextingCell File reading failure
+
+          tr.FilesUploader--YDF-StatusTable-Row.FilesUploader--YDF-StatusTable-Row__SucceededState
+            td: +Checkmark__Circled__Filled--YDF_Icon.FilesUploader--YDF-StatusTable-Icon
+            td.FilesUploader--YDF-StatusTable-FileNameCell File3.png
+            td.FilesUploader--YDF-StatusTable-TextingCell File is ready for uploading
+
+
+    if !noButton
+
+      +Button--YDF.FilesUploader--YDF-FilePickingButton
+        +FileAdding--YDF_Icon.Button--YDF-SVG_Icon
+        span.Button--YDF-Label Pick file
+
+
+    if !noDragAndDropArea
+
+      .FilesUploader--YDF-DragAndDropArea(
+        tabindex="0"
       )
-        +Comment__Plus__Filled--YDF_Icon.FilesUploader--YDF-UploadingActionIcon
-        p.FilesUploader--YDF-Guidance= FilesUploader__YDF.localization.uploadSingleFileByDragAndDropGuidance
+        +FileAdding--YDF_Icon.FilesUploader--YDF-Icon
+        p.FilesUploader--YDF-Guidance Drag and drop files here
+
+
+    if singleImagePreview
+
+      .FilesUploader--YDF-SingleImagePreviewer
+
+        img.FilesUploader--YDF-SingleImagePreview(
+          src=isString(singleImagePreview) ? singleImagePreview: DummyImagesURIs.highAndNarrow
+          alt="The preview of image which will be uploaded"
+        )
+
+      +Button--YDF.FilesUploader--YDF-FileDeletingButton
+        +TrashCan__Filled--YDF_Icon.Button--YDF-SVG_Icon
+        span.Button--YDF-Label Delete file
+
+
+    if imagesPreviewFlow
+
+      ul.FilesUploader--YDF-ImagesPreviewFlow(
+        aria-label="Images preview"
+      )
+
+        each imageURI in Array.from(Object.values(DummyImagesURIs)).concat(Array.from(Object.values(DummyImagesURIs)))
+
+          li.FilesUploader--YDF-PreviewCard
+
+            .FilesUploader--YDF-PreviewCard-SizingAndDefaultBackgroundProvidingWrapper
+              img.FilesUploader--YDF-PreviewCard-Image(
+                src=imageURI
+                alt="Image preview"
+              )
+
+            +Button--YDF({ label: "削除" }).FilesUploader--YDF-PreviewCard-Button
+
+
+    //- TODO accept=acceptAttributeValueForInputTag
+    input.FilesUploader--YDF-HiddenInputElement(
+      type="file"
+      multiple= maximalFilesCount !== 1
+      required=required
+      aria-label=accessibilityGuidance
+      aria-labelledby=externalLabelHTML_ID
+      id=inputElementHTML_ID
+    )

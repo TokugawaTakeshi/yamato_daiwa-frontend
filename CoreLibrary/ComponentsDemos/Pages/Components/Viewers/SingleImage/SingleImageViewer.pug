@@ -1,0 +1,30 @@
+extends ../../../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+block append Requirements
+
+  include ../../../../node_modules/@yamato-daiwa/frontend/Components.pug
+  include ../../../../Components/Viewers/SingleImage/SingleImageViewerDemo.pug
+
+
+block append Metadata
+
+  -
+    HTML_PAGE_TITLE = "SingleImageViewer component demo";
+    styleSheetsURIs = [ "@Demos/Components/Viewers/SingleImage/SingleImageViewer" ]
+
+
+block append PageContent
+
+  //- <== [ Testing ] Comment out if need to display standard themes only ==============================================
+  //-
+
+    SingleImageViewer__YDF.
+        defineNewThemes([ "Cupertino" ]).
+        defineNewGeometricVariations([ "Small" ]).
+        defineNewDecorativeVariations([ "Glamour" ]);
+  // ==> ===============================================================================================================
+
+  .ComponentTestingPageContent
+
+    +SingleImageViewerDemo

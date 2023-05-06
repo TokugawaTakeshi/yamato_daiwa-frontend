@@ -1,6 +1,6 @@
-import type InputtedValueValidationRule from "@Controls/_Validation/InputtedValueValidationRule";
+import type InputtedValueValidation from "../../InputtedValueValidation";
 import maximalElementsCountInputtedValueValidationRuleLocalization__english from
-    "@Controls/_Validation/PreMadeRules/Arrayed/MaximalElementsCountInputtedValueValidationRuleLocalization.english";
+    "./MaximalElementsCountInputtedValueValidationRuleLocalization.english";
 import {
   stringifyAndFormatArbitraryValue,
   isNotUndefined,
@@ -9,7 +9,7 @@ import {
 } from "@yamato-daiwa/es-extensions";
 
 
-class MaximalElementsCountInputtedValueValidationRule implements InputtedValueValidationRule {
+class MaximalElementsCountInputtedValueValidationRule implements InputtedValueValidation.Rule {
 
   public static localization: MaximalElementsCountInputtedValueValidationRule.Localization =
       maximalElementsCountInputtedValueValidationRuleLocalization__english;
@@ -22,7 +22,7 @@ class MaximalElementsCountInputtedValueValidationRule implements InputtedValueVa
 
   public constructor(
     compoundParameter:
-        InputtedValueValidationRule.ConstructorParameter &
+        InputtedValueValidation.Rule.ConstructorParameter &
         Readonly<{
           maximalElementsCount: number;
           errorMessageBuilder?: MaximalElementsCountInputtedValueValidationRule.ErrorMessage.Builder;
@@ -47,7 +47,7 @@ class MaximalElementsCountInputtedValueValidationRule implements InputtedValueVa
   }
 
 
-  public check(rawValue: unknown): InputtedValueValidationRule.CheckingResult {
+  public check(rawValue: unknown): InputtedValueValidation.Rule.CheckingResult {
 
     if (!Array.isArray(rawValue)) {
 

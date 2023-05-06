@@ -14,7 +14,7 @@ Paddings({
   right?: DataTypes.dimensionalAmount;
 
   verticalSymmetric?: DataTypes.dimensionalAmount;
-  verticalUpwardShifting?: DataTypes.dimensionalAmount;
+  upwardShifting?: DataTypes.dimensionalAmount;
   bottom?: DataTypes.dimensionalAmount;
   
 })
@@ -63,19 +63,19 @@ Paddings({
 ```
 
 
-### `verticalUpwardShifting` property
+### `upwardShifting` property
 
 `padding: 6px 0` does not mean that text between top and bottom paddings will be ideally centered: visually it will be
 the offset about `1px`.  Moreover, this offset depending on the font and the language. 
 
-`verticalUpwardShifting` allows to reduce the `top` padding to compensate this offset.
+`upwardShifting` allows to reduce the `top` padding to compensate this offset.
 
 ```stylus
 .Example6
   
   Paddings({
     verticalSymmetric: 6px,
-    verticalUpwardShifting: 1px
+    upwardShifting: 1px
   })
 ```
 

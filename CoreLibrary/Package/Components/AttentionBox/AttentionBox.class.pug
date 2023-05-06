@@ -15,7 +15,7 @@ include AttentionBoxLocalization.english.pug
       return ComponentsAuxiliaries.defineNewThemes(themesNames, this);
     },
 
-    areThemesExternal: false,
+    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT,
     considerThemesAsExternal() {
       this.areThemesExternal = true;
       return this;
@@ -23,7 +23,10 @@ include AttentionBoxLocalization.english.pug
 
 
     /* --- Geometry ------------------------------------------------------------------------------------------------- */
-    GeometricVariations: { regular: "REGULAR" },
+    GeometricVariations: {
+      regular: "REGULAR",
+      stickyNoteLike: "STICKY_NOTE_LIKE"
+    },
 
     defineNewGeometricVariations(geometricVariationsNames) {
       return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, this);
@@ -44,9 +47,16 @@ include AttentionBoxLocalization.english.pug
       return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, this);
     },
 
+
     /* === Properties specification ================================================================================= */
     get propertiesSpecification() {
       return {
+
+        title: {
+          type: String,
+          required: false,
+          minimalCharactersCount: 1
+        },
 
         theme: {
           type: String,
@@ -84,7 +94,27 @@ include AttentionBoxLocalization.english.pug
       }
     },
 
+
     /* === Localization ============================================================================================= */
-    localization: AttentionBoxYDF_ComponentEnglishLocalization
+    localization: attentionBoxYDF_ComponentLocalization__english,
+
+
+    /* === ID generating ============================================================================================ */
+    counterForIDs_Generating: 0,
+
+    generateComponentID() {
+      this.counterForIDs_Generating++;
+      return `ATTENTION_BOX--YDF-${ this.counterForIDs_Generating }`;
+    },
+
+
+    counterForCustomSVG_IconsIDs_Generating: 0,
+    customSVG_IconCurrentID: null,
+
+    generateCustomIconNewID() {
+      this.counterForCustomSVG_IconsIDs_Generating++;
+      this.customSVG_IconCurrentID = `ATTENTION_BOX--YDF-SVG_ICON-${ this.counterForCustomSVG_IconsIDs_Generating }`;
+      return this.customSVG_IconCurrentID;
+    }
 
   };

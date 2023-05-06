@@ -1,6 +1,28 @@
+applyStylesToRootElementOfYDF_Component(defaultSelector, areThemesCSS_ClassesCommon, themes)
+
+  commonThemesCSS_Classes = YDF_Array-create()
+
+  for theme in values(themes)
+
+    addElementsToEndOfYDF_ArrayIf(commonThemesCSS_Classes, isNonEmptyString(theme.componentIndependentCSS_Class), theme.componentIndependentCSS_Class)
+
+  hasCommonCSS_Class = YDF_Array-IsIncludes(commonThemesCSS_Classes, theme.componentIndependentCSS_Class)
+
+
+  if selector() == "&" || selector() == "" || hasCommonCSS_Class
+
+    {defaultSelector}
+
+      {block}
+
+  else
+
+    {block}
+
+
 provideDefaultSelectorWhenRootAndApply(defaultSelector)
 
-  if selector() == "&"
+  if selector() == "&" || selector() == ""
 
     {defaultSelector}
 
@@ -13,7 +35,7 @@ provideDefaultSelectorWhenRootAndApply(defaultSelector)
 
 getCurrentSelectorSubstitutingRoot(defaultSelector)
 
-  return selector() == "&" ? defaultSelector : selector()
+  return selector() == "&" || selector() == "" ? defaultSelector : selector()
 
 
 applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
@@ -28,7 +50,7 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
         required: true,
         minimalCharactersCount: 1
       },
-      areThemesTheExternal: {
+      areThemesCSS_ClassesCommon: {
         type: DataTypes.boolean,
         defaultValue: false
       },
@@ -42,7 +64,13 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
 
   CSS_Namespace = compoundParameter.CSS_Namespace
   themes = compoundParameter.themes
-  areThemesTheExternal = compoundParameter.areThemesTheExternal;
+  areThemesCSS_ClassesCommon = compoundParameter.areThemesCSS_ClassesCommon
+  themeIndependentGeometricVariations = compoundParameter.themeIndependentGeometricVariations
+
+  // [ Theory ] If make "hasThemeIndependentGeometricVariationsBeenApplied" boolean, even its value will be changed
+  //    inside `applyTheme`, when `applyTheme` will be called again, the value of
+  //    "hasThemeIndependentGeometricVariationsBeenApplied" will return to initial one.
+  hasThemeIndependentGeometricVariationsBeenApplied = { value: false }
 
   // [ Stylus theory ] Functions in object are allowed but must be decomposed to be invoked.
   applyGeometricVariation = compoundParameter.applyGeometricVariation
@@ -52,38 +80,53 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
   applyTheme(themeName, theme) {
 
     nonEmptyGeometricVariationsCount = getObjectNonNullValuesCount(theme.geometricVariations)
+    mustApplyGeometricVariations = !(themeIndependentGeometricVariations && hasThemeIndependentGeometricVariationsBeenApplied.value);
 
-    // [ Theory ] Every value could be set to null by user.
-    iterateObjectSkippingNullValues(theme.geometricVariations, @(geometricVariationName, geometricVariation) {
+    if(mustApplyGeometricVariations) {
 
-      if (nonEmptyGeometricVariationsCount == 1) {
+      // [ Theory ] Every value could be set to null by user.
+      iterateObjectSkippingNullValues(theme.geometricVariations, @(geometricVariationName, geometricVariation) {
 
-        applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
+        if (nonEmptyGeometricVariationsCount == 1) {
 
-      } else {
-
-        geometricVariationCSS_Class = buildBEM_ClassName({
-          block: CSS_Namespace,
-          modifier: capitalizeFirstLatinCharacter(geometricVariationName) + "Geometry"
-          elementSeparator: "-",
-          modifierSeparator: "__"
-        })
-
-        if (themeIndependentGeometricVariations) {
-          /.{geometricVariationCSS_Class} {
+          if (themeIndependentGeometricVariations) {
+            / {
+              applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
+            }
+          } else {
             applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
           }
-        } else if (selector() == "&" || areThemesTheExternal) {
-          .{geometricVariationCSS_Class} {
-            applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
-          }
+
         } else {
-          &.{geometricVariationCSS_Class} {
-            applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
+
+          geometricVariationCSS_Class = buildBEM_ClassName({
+            block: CSS_Namespace,
+            modifier: capitalizeFirstLatinCharacter(geometricVariationName) + "Geometry"
+            elementSeparator: "-",
+            modifierSeparator: "__"
+          })
+
+          if (themeIndependentGeometricVariations) {
+            /.{geometricVariationCSS_Class} {
+              applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
+            }
+          } else if (selector() == "&" || selector() == "") {
+            .{geometricVariationCSS_Class} {
+              applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
+            }
+          } else {
+            &.{geometricVariationCSS_Class} {
+              applyGeometricVariation(themeName, geometricVariationName, geometricVariation)
+            }
           }
         }
-      }
-    })
+      })
+
+    }
+
+    if (themeIndependentGeometricVariations) {
+      hasThemeIndependentGeometricVariationsBeenApplied.value = true
+    }
 
     // [ Theory ] Every value could be set to null by user.
     iterateObjectSkippingNullValues(theme.decorativeVariations, @(decorativeVariationName, decorativeVariation) {
@@ -103,7 +146,7 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
           modifierSeparator: "__"
         })
 
-        if (selector() == "&" || areThemesTheExternal) {
+        if (selector() == "&" || selector() == "" || areThemesCSS_ClassesCommon) {
           .{decorativeVariationCSS_Class} {
             applyDecorativeVariation(themeName, decorativeVariationName, decorativeVariation)
           }
@@ -127,7 +170,7 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
 
     } else {
 
-      if (areThemesTheExternal) {
+      if (areThemesCSS_ClassesCommon) {
 
         if (!isNonEmptyString(theme.componentIndependentCSS_Class)) {
           error(
@@ -351,6 +394,8 @@ validateAndAssignStoredInObjectCSS_Properties(compoundParameter, restParameters_
     extracts: compoundParameter.assigments
   })
 
+  assignedCSS_Properties = null
+
   for propertyKey, propertySpecification in compoundParameter.assigments
 
     CSS_Key = isNonEmptyString(propertySpecification.newName) ? propertySpecification.newName : propertyKey
@@ -362,13 +407,17 @@ validateAndAssignStoredInObjectCSS_Properties(compoundParameter, restParameters_
 
       applier(extractedCSS_Declarations[CSS_Key])
 
-    else
+
+    // [ Theory ] The CSS properties with same "newName" but different "propertyKey" could be.
+    else if (!hasPrimitivesArraySpecifiedElement(assignedCSS_Properties, CSS_Key))
 
       value = extractedCSS_Declarations[CSS_Key]
 
       if isNotNull(value)
 
         {CSS_Key}: value
+
+        push(assignedCSS_Properties, CSS_Key)
 
 
 applyObjectTypeBoxShadowDefinition(compoundParameter, restParameters__MUST_NOT_BE...)
@@ -386,19 +435,19 @@ applyObjectTypeBoxShadowDefinition(compoundParameter, restParameters__MUST_NOT_B
           defaultValue: false
         },
         XOffset: {
-          type: DataTypes.dimensionalAmount,
+          type: DataTypes.dimensionalQuantity,
           defaultValue: 0
         },
         YOffset: {
-          type: DataTypes.dimensionalAmount,
+          type: DataTypes.dimensionalQuantity,
           defaultValue: 0
         },
         blurRadius: {
-          type: DataTypes.dimensionalAmount,
+          type: DataTypes.dimensionalQuantity,
           defaultValue: 0
         },
         spreadRadius: {
-          type: DataTypes.dimensionalAmount,
+          type: DataTypes.dimensionalQuantity,
           defaultValue: 0
         },
         color: {
@@ -426,7 +475,7 @@ applyObjectTypeUnderlineDefinition(compoundParameter = {}, restParameters__MUST_
     targetParameter: compoundParameter,
     schema: {
       thickness: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false
       },
       type: {
@@ -460,7 +509,7 @@ applyOutlineObjectTypeDefinition(compoundParameter = {}, restParameters__MUST_NO
     targetParameter: compoundParameter,
     schema: {
       thickness: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false
       },
       type: {

@@ -1,6 +1,6 @@
-import type InputtedValueValidationRule from "@Controls/_Validation/InputtedValueValidationRule";
+import type InputtedValueValidation from "../../InputtedValueValidation";
 import minimalElementsCountInputtedValueValidationRuleLocalization__english from
-    "@Controls/_Validation/PreMadeRules/Arrayed/MinimalElementsCountInputtedValueValidationRuleLocalization.english";
+    "./MinimalElementsCountInputtedValueValidationRuleLocalization.english";
 import {
   stringifyAndFormatArbitraryValue,
   InvalidParameterValueError,
@@ -9,7 +9,7 @@ import {
 } from "@yamato-daiwa/es-extensions";
 
 
-class MinimalElementsCountInputtedValueValidationRule implements InputtedValueValidationRule {
+class MinimalElementsCountInputtedValueValidationRule implements InputtedValueValidation.Rule {
 
   public static localization: MinimalElementsCountInputtedValueValidationRule.Localization =
       minimalElementsCountInputtedValueValidationRuleLocalization__english;
@@ -22,7 +22,7 @@ class MinimalElementsCountInputtedValueValidationRule implements InputtedValueVa
 
   public constructor(
     compoundParameter:
-        InputtedValueValidationRule.ConstructorParameter &
+        InputtedValueValidation.Rule.ConstructorParameter &
         Readonly<{
           maximalElementsCount: number;
           errorMessageBuilder?: MinimalElementsCountInputtedValueValidationRule.ErrorMessage.Builder;
@@ -47,7 +47,7 @@ class MinimalElementsCountInputtedValueValidationRule implements InputtedValueVa
   }
 
 
-  public check(rawValue: unknown): InputtedValueValidationRule.CheckingResult {
+  public check(rawValue: unknown): InputtedValueValidation.Rule.CheckingResult {
 
     if (!Array.isArray(rawValue)) {
 

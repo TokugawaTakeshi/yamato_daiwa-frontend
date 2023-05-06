@@ -1,0 +1,312 @@
+// === Scenario 1: Use default styles ==================================================================================
+// With default options:
+provideBadgeYDF_Component()
+
+// With custom options:
+provideBadgeYDF_Component(
+  options: {
+    themeIndependentStylesOnly: false,
+    areThemesCSS_ClassesCommon: false,
+    loadingPlaceholder: true,
+    themeIndependentGeometricVariations: true,
+    geometricModifiers: {
+      pillShape: true,
+      singleLine: true
+    },
+    decorativeModifiers: {
+      bordersDisguising: true,
+      noBackground: true
+    }
+  }
+)
+
+
+// === Scenario 2: Override default preset a little ====================================================================
+provideBadgeYDF_Component(
+  overrides: {
+    themes: {
+      regular: {
+
+        componentIndependentCSS_Class: "RegularTheme--YDF"
+
+        geometricVariations: {
+          // [ Guidance ] All of below values are default. If you are want to override most of them consider the extracting
+          //     of geometric variation definition to the separate file.
+          // [ Guidance ] If you are not going to override the default value of some property, you may delete from here.
+          regular: {
+
+            rootElement: {
+
+              borders: specifyBordersSizing({
+                thickness: { all: 1px },
+                radius: { all: 0.2em }
+              }),
+
+              modifiers: {
+                pillShape: {
+                  textSizeToBorderRadiusRatio: 2
+                }
+              },
+
+              loadingPlaceholder: {
+                minimalWidth: 80px
+              },
+
+              customDeclarations: null
+
+            },
+
+            SVG_Icon: {
+
+              width: null,
+              height: 1em,
+
+              spacing: {
+                verticalSymmertic: null,
+                top: null,
+                bottom: null,
+                left: 0.5em
+              },
+
+              customDeclarations: null
+
+            },
+
+            keyLabel: {
+
+              text: {
+                size: 1em,
+                lineSpacing: 0.2em,
+                lineHeight: null
+              },
+
+              spacing: {
+                verticalSymmertic: 0.3em,
+                top: null,
+                bottom: null,
+                leftWhenGoingFirst: 0.8em,
+                afterSVG_Icon: 0.4em
+              },
+
+              customDeclarations: null
+
+            },
+
+            valueLabel: {
+
+              text: {
+                size: 1em,
+                lineSpacing: 0.2em,
+                lineHeight: null
+              },
+
+              spacing: {
+                verticalSymmertic: 0.3em,
+                top: null,
+                bottom: null,
+                leftWhenGoingFirst: 0.8em,
+                afterSVG_Icon: 0.6em,
+                afterKeyLabel: 0.4em,
+                right: 0.8em
+              },
+
+              customDeclarations: null
+
+            }
+
+          }
+
+        },
+
+        decorativeVariations: {
+
+          // [ Guidance ] All of below values are default. If you are want to override most of them consider the extracting
+          //    of decorative variation definition to the separate file.
+          // [ Guidance ] If you are not going to override the default value of some property, you may delete from here.
+          veryCatchyBright: {
+
+            rootElement: {
+
+              borders: {
+                style: solid,
+                color: YDF_ColorPalette.red.slightlyDark
+              },
+
+              background: {
+                color: YDF_ColorPalette.red.slightlyDark,
+                image: null
+              },
+
+              customDeclarations: null
+
+            },
+
+            SVG_Icon: {
+              color: white,
+              customDeclarations: null
+            },
+
+            keyLabel: {
+
+              text: {
+                fontWeight: null,
+                color: white
+              },
+
+              customDeclarations: null
+
+            },
+
+            valueLabel: {
+
+              text: {
+                fontWeight: bold,
+                color: white
+              },
+
+              customDeclarations: null
+
+            }
+
+          },
+
+          catchyBright: {
+            // TODO Ditto
+          },
+
+          modestlyCatchyBright: {
+            // TODO Ditto
+          },
+
+          neutralBright: {
+            // TODO Ditto
+          },
+
+          modestlyCalmingBright: {
+            // TODO Ditto
+          },
+
+          calmingBright: {
+            // TODO Ditto
+          },
+
+          achromaticBright: {
+            // TODO Ditto
+          },
+
+          // You can prevent the generating of styles for the unused variations:
+          veryCatchyPastel: null,
+          catchyPastel: null,
+          modestlyCatchyPastel: null,
+          neutralPastel: null,
+          modestlyCalmingPastel: null,
+          calmingPastel: null,
+          achromaticPastel: null
+
+        }
+
+      }
+    }
+  },
+  // TODO Remove below parameter if options are default
+  options: {
+    themeIndependentStylesOnly: false,
+    areThemesCSS_ClassesCommon: false,
+    loadingPlaceholder: true,
+    themeIndependentGeometricVariations: true,
+    geometricModifiers: {
+      pillShape: true,
+      singleLine: true
+    },
+    decorativeModifiers: {
+      bordersDisguising: true,
+      noBackground: true
+    }
+  }
+)
+
+
+// === Scenario 3: Define own preset ===================================================================================
+// TODO Define the geometric variations (like `Badge-RegularTheme-RegularGeometry`) and the decorative variations
+//   (like `Badge-RegularTheme-VeryCatchyBrightDecoration` or `Badge-RegularTheme-CatchyBrightDecoration`)
+//   in the external files then include them here
+@require "Themes/Regular/GeometricVariations/Badge-RegularTheme-RegularGeometry.styl"
+
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-VeryCatchyBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-CatchyBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-ModestlyCatchyBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-NeutralBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-CalmingBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-ModestlyCalmingBrightDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-AchromaticBrightDecoration.styl"
+
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-VeryCatchyPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-CatchyPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-ModestlyCatchyPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-NeutralPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-CalmingPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-ModestlyCalmingPastelDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-AchromaticPastelDecoration.styl"
+
+provideBadgeYDF_Component(
+  preset: {
+
+    themes: {
+      regular: {
+
+        componentIndependentCSS_Class: "RegularTheme--YDF"
+
+        geometricVariations: {
+          regular: Badge-RegularTheme-RegularGeometry
+        },
+
+        decorativeVariations: {
+
+          veryCatchyBright: Badge-RegularTheme-VeryCatchyBrightDecoration,
+          catchyBright: Badge-RegularTheme-CatchyBrightDecoration,
+          modestlyCatchyBright: Badge-RegularTheme-ModestlyCatchyBrightDecoration,
+          neutralBright: Badge-RegularTheme-NeutralBrightDecoration,
+          modestlyCalmingBright: Badge-RegularTheme-ModestlyCalmingBrightDecoration,
+          calmingBright: Badge-RegularTheme-CalmingBrightDecoration,
+          achromaticBright: Badge-RegularTheme-AchromaticBrightDecoration,
+
+          veryCatchyPastel: Badge-RegularTheme-VeryCatchyPastelDecoration,
+          catchyPastel: Badge-RegularTheme-CatchyPastelDecoration,
+          modestlyCatchyPastel: Badge-RegularTheme-ModestlyCatchyPastelDecoration,
+          neutralPastel: Badge-RegularTheme-NeutralPastelDecoration,
+          modestlyCalmingPastel: Badge-RegularTheme-ModestlyCalmingPastelDecoration,
+          calmingPastel: Badge-RegularTheme-CalmingPastelDecoration,
+          achromaticPastel: Badge-RegularTheme-AchromaticPastelDecoration
+
+        }
+
+      }
+    }
+
+  },
+  // TODO Remove below parameter if options are default
+  options: {
+    themeIndependentStylesOnly: false,
+    areThemesCSS_ClassesCommon: false,
+    loadingPlaceholder: true,
+    themeIndependentGeometricVariations: true,
+    geometricModifiers: {
+      pillShape: true,
+      singleLine: true
+    },
+    decorativeModifiers: {
+      bordersDisguising: true,
+      noBackground: true
+    }
+  }
+)
+
+
+// === Scenario 4: Writhe the CSS theme dependent CSS yourself =========================================================
+provideBadgeYDF_Component(
+  options: {
+    themeIndependentStylesOnly: true
+  }
+)
+
+// TODO Now define the styles as usual

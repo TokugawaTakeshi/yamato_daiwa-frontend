@@ -1,0 +1,38 @@
+extends ../../../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../../../SharedAssets/Markup/SharedAssets.japanese.pug
+  include ../../../../../../SharedComponents/SharedComponents.japanese.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "ja";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("NARROWEST_SCREEN_WIDTH_UNIT");
+    HTML_PageMetaData = {
+      description: "",
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "@Common" ];
+
+    RoutingEmulator.setCurrentRoute("coreLibrary.styles.assets.fundamentalConstantsAndEnums.NARROWEST_SCREEN_WIDTH_UNIT");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      english: "./NARROWEST_SCREEN_WIDTH_UNIT.english.html",
+      russian: "./NARROWEST_SCREEN_WIDTH_UNIT.russian.html"
+    });
+
+
+block append SpecificContent
+
+  article
+
+    h1 NARROWEST_SCREEN_WIDTH_UNIT

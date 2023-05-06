@@ -1,0 +1,121 @@
+﻿include RadioButtonsGroup.class.pug
+
+
+mixin RadioButtonsGroup--YDF(properties, statesSimulations)
+
+  -
+
+    const COMPONENT_ID = RadioButtonsGroup__YDF.generateComponentID();
+
+    const {
+
+      selectingOptions,
+
+      label,
+      accessibilityGuidance,
+      externalLabelHTML_ID,
+      guidance,
+
+      disabled = false,
+      readonly = false,
+
+      required = false,
+      mustDisplayAppropriateBadgeIfInputIsRequired = false,
+      mustDisplayAppropriateBadgeIfInputIsOptional = false,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge = false,
+
+      theme = RadioButtonsGroup__YDF.Themes.regular,
+      areThemesCSS_ClassesCommon = RadioButtonsGroup__YDF.areThemesCSS_ClassesCommon,
+      geometry = RadioButtonsGroup__YDF.GeometricVariations.regular,
+      decoration = RadioButtonsGroup__YDF.GeometricVariations.regular,
+
+      labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
+      radioButtonsHTML_Name = COMPONENT_ID
+
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: RadioButtonsGroup__YDF.propertiesSpecification,
+      mixinName: RadioButtonsGroup__YDF.CSS_NAMESPACE
+    });
+
+    const {
+      invalidInputHighlightingIfAnyValidationErrorsMessages = false,
+      validValueHighlightingIfNoValidationErrorsMessages = false,
+      validationErrorsMessages = [],
+      asynchronousValidationsStatuses = false
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: statesSimulations,
+      parameterNumber: 2,
+      parameterName: "statesSimulations",
+      parameterPropertiesSpecification: RadioButtonsGroup__YDF.statesSimulationsSpecification,
+      mixinName: RadioButtonsGroup__YDF.CSS_NAMESPACE
+    });
+
+    const rootElementModifierCSS_Classes = [
+
+      ...disabled ? [ `${ RadioButtonsGroup__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
+      ...readonly ? [ `${ RadioButtonsGroup__YDF.CSS_NAMESPACE }__ReadOnlyState` ] : [],
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: RadioButtonsGroup__YDF.Themes,
+        CSS_Namespace: RadioButtonsGroup__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: RadioButtonsGroup__YDF.GeometricVariations,
+        CSS_Namespace: RadioButtonsGroup__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decoration,
+        allDecorativeVariations: RadioButtonsGroup__YDF.DecorativeVariations,
+        CSS_Namespace: RadioButtonsGroup__YDF.CSS_NAMESPACE
+      })
+    ];
+
+
+  +CompoundControlShell--YDF(
+    {
+
+      label,
+      guidance,
+
+      required,
+      mustDisplayAppropriateBadgeIfInputIsRequired,
+      mustDisplayAppropriateBadgeIfInputIsOptional,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
+      coreElementHTML_ID: radioButtonsFlowElementID,
+      labelElementHTML_ID: labelElementHTML_ID,
+
+      theme: RadioButtonsGroup__YDF.selfAndCompoundControlShellThemesCorrespondence[theme],
+      areThemesCSS_ClassesCommon,
+      geometry: RadioButtonsGroup__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[geometry],
+      decoration: RadioButtonsGroup__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[decoration]
+
+    },
+    {
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
+    }
+  ).RadioButtonsGroup--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
+
+    .RadioButtonsGroup--YDF-Flow(
+      role="radiogroup"
+      aria-label=accessibilityGuidance
+      aria-labelledby=labelElementHTML_ID || externalLabelHTML_ID
+      aria-disabled=disabled
+    )
+
+      each selectingOption in selectingOptions
+
+        +RadioButton--YDF({
+          label: selectingOption.label,
+          HTML_Name: radioButtonsHTML_Name,
+          HTML_Value: selectingOption.value,
+          checked: selectingOption.isSelected
+        })

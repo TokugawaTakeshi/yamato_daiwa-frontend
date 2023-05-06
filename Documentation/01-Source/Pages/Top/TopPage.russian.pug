@@ -3,8 +3,8 @@ extends ../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/Mi
 
 block append Requirements
 
-  include ../../Components/Components.russian.pug
-  include ../../SharedAssets/Markup/Assets.russian.pug
+  include ../../SharedAssets/Markup/SharedAssets.russian.pug
+  include ../../SharedComponents/SharedComponents.russian.pug
 
 
 block append Metadata
@@ -12,25 +12,82 @@ block append Metadata
   -
 
     HTML_PAGE_LANGUAGE = "ru";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("Главная страницы");
+    HTML_PAGE_TITLE = buildHTML_PageTitle("Главная страница");
     HTML_PageMetaData = {
+      description: "Библиотека &quot;Yamato Daiwa Frontend&quot; (сокращённо: &quot;YDF&quot;) включает в себя " +
+          "набор вспомогательной функциональности для высококачественной фронтенд разработки с использованием " +
+          "препроцессоров &quot;Pug&quot; и &quot;Stylus&quot;." +
+          "Начиная с версии 2, активно добавляются GUI-компоненты, что делает библиотеку полноценным UI/UX фреймворком " +
+          "с гибкой кастомизацией и оптимизацией включая возможность выборочного использования, влияющую на количество " +
+          "выходного CSS-кода." +
+          "Имеется также функциональность, написанная на TypeScript, в частности логика GUI-компонентов. ",
       author: HTML_PAGE_AUTHOR
     };
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon.ico"
 
     styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/Minimal/MinimalLayout", "@Shared/ExternalComponents", "@Pages/Top/TopPage" ];
+    scriptsURIs.endOfBody = [ "@Common" ];
 
     RoutingEmulator.setCurrentRoute("top");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      [LanguageDropDownList__YDF_DK.supportedLanguages.english]: "./../index.html",
-      [LanguageDropDownList__YDF_DK.supportedLanguages.japanese]: "./TopPage.japanese.html"
+      english: "./../index.html",
+      japanese: "./TopPage.japanese.html"
     });
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
 
 
 block append SpecificContent
 
   main.TopPage
+
+    .TopPage-ImageAndTopHeadingGroup
+
+      img.TopPage-ImageAndTopHeadingGroup-Image(
+        src="@Shared/Icons/YDF_Icon.svg"
+        alt="Общий логотип библиотек «Yamato Daiwa Frontend»"
+      )
+
+      h1.TopPage-ImageAndTopHeadingGroup-Heading
+        span.TopPage-ImageAndTopHeadingGroup-Heading-FirstLine Yamato Daiwa
+        span.TopPage-ImageAndTopHeadingGroup-Heading-SecondLine Frontend 2 Alpha
+
+    p.TopPage-ShortDescription-Heading.
+      Богатые функциональностью библиотеки для высококачественной фроентенд-разработки на языках Pug, Stylus и TypeScript
+
+    +AttentionBox--YDF({
+      decoration: AttentionBox__YDF.DecorativeVariations.warning,
+      hasPrependedSVG_Icon: true
+    }).TopPage-Disclaimer.
+      Сайт документации находится на стадии разработки разработки.
+      До тех пор, пока некоторые страницы не готовы, Вы будете перенаправлены на временную англоязычную
+        Markdown-документацию на официальном GitHub-репозитории этого проекта.
+      Просим Вас понять, что качественное документирование требует больше времени, чем разработка, а библиотека
+        нуждается в новой функциональности, а потому разработка новой функциональности будет осуществляться с большим
+        приоритетом.
+
+    +AttentionBox--YDF({
+      decoration: AttentionBox__YDF.DecorativeVariations.warning,
+      hasPrependedSVG_Icon: true
+    }).TopPage-Disclaimer
+      | Все внутренние страницы относятся к новейшей альфа-версии старшей версии #[+ImportantEntity--YDID 2].
+      | Документация для старшей версии #[+ImportantEntity--YDID 1] представлена в формате #[+Term--YDID markdown]
+      |   на
+      +Link--YDF({
+        unendorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/README.md"
+      }).Article-Link официальном GitHub-репозитории проекта
+      | .
+
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Bash }).
+        npm i @yamato-daiwa/frontend@2.0.0-alpha.4
 
     +CompactTableOfContents--YDF_DK(localizedRouting).TopPage-TableOfContents

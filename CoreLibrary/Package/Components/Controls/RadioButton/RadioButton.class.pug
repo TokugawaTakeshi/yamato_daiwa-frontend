@@ -1,0 +1,148 @@
+﻿-
+
+  class RadioButton__YDF {
+
+    static CSS_NAMESPACE = "RadioButton--YDF";
+
+
+    /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static Themes = { regular: "REGULAR" };
+
+    static defineCustomThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, RadioButton__YDF);
+    }
+
+    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+
+    static considerThemesAsCommon() {
+      RadioButton__YDF.areThemesCSS_ClassesCommon = true;
+      return RadioButton__YDF;
+    }
+
+
+    /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
+    static GeometricVariations = {
+      regular: "REGULAR",
+      small: "SMALL"
+    }
+
+    static defineCustomGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, RadioButton__YDF);
+    }
+
+    static GeometricModifiers = {
+      pillShape: "PILL_SHAPE",
+      squareShape: "SQUARE_SHAPE",
+      singleLine: "SINGLE_LINE",
+      noLeftBorderAndRoundings: "NO_LEFT_BORDER_AND_ROUNDINGS",
+      noRightBorderAndRoundings: "NO_RIGHT_BORDER_AND_ROUNDINGS"
+    };
+
+
+    /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
+    static DecorativeVariations = {
+      regular: "REGULAR"
+    };
+
+    static defineCustomDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, RadioButton__YDF);
+    }
+
+    static DecorativeModifiers = { bordersDisguising: "BORDERS_DISGUISING" };
+
+
+    /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static propertiesSpecification = {
+
+      label: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
+      HTML_Name: {
+        type: String,
+        required: true,
+        minimalCharactersCount: 1
+      },
+
+      HTML_Value: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
+      inputElementHTML_ID: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
+      checked: {
+        type: Boolean,
+        required: false
+      },
+
+      disabled: {
+        type: Boolean,
+        required: false
+      },
+
+      readonly: {
+        type: Boolean,
+        required: false
+      },
+
+      theme: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(RadioButton__YDF.Themes)
+      },
+
+      areThemesCSS_ClassesCommon: {
+        type: Boolean,
+        required: false
+      },
+
+      geometry: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(RadioButton__YDF.GeometricVariations)
+      },
+
+      geometricModifiers: {
+        type: Array,
+        required: false,
+        element: {
+          type: String,
+          allowedAlternatives: Object.values(RadioButton__YDF.GeometricModifiers)
+        }
+      },
+
+      decoration: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(RadioButton__YDF.DecorativeVariations)
+      },
+
+      decorativeModifiers: {
+        type: Array,
+        required: false,
+        element: {
+          type: String,
+          allowedAlternatives: Object.values(RadioButton__YDF.DecorativeModifiers)
+        }
+      }
+
+    }
+
+
+    //- ━━━ ID generating ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    static counterForID_Generating = 0;
+
+    static generateComponentID() {
+      RadioButtonsGroup__YDF.counterForID_Generating++;
+      return `RADIO_BUTTON--YDF-${ RadioButtonsGroup__YDF.counterForID_Generating }`;
+    }
+
+  }

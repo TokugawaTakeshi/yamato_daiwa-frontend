@@ -11,18 +11,15 @@ component.OverflowSafeSingleLineLabel(
 
 <script lang="ts">
 
-  import {
-    Options as VueComponentConfiguration,
-    Vue as VueComponent,
-    Prop as VueProperty
-  } from "vue-property-decorator";
+  import { Component as VueComponentOptions, Vue as VueComponent, Prop as VueProperty } from "vue-facing-decorator";
 
 
-  @VueComponentConfiguration({})
+  @VueComponentOptions({ name: "OverflowSafeSingleLineLabel--YDF" })
   export default class OverflowSafeSingleLineLabel extends VueComponent {
 
     @VueProperty({ type: String, default: "div" })
     protected readonly rootElementTag!: string;
+
   }
 
 </script>

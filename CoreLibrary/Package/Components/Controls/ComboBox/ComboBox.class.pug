@@ -15,7 +15,7 @@
       );
     },
 
-    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT,
+    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT,
     considerThemesAsExternal() {
       this.areThemesExternal = true;
       return this;
@@ -158,7 +158,7 @@
 
 
     /* === Status simulations specification ========================================================================== */
-    stateSimulationsSpecification: {
+    statesSimulationsSpecification: {
 
       expanded: {
         type: Boolean,
@@ -192,6 +192,12 @@
       placeholders: {
         selectingOfOneOption: "Please select one option",
         selectingOfOneOrMultipleOptions: "Please select one or more options"
+      },
+      buttons: {
+        toggleExpanding: { accessibilityGuidance: "Switching between expanding and collapsed state" }
+      },
+      listBox: {
+        defaultAccessibilityGuidance: "The list of selecting options"
       }
     },
 

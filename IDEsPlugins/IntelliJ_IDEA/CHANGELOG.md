@@ -2,6 +2,19 @@
 
 # Yamato-Daiwa Frontend IntelliJ IDEA plugin changelog
 
+## [0.0.6]
+
+### Added
+- [File template](https://www.jetbrains.com/help/idea/using-file-and-code-templates.html) for **Badge** components styles customization
+- **buildEmailLinkHREF_AttributeValue** Autocomplete imitators for eponymous function
+- **buildPhoneNumberLinkHrefAttributeValue** Autocomplete imitators for eponymous function
+
+### Changed
+
+- Update <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> - live templates for the **Badge** component and its loading placeholder respectively (core package).
+- Update <kbd>badge-ydf-vue</kdb>, <kbd>badge-lp-ydf-vue</kdb> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
+
+
 ## [0.0.5]
 ### Changed
 

@@ -13,11 +13,11 @@ WidtnSizing(parametersObject: {
   leftOrRightSymmetricBordersWidths?: DataTypes.dimensionalAmount;
   leftBorderWidth?: DataTypes.dimensionalAmount;
   rightBorderWidth?: DataTypes.dimensionalAmount;
-  explicitBorderNoneDeclarationRequired?: DataTypes.unit;
+  isExplicitBorderNoneDeclarationRequired?: DataTypes.unit;
   leftOrRightSymmetricPaddings?: DataTypes.dimensionalAmount;
   leftPadding?: DataTypes.dimensionalAmount;
   rightPadding?: DataTypes.dimensionalAmount;
-  explicitPaddingZeroDeclarationRequired?: DataTypes.boolean;
+  isExplicitPaddingZeroDeclarationRequired?: DataTypes.boolean;
 })
 ```
 
@@ -154,9 +154,9 @@ Below ruleset will not change them.
 
 If you want set the paddings at appropriate side to `none` when `leftBorderWidth`, `rightBorderWidth` or 
 `leftOrRightSymmetricBordersWidths` are implicit `null` (it means "not specified" for Stylus) or explicit `null`,
-set `explicitBorderNoneDeclarationRequired` flag to `true`.
+set `isExplicitBorderNoneDeclarationRequired` flag to `true`.
 
-There is similar flag `explicitPaddingZeroDeclarationRequired` for paddings, but when `leftPadding`, `rightPadding`
+There is similar flag `isExplicitPaddingZeroDeclarationRequired` for paddings, but when `leftPadding`, `rightPadding`
 or `leftOrRightSymmetricPaddings` are `null` the appropriate CSS property will be set to `0`.
 
 ```stylus
@@ -164,8 +164,8 @@ or `leftOrRightSymmetricPaddings` are `null` the appropriate CSS property will b
 
   WidthSizing({
     fixedWidth: 200px,
-    explicitBorderNoneDeclarationRequired: true,
-    explicitPaddingZeroDeclarationRequired: true
+    isExplicitBorderNoneDeclarationRequired: true,
+    isExplicitPaddingZeroDeclarationRequired: true
   })
 ```
 
@@ -189,9 +189,9 @@ and left padding - to 0:
 
   WidthSizing({
     leftBorderWidth: 1px,
-    explicitBorderNoneDeclarationRequired: true,
+    isExplicitBorderNoneDeclarationRequired: true,
     rightPadding: 12px,
-    explicitPaddingZeroDeclarationRequired: true
+    isExplicitPaddingZeroDeclarationRequired: true
   })
 ```
 

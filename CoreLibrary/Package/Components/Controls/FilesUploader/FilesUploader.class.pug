@@ -1,4 +1,4 @@
-include FileUploaderLocalization.english.pug
+include FilesUploaderLocalization.english.pug
 
 
 -
@@ -18,7 +18,7 @@ include FileUploaderLocalization.english.pug
       );
     },
 
-    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT,
+    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT,
     considerThemesAsExternal() {
       this.areThemesExternal = true;
       return this;
@@ -27,13 +27,11 @@ include FileUploaderLocalization.english.pug
 
     /* --- Geometry ------------------------------------------------------------------------------------------------- */
     GeometricVariations: {
-      regular: "REGULAR",
-      small: "SMALL"
+      regular: "REGULAR"
     },
 
     selfAndCompoundControlShellGeometricVariationsCorrespondence: {
-      REGULAR: CompoundControlShell__YDF.GeometricVariations.regular,
-      SMALL: CompoundControlShell__YDF.GeometricVariations.small
+      REGULAR: CompoundControlShell__YDF.GeometricVariations.regular
     },
 
     defineNewGeometricVariations(ownAndCorrespondingCompoundControlShellGeometricVariations_Names) {
@@ -85,12 +83,6 @@ include FileUploaderLocalization.english.pug
           minimalCharactersCount: 1
         },
 
-        placeholder: {
-          type: String,
-          required: false,
-          minimalCharactersCount: 1
-        },
-
         disabled: {
           type: Boolean,
           required: false
@@ -121,8 +113,37 @@ include FileUploaderLocalization.english.pug
           required: false
         },
 
-        // TODO Replace "core" with more specific element name
-        coreElementHTML_ID: {
+        minimalFilesCount: {
+          type: Number,
+          numbersSet: RawObjectDataProcessor.NumbersSets.nonNegativeInteger,
+          required: false
+        },
+
+        maximalFilesCount: {
+          type: Number,
+          numbersSet: RawObjectDataProcessor.NumbersSets.nonNegativeInteger,
+          required: false,
+          customValidators: {
+            validationFunction: ({ currentPropertyValue: maximalFilesCount, rawData__currentObjectDepth }) =>
+                isUndefined(rawData__currentObjectDepth.minimalFilesCount) ||
+                (
+                  Number.isInteger(rawData__currentObjectDepth.minimalFilesCount) &&
+                  maximalFilesCount >= rawData__currentObjectDepth.minimalFilesCount
+                ),
+            descriptionForLogging: "\"maximalFilesCount\" could not be less than \"minimalFilesCount\"."
+          }
+        },
+
+        supportedFilesNamesExtensions: {
+          type: Array,
+          required: false,
+          element: {
+            type: String,
+            minimalCharactersCount: 1
+          }
+        },
+
+        inputElementHTML_ID: {
           type: String,
           required: false,
           minimalCharactersCount: 1
@@ -132,6 +153,17 @@ include FileUploaderLocalization.english.pug
           type: String,
           required: false,
           minimalCharactersCount: 1
+        },
+
+        noButton: {
+          type: Boolean,
+          required: false
+        },
+
+        // TODO Could not be true if `noButton` is true
+        noDragAndDropArea: {
+          type: Boolean,
+          required: false
         },
 
         theme: {
@@ -162,14 +194,40 @@ include FileUploaderLocalization.english.pug
 
 
     /* === Status simulations specification ========================================================================== */
-    stateSimulationsSpecification: {
+    statesSimulationsSpecification: {
 
-      dragOverState: {
+      status: {
         type: Boolean,
         required: false
       },
 
-      blockingLoadingIndicator: {
+      singleImagePreview: {
+        type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
+        required: false,
+        alternatives: [
+          {
+            type: Boolean,
+            trueOnly: true
+          },
+          {
+            type: String,
+            minimalCharactersCount: 1
+          }
+        ]
+      },
+
+      // TODO Could not be true if `singleImagePreview` is true
+      imagesPreviewFlow: {
+        type: Boolean,
+        required: false
+      },
+
+      dragOver: {
+        type: Boolean,
+        required: false
+      },
+
+      busy: {
         type: Boolean,
         required: false
       },
@@ -204,6 +262,6 @@ include FileUploaderLocalization.english.pug
     },
 
     /* === Localization ============================================================================================= */
-    localization: fileUploaderYDF_ComponentEnglishLocalization
+    localization: filesUploaderYDF_ComponentLocalization__english
 
   };

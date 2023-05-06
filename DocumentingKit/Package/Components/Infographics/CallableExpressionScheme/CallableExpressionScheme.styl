@@ -1,4 +1,9 @@
-provideCallableExpressionSchemeAndRelatedComponentStyles()
+CallableExpressionScheme--YDF_DK = {
+  CSS_NAMESPACE: "CallableExpressionScheme--YDF_DK"
+}
+
+
+provideCallableExpressionYDF_DK_Component()
 
   .CallableExpressionScheme--YDF_DK
 
@@ -8,7 +13,7 @@ provideCallableExpressionSchemeAndRelatedComponentStyles()
       applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
         fontSize: 1.4rem,
         lineSpacing: 0.2rem,
-        mustAllowWordBreakingAnywhere: true
+        mustAllowWordsBreakingAnywhere: true
       })
 
       font-weight bold
@@ -20,7 +25,7 @@ provideCallableExpressionSchemeAndRelatedComponentStyles()
       applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
         fontSize: 1.2rem,
         lineSpacing: 0.2rem,
-        mustAllowWordBreakingAnywhere: true
+        mustAllowWordsBreakingAnywhere: true
       })
 
       color: ShadesOfGray__39ColorsW3C_Palette[16]
@@ -53,7 +58,7 @@ provideCallableExpressionSchemeAndRelatedComponentStyles()
         applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
           fontSize: 1.1rem,
           lineSpacing: 0.2rem,
-          mustAllowWordBreakingAnywhere: true
+          mustAllowWordsBreakingAnywhere: true
         })
 
         font-weight bold
@@ -71,12 +76,12 @@ provideCallableExpressionSchemeAndRelatedComponentStyles()
 
       display flex
       flex-wrap wrap
-      align-items center
+      align-items baseline
 
       retireFrom({ targetElementSelector: ".CallableExpressionScheme--YDF_DK-GenericExpressionLabel", y: 6px })
 
 
-    &-OpeningCurlyBracket
+    &-Bracket
 
       font-family "Arial Black", "Arial Bold", "Gadget", sans-serif
 
@@ -86,14 +91,66 @@ provideCallableExpressionSchemeAndRelatedComponentStyles()
       flex-shrink 0
 
 
+      &__OneLine
+
+        flex-grow 1
+        flex-basis 100%
+
+
+    &-GenericParameter
+
+      &-Name
+
+        font-family Consolas, monaco, Meiryo UI, monospace
+        font-size 16px
+
+        font-weight bold
+        color: YDF_ColorPalette.red.mediumDark
+
+        flex-shrink 0
+        PositionalRelationship({
+          definitions: (".CallableExpressionScheme--YDF_DK-Bracket" { retireFromIt: { x: 0.2rem }, pushItFromSelf: { x: 0.2rem } })
+        })
+
+
+      &-ExtendingNotation
+
+        color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+        flex-shrink 0
+        margin-left 0.5rem
+
+        pushTargetFromSelf({ targetElementSelector: "CallableExpressionScheme--YDF_DK-GenericParameter-Name", y: 0.5rem })
+
+
+      &-Comma
+
+        color darkgoldenrod
+
+        flex-shrink 0
+        margin-left 0.5rem
+
+
     &-ParametersFlow
 
       display grid
       grid-template-columns repeat(auto-fill, minmax(250px, 1fr));
-      gap 6px
+      gap 0.5rem
+
+      border-left-width 2px
+      padding-left 0.6rem
+
+      border-left-style solid
+      border-left-color: ShadesOfGray__39ColorsW3C_Palette[32]
 
       margin-top 0.4rem
+      margin-left 0.2rem
       flex 1 1 100%
+
+
+      >*:first-child:last-child
+
+        grid-column 1 / -1
 
 
     &-ClosingBracket
@@ -130,3 +187,8 @@ provideCallableExpressionSchemeAndRelatedComponentStyles()
       gap 6px
 
       margin-top 0.4rem
+
+
+      >*:first-child:last-child
+
+        grid-column 1 / -1

@@ -1,0 +1,17 @@
+extends ../../../../../../CoreLibrary/Package/PagesTemplates/RegularWebPage.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "en";
+    HTML_PAGE_TITLE = "Badge component testing";
+
+    styleSheetsURIs = [ "@All/Components/Badge/Badge" ]
+    scriptsURIs.endOfBody = [ "@All/Components/Badge/Badge" ]
+
+
+block append PageContent
+
+  .ComponentTestingPageContent#APPLICATION

@@ -158,7 +158,7 @@ Output:
 inspect: '{
   all: null,
   horizontalSymmetric: 15px,
-  verticalUpwardShifting: null,
+  upwardShifting: null,
   verticalSymmetric: 6px,
   top: null,
   bottom: null,
@@ -171,7 +171,7 @@ inspect: null (15px) (null)
 inspect: '{
   all: null 15px null,
   horizontalSymmetric: 15px,
-  verticalUpwardShifting: null,
+  upwardShifting: null,
   verticalSymmetric: 6px,
   top: null,
   bottom: null,
@@ -242,7 +242,7 @@ Try to get output again:
 inspect: '{
   all: 13px,
   horizontalSymmetric: null,
-  verticalUpwardShifting: null,
+  upwardShifting: null,
   verticalSymmetric: null,
   top: null,
   bottom: null,
@@ -253,7 +253,7 @@ inspect: 13px (null) (null)
 inspect: '{
   all: 13px null null,
   horizontalSymmetric: null,
-  verticalUpwardShifting: null,
+  upwardShifting: null,
   verticalSymmetric: null,
   top: null,
   bottom: null,

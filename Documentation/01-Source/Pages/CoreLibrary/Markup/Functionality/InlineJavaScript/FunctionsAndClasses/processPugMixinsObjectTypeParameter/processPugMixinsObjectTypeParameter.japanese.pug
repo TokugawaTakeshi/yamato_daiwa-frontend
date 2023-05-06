@@ -1,0 +1,379 @@
+extends ../../../../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../../../../SharedAssets/Markup/SharedAssets.japanese.pug
+  include ../../../../../../../SharedComponents/SharedComponents.japanese.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "ja";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("processPugMixinsObjectTypeParameter");
+    HTML_PageMetaData = {
+      description: MetaDescriptionTemplates.pugFunction({
+        functionName: "buildPhoneNumberLinkHrefAttributeValue",
+        whatFunctionDoes: "Pug混入のオブジェクト型パラメーターを処理し、プロパティの妥当性確認及び規定値の代入を含む。"
+      }),
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "@Common" ];
+
+    RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.processPugMixinsObjectTypeParameter");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      english: "./processPugMixinsObjectTypeParameter.english.html",
+      russian: "./processPugMixinsObjectTypeParameter.russian.html"
+    });
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1 processPugMixinsObjectTypeParameter
+
+    +CallableExpressionScheme--YDF_DK({
+      technicalName: "processPugMixinsObjectTypeParameter",
+      localizedDescriptiveHeading: "オブジェクト型のPug混入の引数を処理",
+      headingTag: "h1",
+      genericParameters: [
+        {
+          name: "ProcessedMixinParameter",
+          extends: "ObjectSubtypes.fixedKeyAndValuePairsObject"
+        }
+      ],
+      parametersSpecification: [
+        {
+          genericTechnicalName: "compoundParameter",
+          localizedName: "複合引数",
+          type: "CompoundParameter",
+          required: true
+        }
+      ],
+      returnedValue: "ProcessedMixinParameter"
+    })
+      +ObjectTypeAbstract--YDF_DK({
+        typeName: "CompoundParameter",
+        localizedDescriptiveHeading: "複合引数",
+        propertiesSpecification: {
+          rawParameter: {
+            localizedInterpretation: "（混入の）未処理引数",
+            type: "string",
+            required: true
+          },
+          parameterPropertiesSpecification: {
+            localizedInterpretation: "（混入の）引数のプロパティの仕様",
+            type: "RawObjectDataProcessor.PropertiesSpecification",
+            required: true
+          },
+          parameterNumber: {
+            localizedInterpretation: "（混入の）引数の番号",
+            type: "number",
+            required: true
+          },
+          parameterName: {
+            localizedInterpretation: "（混入の）引数名",
+            type: "string",
+            required: true
+          },
+          mixinName: {
+            localizedInterpretation: "混入名",
+            type: "string",
+            required: true
+          }
+        }
+      })
+
+    p.Article-Paragraph.
+      #[+Term__Contrast--YDID Pug混入]の#[+Term--YDID オブジェクト型]の#[+Term__Contrast--YDID 引数]を妥当性に確認し処理。
+
+    p.Article-Paragraph.
+      此の様な機能は#[+Term--YDID GUIコンポーネント]や其の他の#[+Term--YDID 構造設計記法]の揃いは#[+Term__Contrast--YDID Pug混入]として
+        実装され、但し#[+Keyword--YDID 設定可能な]プロパティが多数有り、正しい#[+Term--YDID HTMLコード]が生成されるには一部分か全てのプロパティは
+        特定の制限に満たさなければいけない時需要が有る。
+
+
+    h2.Article-Heading2 問題学
+
+    p.Article-Paragraph
+      | #[+ImportantEntity--YDID Pug]と言う#[+Term--YDID HTMLプリプロセッサ]
+      +Link--YDF({
+        unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
+      }).Article-Link 内部JavaScript
+      |   並みに#[+Term--YDID 静的型付き言語]で#[+Keyword--YDID はない].
+      |   有#[+Term--YDID 引数]の
+      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.mixins }).Article-Link Pug混入
+      |   を利用する場合、渡された#[+Term--YDID 引数]が不正な場合(#[+Term--YDID 引数]の数か、これ等の型等),開発者が#[+Keyword--YDID 事前に]
+      |   #[+Keyword--YDID 知らされない]。
+      | #[+ImportantEntity--YDID Pug]から#[+ImportantEntity--YDID HTML]への変換中エラーが起きても、具体的に何と何処で不備が有ったか、
+      |   明かに成っているのは限らないし、単にエラー無しで期待されたと違う#[+Term--YDID HTMLコード]が生成される事も有り、気付く迄には長い時間が経つ事も多い。
+      | 特に#[+Term--YDID 混入]が自分で書かれたのではなく、第三者に依り書かれた時に危険であり、#[+Term--YDID Pug混入]に依り
+      |   #[+Term--YDID GUI コンポーネント]の実装の場合を含む。
+
+    p.Article-Paragraph.
+      #[+Keyword--YDID 簡易な]解決だと、純粋（第三者ライブラリを使わない）#[+ImportantEntity--YDID JavaScript]を利用し#[+Term--YDID 引数]
+        を型や文字数や数の集合に確認する事。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
+        :html_special_characters_to_html_entities
+          mixin Example(foo, bar, baz)
+
+            -
+
+              if (typeof foo !== "string") {
+                throw new Error(
+                  `「Example」混入の１引数目は文字列でなければいけないが事実上「${ typeof foo }」型を持っている。`
+                );
+              }
+
+              if (foo.length < 2) {
+                throw new Error("「Example」混入の１引数目は少なくとも２文字を持たなければいけない。");
+              }
+
+              if (typeof bar !== "number") {
+                throw new Error(
+                  `「Example」混入の２引数目は数でなければいけないが事実上「${ typeof bar }」型を持っている。`
+                );
+              }
+
+              if (!Number.isInteger(bar)) {
+                throw new Error("「Example」混入の２引数目は整数でなければいけない。");
+              }
+
+              if (bar < 10) {
+                throw new Error(
+                  `「Example」混入の２引数目は${ bar }と言う値だが、最低限は10である。`
+                );
+              }
+
+
+              if (typeof baz !== "boolean") {
+                throw new Error(
+                  `「Example」混入の３引数目はブールでなければいけないが事実上「${ typeof bar }」型を持っている。`
+                );
+              }
+    p.Article-Paragraph.
+      見ている通り、たった３件の#[+Term--YDID 引数]の妥当性確認でも、#[+Term--YDID Pug混入]のコードを可成り大きな一部分で、此処でエラーメッセージは原型的だ。
+      #[+Term--YDID 引数]の数は３ではなく、１０以上だと、どう成るだろうか？
+      似た様な#[+Term--YDID 混入]は数十だと、どうなるだろうか？
+      此の様な状態が#[+Keyphrase--YDID 完全に実践的]で、#[+Keyword--YDID 平均の]ウェブアプリケーションにとって#[+ImportantEntity--YDID 20~30個]
+        の#[+Term--YDID GUIコンポーネント]は普通、然もプロパティに依り高度な設定が常に求められる。
+      上記の様に「手動な」#[+Term--YDID 引数]の妥当性確認は工数も、時間もかかりすぎるのだ。
+
+    p.Article-Paragraph.
+      此処で#[+Keyword--YDID 画一な]#[+Term--YDID 引数]の妥当性確認の仕組みの課題が出現。
+      此の様な仕組みは#[+Term--YDID 引数]及びこれ等のプロパティを検問しなければいけなく、不備が有る時一件目の違反だけで#[+Keyword--YDID なく]、
+        #[+Keyword--YDID 全]違反をログしなければいけない、但し#[+Term--YDID Pug混入]の利用者
+        #[+Keyphrase--YDID 説明書に必要な参考を探す為に時間をかけずに]#[+Keyword--YDID 自力で]不備が直せる程度の
+        分かりやすいターミナルの出力でなければいけない。
+
+
+    h3.Article-Heading3 The YDF solution
+
+    p.Article-Paragraph
+      +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.markup.$children.functionality.$children.inlineJavaScript.$children.YDEE_Integration.$URI
+      }).Article-Link YDEEとの結合
+      |   特に
+      +Link--YDF({
+        internalURI: sharedExternalLinks.YamatoDaiwaES_Extensions.RawObjectDataProcessor
+      }).Article-Link RawObjectDataProcessorクラス
+      |   を利用し#[+ImportantEntity--YDID processPugMixinsObjectTypeParameter]#[+Term--YDID 関数]が開発された。
+      | #[+Term--YDID 関数]名の直訳からはっきり理解伝わる通り、当#[+Term--YDID 関数]は#[+Keyword__Contrast--YDID Pug混入]の
+      |   #[+Keyword--YDID 単一]の#[+Keyword--YDID オブジェクト型]の#[+Term--YDID 引数]を処理する。
+
+    p.Article-Paragraph.
+      但し、上記の#[+Term--YDID Example(foo, bar, baz)]例の様に、何れでもの型の何れでもの#[+Term--YDID 引数]の数を処理している関数が開発されなかった。
+      理由としては多数の#[+Term--YDID 引数]の#[+Term__Contrast--YDID 混入]（#[+Term--YDID 関数]も同じ）は整備にも利用にも問題が有る事だ。
+      例えば#[+SecondaryEntity__Code--YDID +Example("top", 2, false)]では#[+SecondaryEntity__Code--YDID 2]と
+        #[+SecondaryEntity__Code--YDID false]がとう言う意味を見っているか不明で、#[+Term--YDID 結合開発環境]がヒントを表示しても
+        #[+SecondaryEntity--YDID GitHub]の様さサービスでのコードレビュー中此の様なヒントが表示されない（しかも、#[+Term--YDID Pug混入]の
+        #[+Term--YDID 引数]の名前を表示しているコーディネーター・結合開発環境が存在しているとは限らない）。
+      幸いに解決が非常に簡単であり、複数の#[+Term--YDID 引数]をオブジェクト型の一個に結合する事だ。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
+        :html_special_characters_to_html_entities
+          mixin Example(compoundParameter)
+
+          const { foo, bar, baz } = compoundParameter;
+
+
+    p.Article-Paragraph.
+      上記の例では#[+Term--YDID 分割代入]を利用し全プロパティは個別の#[+Term--YDID 定数]に抽出され、まるで最初から個別の
+        #[+Term--YDID 引数]で有った様に使える様に成った。
+      #[+ImportantEntity--YDID processPugMixinsObjectTypeParameter]を使う場合、#[+Term--YDID 分割代入]の対象は
+        #[+Term--YDID 引数]自体では#[+Keyword--YDID なく]、当#[+Term--YDID 関数]の返す値である。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
+        :html_special_characters_to_html_entities
+          mixin Example(compoundParameter)
+
+            const {
+              foo,
+              bar,
+              baz
+            } = processPugMixinsObjectTypeParameter({
+              rawParameter: compoundParameter,
+              parameterNumber: 1,
+              parameterName: "compoundParameter",
+              parameterPropertiesSpecification: {
+                foo: {
+                  type: String,
+                  required: true,
+                  minimalCharactersCount: 2
+                },
+                bar: {
+                  type: Number,
+                  numbersSet: RawObjectDataProcessor.NumbersSets.nonNegativeIngeter,
+                  required: true,
+                  minimalValue: 10
+                },
+                baz: {
+                  type: Boolean,
+                  required: true
+                }
+              },
+              mixinName: "Example"
+            });
+
+    p.Article-Paragraph.
+      見える通り、此の#[+Term--YDID 関数]も#[+Keyword--YDID 単一の]#[+Term--YDID オブジェクト型]の#[+Term__Contrast--YDID 引数]を受ける。
+      理由は上記説明された#[+Term--YDID Pug混入]と同じ。
+      プロパティの中に#[+ImportantEntity__Code--YDID rawParameter]と言う奴が有り、値は#[+Term--YDID Pug混入]の#[+Keyword--YDID 特定の]
+        #[+Term--YDID 引数]（上記の例だと、一個しか無い）。
+      其の他の需要なプロパティは#[+ImportantEntity__Code--YDID parameterPropertiesSpecification]で、妥当性確認の規則、そして必要に応じて
+        規定値の代入の様に処理の指示が出来る。
+
+    +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.warning, hasPrependedSVG_Icon: true }).
+      現在#[+ImportantEntity--YDID processPugMixinsObjectTypeParameter]に使われている
+        #[+ImportantEntity--YDID RawObjectDataProcessor]は#[+Keyword--YDID 以前の]オブジェクトに応じて#[+Keyword--YDID 新規]
+        #[+Term--YDID オブジェクト]を作り、但し
+        #[+Keyphrase--YDID 妥当性確認規則の所に定義されたプロパティ#[+Keyword--YDID のみ]新しい#[+Term--YDID オブジェクト]に入れられる]。
+      理由としては、変化が求められても、#[+Keyword--YDID 一般]は何でもの#[+Term--YDID オブジェクト]の何でもプロパティを変化出来る訳では#[+Keyword--YDID ない]。
+      将来的に、既存のオブジェクトの変更のサポート（可能な限り）を追加する予定は有るが、コードの量の大幅増加が予報され、テストの数も少なくとも２倍にしなければいけない
+        ので、時間がかかる。
+
+    p.Article-Paragraph
+      | #[+ImportantEntity__Code--YDID parameterPropertiesSpecification]プロパティは
+      +Link--YDF({
+        endorsedExternalURI: sharedExternalLinks.YamatoDaiwaES_Extensions.RawObjectDataProcessor.PropertiesSpecification
+      }).Article-Link ObjectSubtypes.fixedKeyAndValuePairsObject
+      |   型である。
+      | 事実上此れは#[+Term--YDID 連想配列]型の#[+Term__Contrast--YDID オブジェクト]であり、此れのキーは#[+Term__Contrast--YDID Pug混入]
+      |    の#[+Term--YDID 引数]の引数のキーを一致しなければいけない。
+
+    p.Article-Paragraph.
+      残っている３個のプロパティ即ち#[+ImportantEntity__Code--YDID parameterNumber]、#[+ImportantEntity__Code--YDID parameterName]
+        と#[+ImportantEntity__Code--YDID mixinName]はログの為#[+Keyword--YDID だけ]必要だが、指定しない問題が何処に起きたから分からなく
+        成る恐れが有るので、重要なプロパティとしてちゃんと埋めるべき。
+
+
+    h2.Article-Heading2 単一引数のプロパティ
+
+    h3.Article-Heading3 #[code rawParameter]：混入実行時点の混入引数
+
+    p.Article-Paragraph.
+      #[+Keyphrase--YDID 初期状態の]#[+Term--YDID Pug混入]の#[+Term__Contrast--YDID 引数]。
+
+    ul.Article-UnorderedList
+
+      li.
+        此処で「raw」（「生の」）は、対象#[+Term--YDID 引数]は規定値の代入の様に#[+Keyword--YDID 未だ]弄られなかったと意味する。
+
+      li.
+        #[+Term--YDID オブジェクト型]でなければいけなく、さもなくば妥当性確認は#[+Keyword--YDID 直ぐ]エラーで停止する。
+        #[+Keyword--YDID 唯一の]#[+Keyword__Contrast--YDID 例外]は
+          #[+ImportantEntity__Code--YDID parameterPropertiesSpecification]に#[+Keyword--YDID 全]プロパティは
+          #[+Keyword--YDID 任意な]プロパティとして指定してある場合。
+        此の場合、対象#[+Term--YDID 引数]#[+Term__Contrast--YDID undefined型]に成っていても
+          #[+ImportantEntity--YDID processPugMixinsObjectTypeParameter]は空#[+Term--YDID オブジェクト]を確保してくれるのだ。
+
+    +CodeViewer--YDF
+      +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
+        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+          mixin Example(compoundParameter)
+
+          const {
+            foo,
+            bar
+          } = processPugMixinsObjectTypeParameter({
+            rawParameter: compoundParameter,
+            parameterNumber: 1,
+            parameterName: "compoundParameter",
+            parameterPropertiesSpecification: {
+              foo: {
+                type: String,
+                required: false,
+                minimalCharactersCount: 2
+              },
+              bar: {
+                type: Number,
+                numbersSet: RawObjectDataProcessor.NumbersSets.nonNegativeIngeter,
+                defaultValue: 10
+              }
+            },
+            mixinName: "Example"
+          });
+        +CodeViewer-Explanation--YDF
+          p.Article-Paragraph.
+            #[+ImportantEntity__Code--YDID parameterPropertiesSpecification]の定義に依ると,#[+SecondaryEntity__Code--YDID foo]
+              #[+Term--YDID 引数]は任意で、#[+SecondaryEntity__Code--YDID bar]#[+Term__Contrast--YDID 引数]は規定値が有る。
+            #[+SecondaryEntity__Code--YDID mixin Example(compoundParameter = {})]に於いて#[+SecondaryEntity__Code--YDID = {}]
+              を飛ばしても、#[+ImportantEntity__Code--YDID processPugMixinsObjectTypeParameter]は
+              #[+Keyword--YDID 空]#[+Term--YDID オブジェクト]を用意してくれる訳。
+
+
+    h3.Article-Heading3 #[code parameterPropertiesSpecification] — 単一の引数のプロパティの仕様
+
+    p.Article-Paragraph
+      +Link--YDF({
+        endorsedExternalURI: sharedExternalLinks.YamatoDaiwaES_Extensions.RawObjectDataProcessor.PropertiesSpecification
+      }).Article-Link ObjectSubtypes.fixedKeyAndValuePairsObject
+      |   形式の対象の#[+Term--YDID 混入]#[+Keyword__Contrast--YDID 引数]の妥当性規則と、要れれば、処理の規則の定義。
+      | 事実上#[+Term--YDID 連想配列]型の#[+Term__Contrast--YDID オブジェクト]で、此れの#[+Term--YDID キー]は対象の#[+Term--YDID 混入]
+      |   #[+Term__Contrast--YDID 引数]の#[+Term--YDID キー]と一致しなければいけない。
+
+      p.Article-Paragraph.
+        #[+ImportantEntity__Code--YDID ObjectSubtypes.fixedKeyAndValuePairsObject]連想配列は多数の様々のオプションが有るが、
+          #[+Keyword--YDID 各]プロパティにとって#[+Keyword--YDID 少なくとも]#[+Term--YDID 型](#[+ImportantEntity__Code--YDID type])
+          と#[+Term--YDID 必須性]#[+ImportantEntity__Code--YDID required]、但し#[+Term--YDID 規定値]を確保したい場合、
+          #[+ImportantEntity__Code--YDID required]の変わりに#[+ImportantEntity__Code--YDID defaultValue]を指定する事。
+
+      p.Article-Paragraph.
+        残念ながら、#[+ImportantEntity--YDID Pug]内で使われているのは#[+ImportantEntity--YDID TypeScript]ではなく、
+          #[+ImportantEntity--YDID JavaScript]なので、妥当性確認規則の指定の際間違いやすくなり、関数の稼働が正しくなく成る恐れ有り、
+          間違いを発見する事は時間がかかる事が有る。
+        とは言え、#[+ImportantEntity__Code--YDID parameterPropertiesSpecification]の利用が意味無い訳ではなく、妥当性確認が有る事は
+          妥当性確認が無い事よりずっと良く、#[+ImportantEntity__Code--YDID parameterPropertiesSpecification]なら原型コードの容量
+          が可成り減る。
+        妥当性確認規則の指定の際間違いの可能性を減らるには、#[+ImportantEntity--YDID TypeScript]ファイルで
+          #[+ImportantEntity__Code--YDID ObjectSubtypes.fixedKeyAndValuePairsObject]型の変数を定義し全てのプロパティを指定した‾で、
+          #[+ImportantEntity--YDID Pug]に貼り付けすれば良い。
+
+
+      h3.Article-Heading ロギング変数 — #[code parameterNumber], #[code parameterName], #[+ImportantEntity__Code--YDID mixinName]
+
+      p.Article-Paragraph.
+        妥当性違反が有る時これ等のロギングの為だけ使われている。
+        #[+Term--YDID 混入]#[+Term__Contrast--YDID 引数]の番号（#[+ImportantEntity__Code--YDID parameterNumber]）は
+          #[+Term--YDID 自然数]でなければいけなく、残っている２個は文字列でなければいけない。
+
+      //- TODO Example & output

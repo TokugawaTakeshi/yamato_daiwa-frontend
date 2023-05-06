@@ -1,0 +1,65 @@
+providePropertyMetadataYDF_DK_Component()
+
+  .PropertyMetadata--YDF_DK
+
+    WIDE_CONTAINERS_CONFIGURATION_MINIMAL_WIDTH = 400px
+
+    WideContainersConfiguration()
+      @media container and (min-width: WIDE_CONTAINERS_CONFIGURATION_MINIMAL_WIDTH)
+        {block}
+
+    NarrowContainersConfiguration()
+      @media container and (max-width: WIDE_CONTAINERS_CONFIGURATION_MINIMAL_WIDTH - 1)
+        {block}
+
+
+    +WideContainersConfiguration()
+
+      display grid
+      grid-template-columns minmax(min-content, auto) minmax(0, 3fr)
+      column-gap 0.8rem
+      row-gap 0.6rem
+      align-items baseline
+
+
+    &-Key
+
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+        fontSize: 1rem,
+        lineSpacing: 0.2rem,
+        mustAllowWordsBreakingAnywhere: true
+      })
+
+      font-weight bold
+      color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+
+      +WideContainersConfiguration()
+
+        text-align right
+        max-width 100px
+
+
+    &-Value
+
+      applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+        fontSize: 1rem,
+        lineSpacing: 0.2rem,
+        mustAllowWordsBreakingAnywhere: true
+      })
+
+      color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+
+      +NarrowContainersConfiguration()
+
+        margin-left 1rem
+        PositionalRelationship({
+          definitions: (".PropertyMetadata--YDF_DK-Key" { retireFromIt: { y: 0.4rem }, pushItFromSelf: { y: 0.6rem } })
+        })
+
+
+      &__Accented
+
+        font-weight bold
+        color: YDF_ColorPalette.red.mediumDark

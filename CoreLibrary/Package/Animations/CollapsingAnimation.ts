@@ -11,27 +11,25 @@ import {
 
 class CollapsingAnimation {
 
-  public static animate(
-    namedParameters: CollapsingAnimation.NamedParameters
-  ): void {
+  public static animate(compoundParameter: CollapsingAnimation.CompoundParameter): void {
 
-    const { animatedElement }: CollapsingAnimation.NamedParameters = namedParameters;
+    const { animatedElement }: CollapsingAnimation.CompoundParameter = compoundParameter;
 
     let animationDurations__milliseconds: number;
 
-    if (isNumber(namedParameters.duration__milliseconds)) {
-      animationDurations__milliseconds = namedParameters.duration__milliseconds;
-    } else if (isNumber(namedParameters.duration__seconds)) {
-      animationDurations__milliseconds = secondsToMilliseconds(namedParameters.duration__seconds);
+    if (isNumber(compoundParameter.duration__milliseconds)) {
+      animationDurations__milliseconds = compoundParameter.duration__milliseconds;
+    } else if (isNumber(compoundParameter.duration__seconds)) {
+      animationDurations__milliseconds = secondsToMilliseconds(compoundParameter.duration__seconds);
     } else {
       Logger.throwErrorAndLog({
         errorInstance: new InvalidParameterValueError({
-          parameterName: "namedParameters",
+          parameterName: "compoundParameter",
           parameterNumber: 1,
           messageSpecificPart: "'Either 'duration__seconds' or 'duration__milliseconds' must be specified with number."
         }),
         title: InvalidParameterValueError.localization.defaultTitle,
-        occurrenceLocation: "CollapsingAnimation.animate(namedParameters)"
+        occurrenceLocation: "CollapsingAnimation.animate(compoundParameter)"
       });
     }
 
@@ -39,13 +37,13 @@ class CollapsingAnimation {
     animateCollapsing(animatedElement, { duration: animationDurations__milliseconds }).
         then((): void => {
 
-          if (isNeitherUndefinedNorNull(namedParameters.replaceWithOnComplete)) {
-            animatedElement.replaceWith(namedParameters.replaceWithOnComplete);
-          } else if (namedParameters.removeOnComplete === true) {
+          if (isNeitherUndefinedNorNull(compoundParameter.replaceWithOnComplete)) {
+            animatedElement.replaceWith(compoundParameter.replaceWithOnComplete);
+          } else if (compoundParameter.removeOnComplete === true) {
             animatedElement.remove();
           }
 
-          namedParameters.callback?.();
+          compoundParameter.callback?.();
 
         }).
         catch((error: Error): void => {
@@ -53,17 +51,19 @@ class CollapsingAnimation {
             errorType: UnexpectedEventError.NAME,
             title: UnexpectedEventError.localization.defaultTitle,
             description: "Unexpected error occurred during animation.",
-            occurrenceLocation: "CollapsingAnimation.animate(namedParameters)",
+            occurrenceLocation: "CollapsingAnimation.animate(compoundParameter)",
             caughtError: error
           });
         });
+
   }
+
 }
 
 
 namespace CollapsingAnimation {
 
-  export type NamedParameters = Readonly<{
+  export type CompoundParameter = Readonly<{
     animatedElement: HTMLElement;
     replaceWithOnComplete?: ChildNode;
     removeOnComplete?: boolean;

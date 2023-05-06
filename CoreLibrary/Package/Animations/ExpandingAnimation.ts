@@ -10,30 +10,28 @@ import {
 
 class ExpandingAnimation {
 
-  public static replaceNodeAndAnimate(
-    namedParameters: ExpandingAnimation.NamedParameters
-  ): void {
+  public static replaceNodeAndAnimate(compoundParameter: ExpandingAnimation.CompoundParameter): void {
 
     const {
       replacedNode,
       animatedElement
-    }: ExpandingAnimation.NamedParameters = namedParameters;
+    }: ExpandingAnimation.CompoundParameter = compoundParameter;
 
     let animationDurations__milliseconds: number;
 
-    if (isNumber(namedParameters.duration__milliseconds)) {
-      animationDurations__milliseconds = namedParameters.duration__milliseconds;
-    } else if (isNumber(namedParameters.duration__seconds)) {
-      animationDurations__milliseconds = secondsToMilliseconds(namedParameters.duration__seconds);
+    if (isNumber(compoundParameter.duration__milliseconds)) {
+      animationDurations__milliseconds = compoundParameter.duration__milliseconds;
+    } else if (isNumber(compoundParameter.duration__seconds)) {
+      animationDurations__milliseconds = secondsToMilliseconds(compoundParameter.duration__seconds);
     } else {
       Logger.throwErrorAndLog({
         errorInstance: new InvalidParameterValueError({
-          parameterName: "namedParameters",
+          parameterName: "compoundParameter",
           parameterNumber: 1,
           messageSpecificPart: "'Either 'duration__seconds' or 'duration__milliseconds' must be specified with number."
         }),
         title: InvalidParameterValueError.localization.defaultTitle,
-        occurrenceLocation: "ExpandingAnimation.replaceNodeAndAnimate(namedParameters)"
+        occurrenceLocation: "ExpandingAnimation.replaceNodeAndAnimate(compoundParameter)"
       });
     }
 
@@ -43,23 +41,25 @@ class ExpandingAnimation {
     replacedNode.replaceWith(animatedElement);
 
     animateExpanding(animatedElement, { duration: animationDurations__milliseconds }).
-        then((): void => { namedParameters.callback?.(); }).
+        then((): void => { compoundParameter.callback?.(); }).
         catch((error: Error): void => {
           Logger.logError({
             errorType: UnexpectedEventError.NAME,
             title: UnexpectedEventError.localization.defaultTitle,
             description: "Unexpected error occurred during animation.",
-            occurrenceLocation: "ExpandingAnimation.replaceNodeAndAnimate(namedParameters)",
+            occurrenceLocation: "ExpandingAnimation.replaceNodeAndAnimate(  compoundParameter)",
             caughtError: error
           });
         });
+
   }
+
 }
 
 
 namespace ExpandingAnimation {
 
-  export type NamedParameters = Readonly<{
+  export type CompoundParameter = Readonly<{
     replacedNode: ChildNode;
     animatedElement: HTMLElement;
     duration__seconds?: number;

@@ -1,5 +1,4 @@
-import type VueComponentImplementationHasNotBeenSetError from
-    "@Components/_Errors/VueComponentImplementationHasNotBeenSet/VueComponentImplementationHasNotBeenSet";
+import type VueComponentImplementationHasNotBeenSetError from "./VueComponentImplementationHasNotBeenSet";
 
 
 const VueComponentImplementationHasNotBeenSetErrorErrorEnglishLocalization:

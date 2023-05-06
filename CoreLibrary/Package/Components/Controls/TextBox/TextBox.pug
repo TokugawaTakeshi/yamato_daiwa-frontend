@@ -16,6 +16,7 @@ mixin TextBox--YDF(properties, statesSimulations)
       externalLabelHTML_ID,
       guidance,
       placeholder,
+      autocomplete,
 
       value = "",
 
@@ -45,34 +46,52 @@ mixin TextBox--YDF(properties, statesSimulations)
       parameterNumber: 1,
       parameterName: "properties",
       parameterPropertiesSpecification: TextBox__YDF.propertiesSpecification,
-      mixinName: "TextBox--YDF"
+      mixinName: TextBox__YDF.CSS_NAMESPACE
     });
 
     const {
       invalidInputHighlightingIfAnyValidationErrorsMessages = false,
       validValueHighlightingIfNoValidationErrorsMessages = false,
-      validationErrorsMessages = []
+      validationErrorsMessages = false,
+      asynchronousValidationsStatuses = false
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
       rawParameter: statesSimulations,
       parameterNumber: 2,
       parameterName: "statesSimulations",
-      parameterPropertiesSpecification: TextBox__YDF.stateSimulationsSpecification,
-      mixinName: "TextBox--YDF"
+      parameterPropertiesSpecification: TextBox__YDF.statesSimulationsSpecification,
+      mixinName: TextBox__YDF.CSS_NAMESPACE
     });
 
     const rootElementModifierCSS_Classes = [
+
       ...multiline ? [ `${ TextBox__YDF.CSS_NAMESPACE }__Multiline` ] : [],
+
       ...disabled ? [ `${ TextBox__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
+
       ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
           [ `${ TextBox__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
       ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
           [ `${ TextBox__YDF.CSS_NAMESPACE }__ValueState` ] : [],
-      ...Object.entries(TextBox__YDF.Themes).length > 1 && !areThemesExternal ?
-          [ ComponentsAuxiliaries.generateThemeCSS_Class(TextBox__YDF.CSS_NAMESPACE, theme) ] : [],
-      ...Object.entries(TextBox__YDF.GeometricVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(TextBox__YDF.CSS_NAMESPACE, geometry) ] : [],
-      ...Object.entries(TextBox__YDF.DecorativeVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(TextBox__YDF.CSS_NAMESPACE, decoration) ] : []
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: TextBox__YDF.Themes,
+        CSS_Namespace: TextBox__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: TextBox__YDF.GeometricVariations,
+        CSS_Namespace: TextBox__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decoration,
+        allDecorativeVariations: TextBox__YDF.DecorativeVariations,
+        CSS_Namespace: TextBox__YDF.CSS_NAMESPACE
+      })
+
     ];
 
 
@@ -96,16 +115,16 @@ mixin TextBox--YDF(properties, statesSimulations)
 
     },
     {
-      invalidInputHighlightingIfAnyValidationErrorsMessages,
-      validValueHighlightingIfNoValidationErrorsMessages,
-      validationErrorsMessages
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
     }
-  ).TextBox--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
+  ).TextBox--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
 
     if multiline
 
       textarea.TextBox--YDF-InputOrTextAreaElement(
         placeholder=placeholder
+        autocomplete=autocomplete
         readonly=readonly
         disabled=disabled
         required=required
@@ -122,6 +141,7 @@ mixin TextBox--YDF(properties, statesSimulations)
         type=HTML_Type
         value=value
         placeholder=placeholder
+        autocomplete=autocomplete
         readonly=readonly
         disabled=disabled
         required=required

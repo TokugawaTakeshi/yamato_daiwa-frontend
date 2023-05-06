@@ -90,6 +90,7 @@ projectBuilding:
 
           PRODUCTION:
             outputTopDirectoryRelativePath: Distributable
+            revisioning: { disable: true }
 
       Tests:
 

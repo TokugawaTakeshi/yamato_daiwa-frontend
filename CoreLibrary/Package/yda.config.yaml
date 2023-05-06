@@ -17,7 +17,6 @@ projectBuilding:
         tasksAndSourceFilesSelection:
           markupProcessing: [ StylesAndComponentsTesting ]
           stylesProcessing: [ StylesAndComponentsTesting ]
-          ECMA_ScriptLogicProcessing: [ ComponentsTesting ]
 
         browserLiveReloadingSetupID: StylesAndComponentsTesting
 
@@ -100,19 +99,6 @@ projectBuilding:
             outputTopDirectoryRelativePath: "LogicDistributable"
             revisioning: { disable: true }
 
-      ComponentsTesting:
-
-        topDirectoryRelativePath: Tests/Components
-        targetRuntime:
-          type: BROWSER
-
-        partialsRecognition:
-          excludeFilesWithPrefixes: "_"
-          excludeSubdirectoriesWithPrefixes: "_"
-
-        buildingModeDependent:
-          LOCAL_DEVELOPMENT:
-            outputTopDirectoryRelativePath: Tests/Build/Components
 
       PugExtensions:
 

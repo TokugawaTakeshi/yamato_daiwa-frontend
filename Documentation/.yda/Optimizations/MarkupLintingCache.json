@@ -3,204 +3,284 @@
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-04-15T05:04:30.746Z"
   },
+  "01-Source/SharedComponents/SharedComponents.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-22T02:18:52.072Z"
+  },
+  "01-Source/SharedComponents/SharedComponents.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-23T01:48:48.949Z"
+  },
+  "01-Source/SharedComponents/SharedComponents.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-23T01:52:22.576Z"
+  },
+  "01-Source/SharedComponents/_SharedComponents.common.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-12T02:00:32.571Z"
+  },
   "01-Source/Pages/Top/TopPage.japanese.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-15T05:04:33.469Z"
-  },
-  "01-Source/Pages/Top/_TopPage.english.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-15T05:04:33.470Z"
-  },
-  "01-Source/Components/SharedSingletons/Layouts/Main/MainLayout.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2022-03-19T02:45:18.488Z"
-  },
-  "01-Source/Layouts/Minimal/MinimalLayout.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-22T02:15:47.335Z"
-  },
-  "01-Source/Layouts/TwoColumns/TwoColumnsLayout.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-03T03:40:07.460Z"
-  },
-  "01-Source/Components/SharedReusable/CompactTableOfContents/CompactTableOfContents.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-01T01:32:55.534Z"
-  },
-  "01-Source/Components/SharedReusable/LanguageDropDownList/LanguageDropDownList.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-03T03:25:50.994Z"
-  },
-  "01-Source/Components/SharedReusable/Controls/LanguageDropDownList/LanguageDropDownList.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-03T03:25:50.994Z"
-  },
-  "01-Source/Components/SharedSingletons/DrawerMenu/DrawerMenu.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-22T02:15:47.333Z"
-  },
-  "01-Source/Components/SharedSingletons/Footer/Footer.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-22T02:15:47.333Z"
-  },
-  "01-Source/Components/SharedSingletons/Header/Header.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-03T03:36:51.583Z"
-  },
-  "01-Source/Components/Components.english.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-15T05:04:33.467Z"
-  },
-  "01-Source/Components/Components.japanese.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-24T02:42:39.128Z"
-  },
-  "01-Source/Components/Components.russian.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-24T02:42:39.121Z"
-  },
-  "01-Source/Components/_Components.common.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-15T05:04:33.469Z"
-  },
-  "01-Source/SharedAssets/Markup/Assets.english.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-30T07:43:52.962Z"
-  },
-  "01-Source/SharedAssets/Markup/Assets.japanese.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-30T07:43:52.977Z"
-  },
-  "01-Source/SharedAssets/Markup/Assets.russian.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-30T07:43:52.971Z"
+    "modificationDatetime__ISO_8601": "2023-09-10T00:58:33.409Z"
   },
   "01-Source/Pages/Top/TopPage.russian.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-15T05:04:33.470Z"
+    "modificationDatetime__ISO_8601": "2023-09-10T00:55:27.662Z"
   },
-  "01-Source/SharedAssets/Markup/CountriesFlags/GreatBritanFlag2x3.pug": {
+  "01-Source/Pages/Top/_TopPage.english.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-02T03:32:08.909Z"
+    "modificationDatetime__ISO_8601": "2023-09-10T01:00:57.308Z"
   },
-  "01-Source/SharedAssets/Markup/CountriesFlags/JapanFlag2x3.pug": {
+  "01-Source/SharedAssets/Markup/SharedAssets.english.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-02T03:32:08.895Z"
+    "modificationDatetime__ISO_8601": "2023-08-12T02:12:14.237Z"
   },
-  "01-Source/SharedAssets/Markup/CountriesFlags/RussiaFlag2x3.pug": {
+  "01-Source/SharedAssets/Markup/SharedAssets.japanese.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-02-23T00:55:06.227Z"
+    "modificationDatetime__ISO_8601": "2023-08-12T02:12:14.230Z"
   },
-  "01-Source/SharedAssets/Markup/ExternalLinks/generateSharedExternalLinks.pug": {
+  "01-Source/SharedAssets/Markup/SharedAssets.russian.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-03-18T04:34:55.226Z"
-  },
-  "01-Source/SharedAssets/Markup/HTML_PageMetadata/HTML_PageMetadata.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-03-18T04:40:00.571Z"
-  },
-  "01-Source/SharedAssets/Markup/Routing/generateLocalizedRouting.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-07T07:43:56.661Z"
-  },
-  "01-Source/SharedAssets/Markup/Localizations/English/MetaDescriptionTemplates.english.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-22T02:15:47.364Z"
-  },
-  "01-Source/SharedAssets/Markup/Localizations/English/RoutingLocalization.english.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-30T07:24:10.498Z"
-  },
-  "01-Source/SharedAssets/Markup/Localizations/English/SharedExternalLinksLocalizaiton.english.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-15T05:04:30.749Z"
-  },
-  "01-Source/SharedAssets/Markup/Localizations/Japanese/MetaDescriptionTemplates.japanese.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-26T00:40:54.089Z"
-  },
-  "01-Source/SharedAssets/Markup/Localizations/Japanese/RoutingLocalization.japanese.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-30T07:24:10.515Z"
-  },
-  "01-Source/SharedAssets/Markup/Localizations/Japanese/SharedExternalLinksLocalizaiton.japanese.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-15T05:04:30.750Z"
-  },
-  "01-Source/SharedAssets/Markup/Localizations/Russian/MetaDescriptionTemplates.russian.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-01-26T00:40:54.090Z"
-  },
-  "01-Source/SharedAssets/Markup/Localizations/Russian/RoutingLocalization.russian.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-30T07:24:10.510Z"
-  },
-  "01-Source/SharedAssets/Markup/Localizations/Russian/SharedExternalLinksLocalizaiton.russian.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-15T05:04:30.750Z"
-  },
-  "01-Source/Pages/Components/Controls/Validatable/ValidatableControls.russian.pug": {
-    "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-13T04:12:51.222Z"
+    "modificationDatetime__ISO_8601": "2023-09-02T00:53:14.061Z"
   },
   "01-Source/SharedAssets/Markup/_generateLocalizedRouting.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-30T07:04:54.233Z"
+    "modificationDatetime__ISO_8601": "2023-09-17T02:45:44.642Z"
   },
   "01-Source/SharedAssets/Markup/_generateSharedExternalLinks.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-19T03:39:20.773Z"
+    "modificationDatetime__ISO_8601": "2023-09-02T00:53:02.552Z"
   },
   "01-Source/SharedAssets/Markup/_HTML_PageMetadata.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-04-15T05:04:33.471Z"
   },
-  "01-Source/Pages/CoreLibrary/Controls/Validatable/ValidatableControls.russian.pug": {
+  "01-Source/Pages/CoreLibrary/PagesTemplates/PagesTemplates.english.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-15T04:30:52.683Z"
+    "modificationDatetime__ISO_8601": "2023-07-30T03:07:11.256Z"
   },
-  "01-Source/Pages/CoreLibrary/Components/Badge/Badge.russian.pug": {
+  "01-Source/Pages/CoreLibrary/PagesTemplates/PagesTemplates.japanese.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-30T07:50:11.841Z"
+    "modificationDatetime__ISO_8601": "2023-07-30T03:13:11.484Z"
   },
-  "01-Source/Pages/CoreLibrary/Components/Controls/Validatable/ValidatableControls.russian.pug": {
+  "01-Source/Pages/CoreLibrary/PagesTemplates/PagesTemplates.russian.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-19T04:08:52.520Z"
+    "modificationDatetime__ISO_8601": "2023-07-30T03:13:11.503Z"
   },
   "01-Source/Pages/CoreLibrary/Components/Components.russian.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-19T10:13:27.418Z"
+    "modificationDatetime__ISO_8601": "2023-09-02T00:55:07.486Z"
   },
-  "01-Source/Pages/CoreLibrary/Components/Controls/Validatable/Group/ValidatableControlsGroup.russian.pug": {
+  "01-Source/Pages/RealiseNotes/v2d0/RealiseNotes-v2d0.english.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-20T05:06:38.004Z"
+    "modificationDatetime__ISO_8601": "2023-09-18T02:18:39.241Z"
   },
-  "01-Source/SharedAssets/Markup/Localizations/English/ReausableTextings.english.pug": {
+  "01-Source/Pages/RealiseNotes/v2d0/RealiseNotes-v2d0.japanese.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-24T01:44:03.484Z"
+    "modificationDatetime__ISO_8601": "2023-08-12T01:26:33.644Z"
   },
-  "01-Source/SharedAssets/Markup/Localizations/Japanese/ReausableTextings.japanese.pug": {
+  "01-Source/Pages/RealiseNotes/v2d0/RealiseNotes-v2d0.russian.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-24T01:44:03.484Z"
+    "modificationDatetime__ISO_8601": "2023-09-18T02:18:37.294Z"
   },
-  "01-Source/SharedAssets/Markup/Localizations/Russian/ReausableTextings.russian.pug": {
+  "01-Source/SharedAssets/Markup/ThirdPartyEmbeddableScripts/GoogleAnalyticsScript.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-24T01:44:03.484Z"
+    "modificationDatetime__ISO_8601": "2023-07-30T03:01:18.547Z"
+  },
+  "01-Source/Pages/CoreLibrary/Components/Badge/Badge.russian.pug": {
+    "issues": [
+      {
+        "code": "PUG:SYNTAX_ERROR",
+        "message": "Syntax Error: Unexpected token",
+        "sourceListing": "extends ../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug\n\n\nblock append Requirements\n\n  include ../../../../SharedAssets/Markup/SharedAssets.russian.pug\n  include ../../../../SharedComponents/SharedComponents.russian.pug\n\n\nblock append Metadata\n\n  -\n\n    HTML_PAGE_LANGUAGE = \"ru\";\n    HTML_PAGE_TITLE = buildHTML_PageTitle(\"Badge (Значок)\");\n    HTML_PageMetaData = {\n      description: \"\",\n      author: HTML_PAGE_AUTHOR\n    };\n\n    FAVICON_URI = \"@MustBeInPublicRoot/favicon\";\n\n    styleSheetsURIs = [\n      \"@Shared/CommonStyles\",\n      \"@Layouts/TwoColumns/TwoColumnsLayout\",\n      \"@Shared/ExternalComponents\",\n      \"@Pages/CoreLibrary/Components/Badge/Badge\"\n    ];\n    scriptsURIs.endOfBody = [ \"@Common\" ];\n\n    RoutingEmulator.setCurrentRoute(\"coreLibrary.components.badge\");\n\n    LanguageDropDownList__YDF_DK.setLinks({\n      english: \"#\",\n      japanese: \"#\"\n    });\n\n\nblock append HeadScriptsLinks\n\n  if __IS_PRODUCTION_BUILDING_MODE__\n\n    +GoogleAnalyticsScript\n\n\nblock append SpecificContent\n\n  article\n\n    h1.Article-Heading1 Badge - значок\n\n    // TODO ① Демку бы ... Для этого нужена функция копирования файлов, разрешения ссылок к ним и iframe\n\n    h2.Article-Heading2 Определение\n\n    p.Article-Paragraph.\n      В рамках #[+ImportantEntity--YDID YDF], #[+DefinableTerm--YDID значок (badge)] - информационный\n        #[+Keyword--YDID неинтерактивный] компонент, отображающий внутри геометрической фигуры слово, фразу и/или иконку.\n      Как правило, содержит какую-либо вспомогательную информацию, такую как категория чего-либо, относительная дата\n        и так далее.\n\n    p.Article-Paragraph.\n      В других фреймворках схожие компоненты могут иметь другие названия: #[+Term--YDID Chip], #[+Term--YDID Pill],\n        #[+Term--YDID Tag].\n      Официальных определений у этих компонентов, а также официально установленных чётких различий #[+Keyword--YDID нет]:\n        иногда в зависимости от фреймворка один и тот же компонент называется разными словами, а некоторые фреймворки\n        дают свои определения, право чего оставляет за собой и #[+ImportantEntity--YDID YDF].\n\n    p.Article-Paragraph.\n      #[+ImportantEntity--YDID YDF] называет #[+Term--YDID значком] именно #[+Keyword--YDID неинтерактивный] компонент,\n        который лишь отображает информацию.\n      Его следует отличать от аналогичных компонентов, с которыми можно взаимодействовать: использовать в качестве\n        кнопки или ссылки, скрывать по клику на соответствующую внутреннюю кнопку и так далее.\n\n\n    h2.Article-Heading2 Сводка\n\n    dl.Article-DescriptionList\n\n      dt Pug-примесь\n      dd #[+ImportantEntity__Code--YDID Badge--YDF]\n\n      dt Live template Pug-примеси\n      dd #[+ImportantEntity__Code--YDID badge-ydf]\n\n      dt Stylus-примесь\n      dd #[+ImportantEntity__Code--YDID provideBadgeYDF_Component]\n\n      dt Готовые темы\n      dd\n        dl\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.Themes.regular]\n          dd Базовая (по умолчанию)\n\n      dt Готовые геометрические вариации\n      dd\n        dl\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.GeometricVariations.regular]\n          dd Базовая (по умолчанию)\n\n      dt Геометрические модификаторы\n      dd\n        dl\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.GeometricModifiers.pillShape]\n          dd Максимальное скругление углов\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.GeometricModifiers.singleLine]\n          dd Всегда одна строка\n\n      dt Готовые декоративные вариации\n      dd\n        dl\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.veryCatchyBright]\n          dd Очень броская яркая (красная по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.catchyBright]\n          dd Броская яркая (оранжевая по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCatchyBright]\n          dd Умеренно броская яркая (жёлтая по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.neutralBright]\n          dd Нейтральная яркая (голубая по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCalmingBright]\n          dd Умеренно успокаивающая яркая (синяя по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.calmingBright]\n          dd Успокаивающая яркая (зелёная по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.achromaticBright]\n          dd Ахроматическая яркая (тёмно-серая по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.veryCatchyPastel]\n          dd Очень броская пастельная (красная по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.catchyPastel]\n          dd Броская пастельная (оранжевая по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCatchyPastel]\n          dd Умеренно броская пастельная (жёлтая по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.neutralPastel]\n          dd Нейтральная пастельная (голубая по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.modestlyCalmingPastel]\n          dd Умеренно успокаивающая пастельная (синяя по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.calmingPastel]\n          dd Успокаивающая пастельная (зелёная по умолчанию)\n\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.DecorativeVariations.achromaticPastel]\n          dd Ахроматическая пастельная (светло-серая по умолчанию)\n\n\n      dt Декоративные модификаторы\n      dd\n        dl\n          dt #[+ImportantEntity__Code--YDID Badge__YDF.GeometricModifiers.bordersDisguising]\n          dd Эффект отсутствия обводки без изменения размеров\n\n      dt Loading placeholder\n      dd Доступен; Live template - #[+ImportantEntity__Code--YDID badge-lp-ydf]\n\n\n    h2.Article-Heading2 Использование\n    h3.Article-Heading3 Разметка\n\n    h4.Article-Heading4 Подключение в проект\n\n    +ComponentMarkupProvidingGuidanceFragment({ componentName: \"Badge\" })\n\n\n    h4.Article-Heading4 Программный интерфейс\n    h5.Article-Heading5 Pug-примесь #[code Badge--YDF]\n\n    +CallableExpressionScheme--YDF_DK({\n      technicalName: \"Badge--YDF\",\n      parametersSpecification: [\n        {\n          genericTechnicalName: \"properties\",\n          localizedName: \"Свойства\",\n          type: \"Properties\",\n          required: true\n        }\n      ],\n      hiddenReturnValue: true\n    })\n      +ObjectTypeAbstract--YDF_DK({\n        typeName: \"Properties\",\n        localizedDescriptiveHeading: \"Свойства\",\n        propertiesSpecification: {\n          key: {\n            ...Badge__YDF.propertiesSpecification.key,\n            localizedInterpretation: \"Ключ (левая надпись)\"\n          },\n          value: {\n            ...Badge__YDF.propertiesSpecification.value,\n            localizedInterpretation: \"Значение (единственная либо правая надпись)\"\n          },\n          theme: {\n            ...Badge__YDF.propertiesSpecification.value,\n            localizedInterpretation: \"Тема\",\n            defaultValue: \"Badge__YDF.Themes.regular\",\n            allowedAlternatives: [\n              \"Badge__YDF.Themes.regular\",\n              [\n                { text: \"(Любые, определённые через \" },\n                { code: \"Badge__YDF.defineCustomThemes()\" },\n                { text: \")\" }\n              ]\n            ]\n          },\n          areThemesExternal: {\n            ...Badge__YDF.propertiesSpecification.areThemesExternal,\n            localizedInterpretation: \"Являются ли темы внешними\",\n            defaultValue: \"ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT || Badge__YDF.areThemesExternal\"\n          },\n          geometry: {\n            ...Badge__YDF.propertiesSpecification.geometry,\n            localizedInterpretation: \"Геометрия (геометрическая вариация)\",\n            defaultValue: \"Badge__YDF.GeometricVariations.regular\",\n            allowedAlternatives: [\n              \"Badge__YDF.GeometricVariations.regular\",\n              [\n                { text: \"(Любые, определённые через \" },\n                { code: \"Badge__YDF.defineCustomGeometricVariations()\" },\n                { text: \")\" }\n              ]\n            ]\n          },\n          geometricModifiers: {\n            ...Badge__YDF.propertiesSpecification.geometricModifiers,\n            localizedInterpretation: \"Геометрические модификаторы\",\n            type: \"Array&lt;Badge__YDF.GeometricModifiers&gt;\",\n            allowedAlternatives: [\n              \"Badge__YDF.GeometricModifiers.pillShape\",\n              \"Badge__YDF.GeometricModifiers.singleLine\"\n            ]\n          },\n          decoration: {\n            ...Badge__YDF.propertiesSpecification.decoration,\n            localizedInterpretation: \"Декорация (декоративная вариация)\",\n            allowedAlternatives: [\n              \"Badge__YDF.DecorativeVariations.veryCatchyBright\",\n              \"Badge__YDF.DecorativeVariations.catchyBright\",\n              \"Badge__YDF.DecorativeVariations.modestlyCatchyBright\",\n              \"Badge__YDF.DecorativeVariations.neutralBright\",\n              \"Badge__YDF.DecorativeVariations.modestlyCalmingBright\",\n              \"Badge__YDF.DecorativeVariations.calmingBright\",\n              \"Badge__YDF.DecorativeVariations.achromaticBright\",\n              \"Badge__YDF.DecorativeVariations.veryCatchyPastel\",\n              \"Badge__YDF.DecorativeVariations.catchyPastel\",\n              \"Badge__YDF.DecorativeVariations.modestlyCatchyPastel\",\n              \"Badge__YDF.DecorativeVariations.neutralPastel\",\n              \"Badge__YDF.DecorativeVariations.modestlyCalmingPastel\",\n              \"Badge__YDF.DecorativeVariations.calmingPastel\",\n              \"Badge__YDF.DecorativeVariations.achromaticPastel\",\n              [\n                { text: \"(Любые, определённые через \" },\n                { code: \"Badge__YDF.defineCustomDecorativeVariations()\" },\n                { text: \")\" }\n              ]\n            ]\n          },\n          decorativeModifiers: {\n            ...Badge__YDF.propertiesSpecification.decorativeModifiers,\n            localizedInterpretation: \"Декоративные модификаторы\",\n            type: \"Array&lt;Badge__YDF.DecorativeModifiers&gt;\",\n            allowedAlternatives: [\n              \"Badge__YDF.DecorativeModifiers.bordersDisguising\"\n            ]\n          }\n        }\n      }).CallableExpressionScheme--YDF_DK-AppendixGridFlow-FullWidthItem\n\n\n    h6.Article-Heading6 key\n\n    p.Article-Paragraph.\n      #[+Keyword--YDID Базовым] сценарием использования этого компонента является указание двух надписей:\n        #[+DefinableTerm--YDID ключа] (#[+DefinableTerm--YDID key]) - задающей контекст надписи, отображающаяся в\n        #[+Keyword--YDID правой] части,\n        и #[+DefinableTerm--YDID значения] (#[+DefinableTerm--YDID value]) - содержащей в себе основную информацию,\n        но зависящей от контекста надписи в #[+Keyword--YDID левой] части.\n\n    .BadgePage-Example\n      +Badge--YDF({\n        key: \"Скачиваний\",\n        value: \"≈ 100 тыс.\",\n        decoration: Badge__YDF.DecorativeVariations.neutralBright\n      })\n\n    +CodeViewer--YDF\n      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }).\n        +Badge--YDF({\n          key: \"Количество скачиваний\",\n          value: \"≈ 100 тыс\",\n          decoration: Badge__YDF.DecorativeVariations.neutralBright\n        })\n\n    +CodeViewer--YDF\n      +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.TypeScript })\n\n        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities\n          +Badge--YDF({\n            key: \"Количество скачиваний\",\n            value: \"≈ 100 тыс\",\n            decoration: Badge__YDF.DecorativeVariations.neutralBright\n        +CodeViewer-Explanation--YDF\n          p.Article-Paragraph.\n            Поскольку #[+Term--YDID декоративной вариации] #[+Keyword--YDID по умолчанию] у данного компонента\n              #[+Keyword__Contrast--YDID нет], то её необходимо указать в явном виде.\n\n        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities\n          })\n\n\n    h6.Article-Heading6 value\n\n    p.Article-Paragraph.\n      Если контекст ясен и без #[+Term--YDID ключа], то #[+Term--YDID ключ] можно опустить.\n      Например, в списке сообщений от других пользователей уместны значки с надписью \"Новое\" или \"Непрочитанное\":\n        поскольку значок находится внутри карточки с сообщением, то эта карточка и является контекстом:\n\n    .BadgePage-Example\n      .BadgePage-Example-MessageCard\n        .BadgePage-Example-MessageCard-Avatar\n        time.BadgePage-Example-MessageCard-DateTimeLabel(\n          datetime=\"2023-06-14T20:08\"\n        ) 14 июня 2023 20:08\n        +Badge--YDF({\n          value: \"Новое\",\n          decoration: Badge__YDF.DecorativeVariations.modestlyCalmingBright\n        }).BadgePage-Example-MessageCard-Badge\n        // TODO Truncate\n        // TODO Имя\n        .BadgePage-Example-MessageCard-Message.\n          Насчёт проекта по цифровой аналитике.\n          Внимательно оценив объём работы, я пришёл к выводу, что времени выделено слишком мало.\n          Напомню, что нереальные сроки являются началом конца продукта, о чём я подробно рассказывал на выступлении.\n\n    p.Article-Paragraph.\n      В то же время, #[+Keyphrase--YDID очевидность контекста часто является субъективной], потому опускать ключ нужно\n        с осторожностью.\n\n\n    h6.Article-Heading6 theme\n\n    p.Article-Paragraph\n      | #[+Keyword--YDID Основной] #[+Term--YDID npm-пакет] предлагает только #[+ImportantEntity--YDID 1]\n      |\n      +Link--YDF({\n        internalURI: \"localizedRouting.coreLibrary.$children.components.$sectioning.themes.$URI\"\n      }).Article-Link тему\n      | , поэтому данное свойство имеет значение по умолчанию.\n      | Если Вы хотите переопределить тему по умолчанию или добавить новые, то смотрите\n      +Link--YDF({\n        internalURI: \"localizedRouting.coreLibrary.$children.components.$sectioning.customization.$URI\"\n      }).Article-Link соответствующее руководство\n      | .\n\n\n    h6.Article-Heading6 areThemesExternal\n\n    //- TODO Вынести в общую часть\n    //- TODO Ссылка\n    p.Article-Paragraph.\n      Свойство, связанное с концепцией внешних тем.\n      В большинстве это свойство не понадобится, потому что даже если нужно, чтобы при у всех компонентов менялась\n        тема при смене одного класса у body или другого контейнера страницы, то для этого проще переопределить\n        переменную #[+ImportantEntity__Code--YDID ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT].\n      Лишь в редких случаях могут сказать хочу чтобы ...\n\n\n    h6.Article-Heading6 geometry\n\n    p.Article-Paragraph.\n      #[+Keyword--YDID Основной] #[+Term--YDID npm-пакет] предлагает только #[+ImportantEntity--YDID 1] геометрическую\n        вариацию, поэтому данное свойство имеет значение #[+Keyword--YDID по умолчанию].\n      Вы можете её переопределить, либо определить новую.\n\n\n    h6.Article-Heading6 geometricModifiers\n\n    p.Article-Paragraph.\n      #[+DefinableTerm--YDID Геометрические модификаторы] предназначены для того, чтобы не создавать новую\n        #[+Term--YDID геометрическую вариацию] ради #[+Keyword--YDID небольшого] изменения геометрии по необходимости,\n        например, добавление максимального скругления углов.\n\n\n    h6.Article-Heading6 decoration\n\n    p.Article-Paragraph.\n      Декоративных вариаций для данного компонента предлагается много, но их можно разделить на 2 группы:\n        яркие тона (оканчиваются на bright) и пастельные тона (оканчиваются на pastel).\n\n    p.Article-Paragraph.\n      #[+DefinableTerm--YDID Декоративные модификаторы] предназначены для того, чтобы не создавать новую\n        #[+Term--YDID декоративную вариацию] ради #[+Keyword--YDID небольшого] изменения декорации по необходимости,\n        например.\n\n\n    h4.Article-Heading4 Класс Badge__YDF\n\n    p.Article-Paragraph.\n      Предназначен для хранения информации, связанным с компонентом Badge - тем, вариаций, данные валидации свойств\n        и так далее.\n\n\n\n    h3.Article-Heading3 Стили\n\n    +ComponentStylesProvidingGuidanceFragment({\n      componentName: \"Badge\"\n    })\n\n\n\n    h2.Article-Heading2 Быстрый ввод в семействе IDE IntelliJ IDEA\n\n    h2.Article-Heading2 Адаптации для фреймворков\n\n    +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.warning, hasPrependedSVG_Icon: true }).\n      Адаптации для фреймворков дают только новую разметку и логику, а всё, что касается стилей, поставляется\n        основным пакетом согласно описанному выше.\n",
+        "lineNumber": 195,
+        "columnNumber": 13
+      }
+    ],
+    "modificationDatetime__ISO_8601": "2023-09-03T06:10:02.923Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/PagesTemplates/PagesTemplates.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-30T03:07:11.375Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/PagesTemplates/PagesTemplates.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-30T03:07:11.141Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/PagesTemplates/PagesTemplates.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-30T03:07:11.050Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/UsageOnServerSide/UsageOnServerSide.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-30T03:07:11.081Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/UsageOnServerSide/UsageOnServerSide.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-30T03:07:11.241Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/UsageOnServerSide/UsageOnServerSide.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-30T03:13:11.494Z"
+  },
+  "01-Source/SharedAssets/Markup/Localizations/English/MetaDescriptionTemplates.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-25T03:41:03.194Z"
   },
   "01-Source/SharedAssets/Markup/Localizations/English/ReausableFragments.english.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-04-24T01:44:03.484Z"
   },
+  "01-Source/SharedAssets/Markup/Localizations/English/RoutingLocalization.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-09T02:18:21.824Z"
+  },
+  "01-Source/SharedAssets/Markup/Localizations/English/SharedExternalLinksLocalization.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-19T03:24:36.803Z"
+  },
+  "01-Source/SharedAssets/Markup/Localizations/Japanese/MetaDescriptionTemplates.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-25T03:41:03.253Z"
+  },
   "01-Source/SharedAssets/Markup/Localizations/Japanese/ReausableFragments.japanese.pug": {
     "issues": [],
     "modificationDatetime__ISO_8601": "2023-04-24T01:44:03.484Z"
   },
+  "01-Source/SharedAssets/Markup/Localizations/Japanese/RoutingLocalization.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-09T02:18:21.837Z"
+  },
+  "01-Source/SharedAssets/Markup/Localizations/Japanese/SharedExternalLinksLocalization.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-19T03:24:36.812Z"
+  },
+  "01-Source/SharedAssets/Markup/Localizations/Russian/MetaDescriptionTemplates.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-25T03:41:03.220Z"
+  },
   "01-Source/SharedAssets/Markup/Localizations/Russian/ReausableFragments.russian.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-30T07:45:44.835Z"
+    "modificationDatetime__ISO_8601": "2023-09-03T06:10:02.937Z"
+  },
+  "01-Source/SharedAssets/Markup/Localizations/Russian/RoutingLocalization.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-09T01:56:03.543Z"
+  },
+  "01-Source/SharedAssets/Markup/Localizations/Russian/SharedExternalLinksLocalization.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-17T01:37:29.531Z"
+  },
+  "01-Source/Pages/CoreLibrary/Components/Controls/Validatable/ValidatableControls.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-30T03:07:11.270Z"
+  },
+  "01-Source/Pages/CoreLibrary/Components/Controls/Validatable/Group/ValidatableControlsGroup.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-03T06:10:03.097Z"
   },
   "01-Source/Pages/CoreLibrary/Components/Controls/Buttons/Plain/Button.russian.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-04-30T07:52:23.137Z"
+    "modificationDatetime__ISO_8601": "2023-07-30T03:07:11.194Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/YDEE_Integration/YDEE_Integration.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-03T06:10:02.975Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/YDEE_Integration/YDEE_Integration.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-03T06:10:03.114Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/YDEE_Integration/YDEE_Integration.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-03T06:10:03.008Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Kernel/Functions/Amounts/getLineSpacingByFontSizeAndLineHeight/getLineSpacingByFontSizeAndLineHeight.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-01T09:25:05.409Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Kernel/Functions/Amounts/getLineSpacingByFontSizeAndLineHeight/getLineSpacingByFontSizeAndLineHeight.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-01T09:28:00.150Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Kernel/Functions/Amounts/getLineSpacingByFontSizeAndLineHeight/getLineSpacingByFontSizeAndLineHeight.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-30T03:07:11.210Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Kernel/Functions/Amounts/getLineHeightByFontSizeAndLineSpacing/getLineHeightByFontSizeAndLineSpacing.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-01T09:25:05.400Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Kernel/Functions/Amounts/getLineHeightByFontSizeAndLineSpacing/getLineHeightByFontSizeAndLineSpacing.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-01T09:25:05.378Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Kernel/Functions/Amounts/getLineHeightByFontSizeAndLineSpacing/getLineHeightByFontSizeAndLineSpacing.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-07-30T03:07:11.165Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-04T01:42:00.225Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-03T02:53:56.638Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-04T01:35:49.878Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-04T01:42:00.213Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-04T01:42:16.548Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-04T01:35:49.866Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildPhoneNumberLinkHrefAttributeValue/_test.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-08-11T01:35:53.586Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/processPugMixinsObjectTypeParameter/processPugMixinsObjectTypeParameter.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-13T03:04:04.687Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/processPugMixinsObjectTypeParameter/processPugMixinsObjectTypeParameter.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-14T03:27:41.412Z"
+  },
+  "01-Source/Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/processPugMixinsObjectTypeParameter/processPugMixinsObjectTypeParameter.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-14T03:27:41.425Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/_DataTypes/DataTypes.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-17T02:42:16.191Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/_DataTypes/DataTypes.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-17T02:42:16.138Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/_DataTypes/DataTypes.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-17T02:42:16.200Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/_NARROWEST_SCREEN_WIDTH_UNIT/NARROWEST_SCREEN_WIDTH_UNIT.english.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-17T02:45:44.653Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/_NARROWEST_SCREEN_WIDTH_UNIT/NARROWEST_SCREEN_WIDTH_UNIT.japanese.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-17T02:45:44.663Z"
+  },
+  "01-Source/Pages/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/_NARROWEST_SCREEN_WIDTH_UNIT/NARROWEST_SCREEN_WIDTH_UNIT.russian.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-17T02:45:44.624Z"
   }
 }

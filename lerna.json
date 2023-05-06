@@ -9,10 +9,12 @@
     "CoreLibrary/Package",
     "CoreLibrary/ComponentsDemos",
     "CoreLibrary/AdditionalThemes",
-    "FrameworksIntegrations/Vue/Package/",
+    "FrameworksIntegrations/React/Package",
+    "FrameworksIntegrations/React/Demos",
+    "FrameworksIntegrations/Vue/Package",
     "FrameworksIntegrations/Vue/Demos",
-    "FrameworksIntegrations/React/Package/",
     "DocumentingKit/Package",
+    "DocumentingKit/ComponentsDemos",
     "DocumentingKit/OfficialLocalizations/**"
   ]
 }

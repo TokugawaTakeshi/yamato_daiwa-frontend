@@ -1,0 +1,79 @@
+-
+
+  class LoadingIndicator__YDF {
+
+    static CSS_NAMESPACE = "LoadingIndicator--YDF";
+
+    static Types = {
+      variableWidthArcSpinner: "VARIABLE_WIDTH_ARC_SPINNER",
+      twoConstantWidthArcsSpinner: "TWO_CONSTANT_WIDTH_ARCS_SPINNER"
+    };
+
+    /* ━━━ Themes ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static Themes = { dark: "DARK" };
+
+    static defineCustomThemes(ownAndCorrespondingCompoundControlShellThemes_Names) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, LoadingIndicator__YDF);
+    }
+
+    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+
+    static considerThemesAsExternal() {
+      LoadingIndicator__YDF.areThemesExternal = true;
+      return LoadingIndicator__YDF;
+    };
+
+
+    /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
+    static GeometricVariations = {
+      regular: "REGULAR",
+      small: "SMALL"
+    };
+
+    static defineCustomGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, LoadingIndicator__YDF);
+    }
+
+    /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
+    static DecorativeVariations = { regular: "REGULAR" };
+
+    static defineCustomDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, LoadingIndicator__YDF);
+    }
+
+
+    /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static propertiesSpecification = {
+
+      type: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(LoadingIndicator__YDF.Types)
+      },
+
+      theme: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(LoadingIndicator__YDF.Themes)
+      },
+
+      areThemesCSS_ClassesCommon: {
+        type: Boolean,
+        required: false
+      },
+
+      geometry: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(LoadingIndicator__YDF.GeometricVariations)
+      },
+
+      decoration: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(LoadingIndicator__YDF.DecorativeVariations)
+      }
+
+    };
+
+  }

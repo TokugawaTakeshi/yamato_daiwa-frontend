@@ -1,0 +1,106 @@
+extends ../../../../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../../../../SharedAssets/Markup/SharedAssets.japanese.pug
+  include ../../../../../../../SharedComponents/SharedComponents.japanese.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "ja";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("buildPhoneNumberLinkHrefAttributeValue");
+    HTML_PageMetaData = {
+      description: MetaDescriptionTemplates.pugFunction({
+        functionName: "buildPhoneNumberLinkHrefAttributeValue",
+        whatFunctionDoes:
+            "リンクにクリック・タップすれば、電話通話専用アプリケーションが開かれ、単一の引数で渡された電話番号に電話するを送る事が提案される様な「a」タグ専用" +
+              "「href」HTMLアトリビュートを生成する。"
+      }),
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "@Common" ];
+
+    RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.buildPhoneNumberLinkHrefAttributeValue");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      english: "./buildPhoneNumberLinkHrefAttributeValue.english.html",
+      russian: "./buildPhoneNumberLinkHrefAttributeValue.russian.html"
+    });
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    +CallableExpressionScheme--YDF_DK({
+      technicalName: "buildPhoneNumberLinkHrefAttributeValue",
+      localizedDescriptiveHeading: "電話番号のリンクの「href」アトリビュートの値を構成する",
+      headingTag: "h1",
+      parametersSpecification: [
+        {
+          genericTechnicalName: "phoneNumber",
+          localizedName: "メールアドレス",
+          type: "string",
+          required: true
+        }
+      ],
+      returnedValue: "string"
+    })
+
+    p.Article-Paragraph.
+      描画されるリンクにクリック・タップすれば、電話通話専用アプリケーションが開かれ、#[+Keyword--YDID 単一の]#[+Term--YDID 引数]で渡された電話番号に
+        電話するを送る事が提案される様な#[+ImportantEntity__Code--YDID a]#[+Term--YDID タグ]専用#[+ImportantEntity__Code--YDID href]
+        #[+Term--YDID HTMLアトリビュート]を生成する。
+      スマートフォンには此の様なアプリが必ず有るが、其の他の器械だと、恐らく#[+SecondaryEntity--YDID Skype]や#[+SecondaryEntity--YDID People]の様に
+        通話専用アプリケーションの中から選択が与えられるが、電話番号に電話する事は料金がかかるはず。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }).
+        a(
+          href=buildPhoneNumberLinkHrefAttributeValue("+718012345678")
+        ) 080-1234-5678
+
+    p.Article-Paragraph.
+      当関数がしている事は、妥当な電話番号でなければいけない指定された#[+Term--YDID 文字列]の値に
+        #[+ImportantEntity__Code--YDID tel:]を前付けるぐらいだ。
+      貴方のテキストエディター又は#[+Term--YDID 結合開発環境]原型に応じてオートコンプリート機能が無い場合、当関数が役に立たないだろう。
+      #[+ImportantEntity__Code--YDID tel:]にせよ#[+ImportantEntity__Code--YDID buildPhoneNumberLinkHrefAttributeValue]
+        #[+Term--YDID 関数]名にせよ暗記するか、毎回参考を引かなければいけないから
+        （「tel:」は、4文字しかないが、その他の多数量の情報を取り扱っている時この4文字でも忘れやすい）。
+
+    p.Article-Paragraph
+      | 原型に応じてオートコンプリート機能が有る場合、#[+SecondaryEntity__Code--YDID buildP...]を入力し始めると、ポップアップヒントが表示され、
+      |   其れ以降の手順はテキストエディター・#[+Term--YDID 結合開発環境]に依存。
+      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.intelliJ_IDEA_FamilyIDEs }).Article-Link.
+        IntelliJ IDEA族結合開発環境
+      | の
+      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.YDF_Plugin }).Article-Link YDFの正式的プラグイン
+      | に提供される
+      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.liveTemplates }).Article-Link Live Template
+      | と言う機能の場合、#[+Keyword--YDID 事前に]クリップボードにコピーされた値が単一の引数の位置に代入されるので、
+      |  #[+ImportantEntity__Code--YDID href]#[+Term--YDID アトリビュート]の値はキーの3~4回程度の押下で済むはず
+      |  （他のオートコンプリートの数に依る）。
+
+    +SingleImageViewer--YDF({
+      imageURI: "@AssociatedWithPages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
+          "buildPhoneNumberLinkHrefAttributeValue/Images/buildPhoneNumberLinkHrefAttributeValue-LiveTemplate",
+      imageAlternateText:
+          "「Live Templates」と言う「IntelliJ IDEA」族結合開発環境の機能を用いて「Yamato Daiwa Frontend」（略：「YDF」）ライブラリの" +
+          "「buildPhoneNumberLinkHrefAttributeValue」関数の呼び出し表現の高速入力。",
+      maximalWidth__anyValidCSS_Value: "600px"
+    })

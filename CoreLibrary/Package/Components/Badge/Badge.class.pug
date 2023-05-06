@@ -1,36 +1,40 @@
 -
 
-  const Badge__YDF = {
+  class Badge__YDF {
 
-    CSS_NAMESPACE: "Badge--YDF",
-
-
-    /* === Themes =================================================================================================== */
-    Themes: { regular: "REGULAR" },
-
-    defineNewThemes(themesNames) {
-      return ComponentsAuxiliaries.defineNewThemes(themesNames, this);
-    },
-
-    areThemesExternal: ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT,
-    considerThemesAsExternal() {
-      this.areThemesExternal = true;
-      return this;
-    },
+    static CSS_NAMESPACE = "Badge--YDF";
 
 
-    /* --- Geometry ------------------------------------------------------------------------------------------------- */
-    GeometricVariations: { regular: "REGULAR" },
+    /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static Themes = { regular: "REGULAR" };
 
-    defineNewGeometricVariations(geometricVariationsNames) {
-      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, this);
-    },
+    static defineCustomThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, Badge__YDF);
+    }
 
-    GeometricModifiers: { pillShape: "PILL_SHAPE" },
+    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+
+    static considerThemesAsCommon() {
+      Badge__YDF.areThemesCSS_ClassesCommon = true;
+      return Badge__YDF;
+    }
 
 
-    /* --- Decoration ----------------------------------------------------------------------------------------------- */
-    DecorativeVariations: {
+    /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
+    static GeometricVariations = { regular: "REGULAR" };
+
+    static defineCustomGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, Badge__YDF);
+    }
+
+    static GeometricModifiers = {
+      pillShape: "PILL_SHAPE",
+      singleLine: "SINGLE_LINE"
+    };
+
+
+    /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
+    static DecorativeVariations = {
       veryCatchyBright: "VERY_CATCHY_BRIGHT",
       catchyBright: "CATCHY_BRIGHT",
       modestlyCatchyBright: "MODESTLY_CATCHY_BRIGHT",
@@ -45,76 +49,72 @@
       modestlyCalmingPastel: "MODESTLY_CALMING_PASTEL",
       calmingPastel: "CALMING_PASTEL",
       achromaticPastel: "ACHROMATIC_PASTEL"
-    },
+    };
 
-    defineNewDecorativeVariations(decorativeVariationsNames) {
-      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, this);
-    },
-
-    DecorativeModifiers: { bordersDisguising: "BORDERS_DISGUISING" },
-
-
-    /* === Properties specification ================================================================================= */
-    get propertiesSpecification() {
-      return {
-
-        key: {
-          type: String,
-          required: false
-        },
-
-        value: {
-          type: String,
-          required: true
-        },
-
-        mustForceSingleLine: {
-          type: Boolean,
-          required: false
-        },
-
-        theme: {
-          type: String,
-          required: false,
-          allowedAlternatives: Object.values(this.Themes)
-        },
-
-        areThemesExternal: {
-          type: Boolean,
-          required: false
-        },
-
-        geometry: {
-          type: String,
-          required: false,
-          allowedAlternatives: Object.values(this.GeometricVariations)
-        },
-
-        geometricModifiers: {
-          type: Array,
-          required: false,
-          element: {
-            type: String,
-            allowedAlternatives: Object.values(this.GeometricModifiers)
-          }
-        },
-
-        decoration: {
-          type: String,
-          required: true,
-          allowedAlternatives: Object.values(this.DecorativeVariations)
-        },
-
-        decorativeModifiers: {
-          type: Array,
-          required: false,
-          element: {
-            type: String,
-            allowedAlternatives: Object.values(this.DecorativeModifiers)
-          }
-        }
-
-      };
+    static defineCustomDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, Badge__YDF);
     }
 
-  };
+    static DecorativeModifiers = {
+      bordersDisguising: "BORDERS_DISGUISING",
+      noBackground: "NO_BACKGROUND"
+    };
+
+
+    /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static propertiesSpecification = {
+
+      key: {
+        type: String,
+        required: false
+      },
+
+      value: {
+        type: String,
+        required: true
+      },
+
+      theme: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(Badge__YDF.Themes)
+      },
+
+      areThemesCSS_ClassesCommon: {
+        type: Boolean,
+        required: false
+      },
+
+      geometry: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(Badge__YDF.GeometricVariations)
+      },
+
+      geometricModifiers: {
+        type: Array,
+        required: false,
+        element: {
+          type: String,
+          allowedAlternatives: Object.values(Badge__YDF.GeometricModifiers)
+        }
+      },
+
+      decoration: {
+        type: String,
+        required: true,
+        allowedAlternatives: Object.values(Badge__YDF.DecorativeVariations)
+      },
+
+      decorativeModifiers: {
+        type: Array,
+        required: false,
+        element: {
+          type: String,
+          allowedAlternatives: Object.values(Badge__YDF.DecorativeModifiers)
+        }
+      }
+
+    }
+
+  }

@@ -1,10 +1,10 @@
-import type InputtedValueValidationRule from "@Controls/_Validation/InputtedValueValidationRule";
+import type InputtedValueValidation from "../../InputtedValueValidation";
 import nonNegativeIntegerOfRegularNotationInputtedValueValidationRuleLocalization__english from
-    "@Controls/_Validation/PreMadeRules/Numeric/NonNegativeIntegerOfRegularNotationInputtedValueValidationRuleLocalization.english";
-import { isNumber, isString, Logger, InvalidParameterValueError } from "@yamato-daiwa/es-extensions";
+    "./NonNegativeIntegerOfRegularNotationInputtedValueValidationRuleLocalization.english";
+import { isNumber, isString, isNotUndefined, Logger, InvalidParameterValueError } from "@yamato-daiwa/es-extensions";
 
 
-class NonNegativeIntegerOfRegularNotationInputtedValueValidationRule implements InputtedValueValidationRule {
+class NonNegativeIntegerOfRegularNotationInputtedValueValidationRule implements InputtedValueValidation.Rule {
 
   public static localization: NonNegativeIntegerOfRegularNotationInputtedValueValidationRule.Localization =
       nonNegativeIntegerOfRegularNotationInputtedValueValidationRuleLocalization__english;
@@ -16,20 +16,29 @@ class NonNegativeIntegerOfRegularNotationInputtedValueValidationRule implements 
 
   public constructor(
     compoundParameter:
-        InputtedValueValidationRule.ConstructorParameter &
-        { errorMessageBuilder?: NonNegativeIntegerOfRegularNotationInputtedValueValidationRule.ErrorMessage.Builder; }
+        InputtedValueValidation.Rule.ConstructorParameter &
+        {
+          errorMessageBuilder?: NonNegativeIntegerOfRegularNotationInputtedValueValidationRule.ErrorMessage.Builder;
+          errorMessage?: string;
+        }
   ) {
 
     this.mustFinishValidationIfValueIsInvalid = compoundParameter.mustFinishValidationIfValueIsInvalid ?? false;
 
-    this.errorMessageBuilder =
-        compoundParameter.errorMessageBuilder ??
-        NonNegativeIntegerOfRegularNotationInputtedValueValidationRule.localization.errorMessageBuilder;
+    if (isNotUndefined(compoundParameter.errorMessageBuilder)) {
+      this.errorMessageBuilder = compoundParameter.errorMessageBuilder;
+    } else if (isNotUndefined(compoundParameter.errorMessage)) {
+      /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
+       * It was proved that "errorMessage" is non-undefined, and it will not change. */
+      this.errorMessageBuilder = (): string => compoundParameter.errorMessage as string;
+    } else {
+      this.errorMessageBuilder = NonNegativeIntegerOfRegularNotationInputtedValueValidationRule.localization.errorMessageBuilder;
+    }
 
   }
 
 
-  public check(rawValue: unknown): InputtedValueValidationRule.CheckingResult {
+  public check(rawValue: unknown): InputtedValueValidation.Rule.CheckingResult {
 
     if (!isNumber(rawValue) && !isString(rawValue)) {
 

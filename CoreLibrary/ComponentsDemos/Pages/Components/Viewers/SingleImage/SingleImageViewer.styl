@@ -1,0 +1,28 @@
+@require "../../../_ComponentTestingPage.styl"
+
+singleImageViewerComponentDefaultPropertiesOverriding = {};
+
+// <==  [ Testing ] Comment out if need to display standard themes only
+//singleImageViewerComponentDefaultPropertiesOverriding = {
+//  themes: {
+//    regular: {
+//      geometricVariations: {
+//
+//      },
+//      decorativeVariations: {
+//
+//      }
+//    }
+//  }
+//}
+// ==> =================================================================================================================
+
+
+provideSingleImageViewerYDF_Component(
+  overridings: singleImageViewerComponentDefaultPropertiesOverriding
+)
+
+provideButtonYDF_Component()
+
+
+@require "../../../../Components/Viewers/SingleImage/SingleImageViewerDemo.styl"

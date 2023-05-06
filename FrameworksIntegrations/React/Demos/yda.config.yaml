@@ -1,0 +1,75 @@
+projectBuilding:
+
+  # === Markup =========================================================================================================
+  markupProcessing:
+
+    common:
+      buildingModeDependent:
+        LOCAL_DEVELOPMENT: { mustResolveResourceReferencesToRelativePaths: true }
+
+    entryPointsGroups:
+
+      All:
+
+        topDirectoryRelativePath: 01-Source
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: 02-Build
+
+
+
+  # === Styles =========================================================================================================
+  stylesProcessing:
+
+    entryPointsGroups:
+
+      All:
+
+        topDirectoryRelativePath: 01-Source
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: 02-Build
+
+
+  # === ECMAScript logic processing ====================================================================================
+  ECMA_ScriptLogicProcessing:
+
+    entryPointsGroups:
+
+      All:
+
+        topDirectoryRelativePath: 01-Source
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        targetRuntime:
+          type: BROWSER
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: 02-Build
+
+
+  # === Development server =============================================================================================
+  browserLiveReloading:
+
+    setups:
+
+      Tests:
+
+        localServer:
+
+          rootDirectoryRelativePath: 02-Build
+
+        openInBrowsers: chrome

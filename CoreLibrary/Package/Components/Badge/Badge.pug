@@ -9,10 +9,9 @@ mixin Badge--YDF(properties)
 
       key,
       value,
-      mustForceSingleLine = false,
 
       theme = Badge__YDF.Themes.regular,
-      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_EXTERNAL_BY_DEFAULT || Button__YDF.areThemesExternal,
+      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || Badge__YDF.areThemesCSS_ClassesCommon,
       geometry = Badge__YDF.GeometricVariations.regular,
       geometricModifiers = [],
       decoration,
@@ -28,35 +27,33 @@ mixin Badge--YDF(properties)
 
     const rootElementModifierCSS_Classes = [
 
-      ...mustForceSingleLine ? [ `${ Badge__YDF.CSS_NAMESPACE }__SingleLineMode` ] : [],
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: Badge__YDF.Themes,
+        CSS_Namespace: Badge__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
 
-      ...Object.entries(Badge__YDF.Themes).length > 1 && !areThemesExternal ?
-          [ ComponentsAuxiliaries.generateThemeCSS_Class(Badge__YDF.CSS_NAMESPACE, theme) ] : [],
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: Badge__YDF.GeometricVariations,
+        CSS_Namespace: Badge__YDF.CSS_NAMESPACE
+      }),
 
-      ...Object.entries(Badge__YDF.GeometricVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(Badge__YDF.CSS_NAMESPACE, geometry) ] : [],
+      ...ComponentsAuxiliaries.generateDemandedGeometricModifiersCSS_Classes(Badge__YDF.CSS_NAMESPACE, geometricModifiers),
 
-      ...geometricModifiers.includes(Badge__YDF.GeometricModifiers.pillShape) ?
-          [
-            ComponentsAuxiliaries.generateGeometricModifierCSS_Class(
-              Badge__YDF.CSS_NAMESPACE, Badge__YDF.GeometricModifiers.pillShape
-            )
-          ] : [],
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decoration,
+        allDecorativeVariations: Badge__YDF.DecorativeVariations,
+        CSS_Namespace: Badge__YDF.CSS_NAMESPACE
+      }),
 
-      ...Object.entries(Badge__YDF.DecorativeVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(Badge__YDF.CSS_NAMESPACE, decoration) ] : [],
-
-      ...decorativeModifiers.includes(Badge__YDF.DecorativeModifiers.bordersDisguising) ?
-          [
-            ComponentsAuxiliaries.generateDecorativeModifierCSS_Class(
-              Badge__YDF.CSS_NAMESPACE, Badge__YDF.DecorativeModifiers.bordersDisguising
-            )
-          ] : []
+      ...ComponentsAuxiliaries.generateDemandedDecorativeModifiersCSS_Classes(Badge__YDF.CSS_NAMESPACE, decorativeModifiers)
 
     ];
 
 
-  span.Badge--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
+  span.Badge--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
 
     if block
 
@@ -76,7 +73,7 @@ mixin Badge--YDF-LoadingPlaceholder(properties)
 
     const {
       theme = Badge__YDF.Themes.regular,
-      areThemesExternal = Badge__YDF.areThemesExternal,
+      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || Badge__YDF.areThemesCSS_ClassesCommon,
       geometry = Badge__YDF.GeometricVariations.regular,
       geometricModifiers = []
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
@@ -85,7 +82,7 @@ mixin Badge--YDF-LoadingPlaceholder(properties)
       parameterName: "properties",
       parameterPropertiesSpecification: {
         theme: Badge__YDF.propertiesSpecification.theme,
-        areThemesExternal: Badge__YDF.propertiesSpecification.areThemesExternal,
+        areThemesCSS_ClassesCommon: Badge__YDF.propertiesSpecification.areThemesCSS_ClassesCommon,
         geometry: Badge__YDF.propertiesSpecification.geometry,
         geometricModifiers: Badge__YDF.propertiesSpecification.geometricModifiers
       },
@@ -93,12 +90,22 @@ mixin Badge--YDF-LoadingPlaceholder(properties)
     })
 
     const rootElementModifierCSS_Classes = [
-      ...Object.entries(Badge__YDF.Themes).length > 1 && !areThemesExternal ?
-          [ ComponentsAuxiliaries.generateThemeCSS_Class(Badge__YDF.CSS_NAMESPACE, theme) ] : [],
-      ...Object.entries(Badge__YDF.GeometricVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(Badge__YDF.CSS_NAMESPACE, geometry) ] : [],
-      ...geometricModifiers.includes(Badge__YDF.GeometricModifiers.pillShape) ?
-          [ `${ Badge__YDF.CSS_NAMESPACE }__PillShapeGeometricModifier` ] : []
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: Badge__YDF.Themes,
+        CSS_Namespace: Badge__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: Badge__YDF.GeometricVariations,
+        CSS_Namespace: Badge__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.generateDemandedGeometricModifiersCSS_Classes(Badge__YDF.CSS_NAMESPACE, geometricModifiers),
+
     ];
 
 

@@ -10,14 +10,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
-    "skipLibCheck": true,
-
-    "baseUrl": "./",
-    "paths": {
-      "@Animations/*": [ "./Animations/*" ],
-      "@Components/*": [ "./Components/*" ],
-      "@Controls/*": [ "./Components/Controls/*" ]
-    }
+    "skipLibCheck": true
 
   }
 }

@@ -1,5 +1,5 @@
-@require "Themes/Regular/GeometricVariations/FilesUploader-RegularGeometry.styl"
-@require "Themes/Regular/DecorativeVariations/FilesUploader-RegularDecoration.styl"
+@require "Themes/Regular/GeometricVariations/FilesUploader-RegularTheme-RegularGeometry.styl"
+@require "Themes/Regular/DecorativeVariations/FilesUploader-RegularTheme-RegularDecoration.styl"
 
 
 FilesUploader--YDF = {
@@ -30,9 +30,225 @@ provideFilesUploaderYDF_Component(preset = FilesUploader--YDF.defaultProperties,
   // === Methods =======================================================================================================
   applyBasicRules()
 
-    .FilesUploader--YDF-UploadingButtonComposition
+    .FilesUploader--YDF
 
-      position relative
+      &-StatusTable
+
+        table-layout fixed
+
+
+        td
+
+          vertical-align middle
+
+
+          /.FilesUploader--YDF-StatusTable-Row__InProgressState td
+
+            color: YDF_ColorPalette.deepSkyBlue.slightlyDark
+
+
+          /.FilesUploader--YDF-StatusTable-Row__FailedState td
+
+            color: YDF_ColorPalette.red.slightlyDark
+
+
+          /.FilesUploader--YDF-StatusTable-Row__SucceededState td
+
+            color: YDF_ColorPalette.mint.slightlyDark
+
+
+          ../ tr:not(:first-child) td
+
+            padding-top 0.1rem
+
+
+        &-Icon
+
+          width 20px
+
+
+          /.FilesUploader--YDF-StatusTable-Row__InProgressState &
+
+            fill: YDF_ColorPalette.deepSkyBlue.slightlyDark
+
+
+          /.FilesUploader--YDF-StatusTable-Row__FailedState &
+
+            fill: YDF_ColorPalette.red.slightlyDark
+
+
+          /.FilesUploader--YDF-StatusTable-Row__SucceededState &
+
+            fill: YDF_ColorPalette.mint.slightlyDark
+
+
+        &-FileNameCell,
+        &-TextingCell
+
+          font-size 1rem
+          line-height 1.2
+          word-break break-all
+
+
+        &-FileNameCell
+
+          padding-left 0.4rem
+          font-weight bold
+
+
+        &-TextingCell
+
+          padding-left 0.6rem
+
+
+      &-FilePickingButton
+
+        retireFrom({ targetElementSelector: ".FilesUploader--YDF-StatusTable", y: 0.6rem })
+
+
+      &-DragAndDropArea
+
+        display flex
+        flex-direction column
+        align-items center
+        padding 1rem 1.2rem
+
+        border-width 1px
+        border-radius 5px
+
+        border-style solid
+        border-color: JQueryUI_BaseTheme.clickableElements.defaultState.borderColor
+
+        retireFrom({
+          definitions:\
+              (".FilesUploader--YDF-StatusTable" { y: 0.4rem })\
+              (".FilesUploader--YDF-FilePickingButton" { y: 0.6rem })
+        })
+
+
+        &:hover
+
+          border-color: lighten(JQueryUI_BaseTheme.clickableElements.activeState.borderColor, 90%)
+
+
+        &:focus
+
+          box-shadow 0 0 3px 1px #007fff
+          outline none
+
+
+        &:active
+
+          border-color: JQueryUI_BaseTheme.clickableElements.activeState.borderColor
+
+
+        &__DragOverState
+
+          background-color: lighten(JQueryUI_BaseTheme.clickableElements.activeState.borderColor, 99%)
+          cursor grabbing
+
+
+      &-Icon
+
+        width 34px
+        fill: JQueryUI_BaseTheme.clickableElements.defaultState.iconsColor
+
+
+      &-Guidance
+
+        applyTextGeometryWithoutExtraSpaceCausedByLineHeight({ fontSize: 1rem, lineSpacing: 1.2 })
+
+        color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
+
+        margin-top 0.8rem
+
+
+        &-AccentedFragment
+
+          color: JQueryUI_BaseTheme.error.fontColor
+          font-weight bold
+
+
+      &-HiddenInputElement
+
+        display none
+
+
+      &-SingleImagePreviewer
+
+        background-image: linear-gradient(lightgoldenrodyellow, aliceblue);
+
+        retireFrom({
+          definitions:\
+              (".FilesUploader--YDF-FilePickingButton" { y: 0.2rem })\
+              (".FilesUploader--YDF-DragAndDropArea" { y: 0.4rem })
+        })
+
+
+      &-SingleImagePreview
+
+        display block
+
+        max-width 100%
+        max-height 300px
+
+        margin-left auto
+        margin-right auto
+
+
+      &-FileDeletingButton
+
+        placeToRight()
+        margin-top 0.4rem
+
+
+      &-ImagesPreviewFlow
+
+        display grid
+        grid-template-columns repeat(auto-fit, minmax(7rem, 1fr));
+        column-gap 6px
+        row-gap 8px
+
+        retireFrom({
+          definitions:\
+              (".FilesUploader--YDF-FilePickingButton" { y: 0.2rem })\
+              (".FilesUploader--YDF-DragAndDropArea" { y: 0.4rem })
+        })
+
+
+      &-PreviewCard
+
+        display flex
+        flex-direction column
+        row-gap 0.4rem
+
+
+        &-SizingAndDefaultBackgroundProvidingWrapper
+
+          display flex
+          justify-items center
+          align-items center
+
+          width 100%
+          aspect-ratio 1 / 1
+
+          background-image: linear-gradient(lightgoldenrodyellow, aliceblue);
+
+
+        &-Image
+
+          max-width 100%
+          max-height 100px
+
+          margin-left auto
+          margin-right auto
+
+          align-self center
+
+
+        &-Button
+
+          align-self center
 
 
   // --- Geometry ------------------------------------------------------------------------------------------------------
