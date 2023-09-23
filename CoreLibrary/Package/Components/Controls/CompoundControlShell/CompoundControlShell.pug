@@ -179,7 +179,7 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
             when "IN_PROGRESS"
 
               li.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item(
-                class="CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__InProgressState"
+                class="CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__InProgressState"
               )
                 +LoadingIndicator--YDF({
                   type: LoadingIndicator__YDF.Types.variableWidthArcSpinner,
@@ -187,18 +187,10 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
                 }).CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-LoadingIndicator
                 p.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Text= asynchronousValidationsStatus.message
 
-            when "FINISHED_BUT_INVALID"
-
-              li.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item(
-                class="CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__SucceededButInvalidState"
-              )
-                +ExclamationMark__Circled__Filled--YDF_Icon.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Icon
-                p.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Text= asynchronousValidationsStatus.message
-
             when "FINISHED_AND_VALID"
 
               li.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item(
-                class="CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__SucceededAndValidState"
+                class="CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__SucceededAndValidState"
               )
                 +Checkmark__Circled__Filled--YDF_Icon.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Icon
                 p.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Text= asynchronousValidationsStatus.message
@@ -206,7 +198,7 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
             when "MALFUNCTION"
 
               li.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item(
-                class="CompoundControlShell--YDF-AsynchronousValidationsStatuses-Item__MalfunctionState"
+                class="CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__MalfunctionState"
               )
                 +MultiplicationSign__Boxed__Filled--YDF_Icon.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Icon
                 p.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Text= asynchronousValidationsStatus.message

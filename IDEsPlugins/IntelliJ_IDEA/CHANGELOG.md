@@ -5,6 +5,8 @@
 ## [0.0.6]
 
 ### Added
+
+- Support IntelliJ IDEA platform build 232 
 - [File template](https://www.jetbrains.com/help/idea/using-file-and-code-templates.html) for **Badge** components styles customization
 - **buildEmailLinkHREF_AttributeValue** Autocomplete imitators for eponymous function
 - **buildPhoneNumberLinkHrefAttributeValue** Autocomplete imitators for eponymous function
@@ -13,6 +15,8 @@
 
 - Update <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> - live templates for the **Badge** component and its loading placeholder respectively (core package).
 - Update <kbd>badge-ydf-vue</kdb>, <kbd>badge-lp-ydf-vue</kdb> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
+- Remove `screen` keyword from <kbd>med2p</kbd>`, <kbd>med3p</kbd>`, <kbd>med4p</kbd>`, <kbd>med5px</kbd>` live templates
+- Improve <kbd>fbv</kbd> live template
 
 
 ## [0.0.5]

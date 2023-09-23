@@ -7,6 +7,7 @@ InitialGlobalCSS_Rules()
 
 provideButtonYDF_Component()
 provideCompoundControlShellYDF_Component()
+provideLoadingIndicatorYDF_Component()
 provideTextBoxYDF_Component()
 
 
@@ -51,23 +52,38 @@ provideTextBoxYDF_Component()
     retireFromElementWithSameSelector({ y: 12px })
 
 
-  &-ErrorMessage
+  &-Message
 
     applyTextGeometryWithoutExtraSpaceCausedByLineHeight({ fontSize: 14px, lineSpacing: 0.2 })
     text-align right
 
     font-weight bold
-    color: FlatUI_Colors.alizarin
+
 
     margin-top 16px
+
+    retireFromElementWithSameSelector({ y: 6px })
+
+
+    &__SummarizingError
+
+      color: YDF_ColorPalette.red.slightlyDark
+
+
+    &__AsynchronousValidationsNotFinishedYet
+
+      color: YDF_ColorPalette.amber.slightlyDark
 
 
   &-SubmittingButton
 
     placeToRight()
 
+    SPACE_BEFORE_TEXT_BOX = 12px
+
     retireFrom({
       definitions:\
-          (".BasicIntegratedControlsGroupDemo-TextBox" { y: 12px })\
-          (".BasicIntegratedControlsGroupDemo-ErrorMessage" { y: 6px })
+          (".BasicIntegratedControlsGroupDemo-TextBox" { y: SPACE_BEFORE_TEXT_BOX })\
+          (".BasicIntegratedControlsGroupDemo-Message[hidden]" { y: SPACE_BEFORE_TEXT_BOX })\
+          (".BasicIntegratedControlsGroupDemo-Message" { y: 6px })
     })

@@ -1,86 +1,94 @@
+include SnackbarLocalization.english.pug
+
 -
 
-  const Snackbar__YDF = {
+  class Snackbar__YDF {
 
-    CSS_NAMESPACE: "Snackbar--YDF",
-
-
-    /* === Themes =================================================================================================== */
-    Themes: { regular: "REGULAR" },
-    ThemesCSS_ModifiersNames: { REGULAR: "Snackbar--YDF__RegularTheme" },
-
-    defineNewThemes(themesNames) {
-      return ComponentsAuxiliaries.defineNewThemes(themesNames, this);
-    },
-
-    areThemesExternal: false,
-    considerThemesAsExternal() {
-      this.areThemesExternal = true;
-      return this;
-    },
+    static CSS_NAMESPACE = "Snackbar--YDF";
 
 
-    /* --- Geometric variations ------------------------------------------------------------------------------------- */
-    GeometricVariations: { regular: "REGULAR" },
-    GeometricVariationsCSS_ModifiersNames: { REGULAR: "Snackbar--YDF__RegularGeometry" },
+    /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static Themes = { regular: "REGULAR" };
 
-    defineNewGeometricVariations(geometricVariationsNames) {
-      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, this);
-    },
+    static defineCustomThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, Snackbar__YDF);
+    }
+
+    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+
+    static considerThemesAsCommon() {
+      Snackbar__YDF.areThemesCSS_ClassesCommon = true;
+      return Snackbar__YDF;
+    }
 
 
-    /* --- Decorative variations ------------------------------------------------------------------------------------ */
-    DecorativeVariations: {
+    /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
+    static GeometricVariations = { regular: "REGULAR" };
+
+    static defineCustomGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, Snackbar__YDF);
+    }
+
+    /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
+    static DecorativeVariations = {
       error: "ERROR",
       warning: "WARNING",
-      success: "SUCCESS",
-      guidance: "GUIDANCE"
-    },
+      guidance: "GUIDANCE",
+      success: "SUCCESS"
+    };
 
-    DecorativeVariationsCSS_Modifiers: {
-      ERROR: "Snackbar--YDF__ErrorDecoration",
-      WARNING: "Snackbar--YDF__WarningDecoration",
-      SUCCESS: "Snackbar--YDF__SuccessDecoration",
-      GUIDANCE: "Snackbar--YDF__GuidanceDecoration"
-    },
-
-    defineNewDecorativeVariation(decorativeVariationsNames) {
-      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, this);
-    },
-
-
-    /* === Properties specification ================================================================================= */
-    get propertiesSpecification() {
-      return {
-
-        theme: {
-          type: String,
-          required: false,
-          allowedAlternatives: Object.values(this.Themes)
-        },
-
-        externalThemes: {
-          type: Boolean,
-          required: false
-        },
-
-        geometry: {
-          type: String,
-          required: false,
-          allowedAlternatives: Object.values(this.GeometricVariations)
-        },
-
-        decoration: {
-          type: String,
-          required: true,
-          allowedAlternatives: Object.values(this.DecorativeVariations)
-        }
-
-      }
-    },
-
-    /* === Localization ============================================================================================= */
-    localization: {
-      dismissingButton: { accessibilityGuidance: "Hide this message" }
+    static defineCustomDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, Snackbar__YDF);
     }
-  };
+
+
+    /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static propertiesSpecification = {
+
+      text: {
+        type: String,
+        required: true,
+        minimalCharactersCount: 1
+      },
+
+      theme: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(Snackbar__YDF.Themes)
+      },
+
+      areThemesCSS_ClassesCommon: {
+        type: Boolean,
+        required: false
+      },
+
+      geometry: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(Snackbar__YDF.GeometricVariations)
+      },
+
+      decoration: {
+        type: String,
+        required: true,
+        allowedAlternatives: Object.values(Snackbar__YDF.DecorativeVariations)
+      }
+
+    };
+
+
+    /* ━━━ State simulations specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static statesSimulationsSpecification = {
+
+      mustDisplay: {
+        type: Boolean,
+        required: false
+      }
+
+    };
+
+
+    /* ━━━ Localization ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static localization = snackbarYDF_ComponentLocalization__english;
+
+  }

@@ -7,13 +7,22 @@ block append Metadata
 
     HTML_PAGE_TITLE = "Basic integrated controls group demo - YDF";
 
-    styleSheetsURIs = [ "@Demos/Assemblies/ControlsGroups/Basic/Integrated/BasicIntegratedControlsGroupDemo" ];
-    scriptsURIs.endOfBody = [ "@Demos/Assemblies/ControlsGroups/Basic/Integrated/BasicIntegratedControlsGroupDemo" ]
+    styleSheetsURIs = [ "@Demos/Assemblies/ControlsGroups/Basic/Integrated/BasicIntegratedControlsGroup" ];
+    scriptsURIs.endOfBody = [ "@Demos/Assemblies/ControlsGroups/Basic/Integrated/BasicIntegratedControlsGroup" ]
 
 
 block append Requirements
 
   include ../../../../../node_modules/@yamato-daiwa/frontend/Components.pug
+
+
+block append StatesSimulations
+
+  -
+    const basicIntegratedControlsGroupStateSimulations = {
+      summarizingErrorMessage: true,
+      asynchronousValidationsNotFinishedYetMessage: true
+    };
 
 
 block append PageContent
@@ -23,6 +32,7 @@ block append PageContent
     form.BasicIntegratedControlsGroupDemo-Form#SCROLLABLE_CONTAINER
 
       h1.BasicIntegratedControlsGroupDemo-Heading= HTML_PAGE_TITLE
+
 
       +TextBox--YDF({
         label: "User name"
@@ -49,22 +59,24 @@ block append PageContent
       }).BasicIntegratedControlsGroupDemo-TextBox#PASSWORD_CONFIRMATION--TEXT_BOX
 
 
-      mixin SummarizingValidationErrorMessage
+      p.BasicIntegratedControlsGroupDemo-Message#SUMMARIZING_ERROR_MESSAGE(
+        hidden=(
+          !__IS_STATIC_PREVIEW_BUILDING_MODE__ ||
+          basicIntegratedControlsGroupStateSimulations.summarizingErrorMessage
+        )
+        class="BasicIntegratedControlsGroupDemo-Message__SummarizingError"
+      ) Invalid or omitted required field(s) left. Please check your inputs.
 
-        p.BasicIntegratedControlsGroupDemo-ErrorMessage Invalid or omitted required field left. Please check your inputs.
-
-      if __IS_STATIC_PREVIEW_BUILDING_MODE__
-
-        +SummarizingValidationErrorMessage
-
-      else
-
-        template#ERROR_MESSAGE_TEMPLATE
-
-          +SummarizingValidationErrorMessage
+      p.BasicIntegratedControlsGroupDemo-Message#ASYNCHRONOUS_VALIDATIONS_NOT_FINISHED_YET_MESSAGE(
+        hidden=(
+          !__IS_STATIC_PREVIEW_BUILDING_MODE__ ||
+          basicIntegratedControlsGroupStateSimulations.asynchronousValidationsNotFinishedYetMessage
+        )
+        class="BasicIntegratedControlsGroupDemo-Message__AsynchronousValidationsNotFinishedYet"
+      ) The asynchronous validation(s) has not finished yet. Please wait for the checking results.
 
 
       +Button--YDF({
         label: "Sign up",
         HTML_Type: Button__YDF.HTML_Types.submit
-      }).BasicIntegratedControlsGroupDemo-SubmittingButton#SIGNING_IN--BUTTON
+      }).BasicIntegratedControlsGroupDemo-SubmittingButton#SIGNING_UP--BUTTON

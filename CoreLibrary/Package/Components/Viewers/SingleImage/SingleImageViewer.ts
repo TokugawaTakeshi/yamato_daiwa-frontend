@@ -21,7 +21,6 @@ export default class SingleImageViewer {
 
   protected static readonly IMAGE_IN_MODAL_ELEMENT_SELECTOR: string = ".SingleImageViewer--YDF-ModalView-Image";
 
-
   protected static HAS_FULL_SCREEN_VIEW__DATA_ATTRIBUTE_KEY: string = "has_full_screen_view__ydf";
 
   protected static readonly MAXIMAL_ZOOMING_RATIO: number = 4;
@@ -37,7 +36,7 @@ export default class SingleImageViewer {
   protected $currentZoomingRatio: number = 0;
 
 
-  /* === Public methods ============================================================================================= */
+  /* ━━━ Public methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public static initializeAllInstances(): Array<SingleImageViewer> {
     return Array.from(document.querySelectorAll<HTMLElement>(SingleImageViewer.ROOT_ELEMENT_SELECTOR)).
         filter(

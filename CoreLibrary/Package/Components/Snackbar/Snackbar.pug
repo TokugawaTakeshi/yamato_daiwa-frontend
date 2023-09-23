@@ -1,13 +1,14 @@
 include Snackbar.class.pug
 
 
-mixin Snackbar--YDF(properties)
+mixin Snackbar--YDF(properties, statesSimulations)
 
   -
 
     const {
+      text,
       theme = Snackbar__YDF.Themes.regular,
-      externalThemes = Snackbar__YDF.externalThemes,
+      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || Snackbar__YDF.areThemesCSS_ClassesCommon,
       geometry = Snackbar__YDF.GeometricVariations.regular,
       decoration
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
@@ -15,30 +16,56 @@ mixin Snackbar--YDF(properties)
       parameterNumber: 1,
       parameterName: "properties",
       parameterPropertiesSpecification: Snackbar__YDF.propertiesSpecification,
-      mixinName: "Snackbar--YDF"
+      mixinName: Snackbar__YDF.CSS_NAMESPACE
+    });
+
+    const {
+      mustDisplay = true
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: statesSimulations,
+      parameterNumber: 2,
+      parameterName: "statesSimulations",
+      parameterPropertiesSpecification: Snackbar__YDF.statesSimulationsSpecification,
+      mixinName: Snackbar__YDF.CSS_NAMESPACE
     });
 
     const rootElementModifierCSS_Classes = [
-      ...Object.entries(Snackbar__YDF.Themes).length > 1 && !externalThemes ?
-          [Snackbar__YDF.ThemesCSS_ModifiersNames[theme]] : [],
-      ...Object.entries(Snackbar__YDF.GeometricVariations).length > 1 ?
-          [Snackbar__YDF.GeometricVariationsCSS_ModifiersNames[geometry]] : [],
-      ...Object.entries(Snackbar__YDF.DecorativeVariations).length > 1 ?
-          [Snackbar__YDF.DecorativeVariationsCSS_Modifiers[decoration]] : []
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: Snackbar__YDF.Themes,
+        CSS_Namespace: Snackbar__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: Snackbar__YDF.GeometricVariations,
+        CSS_Namespace: Snackbar__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decoration,
+        allDecorativeVariations: Snackbar__YDF.DecorativeVariations,
+        CSS_Namespace: Snackbar__YDF.CSS_NAMESPACE
+      })
+
     ];
 
 
-  .Snackbar--YDF&attributes(attributes)(
-    class= rootElementModifierCSS_Classes
-    role="status"
-    aria-live="polite"
-  )
+  if mustDisplay
 
-    +ExclamationMark__Circled__Filled--YDF_Icon.Snackbar--YDF-Icon
+    .Snackbar--YDF&attributes(attributes)(
+      class=rootElementModifierCSS_Classes
+      role="status"
+      aria-live="polite"
+    )
 
-    p.Snackbar--YDF-Message Sample text
+      +ExclamationMark__Circled__Filled--YDF_Icon.Snackbar--YDF-Icon
 
-    button.Snackbar--YDF-DismissingButton(
-      type="button"
-      aria-label= Snackbar__YDF.localization.dismissingButton.accessibilityGuidance
-    ): +MultiplicationSign__Boxed__Filled--YDF_Icon.Snackbar--YDF-DismissingButton-Icon
+      p.Snackbar--YDF-Message= text
+
+      button.Snackbar--YDF-DismissingButton(
+        type="button"
+        aria-label=Snackbar__YDF.localization.dismissingButton.accessibilityGuidance
+      ): +MultiplicationSign__Boxed__Filled--YDF_Icon.Snackbar--YDF-DismissingButton-Icon

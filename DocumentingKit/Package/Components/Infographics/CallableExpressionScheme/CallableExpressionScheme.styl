@@ -35,15 +35,20 @@ provideCallableExpressionYDF_DK_Component()
 
     &-SignaturesFlow
 
-      margin-top 16px
-
-
-      >* + *
-
-        margin-top 12px
+      retireFrom({
+        definitions:\
+            (".CallableExpressionScheme--YDF_DK-TechnicalNameHeading" { y: 4px })\
+            (".CallableExpressionScheme--YDF_DK-LocalizedDescriptiveHeading" { y: 12px })
+      })
 
 
     &-Signature
+
+      display flex
+      flex-wrap wrap
+
+      retireFrom({ targetElementSelector: ".CallableExpressionScheme--YDF_DK-Signature", y: 8px })
+
 
       &-Heading
 
@@ -51,6 +56,8 @@ provideCallableExpressionYDF_DK_Component()
         applyTextGeometryWithoutExtraSpaceCausedByLineHeight({ fontSize: 1.2rem, lineSpacing: 0.2rem })
 
         color: ShadesOfGray__39ColorsW3C_Palette[12]
+
+        flex 1 1 100%
 
 
       &-LocalizedDescriptiveHeading
@@ -64,6 +71,7 @@ provideCallableExpressionYDF_DK_Component()
         font-weight bold
         color: ShadesOfGray__39ColorsW3C_Palette[16]
 
+        flex 1 1 100%
         margin-top 0.1rem
 
 
@@ -79,6 +87,11 @@ provideCallableExpressionYDF_DK_Component()
       align-items baseline
 
       retireFrom({ targetElementSelector: ".CallableExpressionScheme--YDF_DK-GenericExpressionLabel", y: 6px })
+
+
+      /.CallableExpressionScheme--YDF_DK-Signature &
+
+        flex 1 1 100%
 
 
     &-Bracket
@@ -186,7 +199,11 @@ provideCallableExpressionYDF_DK_Component()
       grid-template-columns repeat(auto-fill, minmax(250px, 1fr));
       gap 6px
 
-      margin-top 0.4rem
+      retireFrom({
+        definitions:\
+            (".CallableExpressionScheme--YDF_DK-ParametersAndReturnedValuesGroup" { y: 0.4rem })\
+            (".CallableExpressionScheme--YDF_DK-SignaturesFlow" { y: 0.8rem })
+      })
 
 
       >*:first-child:last-child

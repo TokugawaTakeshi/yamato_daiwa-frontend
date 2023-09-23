@@ -1,6 +1,7 @@
 Button-RegularTheme-LinkLikeDecoration--YDF = {
 
   rootElement: {
+
     text: {
       color: JQueryUI_BaseTheme.clickableElements.activeState.borderColor,
       underline: {
@@ -9,20 +10,27 @@ Button-RegularTheme-LinkLikeDecoration--YDF = {
         color: JQueryUI_BaseTheme.clickableElements.activeState.borderColor
       }
     },
+
     background: {
       color: null,
       image: null
     },
+
     borders: {
       style: null,
       color: null
     },
+
     outline: null,
-    shadow: null
+    shadow: null,
+
+    customDeclarations: null
+
   },
 
   SVG_Icon: {
-    color: JQueryUI_BaseTheme.clickableElements.activeState.borderColor
+    color: JQueryUI_BaseTheme.clickableElements.activeState.borderColor,
+    customDeclarations: null
   },
 
 
@@ -31,59 +39,76 @@ Button-RegularTheme-LinkLikeDecoration--YDF = {
     hover: {
 
       rootElement: {
+
         text: {
-          color: null,
+          color: JQueryUI_BaseTheme.clickableElements.activeState.background,
           underline: {
             type: solid,
             thickness: 1px,
-            color: alpha(JQueryUI_BaseTheme.clickableElements.activeState.borderColor, 0.75)
+            color: rgba(JQueryUI_BaseTheme.clickableElements.activeState.background, 0.75)
           }
         },
+
         background: {
           color: null
         },
+
         borders: {
           style: null,
           color: null
         },
+
         outline: null,
         shadow: null,
+
         customDeclarations: null
+
       },
 
       SVG_Icon: {
-        color: JQueryUI_BaseTheme.clickableElements.hoverState.fontColor,
+        color: JQueryUI_BaseTheme.clickableElements.activeState.background,
         customDeclarations: null
       }
+
     },
 
     focus: {
+
       rootElement: {
+
         text: {
           color: null,
           underline: null
         },
+
         background: {
           color: null,
           image: null
         },
+
         borders: {
           style: null,
           color: null
         },
+
         outline: null,
+
         shadow: {
           blurRadius: 3px,
           spreadRadius: 1px,
           color: #007fff
         },
+
         customDeclarations: null
+
       }
+
     },
 
     active: {
 
       rootElement: {
+
         text: {
           color: alpha(JQueryUI_BaseTheme.clickableElements.activeState.borderColor, 0.75),
           underline: {
@@ -92,15 +117,21 @@ Button-RegularTheme-LinkLikeDecoration--YDF = {
             color: alpha(JQueryUI_BaseTheme.clickableElements.activeState.borderColor, 0.75)
           }
         },
+
         background: {
           color: null
         },
+
         borders: {
           style: null,
           color: null
         },
+
         outline: null,
+        shadow: null,
+
         customDeclarations: null
+
       },
 
       SVG_Icon: {
@@ -126,6 +157,7 @@ Button-RegularTheme-LinkLikeDecoration--YDF = {
       SVG_Icon: {
         color: ShadesOfGray__39ColorsW3C_Palette[24]
       }
+
     }
   }
 }

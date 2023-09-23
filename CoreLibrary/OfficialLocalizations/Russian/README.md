@@ -55,3 +55,4 @@ block append Metadata
 | HamburgerMenuButton--YDF  | `HamburgerMenuButton__YDF`  | `hamburgerMenuButtonLocalization__russian`               |
 | SingleImageViewer--YDF    | `SingleImageViewer__YDF`    | `singleImageViewerYDF_ComponentLocalization__russian`    |
 | QuestionAndAnswerBox--YDF | `QuestionAndAnswerBox__YDF` | `questionAndAnswerBoxYDF_ComponentLocalization__russian` |
+| Snackbar--YDF             | `Snackbar__YDF__YDF`        | `snackbarYDF_ComponentLocalization__russian`             |

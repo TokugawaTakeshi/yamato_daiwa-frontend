@@ -217,7 +217,7 @@ class FilesUploader<
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore 時間的に
-    this.payload.value = Array.from(newBase64EncodedFiles);
+    this.payload.$value = Array.from(newBase64EncodedFiles);
 
   }
 

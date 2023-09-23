@@ -1,15 +1,18 @@
-WidthSizingSpecificationSchema = {
+WidthSizingSpecificationSchema--YDF = {
 
   fixedWidth: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     incompatibleWith: "minimalWidth" "maximalWidth"
   },
+
   minimalWidth: {
-    type: DataTypes.dimensionalAmount
+    type: DataTypes.dimensionalQuantity
   },
+
   maximalWidth: {
-    type: DataTypes.dimensionalAmount
+    type: DataTypes.dimensionalQuantity
   },
+
   takeMaximumSpaceAsPossible: {
     type: DataTypes.boolean,
     incompatibleWith: "fixedWidth"
@@ -18,34 +21,41 @@ WidthSizingSpecificationSchema = {
   truncateOnOverflow: {
     type: DataTypes.boolean
   },
+
   displayEllipsisOnOverflow: {
     type: DataTypes.boolean
   },
 
   leftOrRightSymmetricBordersWidths: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     incompatibleWith: "leftBorderWidth" "rightBorderWidth"
   },
+
   leftBorderWidth: {
-    type: DataTypes.dimensionalAmount
+    type: DataTypes.dimensionalQuantity
   },
+
   rightBorderWidth: {
-    type: DataTypes.dimensionalAmount
+    type: DataTypes.dimensionalQuantity
   },
+
   isExplicitBorderNoneDeclarationRequired: {
     type: DataTypes.boolean
   },
 
   leftOrRightSymmetricPaddings: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     incompatibleWith: "leftPadding" "rightPadding"
   },
+
   leftPadding: {
-    type: DataTypes.dimensionalAmount
+    type: DataTypes.dimensionalQuantity
   },
+
   rightPadding: {
-    type: DataTypes.dimensionalAmount
+    type: DataTypes.dimensionalQuantity
   },
+
   isExplicitPaddingZeroDeclarationRequired: {
     type: DataTypes.boolean
   }

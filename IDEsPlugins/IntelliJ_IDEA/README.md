@@ -196,7 +196,7 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 ## Files templates
 ### Styles customizing 
 
-* **Files and Code Templates/Other/YDF GUI Components/Badge.styl**: 
+* **Files and Code Templates/Other/YDF GUI Components/Badge.styl**
 
 
 ## Installation

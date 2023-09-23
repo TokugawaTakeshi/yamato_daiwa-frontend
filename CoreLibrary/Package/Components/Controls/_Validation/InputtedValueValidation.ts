@@ -11,14 +11,13 @@ abstract class InputtedValueValidation {
 
 
   public readonly isInputRequired: InputtedValueValidation.InputRequirementChecker;
+  public readonly hasValueBeenOmitted: InputtedValueValidation.OmittedValueChecker;
 
-  protected readonly hasValueBeenOmitted: InputtedValueValidation.OmittedValueChecker;
   protected readonly requiredInputIsMissingValidationErrorMessage: string;
 
   protected readonly staticRules: ReadonlyArray<InputtedValueValidation.Rule>;
   protected readonly contextDependentRules: ReadonlyArray<InputtedValueValidation.Rule>;
   protected readonly asynchronousRules: ReadonlyArray<InputtedValueValidation.AsynchronousRule>;
-  protected readonly asynchronousChecksCallback?: InputtedValueValidation.AsynchronousChecks.Callback;
 
 
   protected constructor(compoundParameter: InputtedValueValidation.ConstructorCompoundParameter) {
@@ -40,7 +39,6 @@ abstract class InputtedValueValidation {
     this.contextDependentRules = compoundParameter.contextDependentRules ?? [];
 
     this.asynchronousRules = compoundParameter.asynchronousRules ?? [];
-    this.asynchronousChecksCallback = compoundParameter.asynchronousValidationsCallback;
 
   }
 
@@ -109,7 +107,8 @@ abstract class InputtedValueValidation {
     }
 
 
-    this.executeAsynchronousValidationIfAny(rawValue);
+    // TODO 引数を追加し呼び出すか、メソッド名を変える
+    // this.executeAsynchronousChecksIfAny(rawValue);
 
 
     return {
@@ -118,7 +117,10 @@ abstract class InputtedValueValidation {
 
   }
 
-  protected executeAsynchronousValidationIfAny(rawValue: unknown): void {
+  public executeAsynchronousChecksIfAny(
+    rawValue: unknown,
+    asynchronousChecksCallback: InputtedValueValidation.AsynchronousChecks.Callback
+  ): void {
 
     if (this.asynchronousRules.length === 0) {
       return;
@@ -144,6 +146,8 @@ abstract class InputtedValueValidation {
       }, {}
     );
 
+    asynchronousChecksCallback(new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks));
+
     for (const validationRule of this.asynchronousRules) {
 
       validationRule.
@@ -159,12 +163,10 @@ abstract class InputtedValueValidation {
 							hasErrorOccurred: false,
 							message: checkingResult.isValid ?
 									validationRule.messages.validValueHasBeenConfirmed :
-									checkingResult.errorMessage ?? validationRule.messages.errorHasOccurred
+									checkingResult.errorMessage ?? validationRule.messages.invalidValueHasBeenConfirmed
 						};
 
-						this.asynchronousChecksCallback?.(
-              new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks)
-            );
+						asynchronousChecksCallback(new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks));
 
 					}).
 
@@ -186,9 +188,10 @@ abstract class InputtedValueValidation {
               message: validationRule.messages.errorHasOccurred
             };
 
-            this.asynchronousChecksCallback?.(new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks));
+            asynchronousChecksCallback(new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks));
 
           });
+
     }
 
   }
@@ -286,6 +289,7 @@ namespace InputtedValueValidation {
 
     export class Status {
 
+      public readonly checks: AsynchronousChecks;
       public readonly hasAtLeastOneCheckNotFinishedYet: boolean = false;
       public readonly hasAllChecksFinished: boolean = true;
       public readonly hasAtOneCheckErrorOccurred: boolean = false;
@@ -294,6 +298,8 @@ namespace InputtedValueValidation {
       public readonly errorsMessages: Array<string> = [];
 
       public constructor(checks: AsynchronousChecks) {
+
+        this.checks = checks;
 
         for (const checking of Object.values(checks)) {
 

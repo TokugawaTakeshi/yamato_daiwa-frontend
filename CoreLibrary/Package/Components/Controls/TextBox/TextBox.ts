@@ -193,11 +193,11 @@ class TextBox<
       initialValue: payloadInitialValue,
       getComponentInstance: (): ValidatableControl => this,
       validation: properties.validation,
-      onHasBecomeValid: {
+      onHasBecomeValidEventHandler: {
         handler: this.onPayloadHasBecomeValidEventListener.bind(this),
         ID: TextBox.generateOnPayloadHasBecomeValidEventHandlerID(this.ID)
       },
-      onHasBecomeInvalid: {
+      onHasBecomeInvalidEventHandler: {
         handler: this.onPayloadHasBecomeInvalidEventListener.bind(this),
         ID: TextBox.generateOnPayloadHasBecomeInvalidEventHandlerID(this.ID)
       }
@@ -318,7 +318,15 @@ class TextBox<
 
   private onInputEventListener(): void {
 
-    this.payload.$value = this.rawInputTypeTransformer(this.nativeInputAcceptingElement.value);
+    this.payload.$setValue({
+      newValue: this.rawInputTypeTransformer(this.nativeInputAcceptingElement.value),
+      asynchronousValidationDelay__seconds: 1,
+      onAsynchronousValidationStatusChanged: (
+        asynchronousValidationStatus: InputtedValueValidation.AsynchronousChecks.Status
+      ): void => {
+        this.shellComponent.$asynchronousValidationsStatus = asynchronousValidationStatus;
+      }
+    });
 
     this.shellComponent.$validationErrorsMessages = this.payload.validationErrorsMessages;
 

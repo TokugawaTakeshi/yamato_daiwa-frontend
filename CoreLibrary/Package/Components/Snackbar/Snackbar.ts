@@ -1,6 +1,11 @@
 import componentHTML_Workpiece from "./Snackbar.template.pug";
 
-import { PromisesQueue } from "@yamato-daiwa/es-extensions";
+import {
+  PromisesQueue,
+  toScreamingSnakeCase,
+  isUndefined,
+  isNull
+} from "@yamato-daiwa/es-extensions";
 import {
   createDOM_ElementFromHTML_Code,
   getExpectedToBeSingleDOM_Element,
@@ -11,155 +16,142 @@ import {
 
 abstract class Snackbar {
 
+  public static DecorativeVariations: Snackbar.DecorativeVariations = {
+    error: "ERROR",
+    warning: "WARNING",
+    guidance: "GUIDANCE",
+    success: "SUCCESS"
+  };
+
+
+  /* ━━━ Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   protected static readonly sessionsQueue: PromisesQueue = new PromisesQueue();
 
-  protected static readonly DOM_Workpiece: HTMLElement = createDOM_ElementFromHTML_Code({
-    HTML_Code: componentHTML_Workpiece,
-    rootDOM_ElementSubtype: HTMLElement
-  });
 
-  protected static ICON_SELECTOR: string = ".Snackbar--YDF-Icon";
+  /* ─── Accessing to DOM ─────────────────────────────────────────────────────────────────────────────────────────── */
+  protected static readonly SVG_ICON_MOUNTING_POINT_ELEMENT_SELECTOR: string = ".Snackbar--YDF-IconPlaceholder";
+  protected static readonly SVG_ICON_SELECTOR: string = ".Snackbar--YDF-Icon";
 
-  protected static readonly ERROR_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS: string = "Snackbar--YDF__ErrorDecoration";
-  protected static readonly WARNING_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS: string = "Snackbar--YDF__WarningDecoration";
-  protected static readonly INFO_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS: string = "Snackbar--YDF__InfoDecoration";
-  protected static readonly SUCCESS_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS: string = "Snackbar--YDF__SuccessDecoration";
+  protected static readonly MESSAGE_ELEMENT_SELECTOR: string = ".Snackbar--YDF-Message";
+  protected static readonly DISMISSING_BUTTON_ELEMENT_SELECTOR: string = ".Snackbar--YDF-DismissingButton";
 
-  protected static readonly iconPlaceholderElement: Element = getExpectedToBeSingleDOM_Element({
-    selector: ".Snackbar--YDF-IconPlaceholder", context: Snackbar.DOM_Workpiece
-  });
 
-  protected static readonly successIconElement: Element = getExpectedToBeSingleDOM_Element({
-    selector: "[data-icon='SUCCESS']", context: Snackbar.DOM_Workpiece
-  });
-  protected static readonly guidanceIconElement: Element = getExpectedToBeSingleDOM_Element({
-    selector: "[data-icon='GUIDANCE']", context: Snackbar.DOM_Workpiece
-  });
-  protected static readonly warningIconElement: Element = getExpectedToBeSingleDOM_Element({
-    selector: "[data-icon='WARNING']", context: Snackbar.DOM_Workpiece
-  });
-  protected static readonly errorIconElement: Element = getExpectedToBeSingleDOM_Element({
-    selector: "[data-icon='ERROR']", context: Snackbar.DOM_Workpiece
-  });
+  /* ─── Initialization on demand ─────────────────────────────────────────────────────────────────────────────────── */
+  protected static DOM_Workpiece: HTMLElement | null = null;
 
-  protected static readonly messageElement: Element = getExpectedToBeSingleDOM_Element({
-    selector: ".Snackbar--YDF-Message", context: Snackbar.DOM_Workpiece
-  });
+  protected static SVG_IconMountingPointElement: Element;
+  protected static decorativeVariationsDependents: { [ decoration: string ]: Snackbar.DecorativeVariationDependents; };
 
-  protected static readonly dismissingButton: Element = getExpectedToBeSingleDOM_Element({
-    selector: ".Snackbar--YDF-DismissingButton", context: Snackbar.DOM_Workpiece
-  });
+  protected static messageElement: Element;
+  protected static dismissingButtonElement: Element;
 
+
+  /* ─── Others constants ─────────────────────────────────────────────────────────────────────────────────────────── */
   protected static readonly DEFAULT_DISPLAYING_DURATION__SECONDS: number = 3;
 
-  static {
 
-    Snackbar.successIconElement.remove();
-    Snackbar.guidanceIconElement.remove();
-    Snackbar.warningIconElement.remove();
-    Snackbar.errorIconElement.remove();
+  /* ━━━ Public methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  public static mountAndDisplayForAWhile(compoundParameter: Snackbar.CompoundParameter): void {
 
-    addLeftClickEventHandler({
-      targetElement: Snackbar.dismissingButton,
-      handler: Snackbar.hideAndUnmount
-    });
-
-  }
-
-
-  public static mountAndDisplayForAWhile(namedParameters: Snackbar.NamedParameters): void {
     Snackbar.sessionsQueue.addFunctionAndStartExecutionIfHasNotStartedYet({
-      newAsynchronousFunction: async (): Promise<void> => Snackbar.mountAndDisplayForAWhileSingleInstance(namedParameters),
+      newAsynchronousFunction: async (): Promise<void> => Snackbar.mountAndDisplayForAWhileSingleInstance({
+        ...compoundParameter,
+        initializedDOM_Workpiece: Snackbar.DOM_Workpiece ?? Snackbar.initializeDOM_Workpiece()
+      }),
       behaviourOnSomePromiseFailed: PromisesQueue.BEHAVIOUR_ON_SOME_PROMISE_FAILED.loggingAndProceedingToNextPromise
-    }).catch(PromisesQueue.errorHandler);
+    }).
+        catch(PromisesQueue.errorHandler);
+
   }
 
   public static async hideAndUnmount(): Promise<void> {
     return new Promise<void>((resolve: () => void): void => {
 
-      Snackbar.DOM_Workpiece.animate([
+      /* [ Theory ] It is possible when this method has been called before `mountAndDisplayForAWhile`. */
+      if (isNull(Snackbar.DOM_Workpiece)) {
+        return;
+      }
+
+
+      const DOM_Workpiece: HTMLElement = Snackbar.DOM_Workpiece;
+
+      Snackbar.DOM_Workpiece.animate(
+        [
+          {
+            opacity: 1,
+            transform: "none"
+          },
+          {
+            opacity: 0,
+            transform: "translateY(-100%)"
+          }
+        ],
         {
-          opacity: 1,
-          transform: "none"
-        },
-        {
-          opacity: 0,
-          transform: "translateY(-100%)"
+          duration: 250,
+          easing: "ease-in"
         }
-      ], {
-        duration: 250,
-        easing: "ease-in"
-      }).
+      ).
           addEventListener("finish", (): void => {
 
-            const actualIcon: Element = getExpectedToBeSingleDOM_Element({
-              selector: Snackbar.ICON_SELECTOR, context: Snackbar.DOM_Workpiece
-            });
+            getExpectedToBeSingleDOM_Element({ selector: Snackbar.SVG_ICON_SELECTOR, context: DOM_Workpiece }).
+                replaceWith(Snackbar.SVG_IconMountingPointElement);
 
-            actualIcon.replaceWith(Snackbar.iconPlaceholderElement);
-            Snackbar.DOM_Workpiece.classList.remove(
-              Snackbar.ERROR_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS,
-              Snackbar.WARNING_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS,
-              Snackbar.INFO_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS,
-                Snackbar.SUCCESS_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS
-            );
-            Snackbar.DOM_Workpiece.remove();
+            Snackbar.dismissingButtonElement.removeEventListener("click", Snackbar.hideAndUnmount);
+            // TODO Remove all CSS Classes of decor var
+
+            DOM_Workpiece.remove();
 
             resolve();
 
           });
     });
+
+  }
+
+  public static addCustomDecorativeVariations(
+    decorativeVariationsData: ReadonlyArray<Readonly<{ key: string; } & Snackbar.DecorativeVariationDependents>>
+  ): void {
+
+    for (const { key, CSS_Class, SVG_Icon } of decorativeVariationsData) {
+      Snackbar.decorativeVariationsDependents[key] = { CSS_Class, SVG_Icon };
+      Snackbar.DecorativeVariations[key] = toScreamingSnakeCase(key);
+    }
+
   }
 
 
-  private static async mountAndDisplayForAWhileSingleInstance(
+  /* ━━━ Private methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  protected static async mountAndDisplayForAWhileSingleInstance(
     {
       messageTextOrHTML,
       decorativeVariation,
       parentElementSelector = "body",
-      displayingDuration__seconds = Snackbar.DEFAULT_DISPLAYING_DURATION__SECONDS
-    }: Snackbar.NamedParameters
+      mountingPointElementSelector,
+      displayingDuration__seconds = Snackbar.DEFAULT_DISPLAYING_DURATION__SECONDS,
+      initializedDOM_Workpiece
+    }: Snackbar.CompoundParameter & Readonly<{ initializedDOM_Workpiece: Element; }>
   ): Promise<void> {
 
-    const parentElement: Element = getExpectedToBeSingleDOM_Element({ selector: parentElementSelector });
+    const decorativeVariationsDependent: Snackbar.DecorativeVariationDependents =
+        Snackbar.decorativeVariationsDependents[decorativeVariation];
 
-    let rootElementDecorativeVariationModifierCSS_Class: string;
+    initializedDOM_Workpiece.classList.add(decorativeVariationsDependent.CSS_Class);
 
-    switch (decorativeVariation) {
-
-      case Snackbar.DecorativeVariations.error: {
-        rootElementDecorativeVariationModifierCSS_Class = Snackbar.ERROR_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS;
-        Snackbar.iconPlaceholderElement.replaceWith(Snackbar.errorIconElement);
-        break;
-      }
-
-      case Snackbar.DecorativeVariations.warning: {
-        rootElementDecorativeVariationModifierCSS_Class = Snackbar.WARNING_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS;
-        Snackbar.iconPlaceholderElement.replaceWith(Snackbar.warningIconElement);
-        break;
-      }
-
-      case Snackbar.DecorativeVariations.guidance: {
-        rootElementDecorativeVariationModifierCSS_Class = Snackbar.INFO_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS;
-        Snackbar.iconPlaceholderElement.replaceWith(Snackbar.guidanceIconElement);
-        break;
-      }
-
-      case Snackbar.DecorativeVariations.success: {
-        rootElementDecorativeVariationModifierCSS_Class = Snackbar.SUCCESS_DECORATIVE_VARIATION_MODIFIER_CSS_CLASS;
-        Snackbar.iconPlaceholderElement.replaceWith(Snackbar.successIconElement);
-        break;
-      }
-
-
-    }
-
-    Snackbar.DOM_Workpiece.classList.add(rootElementDecorativeVariationModifierCSS_Class);
+    Snackbar.SVG_IconMountingPointElement.replaceWith(decorativeVariationsDependent.SVG_Icon);
     Snackbar.messageElement.innerHTML = messageTextOrHTML;
 
-    parentElement.appendChild(Snackbar.DOM_Workpiece);
+    addLeftClickEventHandler({
+      targetElement: Snackbar.dismissingButtonElement,
+      handler: Snackbar.hideAndUnmount
+    });
 
-    Snackbar.DOM_Workpiece.animate(
+    if (isUndefined(mountingPointElementSelector)) {
+      getExpectedToBeSingleDOM_Element({ selector: parentElementSelector }).appendChild(initializedDOM_Workpiece);
+    } else {
+      getExpectedToBeSingleDOM_Element({ selector: mountingPointElementSelector }).replaceWith(initializedDOM_Workpiece);
+    }
+
+    initializedDOM_Workpiece.animate(
       [
         {
           opacity: 0,
@@ -176,30 +168,99 @@ abstract class Snackbar {
       }
     );
 
-
     await new BrowserJS_Timer({ period__seconds: displayingDuration__seconds }).countDown();
 
     return Snackbar.hideAndUnmount();
 
   }
+
+
+  protected static initializeDOM_Workpiece(): HTMLElement {
+
+    Snackbar.DOM_Workpiece = createDOM_ElementFromHTML_Code({
+      HTML_Code: componentHTML_Workpiece,
+      rootDOM_ElementSubtype: HTMLElement
+    });
+
+    Snackbar.SVG_IconMountingPointElement = getExpectedToBeSingleDOM_Element({
+      selector: Snackbar.SVG_ICON_MOUNTING_POINT_ELEMENT_SELECTOR,
+      context: Snackbar.DOM_Workpiece
+    });
+
+    Snackbar.decorativeVariationsDependents = {
+
+      [Snackbar.DecorativeVariations.error]: {
+        CSS_Class: "Snackbar--YDF__ErrorDecoration",
+        SVG_Icon: getExpectedToBeSingleDOM_Element({
+          selector: "[data-icon='ERROR']", context: Snackbar.DOM_Workpiece, expectedDOM_ElementSubtype: SVGElement
+        })
+      },
+
+      [Snackbar.DecorativeVariations.warning]: {
+        CSS_Class: "Snackbar--YDF__WarningDecoration",
+        SVG_Icon: getExpectedToBeSingleDOM_Element({
+          selector: "[data-icon='WARNING']", context: Snackbar.DOM_Workpiece, expectedDOM_ElementSubtype: SVGElement
+        })
+      },
+
+      [Snackbar.DecorativeVariations.guidance]: {
+        CSS_Class: "Snackbar--YDF__GuidanceDecoration",
+        SVG_Icon: getExpectedToBeSingleDOM_Element({
+          selector: "[data-icon='GUIDANCE']", context: Snackbar.DOM_Workpiece, expectedDOM_ElementSubtype: SVGElement
+        })
+      },
+
+      [Snackbar.DecorativeVariations.success]: {
+        CSS_Class: "Snackbar--YDF__SuccessDecoration",
+        SVG_Icon: getExpectedToBeSingleDOM_Element({
+          selector: "[data-icon='SUCCESS']", context: Snackbar.DOM_Workpiece, expectedDOM_ElementSubtype: SVGElement
+        })
+      }
+
+    };
+
+    for (const decorativeVariationDependents of Object.values(Snackbar.decorativeVariationsDependents)) {
+      delete decorativeVariationDependents.SVG_Icon.dataset.icon;
+      decorativeVariationDependents.SVG_Icon.remove();
+    }
+
+    Snackbar.messageElement = getExpectedToBeSingleDOM_Element({
+      selector: Snackbar.MESSAGE_ELEMENT_SELECTOR, context: Snackbar.DOM_Workpiece
+    });
+
+    Snackbar.dismissingButtonElement = getExpectedToBeSingleDOM_Element({
+      selector: Snackbar.DISMISSING_BUTTON_ELEMENT_SELECTOR, context: Snackbar.DOM_Workpiece
+    });
+
+    return Snackbar.DOM_Workpiece;
+
+  }
+
 }
 
 
 namespace Snackbar {
 
-  export type NamedParameters = Readonly<{
+  export type CompoundParameter = Readonly<{
     messageTextOrHTML: string;
-    decorativeVariation: DecorativeVariations;
+    decorativeVariation: string;
     parentElementSelector?: string;
+    mountingPointElementSelector?: string;
     displayingDuration__seconds?: number;
   }>;
 
-  export enum DecorativeVariations {
-    error = "ERROR",
-    warning = "WARNING",
-    guidance = "GUIDANCE",
-    success = "SUCCESS"
-  }
+  export type DecorativeVariationDependents = Readonly<{
+    CSS_Class: string;
+    SVG_Icon: SVGElement;
+  }>;
+
+  export type DecorativeVariations = {
+    readonly error: "ERROR";
+    readonly warning: "WARNING";
+    readonly guidance: "GUIDANCE";
+    readonly success: "SUCCESS";
+    [custom: string]: string;
+  };
 
 }
 

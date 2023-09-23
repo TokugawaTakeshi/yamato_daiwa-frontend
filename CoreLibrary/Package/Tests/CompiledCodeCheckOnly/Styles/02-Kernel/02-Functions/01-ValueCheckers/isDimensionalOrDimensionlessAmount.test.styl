@@ -10,16 +10,16 @@ stylus Tests/CompiledCodeCheckOnly/Styles/02-Kernel/02-Functions/01-ValueChecker
 
 
 p(isDimensionalOrDimensionlessAmount(2px))  // => true
-p(isDimensionalAmount(2px, { considerDimensionlessZeroAsDimensionalAmount: true }))      // => true
+p(isDimensionalQuantity(2px, "MUST_CONSIDER_DIMEMSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY"))  // => true
 p(isDimensionlessAmount(2px, { considerDimensionlessZeroAsDimensionlessAmount: true }))  // => false
 
 p("-------------------------------------------------------------------------------------------------------------------")
 p(isDimensionalOrDimensionlessAmount(2))    // => true
-p(isDimensionalAmount(2, { considerDimensionlessZeroAsDimensionalAmount: true }))    // => false
+p(isDimensionalQuantity(2, "MUST_CONSIDER_DIMEMSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY"))    // => false
 p(isDimensionlessAmount(2))  // => true
 
 p("-------------------------------------------------------------------------------------------------------------------")
-p(isDimensionalAmount(0, { considerDimensionlessZeroAsDimensionalAmount: true }))    // => true
-p(isDimensionalAmount(0, { considerDimensionlessZeroAsDimensionalAmount: false }))   // => false
+p(isDimensionalQuantity(0, "MUST_CONSIDER_DIMEMSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY"))      // => true
+p(isDimensionalQuantity(0, "MUST_NOT_CONSIDER_DIMEMSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY"))  // => false
 p(isDimensionlessAmount(0))  // => true
 p(isDimensionlessAmount(0))  // => true

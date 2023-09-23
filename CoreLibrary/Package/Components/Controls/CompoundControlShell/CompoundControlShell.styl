@@ -88,7 +88,7 @@ provideCompoundControlShellYDF_Component(
 
     .CompoundControlShell--YDF-Badge__Invisible
 
-      visibility none
+      visibility hidden
 
 
   // ─── Geometry ──────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -351,6 +351,8 @@ provideCompoundControlShellYDF_Component(
       align-items center
       column-gap 8px
 
+      retireFromElementWithSameSelector({ y: 8px })
+
 
       &-LoadingIndicator
 
@@ -377,14 +379,9 @@ provideCompoundControlShellYDF_Component(
           fill: YDF_ColorPalette.mint.slightlyDark
 
 
-        ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__SucceededButInvalidState &
-
-          fill: YDF_ColorPalette.red.slightlyDark
-
-
         ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__MalfunctionState &
 
-          fill: YDF_ColorPalette.amber.slightlyDark
+          fill: YDF_ColorPalette.red.slightlyDark
 
 
       &-Text
@@ -403,14 +400,9 @@ provideCompoundControlShellYDF_Component(
           color: YDF_ColorPalette.mint.slightlyDark
 
 
-        ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__SucceededButInvalidState &
-
-          color: YDF_ColorPalette.red.slightlyDark
-
-
         ../.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__MalfunctionState &
 
-          color: YDF_ColorPalette.amber.slightlyDark
+          color: YDF_ColorPalette.red.slightlyDark
 
 
   // ━━━ Applying ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

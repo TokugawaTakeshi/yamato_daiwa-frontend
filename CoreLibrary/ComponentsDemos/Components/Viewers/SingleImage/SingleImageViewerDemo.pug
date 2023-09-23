@@ -7,7 +7,7 @@ mixin SingleImageViewerDemo(options)
       partials: {
         minimal: true,
         caption: true,
-        noFullScreenView: true,
+        fullScreenView: true,
         explicitAspectRatio: true
       }
     }
@@ -29,7 +29,6 @@ mixin SingleImageViewerDemo(options)
         iterationData.geometricVariation.value !== SingleImageViewer__YDF.GeometricVariations.minimalistic
       );
     }
-
 
 
   if options.headings
@@ -57,8 +56,7 @@ mixin SingleImageViewerDemo(options)
           theme: themeShowcaseCurrentIterationData.theme.value,
           geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
           decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
-        })
-
+        }).SingleImageViewerDemo-ImageViewer
 
 
     //- ━━━ Caption ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -81,16 +79,16 @@ mixin SingleImageViewerDemo(options)
           theme: themeShowcaseCurrentIterationData.theme.value,
           geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
           decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
-        }).
+        }).SingleImageViewerDemo-ImageViewer.
           The autumn. Very beautiful, isn't it?
 
 
     //- ━━━ No full-screen view ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    if options.partials.noFullScreenView
+    if options.partials.fullScreenView
 
       if options.headings
 
-        h2.Heading2 No full-screen view
+        h2.Heading2 Full screen view
 
       +ThemesShowcase--YDF({
         themes: SingleImageViewer__YDF.Themes,
@@ -105,16 +103,16 @@ mixin SingleImageViewerDemo(options)
           theme: themeShowcaseCurrentIterationData.theme.value,
           geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
           decoration: themeShowcaseCurrentIterationData.decorativeVariation.value,
-          noFullScreenView: true
-        })
+          fullScreenView: true
+        }).SingleImageViewerDemo-ImageViewer
 
 
     //- ━━━ Explicit aspect ratio ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    if options.partials.noFullScreenView
+    if options.partials.explicitAspectRatio
 
       if options.headings
 
-        h2.Heading2 No full-screen view
+        h2.Heading2 Explicit aspect ratio
 
       +ThemesShowcase--YDF({
         themes: SingleImageViewer__YDF.Themes,
@@ -124,10 +122,10 @@ mixin SingleImageViewerDemo(options)
         skipDecorativeVariationIf: skipDecorativeVariationIf
       })
         +SingleImageViewer--YDF({
-          imageURI: "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_640.jpg--ERROR",
+          imageURI: "NoSuchImage.jpg",
           imageAlternateText: "The autumn",
           theme: themeShowcaseCurrentIterationData.theme.value,
           geometry: themeShowcaseCurrentIterationData.geometricVariation.value,
           decoration: themeShowcaseCurrentIterationData.decorativeVariation.value,
-          explicitAspectRatio: "293/171"
-        })
+          aspectRatio: "293/171"
+        }).SingleImageViewerDemo-ImageViewer

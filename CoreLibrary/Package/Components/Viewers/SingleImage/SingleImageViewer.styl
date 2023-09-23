@@ -36,13 +36,16 @@ provideSingleImageViewerYDF_Component(preset = SingleImageViewer--YDF.defaultPro
       display flex
       flex-direction row-reverse
 
-      border-bottom-width 1px
-      padding-bottom 4px
-
-      border-bottom-style solid
-      border-bottom-color ShadesOfGray__39ColorsW3C_Palette[32]
-
       margin-top 0.2rem
+
+
+      /.SingleImageViewer--YDF__RegularGeometry &
+
+        border-bottom-width 1px
+        padding-bottom 4px
+
+        border-bottom-style solid
+        border-bottom-color ShadesOfGray__39ColorsW3C_Palette[32]
 
 
     &-Figure
@@ -68,7 +71,7 @@ provideSingleImageViewerYDF_Component(preset = SingleImageViewer--YDF.defaultPro
       // [ Approach ] As default, the image always takes 100% of available space however the maximal width could be limited.
       width 100%
 
-      background lightgoldenrodyellow
+      background-color: ShadesOfGray__39ColorsW3C_Palette[36]
 
       margin-left auto
       margin-right auto
@@ -76,18 +79,19 @@ provideSingleImageViewerYDF_Component(preset = SingleImageViewer--YDF.defaultPro
 
     &-Caption
 
-      Paddings({
-        horizontalSymmetric: 8px
-        top: 8px
-      })
-
-      border-top 1px solid ShadesOfGray__39ColorsW3C_Palette[32]
+      Paddings({ horizontalSymmetric: 8px })
 
       applyTextGeometryWithoutExtraSpaceCausedByLineHeight({ fontSize: 13px, lineSpacing: 4px })
 
       color: ShadesOfGray__39ColorsW3C_Palette[14]
 
-      margin-top 8px
+      margin-top 4px
+
+
+      /.SingleImageViewer--YDF__RegularGeometry &
+
+        border-top 1px solid ShadesOfGray__39ColorsW3C_Palette[32]
+        padding-top 8px
 
 
     &-ModalView

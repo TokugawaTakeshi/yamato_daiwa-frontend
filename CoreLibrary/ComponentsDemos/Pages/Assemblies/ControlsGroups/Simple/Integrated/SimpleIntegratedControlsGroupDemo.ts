@@ -1,8 +1,8 @@
 /* ─── Services ───────────────────────────────────────────────────────────────────────────────────────────────────── */
-import AccessControlService from "./_Partials/AccessControlService";
+import AccessControlService from "../_CommonPartials/AccessControlService";
 
 /* ─── Validations ────────────────────────────────────────────────────────────────────────────────────────────────── */
-import InputtedSignInDataValidations from "./_Partials/InputtedSignInDataValidations";
+import InputtedSignInDataValidations from "../_CommonPartials/InputtedSignInDataValidations";
 
 /* ─── Framework ──────────────────────────────────────────────────────────────────────────────────────────────────── */
 import {
@@ -31,19 +31,19 @@ const invalidOrOmittedDataLeftErrorMessage: HTMLElement = getExpectedToBeSingleC
 const controlsGroup: ValidatableControlsGroup<AccessControlService.SigningIn.Payload> = new ValidatableControlsGroup({
 
   controlsPayload: {
-    userName: TextBox.pickOneBySelector<InputtedSignInDataValidations.UserName>({
+    userName: TextBox.pickOneBySelector({
       selector: "#USER_NAME--TEXT_BOX",
       validation: new InputtedSignInDataValidations.UserName(),
       validityHighlightingActivationMode: TextBox.ValidityHighlightingActivationModes.onFocusOut
     }).payload,
-    password: TextBox.pickOneBySelector<InputtedSignInDataValidations.Password>({
+    password: TextBox.pickOneBySelector({
       selector: "#PASSWORD--TEXT_BOX",
       validation: new InputtedSignInDataValidations.Password(),
       validityHighlightingActivationMode: TextBox.ValidityHighlightingActivationModes.onFocusOut
     }).payload
   },
 
-  onHasBecomeValid(): void {
+  onHasBecomeValidEventHandler(): void {
     CollapsingAnimation.animate({
       replaceWithOnComplete: invalidOrOmittedDataLeftErrorMessageMountingPoint,
       animatedElement: invalidOrOmittedDataLeftErrorMessage,
@@ -51,7 +51,7 @@ const controlsGroup: ValidatableControlsGroup<AccessControlService.SigningIn.Pay
     });
   },
 
-  onHasBecomeInvalid(): void {
+  onHasBecomeInvalidEventHandler(): void {
     if (hasUserTriedToSubmitDataAtLeastOnce) {
       ExpandingAnimation.replaceNodeAndAnimate({
         animatedElement: invalidOrOmittedDataLeftErrorMessage,

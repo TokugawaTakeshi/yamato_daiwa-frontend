@@ -2,7 +2,13 @@
 /* eslint-disable no-underscore-dangle -- There are eponymous protected fields and public accessors in "Payload" class. */
 
 import type InputtedValueValidation from "./InputtedValueValidation";
-import { Logger, UnexpectedEventError, isNotUndefined } from "@yamato-daiwa/es-extensions";
+import {
+  Logger,
+  UnexpectedEventError,
+  isNotUndefined,
+  nullToUndefined,
+  secondsToMilliseconds
+} from "@yamato-daiwa/es-extensions";
 
 
 interface ValidatableControl {
@@ -32,11 +38,11 @@ namespace ValidatableControl {
     protected _value: ValidValue | InvalidValue;
     protected _validationResult: InputtedValueValidation.Result;
 
-    protected isValidationPending: boolean;
-
     protected readonly onHasBecomeValidEventHandlers: Payload.EventHandlersMap = new Map();
     protected readonly onHasBecomeInvalidEventHandlers: Payload.EventHandlersMap = new Map();
     protected readonly onAnyChangeEventHandlers: Payload.EventHandlersMap = new Map();
+
+    private waitingForStaringOfAsynchronousValidationTimeID: number | null = null;
 
 
     public constructor(compoundParameter: Payload.ConstructorCompoundParameter<ValidValue, InvalidValue, Validation>) {
@@ -47,23 +53,32 @@ namespace ValidatableControl {
       this.validation = compoundParameter.validation;
 
       this._validationResult = this.validation.validate(this._value);
-      this.isValidationPending = false;
 
-      if (isNotUndefined(compoundParameter.onHasBecomeValid)) {
-        this.setOnHasBecomeValidEventHandler(compoundParameter.onHasBecomeValid);
+      if (isNotUndefined(compoundParameter.onHasBecomeValidEventHandler)) {
+        this.setOnHasBecomeValidEventHandler(compoundParameter.onHasBecomeValidEventHandler);
       }
 
-      if (isNotUndefined(compoundParameter.onHasBecomeInvalid)) {
-        this.setOnHasBecomeInvalidEventHandler(compoundParameter.onHasBecomeInvalid);
+      if (isNotUndefined(compoundParameter.onHasBecomeInvalidEventHandler)) {
+        this.setOnHasBecomeInvalidEventHandler(compoundParameter.onHasBecomeInvalidEventHandler);
       }
 
     }
 
 
     /* ━━━ Value ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    public get $value(): ValidValue | InvalidValue { return this._value; }
+    public get value(): ValidValue | InvalidValue { return this._value; }
 
-    public set $value(newValue: ValidValue | InvalidValue) {
+    public $setValue(
+      {
+        newValue,
+        asynchronousValidationDelay__seconds,
+        onAsynchronousValidationStatusChangedEventCallback
+      }: Readonly<{
+        newValue: ValidValue | InvalidValue;
+        asynchronousValidationDelay__seconds?: number;
+        onAsynchronousValidationStatusChangedEventCallback?: InputtedValueValidation.AsynchronousChecks.Callback;
+      }>
+    ): void {
 
       this._value = newValue;
 
@@ -91,7 +106,7 @@ namespace ValidatableControl {
       }
 
 
-      if (!wasValidPreviously && isValidNow) {
+      if (!wasValidPreviously && this.validationResult.isValid) {
 
         for (const [ handlerID, handler ] of this.onHasBecomeValidEventHandlers.entries()) {
 
@@ -111,7 +126,7 @@ namespace ValidatableControl {
           }
         }
 
-      } else if (wasValidPreviously && !isValidNow) {
+      } else if (wasValidPreviously && !this.validationResult.isValid) {
 
         for (const [ handlerID, handler ] of this.onHasBecomeInvalidEventHandlers.entries()) {
 
@@ -133,7 +148,21 @@ namespace ValidatableControl {
 
       }
 
-      this.isValidationPending = false;
+    }
+
+    protected onAsynchronousValidationStatusChanged(
+      status: InputtedValueValidation.AsynchronousChecks.Status,
+      updatedValidationResult: InputtedValueValidation.Result,
+      additionalHandler?: InputtedValueValidation.AsynchronousChecks.Callback
+    ): void {
+
+      const wasValidPreviously: boolean = this.validationResult.isValid;
+
+      if (isNotUndefined(onAsynchronousValidationStatusChanged)) {
+
+      additionalHandler?.(status);
+
+      this.onValidationResultUpdated(wasValidPreviously);
 
     }
 
@@ -182,8 +211,12 @@ namespace ValidatableControl {
 
       /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
        * In this case, we are guarantee the ValidValue by "this.isInvalid" check */
-      return this.$value as ValidValue;
+      return this.value as ValidValue;
 
+    }
+
+    public get isEmpty(): boolean {
+      return this.validation.hasValueBeenOmitted(this.value);
     }
 
     public get isInvalid(): boolean {
@@ -242,8 +275,8 @@ namespace ValidatableControl {
       initialValue: ValidValue | InvalidValue;
       validation: Validation;
       getComponentInstance: () => ValidatableControl;
-      onHasBecomeValid?: GeneralizedEventHandler | Readonly<{ handler: GeneralizedEventHandler; ID: string; }>;
-      onHasBecomeInvalid?: GeneralizedEventHandler | Readonly<{ handler: GeneralizedEventHandler; ID: string; }>;
+      onHasBecomeValidEventHandler?: GeneralizedEventHandler | Readonly<{ handler: GeneralizedEventHandler; ID: string; }>;
+      onHasBecomeInvalidEventHandler?: GeneralizedEventHandler | Readonly<{ handler: GeneralizedEventHandler; ID: string; }>;
     }>;
 
     export type EventHandlerID = string;

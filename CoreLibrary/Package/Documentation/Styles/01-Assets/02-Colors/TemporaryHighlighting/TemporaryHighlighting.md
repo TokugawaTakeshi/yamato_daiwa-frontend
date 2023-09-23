@@ -25,10 +25,10 @@ Available **TONE** values:
 
 Available **OPACITY** values:
 
-* **o10** (percents)
-* **o25** (percents)
-* **o50** (percents)
-* **o75** (percents)
+* **opacity10Percent**
+* **opacity25Percent**
+* **opacity50Percent**
+* **opacity75Percent**
 
 
 Usage example:
@@ -38,12 +38,12 @@ Usage example:
   
   &-MainColumn
     
-    background: TemporaryHighlighting.red.o10
+    background: TemporaryHighlighting.red.opacity10Percent
     
     
   &-Sidebar
     
-    background: TemporaryHighlighting.orange.o10
+    background: TemporaryHighlighting.orange.opacity10Percent
 ```
 
 Please note that in Stylus if CSS value is some value of object (hash), basically colon is required

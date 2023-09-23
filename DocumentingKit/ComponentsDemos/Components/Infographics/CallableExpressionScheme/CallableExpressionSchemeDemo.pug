@@ -606,7 +606,7 @@ mixin CallableExpressionSchemeDemo
           typeName: "Options",
           propertiesSpecification: {
             mustThrowErrorIfElementNotFoundOrMoreThan1: {
-              typeName: "boolean (true only)",
+              type: "boolean (true only)",
               required: true
             }
           }
@@ -680,13 +680,12 @@ mixin CallableExpressionSchemeDemo
           propertiesSpecification: {
             mustThrowErrorIfElementNotFoundOrMoreThan1: {
               localizedInterpretation: "対象要素が見つかっていないか検索結果が２以上の場合エラーを投げなければいけないか",
-              typeName: "boolean （trueのみ）",
+              type: "boolean （trueのみ）",
               required: true
             }
           }
         })
 
-    //- TODO ===========================================================================================================
     if languages.russian
 
       -
@@ -702,7 +701,7 @@ mixin CallableExpressionSchemeDemo
 
           {
             localizedDescriptiveHeading: "Если искомого элемента нет либо таковых больше 1, то будет возвращён null",
-            genericParameters: [ { genericTechnicalName: "ArrayElement" } ],
+            genericParameters: [ "ArrayElement"],
             parametersSpecification: [
               {
                 genericTechnicalName: "targetArray",
@@ -722,7 +721,7 @@ mixin CallableExpressionSchemeDemo
 
           {
             localizedDescriptiveHeading: "Если искомого элемента нет либо таковых больше 1, будет брошено исключение",
-            genericParameters: [ { genericTechnicalName: "ArrayElement" } ],
+            genericParameters: [ "ArrayElement" ],
             parametersSpecification: [
               {
                 genericTechnicalName: "targetArray",
@@ -733,7 +732,7 @@ mixin CallableExpressionSchemeDemo
               {
                 genericTechnicalName: "predicate",
                 localizedName: "Предикат",
-                type: "Predicate",
+                type: "(arrayElement: string) =&gt; boolean",
                 required: true
               },
               {
@@ -754,7 +753,7 @@ mixin CallableExpressionSchemeDemo
           propertiesSpecification: {
             mustThrowErrorIfElementNotFoundOrMoreThan1: {
               localizedInterpretation: "Должен бросить ошибку если элемент не найден либо результатов поиска больше 1",
-              typeName: "Boolean (только true)",
+              type: "boolean (только true)",
               required: true
             }
           }

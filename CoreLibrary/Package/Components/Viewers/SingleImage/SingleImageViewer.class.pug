@@ -56,10 +56,10 @@ include SingleImageViewerLocalization.english.pug
 
       imageAlternateText: {
         type: String,
-        required: false
+        required: true
       },
 
-      noFullScreenView: {
+      fullScreenView: {
         type: Boolean,
         required: false
       },
@@ -116,7 +116,7 @@ include SingleImageViewerLocalization.english.pug
     /* ━━━ State simulations specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     static statesSimulationsSpecification = {
 
-      fullScreenView: {
+      fullScreenMode: {
         type: Boolean,
         required: false
       }

@@ -7,51 +7,51 @@ TableCellWidthSizing(compoundParameter, restParameters__MUST_NOT_BE...)
     schema: {
 
       fixedTotalWidth: {
-        type: DataTypes.dimensionalAmount
+        type: DataTypes.dimensionalQuantity
       },
       totalMinimalWidth: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "fixedTotalWidth"
       },
       totalMaximalWidth: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "fixedTotalWidth"
       },
 
       fixedContentWidth: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "fixedTotalWidth" "totalMinimalWidth" "totalMaximalWidth"
       },
       contentMinimalWidth: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "fixedTotalWidth" "totalMinimalWidth" "totalMaximalWidth" "fixedContentWidth"
       },
       contentMaximalWidth: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "fixedTotalWidth" "totalMinimalWidth" "totalMaximalWidth" "fixedContentWidth"
       },
 
       leftOrRightSymmetricBordersWidths: {
-        type: DataTypes.dimensionalAmount
+        type: DataTypes.dimensionalQuantity
       },
       leftBorderWidth: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "leftOrRightSymmetricBordersWidths"
       },
       rightBorderWidth: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "leftOrRightSymmetricBordersWidths"
       },
 
       leftOrRightSymmetricPaddings: {
-        type: DataTypes.dimensionalAmount
+        type: DataTypes.dimensionalQuantity
       },
       leftPadding: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
          incompatibleWith: "leftOrRightSymmetricPaddings"
       },
       rightPadding: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
          incompatibleWith: "leftOrRightSymmetricPaddings"
       },
 

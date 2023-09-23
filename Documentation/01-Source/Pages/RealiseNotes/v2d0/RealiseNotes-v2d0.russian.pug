@@ -148,6 +148,24 @@ block append SpecificContent
         }).Article-Link SVG-иконки
 
 
+    h4.Article-Heading4 Стили
+
+    //-
+      h5.Article-Heading5 Ассеты
+
+      h6.Article-Heading6 Цветовые палитры
+
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              assets.$children.
+              colors.$children.
+              YDF_ColorPalette.$URI
+        }).Article-Link YDF_ColorPalette
+
+
     h3.Article-Heading3 Критические изменения
 
     h4.Article-Heading4 Стили
@@ -178,6 +196,61 @@ block append SpecificContent
           замените #[+ImportantEntity__Code--YDID DataTypes.dimensionalAmount] на
           #[+ImportantEntity__Code--YDID DataTypes.dimensionalQuantity], а
           #[+ImportantEntity__Code--YDID DataTypes.dimensionlessAmount] — на
-          #[+ImportantEntity__Code--YDID DataTypes.dimensionlessQuantity].
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionlessQuantity] во всех #[+Term--YDID Stylus-файлах].
         Например, в интегрированных средах разработки семейства IntelliJ IDEA такая функциональностью доступна с
           помощью сочетания клавиш #[+SecondaryEntity__Code--YDID Ctrl + Shift + R].
+
+    h6.Article-Heading6 Изменение свойств в объекте #[code TemporaryHighlighting]
+
+    p.Article-Paragraph.
+      Теперь сверхкороткие свойства типа #[+SecondaryEntity__Code--YDID o25], смысл которых не&nbsp;может быть понятен
+        без документации или проверки выходного #[+Term--YDID CSS кода] заменены на более содержательные, такие как
+        #[+SecondaryEntity__Code--YDID opacity25Percent].
+
+    dl.Article-DescriptionList
+
+      dt Причина
+      dd.
+        Все библиотеки поставщика #[+ImportantEntity--YDID Ямато Дайва] не&nbsp;приемлют имён, смысл которых не&nbsp;может
+          быть раскрыт обычным переводом с английского на русской, и вот теперь это правило распространилось
+          на объект #[+ImportantEntity--YDID TemporaryHighlighting], который не&nbsp;должен использоваться в
+          окончательном варианте стилей.
+
+      dt Понадобится редактирование Вашего кода, если
+      dd.
+        Вы, вопреки рекомендации не&nbsp;использовать этот объект с чистовом коде использовали его,
+          либо обновили #[+ImportantEntity--YDID YDF] во время написания черного кода, в котором использовали
+          #[+Term--YDID объект] #[+ImportantEntity--YDID TemporaryHighlighting].
+
+      dt Миграция
+      dd
+        | Используя соответствующую функциональнсоть редактора кода или интегрированной среды разработки,
+        |   выполните следующие замены во всех #[+Term--YDID Stylus-файлах].
+        ul.Article-UnorderedList
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity10Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity25Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity50Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity75Percent]
+        | Например, в интегрированных средах разработки семейства IntelliJ IDEA такая функциональностью доступна с
+        |    помощью сочетания клавиш #[+SecondaryEntity__Code--YDID Ctrl + Shift + R].
+
+    h5.Article-Heading5 Базовые переменные
+
+    h6.Article-Heading6 Удаление переменной #[code BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS]
+
+    dl.Article-DescriptionList
+
+      dt Причина
+      dd.
+        Принят единый размер шрифта для однострочных и многострочных текстовый элементов — это значение переменной
+          #[+ImportantEntity__Code--YDID BASIC_FONT_SIZE].
+
+
+      dt Понадобится редактирование Вашего кода, если
+      dd.
+        Вы, используете переменную #[+ImportantEntity__Code--YDID BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS]
+
+      dt Миграция
+      dd
+        | Замените переменную #[+ImportantEntity__Code--YDID BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS] на другую,
+        |   лучше всего на #[+ImportantEntity__Code--YDID BASIC_FONT_SIZE].

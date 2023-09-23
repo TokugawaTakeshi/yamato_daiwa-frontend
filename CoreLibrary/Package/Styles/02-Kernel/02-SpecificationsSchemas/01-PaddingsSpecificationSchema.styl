@@ -1,44 +1,49 @@
-PaddingsSpecificationSchema = {
+PaddingsSpecificationSchema--YDF = {
 
   all: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     required: false
   },
 
   horizontalSymmetric: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     required: false,
     incompatibleWith: "all"
   },
+
   left: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     required: false,
     incompatibleWith: "all" "horizontalSymmetric"
   },
+
   right: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     required: false,
     incompatibleWith: "all" "horizontalSymmetric"
   },
 
   verticalSymmetric: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     required: false,
     incompatibleWith: "all"
   },
-  upwardShifting: {
-    type: DataTypes.dimensionalAmount,
-    required: false
-  },
+
   top: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     required: false,
     incompatibleWith: "all" "verticalSymmetric"
   },
+
   bottom: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     required: false,
     incompatibleWith: "all" "verticalSymmetric"
+  },
+
+  upwardShifting: {
+    type: DataTypes.dimensionalQuantity,
+    required: false
   }
 
 }

@@ -1,47 +1,53 @@
-BordersSizingSpecificationSchema = {
+BordersSizingSpecificationSchema--YDF = {
 
   thickness: {
 
     type: DataTypes.object,
     required: false,
+
     properties: {
 
       all: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false
       },
 
       horizontalSymmetric: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false,
         incompatibleWith: "thickness.all"
       },
+
       left: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false,
         incompatibleWith: "thickness.all" "thickness.horizontalSymmetric"
       },
+
       right: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false,
         incompatibleWith: "thickness.all" "thickness.horizontalSymmetric"
       },
 
       verticalSymmetric: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false,
         incompatibleWith: "thickness.all"
       },
+
       top: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false,
         incompatibleWith: "thickness.all" "thickness.verticalSymmetric"
       },
+
       bottom: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false,
         incompatibleWith: "thickness.all" "thickness.verticalSymmetric"
       }
+
     }
 
   },
@@ -50,52 +56,56 @@ BordersSizingSpecificationSchema = {
 
     type: DataTypes.object,
     required: false,
+
     properties: {
+
       all: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false
       },
 
       topLeft: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false
       },
 
       topRight: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false
       },
 
       bottomLeft: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false
       },
 
       bottomRight: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false
       },
 
       leftFillets: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "radius.topLeft" "radius.bottomLeft"
       },
 
       rightFillets: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "radius.topRight" "radius.bottomRight"
       },
 
       topFillets: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "radius.topLeft" "radius.topRight" "radius.leftFillets" "radius.rightFillets"
       },
 
       bottomFillets: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "radius.bottomLeft" "radius.bottomRight" "radius.leftFillets" "radius.rightFillets"
       }
+
     }
+
   }
 
 }

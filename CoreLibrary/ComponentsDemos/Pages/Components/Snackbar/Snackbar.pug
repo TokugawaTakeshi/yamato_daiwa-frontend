@@ -1,0 +1,22 @@
+extends ../../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+block append Requirements
+
+  include ../../../node_modules/@yamato-daiwa/frontend/Components.pug
+  include ../../../Components/Snackbar/SnackbarDemo.pug
+
+
+block append Metadata
+
+  -
+    HTML_PAGE_TITLE = "Snackbar component demo";
+    styleSheetsURIs = [ "@Demos/Components/Snackbar/Snackbar" ]
+    scriptsURIs.endOfBody = [ "@Demos/Components/Snackbar/Snackbar" ]
+
+
+block append PageContent
+
+  .ComponentTestingPageContent
+
+    +SnackbarDemo

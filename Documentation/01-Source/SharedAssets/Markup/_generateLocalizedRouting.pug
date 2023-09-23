@@ -5,37 +5,37 @@
     const localizedRouting = {
 
       top: {
-        $tableOfContentsTitle: localization.top.tableOfContentsTitle,
+        $tableOfContentsTitle: localization.top.$tableOfContentsTitle,
         $URI: localization.top.URI
       },
 
       coreLibrary: {
 
-        $tableOfContentsTitle: localization.coreLibrary.tableOfContentsTitle,
+        $tableOfContentsTitle: localization.coreLibrary.$tableOfContentsTitle,
 
         $children: {
 
           markup: {
 
-            $tableOfContentsTitle: localization.coreLibrary.markup.tableOfContentsTitle,
+            $tableOfContentsTitle: localization.coreLibrary.markup.$tableOfContentsTitle,
 
             $children: {
 
               functionality: {
 
-                $tableOfContentsTitle: localization.coreLibrary.markup.functionality.tableOfContentsTitle,
+                $tableOfContentsTitle: localization.coreLibrary.markup.functionality.$tableOfContentsTitle,
 
                 $children: {
 
                   inlineJavaScript: {
 
-                    $tableOfContentsTitle: localization.coreLibrary.markup.functionality.inlineJavaScript.tableOfContentsTitle,
+                    $tableOfContentsTitle: localization.coreLibrary.markup.functionality.inlineJavaScript.$tableOfContentsTitle,
 
                     $children: {
 
                       YDEE_Integration: {
                         $tableOfContentsTitle: localization.coreLibrary.markup.functionality.inlineJavaScript.
-                            YDEE_Integration.tableOfContentsTitle,
+                            YDEE_Integration.$tableOfContentsTitle,
                         $URI: "@All/CoreLibrary/Markup/Functionality/InlineJavaScript/" +
                             `YDEE_Integration/YDEE_Integration.${ localization.fileNameLocalizationExtensions }`
                       },
@@ -43,7 +43,7 @@
                       functionsAndClasses: {
 
                         $tableOfContentsTitle: localization.coreLibrary.markup.functionality.inlineJavaScript.
-                            functionsAndClasses.tableOfContentsTitle,
+                            functionsAndClasses.$tableOfContentsTitle,
 
                         $children: {
 
@@ -76,7 +76,7 @@
 
                       // assets: {
                       //
-                      //   $tableOfContentsTitle: localization.coreLibrary.markup.functionality.inlineJavaScript.assets.tableOfContentsTitle,
+                      //   $tableOfContentsTitle: localization.coreLibrary.markup.functionality.inlineJavaScript.assets.$tableOfContentsTitle,
                       //
                       //   $children: {
                       //
@@ -100,7 +100,7 @@
 
                   // pugMixins: {
                   //
-                  //   $tableOfContentsTitle: localization.coreLibrary.markup.functionality.pugMixins.tableOfContentsTitle,
+                  //   $tableOfContentsTitle: localization.coreLibrary.markup.functionality.pugMixins.$tableOfContentsTitle,
                   //
                   //   $children: {
                   //
@@ -118,7 +118,7 @@
                   //
                   //     // yamatoDaiwaInformationDesign: {
                   //     //   $tableOfContentsTitle: localization.coreLibrary.markup.functionality.pugMixins.
-                  //     //       yamatoDaiwaInformationDesign.tableOfContentsTitle
+                  //     //       yamatoDaiwaInformationDesign.$tableOfContentsTitle
                   //     // }
                   //
                   //   }
@@ -131,7 +131,7 @@
 
               pagesTemplates: {
 
-                $tableOfContentsTitle: localization.coreLibrary.markup.functionality.pagesTemplates.tableOfContentsTitle,
+                $tableOfContentsTitle: localization.coreLibrary.markup.functionality.pagesTemplates.$tableOfContentsTitle,
                 $URI: `@All/CoreLibrary/Markup/PagesTemplates/PagesTemplates.${ localization.fileNameLocalizationExtensions }`,
 
                 $children: {
@@ -146,7 +146,7 @@
                     $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md",
                     $sectioning: {
                       staticPreviewConcept: {
-                        $anchor: "providingOfStyles",
+                        $anchor: "staticPreviewConcept",
                         get $URI() {
                           return `${ localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.StaticPreviewAnywherePage.$URI }#${ this.$anchor }`
                         }
@@ -159,7 +159,7 @@
               },
 
               usageOnServerSide: {
-                $tableOfContentsTitle: localization.coreLibrary.markup.functionality.usageOnServerSide.tableOfContentsTitle,
+                $tableOfContentsTitle: localization.coreLibrary.markup.functionality.usageOnServerSide.$tableOfContentsTitle,
                 $URI: `@All/CoreLibrary/Markup/UsageOnServerSide/UsageOnServerSide.${ localization.fileNameLocalizationExtensions }`
               }
 
@@ -169,17 +169,17 @@
 
           styles: {
 
-            $tableOfContentsTitle: localization.coreLibrary.styles.tableOfContentsTitle,
+            $tableOfContentsTitle: localization.coreLibrary.styles.$tableOfContentsTitle,
             $children: {
 
               assets: {
 
-                $tableOfContentsTitle: localization.coreLibrary.styles.assets.tableOfContentsTitle,
+                $tableOfContentsTitle: localization.coreLibrary.styles.assets.$tableOfContentsTitle,
                 $children: {
 
                   fundamentalConstantsAndEnums: {
 
-                    $tableOfContentsTitle: localization.coreLibrary.styles.assets.fundamentalConstantsAndEnums.tableOfContentsTitle,
+                    $tableOfContentsTitle: localization.coreLibrary.styles.assets.fundamentalConstantsAndEnums.$tableOfContentsTitle,
                     $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md",
 
                     $children: {
@@ -204,23 +204,26 @@
                     $children: {
 
                       PracticalColorCoordinateSystem: {
-                        $tableOfContentsTitle: localization.coreLibrary.styles.assets.colors.PracticalColorCoordinateSystem.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.assets.colors.PracticalColorCoordinateSystem.$tableOfContentsTitle,
                         $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md"
+                        // $URI: `@All/CoreLibrary/Styles/Assets/Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.${ localization.fileNameLocalizationExtensions }`
                       },
 
                       ShadesOfGray__39ColorsW3C_Palette: {
-                        $tableOfContentsTitle: localization.coreLibrary.styles.assets.colors.ShadesOfGray__39ColorsW3C_Palette.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.assets.colors.ShadesOfGray__39ColorsW3C_Palette.$tableOfContentsTitle,
                         $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md"
+                        // $URI: `@All/CoreLibrary/Styles/Assets/Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.${ localization.fileNameLocalizationExtensions }`
                       },
 
                       TemporaryHighlighting: {
                         $tableOfContentsTitle: "<code>TemporaryHighlighting</code>",
                         $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md"
+                        // $URI: `@All/CoreLibrary/Styles/Assets/Colors/TemporaryHighlighting/TemporaryHighlighting.${ localization.fileNameLocalizationExtensions }`
                       }
 
                       // YDF_ColorPalette: {
-                      //   $tableOfContentsTitle: localization.coreLibrary.styles.assets.colors.YDF_ColorPalette.tableOfContentsTitle,
-                      //   $URI: "#"
+                      //   $tableOfContentsTitle: localization.coreLibrary.styles.assets.colors.YDF_ColorPalette.$tableOfContentsTitle,
+                      //   $URI: `@All/CoreLibrary/Styles/Assets/Colors/_YDF_ColorPalette/YDF_ColorPalette.${ localization.fileNameLocalizationExtensions }`
                       // }
 
                     }
@@ -233,32 +236,106 @@
 
               kernel: {
 
-                $tableOfContentsTitle: localization.coreLibrary.styles.kernel.tableOfContentsTitle,
+                $tableOfContentsTitle: localization.coreLibrary.styles.kernel.$tableOfContentsTitle,
                 $children: {
 
 
                   basicVariables: {
 
-                    $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.tableOfContentsTitle,
+                    $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.$tableOfContentsTitle,
                     $children: {
 
-                      fontStacks: {
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.tableOfContentsTitle,
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#font-stacks"
+                      fontsStacks: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.fontsStacks.$tableOfContentsTitle,
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md",
+                        // $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#font-stacks",
+                        // get $URI() { return `@All/CoreLibrary/Styles/Kernel/BasicVariables/FontsStacks/FontsStacks.${ localization.fileNameLocalizationExtensions }`; }
+
+                        // $mustDisplayDirectDecadentSectioning: true,
+                        // $sectioning: {
+                        //
+                        //   MAIN_SANS_SERIF_FONT_STACK: {
+                        //     $tableOfContentsTitle: "<code>MAIN_SANS_SERIF_FONT_STACK</code>",
+                        //     $anchor: "MAIN_SANS_SERIF_FONT_STACK--SECTION",
+                        //     get $URI() {
+                        //       return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.basicVariables.$children.fontsStacks.$URI }#${ this.$anchor }`;
+                        //     }
+                        //   },
+                        //
+                        //   MAIN_SERIF_FONT_STACK: {
+                        //     $tableOfContentsTitle: "<code>MAIN_SERIF_FONT_STACK</code>",
+                        //     $anchor: "MAIN_SERIF_FONT_STACK--SECTION",
+                        //     get $URI() {
+                        //       return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.basicVariables.$children.fontsStacks.$URI }#${ this.$anchor }`;
+                        //     }
+                        //   },
+                        //
+                        //   MAIN_MONOSPACED_FONT_STACK: {
+                        //     $tableOfContentsTitle: "<code>MAIN_MONOSPACED_FONT_STACK</code>",
+                        //     $anchor: "MAIN_MONOSPACED_FONT_STACK--SECTION",
+                        //     get $URI() {
+                        //       return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.basicVariables.$children.fontsStacks.$URI }#${ this.$anchor }`;
+                        //     }
+                        //   },
+                        //
+                        //   MAIN_FONT_STACK: {
+                        //     $tableOfContentsTitle: "<code>MAIN_FONT_STACK</code>",
+                        //     $anchor: "MAIN_FONT_STACK--SECTION",
+                        //     get $URI() {
+                        //       return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.basicVariables.$children.fontsStacks.$URI }#${ this.$anchor }`;
+                        //     }
+                        //   }
+                        //
+                        // }
+
                       },
 
                       dimensions: {
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.dimensions.tableOfContentsTitle,
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#dimensions"
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.dimensions.$tableOfContentsTitle,
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md",
+                        // $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#dimensions",
+                        // get $URI() { return `@All/CoreLibrary/Styles/Kernel/BasicVariables/Dimensions/Dimensions.${ localization.fileNameLocalizationExtensions }`; }
+
+                        $mustDisplayDirectDecadentSectioning: true,
+                        $sectioning: {
+
+                          BASIC_FONT_SIZE: {
+                            $tableOfContentsTitle: "<code>BASIC_FONT_SIZE</code>",
+                            $anchor: "BASIC_FONT_SIZE--SECTION",
+                            get $URI() {
+                              return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.basicVariables.$children.dimensions.$URI }#${ this.$anchor }`;
+                            }
+                          },
+
+                          BASIC_LINE_HEIGHT: {
+                            $tableOfContentsTitle: "<code>BASIC_LINE_HEIGHT</code>",
+                            $anchor: "BASIC_LINE_HEIGHT--SECTION",
+                            get $URI() {
+                              return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.basicVariables.$children.dimensions.$URI }#${ this.$anchor }`;
+                            }
+                          },
+
+                          BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS: {
+                            $tableOfContentsTitle: "<code>BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS</code>",
+                            $anchor: "BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS--SECTION",
+                            get $URI() {
+                              return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.basicVariables.$children.dimensions.$URI }#${ this.$anchor }`;
+                            }
+                          }
+
+                        }
+
                       },
 
                       zIndexes: {
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.zIndexes.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.zIndexes.$tableOfContentsTitle,
                         $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#zindexes"
                       },
 
                       BEM: {
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.BEM.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.basicVariables.BEM.$tableOfContentsTitle,
                         $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#bem-related"
                       }
 
@@ -268,18 +345,112 @@
 
                   functions: {
 
-                    $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.tableOfContentsTitle,
+                    $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.$tableOfContentsTitle,
                     $children: {
 
-                      valueCheckers: {
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.valueCheckers.tableOfContentsTitle,
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md"
+                      typeCheckers: {
+
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.typeCheckers.$tableOfContentsTitle,
+                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md",
+                        // get $URI() { return `@All/CoreLibrary/Styles/Kernel/Functions/_Strings/TypeCheckers.${ localization.fileNameLocalizationExtensions }` },
+
+                        $mustDisplayDirectDecadentSectioning: true,
+                        $sectioning: {
+
+                          strings: {
+
+                            $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.typeCheckers.strings.$tableOfContentsTitle,
+                            $anchor: "STRINGS--SECTION",
+                            get $URI() {
+                              return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                            },
+
+                            $mustDisplayDirectDecadentSectioning: true,
+                            $sectioning: {
+
+                              isEmptyString: {
+                                $tableOfContentsTitle: "<code>isEmptyString</code>",
+                                $anchor: "isEmptyString--SECTION",
+                                get $URI() {
+                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                                }
+                              },
+
+                              isNonEmptyString: {
+                                $tableOfContentsTitle: "<code>isNonEmptyString</code>",
+                                $anchor: "isNonEmptyString--SECTION",
+                                get $URI() {
+                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                                }
+                              },
+
+                              isString: {
+                                $tableOfContentsTitle: "<code>isString</code>",
+                                $anchor: "isString--SECTION",
+                                get $URI() {
+                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                                }
+                              }
+
+                            }
+
+                          },
+
+                          quantities: {
+
+                            $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.typeCheckers.quantities.$tableOfContentsTitle,
+                            $anchor: "QUANTITIES--SECTION",
+                            get $URI() {
+                              return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                            },
+
+                            $mustDisplayDirectDecadentSectioning: true,
+                            $sectioning: {
+
+                              isDimensionalOrDimensionlessQuantity: {
+                                $tableOfContentsTitle: "<code>isDimensionalOrDimensionlessQuantity</code>",
+                                $anchor: "isDimensionalOrDimensionlessQuantity--SECTION",
+                                get $URI() {
+                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                                }
+                              },
+
+                              isDimensionalQuantity: {
+                                $tableOfContentsTitle: "<code>isDimensionalQuantity</code>",
+                                $anchor: "isDimensionalQuantity--SECTION",
+                                get $URI() {
+                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                                }
+                              },
+
+                              isDimensionlessQuantity: {
+                                $tableOfContentsTitle: "<code>isDimensionlessQuantity</code>",
+                                $anchor: "isDimensionlessQuantity--SECTION",
+                                get $URI() {
+                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${this.$anchor}`;
+                                }
+                              },
+
+                              isNaturalNumber: {
+                                $tableOfContentsTitle: "<code>isNaturalNumber</code>",
+                                $anchor: "isNaturalNumber--SECTION",
+                                get $URI() {
+                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                                }
+                              }
+
+                            }
+
+                          }
+
+                        }
+
                       },
 
 
                       strings: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.strings.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.strings.$tableOfContentsTitle,
                         $children: {
 
                           buildString: {
@@ -298,7 +469,7 @@
 
                       objects: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.objects.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.objects.$tableOfContentsTitle,
                         $children: {
 
                           deeplyCloneAndOverrideObject: {
@@ -342,7 +513,7 @@
 
                       arrays: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.arrays.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.arrays.$tableOfContentsTitle,
                         $children: {
 
                           arrayConstructor__POLYFILL: {
@@ -381,7 +552,7 @@
 
                       parametersValidation: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.parametersValidation.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.parametersValidation.$tableOfContentsTitle,
                         $children: {
 
                           validateObjectTypeParameter: {
@@ -395,7 +566,7 @@
 
                       other: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.other.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.functions.other.$tableOfContentsTitle,
                         $children: {
 
                           buildBEM_ClassName: {
@@ -434,7 +605,7 @@
 
                       general: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.general.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.general.$tableOfContentsTitle,
                         $children: {
 
                           applyIfNotNull: {
@@ -453,12 +624,12 @@
 
                       sizing: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.sizing.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.sizing.$tableOfContentsTitle,
                         $children: {
 
                           width: {
 
-                            $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.sizing.width.tableOfContentsTitle,
+                            $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.sizing.width.$tableOfContentsTitle,
 
                             $children: {
 
@@ -492,7 +663,7 @@
 
                       positioning: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.positioning.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.positioning.$tableOfContentsTitle,
 
                         $children: {
 
@@ -518,7 +689,7 @@
 
                       positionalRelationship: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.positionalRelationship.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.positionalRelationship.$tableOfContentsTitle,
                         $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md",
 
                         $children: {
@@ -574,7 +745,7 @@
 
                       layout: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.layout.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.layout.$tableOfContentsTitle,
 
                         $children: {
 
@@ -604,7 +775,7 @@
 
                       typography: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.typography.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.typography.$tableOfContentsTitle,
 
                         $children: {
 
@@ -624,7 +795,7 @@
 
                       other: {
 
-                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.other.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.styles.kernel.mixins.other.$tableOfContentsTitle,
 
                         $children: {
 
@@ -649,7 +820,7 @@
 
                   stylesInitialization: {
 
-                    $tableOfContentsTitle: localization.coreLibrary.styles.kernel.stylesInitialization.tableOfContentsTitle,
+                    $tableOfContentsTitle: localization.coreLibrary.styles.kernel.stylesInitialization.$tableOfContentsTitle,
 
                     $children: {
 
@@ -678,13 +849,13 @@
 
               buildInPlugins: {
 
-                $tableOfContentsTitle: localization.coreLibrary.styles.buildInPlugins.tableOfContentsTitle,
+                $tableOfContentsTitle: localization.coreLibrary.styles.buildInPlugins.$tableOfContentsTitle,
 
                 $children: {
 
                   additionalColorPalettes: {
 
-                    $tableOfContentsTitle: localization.coreLibrary.styles.buildInPlugins.additionalColorPalettes.tableOfContentsTitle,
+                    $tableOfContentsTitle: localization.coreLibrary.styles.buildInPlugins.additionalColorPalettes.$tableOfContentsTitle,
 
                     $children: {
 
@@ -712,10 +883,10 @@
 
           components: {
 
-            $tableOfContentsTitle: localization.coreLibrary.components.tableOfContentsTitle,
+            $tableOfContentsTitle: localization.coreLibrary.components.$tableOfContentsTitle,
             $URI: "@All/CoreLibrary/Components/Components.russian",
 
-            // TODO Неверно - не соблюдается уровневость!
+            // TODO 修正（段階は間違っている）
             $sectioning: {
               providingOfMarkup: {
                 $anchor: "providingOfMarkup",
@@ -739,24 +910,24 @@
 
               badge: {
 
-                $tableOfContentsTitle: localization.coreLibrary.components.badge.tableOfContentsTitle,
+                $tableOfContentsTitle: localization.coreLibrary.components.badge.$tableOfContentsTitle,
                 $URI: "@All/CoreLibrary/Components/Badge/Badge.russian",
 
               },
 
               controls: {
 
-                $tableOfContentsTitle: localization.coreLibrary.components.controls.tableOfContentsTitle,
+                $tableOfContentsTitle: localization.coreLibrary.components.controls.$tableOfContentsTitle,
 
                 $children: {
 
                   buttons: {
 
-                    $tableOfContentsTitle: localization.coreLibrary.components.controls.buttons.tableOfContentsTitle,
+                    $tableOfContentsTitle: localization.coreLibrary.components.controls.buttons.$tableOfContentsTitle,
                     $children: {
 
                       plain: {
-                        $tableOfContentsTitle: localization.coreLibrary.components.controls.buttons.plain.tableOfContentsTitle,
+                        $tableOfContentsTitle: localization.coreLibrary.components.controls.buttons.plain.$tableOfContentsTitle,
                         $URI: "@All/CoreLibrary/Components/Controls/Buttons/Plain/Button.russian"
                       }
 
@@ -791,7 +962,7 @@
 
       frameworksAdaptations: {
 
-        $tableOfContentsTitle: localization.frameworksAdaptations.tableOfContentsTitle,
+        $tableOfContentsTitle: localization.frameworksAdaptations.$tableOfContentsTitle,
 
         $children: {
 
@@ -807,7 +978,7 @@
 
       realiseNotes: {
 
-        $tableOfContentsTitle: localization.realiseNotes.tableOfContentsTitle,
+        $tableOfContentsTitle: localization.realiseNotes.$tableOfContentsTitle,
 
         $children: {
 

@@ -42,4 +42,357 @@ block append SpecificContent
 
   article
 
-    h1 Использование не серверной стороне
+    h1.Article-Heading1 Использование не серверной стороне
+
+    p.Article-Paragraph
+      | Файл #[+ImportantEntity--YDID Functionality.pug], необходимый для нормальной работы большинства функциональности
+      |   #[+ImportantEntity--YDID YDF], связанной с #[+Term--YDID разметкой], содержит большое количество
+      |
+      +Link--YDF({
+        unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
+      }).Article-Link JavaScript-кода
+      | и
+      |
+      +Link--YDF({ unendorsedExternalURI: "sharedExternalLinks.pug.homePage.mixins" }).Article-Link Pug-примесей
+      | .
+      | Этот файл так же используют
+      |
+      +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
+      }).Article-Link шаблоны страниц
+      | .
+      | Ещё больше #[+Term--YDID JavaScript-кода] и #[+Term--YDID Pug-примесей] содержит файл
+      |   #[+ImportantEntity--YDID Components.pug], который, предоставляет #[+Term--YDID разметку] для
+      |   #[+Term--YDID GUI-компонентов].
+      | Хотя это и не&nbsp;пустая трата производительности, такое большое количество кода неизбежно оказывает влияние
+      |   на скорость компиляции #[+ImportantEntity--YDID Pug] в #[+ImportantEntity--YDID HTML], однако ввиду того,
+      |   что вся эта функциональность предназначена #[+Keyword--YDID в основном] для режима
+      |
+      +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.
+            $children.StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI,
+      }).Article-Link статического превью
+      |   и других случаев, когда #[+ImportantEntity--YDID Pug] в #[+ImportantEntity--YDID HTML] #[+Keyword--YDID заранее]
+      |   перед публикацией очередной версии сайта или приложения, такое снижение производительности
+      |   #[+Keyword--YDID незначительно].
+
+    p.Article-Paragraph.
+      Однако хотелось бы, чтобы #[+Term--YDID шаблоны страниц], #[+Term--YDID GUI-компоненты] и другая функциональность
+        #[+ImportantEntity--YDID YDF], интегрированная с #[+ImportantEntity--YDID Pug] могли бы быть использованы
+        и при #[+Term--YDID рендернге] на серверной стороне с использованием #[+Term--YDID шаблона проектирования]
+        #[+ImportantEntity--YDID MVC], иначе предстоит много рутинной работы.
+
+    ol.Article-OrderedList
+
+      li.
+        Подключать #[+ImportantEntity--YDID Functionality.pug] (напрямую или посредством использования
+          #[+Term--YDID шаблонов страницы]) в другие #[+ImportantEntity--YDID Pug-файлы], которые будут рендериться на сервере,
+          #[+Keyphrase--YDID однозначно не рекомендуется], так как #[+ImportantEntity--YDID 2-3] являются
+          #[+Keyword--YDID неприемлемым] временем загрузки #[+Term--YDID веб-страницы] в современности.
+
+      li.
+        Хотя этот способ также не&nbsp;рекомендуется, некоторые практикуют ручное переписывание #[+Term--YDID HTML-кода]
+          в шаблонные языки, такие как #[+ImportantEntity--YDID Blade] (часто используется в составе
+          #[+Term--YDID PHP-фреймворка] #[+SecondaryEntity--YDID Laravel]).
+        Любые внесения изменений в #[+Term--YDID исходный] нужно вручную отражать на #[+Term--YDID шаблонах],
+          что крайне рутинно и велика вероятность что-то забыть.
+        Поэтому, подобный подход является #[+Keyword--YDID регрессивным], потому что научно-техническом прогрессе всё
+          должно быть нацелено на освобождение человека от рутинной работы ради его концентрации на творческой работе.
+
+    p.Article-Paragraph.
+      Однако, у функциональности #[+ImportantEntity--YDID YDF], связанной с разметкой есть одна особенность, которая
+        оставляет пространство для автоматизации.
+
+
+    h2.Article-Heading2 Концепция двухэтапной компиляции с использованием промежуточного шаблона
+
+    p.Article-Paragraph.
+      Как известно, в #[+Term--YDID паттерне MVC] при каждом #[+Term__Contrast--YDID HTTP-запросе] происходит
+        подстановка #[+Term--YDID данных] (полученных от пользователи, из #[+Term--YDID базы данных] и других источников)
+        в #[+Term--YDID шаблон], в результате чего на выходе получается #[+Keyword--YDID завершенная]
+        #[+Term--YDID HTML-страница].
+      В некоторых случаях данные, содержащиеся в #[+Term--YDID HTTP-запросах], влияют на выходной #[+Term--YDID HTML-код]
+        (например, в зависимости от указанных пользователем параметров фильтрации будут отображаться разные товары в списке).
+      Тут многим очевидно, что нет смысла каждый раз расходовать ресурсы на то, чтобы каждый раз генерировать HTML-код,
+        который #[+Keyword--YDID не]&nbsp;зависит от динамических данных.
+
+    p.Article-Paragraph.
+      Ниже представлен образец #[+Term--YDID Pug-кода] с компонентом #[+ImportantEntity--YDID Button], предоставляемым
+        #[+ImportantEntity--YDID YDF].
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }).
+        +Button--YDF({
+          geometry: Button__YDF.GeometricVariations.small
+        })
+          +Pencil__Filled--YDF_Icon.Button--YDF-SVG_Icon
+          span.Button--YDF-Label Редактировать
+
+    p.Article-Paragraph
+      | Если использовать этот код в #[+Term--YDID MVC-шаблоне] (он же #[+Term--YDID view]), то несмотря на то, что
+      |   данные #[+Term--YDID HTTP-запроса] #[+Keyword--YDID никак] #[+Keyword__Contrast--YDID не]&nbsp;виляют на
+      |   использование этого компонента, его HTML-код #[+Keyphrase--YDID каждый раз будет рендериться с нуля].
+      | Можете посмотреть
+      |
+      +Link--YDF({
+        unendorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/" +
+            "Package/Components/Controls/Buttons/Plain/Button.pug"
+      }).Article-Link исходный код
+      |   этого #[+Term--YDID компонента] — его немало ввиду того, что кнопка — это гораздо более сложный компонент,
+      |   чем кажется из-за обманчивого простого внешнего вида прямоугольника с надписью, иногда закрашенного и
+      |   и с закруглёнными краями.
+      | Вдобавок к этому, основной файл с исходным кодом разметки зависит от других файлов, например от
+      |   #[+SecondaryEntity--YDID Button.class.pug].
+      | Тоже самое про большинство другие #[+Term--YDID компонентов] #[+ImportantEntity--YDID YDF], а так же про почти все
+      |   оставшиеся #[+Term--YDID Pug-примеси] этой библиотеки.
+
+    p.Article-Paragraph.
+      Концептуальное решение заключается в том, чтобы разделить преобразование #[+ImportantEntity--YDID HTML] в
+        #[+ImportantEntity--YDID Pug] на #[+ImportantEntity--YDID 2] этапа:
+
+    ol.Article-OrderedList
+      li
+        | На #[+Keyword--YDID первом] этапе формируется #[+Keyword--YDID промежуточный] #[+Term--YDID шаблон], в котором всё,
+        |  что #[+Keyword--YDID не]&nbsp;зависит от #[+Term--YDID динамических данных] (таких как данные, полученные
+        |  с клиентской стороны или данные из базы данных), преобразуется в #[+Term--YDID HTML-код].
+        ul.Article-UnorderedList
+
+          li.
+            В качестве #[+Term--YDID промежуточного] шаблонного языка можно использовать любой, обладающий хорошей
+              производительностью, однако поскольку #[+ImportantEntity--YDID Pug] преобразуется в #[+ImportantEntity--YDID HTML],
+              то логично выбирать язык, близкий к #[+ImportantEntity--YDID HTML], например #[+ImportantEntity--YDID Handlebars].
+
+          li.
+            Этот этап осуществляется #[+ImportantEntity--YDID 1] раз для #[+Keyword--YDID каждой] версии сайта или
+              веб-приложения перед загрузкой на сервер.
+            Другими словами, на момент начала формирования ответа на #[+Term--YDID HTTP-запрос] данный
+              #[+Term--YDID промежуточный шаблон] уже #[+Keyword--YDID заранее] готов.
+
+      li.
+        На #[+Keyword--YDID втором] этапе происходит подстановка #[+Term--YDID динамических данных] и формируется
+          #[+Keyword--YDID окончательный] #[+Term--YDID HTML-код].
+        Этот этап осуществляется #[+Keyword--YDID каждый] раз при формировании ответа на #[+Term--YDID HTTP-запрос]
+
+    +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.notice, hasPrependedSVG_Icon: true }).
+      Если рассмотреть процесс более детально, то многие препроцессоры имеют кэширование, которое разделяет
+        #[+ImportantEntity--YDID 2-ой] этап ещё на #[+ImportantEntity--YDID 2]: преобразование шаблона
+        в #[+Term--YDID JavaScript-функцию] и выполннение этой функции соответственно.
+      Однако, эта функциональность полноценно рассматриваемую проблему #[+Keyword--YDID не]&nbsp;решает: например,
+        при первом #[+Term--YDID запросе], когда кэширование ещё #[+Keyword--YDID не]осуществлено,
+        ответ будет формироваться относительно долго ввиду большого количества исходного #[+Term--YDID Pug-кода]
+        и интегрированного в него #[+Term--YDID JavaScript-кода].
+      Кроме того, реализация кэширования может отличаться в зависимости от препроцессора.
+
+    p.Article-Paragraph.
+      Реализовать эту концепцию можно по-разному — с помощью использования разных инструментов сборки и с помощью разных
+        промежуточных шаблонизаторов.
+      Разработчик #[+ImportantEntity--YDID YDF] и сборщика проекта
+        #[+ImportantEntity--YDID Yamato Daiwa Automation] (сокращённо: #[+ImportantEntity--YDID YDA]) реализовал это с помощью:
+
+    dl.Article-DescriptionList
+
+      dt Сборщик проектов
+      dd #[+ImportantEntity--YDID YDA] (код капотом используется #[+ImportantEntity--YDID Gulp])
+
+      dt Промежуточный шаблон
+      dd #[+ImportantEntity--YDID Handlebars]
+
+    p.Article-Paragraph.
+      Вы можете либо использовать это решение (будет подробно рассмотрено ниже), либо с помощью таких утилит, как
+        #[+ImportantEntity--YDID Gulp] реализовать своё собственное решение.
+
+
+    h2.Article-Heading2 Предлагаемое готовое решение
+
+    h3.Article-Heading3 npm-пакеты
+
+    dl.Article-DescriptionList
+
+      dt
+        +Link--YDF({
+          endorsedExternalURI: "https://www.npmjs.com/package/@yamato-daiwa/automation"
+        }).Article-Link @yamato-daiwa/automation
+      dd Сборщик проектов
+
+      dt
+        +Link--YDF({
+          endorsedExternalURI: "https://www.npmjs.com/package/handlebars-by-pug"
+        }).Article-Link handlebars_by_pug
+      dd.
+        Набор #[+Term--YDID Pug-примесей], которые позволяют легче написать #[+Term--YDID Pug-код] для его последующего
+          преобразования в #[+ImportantEntity--YDID Handlebars].
+
+      dt
+        +Link--YDF({
+          endorsedExternalURI: "https://www.npmjs.com/package/@yamato-daiwa/handlebars-extensions"
+        }).Article-Link @yamato-daiwa/handlebars-extensions
+      dd.
+        Дополнительные вспомогательнее #[+Term--YDID функции] для Handlebars (Handlebars helpers).
+        Некоторые #[+Term--YDID Pug-примеси] из #[+ImportantEntity--YDID handlebars_by_pug] используют эти
+          вспомогательные #[+Term--YDID функции].
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Bash }).
+        npm i @yamato-daiwa/automation handlebars_by_pug -D -E
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Bash }).
+        npm i @yamato-daiwa/handlebars-extensions -E
+
+
+    h4.Article-Heading4 Настройка YDA
+
+    p.Article-Paragraph.
+      #[+Keyphrase--YDID По умолчанию], #[+ImportantEntity--YDID YDA] преобразует #[+Term--YDID Pug-файлы] в
+        #[+Term--YDID HTML-файлы], однако поведение это можно изменить, причём сделать его в зависимости от
+        #[+Term--YDID режима сборки].
+      В режиме #[+Term--YDID сборки статического превью] нам нужно преобразование #[+Keyword--YDID именно] в
+        #[+Keyword__Contrast--YDID HTML], а вот на всех остальных режимах нам потребуется на выходе уже
+        #[+Term--YDID Handlebars]-файлы:
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.TypeScript }).
+        projectBuilding:
+
+          markupProcessing:
+
+              Pages:
+
+                sourceFilesTopDirectoryRelativePath: 01-Source/Implementation/Elements/Client/Pages
+
+                buildingModeDependent:
+
+                  STATIC_PREVIEW:
+
+                    outputFormat: HTML # По умолчанию
+                    outputTopDirectoryRelativePath: 02-StaticPreviewBuild
+
+                  LOCAL_DEVELOPMENT:
+
+                    outputFormat: handlebars
+                    outputTopDirectoryRelativePath: 03-LocalDevelopmentBuild/views
+
+                  PRODUCTION:
+
+                    outputFormat: handlebars
+                    outputTopDirectoryRelativePath: 04-ProductionBuild/views
+
+
+
+    h3.Article-Heading4 Типовые сценарии
+
+    p.Article-Paragraph.
+      Несмотря на то, что #[+Keyword--YDID части] кода для статического превью будет необходимо подготовить MVC-версию,
+        наша задача — минимизировать эту рутину.
+      Рассмотрим несколько типовых сценариев начиная от самого простого, когда, собственно, Handlebars и
+        #[+Keyword--YDID не]нужен.
+
+    h4.Article-Heading4 Сценарий 1: MVC-версия полностью повторяет статическое превью
+
+    p.Article-Paragraph.
+      Такое вполне возможно для некоторых страниц даже очень больших сайтов, серверная часть которых основана на
+        паттерне MVC, например:
+
+    ul.Article-UnorderedList
+      li Страница с сообщением об ошибке «не найдено»
+      li Страница благодарности (например, «Спасибо за запрос связи. Мы скоро ответим.»)
+      li Страница с пользовательским соглашением
+
+    p.Article-Paragraph.
+      Кроме того, даже если сайт имеет панель администратора с возможностью управления контентом, это не&nbsp;значит, что
+        каждая страница сайта может быть отредактирована из админ-панели: иногда оказывается дешевле попросить программистов
+        внести те или иные правки.
+
+    p.Article-Paragraph.
+      С приведёнными настройками YDA выше, для таких статических страниц мы получим на выходе Handlebars-файл,
+        однако его содержимым будет обычный HTML-код.
+      Конечно, сервер мог бы отдать этот файл как обычный статический файл наподобие изображения, однако маловероятно,
+        что Вы захотите прописывать условия для того, чтобы статические и динамические страницы обрабатывались отдельно.
+
+    h3.Article-Heading3 Сценарий 2: MVC-версия немного отличается от статического превью
+
+    p.Article-Paragraph.
+      Такое возможно, например, при создании страницы с формой обратной связи.
+      Что в статическом превью, что в интерактивной реализации HTML-код будет более-менее одинаковым лишь с небольшими
+        различиями.
+      С какими?
+      Например, в режиме статического превью мы не будем подключать JavaScript-файл с логикой клиентской стороны,
+        потому что если мы его подключим, то это будет уже не&nbsp;статическое превью, а следующий шаг разработки страницы.
+
+    p.Article-Paragraph.
+      Специально для этого, в Pug есть
+        #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.conditionalRendering }).Article-Link условный рендеринг],
+        с помощью которого мы можем в том числе генерировать HTML-код в зависимости от режима сборки:
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }).
+         //- ...
+
+         body
+
+          // ...
+
+          if !__IS_STATIC_PREVIEW_BUILDING_MODE__
+
+            script(src="@Pages/AccessControl/SigningIn/SigningInPage")
+
+    p.Article-Paragraph.
+      Инъекция костаны #[+ImportantEntity__Code--YDID __IS_STATIC_PREVIEW_BUILDING_MODE__], а также преобразование
+        ссылки #[+SecondaryEntity__Code--YDID @Pages/AccessControl/SigningIn/SigningInPage] в абсолютный или относительный
+        пусть осуещствялеется с помощью #[+ImportantEntity--YDID YDA].
+      В результате, в режиме статического превью у нас не будет тэга script, а со всех остальных — будет.
+
+
+    h3.Article-Heading3 Сценарий 3: MCV-версия значительно отличается от статического превью
+
+    p.Article-Paragraph.
+      Хотя слово «значительное» расплывчатое, сто процентного отличия не бывает.
+      Обычно, отличится содержимое тэга #[+ImportantEntity__Code--YDID body], да и то не полностью.
+      Но рассмотрим наиболее тяжёлый случай.
+
+    h4.Article-Heading4 Отличие в head
+
+    p.Article-Paragraph.
+      Допустим, в MVC-версии у нас многоязычный сайт, а метатэги ещё при этом должны быть редактируемы из панели
+        администратора.
+      Вообще, мета-тэги — это вещь очень важная для поисковой оптимизации, потому их написание следует доверить
+        копирайтеру со значением поисковой оптимизации, а потом ещё и подготовить их на других языках.
+      Другими словами, на стадии статического превью у нас нормального содержимого для этих тэгов, скорее всего не будет.
+        ...
+
+
+    h4.Article-Heading4 Условный и итеративный рендеринг видимого содержимого страницы
+
+    p.Article-Paragraph.
+      Итак, ещё раз: перед деплоем сайта на сервер мы подготавливаем промежуточные Handlebars-шаблоны, при этом исходный
+        код — на Pug.
+      Если у нас есть Pug-код, зависящий от режима сборки (такой как
+        #[+SecondaryEntity__Code--YDID if __IS_STATIC_PREVIEW_BUILDING_MODE__]), то когда подобные условные конструкции
+        ложны, выходного Handlebars-кода соответствующего блока мы #[+Keyword--YDID не]&nbsp;получим.
+      Другое дело — условный рендеринг на серверной стороне, когда что-то нужно отрендерить в зависимости от заранее
+        неизвестных данных.
+      Сравните:
+
+    +CodeViewer--YDF.Article-CodeViewer
+      +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
+        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+          if phoneNumber
+
+            ...
+        +CodeViewer-Explanation--YDF
+          p.Article-Paragraph
+
+
+    +CodeViewer--YDF.Article-CodeViewer
+      +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Handlebars })
+        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+          {{#if phoneNumber}}
+            <a href="tel:{{phoneNumber}}">{{phoneNumber}}</a>
+          {{/if}}
+        +CodeViewer-Explanation--YDF
+          p.Article-Paragraph.
+            А вот этот код должен быть в выходном Handlebars-файле всегда.
+
+          p.Article-Paragraph.
+            Но как же добиться того, чтобы ...
+            Да и потом, какой же Pug-код надо написать, чтобы получить такой Handlebars на выходе?

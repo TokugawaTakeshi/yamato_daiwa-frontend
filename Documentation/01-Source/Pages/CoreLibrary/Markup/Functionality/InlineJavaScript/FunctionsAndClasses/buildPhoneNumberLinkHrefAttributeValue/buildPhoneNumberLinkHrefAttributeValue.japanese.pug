@@ -17,8 +17,8 @@ block append Metadata
       description: MetaDescriptionTemplates.pugFunction({
         functionName: "buildPhoneNumberLinkHrefAttributeValue",
         whatFunctionDoes:
-            "リンクにクリック・タップすれば、電話通話専用アプリケーションが開かれ、単一の引数で渡された電話番号に電話するを送る事が提案される様な「a」タグ専用" +
-              "「href」HTMLアトリビュートを生成する。"
+            "単一の引数として渡された電話番号を使用して、HTMLのaタグのhref属性の値を生成する。" +
+              "リンクをクリックまたはタップすると、電話をかけることを提案するような状態で、音声通話アプリケーションが起動する。"
       }),
       author: HTML_PAGE_AUTHOR
     };
@@ -49,12 +49,12 @@ block append SpecificContent
 
     +CallableExpressionScheme--YDF_DK({
       technicalName: "buildPhoneNumberLinkHrefAttributeValue",
-      localizedDescriptiveHeading: "電話番号のリンクの「href」アトリビュートの値を構成する",
+      localizedDescriptiveHeading: "電話番号のリンクの、「href」属性の値を構築する",
       headingTag: "h1",
       parametersSpecification: [
         {
           genericTechnicalName: "phoneNumber",
-          localizedName: "メールアドレス",
+          localizedName: "電話番号",
           type: "string",
           required: true
         }
@@ -63,11 +63,12 @@ block append SpecificContent
     })
 
     p.Article-Paragraph.
-      描画されるリンクにクリック・タップすれば、電話通話専用アプリケーションが開かれ、#[+Keyword--YDID 単一の]#[+Term--YDID 引数]で渡された電話番号に
-        電話するを送る事が提案される様な#[+ImportantEntity__Code--YDID a]#[+Term--YDID タグ]専用#[+ImportantEntity__Code--YDID href]
-        #[+Term--YDID HTMLアトリビュート]を生成する。
-      スマートフォンには此の様なアプリが必ず有るが、其の他の器械だと、恐らく#[+SecondaryEntity--YDID Skype]や#[+SecondaryEntity--YDID People]の様に
-        通話専用アプリケーションの中から選択が与えられるが、電話番号に電話する事は料金がかかるはず。
+      #[+Keyword--YDID 単一の]#[+Term--YDID 引数]として渡された電話番号宛に、音声通話アプリケーションが電話をかけることを提案する様な、
+        #[+ImportantEntity__Code--YDID a]#[+Term--YDID タグ]用の#[+ImportantEntity__Code--YDID href]と言う
+        #[+Term--YDID HTML属性]の値を生成する。
+      スマートフォンには、此の様な音声通話アプリケーションが必ず存在するが、其の他のデバイスの場合には、#[+SecondaryEntity--YDID Skype]や
+        #[+SecondaryEntity--YDID People]等の通話専用のアプリケーションが、選択肢として表示される可能性が有る。
+      其の場合、電話番号に電話を発信する場合は、料金がかかると思われる。
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }).
@@ -76,31 +77,33 @@ block append SpecificContent
         ) 080-1234-5678
 
     p.Article-Paragraph.
-      当関数がしている事は、妥当な電話番号でなければいけない指定された#[+Term--YDID 文字列]の値に
-        #[+ImportantEntity__Code--YDID tel:]を前付けるぐらいだ。
-      貴方のテキストエディター又は#[+Term--YDID 結合開発環境]原型に応じてオートコンプリート機能が無い場合、当関数が役に立たないだろう。
-      #[+ImportantEntity__Code--YDID tel:]にせよ#[+ImportantEntity__Code--YDID buildPhoneNumberLinkHrefAttributeValue]
-        #[+Term--YDID 関数]名にせよ暗記するか、毎回参考を引かなければいけないから
-        （「tel:」は、4文字しかないが、その他の多数量の情報を取り扱っている時この4文字でも忘れやすい）。
+      此の関数がしている事は、適切な電話番号である事を要求される、指定された#[+Term--YDID 文字列]の値の前に、
+        #[+ImportantEntity__Code--YDID tel:]を追加するのみである。
+      使用しているコードエディター、又は#[+Term--YDID 結合開発環境]で、原型に応じたオートコンプリート機能が利用出来ない場合は、此の関数は役に立たないかもしれない。
+      #[+ImportantEntity__Code--YDID tel:]にしろ、#[+ImportantEntity__Code--YDID buildPhoneNumberLinkHrefAttributeValue]
+        #[+Term--YDID 関数]名にしろ、暗記してしまうか、毎回リファレンスを参照する事が必要になる為だ。
+      （多くの情報を扱っている時には、たった4文字しかない「tel:」ですら、忘れてしまう可能性がある。）
 
     p.Article-Paragraph
-      | 原型に応じてオートコンプリート機能が有る場合、#[+SecondaryEntity__Code--YDID buildP...]を入力し始めると、ポップアップヒントが表示され、
-      |   其れ以降の手順はテキストエディター・#[+Term--YDID 結合開発環境]に依存。
+      | 原型に応じたオートコンプリート機能が利用出来る場合は、#[+SecondaryEntity__Code--YDID buildP...]と入力し始めると、ポップアップヒントが表示される。
+      | 其れ以降の手順は、コードエディターや#[+Term--YDID 結合開発環境]に依って異なる。
+      | 統合開発環境
       +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.intelliJ_IDEA_FamilyIDEs }).Article-Link.
-        IntelliJ IDEA族結合開発環境
-      | の
-      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.YDF_Plugin }).Article-Link YDFの正式的プラグイン
-      | に提供される
+        IntelliJ IntelliJ IDEAファミリー
+      |   で、
+      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.YDF_Plugin }).Article-Link YDFの正式なプラグイン
+      |   として提供される
       +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.liveTemplates }).Article-Link Live Template
-      | と言う機能の場合、#[+Keyword--YDID 事前に]クリップボードにコピーされた値が単一の引数の位置に代入されるので、
-      |  #[+ImportantEntity__Code--YDID href]#[+Term--YDID アトリビュート]の値はキーの3~4回程度の押下で済むはず
-      |  （他のオートコンプリートの数に依る）。
+      | と言う機能の場合、#[+Keyword--YDID 予め]クリップボードにコピーされた値が、#[+Keyword--YDID 単一の]#[+Term--YDID 引数]の位置に代入される為、
+      |  #[+ImportantEntity__Code--YDID href]#[+Term--YDID 属性]の値はキーを3~4回程度押すだけで済むはずである
+      | （他のオートコンプリートの数に依る）。
 
     +SingleImageViewer--YDF({
       imageURI: "@AssociatedWithPages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
           "buildPhoneNumberLinkHrefAttributeValue/Images/buildPhoneNumberLinkHrefAttributeValue-LiveTemplate",
       imageAlternateText:
-          "「Live Templates」と言う「IntelliJ IDEA」族結合開発環境の機能を用いて「Yamato Daiwa Frontend」（略：「YDF」）ライブラリの" +
-          "「buildPhoneNumberLinkHrefAttributeValue」関数の呼び出し表現の高速入力。",
-      maximalWidth__anyValidCSS_Value: "600px"
+          "統合開発環境「IntelliJ IDEA」ファミリーの機能、「Live Templates」を利用した、「Yamato Daiwa Frontend」（略：「YDF」）ライブラリの" +
+          "「buildPhoneNumberLinkHrefAttributeValue」関数呼び出し表現の入力支援",
+      maximalWidth__anyValidCSS_Value: "600px",
+      autoAspectRatioByYDA: true
     })

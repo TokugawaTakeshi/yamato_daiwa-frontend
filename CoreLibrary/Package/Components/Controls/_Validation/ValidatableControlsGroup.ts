@@ -9,7 +9,7 @@ import { isNotUndefined, Logger, UnexpectedEventError } from "@yamato-daiwa/es-e
 import type { ArbitraryObject } from "@yamato-daiwa/es-extensions";
 
 
-export default class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown>> {
+class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown>> {
 
   protected static counterForID_Generating: number = -1;
 
@@ -21,9 +21,9 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
   protected readonly isEachControlPayloadValid: { [controlPayloadID: string]: boolean; };
   protected readonly SCROLLABLE_CONTAINER_HTML_ID?: string;
 
-  protected readonly onHasBecomeValid?: ValidatableControlsGroup.GeneralizedEventHandler;
-  protected readonly onHasBecomeInvalid?: ValidatableControlsGroup.GeneralizedEventHandler;
-  protected readonly onAnyChange?: (wasGroupValidPreviously: boolean) => void;
+  protected readonly onHasBecomeValidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
+  protected readonly onHasBecomeInvalidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
+  protected readonly onAnyChangeEventHandler?: ValidatableControlsGroup.OnAnyChangeEventHandler;
 
   private _isInvalid: boolean;
 
@@ -89,9 +89,9 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
     compoundParameter: Readonly<{
       controlsPayload: ValidatableControlsGroup.GeneralizedControlsPayload;
       scrollingContainerHTML_ID?: string;
-      onHasBecomeValid?: ValidatableControlsGroup.GeneralizedEventHandler;
-      onHasBecomeInvalid?: ValidatableControlsGroup.GeneralizedEventHandler;
-      onAnyChange?: (wasGroupValidPreviously: boolean) => void;
+      onHasBecomeValidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
+      onHasBecomeInvalidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
+      onAnyChangeEventHandler?: ValidatableControlsGroup.OnAnyChangeEventHandler;
     }>
   ) {
 
@@ -100,9 +100,9 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
 
     this.controlsPayload = compoundParameter.controlsPayload;
 
-    this.onHasBecomeValid = compoundParameter.onHasBecomeValid;
-    this.onHasBecomeInvalid = compoundParameter.onHasBecomeInvalid;
-    this.onAnyChange = compoundParameter.onAnyChange;
+    this.onHasBecomeValidEventHandler = compoundParameter.onHasBecomeValidEventHandler;
+    this.onHasBecomeInvalidEventHandler = compoundParameter.onHasBecomeInvalidEventHandler;
+    this.onAnyChangeEventHandler = compoundParameter.onAnyChangeEventHandler;
 
     const controlsPayloadAndValidityMap: { [controlPayloadID: string]: boolean; } = {};
 
@@ -167,7 +167,7 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
   /* eslint-disable @typescript-eslint/member-ordering -- No need to hoist the secondary static fields. */
 
   /* ─── Events handlers ─────────────────────────────────────────────────────────────────────────────────────────── */
-  private onAnyChangeOfSpecificControlEventHandler(
+  protected onAnyChangeOfSpecificControlEventHandler(
     controlPayload: ValidatableControlsGroup.GeneralizedControlPayload
   ): void {
 
@@ -182,7 +182,7 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
 
       try {
 
-        this.onHasBecomeValid?.();
+        this.onHasBecomeValidEventHandler?.();
 
       } catch (error: unknown) {
 
@@ -200,7 +200,7 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
 
       try {
 
-        this.onHasBecomeInvalid?.();
+        this.onHasBecomeInvalidEventHandler?.();
 
       } catch (error: unknown) {
 
@@ -218,7 +218,7 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
 
     try {
 
-      this.onAnyChange?.(wasGroupValidPreviously);
+      this.onAnyChangeEventHandler?.({ hasBecomeInvalid, hasBecomeValid });
 
     } catch (error: unknown) {
 
@@ -242,15 +242,6 @@ export default class ValidatableControlsGroup<ValidData extends ArbitraryObject 
         some((isCurrentControlPayloadValid: boolean): boolean => !isCurrentControlPayloadValid);
   }
 
-
-  /* ─── ID generating ────────────────────────────────────────────────────────────────────────────────────────────── */
-  protected static counterForOnAnyChangeEventHandlersIDsGenerating: number = 0;
-
-  protected static generateOnAnyChangeEventHandlerID(): string {
-    ValidatableControlsGroup.counterForOnAnyChangeEventHandlersIDsGenerating++;
-    return `ON_ANY_CHANGE-GENERATED-${ ValidatableControlsGroup.counterForOnAnyChangeEventHandlersIDsGenerating }`;
-  }
-
 }
 
 
@@ -264,4 +255,14 @@ namespace ValidatableControlsGroup {
 
   export type GeneralizedEventHandler = () => void;
 
+
+  export type OnAnyChangeEventHandler = (compoundParameter: OnAnyChangeEventHandler.CompoundParameter) => void;
+
+  export namespace OnAnyChangeEventHandler {
+    export type CompoundParameter = Readonly<{ hasBecomeValid: boolean; hasBecomeInvalid: boolean; }>;
+  }
+
 }
+
+
+export default ValidatableControlsGroup;

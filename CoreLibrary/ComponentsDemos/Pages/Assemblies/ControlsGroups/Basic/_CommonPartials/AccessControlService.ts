@@ -48,10 +48,7 @@ class AccessControlService {
 
         },
         secondsToMilliseconds(
-          getRandomInteger({
-            minimalValue: 2,
-            maximalValue: 3
-          })
+          getRandomInteger({ minimalValue: 2, maximalValue: 3 })
         )
       );
 
@@ -84,7 +81,7 @@ class AccessControlService {
 
           },
           secondsToMilliseconds(
-            getRandomInteger({ minimalValue: 2, maximalValue: 3 })
+            getRandomInteger({ minimalValue: 4, maximalValue: 5 })
           )
       );
 

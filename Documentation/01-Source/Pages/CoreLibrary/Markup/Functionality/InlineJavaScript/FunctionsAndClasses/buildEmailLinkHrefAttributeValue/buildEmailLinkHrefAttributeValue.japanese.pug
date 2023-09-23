@@ -17,8 +17,8 @@ block append Metadata
       description: MetaDescriptionTemplates.pugFunction({
         functionName: "buildEmailLinkHrefAttributeValue",
         whatFunctionDoes:
-            "リンクにクリック・タップすれば、メールソフトが開かれ単一の引数で渡されたメールアドレスにメールを送る事が提案される様な「a」タグ専用「href」「HTMLアトリビュート」" +
-              "を生成する。"
+            "単一の引数として渡されたメールアドレスを使用して、HTMLのaタグのhref属性の値を生成する。" +
+            "描画されたリンクをクリックまたはタップすると、新規メールの送信を提案するような状態で、メールソフトウェアが起動する。"
       }),
       author: HTML_PAGE_AUTHOR
     };
@@ -51,7 +51,7 @@ block append SpecificContent
 
     +CallableExpressionScheme--YDF_DK({
       technicalName: "buildEmailLinkHrefAttributeValue",
-      localizedDescriptiveHeading: "メールアドレスのリンクの「href」アトリビュートの値を構成する",
+      localizedDescriptiveHeading: "メールアドレスのリンクの、「href」属性の値を構築する",
       headingTag: "h1",
       parametersSpecification: [
         {
@@ -65,9 +65,10 @@ block append SpecificContent
     })
 
     p.Article-Paragraph.
-      描画されるリンクにクリック・タップすれば、メールソフトが開かれ、#[+Keyword--YDID 単一の]#[+Term--YDID 引数]で渡されたメールアドレスに新規メールを送る事が提案される
-        様な#[+ImportantEntity__Code--YDID a]#[+Term--YDID タグ]専用#[+ImportantEntity__Code--YDID href]#[+Term--YDID HTMLアトリビュート]
-        を生成する。
+      #[+Keyword--YDID 単一の]#[+Term--YDID 引数]として渡されたメールアドレス宛に、メールソフトウェアが新規メールを送信する事を提案する様な、
+        #[+Term--YDID HTML]の#[+ImportantEntity__Code--YDID a]#[+Term--YDID タグ]の#[+ImportantEntity__Code--YDID href]
+        #[+Term--YDID 属性]の値を生成する。
+      描画される#[+Term--YDID リンク]をクリック又はタップすると、メールソフトウェアが起動する。
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }).
@@ -79,30 +80,33 @@ block append SpecificContent
         )= targetEmailAddress
 
     p.Article-Paragraph.
-      当#[+Term--YDID 関数]がしている事は、妥当なメールアドレスだと期待される指定された#[+Term--YDID 文字列]の値に
-        #[+ImportantEntity__Code--YDID mailto:]を前付けるだけだ。
-      貴方のテキストエディター又は#[+Term--YDID 結合開発環境]原型に応じてオートコンプリート機能が無い場合、当#[+Term--YDID 関数]が役に立たないだろう。
-      #[+ImportantEntity__Code--YDID mailto:]にせよ#[+ImportantEntity__Code--YDID buildEmailLinkHrefAttributeValue]
-        #[+Term--YDID 関数]名にせよ暗記するか、毎回参考を引かなければいけないから。
+      此の#[+Term--YDID 関数]が行うのは、適切なメールアドレスと期待される、指定された#[+Term--YDID 文字列]の前に、
+        #[+ImportantEntity__Code--YDID mailto:]を追加する#[+Keyword--YDID のみ]である。
+      使用しているコードエディター、又は#[+Term--YDID 統合開発環境]で、原型に応じたオートコンプリート機能が利用出来ない場合は、此の#[+Term--YDID 関数]は
+        役に立たないかもしれない。
+      #[+ImportantEntity__Code--YDID mailto:]にしろ、#[+ImportantEntity__Code--YDID buildEmailLinkHrefAttributeValue]
+        #[+Term--YDID 関数]名にしろ、暗記してしまうか、毎回リファレンスを参照する事が必要になる為だ。
 
     p.Article-Paragraph
-      | 原型に応じてオートコンプリート機能が有る場合、#[+SecondaryEntity__Code--YDID buildE...]を入力し始めると、ポップアップヒントが表示され、
-      |   其れ以降の手順はテキストエディター・#[+Term--YDID 結合開発環境]に依る。
+      | 原型に応じたオートコンプリート機能が利用出来る場合は、#[+SecondaryEntity__Code--YDID buildE...]と入力し始めると、ポップアップヒントが表示される。
+      | 其れ以降の手順は、コードエディターや#[+Term--YDID 統合開発環境]に依って異なる。
+      | #[+Term--YDID 統合開発環境]
       +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.intelliJ_IDEA_FamilyIDEs }).Article-Link.
-        IntelliJ IDEA族結合開発環境
-      |   の
-      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.YDF_Plugin }).Article-Link YDFの正式的プラグイン
-      |   に提供される
+        IntelliJ IDEA ファミリー
+      |   で、
+      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.YDF_Plugin }).Article-Link YDFの正式なプラグイン
+      |   として提供される
       +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.liveTemplates }).Article-Link Live Template
-      |   と言う機能の場合、#[+Keyword--YDID 事前に]クリップボードにコピーされた値が#[+Keyword--YDID 単一の]#[+Term--YDID 引数]の位置に代入されるので、
-      |   #[+ImportantEntity__Code--YDID href]#[+Term--YDID アトリビュート]の値はキーの3~4回程度の押下で済むはず
-      |  （他のオートコンプリートの数に依る）。
+      |   と言う機能の場合、#[+Keyword--YDID 予め]#[+Term--YDID クリップボード]にコピーされた値が、#[+Keyword--YDID 単一の]#[+Term--YDID 引数]
+      |   の位置に代入される為、#[+ImportantEntity__Code--YDID href]#[+Term--YDID 属性]の値はキーを3～4回程度押すだけで済むはずである
+      |   （他のオートコンプリートの数に依る）。
 
     +SingleImageViewer--YDF({
       imageURI: "@AssociatedWithPages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
           "buildEmailLinkHrefAttributeValue/Images/buildEmailLinkHrefAttributeValue-LiveTemplate",
       imageAlternateText:
-          "「Live Templates」と言う「IntelliJ IDEA」族結合開発環境の機能を用いて「Yamato Daiwa Frontend」（略：「YDF」）ライブラリの" +
-          "「buildEmailLinkHrefAttributeValue」関数の呼び出し表現の高速入力。",
-      maximalWidth__anyValidCSS_Value: "600px"
+          "統合開発環境「IntelliJ IDEA」ファミリーの機能、「Live Templates」を利用した、「Yamato Daiwa Frontend」（略：「YDF」）ライブラリの" +
+          "「buildEmailLinkHrefAttributeValue」関数呼び出し表現の入力支援",
+      maximalWidth__anyValidCSS_Value: "600px",
+      autoAspectRatioByYDA: true
     })

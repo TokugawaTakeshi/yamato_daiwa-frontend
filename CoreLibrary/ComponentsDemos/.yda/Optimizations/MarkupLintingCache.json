@@ -1,7 +1,7 @@
 {
   "Pages/index.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-09-17T03:13:32.000Z"
+    "modificationDatetime__ISO_8601": "2023-10-13T09:04:59.843Z"
   },
   "Components/Badge/BadgeDemo.pug": {
     "issues": [],
@@ -17,7 +17,7 @@
   },
   "Components/Controls/Buttons/Plain/ButtonDemo.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-09-21T01:23:39.892Z"
+    "modificationDatetime__ISO_8601": "2023-09-24T03:17:20.416Z"
   },
   "Pages/Controls/Buttons/Plain/Button.pug": {
     "issues": [],
@@ -25,7 +25,7 @@
   },
   "Pages/Assemblies/ControlsGroups/Simple/Integrated/SimpleIntegratedControlsGroupDemo.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-08-04T02:41:07.871Z"
+    "modificationDatetime__ISO_8601": "2023-09-25T01:10:23.112Z"
   },
   "Pages/Components/Controls/Buttons/Plain/Button.pug": {
     "issues": [],
@@ -49,15 +49,15 @@
   },
   "Pages/Assemblies/ControlsGroups/Basic/Integrated/BasicIntegratedControlsGroupDemo.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-08-10T01:16:10.005Z"
+    "modificationDatetime__ISO_8601": "2023-10-12T01:10:45.539Z"
   },
   "Components/Controls/TextBox/TextBoxDemo.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-09-01T01:32:01.891Z"
+    "modificationDatetime__ISO_8601": "2023-10-03T01:10:08.667Z"
   },
   "Pages/Components/Controls/TextBox/TextBox.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-09-01T01:28:46.375Z"
+    "modificationDatetime__ISO_8601": "2023-10-03T01:06:52.689Z"
   },
   "Components/LoadingIndicator/LoadingIndicatorDemo.pug": {
     "issues": [],
@@ -69,10 +69,30 @@
   },
   "Components/Viewers/SingleImage/SingleImageViewerDemo.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-09-18T02:46:20.673Z"
+    "modificationDatetime__ISO_8601": "2023-09-24T03:49:29.177Z"
   },
   "Pages/Components/Viewers/SingleImage/SingleImageViewer.pug": {
     "issues": [],
-    "modificationDatetime__ISO_8601": "2023-09-17T03:14:19.705Z"
+    "modificationDatetime__ISO_8601": "2023-09-24T03:39:08.729Z"
+  },
+  "Pages/Assemblies/ControlsGroups/Simple/Discrete/SimpleDiscreteControlsGroupDemo.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-25T01:10:23.116Z"
+  },
+  "Pages/Assemblies/ControlsGroups/Simple/Discrete/Components/SimpleDiscreteControlsGroup/SimpleDiscreteControlsGroup.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-09-23T02:28:24.619Z"
+  },
+  "Components/Snackbar/SnackbarDemo.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-10-07T01:40:05.380Z"
+  },
+  "Pages/Components/Snackbar/Snackbar.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-10-07T01:43:05.921Z"
+  },
+  "Pages/Assemblies/ControlsGroups/Basic/Integrated/BasicIntegratedControlsGroup.pug": {
+    "issues": [],
+    "modificationDatetime__ISO_8601": "2023-10-13T09:23:17.463Z"
   }
 }

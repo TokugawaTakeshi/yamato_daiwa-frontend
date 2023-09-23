@@ -1,0 +1,21 @@
+include BlockingLoadingOverlay.class.pug
+
+
+mixin BlockingLoadingOverlay--YDF(properties, statesSimulations)
+
+  -
+
+    const {
+      loadingIndicatorType
+    } = properties;
+
+    const {
+      mustDisplay = true
+    } = statesSimulations ?? {};
+
+
+  .BlockingLoadingOverlay--YDF
+
+    +LoadingIndicator--YDF({
+      type: loadingIndicatorType
+    })

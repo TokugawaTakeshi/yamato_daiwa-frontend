@@ -1,60 +1,74 @@
-TextElementHeightSizingTypes = {
+TextElementHeightSizingTypes--YDF = {
   fixed: "FIXED",
   natural: "NATURAL"
 }
 
-TextElementHeightSizingSpecificationSchema = {
+TextElementHeightSizingSpecificationSchema--YDF = {
 
   type: {
     type: DataTypes.string,
     required: true,
-    allowedAlternatives: values(TextElementHeightSizingTypes)
+    allowedAlternatives: values(TextElementHeightSizingTypes--YDF)
   },
 
   fixedHeight: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     requiredIf: {
       predicate: @(textElementHeightSizingSpecification) {
-        return textElementHeightSizingSpecification.type == TextElementHeightSizingTypes.fixed
+        return textElementHeightSizingSpecification.type == TextElementHeightSizingTypes--YDF.fixed
       },
-      conditionDescription: "'type' is 'TextElementHeightSizingTypes.fixed'"
+      conditionDescription: "'type' is 'TextElementHeightSizingTypes--YDF.fixed'"
     }
   },
+
 
   borders: {
     type: DataTypes.object,
     defaultValue: {},
-    properties: BordersSizingSpecificationSchema
+    properties: BordersSizingSpecificationSchema--YDF
   },
+
 
   paddings: {
     type: DataTypes.object,
     defaultValue: {},
-    properties: PaddingsSpecificationSchema
+    properties: PaddingsSpecificationSchema--YDF
   },
+
   isExplicitPaddingZeroDeclarationRequired: {
     type: DataTypes.boolean
   },
 
+
   fontSize: {
-    type: DataTypes.dimensionalAmount,
+    type: DataTypes.dimensionalQuantity,
     required: true
   },
+
   lineSpacing: {
-    type: DataTypes.dimensionalAmount
+    type: DataTypes.dimensionalQuantity
   },
+
   lineHeight: {
-    type: DataTypes.dimensionalAmount DataTypes.dimensionlessAmount,
+    type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity,
     requiredIf: {
       predicate: @(compoundParameter) { return isNull(compoundParameter.lineSpacing) },
       descriptionForLogging: "The 'lineSpacing' is not specified"
     },
     incompatibleWith: "lineSpacing",
   },
+
+  fixedLinesCount: {
+    type: DataTypes.dimensionlessQuantity
+    required: false,
+    minimalValue: 1
+  },
+
   mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0: {
     type: DataTypes.boolean,
     defaultValue: true
   },
+
   mustApplyDimensionalLineHeightIfPossible: {
     type: DataTypes.boolean,
     defaultValue: false
@@ -63,11 +77,6 @@ TextElementHeightSizingSpecificationSchema = {
   mustReduceVerticalPaddingsByExtraSpaceCausedByLineHeight: {
     type: DataTypes.boolean,
     defaultValue: false
-  },
-  fixedLinesCount: {
-    type: DataTypes.dimensionlessAmount
-    required: false,
-    minimalValue: 1
   },
 
   mustFixateHeight: {

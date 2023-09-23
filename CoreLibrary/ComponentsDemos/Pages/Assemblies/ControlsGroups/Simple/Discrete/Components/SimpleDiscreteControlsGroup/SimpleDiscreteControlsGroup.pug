@@ -1,0 +1,12 @@
+mixin SimpleDiscreteControlsGroup
+
+  .SimpleDiscreteControlsGroup&attributes(attributes)
+
+    +TextBox--YDF({
+      label: "User name"
+    }).SimpleDiscreteControlsGroup-TextBox.SimpleDiscreteControlsGroup-TextBox__UserName
+
+    +TextBox--YDF({
+      label: "Password",
+      HTML_Type: TextBox__YDF.HTML_Types.password
+    }).SimpleDiscreteControlsGroup-TextBox.SimpleDiscreteControlsGroup-TextBox__Password

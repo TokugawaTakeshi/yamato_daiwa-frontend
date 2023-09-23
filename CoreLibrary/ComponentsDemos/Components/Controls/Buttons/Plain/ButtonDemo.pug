@@ -49,7 +49,7 @@ mixin ButtonDemo(options)
     h1.Heading1 Button component testing
 
 
-  //- ━━━ Default optionals ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //- ━━━ Default optionals ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   if options.partials.defaultOptionals
 
     if options.headings
@@ -95,7 +95,7 @@ mixin ButtonDemo(options)
             decoration: themeShowcaseCurrentIterationData.decorativeVariation.value
           })
 
-  //- ━━━ Long label ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //- ━━━ Long label ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   if options.partials.longLabel
 
     if options.headings
@@ -142,7 +142,7 @@ mixin ButtonDemo(options)
           })
 
 
-    //- ━━━ Labels with prepended SVG icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    //- ━━━ Labels with prepended SVG icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     if options.partials.labelsWithPrependedSVG_Icons
 
       if options.headings
@@ -184,7 +184,7 @@ mixin ButtonDemo(options)
           dd Unavailable
 
 
-    //- ━━━ Labels with appended SVG icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    //- ━━━ Labels with appended SVG icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     if options.partials.labelsWithAppendedSVG_Icons
 
       if options.headings
@@ -226,7 +226,7 @@ mixin ButtonDemo(options)
           dd Unavailable
 
 
-    //- ━━━ Lone icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    //- ━━━ Lone icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     if options.partials.loneIcons
 
       if options.headings
@@ -268,7 +268,7 @@ mixin ButtonDemo(options)
           dd Unavailable
 
 
-  //- ━━━ Custom icon ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //- ━━━ Custom icon ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   if options.partials.customIcon
 
     if options.headings
@@ -310,12 +310,12 @@ mixin ButtonDemo(options)
         dd Unavailable
 
 
-  //- ━━━ Geometric modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //- ━━━ Geometric modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   if options.headings && Array.from(Object.values(options.partials.geometricModifiers)).some(isRequired => isRequired)
 
     h2.Heading2 Geometric modifiers
 
-  //- ─── Pill shape ──────────────────────────────────────────────────────────────────────────────────────────────────
+  //- ─── Pill shape ───────────────────────────────────────────────────────────────────────────────────────────────────
   if options.partials.geometricModifiers.pillShape
 
     if options.headings
@@ -568,13 +568,13 @@ mixin ButtonDemo(options)
             })
 
 
-  //- ━━━ Decorative modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  //- ━━━ Decorative modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   if options.headings && Array.from(Object.values(options.partials.decorativeModifiers)).some(isRequired => isRequired)
 
     h2.Heading2 Decorative modifiers
 
 
-  //- ─── Borders disguising ────────────────────────────────────────────────────────────────────────────────────────
+  //- ─── Borders disguising ───────────────────────────────────────────────────────────────────────────────────────────
   if options.partials.decorativeModifiers.bordersDisguising
 
     if options.headings

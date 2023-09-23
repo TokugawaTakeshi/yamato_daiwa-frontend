@@ -51,3 +51,4 @@ block append Metadata
 | HamburgerMenuButton--YDF  | `HamburgerMenuButton__YDF`  | `hamburgerMenuButtonLocalization__japanese`               |
 | SingleImageViewer--YDF    | `SingleImageViewer__YDF`    | `singleImageViewerYDF_ComponentLocalization__japanese`    |
 | QuestionAndAnswerBox--YDF | `QuestionAndAnswerBox__YDF` | `questionAndAnswerBoxYDF_ComponentLocalization__japanese` |
+| Snackbar--YDF             | `Snackbar__YDF__YDF`        | `snackbarYDF_ComponentLocalization__japanese`             |

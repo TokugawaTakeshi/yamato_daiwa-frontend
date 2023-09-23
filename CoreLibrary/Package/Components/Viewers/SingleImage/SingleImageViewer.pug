@@ -9,7 +9,7 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
 
       imageURI,
       imageAlternateText,
-      noFullScreenView = false,
+      fullScreenView = false,
       aspectRatio,
       autoAspectRatioByYDA = false,
       maximalWidth__anyValidCSS_Value,
@@ -29,7 +29,7 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
     });
 
     const {
-      fullScreenView = false
+      fullScreenMode = false
     } = PugMixinsObjectTypeParametersProcessor.processParameter({
       rawParameter: statesSimulations,
       parameterNumber: 2,
@@ -42,7 +42,7 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
     let backgroundUnderlayStyles;
 
     const individualStyles = {
-      ...isString(aspectRatio) ? { aspectRatio }  : null,
+      ...isString(aspectRatio) ? { "aspect-ratio": aspectRatio }  : null,
       ...isNonEmptyString(maximalWidth__anyValidCSS_Value) ? { "max-width": maximalWidth__anyValidCSS_Value } : null,
       ...isNonEmptyString(maximalHeight__anyValidCSS_Value) ? { "max-height": maximalHeight__anyValidCSS_Value } : null
     };
@@ -72,11 +72,11 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
 
 
   .SingleImageViewer--YDF&attributes(attributes)(
-    data-has_full_screen_view__ydf=!noFullScreenView
+    data-has_full_screen_view__ydf=fullScreenView
     class=rootElementModifierCSS_Classes
   )
 
-    if !noFullScreenView
+    if fullScreenView
 
       .SingleImageViewer--YDF-ActionBar
 
@@ -88,10 +88,10 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
           span.Button--YDF-Label= SingleImageViewer__YDF.localization.buttons.fullScreenViewActivating.label
 
 
+    //- TODO ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     figure.SingleImageViewer--YDF-Figure
 
-      //- [ Theory ] The image could be narrower than below underlay thus underlay could be visible
-      picture.SingleImageViewer--YDF-Underlay
+      mixin ImgTag()
 
         img.SingleImageViewer--YDF-Image(
           src=imageURI
@@ -100,16 +100,21 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
           data-yda-auto_aspect_ratio=autoAspectRatioByYDA
         )
 
+      //- [ Theory ] The image could be narrower than below underlay thus underlay could be visible
+      //- picture.SingleImageViewer--YDF-Underlay
+
+      +ImgTag
+
       if block
         figcaption.SingleImageViewer--YDF-Caption
           block
 
 
-    if !noFullScreenView
+    if fullScreenView || fullScreenMode
 
       .SingleImageViewer--YDF-ModalView&attributes({
         class: [
-          ...fullScreenView ? [] : [ "SingleImageViewer--YDF-ModalView__HiddenState" ]
+          ...fullScreenMode ? [] : [ "SingleImageViewer--YDF-ModalView__HiddenState" ]
         ]
       })
 

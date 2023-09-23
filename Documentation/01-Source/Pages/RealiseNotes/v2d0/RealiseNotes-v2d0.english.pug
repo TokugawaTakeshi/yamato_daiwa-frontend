@@ -148,6 +148,24 @@ block append SpecificContent
         }).Article-Link SVGアイコン
 
 
+    h4.Article-Heading4 Styles
+
+    //-
+      h5.Article-Heading5 Assets
+
+      h6.Article-Heading6 Color palettes
+
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              assets.$children.
+              colors.$children.
+              YDF_ColorPalette.$URI
+        }).Article-Link YDF_ColorPalette
+
+
     h3.Article-Heading3 Breaking changes
 
     h4.Article-Heading4 Styles
@@ -160,7 +178,8 @@ block append SpecificContent
       #[+Term--YDID Element] #[+ImportantEntity__Code--YDID dimensionalAmount] of the
         #[+ImportantEntity__Code--YDID DataTypes] #[+Term--YDID enumeration] has been renamed to
         #[+ImportantEntity__Code--YDID dimensionalQuantity], and
-        #[+ImportantEntity__Code--YDID dimensionlessAmount] — to #[+ImportantEntity__Code--YDID dimensionlessQuantity].
+        #[+ImportantEntity__Code--YDID dimensionlessAmount] — to #[+ImportantEntity__Code--YDID dimensionlessQuantity]
+        in all #[+Term--YDID Stylus files].
 
     dl.Article-DescriptionList
 
@@ -184,3 +203,57 @@ block append SpecificContent
         For example, in the IDEs of IntelliJ IDEA family such functionality is available via
           #[+SecondaryEntity__Code--YDID Ctrl + Shift + R] shortcut.
 
+    h6.Article-Heading6 Changed of the properties in #[code TemporaryHighlighting] object
+
+    p.Article-Paragraph.
+      Now the ultrashort properties line #[+SecondaryEntity__Code--YDID o25], which meaning could not&nbsp;be understood
+        without the documentation of checking of the output #[+Term--YDID CSS code] has been replaces with meaningful,
+        such as #[+SecondaryEntity__Code--YDID opacity25Percent].
+
+    dl.Article-DescriptionList
+
+      dt Reason
+      dd.
+        Basically, all libraries of #[+ImportantEntity--YDID Yamato Daiwa] vendor does&nbsp;not accept the names which
+          meaning could&nbsp;not&nbsp;be understood wihtout the documentation, and now this rule has been applied to
+          #[+ImportantEntity--YDID TemporaryHighlighting] object, which should&nbsp;not be used in the clean copy
+          of the stylesheets.
+
+      dt Changes of your code will require if
+      dd.
+        You, contrary to the recommendation to not&nbsp;use this object in the clean copy of stylesheet did it,
+          or you has updated the #[+ImportantEntity--YDID YDF] during the writing of the draft #[+Term--YDID CSS code]
+          where used the #[+ImportantEntity--YDID TemporaryHighlighting] #[+Term--YDID object].
+
+      dt Migration
+      dd
+        | Using the appropriate functionality of your code editor or IDE, execute the following replacements in
+        |   all #[+Term--YDID Stylus files].
+        ul.Article-UnorderedList
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity10Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity25Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity50Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity75Percent]
+        | For example, in the IDEs of IntelliJ IDEA family such functionality is available via
+        |   #[+SecondaryEntity__Code--YDID Ctrl + Shift + R] shortcut.
+
+
+    h5.Article-Heading5 Basic variables
+
+    h6.Article-Heading6 Deleting of #[code BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS] variable
+
+    dl.Article-DescriptionList
+
+      dt Reason
+      dd.
+        For the both single line text elements and multi line text elements the unified font size has been
+          selected, that is the value of #[+ImportantEntity__Code--YDID BASIC_FONT_SIZE] variable.
+
+      dt Changes of your code will require if
+      dd.
+        Вы, используете переменную #[+ImportantEntity__Code--YDID BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS]
+
+      dt Migration
+      dd
+        | Замените переменную #[+ImportantEntity__Code--YDID BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS] на другую,
+        |   лучше всего на #[+ImportantEntity__Code--YDID BASIC_FONT_SIZE].

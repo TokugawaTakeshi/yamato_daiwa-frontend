@@ -261,7 +261,7 @@ provideButtonYDF_Component(
     })
 
     HEIGHT = computeTotalHeightByTextElementHeightSizingSpecification({
-      type: TextElementHeightSizingTypes.natural,
+      type: TextElementHeightSizingTypes--YDF.natural,
       borders: cachedValidReusables.bordersSizing,
       paddings: {
         top: cachedValidReusables.topSpacing,
@@ -299,7 +299,7 @@ provideButtonYDF_Component(
       // [ Approach ] For both single line and multi line modes the settings will be same because the text overflow
       //   already has been set in the common declarations.
       TextElementHeightSizing({
-        type: TextElementHeightSizingTypes.natural,
+        type: TextElementHeightSizingTypes--YDF.natural,
         fontSize: cachedValidReusables.textSize,
         lineHeight: cachedValidReusables.lineHeight,
         lineSpacing: cachedValidReusables.lineSpacing,
@@ -421,14 +421,14 @@ provideButtonYDF_Component(
 
       if isNotNull(variation.SVG_Icon.default.spacing.leftWhenGoingFirst)
 
-        &:first-child
+        &:first-child:not(:last-child)
 
           margin-left: variation.SVG_Icon.default.spacing.leftWhenGoingFirst
 
 
       if isNotNull(variation.SVG_Icon.default.spacing.rightWhenGoingLast)
 
-        &:last-child
+        &:last-child:not(:first-child)
 
           margin-right: variation.SVG_Icon.default.spacing.rightWhenGoingLast
 
@@ -481,6 +481,7 @@ provideButtonYDF_Component(
               }
             }
           })
+
 
   applyThemeIndependentGeometricModifiers()
 
