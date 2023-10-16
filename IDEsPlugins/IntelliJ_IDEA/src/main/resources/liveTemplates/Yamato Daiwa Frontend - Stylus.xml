@@ -212,7 +212,7 @@
     </context>
   </template>
   <template name="dt" value="DataTypes.$TYPE$" description="`DataTypes` enumeration" toReformat="false" toShortenFQNames="true">
-    <variable name="TYPE" expression="enum(&quot;dimensionalAmount&quot;, &quot;dimensionlessAmount&quot;, &quot;string&quot;, &quot;boolean&quot;, &quot;object&quot;, &quot;colorDefinition&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="TYPE" expression="enum(&quot;dimensionalQuantity&quot;, &quot;dimensionlessQuantity&quot;, &quot;string&quot;, &quot;boolean&quot;, &quot;object&quot;, &quot;colorDefinition&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
@@ -220,9 +220,9 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="th" value="TemporaryHighlighting.$TONE$.$OPACITY$&#10;// * Available tones: red, orange, yellow, green, cyan, blue, magenta, purple&#10;// * Available opacity values: o10, o25, o50, o75" description="`TemporaryHighlighting` object" toReformat="false" toShortenFQNames="true">
+  <template name="th" value="TemporaryHighlighting.$TONE$.$OPACITY$&#10;// * Available tones: red, orange, yellow, green, cyan, blue, magenta, purple&#10;// * Available opacity values: opacity10Percent, opacity25Percent, opacity50Percent, opacity75Percent" description="`TemporaryHighlighting` object" toReformat="false" toShortenFQNames="true">
     <variable name="TONE" expression="enum(&quot;red&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;green&quot;, &quot;cyan&quot;, &quot;blue&quot;, &quot;magenta&quot;, &quot;purple&quot;)" defaultValue="" alwaysStopAt="true" />
-    <variable name="OPACITY" expression="enum(&quot;o10&quot;, &quot;o25&quot;, &quot;o50&quot;, &quot;o75&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="OPACITY" expression="enum(&quot;opacity10Percent&quot;, &quot;opacity25Percent&quot;, &quot;opacity50Percent&quot;, &quot;opacity75Percent&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
@@ -294,22 +294,22 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="isDimensionalOrDimensionlessAmount" value="isDimensionalOrDimensionlessAmount($END$)" description="`isDimensionalOrDimensionlessAmount` function" toReformat="false" toShortenFQNames="true">
+  <template name="isDimensionalOrDimensionlessQuantity" value="isDimensionalOrDimensionlessAmount($END$)" description="`isDimensionalOrDimensionlessQuantity` function" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_PROPERTY_VALUE" value="false" />
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="isDimensionalAmount" value="isDimensionalAmount($END$, { considerDimensionlessZeroAsDimensionalAmount: $CONSIDER_DIMENSIONLESS_ZERO_AS_DIMENSIONAL_AMOUNT$ })" description="`isDimensionalAmount` function" toReformat="false" toShortenFQNames="true">
-    <variable name="CONSIDER_DIMENSIONLESS_ZERO_AS_DIMENSIONAL_AMOUNT" expression="enum(&quot;true&quot;, &quot;false&quot;)" defaultValue="" alwaysStopAt="true" />
+  <template name="isDimensionalQuantity" value="isDimensionalQuantity($END$, $AMBIGUITY_RESOLUTION_STRATEGY$)" description="`isDimensionalQuantity` function" toReformat="false" toShortenFQNames="true">
+    <variable name="AMBIGUITY_RESOLUTION_STRATEGY" expression="enum(&quot;MUST_CONSIDER_DIMEMSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY&quot;, &quot;MUST_NOT_CONSIDER_DIMEMSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY&quot;)" defaultValue="&quot;MUST_CONSIDER_DIMEMSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY&quot;" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_PROPERTY_VALUE" value="false" />
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="isDimensionlessAmount" value="isDimensionlessAmount($END$)" description="`isDimensionlessAmount` function" toReformat="false" toShortenFQNames="true">
+  <template name="isDimensionlessQuantity" value="isDimensionlessAmount($END$)" description="`isDimensionlessQuantity` function" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_PROPERTY_VALUE" value="false" />
@@ -708,12 +708,12 @@
       <option name="CSS_RULESET_LIST" value="true" />
     </context>
   </template>
-  <template name="med2p" value="WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 500px    &#10;    &#10;WideScreensConfiguration()&#10;  @media (min-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH)&#10;    {block}&#10;&#10;NarrowScreensConfiguration()&#10;  @media (max-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;    &#10;    &#10;+WideScreensConfiguration()&#10;&#10;  // ...&#10;  &#10;  &#10;+NarrowScreensConfiguration()&#10;&#10;  // ..." description="Media queries definitions for 2-pattern layout" toReformat="false" toShortenFQNames="true">
+  <template name="med2c" value="WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 500px    &#10;    &#10;WideScreensConfiguration()&#10;  @media (min-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH)&#10;    {block}&#10;&#10;NarrowScreensConfiguration()&#10;  @media (max-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;    &#10;    &#10;+WideScreensConfiguration()&#10;&#10;  // ...&#10;  &#10;  &#10;+NarrowScreensConfiguration()&#10;&#10;  // ..." description="Media queries definitions for 2-pattern layout" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS_DECLARATION_BLOCK" value="true" />
     </context>
   </template>
-  <template name="med5p" value="EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 1024px&#10;WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 860px&#10;MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 680px&#10;NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 500px&#10;&#10;ExtraWideScreensLayout()&#10;  @media (min-width: EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH)&#10;    {block}&#10;&#10;WideScreensLayout()&#10;  @media (min-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;MediumScreensLayout()&#10;  @media (min-width: MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;NarrowScreensLayout()&#10;  @media (min-width: NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;ExtraNarrowScreensLayout()&#10;  @media (max-width: NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}" description="Media queries definitions for 5-patterns layout" toReformat="false" toShortenFQNames="true">
+  <template name="med5c" value="EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 1024px&#10;WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 860px&#10;MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 680px&#10;NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH = 500px&#10;&#10;ExtraWideScreensLayout()&#10;  @media (min-width: EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH)&#10;    {block}&#10;&#10;WideScreensLayout()&#10;  @media (min-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: EXTRA_WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;MediumScreensLayout()&#10;  @media (min-width: MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: WIDE_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;NarrowScreensLayout()&#10;  @media (min-width: NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH) and (max-width: MEDIUM_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}&#10;&#10;ExtraNarrowScreensLayout()&#10;  @media (max-width: NARROW_SCREENS_CONFIGURATION_MINIMAL_WIDTH - 1)&#10;    {block}" description="Media queries definitions for 5-patterns layout" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS_DECLARATION_BLOCK" value="true" />
     </context>
@@ -723,13 +723,21 @@
       <option name="CSS_DECLARATION_BLOCK" value="true" />
     </context>
   </template>
-  <template name="ydfcp" value="YDF_ColorPalette.$HUE$.$LIGHTNESS$&#10;&#10;// Hues:&#10;// red deepOrange orange amber deepYellow yellow youngFoliage green mint cyan skyBlue deepSkyBlue blue indigo deepPurple&#10;// purple magenta pink deepPink&#10;&#10;// Lightnesses:&#10;// dark mediumDark slightlyDark    bright      &#10;// slightlyLight mediumLight light pastelBright pastelSlightlyLight pastelMediumLight pastelLight faded&#10;// pastelGradient lightGradient darkGradient glossyGradient" description="YDF color palette color" toReformat="false" toShortenFQNames="true">
+  <template name="ydfcp" value="YDF_ColorPalette.$HUE$.$LIGHTNESS$&#10;&#10;// Hues:&#10;// red deepOrange orange amber deepYellow yellow youngFoliage green mint cyan skyBlue deepSkyBlue blue indigo deepPurple&#10;// purple magenta pink deepPink&#10;&#10;// Lightnesses:&#10;// dark mediumDark slightlyDark    bright      &#10;// slightlyLight mediumLight light pastelBright pastelSlightlyLight pastelMediumLight pastelLight faded&#10;// pastelGradient lightGradient darkGradient glossyGradient" description="`YDF_ColorPalette` object" toReformat="false" toShortenFQNames="true">
     <variable name="HUE" expression="enum(&quot;red&quot;, &quot;deepOrange&quot;, &quot;orange&quot;, &quot;amber&quot;, &quot;deepYellow&quot;, &quot;yellow&quot;, &quot;youngFoliage&quot;, &quot;green&quot;, &quot;mint&quot;, &quot;cyan&quot;, &quot;skyBlue&quot;, &quot;deepSkyBlue&quot;, &quot;blue&quot;, &quot;indigo&quot;, &quot;deepPurple&quot;, &quot;purple&quot;, &quot;magenta&quot;, &quot;pink&quot;, &quot;deepPink&quot;)" defaultValue="" alwaysStopAt="true" />
     <variable name="LIGHTNESS" expression="enum(&quot;dark&quot;, &quot;mediumDark&quot;, &quot;slightlyDark&quot;, &quot;bright&quot;, &quot;slightlyLight&quot;, &quot;mediumLight&quot;, &quot;light&quot;, &quot;pastelBright&quot;, &quot;pastelSlightlyLight&quot;, &quot;pastelMediumLight&quot;, &quot;pastelLight&quot;, &quot;faded&quot;, &quot;pastelGradient&quot;, &quot;lightGradient&quot;, &quot;darkGradient&quot;, &quot;glossyGradient&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
       <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="th-bgc" value="background-color: TemporaryHighlighting.$TONE$.$OPACITY$&#10;// * Available tones: red, orange, yellow, green, cyan, blue, magenta, purple&#10;// * Available opacity values: opacity10Percent, opacity25Percent, opacity50Percent, opacity75Percent" description="`background-color` property with specific value of `TemporaryHighlighting` object" toReformat="false" toShortenFQNames="true">
+    <variable name="TONE" expression="enum(&quot;red&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;green&quot;, &quot;cyan&quot;, &quot;blue&quot;, &quot;magenta&quot;, &quot;purple&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="OPACITY" expression="enum(&quot;opacity10Percent&quot;, &quot;opacity25Percent&quot;, &quot;opacity50Percent&quot;, &quot;opacity75Percent&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
     </context>
   </template>
 </templateSet>

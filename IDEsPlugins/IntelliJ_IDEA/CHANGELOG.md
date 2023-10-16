@@ -2,6 +2,26 @@
 
 # Yamato-Daiwa Frontend IntelliJ IDEA plugin changelog
 
+
+## [0.0.7]
+
+### Added
+
+- <kbd>ydfcp</kbd> - Live template for the **YDF_ColorPalette** object-type constant
+- <kbd>th-bgc</kbd> - same as <kbd>th</kdb>, but in the position of the value of `background-color` property
+
+### Changed
+
+- Some elements of <kbd>dt</kbd> live template has been updated according 2.X API of **@yamato-daiwa/frontend**. 
+- <kbd>th</kdb> has been updated according 2.X API of **@yamato-daiwa/frontend**.
+
+### Removed
+
+- <kbd>isDimensionalOrDimensionlessAmount</kbd> has been replaced with <kbd>isDimensionalOrDimensionlessQuantity</kbd>
+- <kbd>isDimensionalAmount</kbd> has been replaced with <kbd>isDimensionalQuantity</kbd>
+- <kbd>isDimensionlessAmount</kbd> has been replaced with <kbd>isDimensionlessQuantity</kbd>
+
+
 ## [0.0.6]
 
 ### Added
@@ -15,7 +35,7 @@
 
 - Update <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> - live templates for the **Badge** component and its loading placeholder respectively (core package).
 - Update <kbd>badge-ydf-vue</kdb>, <kbd>badge-lp-ydf-vue</kdb> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
-- Remove `screen` keyword from <kbd>med2p</kbd>`, <kbd>med3p</kbd>`, <kbd>med4p</kbd>`, <kbd>med5px</kbd>` live templates
+- Remove `screen` keyword from <kbd>med2p</kbd>, <kbd>med3p</kbd>, <kbd>med4p</kbd>, <kbd>med5px</kbd> live templates
 - Improve <kbd>fbv</kbd> live template
 
 
