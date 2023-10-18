@@ -187,7 +187,7 @@ Please check the specification of this property:
 
 
 ```stylus
-TextElementHeightSizingTypes = {
+TextElementHeightSizingTypes--YDF = {
   fixed: "FIXED",
   natural: "NATURAL"
 }
@@ -202,15 +202,15 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
       type: {
         type: DataTypes.string,
         required: true,
-        allowedValues: values(TextElementHeightSizingTypes)
+        allowedValues: values(TextElementHeightSizingTypes--YDF)
       },  
       fixedHeight: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         requiredIf: {
           predicate: @(textElementHeightSizingSpecification) {
-            return textElementHeightSizingSpecification.type == TextElementHeightSizingTypes.fixed
+            return textElementHeightSizingSpecification.type == TextElementHeightSizingTypes--YDF.fixed
           },
-          conditionDescription: "'type' is 'TextElementHeightSizingTypes.fixed'"
+          conditionDescription: "'type' is 'TextElementHeightSizingTypes--YDF.fixed'"
         }
       }
       // ...
@@ -219,13 +219,13 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
   })
 ```
 
-Now if property `type` will be `TextElementHeightSizingTypes.fixed` but `fixedHeight` will be omitted:
+Now if property `type` will be `TextElementHeightSizingTypes--YDF.fixed` but `fixedHeight` will be omitted:
 
 ```stylus
 .Sample
 
   TextElementHeightSizing({
-    type: TextElementHeightSizingTypes.fixed
+    type: TextElementHeightSizingTypes--YDF.fixed
   })
 ```
 
@@ -236,14 +236,14 @@ Invalid parameter at:
   ●  Function/mixin: TextElementHeightSizing
   ●  Parameter number: 1
   ●  Parameter's property: fixedHeight
-This property is required when 'type' is 'TextElementHeightSizingTypes.fixed' and this condition has been satisfied while this proeprt
+This property is required when 'type' is 'TextElementHeightSizingTypes--YDF.fixed' and this condition has been satisfied while this proeprt
 y has been omited or explicitly set to null.
 Please check the specification of this property:
 {
   type: DIMENSIONAL_AMOUNT,
   requiredIf: {
     predicate: anonymous(textElementHeightSizingSpecification),
-    conditionDescription: 'type' is 'TextElementHeightSizingTypes.fixed'
+    conditionDescription: 'type' is 'TextElementHeightSizingTypes--YDF.fixed'
   }
 }
 ```
@@ -338,14 +338,14 @@ widthSizing(compoundParameter, restParameters__MUST_NOT_BE...)
     targetParameter: compoundParameter,
     schema: {
       fixedWidth: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         incompatibleWith: "minimalWidth" "maximalWidth"
       },
       minimalWidth: {
-        type: DataTypes.dimensionalAmount
+        type: DataTypes.dimensionalQuantity
       },
       maximalWidth: {
-        type: DataTypes.dimensionalAmount
+        type: DataTypes.dimensionalQuantity
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
@@ -392,12 +392,12 @@ BordersSizing(parametersObject, restParameters__MUST_NOT_BE...)
         required: false,
         properties: {
           horizontalSymmetric: {
-            type: DataTypes.dimensionalAmount,
+            type: DataTypes.dimensionalQuantity,
             required: false,
             incompatibleWith: "thickness.all"
           },
           left: {
-            type: DataTypes.dimensionalAmount,
+            type: DataTypes.dimensionalQuantity,
             required: false,
             incompatibleWith: "thickness.all" "thickness.horizontalSymmetric"
           },
@@ -491,7 +491,7 @@ Please check the specification of this property:
 ##### Allow both dimensional and dimensionless amount
 
 It is possible to allow both dimensional and dimensionless amounts (actual for line height definition for example).
-Specify **type** with two values `DataTypes.dimensionalAmount DataTypes.dimensionlessAmount` _in this sequence_.
+Specify **type** with two values `DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity` _in this sequence_.
 
 ```stylus
 TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MUST_NOT_BE...)
@@ -503,7 +503,7 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
     schema: {
       // ...
       lineHeight: {
-        type: DataTypes.dimensionalAmount DataTypes.dimensionlessAmount
+        type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
@@ -517,7 +517,7 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
 .Correct1
 
   TextElementHeightSizing({
-    type: TextElementHeightSizingTypes.natural,
+    type: TextElementHeightSizingTypes--YDF.natural,
     lineHeight: 18px
   })
 
@@ -525,7 +525,7 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
 .Correct2
 
   TextElementHeightSizing({
-    type: TextElementHeightSizingTypes.natural,
+    type: TextElementHeightSizingTypes--YDF.natural,
     lineHeight: 1.3
   })
 
@@ -533,7 +533,7 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
 .Incorrect
 
   TextElementHeightSizing({
-    type: TextElementHeightSizingTypes.natural,
+    type: TextElementHeightSizingTypes--YDF.natural,
     lineHeight: "Invalid"
   })
 ```
@@ -568,7 +568,7 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
     schema: {
       // ...
       linesCount: {
-        type: DataTypes.dimensionlessAmount
+        type: DataTypes.dimensionlessQuantity
         defaultValue: 1,
         minimalValue: 1
       }
@@ -583,7 +583,7 @@ Now, if this limitation will be violated as
 .Sample
 
   TextElementHeightSizing({
-    type: TextElementHeightSizingTypes.natural,
+    type: TextElementHeightSizingTypes--YDF.natural,
     linesCount: 0
   })
 ```
@@ -660,7 +660,7 @@ Please check the specification of this property:
 Specify `allowedAlternatives` with array of strings to restrict the allowed values to elements of this array:
 
 ```stylus
-TextElementHeightSizingTypes = {
+TextElementHeightSizingTypes--YDF = {
   fixed: "FIXED",
   natural: "NATURAL"
 }
@@ -675,7 +675,7 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
       type: {
         type: DataTypes.string,
         required: true,
-        allowedAlternatives: values(TextElementHeightSizingTypes)
+        allowedAlternatives: values(TextElementHeightSizingTypes--YDF)
       }
       // ...
     },
@@ -722,7 +722,7 @@ BordersSizing(bordersSpecification = {}, restParameters__MUST_NOT_BE...)
     mixinOrFunctionName: "BordersSizing",
     targetParameterNumber: 1,
     targetParameter: bordersSpecification,
-    schema: BordersSizingSpecificationSchema,
+    schema: BordersSizingSpecificationSchema--YDF,
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
   })
 ```

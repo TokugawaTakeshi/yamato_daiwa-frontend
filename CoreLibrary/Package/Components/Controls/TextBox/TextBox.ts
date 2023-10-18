@@ -194,12 +194,16 @@ class TextBox<
       getComponentInstance: (): ValidatableControl => this,
       validation: properties.validation,
       onHasBecomeValidEventHandler: {
-        handler: this.onPayloadHasBecomeValidEventListener.bind(this),
+        handler: this.onPayloadHasBecomeValidEventHandler.bind(this),
         ID: TextBox.generateOnPayloadHasBecomeValidEventHandlerID(this.ID)
       },
       onHasBecomeInvalidEventHandler: {
-        handler: this.onPayloadHasBecomeInvalidEventListener.bind(this),
+        handler: this.onPayloadHasBecomeInvalidEventHandler.bind(this),
         ID: TextBox.generateOnPayloadHasBecomeInvalidEventHandlerID(this.ID)
+      },
+      onAsynchronousValidationStatusChangedEventHandler: {
+        handler: this.onPayloadAsynchronousValidationStatusChangedEventHandler.bind(this),
+        ID: TextBox.generateOnAsynchronousValidationStatusChangedEventHandlerID(this.ID)
       }
     });
 
@@ -301,12 +305,12 @@ class TextBox<
 
 
   /* ━━━ Events ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  protected onPayloadHasBecomeValidEventListener(): void {
+  protected onPayloadHasBecomeValidEventHandler(): void {
     this.shellComponent.rootElement.classList.remove(TextBox.INVALID_VALUE_STATE_CSS_CLASS);
     this.nativeInputAcceptingElement.removeAttribute("aria-invalid");
   }
 
-  protected onPayloadHasBecomeInvalidEventListener(): void {
+  protected onPayloadHasBecomeInvalidEventHandler(): void {
 
     if (this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages) {
       this.shellComponent.rootElement.classList.add(TextBox.INVALID_VALUE_STATE_CSS_CLASS);
@@ -316,16 +320,24 @@ class TextBox<
 
   }
 
+  protected onPayloadAsynchronousValidationStatusChangedEventHandler(
+    asynchronousValidationStatus: InputtedValueValidation.AsynchronousChecks.Status
+  ): void {
+
+    this.shellComponent.$asynchronousValidationsStatus = asynchronousValidationStatus;
+    this.shellComponent.$validationErrorsMessages = this.payload.validationErrorsMessages;
+
+    if (asynchronousValidationStatus.hasAtLeastOneInvalidValueBeenConfirmed) {
+      this.shellComponent.$mustDisplayErrorsMessagesIfAny = true;
+    }
+
+  }
+
   private onInputEventListener(): void {
 
     this.payload.$setValue({
       newValue: this.rawInputTypeTransformer(this.nativeInputAcceptingElement.value),
-      asynchronousValidationDelay__seconds: 1,
-      onAsynchronousValidationStatusChanged: (
-        asynchronousValidationStatus: InputtedValueValidation.AsynchronousChecks.Status
-      ): void => {
-        this.shellComponent.$asynchronousValidationsStatus = asynchronousValidationStatus;
-      }
+      asynchronousValidationDelay__seconds: 1
     });
 
     this.shellComponent.$validationErrorsMessages = this.payload.validationErrorsMessages;
@@ -406,6 +418,15 @@ class TextBox<
     TextBox.counterForOnPayloadHasBecomeInvalidEventHandlerID_Generating++;
     return `${ componentID }-ON_PAYLOAD_HAS_BECOME_INVALID_EVENT_HANDLER-` +
         `${ TextBox.counterForOnPayloadHasBecomeInvalidEventHandlerID_Generating }`;
+  }
+
+
+  protected static counterForOnAsynchronousValidationStatusChangedEventHandlerIDsGenerating: number = 0;
+
+  protected static generateOnAsynchronousValidationStatusChangedEventHandlerID(componentID: string): string {
+    TextBox.counterForOnAsynchronousValidationStatusChangedEventHandlerIDsGenerating++;
+    return `${ componentID }-ON_ASYNCHRONOUS_VALIDATION_STATUS_CHANGED_EVENT_HANDLER-` +
+        `${ TextBox.counterForOnAsynchronousValidationStatusChangedEventHandlerIDsGenerating }`;
   }
 
 }

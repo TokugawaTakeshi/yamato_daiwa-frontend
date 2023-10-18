@@ -14,96 +14,51 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 ### Markup (Pug)
 #### Inline JavaScript
 
+* <kbd>buildEmailLinkHREF_AttributeValue</kbd> Autocomplete imitator for eponymous function 
+* <kbd>buildPhoneNumberLinkHrefAttributeValue</kbd> Autocomplete imitator for eponymous function
+* <kbd>tost</kbd> - Autocomplete imitator for [`textOverflowSafetyTest` constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Markup/ConstantsAssets/textOverflowSafetyTest/textOverflowSafetyTest.md)
+* <kbd>dius</kbd> - Autocomplete imitator for <code>DummyImagesURIs</code> enumeration 
 
-<dl>
-
-  <dt><kbd>buildEmailLinkHREF_AttributeValue</kbd></dt>
-  <!--<dd>Autocomplete imitator for <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.english.html">eponymous function</a></dd>-->
-  <dd>Autocomplete imitator for eponymous function</dd>
-
-  <dt><kbd>buildPhoneNumberLinkHrefAttributeValue</kbd></dt>
-  <!--<dd>Autocomplete imitator for <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.english.html">eponymous function</a></dd>-->
-  <dd>Autocomplete imitator for eponymous function</dd>
-
-  <dt><kbd>tost</kbd></dt>
-  <dd>Autocomplete imitator for <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Markup/ConstantsAssets/textOverflowSafetyTest/textOverflowSafetyTest.md">textOverflowSafetyTest</a> constant</dd>
-  
-  <dt><kbd>dius</kbd></dt>
-  <dd>Autocomplete imitator for <code>DummyImagesURIs</code> enumeration</dd>
-
-</dl>
+<!-- * <kbd>buildEmailLinkHREF_AttributeValue</kbd></dt> Autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.english.html) -->
+<!-- * <kbd>buildPhoneNumberLinkHrefAttributeValue</kbd> Autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.english.html) -->
+<!-- * <kbd>dius</kbd> Autocomplete imitator for [`DummyImagesURIs` enumeration](#) -->
 
 #### Mixins
 
-<dl>
-
-  <dt><kbd>pl</kbd></dt>
-  <dd>Live template for <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelink">PageLink</a> mixin</dd>
-  
-  <dt><kbd>plg</kbd></dt>
-  <dd>Live template for <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelinksgroup">PagesLinksGroup</a> mixin</dd>
-
-</dl>
+* <kbd>pl</kbd> Live template for [`PageLink` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelink)
+* <kbd>plg</kbd> Live template for [`PagesLinksGroup` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelinksgroup)
 
 
 #### Components
 
-<dl>
-
-  <dt><kbd>badge-ydf</kbd></dt>
-  <dt><kbd>badge-lp-ydf</kbd></dt>
-  <dd>Live templates for the <b>Badge</b> component and its loading placeholder respectively</dd>
-
-  <dt><kbd>ossll</kbd></dt>
-  <dd>Live template for <b>OverflowSafeSingleLineLabel</b> component markup</dd>
-
-</dl>
+* <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> Live templates for the **Badge** component and its loading placeholder respectively  
+* <kbd>ossll</kbd> Live template for **OverflowSafeSingleLineLabel** component markup
 
 
 ### Styles (Stylus)
 #### Assets
 ##### Fundamental constants and enumerations
 
-<dl>
+* <kbd>dt</kbd> The Live template for the [`DataTypes` enumeration](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types)
+* <kbd>nswu</kbd> The Live template for the [`NARROWEST_SCREEN_WIDTH_UNIT` constant](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/NARROWEST_SCREEN_WIDTH_UNIT/NARROWEST_SCREEN_WIDTH_UNIT.english.html) 
 
-  <dt><kbd>dt</kbd></dt>
-  <dd>The Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/DataTypes/DataTypes.english.html">DataTypes</a> enumeration</dd>
-  <!-- <dd>The Live template for the <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types">DataTypes</a> enumeration</dd> -->
+<!-- * <kbd>dt</kbd> The Live template for the [`DataTypes` enumeration](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/DataTypes/DataTypes.english.html) -->
+<!-- * <kbd>nswu</kbd> The Live template for the [`NARROWEST_SCREEN_WIDTH_UNIT` constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit---the-narrowest-screen-width-unit) -->
 
-  <dt><kbd>nswu</kbd></dt>
-  <dd>The Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/NARROWEST_SCREEN_WIDTH_UNIT/NARROWEST_SCREEN_WIDTH_UNIT.english.html">NARROWEST_SCREEN_WIDTH_UNIT</a> constant</dd>
-  <!-- <dd>The Live template for the <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit---the-narrowest-screen-width-unit">NARROWEST_SCREEN_WIDTH_UNIT</a> constant</dd> -->
-
-</dl>
 
 ##### Colors
 
-<dl>
+* <kbd>pccs</kbd> The Live template for the [`PracticalColorCoordinateSystem` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md)
+* <kbd>sogw3c</kbd> The Live template for the [`ShadesOfGray__39ColorsW3C_Palette` array](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md)
+* <kbd>th</kbd>, <kbd>th-bgc</kbd> The Live template for the [`TemporaryHighlighting` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md)   
+* <kbd>ydfcp</kbd> The Live template for the `YDF_ColorPalette` object-type constant 
+* <kbd>fuic</kbd> The Live template for the [`FlatUI_Colors` enumeration](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md)
+* <kbd>mdc</kbd> The Live template for the [`MaterialDesignColors` object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md) 
 
-  <dt><kbd>pccs</kbd></dt>
-  <!-- <dd>The Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Assets/Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.english.html">PracticalColorCoordinateSystem</a> object-type constant.</dd> -->
-  <dd>The Live template for the <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md">PracticalColorCoordinateSystem</a> object-type constant.</dd>
-
-  <dt><kbd>sogw3c</kbd></dt>
-  <!-- <dd>The Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.english.html">ShadesOfGray__39ColorsW3C_Palette</a> array.</dd> -->
-  <dd>The Live template for the <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md">ShadesOfGray__39ColorsW3C_Palette</a> array.</dd>
-
-  <dt><kbd>th</kbd><dt>
-  <dt><kbd>th-bgc</kbd><dt>
-  <!-- <dd>The Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Colors/TemporaryHighlighting/TemporaryHighlighting.english.html">TemporaryHighlighting</a> object-type constant.</dd> -->
-  <dd>The Live template for the <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md">TemporaryHighlighting</a> object-type constant.</dd>
-
-  <dt><kbd>ydfcp</kbd><dt>
-  <!-- <dd>The Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Colors/YDF_ColorPalette/YDF_ColorPalette.english.html">YDF_ColorPalette</a> object-type constant.</dd> -->
-  <dd>The Live template for the <code>YDF_ColorPalette</code> object-type constant.</dd>
-  
-  <dt><kbd>fuic</kbd></dt>
-  <dd>Live template for the <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md">FlatUI_Colors</a> enumeration</dd>
-
-  <dt><kbd>mdc</kbd></dt>
-  <dd>Live template for the <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md">MaterialDesignColors</a> object</dd>
-
-</dl>
+<!-- * <kbd>pccs</kbd> The Live template for the [`PracticalColorCoordinateSystem` object-type constant](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Assets/Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.english.html) -->
+<!-- * <kbd>sogw3c</kbd> The Live template for the [`ShadesOfGray__39ColorsW3C_Palette` array](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.english.html) -->
+<!-- * <kbd>th</kbd>, <kbd>th-bgc</kbd> The Live template for the [`TemporaryHighlighting` object-type constant](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Colors/TemporaryHighlighting/TemporaryHighlighting.english.html) -->
+<!-- * <kbd>ydfcp</kbd> The Live template for the [`YDF_ColorPalette` object-type constant](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Colors/YDF_ColorPalette/YDF_ColorPalette.english.html) -->
 
 
 #### Kernel
@@ -125,42 +80,25 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 ##### Functions
 ###### Type checkers
 
-<dl>
+* Strings
+  * <kbd>isEmptyString</kbd> Autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+  * <kbd>isNonEmptyString</kbd> Autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+  * <kbd>isString</kbd> Autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+  
+  <!-- * <kbd>isEmptyString</kbd> Autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isEmptyString--SECTION) -->
+  <!-- * <kbd>isNonEmptyString</kbd> Autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isNonEmptyString--SECTION) -->
+  <!-- * <kbd>isString</kbd> Autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isString--SECTION) -->
 
-  <dt>Strings</dt>
-  <dd>
-    <dl>
-      <dt><kbd>isEmptyString</kbd></dt>
-      <!--<dd>Autocomplete imitator type Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isEmptyString--SECTION">eponymous function</a>.</dd>-->
-      <dd>Autocomplete imitator type Live template for the <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md">eponymous function</a>.</dd>
-      <dt><kbd>isNonEmptyString</kbd></dt>
-      <!--<dd>Autocomplete imitator type Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isNonEmptyString--SECTION">eponymous function</a>.</dd>-->
-      <dd>Autocomplete imitator type Live template for the <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md">eponymous function</a>.</dd>
-      <dt><kbd>isString</kbd><dt>
-      <!--<dd>Autocomplete imitator type Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isString--SECTION">eponymous function</a>.</dd>-->
-      <dd>Autocomplete imitator type Live template for the <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md">eponymous function</a>.</dd>
-    </dl>
-  </dd>
+* Quantities
+  * <kbd>isDimensionalOrDimensionlessQuantity</kbd> Autocomplete imitator type Live template for the eponymous function
+  * <kbd>isDimensionalQuantity</kbd> Autocomplete imitator type Live template for the eponymous function
+  * <kbd>isDimensionlessQuantity</kbd> Autocomplete imitator type Live template for the eponymous function
+  * <kbd>isNaturalNumber</kbd> Autocomplete imitator type Live template for the eponymous function
 
-  <dt>Quantities</dt>
-  <dd>
-    <dl>
-      <dt><kbd>isDimensionalOrDimensionlessQuantity</kbd></dt>
-      <!--<dd>Autocomplete imitator type Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isDimensionalOrDimensionlessQuantity--SECTION">eponymous function</a>.</dd>-->
-      <dd>Autocomplete imitator type Live template for the eponymous function</dd>
-      <dt><kbd>isDimensionalQuantity</kbd></dt>
-      <!--<dd>Autocomplete imitator type Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isDimensionalQuantity--SECTION">eponymous function</a>.</dd>-->
-      <dd>Autocomplete imitator type Live template for the eponymous function</dd>
-      <dt><kbd>isDimensionlessQuantity</kbd></dt>
-      <!--<dd>Autocomplete imitator type Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isDimensionlessQuantity--SECTION">eponymous function</a>.</dd>-->
-      <dd>Autocomplete imitator type Live template for the eponymous function</dd>
-      <dt><kbd>isNaturalNumber</kbd></dt>
-      <!--<dd>Autocomplete imitator type Live template for the <a href="https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isNaturalNumber--SECTION">eponymous function</a>.</dd>-->
-      <dd>Autocomplete imitator type Live template for the eponymous function</dd>
-    </dl>
-  </dd>
-
-</dl>
+  <!-- * <kbd>isDimensionalOrDimensionlessQuantity</kbd> Autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isDimensionalOrDimensionlessQuantity--SECTION) -->
+  <!-- * <kbd>isDimensionalQuantity</kbd> Autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isDimensionalQuantity--SECTION) -->
+  <!-- * <kbd>isDimensionlessQuantity</kbd> Autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isDimensionlessQuantity--SECTION) -->
+  <!-- * <kbd>isNaturalNumber</kbd> Autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isNaturalNumber--SECTION) --> 
 
 
 * Autocomplete imitators (no abbreviations) for [value checkers](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md) 
@@ -172,7 +110,7 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
   * <kbd>isBoolean</kbd> ([check documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md))
   * <kbd>isObject</kbd> ([check documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md))
   * <kbd>isIdentifier</kbd> ([check documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md))
-      
+
 * Autocomplete imitators (no abbreviations) for value converters
   * <kbd>emptyStringToNull</kbd>
   * <kbd>nullToZero</kbd>

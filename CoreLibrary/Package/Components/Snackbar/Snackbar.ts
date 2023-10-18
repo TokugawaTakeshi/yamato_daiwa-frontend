@@ -75,35 +75,47 @@ abstract class Snackbar {
 
       const DOM_Workpiece: HTMLElement = Snackbar.DOM_Workpiece;
 
-      Snackbar.DOM_Workpiece.animate(
-        [
-          {
-            opacity: 1,
-            transform: "none"
-          },
-          {
-            opacity: 0,
-            transform: "translateY(-100%)"
-          }
-        ],
-        {
-          duration: 250,
-          easing: "ease-in"
-        }
-      ).
+      Snackbar.DOM_Workpiece.
+
+          animate(
+            [
+              {
+                opacity: 1,
+                transform: "none"
+              },
+              {
+                opacity: 0,
+                transform: "translateY(-100%)"
+              }
+            ],
+            {
+              duration: 250,
+              easing: "ease-in"
+            }
+          ).
+
           addEventListener("finish", (): void => {
+
+            DOM_Workpiece.remove();
+
+            DOM_Workpiece.classList.remove(
+              ...Object.values(Snackbar.decorativeVariationsDependents).map(
+                (decorativeVariationDependents: Snackbar.DecorativeVariationDependents): string =>
+                    decorativeVariationDependents.CSS_Class
+              )
+            );
 
             getExpectedToBeSingleDOM_Element({ selector: Snackbar.SVG_ICON_SELECTOR, context: DOM_Workpiece }).
                 replaceWith(Snackbar.SVG_IconMountingPointElement);
 
-            Snackbar.dismissingButtonElement.removeEventListener("click", Snackbar.hideAndUnmount);
-            // TODO Remove all CSS Classes of decor var
+            Snackbar.messageElement.innerHTML = "";
 
-            DOM_Workpiece.remove();
+            Snackbar.dismissingButtonElement.removeEventListener("click", Snackbar.hideAndUnmount);
 
             resolve();
 
           });
+
     });
 
   }

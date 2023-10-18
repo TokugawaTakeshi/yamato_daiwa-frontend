@@ -10,30 +10,30 @@ BordersSizing({
 
   thickness: {
   
-    all: DataTypes.dimensionalAmount;
+    all: DataTypes.dimensionalQuantity;
 
-    horizontalSymmetric: DataTypes.dimensionalAmount;,
-    left: DataTypes.dimensionalAmount;,
-    right: DataTypes.dimensionalAmount;
+    horizontalSymmetric: DataTypes.dimensionalQuantity;,
+    left: DataTypes.dimensionalQuantity;,
+    right: DataTypes.dimensionalQuantity;
 
-    verticalSymmetric: DataTypes.dimensionalAmount; 
-    top: DataTypes.dimensionalAmount;
-    bottom: DataTypes.dimensionalAmount;
+    verticalSymmetric: DataTypes.dimensionalQuantity; 
+    top: DataTypes.dimensionalQuantity;
+    bottom: DataTypes.dimensionalQuantity;
   },
 
   radius: {
 
-    all: DataTypes.dimensionalAmount;
+    all: DataTypes.dimensionalQuantity;
 
-    topLeft: DataTypes.dimensionalAmount;
-    topRight: DataTypes.dimensionalAmount;
-    bottomLeft: DataTypes.dimensionalAmount;
-    bottomRight: DataTypes.dimensionalAmount;
+    topLeft: DataTypes.dimensionalQuantity;
+    topRight: DataTypes.dimensionalQuantity;
+    bottomLeft: DataTypes.dimensionalQuantity;
+    bottomRight: DataTypes.dimensionalQuantity;
     
-    leftFillets: DataTypes.dimensionalAmount;
-    rightFillets: DataTypes.dimensionalAmount;
-    topFillets: DataTypes.dimensionalAmount;
-    bottomFillets: DataTypes.dimensionalAmount;
+    leftFillets: DataTypes.dimensionalQuantity;
+    rightFillets: DataTypes.dimensionalQuantity;
+    topFillets: DataTypes.dimensionalQuantity;
+    bottomFillets: DataTypes.dimensionalQuantity;
   }
 })
 ```

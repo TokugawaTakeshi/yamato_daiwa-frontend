@@ -16,7 +16,7 @@ import {
   createDOM_ElementFromHTML_Code
 } from "@yamato-daiwa/es-extensions-browserjs";
 import getCommentDOM_Node from "../../../Logic/UtilsIncubator/DOM/getCommentDOM_Node";
-import { isNotUndefined, isNull } from "@yamato-daiwa/es-extensions";
+import { isNotUndefined, isNull, isUndefined } from "@yamato-daiwa/es-extensions";
 
 
 export default class CompoundControlShell {
@@ -231,7 +231,7 @@ export default class CompoundControlShell {
 
     for (const asynchronousCheck of Object.values(asynchronousValidationsStatus.checks)) {
 
-      let asynchronousValidationsStatusesCollapsableListItemElement: Element;
+      let asynchronousValidationsStatusesCollapsableListItemElement: Element | undefined;
 
       if (asynchronousCheck.isPending) {
 
@@ -248,7 +248,7 @@ export default class CompoundControlShell {
           mustCopyAllChildren: true
         });
 
-      } else {
+      } else if (asynchronousCheck.hasErrorOccurred) {
 
         asynchronousValidationsStatusesCollapsableListItemElement = cloneDOM_Element({
           targetElement: CompoundControlShell.
@@ -257,6 +257,14 @@ export default class CompoundControlShell {
         });
 
       }
+
+      /* [ Approach ]
+       * If invalid value confirmed (omitted `else`-block), the error message will be displayed at
+       * `$validationErrorsMessages`, not need to duplicate it here.  */
+      if (isUndefined(asynchronousValidationsStatusesCollapsableListItemElement)) {
+        continue;
+      }
+
 
       getExpectedToBeSingleDOM_Element({
         selector: CompoundControlShell.ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_ITEM_SELECTOR,
@@ -276,7 +284,7 @@ export default class CompoundControlShell {
       this.asynchronousValidationsStatusesCollapsableList.style.display = "none";
 
       ExpandingAnimation.replaceNodeAndAnimate({
-        replacedNode: this.validationErrorsMessagesCollapsableListMountingPoint,
+        replacedNode: this.asynchronousValidationsStatusesCollapsableListMountingPoint,
         animatedElement: this.asynchronousValidationsStatusesCollapsableList,
         duration__seconds: CompoundControlShell.ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_ANIMATION_DURATION_PER_ONE_ITEM__SECONDS *
             Object.entries(asynchronousValidationsStatus.checks).length

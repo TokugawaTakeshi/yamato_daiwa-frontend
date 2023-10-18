@@ -6,8 +6,8 @@
 SingleLineTextElementOverflowSafety({
   displayEllipsis?: DataTypes.boolean;
   supportCrossAxisCenteredFlexChild?: DataTypes.boolean;
-  lineHeight?: DataTypes.dimensionalAmount | DataTypes.dimensionlessAmount;
-  verticalSymmetricPaddings?: DataTypes.dimensionalAmount;
+  lineHeight?: DataTypes.dimensionalQuantity | DataTypes.dimensionlessQuantity;
+  verticalSymmetricPaddings?: DataTypes.dimensionalQuantity;
 })
 ```
 

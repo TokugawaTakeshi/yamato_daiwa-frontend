@@ -37,10 +37,13 @@ namespace ValidatableControl {
     /* [ Convention ] The fields begins from the underscore mush be changes only via constructor or setters. */
     protected _value: ValidValue | InvalidValue;
     protected _validationResult: InputtedValueValidation.Result;
+    protected _asynchronousChecksStatus: InputtedValueValidation.AsynchronousChecks.Status | null = null;
 
-    protected readonly onHasBecomeValidEventHandlers: Payload.EventHandlersMap = new Map();
-    protected readonly onHasBecomeInvalidEventHandlers: Payload.EventHandlersMap = new Map();
-    protected readonly onAnyChangeEventHandlers: Payload.EventHandlersMap = new Map();
+    protected readonly onHasBecomeValidEventHandlers: Payload.GeneralizedEventHandlersMap = new Map();
+    protected readonly onHasBecomeInvalidEventHandlers: Payload.GeneralizedEventHandlersMap = new Map();
+    protected readonly onAnyChangeEventHandlers: Payload.GeneralizedEventHandlersMap = new Map();
+    protected readonly onAsynchronousValidationStatusChangedEventHandlers: Payload.
+        OnAsynchronousValidationStatusChangedEventHandlersMap = new Map();
 
     private waitingForStaringOfAsynchronousValidationTimeID: number | null = null;
 
@@ -62,6 +65,12 @@ namespace ValidatableControl {
         this.setOnHasBecomeInvalidEventHandler(compoundParameter.onHasBecomeInvalidEventHandler);
       }
 
+      if (isNotUndefined(compoundParameter.onAsynchronousValidationStatusChangedEventHandler)) {
+        this.setOnAsynchronousValidationStatusChangedEventHandler(
+          compoundParameter.onAsynchronousValidationStatusChangedEventHandler
+        );
+      }
+
     }
 
 
@@ -71,105 +80,55 @@ namespace ValidatableControl {
     public $setValue(
       {
         newValue,
-        asynchronousValidationDelay__seconds,
-        onAsynchronousValidationStatusChangedEventCallback
+        asynchronousValidationDelay__seconds
       }: Readonly<{
         newValue: ValidValue | InvalidValue;
         asynchronousValidationDelay__seconds?: number;
-        onAsynchronousValidationStatusChangedEventCallback?: InputtedValueValidation.AsynchronousChecks.Callback;
       }>
     ): void {
 
       this._value = newValue;
 
-      const wasValidPreviously: boolean = this.validationResult.isValid;
-      this._validationResult = this.validation.validate(this._value);
-      const isValidNow: boolean = this.validationResult.isValid;
-
-      for (const [ handlerID, handler ] of this.onAnyChangeEventHandlers.entries()) {
-
-        try {
-
-          handler();
-
-        } catch (error: unknown) {
-          Logger.logError({
-            errorType: "CustomEventHandlerExecutionFailure",
-            title: "Custom event handler execution failure",
-            description:
-                `The error occurred during the execution of "OnAnyChange" event handler with ID "${ handlerID }".`,
-            occurrenceLocation: "ValidatableControl.Payload.$[set]value(newValue)",
-            caughtError: error
-          });
+      this.validationResult = this.validation.validate(
+        this._value,
+        {
+          mustPostponeAsynchronousValidation: isNotUndefined(asynchronousValidationDelay__seconds),
+          asynchronousChecksCallback: this.onAsynchronousChecksStatusChanged.bind(this)
         }
+      );
+
+      if (isNotUndefined(asynchronousValidationDelay__seconds)) {
+
+        clearTimeout(
+          nullToUndefined(this.waitingForStaringOfAsynchronousValidationTimeID)
+        );
+
+        if (this.isInvalid) {
+          return;
+        }
+
+
+        this.waitingForStaringOfAsynchronousValidationTimeID = window.setTimeout(
+          (): void => {
+
+            this.validation.executeAsynchronousChecksIfAny(
+              this._value,
+              this.validationResult,
+              this.onAsynchronousChecksStatusChanged.bind(this)
+            );
+
+          },
+          secondsToMilliseconds(asynchronousValidationDelay__seconds)
+        );
 
       }
-
-
-      if (!wasValidPreviously && this.validationResult.isValid) {
-
-        for (const [ handlerID, handler ] of this.onHasBecomeValidEventHandlers.entries()) {
-
-          try {
-
-            handler();
-
-          } catch (error: unknown) {
-            Logger.logError({
-              errorType: "CustomEventHandlerExecutionFailure",
-              title: "Custom event handler execution failure",
-              description:
-                  `The error occurred during the execution of "OnHasBecomeValid" event handler with ID "${ handlerID }".`,
-              occurrenceLocation: "ValidatableControl.Payload.[set]$value(newValue)",
-              caughtError: error
-            });
-          }
-        }
-
-      } else if (wasValidPreviously && !this.validationResult.isValid) {
-
-        for (const [ handlerID, handler ] of this.onHasBecomeInvalidEventHandlers.entries()) {
-
-          try {
-
-            handler();
-
-          } catch (error: unknown) {
-            Logger.logError({
-              errorType: "CustomEventHandlerExecutionFailure",
-              title: "Custom event handler execution failure",
-              description:
-                  `The error occurred during the execution of "OnHasBecomeInvalid" event handler with ID '${ handlerID }'.`,
-              occurrenceLocation: "ValidatableControl.Payload.[set]$value(newValue)",
-              caughtError: error
-            });
-          }
-        }
-
-      }
-
-    }
-
-    protected onAsynchronousValidationStatusChanged(
-      status: InputtedValueValidation.AsynchronousChecks.Status,
-      updatedValidationResult: InputtedValueValidation.Result,
-      additionalHandler?: InputtedValueValidation.AsynchronousChecks.Callback
-    ): void {
-
-      const wasValidPreviously: boolean = this.validationResult.isValid;
-
-      if (isNotUndefined(onAsynchronousValidationStatusChanged)) {
-
-      additionalHandler?.(status);
-
-      this.onValidationResultUpdated(wasValidPreviously);
 
     }
 
 
     /* ━━━ Public methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     /* ─── Event handlers ─────────────────────────────────────────────────────────────────────────────────────────── */
-    public setOnAnyChangeEventHandlers(
+    public setOnValueAnyChangeEventHandlers(
       polymorphicParameter: Payload.GeneralizedEventHandler | Readonly<{ handler: Payload.GeneralizedEventHandler; ID: string; }>
     ): void {
       this.onAnyChangeEventHandlers.set(
@@ -192,6 +151,19 @@ namespace ValidatableControl {
     ): void {
       this.onHasBecomeInvalidEventHandlers.set(
         "handler" in polymorphicParameter ? polymorphicParameter.ID : Payload.generateOnHasBecomeInvalidEventHandlerID(),
+        "handler" in polymorphicParameter ? polymorphicParameter.handler : polymorphicParameter
+      );
+    }
+
+    public setOnAsynchronousValidationStatusChangedEventHandler(
+      polymorphicParameter:
+          Payload.OnAsynchronousValidationStatusChangedEventHandler |
+          Readonly<{ handler: Payload.OnAsynchronousValidationStatusChangedEventHandler; ID: string; }>
+    ): void {
+      this.onAsynchronousValidationStatusChangedEventHandlers.set(
+        "handler" in polymorphicParameter ?
+            polymorphicParameter.ID :
+            Payload.generateOnAsynchronousValidationStatusChangedEventHandlerID(),
         "handler" in polymorphicParameter ? polymorphicParameter.handler : polymorphicParameter
       );
     }
@@ -229,9 +201,126 @@ namespace ValidatableControl {
 
 
     /* ━━━ Routines ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── Event handlers ─────────────────────────────────────────────────────────────────────────────────────────── */
+    protected onAsynchronousChecksStatusChanged(
+      asynchronousChecksStatus: InputtedValueValidation.AsynchronousChecks.Status,
+      newestValidationResult: InputtedValueValidation.Result
+    ): void {
+      this.validationResult = newestValidationResult;
+      this.asynchronousChecksStatus = asynchronousChecksStatus;
+    }
+
     /* ─── Additional setters ─────────────────────────────────────────────────────────────────────────────────────── */
     protected get validationResult(): InputtedValueValidation.Result {
       return this._validationResult;
+    }
+
+    protected set validationResult(validationResult: InputtedValueValidation.Result) {
+
+      const wasValidPreviously: boolean = this._validationResult.isValid;
+
+      this._validationResult = validationResult;
+
+      for (const [ handlerID, handler ] of this.onAnyChangeEventHandlers.entries()) {
+
+        try {
+
+          handler();
+
+        } catch (error: unknown) {
+          Logger.logError({
+            errorType: "CustomEventHandlerExecutionFailure",
+            title: "Custom event handler execution failure",
+            description:
+                `The error occurred during the execution of "OnAnyChange" event handler with ID "${ handlerID }".`,
+            occurrenceLocation: "ValidatableControl.Payload.$[set]validationResult(validationResult)",
+            caughtError: error
+          });
+        }
+
+      }
+
+
+      if (!wasValidPreviously && this.validationResult.isValid) {
+
+        for (const [ handlerID, handler ] of this.onHasBecomeValidEventHandlers.entries()) {
+
+          try {
+
+            handler();
+
+          } catch (error: unknown) {
+
+            Logger.logError({
+              errorType: "CustomEventHandlerExecutionFailure",
+              title: "Custom event handler execution failure",
+              description:
+                  `The error occurred during the execution of "OnHasBecomeValid" event handler with ID "${ handlerID }".`,
+              occurrenceLocation: "ValidatableControl.Payload.[set]validationResult(validationResult)",
+              caughtError: error
+            });
+
+          }
+        }
+
+      } else if (wasValidPreviously && !this.validationResult.isValid) {
+
+        for (const [ handlerID, handler ] of this.onHasBecomeInvalidEventHandlers.entries()) {
+
+          try {
+
+            handler();
+
+          } catch (error: unknown) {
+
+            Logger.logError({
+              errorType: "CustomEventHandlerExecutionFailure",
+              title: "Custom event handler execution failure",
+              description:
+                  `The error occurred during the execution of "OnHasBecomeInvalid" event handler with ID "${ handlerID }".`,
+              occurrenceLocation: "ValidatableControl.Payload.[set]validationResult(validationResult)",
+              caughtError: error
+            });
+
+          }
+
+        }
+
+      }
+
+    }
+
+
+    public get asynchronousChecksStatus(): InputtedValueValidation.AsynchronousChecks.Status | null {
+      return this._asynchronousChecksStatus;
+    }
+
+    protected set asynchronousChecksStatus(asynchronousChecksStatus: InputtedValueValidation.AsynchronousChecks.Status) {
+
+      this._asynchronousChecksStatus = asynchronousChecksStatus;
+
+      for (const [ handlerID, handler ] of this.onAsynchronousValidationStatusChangedEventHandlers.entries()) {
+
+        try {
+
+          handler(asynchronousChecksStatus);
+
+        } catch (error: unknown) {
+
+          Logger.logError({
+            errorType: "CustomEventHandlerExecutionFailure",
+            title: "Custom event handler execution failure",
+            description:
+                "The error occurred during the execution of \"OnAsynchronousValidationStatusChanged\" event handler " +
+                  `with ID "${ handlerID }".`,
+            occurrenceLocation: "ValidatableControl.Payload.[set]asynchronousChecksStatus(asynchronousChecksStatus)",
+            caughtError: error
+          });
+
+        }
+
+      }
+
     }
 
 
@@ -266,6 +355,15 @@ namespace ValidatableControl {
       return `ON_HAS_BECOME_INVALID-GENERATED-${ Payload.counterForOnHasBecomeInvalidEventHandlersIDsGenerating }`;
     }
 
+
+    protected static counterForOnAsynchronousValidationStatusChangedEventHandlerIDsGenerating: number = 0;
+
+    protected static generateOnAsynchronousValidationStatusChangedEventHandlerID(): string {
+      Payload.counterForOnAsynchronousValidationStatusChangedEventHandlerIDsGenerating++;
+      return "ON_ASYNCHRONOUS_VALIDATION_STATUS_CHANGED-GENERATED-" +
+          `${ Payload.counterForOnAsynchronousValidationStatusChangedEventHandlerIDsGenerating }`;
+    }
+
   }
 
 
@@ -277,13 +375,25 @@ namespace ValidatableControl {
       getComponentInstance: () => ValidatableControl;
       onHasBecomeValidEventHandler?: GeneralizedEventHandler | Readonly<{ handler: GeneralizedEventHandler; ID: string; }>;
       onHasBecomeInvalidEventHandler?: GeneralizedEventHandler | Readonly<{ handler: GeneralizedEventHandler; ID: string; }>;
+      onAsynchronousValidationStatusChangedEventHandler?:
+          OnAsynchronousValidationStatusChangedEventHandler |
+          Readonly<{
+            handler: OnAsynchronousValidationStatusChangedEventHandler;
+            ID: string;
+          }>;
     }>;
 
     export type EventHandlerID = string;
 
     export type GeneralizedEventHandler = () => unknown;
+    export type GeneralizedEventHandlersMap = Map<EventHandlerID, GeneralizedEventHandler>;
 
-    export type EventHandlersMap = Map<EventHandlerID, GeneralizedEventHandler>;
+    export type OnAsynchronousValidationStatusChangedEventHandler = (
+      status: InputtedValueValidation.AsynchronousChecks.Status
+    ) => unknown;
+    export type OnAsynchronousValidationStatusChangedEventHandlersMap = Map<
+      EventHandlerID, OnAsynchronousValidationStatusChangedEventHandler
+    >;
 
   }
 

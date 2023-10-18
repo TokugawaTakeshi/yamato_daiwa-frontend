@@ -5,25 +5,25 @@
 ```
 TableCellWidthSizing({
 
-  fixedTotalWidth?: DataTypes.dimensionalAmount;
+  fixedTotalWidth?: DataTypes.dimensionalQuantity;
   // OR
-  totalMinimalWidth?: DataTypes.dimensionalAmount;
-  totalMaximalWidth?: DataTypes.dimensionalAmount;
+  totalMinimalWidth?: DataTypes.dimensionalQuantity;
+  totalMaximalWidth?: DataTypes.dimensionalQuantity;
   
-  fixedContentWidth?: DataTypes.dimensionalAmount;
+  fixedContentWidth?: DataTypes.dimensionalQuantity;
   // OR
-  contentMinimalWidth: DataTypes.dimensionalAmount;
-  contentMaximalWidth: DataTypes.dimensionalAmount;
+  contentMinimalWidth: DataTypes.dimensionalQuantity;
+  contentMaximalWidth: DataTypes.dimensionalQuantity;
   
-  leftOrRightSymmetricBordersWidths?: DataTypes.dimensionalAmount;
+  leftOrRightSymmetricBordersWidths?: DataTypes.dimensionalQuantity;
   // OR
-  leftBorderWidth?: DataTypes.dimensionalAmount;
-  rightBorderWidth?: DataTypes.dimensionalAmount;
+  leftBorderWidth?: DataTypes.dimensionalQuantity;
+  rightBorderWidth?: DataTypes.dimensionalQuantity;
   
-  leftOrRightSymmetricPaddings: DataTypes.dimensionalAmount;
+  leftOrRightSymmetricPaddings: DataTypes.dimensionalQuantity;
   // OR
-  leftPadding: DataTypes.dimensionalAmount;
-  rightPadding: DataTypes.dimensionalAmount;
+  leftPadding: DataTypes.dimensionalQuantity;
+  rightPadding: DataTypes.dimensionalQuantity;
   
   truncateOnOverflow?: DataTypes.boolean;
   displayEllipsisOnOverflow?: DataTypes.boolean;

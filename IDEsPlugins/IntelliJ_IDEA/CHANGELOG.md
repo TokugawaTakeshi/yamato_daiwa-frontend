@@ -8,12 +8,12 @@
 ### Added
 
 - <kbd>ydfcp</kbd> - Live template for the **YDF_ColorPalette** object-type constant
-- <kbd>th-bgc</kbd> - same as <kbd>th</kdb>, but in the position of the value of `background-color` property
+- <kbd>th-bgc</kbd> - same as <kbd>th</kbd>, but in the position of the value of `background-color` property
 
 ### Changed
 
 - Some elements of <kbd>dt</kbd> live template has been updated according 2.X API of **@yamato-daiwa/frontend**. 
-- <kbd>th</kdb> has been updated according 2.X API of **@yamato-daiwa/frontend**.
+- <kbd>th</kbd> has been updated according 2.X API of **@yamato-daiwa/frontend**.
 
 ### Removed
 
@@ -49,7 +49,7 @@
 ### Added
 
 - <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> - live templates for the **Badge** component and its loading placeholder respectively
-- <kbd>badge-ydf-vue</kdb>, <kbd>badge-lp-ydf-vue</kdb> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
+- <kbd>badge-ydf-vue</kbd>, <kbd>badge-lp-ydf-vue</kbd> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
 - <kbd>dius</kbd> - **DummyImagesURIs** enumeration
 - <kbd>hd<kbd> - live template inserting the heading tag and dedicated CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
 - <kbd>ossll</kbd> (Markup) - live template for **OverflowSafeSingleLineLabel** component markup 
@@ -139,10 +139,10 @@
 - <kbd>cnt</kbd> - live template for [Centerer](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/Centerer.md) mixin
 - <kbd>fbv</kbd> - live template for [fillBodyVertically](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/fillBodyVertically.md) mixin
 - <kbd>ftdl</kbd> - live template for [bds](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/FixedTranslucentDimLayer.md) mixin
-- <kbd>slteos</kdb> - live template for [SingleLineTextElementOverflowSafety](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md) mixin
-- <kbd>mlt</kdb> - live template for [MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md) mixin
+- <kbd>slteos</kbd> - live template for [SingleLineTextElementOverflowSafety](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md) mixin
+- <kbd>mlt</kbd> - live template for [MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md) mixin
 - <kbd>pcsaov</kbd> - live template for [provideClippedShadowsAndOutlinesVisibility](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/provideClippedShadowsAndOutlinesVisibility.md) mixin
-- <kbd>sprt</kdb> - live template for [Sprite](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/Sprite.md) mixin
+- <kbd>sprt</kbd> - live template for [Sprite](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/Sprite.md) mixin
 - <kbd>si</kbd> - live template for [InitialGlobalCSS_Rules](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/InitialGlobalCSS_Rules.md) and [CrossBrowserStylesReset](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/CrossBrowserStylesReset.md) mixins
 - <kbd>blep</kbd> - live template for [ButtonLikeElementsPrimer`](https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/ButtonLikeElementsPrimer.md) mixins
 - <kbd>med2c</kbd> - the media queries definitions for 2-pattern layout
@@ -154,7 +154,7 @@
 - <kbd>nsc</kbd> - Inserts **+NarrowScreensConfiguration()** block mixin invocation (must be preliminarily defined)
 - <kbd>wmsc</kbd> - Inserts **+WideAndMediumScreensConfiguration()** block mixin invocation (must be preliminarily defined)
 - <kbd>mnsc</kbd> - Inserts **+MediumAndNarrowScreensConfiguration()** block mixin invocation (must be preliminarily defined)
-- <kbd>iydf</kdb> - live template inserting the import (from **@yamato-daiwa/frontend** package) declaration
+- <kbd>iydf</kbd> - live template inserting the import (from **@yamato-daiwa/frontend** package) declaration
 
 
 ### Removed

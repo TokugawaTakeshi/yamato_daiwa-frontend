@@ -143,7 +143,7 @@ class FilesUploader<
   }
 
   // eslint-disable-next-line class-methods-use-this
-  public resetStateToInitial(): void {
+  public resetValidityHighlightingStateToInitial(): void {
     // eslint-disable-next-line no-warning-comments
     // TODO
   }

@@ -116,7 +116,7 @@ Paddings(paddingsSpecification, restParameters__MUST_NOT_BE...)
     mixinOrFunctionName: "Paddings",
     targetParameterNumber: 1,
     targetParameter: paddingsSpecification,
-    schema: PaddingsSpecificationSchema,
+    schema: PaddingsSpecificationSchema--YDF,
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
   })
 

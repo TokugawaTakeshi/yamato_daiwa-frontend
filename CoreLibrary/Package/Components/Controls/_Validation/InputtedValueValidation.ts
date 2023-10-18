@@ -43,7 +43,15 @@ abstract class InputtedValueValidation {
   }
 
 
-  public validate(rawValue: unknown): InputtedValueValidation.Result {
+  public validate(
+    rawValue: unknown,
+    options: Readonly<{
+      mustPostponeAsynchronousValidation: boolean;
+      asynchronousChecksCallback?: InputtedValueValidation.AsynchronousChecks.Callback;
+    }> = {
+      mustPostponeAsynchronousValidation: false
+    }
+  ): InputtedValueValidation.Result {
 
     const isInputRequired: boolean = this.isInputRequired();
 
@@ -107,19 +115,21 @@ abstract class InputtedValueValidation {
     }
 
 
-    // TODO 引数を追加し呼び出すか、メソッド名を変える
-    // this.executeAsynchronousChecksIfAny(rawValue);
+    const validationResult: InputtedValueValidation.Result = { isValid: true };
+
+    if (!options.mustPostponeAsynchronousValidation) {
+      this.executeAsynchronousChecksIfAny(rawValue, validationResult, options.asynchronousChecksCallback);
+    }
 
 
-    return {
-      isValid: true
-    };
+    return validationResult;
 
   }
 
   public executeAsynchronousChecksIfAny(
     rawValue: unknown,
-    asynchronousChecksCallback: InputtedValueValidation.AsynchronousChecks.Callback
+    currentValidationResult: InputtedValueValidation.Result,
+    asynchronousChecksCallback?: InputtedValueValidation.AsynchronousChecks.Callback
   ): void {
 
     if (this.asynchronousRules.length === 0) {
@@ -143,10 +153,14 @@ abstract class InputtedValueValidation {
 
         return accumulatingValue;
 
-      }, {}
+      },
+      {}
     );
 
-    asynchronousChecksCallback(new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks));
+    asynchronousChecksCallback?.(
+      new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks),
+      currentValidationResult
+    );
 
     for (const validationRule of this.asynchronousRules) {
 
@@ -166,7 +180,21 @@ abstract class InputtedValueValidation {
 									checkingResult.errorMessage ?? validationRule.messages.invalidValueHasBeenConfirmed
 						};
 
-						asynchronousChecksCallback(new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks));
+            const asynchronousChecksStatus: InputtedValueValidation.AsynchronousChecks.Status =
+                new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks);
+
+            const errorsMessages: ReadonlyArray<string> = [
+              ...currentValidationResult.isValid ? [] : currentValidationResult.errorsMessages,
+              ...asynchronousChecksStatus.errorsMessages
+            ];
+
+						asynchronousChecksCallback?.(
+              asynchronousChecksStatus,
+              {
+                isValid: errorsMessages.length === 0,
+                errorsMessages
+              }
+            );
 
 					}).
 
@@ -188,7 +216,10 @@ abstract class InputtedValueValidation {
               message: validationRule.messages.errorHasOccurred
             };
 
-            asynchronousChecksCallback(new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks));
+            asynchronousChecksCallback?.(
+              new InputtedValueValidation.AsynchronousChecks.Status(asynchronousChecks),
+              currentValidationResult
+            );
 
           });
 
@@ -285,14 +316,14 @@ namespace InputtedValueValidation {
 
   export namespace AsynchronousChecks {
 
-    export type Callback = (status: Status) => void;
+    export type Callback = (status: Status, currentValidationResult: Result) => void;
 
     export class Status {
 
       public readonly checks: AsynchronousChecks;
       public readonly hasAtLeastOneCheckNotFinishedYet: boolean = false;
-      public readonly hasAllChecksFinished: boolean = true;
-      public readonly hasAtOneCheckErrorOccurred: boolean = false;
+      public readonly hasAllChecksFinishedWithAnyOutcome: boolean = true;
+      public readonly hasAtLeastOneCheckErrorOccurred: boolean = false;
       public readonly hasNoInvalidValuesBeenConfirmed: boolean = true;
       public readonly hasAtLeastOneInvalidValueBeenConfirmed: boolean = false;
       public readonly errorsMessages: Array<string> = [];
@@ -305,12 +336,12 @@ namespace InputtedValueValidation {
 
           if (checking.isPending) {
             this.hasAtLeastOneCheckNotFinishedYet = true;
-            this.hasAllChecksFinished = false;
+            this.hasAllChecksFinishedWithAnyOutcome = false;
           }
 
 
           if (checking.hasErrorOccurred) {
-            this.hasAtOneCheckErrorOccurred = true;
+            this.hasAtLeastOneCheckErrorOccurred = true;
           }
 
           if (checking.hasInvalidValueBeenConfirmed) {

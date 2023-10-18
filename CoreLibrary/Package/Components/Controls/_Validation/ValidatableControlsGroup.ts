@@ -19,11 +19,13 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
 
   protected readonly controlsPayload: ValidatableControlsGroup.GeneralizedControlsPayload;
   protected readonly isEachControlPayloadValid: { [controlPayloadID: string]: boolean; };
+  protected readonly areAsynchronousChecksBeingExecutedForEachControlPayload: { [controlPayloadID: string]: boolean; };
   protected readonly SCROLLABLE_CONTAINER_HTML_ID?: string;
 
   protected readonly onHasBecomeValidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
   protected readonly onHasBecomeInvalidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
   protected readonly onAnyChangeEventHandler?: ValidatableControlsGroup.OnAnyChangeEventHandler;
+  protected readonly onAsynchronousValidationsFinishedWithAnyResultEventHandler?: () => void;
 
   private _isInvalid: boolean;
 
@@ -92,6 +94,7 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
       onHasBecomeValidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
       onHasBecomeInvalidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
       onAnyChangeEventHandler?: ValidatableControlsGroup.OnAnyChangeEventHandler;
+      onAsynchronousValidationsFinishedWithAnyResultEventHandler?: () => void;
     }>
   ) {
 
@@ -103,31 +106,40 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
     this.onHasBecomeValidEventHandler = compoundParameter.onHasBecomeValidEventHandler;
     this.onHasBecomeInvalidEventHandler = compoundParameter.onHasBecomeInvalidEventHandler;
     this.onAnyChangeEventHandler = compoundParameter.onAnyChangeEventHandler;
+    this.onAsynchronousValidationsFinishedWithAnyResultEventHandler = compoundParameter.
+        onAsynchronousValidationsFinishedWithAnyResultEventHandler;
 
-    const controlsPayloadAndValidityMap: { [controlPayloadID: string]: boolean; } = {};
+    const isEachControlPayloadValid: { [controlPayloadID: string]: boolean; } = {};
+    const areAsynchronousChecksBeingExecutedForEachControlPayload: { [controlPayloadID: string]: boolean; } = {};
 
     for (
       const controlPayload of
       Array.isArray(this.controlsPayload) ? this.controlsPayload.values() : Object.values(this.controlsPayload)
     ) {
 
-      controlsPayloadAndValidityMap[controlPayload.ID] = !controlPayload.isInvalid;
+      isEachControlPayloadValid[controlPayload.ID] = !controlPayload.isInvalid;
 
-      controlPayload.setOnAnyChangeEventHandlers({
-        ID: `VALIDATABLE-CONTROL_GROUP-${ this.ID }--CONTROL-${ controlPayload.ID }`,
+      controlPayload.setOnValueAnyChangeEventHandlers({
+        ID: `ON_VALUE_ANY_CHANGE_EVENT_HANDLER--VALIDATABLE-CONTROL_GROUP-${ this.ID }--CONTROL-${ controlPayload.ID }`,
         handler: (): void => { this.onAnyChangeOfSpecificControlEventHandler(controlPayload); }
+      });
+
+      areAsynchronousChecksBeingExecutedForEachControlPayload[controlPayload.ID] = false;
+
+      controlPayload.setOnAsynchronousValidationStatusChangedEventHandler({
+        ID: `ON_VALUE_ANY_CHANGE_EVENT_HANDLER--VALIDATABLE-CONTROL_GROUP-${ this.ID }--CONTROL-${ controlPayload.ID }`,
+        handler: (asynchronousValidationStatus: InputtedValueValidation.AsynchronousChecks.Status): void => {
+          this.onAsynchronousValidationStatusChangedEventHandler(controlPayload, asynchronousValidationStatus);
+        }
       });
 
     }
 
-    this.isEachControlPayloadValid = controlsPayloadAndValidityMap;
+    this.isEachControlPayloadValid = isEachControlPayloadValid;
     this._isInvalid = this.isAtLeastOneControlPayloadInvalid();
+    this.areAsynchronousChecksBeingExecutedForEachControlPayload = areAsynchronousChecksBeingExecutedForEachControlPayload;
     this.SCROLLABLE_CONTAINER_HTML_ID = compoundParameter.scrollingContainerHTML_ID;
 
-  }
-
-  public get isInvalid(): boolean {
-    return this._isInvalid;
   }
 
 
@@ -160,6 +172,16 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
     /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- The validity of data has been guaranteed. */
     return payload as ValidData;
 
+  }
+
+
+  /* ━━━ Public getters ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  public get isInvalid(): boolean {
+    return this._isInvalid;
+  }
+
+  public get areTherePendingAsynchronousValidation(): boolean {
+    return Object.values(this.areAsynchronousChecksBeingExecutedForEachControlPayload).includes(true);
   }
 
 
@@ -234,6 +256,21 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
 
   }
 
+
+  protected onAsynchronousValidationStatusChangedEventHandler(
+    controlPayload: ValidatableControlsGroup.GeneralizedControlPayload,
+    asynchronousValidationStatus: InputtedValueValidation.AsynchronousChecks.Status
+  ): void {
+
+    const wasAsynchronousCheckBeenExecuted: boolean = this.areTherePendingAsynchronousValidation;
+    this.areAsynchronousChecksBeingExecutedForEachControlPayload[controlPayload.ID] =
+        asynchronousValidationStatus.hasAtLeastOneCheckNotFinishedYet;
+
+    if (wasAsynchronousCheckBeenExecuted && !this.areTherePendingAsynchronousValidation) {
+      this.onAsynchronousValidationsFinishedWithAnyResultEventHandler?.();
+    }
+
+  }
 
   /* [ Approach ] This method has not been made getter because of recomputing on each invocation while here the value
    *  of "_isInvalid" is cached. */

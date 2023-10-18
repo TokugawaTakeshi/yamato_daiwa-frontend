@@ -37,6 +37,7 @@ class ExpandingAnimation {
 
 
     animatedElement.style.display = "none";
+    animatedElement.removeAttribute("hidden");
 
     replacedNode.replaceWith(animatedElement);
 

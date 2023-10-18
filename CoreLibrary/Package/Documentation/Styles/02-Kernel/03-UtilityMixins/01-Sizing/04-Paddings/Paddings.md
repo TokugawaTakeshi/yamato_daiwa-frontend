@@ -7,15 +7,15 @@ The alternative to native CSS method of defining of the paddings intended to be 
 ```
 Paddings({
 
-  all?: DataTypes.dimensionalAmount;
+  all?: DataTypes.dimensionalQuantity;
 
-  horizontalSymmetric?: DataTypes.dimensionalAmount;
-  left?: DataTypes.dimensionalAmount;
-  right?: DataTypes.dimensionalAmount;
+  horizontalSymmetric?: DataTypes.dimensionalQuantity;
+  left?: DataTypes.dimensionalQuantity;
+  right?: DataTypes.dimensionalQuantity;
 
-  verticalSymmetric?: DataTypes.dimensionalAmount;
-  upwardShifting?: DataTypes.dimensionalAmount;
-  bottom?: DataTypes.dimensionalAmount;
+  verticalSymmetric?: DataTypes.dimensionalQuantity;
+  upwardShifting?: DataTypes.dimensionalQuantity;
+  bottom?: DataTypes.dimensionalQuantity;
   
 })
 ```

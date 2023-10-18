@@ -4,19 +4,19 @@
 
 ```
 WidtnSizing(parametersObject: {
-  fixedWidth?: DataTypes.dimensionalAmount;
-  minimalWidth?: DataTypes.dimensionalAmount;
-  maximalWidth?: DataTypes.dimensionalAmount;
+  fixedWidth?: DataTypes.dimensionalQuantity;
+  minimalWidth?: DataTypes.dimensionalQuantity;
+  maximalWidth?: DataTypes.dimensionalQuantity;
   takeMaximumSpaceAsPossible?: DataTypes.boolean;
   truncateOnOverflow?: DataTypes.boolean;
   displayEllipsisOnOverflow?: DataTypes.unit;
-  leftOrRightSymmetricBordersWidths?: DataTypes.dimensionalAmount;
-  leftBorderWidth?: DataTypes.dimensionalAmount;
-  rightBorderWidth?: DataTypes.dimensionalAmount;
+  leftOrRightSymmetricBordersWidths?: DataTypes.dimensionalQuantity;
+  leftBorderWidth?: DataTypes.dimensionalQuantity;
+  rightBorderWidth?: DataTypes.dimensionalQuantity;
   isExplicitBorderNoneDeclarationRequired?: DataTypes.unit;
-  leftOrRightSymmetricPaddings?: DataTypes.dimensionalAmount;
-  leftPadding?: DataTypes.dimensionalAmount;
-  rightPadding?: DataTypes.dimensionalAmount;
+  leftOrRightSymmetricPaddings?: DataTypes.dimensionalQuantity;
+  leftPadding?: DataTypes.dimensionalQuantity;
+  rightPadding?: DataTypes.dimensionalQuantity;
   isExplicitPaddingZeroDeclarationRequired?: DataTypes.boolean;
 })
 ```

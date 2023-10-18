@@ -7,9 +7,9 @@ All value checkers returns **true** when the first and only parameter matches wi
 * isString
 * isEmptyString
 * isNonEmptyString
-* isDimensionalOrDimensionlessAmount
+* isDimensionalOrDimensionlessQuantity
 * isDimensionalAmount
-* isDimensionlessAmount
+* isDimensionlessQuantity
 * isNaturalNumber
 * isBoolean
 * isTrue
@@ -177,11 +177,11 @@ inspect: "It will be printed if 'undefinedVariable' is neither true nor false"
 ```
 
 
-### isDimensionalAmount / isDimensionlessAmount / isDimensionalOrDimensionlessAmount
+### isDimensionalAmount / isDimensionlessQuantity / isDimensionalOrDimensionlessQuantity
 
 For the Stylus, both `typeof(2)` (dimensionless amount example) and `typeof(2px)` (dimensional amount example) are `"unit"`.
-**isDimensionalAmount** and **isDimensionlessAmount** could distinguish these two cases. Additionally, 
-**isDimensionalOrDimensionlessAmount** is equivalent of `typeof(value) == "unit"`.
+**isDimensionalAmount** and **isDimensionlessQuantity** could distinguish these two cases. Additionally, 
+**isDimensionalOrDimensionlessQuantity** is equivalent of `typeof(value) == "unit"`.
 
 It is also required to respect that units could be omitted for 0 case is CSS.
 When expect the amount as parameter, you must to agree consider 0 as dimensional amount or no.
