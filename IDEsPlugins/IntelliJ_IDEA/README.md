@@ -100,7 +100,6 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
   <!-- * <kbd>isDimensionlessQuantity</kbd> Autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isDimensionlessQuantity--SECTION) -->
   <!-- * <kbd>isNaturalNumber</kbd> Autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/TypeCheckers.english.html#isNaturalNumber--SECTION) --> 
 
-
 * Autocomplete imitators (no abbreviations) for [value checkers](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md) 
   * <kbd>isNull</kbd> ([check documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnull--isnotnull)) 
   * <kbd>isNotNull</kbd> ([check documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnull--isnotnull)) 
