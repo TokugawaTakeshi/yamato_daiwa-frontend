@@ -1,0 +1,280 @@
+extends ../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../SharedAssets/Markup/SharedAssets.english.pug
+  include ../../../SharedComponents/SharedComponents.english.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "en";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("v2d0");
+    HTML_PageMetaData = {
+      description: MetaDescriptionTemplates.realiseNotes({ version: "2.0" }),
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+
+    RoutingEmulator.setCurrentRoute("realiseNotes.v2d0");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      japanese: "./v2d0.japanese.html",
+      russian: "./v2d0.russian.html"
+    });
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1 Version2.0
+
+    h2.Article-Heading2 Core pachage (@yamato-daiwa/frontend)
+
+    h3.Article-Heading3 New functionality
+
+    h4.Article-Heading4 Markup
+
+    h5.Article-Heading5 Pug's inline JavaScript
+
+    h6.Article-Heading6 Functions and classes
+
+    ul.Article-UnorderedList
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            YDEE_Integration.$URI
+      }).Article-Link @yamato-daiwa/es-extensions (YDEE) integration
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            buildEmailLinkHrefAttributeValue.$URI
+      }).Article-Link buildEmailLinkHrefAttributeValue
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            buildPhoneNumberLinkHrefAttributeValue.$URI
+      }).Article-Link buildPhoneNumberLinkHrefAttributeValue
+      //- TODO Clean laying ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            processPugMixinsObjectTypeParameter.$URI
+      }).Article-Link processPugMixinsObjectTypeParameter
+
+      //-
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              markup.$children.
+              functionality.$children.
+              inlineJavaScript.$children.
+              functionsAndClasses.$children.
+              RoutingEmulator.$URI
+        }).Article-Link RoutingEmulator
+
+
+    h6.Article-Heading6 Assets
+
+    ul.Article-UnorderedList
+
+      //-
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              markup.$children.
+              functionality.$children.
+              inlineJavaScript.$children.
+              assets.$children.
+              textOverflowSafetyTest.$URI
+        }).Article-Link textOverflowSafetyTest
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            assets.$children.
+            DummyImagesURIs.$URI
+      }).Article-Link DummyImagesURIs
+
+
+    h5.Article-Heading5 Pug mixins
+
+    //-
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.
+              $children.markup.
+              $children.functionality.
+              $children.pugMixins.
+              $children.dummies.$URI
+        }).Article-Link WideDummy and HighDummy
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.
+              $children.markup.
+              $children.functionality.
+              $children.pugMixins.
+              $children.SVG_Icons.$URI
+        }).Article-Link SVGアイコン
+
+
+    h4.Article-Heading4 Styles
+
+    //-
+      h5.Article-Heading5 Assets
+
+      h6.Article-Heading6 Color palettes
+
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              assets.$children.
+              colors.$children.
+              YDF_ColorPalette.$URI
+        }).Article-Link YDF_ColorPalette
+
+    h5.Article-Heading5 Core
+
+    h6.Article-Heading6 Specification schemas
+
+    //-
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              bordersSizing.$URI
+        }).Article-Link BordersSizingSpecificationSchema--YDF
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              paddings.$URI
+        }).Article-Link PaddingsSpecificationSchema--YDF
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              textElementHeightSizing.$URI
+        }).Article-Link TextElementHeightSizingSpecificationSchema--YDF
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              widthSizing.$URI
+        }).Article-Link WidthSizingSpecificationSchema--YDF
+      //- TODO Interim laying ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    h3.Article-Heading3 Breaking changes
+
+    h4.Article-Heading4 Styles
+
+    h5.Article-Heading5 Assets
+
+    h6.Article-Heading6 Changing of the elements of #[code DataTypes] enumeration
+
+    p.Article-Paragraph.
+      #[+Term--YDID Element] #[+ImportantEntity__Code--YDID dimensionalAmount] of the
+        #[+ImportantEntity__Code--YDID DataTypes] #[+Term--YDID enumeration] has been renamed to
+        #[+ImportantEntity__Code--YDID dimensionalQuantity], and
+        #[+ImportantEntity__Code--YDID dimensionlessAmount] — to #[+ImportantEntity__Code--YDID dimensionlessQuantity]
+        in all #[+Term--YDID Stylus files].
+
+    dl.Article-DescriptionList
+
+      dt Reason
+      dd The unifying to the canonical scientific terminology
+
+      dt Changes of your code will require if
+      dd.
+        You have accessed to the #[+Term--YDID element] #[+ImportantEntity__Code--YDID dimensionalAmount] and/or
+          #[+ImportantEntity__Code--YDID dimensionlessAmount] of the #[+ImportantEntity__Code--YDID DataTypes]
+          #[+Term--YDID enumeration]
+
+
+      dt Migration
+      dd.
+        Using the appropriate functionality of your code editor or IDE, replace
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionalAmount] with
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionalQuantity], and
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionlessAmount] with
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionlessQuantity].
+        For example, in the IDEs of IntelliJ IDEA family such functionality is available via
+          #[+SecondaryEntity__Code--YDID Ctrl + Shift + R] shortcut.
+
+    h6.Article-Heading6 Changed of the properties in #[code TemporaryHighlighting] object
+
+    p.Article-Paragraph.
+      Now the ultrashort properties line #[+SecondaryEntity__Code--YDID o25], which meaning could not&nbsp;be understood
+        without the documentation of checking of the output #[+Term--YDID CSS code] has been replaces with meaningful,
+        such as #[+SecondaryEntity__Code--YDID opacity25Percent].
+
+    dl.Article-DescriptionList
+
+      dt Reason
+      dd.
+        Basically, all libraries of #[+ImportantEntity--YDID Yamato Daiwa] vendor does&nbsp;not accept the names which
+          meaning could&nbsp;not&nbsp;be understood wihtout the documentation, and now this rule has been applied to
+          #[+ImportantEntity--YDID TemporaryHighlighting] object, which should&nbsp;not be used in the clean copy
+          of the stylesheets.
+
+      dt Changes of your code will require if
+      dd.
+        You, contrary to the recommendation to not&nbsp;use this object in the clean copy of stylesheet did it,
+          or you has updated the #[+ImportantEntity--YDID YDF] during the writing of the draft #[+Term--YDID CSS code]
+          where used the #[+ImportantEntity--YDID TemporaryHighlighting] #[+Term--YDID object].
+
+      dt Migration
+      dd
+        | Using the appropriate functionality of your code editor or IDE, execute the following replacements in
+        |   all #[+Term--YDID Stylus files].
+        ul.Article-UnorderedList
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity10Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity25Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity50Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity75Percent]
+        | For example, in the IDEs of IntelliJ IDEA family such functionality is available via
+        |   #[+SecondaryEntity__Code--YDID Ctrl + Shift + R] shortcut.
+
+
+    h5.Article-Heading5 Replacing of the basic variables to YDF configuration object

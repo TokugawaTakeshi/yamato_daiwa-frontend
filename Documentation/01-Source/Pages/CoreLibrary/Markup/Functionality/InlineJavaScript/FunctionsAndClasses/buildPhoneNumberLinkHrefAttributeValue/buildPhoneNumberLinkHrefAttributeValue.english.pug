@@ -18,8 +18,8 @@ block append Metadata
         functionName: "buildPhoneNumberLinkHrefAttributeValue",
         whatFunctionDoes:
             "generates such value of the HTML attribute &quot;href&quot; for the&quot;a&quot; tag as once final " +
-              "link has been clicked or tapped, the telephony software will be opened and it will be suggested to call to " +
-              "the phone number specified via single parameter."
+              "link has been clicked or tapped, the telephony software will be opened and it will be suggested to " +
+              "call to the phone number specified via single parameter."
       }),
       author: HTML_PAGE_AUTHOR
     };
@@ -27,7 +27,7 @@ block append Metadata
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
     styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
-    scriptsURIs.endOfBody = [ "@Common" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.buildPhoneNumberLinkHrefAttributeValue");
 
@@ -62,14 +62,13 @@ block append SpecificContent
     })
 
     p.Article-Paragraph.
-      Generates such value of the #[+Term--YDID HTML attribute] #[+ImportantEntity__Code--YDID href] for the
-        #[+ImportantEntity__Code--YDID a] #[+Term--YDID tag] as once final link has been clicked or tapped,
-        the telephony software will be opened and it will be suggested to call to the phone number specified
-        via #[+Keyphrase--YDID single] #[+Term--YDID parameter].
-      On the #[+Term--YDID smartphones] such software is definitely exists, on other types of devices probably
-        it will be suggested to select the telephony software such as #[+SecondaryEntity--YDID Skype],
-        #[+SecondaryEntity--YDID People], etc., however most likely it will require to pay for the calling
-        to the phone number.
+      Generates the value of the #[+Term--YDID HTML attribute] #[+ImportantEntity__Code--YDID href] for the
+        #[+ImportantEntity__Code--YDID a] #[+Term--YDID tag], so that once the final link has been clicked or tapped,
+        the telephony software will open, suggesting to call the specified phone number passed as a
+        #[+Keyword--YDID single] #[+Term--YDID parameter].
+      On smartphones, such software is readily available; on other types of devices, users may be prompted to select
+        telephony software such as #[+SecondaryEntity--YDID Skype], #[+SecondaryEntity--YDID People], etc., however,
+        it's likely that charges may apply for calling the phone number.
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }).
@@ -78,43 +77,42 @@ block append SpecificContent
         ) 79757-77666
 
     p.Article-Paragraph.
-      All that this #[+Term--YDID function] doing is appending the #[+ImportantEntity__Code--YDID tel:] to the
-        specified #[+Term--YDID string value] which expected to be the valid phone number.
-      If your text editor of the #[+Term--YDID Integrated Development Environment] (#[+Term--YDID IDE]) have
-        #[+Keyword--YDID no] the functionality of the autocompleting according the templates, this #[+Term--YDID function]
-        hardly will be useful for you: #[+ImportantEntity__Code--YDID tel:] or
-        the #[+Term--YDID function] name #[+ImportantEntity__Code--YDID buildPhoneNumberLinkHrefAttributeValue], you will
-        need either to memorize it or check the reference guide every time (although there is just three alphabetic
-        letters in #[+ImportantEntity__Code--YDID tel:], together with large volume of the other information even
-        it could be forgot).
+      This #[+Term--YDID function] appends #[+ImportantEntity__Code--YDID tel:] to the specified #[+Term--YDID string value],
+        expected to be a valid phone number.
+      If your code editor or #[+Term--YDID Integrated Development Environment] (#[+Term--YDID IDE]) lacks template
+        autocompletion functionality, this #[+Term--YDID function] may be less convenient.
+      Without autocompletion, you may need to either memorize #[+ImportantEntity__Code--YDID "tel:"] or the
+        #[+Term--YDID function] name #[+ImportantEntity__Code--YDID buildPhoneNumberLinkHrefAttributeValue], or
+        refer to the reference guide each time (though #[+ImportantEntity__Code--YDID "tel:"] consists of just three
+        alphabetic letters, it might be forgotten amidst a large volume of other information).
 
     p.Article-Paragraph
-      | If the autocompletion by the templates functionality is presents, it is enough to begin to input
-      |   #[+SecondaryEntity__Code--YDID buildP...], then the popup hint will appear and the further actions depends
-      |   on how the autocomplete has been implemented in the text editor or #[+Term--YDID IDE].
-      | In the case of the
+      | If autocompletion by template functionality is present, starting to input
+      |   #[+SecondaryEntity__Code--YDID "buildP..."] should trigger a popup hint.
+      | The subsequent actions depend on how autocompletion is implemented in the code editor or #[+Term--YDID IDE].
+      | In the case of
       |
       +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.liveTemplates }).Article-Link Live Templates
       |   from the
       |
       +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.YDF_Plugin }).Article-Link official YDF plugin
-      |   for the
+      |   for
       |
-      +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.intelliJ_IDEA_FamilyIDEs }).Article-Link.
-        IntelliJ IDEA family IDEs
-      |   the automatic inserting of the value #[+Keyword--YDID preliminary] copied to the clipboard to the position
-      |   of the #[+Keyword--YDID single] #[+Term--YDID parameter] is being executed.
-      | Thus, the inputting of the #[+ImportantEntity__Code--YDID href] #[+Term--YDID attribute] using the
-      |   #[+ImportantEntity__Code--YDID buildPhoneNumberLinkHrefAttributeValue] function could be completed by 3-4
-      |   keys pushing depending on how many other autocompletions has been suggested):
+      +Link--YDF({
+        unendorsedExternalURI: sharedExternalLinks.jetBrains.intelliJ_IDEA_FamilyIDEs
+      }).Article-Link IntelliJ IDEA family IDEs
+      |   , the automatic insertion of the value, previously copied to the clipboard, into the position of the
+      |   #[+Keyword--YDID single] #[+Term--YDID parameter] is executed.
+      | Thus, entering the #[+ImportantEntity__Code--YDID href] #[+Term--YDID attribute] using the
+      |   #[+ImportantEntity__Code--YDID buildPhoneNumberLinkHrefAttributeValue] #[+Term--YDID function] could be
+      |   completed by 3-4 key presses, depending on the number of other autocompletions suggested:
 
     +SingleImageViewer--YDF({
       imageURI: "@AssociatedWithPages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
           "buildPhoneNumberLinkHrefAttributeValue/Images/buildPhoneNumberLinkHrefAttributeValue-LiveTemplate",
       imageAlternateText:
-          "The quick inputting of the calling of the &quot;buildPhoneNumberLinkHrefAttributeValue&quot; function from the library " +
-          "&quot;Yamato Daiwa Frontend&quot; (abbreviation: &quot;YDF&quot;) in the &quot;IntelliJ IDEA&quot; family " +
-          "Integrated Development Environments with &quot;Live Templates functionality&quot;.",
+          "Efficiently calling 'buildPhoneNumberLinkHrefAttributeValue' in the Yamato Daiwa Frontend (YDF) library using " +
+            "'Live Templates functionality' in IntelliJ IDEA family Integrated Development Environments.",
       maximalWidth__anyValidCSS_Value: "600px",
       autoAspectRatioByYDA: true
     })

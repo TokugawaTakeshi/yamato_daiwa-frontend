@@ -29,7 +29,6 @@ This context dependent selector is the optimization measure: when the theme and/
 ## Common patterns
 
 ### Root element
-#### Individual themes
 
 ```stylus
 applyGeometricVariation(themeName, variationName, variation)
@@ -40,6 +39,8 @@ applyGeometricVariation(themeName, variationName, variation)
 
     border-width: variation.rootElement.borderWidth
 ```
+
+#### Individual themes
 
 When **1 theme** and **1 geometric variation**, there is _no_ need to use the CSS modifier classes for them, thus
   styles will be applied directly to the **root element**:
@@ -125,6 +126,20 @@ with **multiple geometric variations** case and theme independent **1 geometric 
 ```
 
 
+#### Common themes
+
+While theme is only one, it's modifier CSS class will not appear in output CSS code.
+
+With _multiple_ **themes** and **1** _theme dependent_ **geometric variation**, it will be 
+
+```css
+.SampleTheme1--YDF .Sample--YDF {
+  border-width: 1px; 
+}
+```
+
+
+[//]: # (=== TODO ===============================================================================================================)
 #### Apply modifier CSS class to root
 
 ```stylus

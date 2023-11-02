@@ -6,8 +6,8 @@ FixedTranslucentDimLayer(compoundParameter = {}, restParameters__MUST_NOT_BE...)
     targetParameter: compoundParameter,
     schema: {
       ZIndex: {
-        type: DataTypes.dimensionlessAmount,
-        defaultValue: ZIndexes.blockingOverlay
+        type: DataTypes.dimensionlessQuantity,
+        defaultValue: YDF_Configuration.zIndexes.blockingOverlay
       },
       backgroundColor: {
         type: DataTypes.colorDefinition,

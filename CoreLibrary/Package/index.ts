@@ -5,6 +5,7 @@ export { default as AttentionBox } from "./Components/AttentionBox/AttentionBox"
 export { default as BlockingLoadingOverlay } from "./Components/BlockingLoadingOverlay/BlockingLoadingOverlay";
 
 export { default as Button } from "./Components/Controls/Buttons/Plain/Button";
+export { default as HamburgerMenuButton } from "./Components/Controls/Buttons/HamburgerMenu/HamburgerMenuButton";
 
 export { default as FilesUploader } from "./Components/Controls/FilesUploader/FilesUploader";
 export { default as TextBox } from "./Components/Controls/TextBox/TextBox";
@@ -57,6 +58,14 @@ export { default as MaximalCharactersCountInputtedValueValidationRule } from
 export { default as maximalCharactersCountInputtedValueValidationRuleLocalization__english } from
     "./Components/Controls/_Validation/PreMadeRules/Strings/MaximalCharactersCountInputtedValueValidationRuleLocalization.english";
 
+export { default as EmailAddressInputtedValueValidation } from
+    "./Components/Controls/_Validation/PreMadeValidations/Strings/EmailAddress/EmailAddressInputtedValueValidation";
+export { default as emailAddressInputtedValueValidationLocalization__english } from
+    "./Components/Controls/_Validation/PreMadeValidations/Strings/EmailAddress/EmailAddressInputtedValueValidationLocalization.english";
+export { default as PasswordInputtedValueValidation } from
+    "./Components/Controls/_Validation/PreMadeValidations/Strings/Password/PasswordInputtedValueValidation";
+export { default as passwordInputtedValueValidationLocalization__english } from
+    "./Components/Controls/_Validation/PreMadeValidations/Strings/Password/PasswordInputtedValueValidationLocalization.english";
 
 export { default as CollapsingAnimation } from "./Animations/CollapsingAnimation";
 export { default as ExpandingAnimation } from "./Animations/ExpandingAnimation";

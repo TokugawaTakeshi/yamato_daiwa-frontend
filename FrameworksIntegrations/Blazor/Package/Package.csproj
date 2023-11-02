@@ -1,9 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
+    <PackageId>YamatoDaiwaFrontend</PackageId>
+    <Title>Yamato Daiwa Frontend</Title>
+    <RootNamespace>YamatoDaiwa.Frontend</RootNamespace>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Description>The adaptation of the "Yamato Daiwa Frontend" toolkit for the Blazor framework</Description>
+    <RepositoryUrl>https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend.git</RepositoryUrl>
+    <Version>0.0.1</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
 
@@ -13,11 +22,24 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.5" />
+    <PackageReference Include="YamatoDaiwaCS_Extensions" Version="0.0.6" />
   </ItemGroup>
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\background.png" />
     <_ContentIncludedByDefault Remove="wwwroot\exampleJsInterop.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE.md" Pack="true" PackagePath="\" />
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+    <None Include="NuGetProjectIcon.png">
+      <Pack>True</Pack>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\Badge\LoadingPlaceholder\" />
   </ItemGroup>
 
 </Project>

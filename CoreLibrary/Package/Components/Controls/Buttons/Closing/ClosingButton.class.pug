@@ -1,0 +1,93 @@
+include ClosingButtonLocalization.english.pug
+
+
+-
+
+  class ClosingButton__YDF {
+
+    static CSS_NAMESPACE = "ClosingButton--YDF";
+
+    static LabelLetterCases = {
+      uppercase: "UPPERCASE",
+      lowercase: "LOWERCASE",
+      capitalisation: "CAPITALISATION"
+    };
+
+
+    /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static Themes = { regular: "REGULAR" };
+
+    static defineCustomThemes(themesNames) {
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, ClosingButton__YDF);
+    }
+
+    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+
+    static considerThemesAsCommon() {
+      ClosingButton__YDF.areThemesCSS_ClassesCommon = true;
+      return ClosingButton__YDF;
+    }
+
+
+    /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
+    static GeometricVariations = { regular: "REGULAR" };
+
+    static defineCustomGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, ClosingButton__YDF);
+    }
+
+
+    /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
+    static DecorativeVariations = {
+      regular: "REGULAR",
+      lightForeground: "LIGHT_FOREGROUND"
+    };
+
+    static defineCustomDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, ClosingButton__YDF);
+    }
+
+
+    /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static propertiesSpecification = {
+
+      noLabel: {
+        type: Boolean,
+        required: false
+      },
+
+      labelLetterCase: {
+        type: String,
+        allowedAlternatives: ClosingButton__YDF.LabelLetterCases
+      },
+
+      theme: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(ClosingButton__YDF.Themes)
+      },
+
+      areThemesCSS_ClassesCommon: {
+        type: Boolean,
+        required: false
+      },
+
+      geometry: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(ClosingButton__YDF.GeometricVariations)
+      },
+
+      decoration: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(ClosingButton__YDF.DecorativeVariations)
+      }
+
+    };
+
+
+    /* ━━━ Localization ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static localization = closingButtonLocalization__english;
+
+  }

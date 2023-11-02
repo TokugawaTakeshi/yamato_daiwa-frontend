@@ -160,7 +160,7 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
         each validationErrorMessage in validationErrorsMessages
           li.CompoundControlShell--YDF-ValidationErrorMessage= validationErrorMessage
 
-    <!--COMPOUND_CONTROL_SHELL__YDF-VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT-->
+    template.CompoundControlShell--YDF-ValidationErrorsMessagesListMountingPoint
 
 
     //- ━━━ Asynchronous validations ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -203,4 +203,4 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
                 +MultiplicationSign__Boxed__Filled--YDF_Icon.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Icon
                 p.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Text= asynchronousValidationsStatus.message
 
-    <!--COMPOUND_CONTROL_SHELL__YDF-ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MOUNTING_POINT-->
+    template.CompoundControlShell--YDF-AsynchronousValidationsStatusesListMountingPoint

@@ -1,8 +1,9 @@
-import type { _RouteLocationBase as VueRouterLocation } from "vue-router";
+import type { _RouteLocationBase as VueRouterLocation, LocationQueryValue as VueRouterLocationQueryValue } from "vue-router";
 import {
   isString,
   isUndefined,
-  isNotUndefined
+  isNotUndefined,
+  isEitherUndefinedOrNull
 } from "@yamato-daiwa/es-extensions";
 
 
@@ -18,9 +19,10 @@ export default function extractVueRouteQueryParameterValueAsArrayOfStrings(
   }>
 ): Array<string> {
 
-  const queryParameterPotentialValue: unknown = targetRoute.query[targetQueryParameterKey];
+  const queryParameterPotentialValue: VueRouterLocationQueryValue | Array<VueRouterLocationQueryValue> =
+      targetRoute.query[targetQueryParameterKey];
 
-  if (isUndefined(queryParameterPotentialValue)) {
+  if (isEitherUndefinedOrNull(queryParameterPotentialValue)) {
     return [];
   }
 

@@ -1,9 +1,9 @@
-/* ━━━ Imports ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* ─── Framework ───────────────────────────────────────────────────────────────────────────────────────────────────────────── */
+/* ━━━ Imports ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* ─── Framework ─────────────────────────────────────────────────────────────────────────────────────────────────── */
 import { ComponentBase as VueComponentConfiguration, Vue as VueComponent, Prop as VueProperty } from "vue-facing-decorator";
 import type { ComponentPublicInstance as VueComponentPublicInstance } from "vue";
 
-/* ─── Framework ───────────────────────────────────────────────────────────────────────────────────────────────────────────── */
+/* ─── Framework ─────────────────────────────────────────────────────────────────────────────────────────────────── */
 import {
   toLowerCamelCase,
   toUpperCamelCase,
@@ -21,7 +21,7 @@ import YDF_ComponentsCoordinator from "../YDF_ComponentsCoordinator";
 
 namespace Badge {
 
-  /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   export type Themes = {
     readonly regular: "REGULAR";
     [themeName: string]: string;
@@ -36,7 +36,7 @@ namespace Badge {
   }
 
 
-  /* ─── Geometry ──────────────────────────────────────────────────────────────────────────────────────────────────────────── */
+  /* ─── Geometry ────────────────────────────────────────────────────────────────────────────────────────────────── */
   export type GeometricVariations = {
     readonly regular: "REGULAR";
     [variationName: string]: string;
@@ -52,7 +52,7 @@ namespace Badge {
   }
 
 
-  /* ─── Decoration ────────────────────────────────────────────────────────────────────────────────────────────────────────── */
+  /* ─── Decoration ──────────────────────────────────────────────────────────────────────────────────────────────── */
   export type DecorativeVariations = {
     readonly veryCatchyBright: "VERY_CATCHY_BRIGHT";
     readonly catchyBright: "CATCHY_BRIGHT";
@@ -89,14 +89,15 @@ namespace Badge {
   };
 
   export enum DecorativeModifiers {
-    bordersDisguising = "BORDERS_DISGUISING"
+    bordersDisguising = "BORDERS_DISGUISING",
+    noBackground = "NO_BACKGROUND"
   }
 
 
   @VueComponentConfiguration({})
   export class BasicLogic extends VueComponent {
 
-    /* ━━━ Properties ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ━━━ Properties ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     @VueProperty({ type: String })
     protected readonly keyLabel?: string | null;
 
@@ -137,7 +138,7 @@ namespace Badge {
     protected readonly decorativeModifiers!: Array<DecorativeModifiers>;
 
 
-    /* ━━━ Themes ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ━━━ Themes ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     public static readonly Themes: typeof Themes = Themes;
 
     public static defineCustomThemes(themesNames: ReadonlyArray<string>): typeof BasicLogic {
@@ -151,7 +152,7 @@ namespace Badge {
     }
 
 
-    /* ─── Geometric variations ────────────────────────────────────────────────────────────────────────────────────────────── */
+    /* ─── Geometric variations ──────────────────────────────────────────────────────────────────────────────────── */
     public static readonly GeometricVariations: typeof GeometricVariations = GeometricVariations;
 
     public static defineCustomGeometricVariations(geometricVariationsNames: ReadonlyArray<string>): typeof BasicLogic {
@@ -165,7 +166,7 @@ namespace Badge {
     }
 
 
-    /* ───  Decorative variations ──────────────────────────────────────────────────────────────────────────────────────────── */
+    /* ───  Decorative variations ────────────────────────────────────────────────────────────────────────────────── */
     public static readonly DecorativeVariations: typeof DecorativeVariations = DecorativeVariations;
 
     public static defineCustomDecorativeVariations(decorativeVariationsNames: ReadonlyArray<string>): typeof BasicLogic {
@@ -179,8 +180,8 @@ namespace Badge {
     }
 
 
-    /* ━━━ Auxiliaries ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    protected get rootElementModifierCSS_Classes(): Readonly<string> {
+    /* ━━━ Auxiliaries ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    protected get rootElementModifierCSS_Classes(): ReadonlyArray<string> {
       return [
 
         ...Object.entries(Themes).length > 1 && !this.areThemesCSS_ClassesCommon ?
@@ -196,7 +197,9 @@ namespace Badge {
         ...Object.entries(DecorativeVariations).length > 1 ?
             [ `Badge--YDF__${ toUpperCamelCase(this.decoration) }Decoration` ] : [],
         ...this.decorativeModifiers.includes(DecorativeModifiers.bordersDisguising) ?
-            [ "Badge--YDF__BordersDisguisingDecorativeModifier" ] : []
+            [ "Badge--YDF__BordersDisguisingDecorativeModifier" ] : [],
+        ...this.decorativeModifiers.includes(DecorativeModifiers.noBackground) ?
+            [ "Badge--YDF__NoBackgroundDecorativeModifier" ] : []
 
       ];
     }
@@ -204,7 +207,7 @@ namespace Badge {
   }
 
 
-  /* ━━━ Providing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Providing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   let Implementation: typeof VueComponent | null = null;
   let LoadingPlaceholderImplementation: typeof VueComponent | null = null;
 

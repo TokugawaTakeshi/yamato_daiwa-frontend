@@ -1,0 +1,260 @@
+extends ../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../SharedAssets/Markup/SharedAssets.japanese.pug
+  include ../../../SharedComponents/SharedComponents.japanese.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "ja";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("v2d0");
+    HTML_PageMetaData = {
+      description: MetaDescriptionTemplates.realiseNotes({ version: "2.0" }),
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+
+    RoutingEmulator.setCurrentRoute("realiseNotes.v2d0");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      english: "./v2d0.english.html",
+      russian: "./v2d0.russian.html"
+    });
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1 バージョン2.0
+
+    h2.Article-Heading2 主要パッケージ（@yamato-daiwa/frontend）
+
+    h3.Article-Heading3 新規機能
+
+    h4.Article-Heading4 マークアップ
+
+    h5.Article-Heading5 Pug内のJavaScript
+
+    h6.Article-Heading6 関数・クラス
+
+    ul.Article-UnorderedList
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            YDEE_Integration.$URI
+      }).Article-Link @yamato-daiwa/es-extensions (YDEE)との結合
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            buildEmailLinkHrefAttributeValue.$URI
+      }).Article-Link buildEmailLinkHrefAttributeValue
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            buildPhoneNumberLinkHrefAttributeValue.$URI
+      }).Article-Link buildPhoneNumberLinkHrefAttributeValue
+      //- TODO 上書き打ち ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            processPugMixinsObjectTypeParameter.$URI
+      }).Article-Link processPugMixinsObjectTypeParameter
+
+      //-
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              markup.$children.
+              functionality.$children.
+              inlineJavaScript.$children.
+              functionsAndClasses.$children.
+              RoutingEmulator.$URI
+        }).Article-Link RoutingEmulator
+
+
+    h6.Article-Heading6 アセット
+
+    ul.Article-UnorderedList
+
+      //-
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              markup.$children.
+              functionality.$children.
+              inlineJavaScript.$children.
+              assets.$children.
+              textOverflowSafetyTest.$URI
+        }).Article-Link textOverflowSafetyTest
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            assets.$children.
+            DummyImagesURIs.$URI
+      }).Article-Link DummyImagesURIs
+
+
+    h5.Article-Heading5 Pug混入
+
+    //-
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.
+              $children.markup.
+              $children.functionality.
+              $children.pugMixins.
+              $children.dummies.$URI
+        }).Article-Link WideDummy と HighDummy
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.
+              $children.markup.
+              $children.functionality.
+              $children.pugMixins.
+              $children.SVG_Icons.$URI
+        }).Article-Link SVGアイコン
+
+
+    h4.Article-Heading4 スタイル
+
+    //-
+      h5.Article-Heading5 アセット
+
+      h6.Article-Heading6 カラーパレット
+
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              assets.$children.
+              colors.$children.
+              YDF_ColorPalette.$URI
+        }).Article-Link YDF_ColorPalette
+
+    h5.Article-Heading5 コア
+
+    h6.Article-Heading6 仕様のスキマ
+
+    //-
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              bordersSizing.$URI
+        }).Article-Link BordersSizingSpecificationSchema--YDF
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              paddings.$URI
+        }).Article-Link PaddingsSpecificationSchema--YDF
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              textElementHeightSizing.$URI
+        }).Article-Link TextElementHeightSizingSpecificationSchema--YDF
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              widthSizing.$URI
+        }).Article-Link WidthSizingSpecificationSchema--YDF
+    //- TODO 中間打ち ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+    h3.Article-Heading3 破壊的変化
+
+    h4.Article-Heading4 スタイル
+
+    h5.Article-Heading5 アセット
+
+    h6.Article-Heading6 #[code DataTypes]列挙の名前変更
+
+    p.Article-Paragraph.
+      #[+ImportantEntity__Code--YDID DataTypes]#[+Term--YDID 列挙]の#[+ImportantEntity__Code--YDID dimensionalAmount]
+        #[+Term--YDID 要素]は#[+ImportantEntity__Code--YDID dimensionalQuantity]に名前変更され、
+        #[+ImportantEntity__Code--YDID dimensionlessAmount]は#[+ImportantEntity__Code--YDID dimensionlessQuantity]に
+        名前が変更された。
+
+    dl.Article-DescriptionList
+
+      dt 理由
+      dd 科学的な用語に画一化
+
+      dt コードの編集が必要に成る条件
+      dd.
+        #[+ImportantEntity__Code--YDID DataTypes]#[+Term--YDID 列挙]の#[+ImportantEntity__Code--YDID dimensionalAmount]か、
+          #[+ImportantEntity__Code--YDID dimensionlessAmount]を使った事がある
+
+      dt 対策
+      dd.
+        コードエディターか、結合開発環境の適切な機能使って、#[+ImportantEntity__Code--YDID DataTypes.dimensionalAmount]を
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionalQuantity]に置き換え、
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionlessAmount]を
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionlessQuantity]に置き換えて下さい。
+        例えば、「IntelliJ IDEA」ファミリー結合開発環境の場合、此の機能をショートカット#[+SecondaryEntity__Code--YDID Ctrl + Shift + R]で
+          起動出来る。
+
+    +AttentionBox--YDF({
+      title: "英語文法関連備考",
+      decoration: AttentionBox__YDF.DecorativeVariations.notice,
+      hasPrependedSVG_Icon: true
+    })
+      p.Article-Paragraph.
+        日本人に取って文法的な単数・複数が可成り苦手な分野だが、エンジニア達は正しく表現しないと、混乱の原因に成る事が有ります。
+
+      p.Article-Paragraph
+        | 「percent」に関しては、文法が少し特別。
+        | #[+ImportantEntity--YDID 2以上]#[+Keyword--YDID でも]「percents」ではなく、「percent」に成っている事が多い。
+        +Link--YDF({
+          unendorsedExternalURI: "https://english.stackexchange.com/a/273587/333658"
+        }).Article-Link 「english.stackexchange.com」
+        |   での説明に依ると、「percent」の最後に「s」の有無は、連想している名詞に依り、「opacity」の様な#[+Term--YDID 不可算名詞]の場合、
+        |   「s」無しでも妥当に成っている。
+        | が、基本規則を忘れては成らなく、#[+Term--YDID 名詞]を含めている変数名を決める時に「単一なの？其れとも複数なの？」と自分に聞く事。
+
+
+    h5.Article-Heading5 基本変数をYDF設定オブジェクトに置き換え

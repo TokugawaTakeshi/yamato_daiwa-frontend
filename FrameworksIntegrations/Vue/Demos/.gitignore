@@ -3,3 +3,6 @@
 /node_modules/
 
 /02-Build/
+
+# Temporary
+/.yda/

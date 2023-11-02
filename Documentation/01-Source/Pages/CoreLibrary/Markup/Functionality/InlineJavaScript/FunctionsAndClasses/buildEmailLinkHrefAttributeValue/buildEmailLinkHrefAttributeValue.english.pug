@@ -18,7 +18,7 @@ block append Metadata
         functionName: "buildEmailLinkHrefAttributeValue",
         whatFunctionDoes:
             "generates such value of the HTML attribute &quot;href&quot; for the&quot;a&quot; tag as once final " +
-              "link has been clicked or tapped, the email software will be opened and it will be suggested to submit the " +
+              "link has been clicked or tapped, the email software will be opened and it will be suggested to compose the " +
               "new email to the address specified via single parameter."
       }),
       author: HTML_PAGE_AUTHOR
@@ -27,7 +27,7 @@ block append Metadata
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
     styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
-    scriptsURIs.endOfBody = [ "@Common" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute(
       "coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.$children.buildEmailLinkHrefAttributeValue"
@@ -64,25 +64,35 @@ block append SpecificContent
     })
 
     p.Article-Paragraph.
-      Generates such value of the #[+Term--YDID HTML attribute] #[+ImportantEntity__Code--YDID href] for the
-        #[+ImportantEntity__Code--YDID a] #[+Term--YDID tag] as once final link has been clicked or tapped,
-        the email software will be opened and it will be suggested to submit the new email to the address specified
-        via #[+Keyphrase--YDID single] #[+Term--YDID parameter].
+      Generates the value for the #[+ImportantEntity__Code--YDID href] #[+Term--YDID HTML attribute] of an
+        #[+Term--YDID anchor] (#[+ImportantEntity__Code--YDID a]) #[+Term--YDID tag].
+      When the resulting link is clicked or tapped, it opens the email software and suggests composing a new email
+        to the specified address passed as a #[+Keyphrase--YDID single] #[+Term--YDID parameter].
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }).
+
+        - const targetEmailAddress = "sample@example.com";
+
+        a(
+          href=buildEmailLinkHrefAttributeValue(targetEmailAddress)
+        )= targetEmailAddress
 
     p.Article-Paragraph.
-      All that this #[+Term--YDID function] doing is appending the #[+ImportantEntity__Code--YDID mailto:] to the
-        specified #[+Term--YDID string value] which expected to be the valid email address.
-      If your text editor of the #[+Term--YDID Integrated Development Environment] (#[+Term--YDID IDE]) have
-        #[+Keyword--YDID no] the functionality of the autocompleting according the templates, this #[+Term--YDID function]
-        hardly will be useful for you: #[+ImportantEntity__Code--YDID mailto:] or
-        the #[+Term--YDID function] name #[+ImportantEntity__Code--YDID buildEmailLinkHrefAttributeValue], you will
-        need either to memorize it or check the reference guide every time.
+      This #[+Term--YDID function] appends #[+ImportantEntity__Code--YDID "mailto:"] to the provided
+        #[+Term--YDID string value], which is expected to be a valid email address.
+      If your code editor or #[+Term--YDID Integrated Development Environment] (#[+Term--YDID IDE]) lacks template
+        autocompletion functionality, this #[+Term--YDID function] may not&nbsp;be as convenient.
+      Without autocompletion, you would need to memorize either #[+ImportantEntity__Code--YDID "mailto:"] or the
+        #[+Term--YDID function] name #[+ImportantEntity__Code--YDID buildEmailLinkHrefAttributeValue].
+      If you forget, which is common, you will need to refer to the documentation each time.
+
 
     p.Article-Paragraph
-      | If the autocompletion by the templates functionality is presents, it is enough to begin to input
-      |   #[+SecondaryEntity__Code--YDID buildE...], then the popup hint will appear and the further actions depends
-      |   on how the autocomplete has been implemented in the text editor or #[+Term--YDID IDE].
-      | In the case of the
+      | If your code editor or #[+Term--YDID IDE] supports template autocompletion, entering
+      |   #[+ImportantEntity__Code--YDID "buildE..."] is usually sufficient to trigger a popup hint.
+      | The subsequent actions depend on how autocomplete is implemented.
+      | For instance, with the
       |
       +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.liveTemplates }).Article-Link Live Templates
       |   from the
@@ -92,19 +102,18 @@ block append SpecificContent
       |
       +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.intelliJ_IDEA_FamilyIDEs }).Article-Link.
         IntelliJ IDEA family IDEs
-      |   the automatic inserting of the value #[+Keyword--YDID preliminary] copied to the clipboard to the position
-      |   of the #[+Keyword--YDID single] #[+Term--YDID parameter] is being executed.
-      | Thus, the inputting of the #[+ImportantEntity__Code--YDID href] #[+Term--YDID attribute] using the
-      |   #[+ImportantEntity__Code--YDID buildEmailLinkHrefAttributeValue] function could be completed by 3-4
-      |   keys pushing depending on how many other autocompletions has been suggested):
+      |   the value, previously copied to the clipboard, is automatically inserted into the position of the
+      |   single #[+Term--YDID parameter].
+      | Thus, completing the input of the #[+ImportantEntity__Code--YDID href] #[+Term--YDID attribute] using the
+      |   #[+ImportantEntity__Code--YDID buildEmailLinkHrefAttributeValue] #[+Term--YDID function] typically requires
+      |   only 3-4 keystrokes (depending on the number of other suggested autocompletions):
 
     +SingleImageViewer--YDF({
       imageURI: "@AssociatedWithPages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
           "buildEmailLinkHrefAttributeValue/Images/buildEmailLinkHrefAttributeValue-LiveTemplate",
       imageAlternateText:
-          "The quick inputting of the calling of the &quot;buildEmailLinkHrefAttributeValue&quot; function from the library " +
-            "&quot;Yamato Daiwa Frontend&quot; (abbreviation: &quot;YDF&quot;) in the &quot;IntelliJ IDEA&quot; family " +
-            "Integrated Development Environments with &quot;Live Templates functionality&quot;.",
+          "Efficiently calling 'buildEmailLinkHrefAttributeValue' in the Yamato Daiwa Frontend (YDF) library using " +
+            "'Live Templates functionality' in IntelliJ IDEA family Integrated Development Environments.",
       maximalWidth__anyValidCSS_Value: "600px",
       autoAspectRatioByYDA: true
     })

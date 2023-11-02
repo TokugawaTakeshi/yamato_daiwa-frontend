@@ -15,7 +15,6 @@ import {
   cloneDOM_Element,
   createDOM_ElementFromHTML_Code
 } from "@yamato-daiwa/es-extensions-browserjs";
-import getCommentDOM_Node from "../../../Logic/UtilsIncubator/DOM/getCommentDOM_Node";
 import { isNotUndefined, isNull, isUndefined } from "@yamato-daiwa/es-extensions";
 
 
@@ -23,15 +22,15 @@ export default class CompoundControlShell {
 
   /* ━━━ Static fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   /* ─── Accessing to DOM ─────────────────────────────────────────────────────────────────────────────────────────── */
-  protected static readonly VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT_PLACEHOLDER_CONTENT: string =
-      "COMPOUND_CONTROL_SHELL__YDF-VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT";
+  protected static readonly VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT_SELECTOR: string =
+      ".CompoundControlShell--YDF-ValidationErrorsMessagesListMountingPoint";
   protected static readonly VALIDATION_ERRORS_MESSAGES_LIST_SELECTOR: string =
       ".CompoundControlShell--YDF-ValidationErrorsMessagesList";
   protected static readonly VALIDATION_ERRORS_MESSAGES_LIST_ITEM_SELECTOR: string =
       ".CompoundControlShell--YDF-ValidationErrorMessage";
 
-  protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MOUNTING_POINT_PLACEHOLDER_CONTENT: string =
-      "COMPOUND_CONTROL_SHELL__YDF-ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MOUNTING_POINT";
+  protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MOUNTING_POINT_SELECTOR: string =
+      ".CompoundControlShell--YDF-AsynchronousValidationsStatusesListMountingPoint";
   protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_SELECTOR: string =
       ".CompoundControlShell--YDF-AsynchronousValidationsStatusesList";
   protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_ITEM_SELECTOR: string =
@@ -65,7 +64,7 @@ export default class CompoundControlShell {
   /* ━━━ Instance fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public readonly rootElement: HTMLElement;
 
-  protected readonly validationErrorsMessagesCollapsableListMountingPoint: Comment;
+  protected readonly validationErrorsMessagesCollapsableListMountingPoint: Element;
 
   protected readonly validationErrorsMessagesCollapsableList: HTMLElement = cloneDOM_Element({
     targetElement: CompoundControlShell.validationErrorsMessagesCollapsableList,
@@ -77,7 +76,7 @@ export default class CompoundControlShell {
     mustCopyAllChildren: false
   });
 
-  protected readonly asynchronousValidationsStatusesCollapsableListMountingPoint: Comment;
+  protected readonly asynchronousValidationsStatusesCollapsableListMountingPoint: Element;
 
   protected readonly asynchronousValidationsStatusesCollapsableList: HTMLElement = cloneDOM_Element({
     targetElement: CompoundControlShell.asynchronousValidationsStatusesCollapsableList,
@@ -139,16 +138,14 @@ export default class CompoundControlShell {
 
     this._mustDisplayErrorsMessagesIfAny = compoundParameter.mustDisplayErrorsMessagesIfAny;
 
-    this.validationErrorsMessagesCollapsableListMountingPoint = getCommentDOM_Node({
-      commentContent: CompoundControlShell.VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT_PLACEHOLDER_CONTENT,
-      directParent: this.rootElement,
-      mustThrowErrorIfCommentNotFound: true
+    this.validationErrorsMessagesCollapsableListMountingPoint = getExpectedToBeSingleDOM_Element({
+      selector: CompoundControlShell.VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT_SELECTOR,
+      context: this.rootElement
     });
 
-    this.asynchronousValidationsStatusesCollapsableListMountingPoint = getCommentDOM_Node({
-      commentContent: CompoundControlShell.ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MOUNTING_POINT_PLACEHOLDER_CONTENT,
-      directParent: this.rootElement,
-      mustThrowErrorIfCommentNotFound: true
+    this.asynchronousValidationsStatusesCollapsableListMountingPoint = getExpectedToBeSingleDOM_Element({
+      selector: CompoundControlShell.ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MOUNTING_POINT_SELECTOR,
+      context: this.rootElement
     });
 
   }

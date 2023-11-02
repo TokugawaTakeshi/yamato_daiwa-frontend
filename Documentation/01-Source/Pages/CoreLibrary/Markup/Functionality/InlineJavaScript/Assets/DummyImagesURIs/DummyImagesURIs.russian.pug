@@ -1,0 +1,92 @@
+extends ../../../../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../../../../SharedAssets/Markup/SharedAssets.russian.pug
+  include ../../../../../../../SharedComponents/SharedComponents.russian.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "ru";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("DummyImagesURIs");
+    HTML_PageMetaData = {
+      description: "",
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+
+    RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.assets.DummyImagesURIs");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      english: "./DummyImagesURIs.english.html",
+      japanese: "./DummyImagesURIs.japanese.html"
+    });
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1 #[code DummyImagesURIs]
+
+    +AttentionBox--YDF({
+      title: "Документация ещё не готова",
+      decoration: AttentionBox__YDF.DecorativeVariations.guidance,
+      hasPrependedSVG_Icon: true
+    })
+      | Документация для этой функциональности пока не готова к публикации, однако её планируется завершить до начала
+      |   выпуска бета-версий.
+      | Пока что для получения информации об этой функциональности просим Вам посмотреть
+      |
+      +Link--YDF({
+        endorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Markup/Assets/Dummies.pug"
+      }).Article-Link исходный код
+      | .
+
+    //-
+      p.Article-Paragraph.
+        Хотя для веб-разработчиков было бы удобно, если однородные изображения (например, фотографии одного и того же
+          продукта, которые должны отображаться в мини-галерее) были одного размера или хотя бы одного разрешения,
+          на практике это часто нереализуемо, а потому приходится верстать так, чтобы отображение не&nbsp;разваливалось
+          #[+Keyphrase--YDID при любых] размерах и пропорциях изображения.
+        Для того, чтобы более-менее быть уверенным в том, что эти адаптации реализованы, необходимо иметь под рукой
+          несколько изображений разных размеров и пропорций, и если у Вас такие изображения есть, то можете их исползовать.
+
+      p.Article-Paragraph.
+        В случаях, когда такого тестового набора изображений нет, можно воспользоваться константой
+          #[+ImportantEntity__Code--YDID DummyImagesURIs].
+        Она является обычным #[+Term--YDID JavaScript-объектом], но по структуре это ассоциативный массив, значения
+          которого — стерилизованные изображения.
+        Ключами же являются:
+
+      dl.Article-DescriptionList
+
+        dt aspectRatio19x6
+        dd Изображение с соотношением сторон #[+ImportantEntity--YDID 19 x 6]
+
+        dt aspectRatio4x3
+        dd Изображение с соотношением сторон #[+ImportantEntity--YDID 4 x 3]
+
+        dt wideAndLow
+        dd Очень длинное изображение с малой высотой
+
+        dt highAndNarrow
+        dd Очень высокое изображение малой длины
+
+        dt small
+        dd Маленькое изображение

@@ -240,17 +240,17 @@ validateObjectTypeParameter(namedParameters)
           }
 
         } else if (
-          propertySpecification.type[0] == DataTypes.dimensionalAmount ||\
-          propertySpecification.type[0] == DataTypes.dimensionlessAmount
+          propertySpecification.type[0] == DataTypes.dimensionalQuantity ||\
+          propertySpecification.type[0] == DataTypes.dimensionlessQuantity
         ) {
 
           if (
-            propertySpecification.type[0] == DataTypes.dimensionalAmount &&\
-            propertySpecification.type[1] == DataTypes.dimensionlessAmount
+            propertySpecification.type[0] == DataTypes.dimensionalQuantity &&\
+            propertySpecification.type[1] == DataTypes.dimensionlessQuantity
           ) {
 
             // --- Dimensional or dimensionless amount -----------------------------------------------------------------
-            if (!isDimensionalOrDimensionlessAmount(propertyValue)) {
+            if (!isDimensionalOrDimensionlessQuantity(propertyValue)) {
               error(generateErrorMessage({
                 messageSpecificPart: buildString(
                   "This property must be either dimensional or dimensionless amount while actually has type " +\
@@ -265,13 +265,13 @@ validateObjectTypeParameter(namedParameters)
               }))
             }
 
-          } else if (propertySpecification.type == DataTypes.dimensionalAmount) {
+          } else if (propertySpecification.type == DataTypes.dimensionalQuantity) {
 
             // --- Dimensional amount ----------------------------------------------------------------------------------
 
             // [ Stylus theory ] Direct usage if below expression in "if" statement will cause the Stylus bug
             // expected ")", got "{"
-            hasValueDimensionalAmountType = isDimensionalAmount(propertyValue, { considerDimensionlessZeroAsDimensionalAmount: true })
+            hasValueDimensionalAmountType = isDimensionalQuantity(propertyValue, "MUST_CONSIDER_DIMENSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY")
 
             if (!hasValueDimensionalAmountType) {
 
@@ -300,10 +300,10 @@ validateObjectTypeParameter(namedParameters)
               }
             }
 
-          } else if (propertySpecification.type == DataTypes.dimensionlessAmount) {
+          } else if (propertySpecification.type == DataTypes.dimensionlessQuantity) {
 
             // --- Dimensionless amount --------------------------------------------------------------------------------
-            if (!isDimensionlessAmount(propertyValue)) {
+            if (!isDimensionlessQuantity(propertyValue)) {
 
               if (typeof(propertyValue) == "unit") {
 
@@ -333,7 +333,7 @@ validateObjectTypeParameter(namedParameters)
 
 
           if (
-            isDimensionlessAmount(propertySpecification.minimalValue) &&\
+            isDimensionlessQuantity(propertySpecification.minimalValue) &&\
             propertyValue < propertySpecification.minimalValue
           ) {
             error(generateErrorMessage({
@@ -350,7 +350,7 @@ validateObjectTypeParameter(namedParameters)
           }
 
           if (
-            isDimensionlessAmount(propertySpecification.maximalValue) &&\
+            isDimensionlessQuantity(propertySpecification.maximalValue) &&\
             propertyValue > propertySpecification.maximalValue
           ) {
             error(generateErrorMessage({

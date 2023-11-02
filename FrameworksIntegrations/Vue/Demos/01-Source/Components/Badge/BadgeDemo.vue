@@ -248,7 +248,40 @@ template(
         )
 
 
-//- === Loading placeholder ============================================================================================
+  //- ─── Borders disguising ─────────────────────────────────────────────────────────────────────────────────────────────
+  template(
+    v-if="decorativeModifiers.noBackground"
+  )
+
+    h3.Heading3(
+      v-if="headings"
+    ) No background
+
+    ThemesShowcase(
+      :themes="Badge.Themes"
+      :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+      :geometricVariations="Badge.GeometricVariations"
+      :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+      :decorativeVariations="Badge.DecorativeVariations"
+      :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+      decorativeVariationsWrapperTag="dl"
+      :decorativeVariationsWrapperAdditionalCSS_Classes="[ 'BadgeDemo-BadgesTwoColumnsTable' ]"
+    )
+      template(
+        v-slot="{ theme, geometricVariation, decorativeVariation }"
+      )
+        dt Badge__YDF.DecorativeVariations.{{ decorativeVariation.key }}
+        dd
+          Badge(
+            valueLabel="Sample"
+            :theme="theme.value"
+            :geometry="geometricVariation.value"
+            :decoration="decorativeVariation.value"
+            :decorativeModifiers="[ Badge.DecorativeModifiers.noBackground ]"
+          )
+
+
+//- ━━━ Loading placeholder ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 template(
   v-if="loadingPlaceholder"
 )
@@ -277,7 +310,7 @@ template(
 
 <script lang="ts">
 
-  /* --- Other components ------------------------------------------------------------------------------------------- */
+  /* ─── Other components ────────────────────────────────────────────────────────────────────────────────────────── */
   import {
     ThemesShowcase,
     Badge,
@@ -285,10 +318,10 @@ template(
     CalendarIcon
   } from "@yamato-daiwa/frontend-vue";
 
-  /* --- Framework -------------------------------------------------------------------------------------------------- */
+  /* ─── Framework ───────────────────────────────────────────────────────────────────────────────────────────────── */
   import { Component as VueComponentOptions, Vue as VueComponent, Prop as VueProperty } from "vue-facing-decorator";
 
-  /* --- Utils ------------------------------------------------------------------------------------------------------ */
+  /* ─── Utils ───────────────────────────────────────────────────────────────────────────────────────────────────── */
   import { getRandomString } from "@yamato-daiwa/es-extensions";
 
 
@@ -301,7 +334,7 @@ template(
   })
   export default class BadgeDemo extends VueComponent {
 
-    /* === Properties =============================================================================================== */
+    /* ━━━ Properties ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     @VueProperty({ type: Boolean, default: true })
     protected readonly headings!: boolean;
 
@@ -324,7 +357,7 @@ template(
     protected readonly geometricModifiers!: Readonly<{ pillShape: boolean; singleLine: boolean; }>;
 
     @VueProperty({ type: Object, default: { bordersDisguising: true } })
-    protected readonly decorativeModifiers!: Readonly<{ bordersDisguising: boolean; }>;
+    protected readonly decorativeModifiers!: Readonly<{ bordersDisguising: boolean; noBackground: boolean; }>;
 
     @VueProperty({ type: Object, default: { multiline: true, singleLine: true } })
     protected readonly overflowTesting!: Readonly<{ multiline: boolean; singleLine: boolean; }>;
@@ -333,8 +366,8 @@ template(
     protected readonly loadingPlaceholder!: boolean;
 
 
-    /* === Fields =================================================================================================== */
-    /* --- Non-reactive --------------------------------------------------------------------------------------------- */
+    /* ━━━ Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── Non-reactive ──────────────────────────────────────────────────────────────────────────────────────────── */
     protected Badge!: typeof Badge;
 
     protected THEME_KEY_LABEL_PREFIX!: string;
@@ -346,7 +379,7 @@ template(
     protected textOverflowSafetyTest!: string;
 
 
-    /* === Lifecycle hooks ========================================================================================== */
+    /* ━━━ Lifecycle hooks ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     public created(): void {
 
       this.initializeNonReactiveClassFields();
@@ -355,7 +388,7 @@ template(
     }
 
 
-    /* === Routines ================================================================================================= */
+    /* ━━━ Routines ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     private initializeNonReactiveClassFields(): void {
 
       this.Badge = Badge;

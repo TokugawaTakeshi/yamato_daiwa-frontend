@@ -26,7 +26,7 @@ block append Metadata
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
     styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
-    scriptsURIs.endOfBody = [ "@Common" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute(
       "coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.$children.buildEmailLinkHrefAttributeValue"
@@ -85,7 +85,7 @@ block append SpecificContent
       使用しているコードエディター、又は#[+Term--YDID 統合開発環境]で、原型に応じたオートコンプリート機能が利用出来ない場合は、此の#[+Term--YDID 関数]は
         役に立たないかもしれない。
       #[+ImportantEntity__Code--YDID mailto:]にしろ、#[+ImportantEntity__Code--YDID buildEmailLinkHrefAttributeValue]
-        #[+Term--YDID 関数]名にしろ、暗記してしまうか、毎回リファレンスを参照する事が必要になる為だ。
+        #[+Term--YDID 関数]名にしろ、暗記してしまうか、毎回リファレンスを参照する事が必要に成る為だ。
 
     p.Article-Paragraph
       | 原型に応じたオートコンプリート機能が利用出来る場合は、#[+SecondaryEntity__Code--YDID buildE...]と入力し始めると、ポップアップヒントが表示される。

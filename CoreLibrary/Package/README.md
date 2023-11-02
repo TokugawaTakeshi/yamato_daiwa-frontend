@@ -48,7 +48,48 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
 ### Table of contents
 
 #### Markup
-##### Pages templates
+##### Inline JavaScript
+
+* [YDEE integration](https://ydf.yamato-daiwa.com//CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/YDEE_Integration/YDEE_Integration.english.html)
+
+
+###### Constants assets
+
+<dl>
+
+  <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Markup/ConstantsAssets/textOverflowSafetyTest/textOverflowSafetyTest.md">textOverflowSafetyTest</a></dt>
+  <dd>The string constant intended to be used for testing of text overflow adaptation.</dd>
+
+  <dt><a href="">DummyImageURLs</a></dt>
+  <dd></dd>
+
+</dl>
+
+
+###### Functions and classes
+
+<dl>
+
+  <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Markup/FunctionsAndClasses/ECMAScriptExtensions.md">Functionality of Yamato-Daiwa ES Extensions</a></dt>
+  <dd>
+    Most of functions and classes from 
+    <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-ES-Extensions">Yamato Daiwa ES Extensions</a>
+    are available.
+  </dd>
+
+  <dt><a href="#">buildEmailLinkHrefAttributeValue</a></dt>
+  <dd></dd>
+
+  <dt><a href="">buildPhoneNumberLinkHrefAttributeValue</a></dt>
+  <dd></dd>
+
+  <dt><a href="#">MixinParametersValidator</a></dt>
+  <dd></dd>
+
+</dl>
+
+
+#### Pages templates
 
 <dl>
   <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/RegularWebPage.md">RegularWebPage</a></dt>
@@ -62,8 +103,12 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
 ##### Assets
 
 * [Fundamental constants and enumerations](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md) 
+
+[//]: # (  * [DataTypes]&#40;https://frontend.yamato-daiwa.com//CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/DataTypes/DataTypes.english.html&#41; enumeration)
   * [DataTypes](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types) enumeration
-  * [NARROWEST_SCREEN_WIDTH_UNIT](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit---the-narrowest-screen-width-unit) contant
+
+[//]: # (  * [NARROWEST_SCREEN_WIDTH_UNIT]&#40;https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/NARROWEST_SCREEN_WIDTH_UNIT/NARROWEST_SCREEN_WIDTH_UNIT.english.html&#41; constant)
+  * [NARROWEST_SCREEN_WIDTH_UNIT](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit---the-narrowest-screen-width-unit) constant
 * Colors
   * [ShadesOfGray__39ColorsW3C_Palette](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md)  
   * [TemporaryHighlighting](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md)
@@ -90,7 +135,7 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
       <li>isString</li>    
       <li>isEmptyString</li>    
       <li>isNonEmptyString</li>
-      <li><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isdimensionalamount--isdimensionlessamount--isdimensionalordimensionlessamount">isDimensionalOrDimensionlessAmount</a></li>
+      <li><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isdimensionalamount--isdimensionlessamount--isDimensionalOrDimensionlessQuantity">isDimensionalOrDimensionlessQuantity</a></li>
       <li><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isdimensionalamount--isdimensionlessamount--isdimensionalordimensionlessamount">isDimensionalAmount</a></li>
       <li><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isdimensionalamount--isdimensionlessamount--isdimensionalordimensionlessamount">isDimensionlessAmount</a></li>
       <li><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnaturalnumber">isNaturalNumber</a></li>
@@ -282,8 +327,6 @@ include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
     <dl>
       <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md">SingleLineTextElementOverflowSafety</a></dt>
       <dd>Provides the text overflow safety for single-line elements</dd>
-      <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md">MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight</a></dt>
-      <dd>Defines the font size and line height, herewith there will not be extra vertical space above first line and below last line caused by "line-height".</dd>
     </dl>
   </li>
   <li>

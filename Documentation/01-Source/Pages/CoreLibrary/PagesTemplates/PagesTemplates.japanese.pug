@@ -21,7 +21,7 @@ block append Metadata
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
     styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
-    scriptsURIs.endOfBody = [ "@Common" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.pagesTemplates");
 
@@ -43,3 +43,16 @@ block append SpecificContent
   article
 
     h1.Article-Heading1 ページの原型
+
+    +AttentionBox--YDF({
+      title: "準備中",
+      decoration: AttentionBox__YDF.DecorativeVariations.guidance,
+      hasPrependedSVG_Icon: true
+    })
+      | 恐れ入りますが、当ページは未だ準備中でございます。
+      | アルファ版の期間無い用意を終わらせる予定です。
+      | 御手数ですが、今は
+      +Link--YDF({
+        endorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/README.md#pages-templates"
+      }).Article-Link 一時的なマークダウン説明書
+      |   を確認して下さいませんでしょうか。

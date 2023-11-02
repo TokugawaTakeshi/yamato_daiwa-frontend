@@ -239,6 +239,31 @@ block append PageContent
 
           }
 
+          // TODO 再開点
+          // for (const [hueName, hueAmount] of Object.entries(YDF_PaletteTable.hues)) {
+          //
+          //   tableRowCellsData.push({
+          //     backgroundColor: "aliceblue",
+          //     content: `Pastel gradient`
+          //   });
+          //
+          //   tableRowCellsData.push({
+          //     backgroundColor: "lightpink",
+          //     content: `Light gradient`
+          //   });
+          //
+          //   tableRowCellsData.push({
+          //     backgroundColor: "aliceblue",
+          //     content: `Dark gradient`
+          //   });
+          //
+          //   tableRowCellsData.push({
+          //     backgroundColor: "lightpink",
+          //     content: `Glossy gradient`
+          //   });
+          //
+          // }
+
         }
 
       }
@@ -259,16 +284,16 @@ block append PageContent
 
                 th= headerCellContent
 
-          tbody
-            each tableRowData in YDF_PaletteTable.bodyRows
-              tr
-                each cellData, index in tableRowData
-                  if index > 0
+        tbody
+          each tableRowData in YDF_PaletteTable.bodyRows
+            tr
+              each cellData, index in tableRowData
+                if index > 0
 
-                    td(
-                      style=`background-color: ${cellData.backgroundColor}`
-                    )= cellData.content
+                  td(
+                    style=`background-color: ${cellData.backgroundColor}`
+                  )= cellData.content
 
-                  else
+                else
 
-                    th= cellData
+                  th= cellData

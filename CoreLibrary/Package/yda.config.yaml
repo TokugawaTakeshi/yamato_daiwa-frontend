@@ -30,10 +30,11 @@ projectBuilding:
     entryPointsGroups:
 
       StylesAndComponentsTesting:
-        topDirectoryRelativePath: Tests
+        sourceFilesTopDirectoryRelativePath: Tests
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
           excludeSubdirectoriesWithPrefixes: "_"
+        accessibilityInspection: { disable: true } # TODO Assets/Colors/YDF_ColorPalette.test.pugを除外するだけで良い
         buildingModeDependent:
           LOCAL_DEVELOPMENT:
             outputTopDirectoryRelativePath: Tests/Build
@@ -46,7 +47,7 @@ projectBuilding:
 
       StylesAndComponentsTesting:
 
-        topDirectoryRelativePath: Tests
+        sourceFilesTopDirectoryRelativePath: Tests
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
@@ -59,7 +60,7 @@ projectBuilding:
 
       OutputCheck:
 
-        topDirectoryRelativePath: Tests/Source/OutputCheckOnly
+        sourceFilesTopDirectoryRelativePath: Tests/Source/OutputCheckOnly
 
         buildingModeDependent:
           LOCAL_DEVELOPMENT:
@@ -68,7 +69,7 @@ projectBuilding:
 
       StaticPreviewAnywherePage:
 
-        singleEntryPointRelativePath: PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.styl
+        singleEntryPointSourceFileRelativePath: PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.styl
 
         buildingModeDependent:
           LOCAL_DEVELOPMENT:
@@ -82,7 +83,7 @@ projectBuilding:
 
       Logic:
 
-        singleEntryPointRelativePath: index.ts
+        singleEntryPointSourceFileRelativePath: index.ts
 
         targetRuntime:
           type: BROWSER
@@ -102,7 +103,7 @@ projectBuilding:
 
       PugExtensions:
 
-        singleEntryPointRelativePath: Markup/InlineECMAScript/Source/PugExtensions.ts
+        singleEntryPointSourceFileRelativePath: Markup/InlineECMAScript/Source/PugExtensions.ts
 
         targetRuntime:
           type: PUG

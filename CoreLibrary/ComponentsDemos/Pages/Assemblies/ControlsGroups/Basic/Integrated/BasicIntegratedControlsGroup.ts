@@ -59,7 +59,14 @@ const controlsGroup: ValidatableControlsGroup<AccessControlService.SigningUp.Pay
 
     phoneNumber: TextBox.pickOneBySelector({
       selector: "#PHONE_NUMBER--TEXT_BOX",
-      validation: new InputtedSigningUpDataValidations.PhoneNumber(),
+      validation: new InputtedSigningUpDataValidations.PhoneNumber({
+        contextDependentRules: [
+          // {
+          //   check: (rawValue: unknown): boolean => controlsGroup.controlsPayload.userName.isEmpty || controlsGroup.controlsPayload.userName.isInvalid,
+          //   mustFinishValidationIfValueIsInvalid: true
+          // }
+        ]
+      }),
       validityHighlightingActivationMode: TextBox.ValidityHighlightingActivationModes.onFocusOut
     }).payload,
 

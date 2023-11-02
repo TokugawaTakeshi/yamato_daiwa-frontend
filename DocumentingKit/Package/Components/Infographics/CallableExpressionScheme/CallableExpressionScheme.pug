@@ -25,7 +25,7 @@ mixin CallableExpressionScheme--YDF_DK(properties)
 
       - const genericParameter = genericParameters[0];
 
-      span.CallableExpressionScheme--YDF_DK-Bracket= "&lt;"
+      span.CallableExpressionScheme--YDF_DK-Bracket= "<"
 
       if isString(genericParameter)
 
@@ -37,11 +37,11 @@ mixin CallableExpressionScheme--YDF_DK(properties)
         span.CallableExpressionScheme--YDF_DK-GenericParameter-ExtendingNotation ➝
         span.CallableExpressionScheme--YDF_DK-GenericParameter-Name= genericParameter.extends
 
-      span.CallableExpressionScheme--YDF_DK-Bracket= "&gt;"
+      span.CallableExpressionScheme--YDF_DK-Bracket= ">"
 
     else if genericParametersCount > 1
 
-      span.CallableExpressionScheme--YDF_DK-Bracket.CallableExpressionScheme--YDF_DK-Bracket__OneLine= "&lt;"
+      span.CallableExpressionScheme--YDF_DK-Bracket.CallableExpressionScheme--YDF_DK-Bracket__OneLine= "<"
 
       each genericParameter, index in genericParameters
 
@@ -59,7 +59,7 @@ mixin CallableExpressionScheme--YDF_DK(properties)
 
           span.CallableExpressionScheme--YDF_DK-GenericParameter-Comma ,
 
-      span.CallableExpressionScheme--YDF_DK-Bracket= "&gt;"
+      span.CallableExpressionScheme--YDF_DK-Bracket= ">"
 
 
   figure.CallableExpressionScheme--YDF_DK&attributes(attributes)

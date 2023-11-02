@@ -401,6 +401,17 @@ provideButtonYDF_Component(
 
     .Button--YDF-SVG_Icon
 
+      iconHeight = extractAndValidateObjectProperties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        extracts: {
+          iconHeight: {
+            dotSeparatedPath: "SVG_Icon.default.height",
+            required: true
+          }
+        }
+      }).iconHeight
+
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
@@ -408,16 +419,12 @@ provideButtonYDF_Component(
           width: {
             dotSeparatedPath: "SVG_Icon.default.width",
             required: false
-          },
-          height: {
-            dotSeparatedPath: "SVG_Icon.default.height",
-            requiredIf: {
-              predicate: @(variation) { return isNull(getObjectValueByDotSeparatedPathSafely(variation, "variation.SVG_Icon.default.width")) },
-              conditionDescription: "'width' is null"
-            }
           }
         }
       })
+
+      height: iconHeight
+
 
       if isNotNull(variation.SVG_Icon.default.spacing.leftWhenGoingFirst)
 
@@ -433,9 +440,51 @@ provideButtonYDF_Component(
           margin-right: variation.SVG_Icon.default.spacing.rightWhenGoingLast
 
 
-      if isNotNull(variation.SVG_Icon.default.spacing.horizontalSymmetricWhenLone)
+      &:first-child:last-child
 
-        &:first-child:last-child
+        /* [ Initial equation ] labelFontSize + labelTopSpacing = iconHeight + iconTopSpacing
+         * [ Formula ] iconPopMargin = labelFontSize + labelTopSpacing - iconHeight
+         * The `labelUpwardShifting` could be eliminated because it presents in bots sides of initial equation. */
+        topMargin = buildCalcExpressionFromFragments({
+          textSize: cachedValidReusables.textSize,
+          basicTopSpacing: @() {
+            if (isNotNull(cachedValidReusables.topSpacing)) {
+              return " + " + cachedValidReusables.topSpacing
+            }
+          },
+          iconHeight: @() { return " - " + iconHeight }
+        })
+
+        bottomMargin = buildCalcExpressionFromFragments({
+          textSize: cachedValidReusables.textSize,
+          basicBottomSpacing: @() {
+            if (isNotNull(cachedValidReusables.bottomSpacing)) {
+              return " + " + cachedValidReusables.bottomSpacing
+            }
+          },
+          iconHeight: @() { return " - " + iconHeight }
+        })
+
+
+        validateAndAssignStoredInObjectCSS_Properties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          assigments: {
+            margin-left: {
+              dotSeparatedPath: "SVG_Icon.default.spacing.horizontalSymmetricWhenLone",
+              required: false
+            },
+            margin-right: {
+              dotSeparatedPath: "SVG_Icon.default.spacing.horizontalSymmetricWhenLone",
+              required: false
+            }
+          }
+        })
+
+        margin-top: topMargin
+        margin-bottom: bottomMargin
+
+        if isNotNull(variation.SVG_Icon.default.spacing.horizontalSymmetricWhenLone)
 
           margin-left: variation.SVG_Icon.default.spacing.horizontalSymmetricWhenLone
           margin-right: variation.SVG_Icon.default.spacing.horizontalSymmetricWhenLone
@@ -464,6 +513,7 @@ provideButtonYDF_Component(
 
         &.{iconSpecificCSS_Class}
 
+          // TODO Как и выше, но сначала разберись с неточностями в размерах
           validateAndAssignStoredInObjectCSS_Properties({
             targetObject: dimensions,
             targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING + ".variation.SVG_Icon.specials." + iconSpecificCSS_Class ,

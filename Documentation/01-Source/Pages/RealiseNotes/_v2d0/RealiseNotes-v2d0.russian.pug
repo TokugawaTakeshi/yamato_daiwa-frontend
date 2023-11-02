@@ -1,0 +1,525 @@
+extends ../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../SharedAssets/Markup/SharedAssets.russian.pug
+  include ../../../SharedComponents/SharedComponents.russian.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "ru";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("v2d0");
+    HTML_PageMetaData = {
+      description: MetaDescriptionTemplates.realiseNotes({ version: "2.0" }),
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+
+    RoutingEmulator.setCurrentRoute("realiseNotes.v2d0");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      english: "./v2d0.english.html",
+      japanese: "./v2d0.japanese.html"
+    });
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1 Версия 2.0
+
+    h2.Article-Heading2 Основной пакет (@yamato-daiwa/frontend)
+
+    h3.Article-Heading3 Новая функциональность
+
+    h4.Article-Heading4 Разметка
+
+    h5.Article-Heading5 Внутренний JavaScript в Pug
+
+    h6.Article-Heading6 Функции и классы
+
+    ul.Article-UnorderedList
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            YDEE_Integration.$URI
+      }).Article-Link Интеграция с @yamato-daiwa/es-extensions (YDEE)
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            buildEmailLinkHrefAttributeValue.$URI
+      }).Article-Link buildEmailLinkHrefAttributeValue
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            buildPhoneNumberLinkHrefAttributeValue.$URI
+      }).Article-Link buildPhoneNumberLinkHrefAttributeValue
+      //- TODO Чистовая укладка ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            functionsAndClasses.$children.
+            processPugMixinsObjectTypeParameter.$URI
+      }).Article-Link processPugMixinsObjectTypeParameter
+
+      //-
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              markup.$children.
+              functionality.$children.
+              inlineJavaScript.$children.
+              functionsAndClasses.$children.
+              RoutingEmulator.$URI
+        }).Article-Link RoutingEmulator
+
+
+    h6.Article-Heading6 Ассеты
+
+    ul.Article-UnorderedList
+
+      //-
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              markup.$children.
+              functionality.$children.
+              inlineJavaScript.$children.
+              assets.$children.
+              textOverflowSafetyTest.$URI
+        }).Article-Link textOverflowSafetyTest
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            assets.$children.
+            DummyImagesURIs.$URI
+      }).Article-Link DummyImagesURIs
+
+
+    h5.Article-Heading5 Pug-примеси
+
+    //-
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.
+              $children.markup.
+              $children.functionality.
+              $children.pugMixins.
+              $children.dummies.$URI
+        }).Article-Link WideDummy и HighDummy
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.
+              $children.markup.
+              $children.functionality.
+              $children.pugMixins.
+              $children.SVG_Icons.$URI
+        }).Article-Link SVG-иконки
+
+
+    h4.Article-Heading4 Стили
+
+    //-
+      h5.Article-Heading5 Ассеты
+
+      h6.Article-Heading6 Цветовые палитры
+
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              assets.$children.
+              colors.$children.
+              YDF_ColorPalette.$URI
+        }).Article-Link YDF_ColorPalette
+
+    h5.Article-Heading5 Ядро
+
+    //-
+      h6.Article-Heading6 Схемы спецификаций
+
+      ul.Article-UnorderedList
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              bordersSizing.$URI
+        }).Article-Link BordersSizingSpecificationSchema--YDF
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              paddings.$URI
+        }).Article-Link PaddingsSpecificationSchema--YDF
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              textElementHeightSizing.$URI
+        }).Article-Link TextElementHeightSizingSpecificationSchema--YDF
+
+        li: +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              specificationsSchemas.$children.
+              widthSizing.$URI
+        }).Article-Link WidthSizingSpecificationSchema--YDF
+
+    h6.Article-Heading6 Проверщики типов
+
+    ul.Article-UnorderedList
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            styles.$children.
+            kernel.$children.
+            functions.$children.
+            typeCheckers.$sectioning.
+            others.$sectioning.
+            isCalcExpression.$URI
+      }).Article-Link isCalcExpression
+
+      li: +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            styles.$children.
+            kernel.$children.
+            functions.$children.
+            typeCheckers.$sectioning.
+            others.$sectioning.
+            isFunction.$URI
+      }).Article-Link isFunction
+
+
+    h3.Article-Heading3 Критические изменения
+
+    h4.Article-Heading4 Стили
+
+    h5.Article-Heading5 Ассеты
+
+    h6.Article-Heading6 Изменение элементов перечисления #[code DataTypes]
+
+    p.Article-Paragraph.
+      #[+Term--YDID Элемент] #[+ImportantEntity__Code--YDID dimensionalAmount] #[+Term--YDID перечисления]
+        #[+ImportantEntity__Code--YDID DataTypes] был переименован в #[+ImportantEntity__Code--YDID dimensionalQuantity],
+        а #[+ImportantEntity__Code--YDID dimensionlessAmount] — в #[+ImportantEntity__Code--YDID dimensionlessQuantity].
+
+    dl.Article-DescriptionList
+
+      dt Причина
+      dd Приведение к канонической научной терминологии
+
+      dt Понадобится редактирование Вашего кода, если
+      dd.
+        Вы обращались к #[+Term--YDID элементам] #[+ImportantEntity__Code--YDID dimensionalAmount] и/или
+          #[+ImportantEntity__Code--YDID dimensionlessAmount] #[+Term--YDID элементам перечисления]
+          #[+ImportantEntity__Code--YDID DataTypes]
+
+      dt Миграция
+      dd.
+        Используя соответствующую функциональнсоть редактора кода или интегрированной среды разработки,
+          замените #[+ImportantEntity__Code--YDID DataTypes.dimensionalAmount] на
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionalQuantity], а
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionlessAmount] — на
+          #[+ImportantEntity__Code--YDID DataTypes.dimensionlessQuantity] во всех #[+Term--YDID Stylus-файлах].
+        Например, в интегрированных средах разработки семейства IntelliJ IDEA такая функциональностью доступна с
+          помощью сочетания клавиш #[+SecondaryEntity__Code--YDID Ctrl + Shift + R].
+
+    h6.Article-Heading6 Изменение свойств в объекте #[code TemporaryHighlighting]
+
+    p.Article-Paragraph.
+      Теперь сверхкороткие свойства типа #[+SecondaryEntity__Code--YDID o25], смысл которых не&nbsp;может быть понятен
+        без документации или проверки выходного #[+Term--YDID CSS кода] заменены на более содержательные, такие как
+        #[+SecondaryEntity__Code--YDID opacity25Percent].
+
+    dl.Article-DescriptionList
+
+      dt Причина
+      dd.
+        Все библиотеки поставщика #[+ImportantEntity--YDID Ямато Дайва] не&nbsp;приемлют имён, смысл которых не&nbsp;может
+          быть раскрыт обычным переводом с английского на русской, и вот теперь это правило распространилось
+          на объект #[+ImportantEntity--YDID TemporaryHighlighting], который не&nbsp;должен использоваться в
+          окончательном варианте стилей.
+
+      dt Понадобится редактирование Вашего кода, если
+      dd.
+        Вы, вопреки рекомендации не&nbsp;использовать этот объект с чистовом коде использовали его,
+          либо обновили #[+ImportantEntity--YDID YDF] во время написания черного кода, в котором использовали
+          #[+Term--YDID объект] #[+ImportantEntity--YDID TemporaryHighlighting].
+
+      dt Миграция
+      dd
+        | Используя соответствующую функциональнсоть редактора кода или интегрированной среды разработки,
+        |   выполните следующие замены во всех #[+Term--YDID Stylus-файлах].
+        ul.Article-UnorderedList
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity10Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity25Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity50Percent]
+          li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity75Percent]
+        | Например, в интегрированных средах разработки семейства IntelliJ IDEA такая функциональностью доступна с
+        |    помощью сочетания клавиш #[+SecondaryEntity__Code--YDID Ctrl + Shift + R].
+
+
+    h5.Article-Heading5 Ядро
+    h6.Article-Heading6 Замена базовых переменных на объект конфигурации YDF
+
+    //-
+      p.Article-Paragraph
+        | Следующие #[+Term--YDID базовые переменные] (как они назывались в версиях #[+ImportantEntity--YDID 1.x]) были
+        |   заменены на
+        |
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$URI
+        }).Article-Link объект конфигурации YDF_Configuration
+        |   либо удалены.
+
+      table
+
+        thead
+          tr
+            th Имя переменной
+            th Замена / удаление
+
+        tbody
+
+          tr
+            th MAIN_SANS_SERIF_FONT_STACK
+            td
+              +Link--YDF({
+                internalURI: localizedRouting.coreLibrary.$children.
+                    styles.$children.
+                    kernel.$children.
+                    YDF_Configuration.$sectioning.
+                    fontsStacks.$sectioning.
+                    mainSansSerif.$URI
+              }).Article-Link YDF_Configuration.fontsStacks.mainSansSerif
+
+          tr
+            th MAIN_SERIF_FONT_STACK
+            td
+              +Link--YDF({
+                internalURI: localizedRouting.coreLibrary.$children.
+                    styles.$children.
+                    kernel.$children.
+                    YDF_Configuration.$sectioning.
+                    fontsStacks.$sectioning.
+                    mainSerif.$URI
+              }).Article-Link YDF_Configuration.fontsStacks.mainSerif
+
+          tr
+            th MAIN_MONOSPACED_FONT_STACK
+            td
+              +Link--YDF({
+                internalURI: localizedRouting.coreLibrary.$children.
+                    styles.$children.
+                    kernel.$children.
+                    YDF_Configuration.$sectioning.
+                    fontsStacks.$sectioning.
+                    mainMonospaced.$URI
+              }).Article-Link YDF_Configuration.fontsStacks.mainMonospaced
+
+          tr
+            th MAIN_FONT_STACK
+            td Удалена
+
+          tr
+            th BASIC_FONT_SIZE
+            td
+              +Link--YDF({
+                endorsedExternalURI: localizedRouting.coreLibrary.$children.
+                    styles.$children.
+                    kernel.$children.
+                    YDF_Configuration.$sectioning.
+                    textGeometry.$sectioning.
+                    basicFontSize.$URI
+              }).Article-Link YDF_Configuration.textGeometry.basicFontSize
+
+          tr
+            th BASIC_LINE_HEIGHT
+            td
+              +Link--YDF({
+                endorsedExternalURI: localizedRouting.coreLibrary.$children.
+                    styles.$children.
+                    kernel.$children.
+                    YDF_Configuration.$sectioning.
+                    textGeometry.$sectioning.
+                    basicLineHeight.$URI
+              }).Article-Link YDF_Configuration.textGeometry.basicLineHeight
+
+          tr
+            th BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS
+            td
+              +Link--YDF({
+                endorsedExternalURI: localizedRouting.coreLibrary.$children.
+                    styles.$children.
+                    kernel.$children.
+                    YDF_Configuration.$sectioning.
+                    textGeometry.$sectioning.
+                    basicLineHeightInMultilineTextBlocks.$URI
+              }).Article-Link YDF_Configuration.textGeometry.basicLineHeightInMultilineTextBlocks
+
+          tr
+            th BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS
+            td Удалена
+
+          tr
+            th BEM_ELEMENT_SEPARATOR
+            td Удалена
+
+          tr
+            th BEM_MODIFIER_SEPARATOR
+            td Удалена
+
+          tr
+            th ZIndexes
+            td
+              +Link--YDF({
+                endorsedExternalURI: localizedRouting.coreLibrary.$children.
+                    styles.$children.
+                    kernel.$children.
+                    YDF_Configuration.$sectioning.
+                    zIndexes.$URI
+              }).Article-Link YDF_Configuration.zIndexes
+
+      dl.Article-DescriptionList
+
+        dt Причина
+        dd
+
+          p.Article-Paragraph.
+            Эти #[+Term--YDID переменные] имели слишком общие названия, на принадлежность которых к
+              #[+ImportantEntity--YDID YDF] ничто не&nbsp;указывало.
+            Для решения этой проблемы можно было пометить переменные #[+Term--YDID вендорным постфиксом]
+              (например, #[+SecondaryEntity__Code--YDID MAIN_SANS_SERIF_FONT_STACK--YDF]), но переменная типа «объект»
+              лучше подходит для хранения конфигурации.
+            Что касается #[+SecondaryEntity__Code--YDID BEM_ELEMENT_SEPARATOR] и
+              #[+SecondaryEntity__Code--YDID BEM_MODIFIER_SEPARATOR], то они не&nbsp;пригодились внутри
+              #[+ImportantEntity--YDID YDF].
+
+          p.Article-Paragraph.
+            Однако, это #[+Keyword--YDID не]&nbsp;означает, что использование переменных с такими именами является
+              чем-то плохим, просто они не&nbsp;должны принадлежать конкретной библиотеке или конкретному фреймворку,
+              а в том, чтобы определить их самостоятельно для своего проекта, проблем нет.
+
+        dt Понадобится редактирование Вашего кода, если
+        dd Вы использовали одну или несколько их этих переменных напрямую
+
+        dt Миграция
+        dd
+
+          ul.Article-UnorderedList
+
+            li.
+              Если Вы хотите продолжить использование базовых переменных с теми же именами, что и прежде, то определите
+                их самостоятельно.
+
+            li.
+              Если Вы ранее переопределяли базовые переменные, то необходимо переопределить вместо них
+                объект #[+ImportantEntity__Code--YDID YDF_Configuration].
+
+            li.
+              Если Вас устаивает использование объекта #[+ImportantEntity__Code--YDID YDF_Configuration] вместо
+                базовых переменных, то замените ссылки на эти переменные на обращение к соответствующим свойствам
+                этого объекта.
+              Но имейте ввиду, что данный объект, как следует из называния, предназначен для конфигурации
+                функциональности #[+ImportantEntity--YDID YDF], а эта библиотека является лишь вспомогательным
+                инструментом в Вашем проекте.
+
+
+    h6.Article-Heading6 Переименование isDimensionalOrDimensionlessAmount в isDimensionalOrDimensionlessQuantity
+
+    dl.Article-DescriptionList
+
+      dt Причина
+      dd «Quantity» является более каноническим термином, чем #[+ImportantEntity__Code--YDID amount].
+
+      dt Понадобится редактирование Вашего кода, если
+      dd Вы использовали функцию isDimensionalOrDimensionlessAmount
+
+      dt Миграция
+      dd В данном случае достаточно простой замены isDimensionalOrDimensionlessAmount на isDimensionalOrDimensionlessQuantity.
+
+    h6.Article-Heading6 Замена isDimensionalAmount на isDimensionalQuantity с другой сигнатурой
+
+    p.Article-Paragraph.
+      У isDimensionalQuantity в отличие от isDimensionalAmount второй параметр является строчным и имеет иметь
+        значение MUST_CONSIDER_DIMENSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY либо
+        MUST_NOT_CONSIDER_DIMENSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY.
+
+    dl.Article-DescriptionList
+
+      dt Причина
+      dd.
+        «Quantity» является более каноническим термином, чем #[+ImportantEntity__Code--YDID amount].
+        Что касается второго параметра, то ранее он был типа «объект» (например,
+          { considerDimensionlessZeroAsDimensionalAmount: true }), однако из-за бага препроцессора Stylus
+          при вызове isDimensionalAmount(2px, { considerDimensionlessZeroAsDimensionalAmount: true }) внутри
+          блока if происходит ошибка.
+        Конечно, второй параметр можно было просто сделать булевским, однако в isDimensionalAmount(2px, true)
+          непонятно, какой смысл имеет второй параметр, а поскольку именованные параметры в Stylus
+          опциональные, то ввиду человеческой психологии это эквивалентно тому, что именованных параметров нет.
+
+      dt Понадобится редактирование Вашего кода, если
+      dd Вы использовали функцию isDimensionalOrDimensionlessAmount
+
+      dt Миграция
+      dd
+        ol.Article-OrderedList
+
+          li Замените старое имя функции isDimensionalAmount на isDimensionalQuantity
+          li.
+            Если второй параметр имеет значение { considerDimensionlessZeroAsDimensionalAmount: true }, то замените
+              его строкой "MUST_CONSIDER_DIMENSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY", в противном случае
+              замените строкой "MUST_NOT_CONSIDER_DIMENSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY".
+
+
+    h6.Article-Heading6 Переименование isDimensionlessAmount в isDimensionlessQuantity
+
+    dl.Article-DescriptionList
+
+      dt Причина
+      dd «Quantity» является более каноническим термином, чем #[+ImportantEntity__Code--YDID amount].
+
+      dt Понадобится редактирование Вашего кода, если
+      dd Вы использовали функцию isDimensionalOrDimensionlessAmount
+
+      dt Миграция
+      dd В данном случае достаточно простой замены isDimensionlessAmount на isDimensionlessQuantity.

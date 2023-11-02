@@ -26,7 +26,7 @@ block append Metadata
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
     styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
-    scriptsURIs.endOfBody = [ "@Common" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.buildPhoneNumberLinkHrefAttributeValue");
 
@@ -63,7 +63,7 @@ block append SpecificContent
     })
 
     p.Article-Paragraph.
-      #[+Keyword--YDID 単一の]#[+Term--YDID 引数]として渡された電話番号宛に、音声通話アプリケーションが電話をかけることを提案する様な、
+      #[+Keyword--YDID 単一の]#[+Term--YDID 引数]として渡された電話番号宛に、音声通話アプリケーションが電話をかける事を提案する様な、
         #[+ImportantEntity__Code--YDID a]#[+Term--YDID タグ]用の#[+ImportantEntity__Code--YDID href]と言う
         #[+Term--YDID HTML属性]の値を生成する。
       スマートフォンには、此の様な音声通話アプリケーションが必ず存在するが、其の他のデバイスの場合には、#[+SecondaryEntity--YDID Skype]や
@@ -73,13 +73,14 @@ block append SpecificContent
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }).
         a(
-          href=buildPhoneNumberLinkHrefAttributeValue("+718012345678")
+          href=buildPhoneNumberLinkHrefAttributeValue("+818012345678")
         ) 080-1234-5678
 
     p.Article-Paragraph.
-      此の関数がしている事は、適切な電話番号である事を要求される、指定された#[+Term--YDID 文字列]の値の前に、
+      此の#[+Term--YDID 関数]がしている事は、適切な電話番号である事を要求される、指定された#[+Term--YDID 文字列]の値の前に、
         #[+ImportantEntity__Code--YDID tel:]を追加するのみである。
-      使用しているコードエディター、又は#[+Term--YDID 結合開発環境]で、原型に応じたオートコンプリート機能が利用出来ない場合は、此の関数は役に立たないかもしれない。
+      使用しているコードエディター、又は#[+Term--YDID 結合開発環境]で、原型に応じたオートコンプリート機能が利用出来ない場合は、此の#[+Term--YDID 関数]は
+        役に立たないかもしれない。
       #[+ImportantEntity__Code--YDID tel:]にしろ、#[+ImportantEntity__Code--YDID buildPhoneNumberLinkHrefAttributeValue]
         #[+Term--YDID 関数]名にしろ、暗記してしまうか、毎回リファレンスを参照する事が必要になる為だ。
       （多くの情報を扱っている時には、たった4文字しかない「tel:」ですら、忘れてしまう可能性がある。）

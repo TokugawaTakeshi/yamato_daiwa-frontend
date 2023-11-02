@@ -1,4 +1,8 @@
 declare module "*.pug" {
-  const htmlTemplate: string;
-  export default htmlTemplate;
+  const HTML_Template: string;
+  export default HTML_Template;
+}
+
+declare module "*.renderer.pug" {
+  export default function (dynamicData: Readonly<{ [key: string]: unknown; }>): string;
 }

@@ -21,7 +21,7 @@ block append Metadata
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
     styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
-    scriptsURIs.endOfBody = [ "@Common" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.usageOnServerSide");
 
@@ -44,39 +44,48 @@ block append SpecificContent
 
     h1.Article-Heading1 Usage on server side
 
-    p.Article-Paragraph
-      | File #[+ImportantEntity--YDID Functionality.pug], required for the usage of the most functionality
-      |   #[+ImportantEntity--YDID YDF] related with the #[+Term--YDID markup] contains a large volume of
-      |
-      +Link--YDF({
-        unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
-      }).Article-Link JavaScript code
-      | and
-      |
-      +Link--YDF({ unendorsedExternalURI: "sharedExternalLinks.pug.homePage.mixins" }).Article-Link Pug mixins
-      | .
-      | This file also being used by
-      |
-      +Link--YDF({
-        internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
-      }).Article-Link pages templates
-      | .
-      | There is more #[+Term--YDID JavaScript code] and #[+Term--YDID Pug-примесей] in the file
-      |   #[+ImportantEntity--YDID Components.pug], which provides the #[+Term--YDID markup] for the
-      |   #[+Term--YDID GUI component].
-      | Although it is not&nbsp;wasting of the performance, such large volume of the code inevitably
-      |   affects of the #[+ImportantEntity--YDID Pug-to-HTML] compiling, but because this functionality
-      |   is indented to be used #[+Keyword--YDID mainly] for the
-      |
-      +Link--YDF({
-        internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI,
-      }).Article-Link static preview mode
-      |   and other cases when #[+ImportantEntity--YDID Pug] is being #[+Keyword--YDID preliminary] compiled to
-      |   #[+ImportantEntity--YDID HTML] before deploying of newest version of the web-site or the web application,
-      |   this performance impact is #[+Keyword--YDID negligible].
+    +AttentionBox--YDF({
+      title: "This page is under construction",
+      decoration: AttentionBox__YDF.DecorativeVariations.guidance,
+      hasPrependedSVG_Icon: true
+    })
+      | Apologies, but this page is currently being worked on.
+      | Rest assured, it will be completed during the alpha versions.
 
-    p.Article-Paragraph.
-      However the #[+Term--YDID page templates], #[+Term--YDID GUI components] and other #[+ImportantEntity--YDID YDF]
-        functionality integrated with #[+ImportantEntity--YDID Pug] is desired to be used also at the server side
-        #[+Term--YDID rendering] using the #[+ImportantEntity--YDID MVC pattern], otherwise the huge volume of the
-        routine work and the website or web application maintainability impact.
+    //-
+      p.Article-Paragraph
+        | File #[+ImportantEntity--YDID Functionality.pug], required for the usage of the most functionality
+        |   #[+ImportantEntity--YDID YDF] related with the #[+Term--YDID markup] contains a large volume of
+        |
+        +Link--YDF({
+          unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
+        }).Article-Link JavaScript code
+        | and
+        |
+        +Link--YDF({ unendorsedExternalURI: "sharedExternalLinks.pug.homePage.mixins" }).Article-Link Pug mixins
+        | .
+        | This file also being used by
+        |
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
+        }).Article-Link pages templates
+        | .
+        | There is more #[+Term--YDID JavaScript code] and #[+Term--YDID Pug-примесей] in the file
+        |   #[+ImportantEntity--YDID Components.pug], which provides the #[+Term--YDID markup] for the
+        |   #[+Term--YDID GUI component].
+        | Although it is not&nbsp;wasting of the performance, such large volume of the code inevitably
+        |   affects of the #[+ImportantEntity--YDID Pug-to-HTML] compiling, but because this functionality
+        |   is indented to be used #[+Keyword--YDID mainly] for the
+        |
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI,
+        }).Article-Link static preview mode
+        |   and other cases when #[+ImportantEntity--YDID Pug] is being #[+Keyword--YDID preliminary] compiled to
+        |   #[+ImportantEntity--YDID HTML] before deploying of newest version of the web-site or the web application,
+        |   this performance impact is #[+Keyword--YDID negligible].
+
+      p.Article-Paragraph.
+        However the #[+Term--YDID page templates], #[+Term--YDID GUI components] and other #[+ImportantEntity--YDID YDF]
+          functionality integrated with #[+ImportantEntity--YDID Pug] is desired to be used also at the server side
+          #[+Term--YDID rendering] using the #[+ImportantEntity--YDID MVC pattern], otherwise the huge volume of the
+          routine work and the website or web application maintainability impact.

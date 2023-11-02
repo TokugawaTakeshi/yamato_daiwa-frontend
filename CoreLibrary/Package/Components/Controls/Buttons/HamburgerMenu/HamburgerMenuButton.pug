@@ -1,14 +1,90 @@
+include HamburgerMenuButton.class.pug
+
 //-
   [ References ]
-  Animation: https://www.w3schools.com/howto/howto_css_menu_icon.asp
   Accessibility: https://www.accede-web.com/en/guidelines/rich-interface-components/hamburger-menu/
+  Animation: https://www.w3schools.com/howto/howto_css_menu_icon.asp
 
-mixin HamburgerMenuButton--YDF
+mixin HamburgerMenuButton--YDF(properties)
+
+
+  -
+
+    const {
+
+      noLabel = false,
+      alwaysEnglishLabel = false,
+      labelLetterCase = HamburgerMenuButton__YDF.LabelLetterCases.uppercase,
+
+      theme = HamburgerMenuButton__YDF.Themes.regular,
+      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || HamburgerMenuButton__YDF.areThemesCSS_ClassesCommon,
+      geometry = HamburgerMenuButton__YDF.GeometricVariations.regular,
+      decoration = HamburgerMenuButton__YDF.DecorativeVariations.regular
+
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: HamburgerMenuButton__YDF.propertiesSpecification,
+      mixinName: HamburgerMenuButton__YDF.CSS_NAMESPACE
+    });
+
+    const rootElementModifierCSS_Classes = [
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: HamburgerMenuButton__YDF.Themes,
+        CSS_Namespace: HamburgerMenuButton__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: HamburgerMenuButton__YDF.GeometricVariations,
+        CSS_Namespace: HamburgerMenuButton__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decoration,
+        allDecorativeVariations: HamburgerMenuButton__YDF.DecorativeVariations,
+        CSS_Namespace: HamburgerMenuButton__YDF.CSS_NAMESPACE
+      })
+
+    ];
+
+    let labelCSS_ModifierClass;
+
+    switch (labelLetterCase) {
+
+      case HamburgerMenuButton__YDF.LabelLetterCases.uppercase: {
+        labelCSS_ModifierClass = "HamburgerMenuButton--YDF-Label__Uppercase";
+        break;
+      }
+
+      case HamburgerMenuButton__YDF.LabelLetterCases.lowercase: {
+        labelCSS_ModifierClass = "HamburgerMenuButton--YDF-Label__Lowercase";
+        break;
+      }
+
+      case HamburgerMenuButton__YDF.LabelLetterCases.capitalisation: {
+        labelCSS_ModifierClass = "HamburgerMenuButton--YDF-Label__Capitalisation";
+      }
+
+    }
 
   button.HamburgerMenuButton--YDF(
     type="button"
+    class=rootElementModifierCSS_Class
   )&attributes(attributes)
 
     +HamburgerMenu--YDF_Icon.HamburgerMenuButton--YDF-Icon
 
-    span.HamburgerMenuButton--YDF-Label MENU
+    if !noLabel
+
+      span.HamburgerMenuButton--YDF-Label(
+        class= labelCSS_ModifierClass
+      )
+        if alwaysEnglishLabel
+          | MENU
+        else
+          | #{ HamburgerMenuButton__YDF.localization.menu }

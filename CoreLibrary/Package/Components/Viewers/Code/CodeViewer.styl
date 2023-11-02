@@ -229,3 +229,11 @@ provideCodeViewerYDF_Component()
 
         margin-right 10px
         margin-bottom 2px /* In this case it means "minimal bottom gap" */
+
+
+      &-Text
+
+        applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
+          fontSize: YDF_Configuration.textGeometry.basicFontSize,
+          lineHeight: YDF_Configuration.textGeometry.basicLineHeightInMultilineTextBlocks
+        })

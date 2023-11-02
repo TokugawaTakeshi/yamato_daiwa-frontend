@@ -107,6 +107,12 @@
         minimalCharactersCount: 1
       },
 
+      //- TODO See https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
+      autocomplete: {
+        type: String,
+        required: false
+      },
+
       value: {
         preValidationModifications: rawValue => isNumber(rawValue) ? String(rawValue) : rawValue,
         type: String,

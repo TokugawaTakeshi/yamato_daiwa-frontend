@@ -103,11 +103,12 @@ namespace Badge {
   };
 
   export enum DecorativeModifiers {
-    bordersDisguising = "BORDERS_DISGUISING"
+    bordersDisguising = "BORDERS_DISGUISING",
+    noBackground = "NO_BACKGROUND"
   }
 
 
-  export class BasicLogic extends React.Component<Properties> {
+  export abstract class BasicLogic extends React.Component<Properties> {
 
     protected static readonly propTypes: Readonly<{ [ propertyKey in keyof Properties ]: unknown }> = {
       keyLabel: ReactPropertiesValidation.string,
@@ -191,9 +192,12 @@ namespace Badge {
         ...Object.entries(DecorativeVariations).length > 1 ?
             [ `Badge--YDF__${ toUpperCamelCase(this.props.decoration) }Decoration` ] : [],
         ...this.props.decorativeModifiers?.includes(DecorativeModifiers.bordersDisguising) === true ?
-            [ "Badge--YDF__BordersDisguisingDecorativeModifier" ] : []
+            [ "Badge--YDF__BordersDisguisingDecorativeModifier" ] : [],
+        ...this.props.decorativeModifiers?.includes(DecorativeModifiers.noBackground) === true ?
+            [ "Badge--YDF__NoBackgroundDecorativeModifier" ] : []
 
       ].join(" ");
+
     }
 
   }

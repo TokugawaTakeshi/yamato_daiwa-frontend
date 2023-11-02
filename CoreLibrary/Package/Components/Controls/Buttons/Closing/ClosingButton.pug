@@ -1,9 +1,82 @@
-mixin ClosingButton--YDF
+include ClosingButton.class.pug
+
+
+mixin ClosingButton--YDF(properties)
+
+  -
+
+    const {
+
+      noLabel = false,
+      labelLetterCase = ClosingButton__YDF.LabelLetterCases.uppercase,
+
+      theme = ClosingButton__YDF.Themes.regular,
+      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || ClosingButton__YDF.areThemesCSS_ClassesCommon,
+      geometry = ClosingButton__YDF.GeometricVariations.regular,
+      decoration = ClosingButton__YDF.DecorativeVariations.regular
+
+    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: ClosingButton__YDF.propertiesSpecification,
+      mixinName: ClosingButton__YDF.CSS_NAMESPACE
+    });
+
+    const rootElementModifierCSS_Classes = [
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: ClosingButton__YDF.Themes,
+        CSS_Namespace: ClosingButton__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometry,
+        allGeometricVariations: ClosingButton__YDF.GeometricVariations,
+        CSS_Namespace: ClosingButton__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decoration,
+        allDecorativeVariations: ClosingButton__YDF.DecorativeVariations,
+        CSS_Namespace: ClosingButton__YDF.CSS_NAMESPACE
+      })
+
+    ];
+
+    let labelCSS_ModifierClass;
+
+    switch (labelLetterCase) {
+
+      case ClosingButton__YDF.LabelLetterCases.uppercase: {
+        labelCSS_ModifierClass = "ClosingButton--YDF-Label__Uppercase";
+        break;
+      }
+
+      case ClosingButton__YDF.LabelLetterCases.lowercase: {
+        labelCSS_ModifierClass = "ClosingButton--YDF-Label__Lowercase";
+        break;
+      }
+
+      case ClosingButton__YDF.LabelLetterCases.capitalisation: {
+        labelCSS_ModifierClass = "ClosingButton--YDF-Label__Capitalisation";
+      }
+
+    }
+
+
 
   button.ClosingButton--YDF(
     type="button"
+    class= rootElementModifierCSS_Classes
   )&attributes(attributes)
 
     +MultiplicationSign__Boxed__Filled--YDF_Icon.ClosingButton--YDF-Icon
 
-    span.ClosingButton--YDF-Label Close
+    if !noLabel
+
+      span.ClosingButton--YDF-Label(
+        class= labelCSS_ModifierClass
+      )= ClosingButton__YDF.localization.label

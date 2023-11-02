@@ -23,7 +23,7 @@ block append Metadata
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
     styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
-    scriptsURIs.endOfBody = [ "@Common" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.YDEE_Integration");
 
@@ -31,6 +31,8 @@ block append Metadata
       english: "./YDEE_Integration.english.html",
       russian: "./YDEE_Integration.russian.html",
     });
+
+    const ACTUAL_YDEE_VERSION = "1.7";
 
 
 block append HeadScriptsLinks
@@ -46,14 +48,16 @@ block append SpecificContent
 
     h1.Article-Heading1 @yamato-daiwa/es-extensions(YDEE)との結合
 
-    p.Article-Paragraph.
-      #[+ImportantEntity--YDID @yamato-daiwa/frontend]と言う#[+Term--YDID npmパッケージ]の#[+Keyword--YDID ルート]ディレクトリに在る
-        #[+ImportantEntity--YDID Functionality.pug]ファイルを
-        #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }).Article-Link 含む]と、
-        #[+Link--YDF({ endorsedExternalURI: sharedExternalLinks.YamatoDaiwaES_Extensions.top }).Article-Link @yamato-daiwa/es-extensions]
-        （略：#[+ImportantEntity--YDID 「YDEE」]）の#[+ImportantEntity--YDID 1.6]バージョンの全機能
-        （#[+Term--YDID インターフェース]や#[+Term--YDID タイプアリアス]の様に#[+ImportantEntity--YDID TypeScript]を
-         #[+ImportantEntity--YDID JavaScript]への変更中の存在しなく成る機能#[+Keyword--YDID 以外]）が利用可能に成る。
+    p.Article-Paragraph
+      | #[+ImportantEntity--YDID @yamato-daiwa/frontend]と言う#[+Term--YDID npmパッケージ]の#[+Keyword--YDID ルート]ディレクトリに在る
+      |   #[+ImportantEntity--YDID Functionality.pug]ファイルを
+      |   #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }).Article-Link 含む]と、
+      +Link--YDF({
+        endorsedExternalURI: sharedExternalLinks.YamatoDaiwaES_Extensions.top
+      }).Article-Link @yamato-daiwa/es-extensions
+      |   （略：#[+ImportantEntity--YDID 「YDEE」]）の#[+ImportantEntity--YDID #{ ACTUAL_YDEE_VERSION }]バージョンの全機能
+      |   （#[+Term--YDID インターフェース]や#[+Term--YDID タイプアリアス]の様に#[+ImportantEntity--YDID TypeScript]を
+      |    #[+ImportantEntity--YDID JavaScript]への変更の際存在しなく成る機能#[+Keyword--YDID 以外]）が利用可能に成る。
 
     +CodeViewer--YDF
       +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
@@ -63,9 +67,14 @@ block append SpecificContent
           貴方の#[+Term--YDID Pugファイル]場合、#[+ImportantEntity--YDID node_modules]への#[+Term--YDID 相対パス]が異なる可能性が有ります。
 
     +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.warning, hasPrependedSVG_Icon: true }).
-      #[+Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI }).Article-Link ウェブページの原型]
-        を使う場合、#[+ImportantEntity__Code--YDID Functionality.pug]は#[+Keyword--YDID 既に]含めてあり;
-        #[+Keyword__Contrast--YDID 再び]含める行為は#[+Keyphrase--YDID エラーを発生させる]。
+      #[+ImportantEntity--YDID Pug]#[+Term--YDID プリプロセッサ]の必要な#[+Keyword--YDID 最低]バージョン：#[+ImportantEntity--YDID 3.0]。
+
+    +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.warning, hasPrependedSVG_Icon: true })
+      +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
+      }).Article-Link ウェブページの原型
+      |   を使う場合、#[+ImportantEntity__Code--YDID Functionality.pug]ファイルは#[+Keyword--YDID 既に]含めてあり、
+      |   #[+Keyword__Contrast--YDID 再び]含む行為は#[+Keyphrase--YDID エラーを発生させる]。
 
     p.Article-Paragraph
       | 当機能が求められる主な場合は
@@ -73,8 +82,8 @@ block append SpecificContent
         internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.
             StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI
       }).Article-Link 静的プレビュー
-      | 作成の段階での簡易な#[+Term--YDID データモキング]。
-      | 例えば、下記の様にデータ（意味は無いが此の段階内ならでどうでも良い事が多い）に満たされている16件のマークアップを早く作れる。
+      |   作成の段階での簡易な#[+Term--YDID データモキング]。
+      |   例えば、下記の様にデータ（意味のない文字列でも此の段階では問題が無い）に満たされている16件のカードのマークアップを早く作成できます。
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({
@@ -99,13 +108,21 @@ block append SpecificContent
                 span.ProductCard-PriceLabel-Amount= getRandomInteger({ minimalValue: 1000, maximalValue: 10000 })
                 span.ProductCard-PriceLabel-Currency 円
 
-    p.Article-Paragraph.
-      此処で#[+ImportantEntity__Code--YDID getRandomString]、#[+ImportantEntity__Code--YDID getRandomObjectPropertyValue]、
-        #[+ImportantEntity__Code--YDID getRandomInteger]と言う#[+ImportantEntity--YDID YDEE]の#[+Term--YDID 関数]が利用され、
-        但し#[+ImportantEntity__Code--YDID DummyImagesURIs]#[+Term--YDID 定数]は#[+ImportantEntity--YDID YDF]に所属。
-      其の結果各カードにとって下記の様なコード#[+Term--YDID HTMLコード]が生成される
-        (#[+SecondaryEntity__Code--YDID img]#[+Term--YDID タグ]の於いて#[+SecondaryEntity__Code--YDID src]#[+Term--YDID アトリビュート]
-        の値は空間を占めすぎない様に部分的省略)。
+    p.Article-Paragraph
+      | 此処で#[+SecondaryEntity--YDID getRandomString]、#[+SecondaryEntity--YDID getRandomObjectPropertyValue]、
+      |   #[+SecondaryEntity--YDID getRandomInteger]と言う#[+SecondaryEntity--YDID YDEE]の#[+Term--YDID 関数]が利用され、但し
+      +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            assets.$children.
+            DummyImagesURIs.$URI
+      }).Article-Link DummyImagesURIs
+      |   #[+Term--YDID 連想配列型]の#[+Term__Contrast--YDID 定数]は#[+ImportantEntity--YDID YDF]の一部。
+      | 其の結果、各カードに於いて下記の様なコード#[+Term--YDID HTMLコード]が生成される
+      |   (#[+SecondaryEntity__Code--YDID img]#[+Term--YDID タグ]に於いて#[+SecondaryEntity__Code--YDID src]
+      |   #[+Term--YDID アトリビュート]の値は空間を占めすぎない様に部分的省略)。
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({
@@ -129,8 +146,8 @@ block append SpecificContent
         </li>
 
     p.Article-Paragraph
-      | 上記の様な#[+ImportantEntity--YDID YDEE]の利用が予定さなくても、#[+ImportantEntity--YDID YDF]の#[+Term--YDID マークアップ]関連
-      |  機能の正常稼働に必要と成り、例えば
+      | 上記の様な#[+ImportantEntity--YDID YDEE]の利用が予定されていなくても、#[+ImportantEntity--YDID YDF]の#[+Term--YDID マークアップ]
+      |   関連機能の正常稼働に#[+Keyword--YDID 必要]で、例えば
       +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.
             markup.$children.
@@ -139,7 +156,7 @@ block append SpecificContent
             functionsAndClasses.$children.
             processPugMixinsObjectTypeParameter.$URI,
       }).Article-Link Pug混入の引数の妥当性確認
-      | のに使われている。
+      |   をするのに使われています。
 
     +CodeViewer--YDF
       +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
@@ -148,40 +165,38 @@ block append SpecificContent
           include ../../node_modules/@yamato-daiwa/frontend/Components.pug
 
           +Badge--YDF({ value: [] })
-        +CodeViewer-Explanation--YDF
-          p.Article-Paragraph.
-            此の様な#[+SecondaryEntity--YDID Badge]#[+Term--YDID コンポーネント]（#[+Term--YDID Pug混入]で実装）の使い方は不正です。
-            単一の#[+Term--YDID 引数]の#[+SecondaryEntity__Code--YDID value]プロパティの#[+Term--YDID 型]も待ちが要られ、
-              もう一つの必須なプロパティが欠けています。
-            ですが、#[+ImportantEntity--YDID YDEE]を使ってプロパティの#[+Term--YDID 妥当性確認]が実装してある御蔭で、
-              #[+ImportantEntity--YDID Pug]からの#[+ImportantEntity--YDID HTML]への変換が#[+Keyphrase--YDID エラーで落ち]、
-              英文の中級読解ぐらい出来れば、#[+Keyphrase--YDID 説明書を読まなくても]もエラーで表示された情報の参考しながらで自力で不備が直せるのです。
+        +CodeViewer-Explanation--YDF.
+          此の様な#[+SecondaryEntity--YDID Badge]#[+Term--YDID コンポーネント]（#[+Term__Contrast--YDID Pug混入]で実装）の使い方は不正です。
+          単一の#[+Term--YDID 引数]の#[+SecondaryEntity__Code--YDID value]#[+Term--YDID プロパティ]の#[+Term--YDID 型]が間違っており、
+            もう一つの必須な#[+Term--YDID プロパティ]が欠けています。
+          然し、#[+ImportantEntity--YDID YDEE]を使って#[+Term--YDID プロパティ]の#[+Term__Contrast--YDID 妥当性確認]が実装してある御蔭で、
+            #[+ImportantEntity--YDID Pug]からの#[+ImportantEntity--YDID HTML]への変換が#[+Keyphrase--YDID エラーで落ち]、
+            英文の中級読解程度が出来れば、#[+Keyphrase--YDID 説明書を読まなくても]エラーで表示された情報で不備が直せます。
 
 
     h2.Article-Heading2 よく有る質問・批判への返事
 
     +QuestionAndAnswerBox--YDF({
       type: QuestionAndAnswerBox__YDF.Types.criticism,
-      question: "という事は、Pugコードの中にYDEEライブラリの殆どのコードが埋めてある？やりすぎのではない？"
-    })
-
-      p.Article-Paragraph.
-        #[+Keyword--YDID 何れでもの]機能は#[+ImportantEntity--YDID やまとダイワ族]のライブラリに追加されるのは、#[+Keyword--YDID 実践上]
-          需要が発生したから#[+Keyword--YDID に限っている]事です。
-        #[+ImportantEntity--YDID YDEE]との結合に関しましては、需要が過去にも有り、現在にも有ります（活用の事例が上に論述されました）。
-        何方かの機能の需要が時間の共に無く成った場合、此れを置き換えるか、たまに削除する事も有ります（#[+ImportantEntity--YDID YDF]が公開された
-          事は比較的に最近ですが、其の前此れと此れのプロトタイプは数年間のアルファテストの利用が行われていました）。
-        ですが、#[+ImportantEntity--YDID YDEE]との結合だと、実践からの需要が高いままなので、此れの取り除きは予定#[+Keyword--YDID されていません]。
-
+      question: "と言う事は、Pugコードの中にYDEEライブラリの殆どのコードが埋めてある？やりすぎなのではないか？"
+    }).
+      #[+Keyword--YDID 全ての]機能に就いて#[+ImportantEntity--YDID やまとダイワ族]のライブラリに追加される機能は、#[+Keyword--YDID 実践上]
+        需要が発生した為#[+Keyword--YDID だと言う]事です。
+      #[+ImportantEntity--YDID YDEE]との結合に関しては、#[+Keyphrase--YDID 需要が過去にも、現在も有ります]（活用の事例が上に論述されました）。
+      何方かの機能の需要が今後無く成った場合、其の機能を置き換えるか、削除する場合も有ります（#[+ImportantEntity--YDID YDF]が公開されたのは最近ですが、
+        数年前から#[+ImportantEntity--YDID YDF]と#[+ImportantEntity--YDID YDF]のプロトタイプはアルファテストの利用が行われていました）。
+      ですが、#[+ImportantEntity--YDID YDEE]との結合は、実践上、需要が高いままなので、#[+ImportantEntity--YDID YDEE]との結合の取り除きは
+        予定#[+Keyword--YDID されていません]。
 
     +QuestionAndAnswerBox--YDF({
       type: QuestionAndAnswerBox__YDF.Types.question,
-      question: "サーバ側でMVCフレームワークと一緒に使っている時、YDEEコードの存在はPugからHTMLへの変換の速度への悪影響しない？"
+      question: "サーバ側でMVCフレームワークと同時に使用する場合、YDEEコードの存在はPugからHTMLへの変換の速度に悪影響しないのか？"
     })
 
       p.Article-Paragraph.
-        悪影響をします、其れに#[+Keyphrase--YDID 実質が有る]程度 (#[+ImportantEntity--YDID 約2-3秒]ですだが、サーバ側でレスポンス生成する場合
-          にとって#[+Keyword--YDID 許されない]程度です)。
+        影響を及ぼします。
+        其れに#[+Keyphrase--YDID 実質が有る]程度 (#[+ImportantEntity--YDID 約2-3秒]ですが、サーバ側でレスポンス生成する場合
+          許容#[+Keyword--YDID されない]時間です)。
 
       p.Article-Paragraph
         | #[+ImportantEntity--YDID YDEE]結合は#[+Keyword--YDID 主に]
@@ -189,14 +204,14 @@ block append SpecificContent
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.
               StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI
         }).Article-Link 静的プレビュー
-        | 段階専用ですが、
+        |   段階専用ですが、
         +Keyphrase--YDID.
           #[+ImportantEntity--YDID Pug]から#[+ImportantEntity--YDID HTML]への変換がウェブサイト・アプリケーションの納品の
-            #[+Keyword--YDID 前に]済まされるなら、
-        | 他の開発段階にでも使っても特に問題無い。
+            #[+Keyword--YDID 前に]済まされる場合、
+        |   他の開発段階に使っても特に問題有りません。
 
       p.Article-Paragraph
-        | #[+Term--YDID MVC]パータンを用いてサーバ側レンダリングを実装する段階でも、例えば
+        | 又、#[+Term--YDID MVC]パータンを用いてサーバ側レンダリングを実装する段階でも、例えば
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.
               markup.$children.
@@ -205,22 +220,22 @@ block append SpecificContent
               functionsAndClasses.$children.
               processPugMixinsObjectTypeParameter.$URI,
         }).Article-Link Pug混入の引数の妥当性確認
-        | （
+        |   （
         +Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.components.$URI }).Article-Link UI・UXコンポーネント
-        | の混入を含む）が動く様に、又は
+        |   の混入を含む）が動く様に、又は
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
         }).Article-Link ページの原型
-        |   が使える様に、#[+Keyphrase--YDID パフォーマンス低下無しで]#[+ImportantEntity--YDID YDEE]結合を使いたい時どうすれば良いか、知りたいでしょう。
-        | 此の件に関して
+        |   が使える様に、#[+Keyphrase--YDID パフォーマンスの低下無しで]#[+ImportantEntity--YDID YDEE]結合を使用する方法を下記に示します。
+        | 方法としては
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.usageOnServerSide.$URI
         }).Article-Link 専用説明書
         |   が用意してありますが、簡単に説明すると、源#[+Term--YDID Pugコード]を出力#[+Term--YDID HTMLコード]への#[+Keyword--YDID ２段階]
-        |   変換を確保しなければいけない。
+        |   変換を確保しなければいけません。
         | #[+Keyword--YDID １段階目]の際、#[+Keyword--YDID 中間]テンプレートファイルが生成され、#[+Keyword--YDID 各]ファイルが
         |   #[+Term--YDID データベース]からのデータの様に#[+Term--YDID 動的データ]に応じて#[+Keyword--YDID 変わりません]。
-        | 但し、１段階目はウェブサイト・ウェブアプリケーションの#[+Keyword--YDID 各]バージョンの納品（デプロイ）の#[+Keyword--YDID 前]に
-        |   #[+Keyword__Contrast--YDID 一度だけ]行われます。
+        | 但し、#[+Keyword--YDID １段階目]はウェブサイト・ウェブアプリケーションの#[+Keyword--YDID 各]バージョンの納品（デプロイ）の
+        |   #[+Keyword--YDID 前]に#[+Keyword__Contrast--YDID 一度]#[+Keyword--YDID だけ]行われます。
         | #[+Keyword--YDID ２段階目]の際、#[+Term--YDID 動的データ]が挿入され、#[+Keyword--YDID 最終の]#[+Term--YDID HTMLコード]が
         |   生成されます。

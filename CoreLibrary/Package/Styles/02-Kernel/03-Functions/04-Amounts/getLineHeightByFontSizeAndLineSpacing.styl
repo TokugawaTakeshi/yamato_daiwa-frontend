@@ -6,11 +6,11 @@ getLineHeightByFontSizeAndLineSpacing(compoundParameter, restParameters__MUST_NO
     targetParameter: compoundParameter,
     schema: {
       fontSize: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: true
       },
       lineSpacing: {
-        type: DataTypes.dimensionalAmount DataTypes.dimensionlessAmount,
+        type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity,
         required: true
       },
       mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0: {
@@ -30,8 +30,8 @@ getLineHeightByFontSizeAndLineSpacing(compoundParameter, restParameters__MUST_NO
   mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0 = compoundParameter.mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0
   mustOutputDimensionalQuantityIfPossible = compoundParameter.mustOutputDimensionalQuantityIfPossible
 
-  isSpecifiedLineSpacingTheDimensionalAmount = isDimensionalAmount(
-    lineSpacing, { considerDimensionlessZeroAsDimensionalAmount: true }
+  isSpecifiedLineSpacingTheDimensionalAmount = isDimensionalQuantity(
+    lineSpacing, "MUST_CONSIDER_DIMENSIONLESS_ZERO_AS_DIMENSIONAL_QUANTITY"
   )
 
 

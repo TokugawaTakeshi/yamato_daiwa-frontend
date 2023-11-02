@@ -1,0 +1,62 @@
+YDF_Array-create(elements...)
+
+  if isNull(elements)
+
+    return {}
+
+
+  array = {}
+
+  for element, index in elements
+
+    array["" + index] = element
+
+  return array
+
+
+YDF_Array-append(targetArray, newElements...)
+
+  for newElement in newElements
+
+    targetArray["" + getLengthOfPrimitivesArray(values(targetArray))] = newElement
+
+
+YDF_Array-forEach(targetArray, callback)
+
+  for index, element in targetArray
+
+    callback(element, index)
+
+
+addElementsToEndOfYDF_ArrayIf(targetArray, conditionOrPredicate, newElements...)
+
+  for element in newElements
+
+    if (isTrue(conditionOrPredicate) || conditionOrPredicate(element))
+
+      // TODO Нужна функция, которая получает количество элементов массива любых элементов
+      targetArray["" + getLengthOfPrimitivesArray(values(targetArray))] = element
+
+  return targetArray
+
+
+YDF_Array-IsIncludes(targetArray, elementOrPredicate)
+
+  for element in values(targetArray)
+
+    if isFunction(elementOrPredicate) && isTrue(elementOrPredicate(element))
+
+      return true
+
+    else if element == elementOrPredicate
+
+      return true
+
+  return false
+
+
+YDF_Array = {
+  create: YDF_Array-create,
+  addElementsToEndIf: addElementsToEndOfYDF_ArrayIf
+}
+

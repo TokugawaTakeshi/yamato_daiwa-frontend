@@ -24,7 +24,18 @@ mixin CompactTableOfContents--YDF_DK(localizedRouting, options, iterationData)
 
         li.CompactTableOfContents--YDF_DK-Item
 
-          if metadata.$children
+          -
+
+            let children;
+
+            if (isNotUndefined(metadata.$children)) {
+              children = metadata.$children;
+            } else if (isNotUndefined(metadata.$sectioning) && metadata.$mustDisplayDirectDecadentSectioning) {
+              children = metadata.$sectioning;
+            }
+
+
+          if children
 
             button.CompactTableOfContents--YDF_DK-Item-CollapsingToggle(
               type="button"
@@ -36,22 +47,23 @@ mixin CompactTableOfContents--YDF_DK(localizedRouting, options, iterationData)
 
             -
 
-              const linkModifierCSS_CLasses = route === RoutingEmulator.currentRoute ?
-                  [ "CompactTableOfContents--YDF_DK-Item-Link__Current" ] : [];
+              const isCurrentRoute = route === RoutingEmulator.currentRoute;
+              const linkModifierCSS_CLasses = isCurrentRoute ? [ "CompactTableOfContents--YDF_DK-Item-Link__Current" ] : [];
 
 
             a.CompactTableOfContents--YDF_DK-Item-Link(
               href=metadata.$URI
               class=linkModifierCSS_CLasses
-            )= metadata.$tableOfContentsTitle
+              aria-current=isCurrentRoute ? "page" : null
+            )!= metadata.$tableOfContentsTitle
 
           else
 
-            span.CompactTableOfContents--YDF_DK-Item-Title= metadata.$tableOfContentsTitle
+            span.CompactTableOfContents--YDF_DK-Item-Title!= metadata.$tableOfContentsTitle
 
-          if metadata.$children
+          if children
 
-            +CompactTableOfContents--YDF_DK(metadata.$children, options, iterationData)
+            +CompactTableOfContents--YDF_DK(children, options, iterationData)
 
         -
           iterationData.currentDepthLevel__numerationFrom0--;

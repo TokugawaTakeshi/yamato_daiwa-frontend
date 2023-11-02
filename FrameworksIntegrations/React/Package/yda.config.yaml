@@ -80,6 +80,7 @@ projectBuilding:
         distributing:
           exposingOfExportsFromEntryPoints:
             mustExpose: true
+          externalizingDependencies: [ vue ]
           typeScriptTypesDeclarations:
             mustGenerate: true
 

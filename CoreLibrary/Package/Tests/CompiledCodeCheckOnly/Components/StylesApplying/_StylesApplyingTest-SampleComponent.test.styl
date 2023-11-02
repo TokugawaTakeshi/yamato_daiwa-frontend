@@ -5,7 +5,7 @@ Sample--YDF = {
     themes: {
       regular: {
 
-        componentIndependentCSS_Class: "SampleTheme--YDF"
+        componentIndependentCSS_Class: "SampleTheme1--YDF"
 
         geometricVariations: {
 
@@ -126,7 +126,7 @@ provideSampleYDF_Component(
     CONTEXT_SELECTOR = selector() == "&" ? null : selector()
 
 
-    +provideDefaultSelectorWhenRootAndApply(".Sample--YDF")
+    +applyStylesToRootElementOfYDF_Component(defaultSelector: ".Sample--YDF", options.areThemesCSS_ClassesCommon, properties.themes)
 
       border-width: variation.rootElement.borderWidth
 
@@ -157,10 +157,12 @@ provideSampleYDF_Component(
 
   if !options.themeIndependentStylesOnly
 
+    log(options.areThemesCSS_ClassesCommon)
+
     applyComponentThemes({
       CSS_Namespace: "Sample--YDF",
       themes: properties.themes,
-      areThemesTheExternal: options.areThemesCSS_ClassesCommon,
+      areThemesCSS_ClassesCommon: options.areThemesCSS_ClassesCommon,
       themeIndependentGeometricVariations: options.themeIndependentGeometricVariations,
       applyGeometricVariation: applyGeometricVariation,
       applyDecorativeVariation: applyDecorativeVariation

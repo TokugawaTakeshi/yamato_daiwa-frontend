@@ -1,7 +1,15 @@
 export {
 
-  /* === Arrays ===================================================================================================== */
+  /* ━━━ AJAX ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  AJAX_Service,
+  FetchAPI_Service,
+  serializeURI_QueryParameters,
+
+
+  /* ━━━ Arrays ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   addElementsToArray,
+  createArrayOfNatualNumbers,
+  cropArray,
   getArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne,
   getIndexesOfArrayElementsWhichSatisfiesThePredicate,
   getIndexOfArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne,
@@ -12,8 +20,9 @@ export {
   replaceArrayElementsByPredicates,
   twoDimensionalizeArray,
 
-  /* === Constants and enumerations ================================================================================= */
-  /* --- Date & Time ------------------------------------------------------------------------------------------------ */
+
+  /* ━━━ Constants and enumerations ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── Date & Time ──────────────────────────────────────────────────────────────────────────────────────────────── */
   CHARACTERS_COUNT_OF_DATE_PART_IN_ISO8601_STRING,
   DaysOfWeek,
   HOURS_PER_STELLAR_DAY,
@@ -23,7 +32,7 @@ export {
   MonthsNames,
   SECONDS_PER_MINUTE,
 
-  /* --- Date & Time ------------------------------------------------------------------------------------------------ */
+  /* ─── HTTP ─────────────────────────────────────────────────────────────────────────────────────────────────────── */
   HTTP_Methods,
   HTTP_StatusCodes,
   InformationalResponsesHTTP_StatusCodes,
@@ -33,14 +42,13 @@ export {
   ServerErrorsHTTP_StatusCodes,
 
 
-  /* === Data mocking =============================================================================================== */
+  /* ━━━ Data mocking ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   DataMocking,
   MockGatewayHelper,
   MockGatewayHelperLocalization__English,
 
 
-  /* === Date & Time ================================================================================================ */
-  /* --- Other ------------------------------------------------------------------------------------------------------ */
+  /* ━━━ Date & Time ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   CalendarBuilder,
   getDaysCountInSpecificMonth,
   getMonthNameByNumber,
@@ -56,69 +64,72 @@ export {
   Timer,
 
 
-  /* === Default value substituters ================================================================================= */
+  /* ━━━ Default value substituters ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   substituteWhenNull,
   substituteWhenUndefined,
 
 
-  /* === Errors ===================================================================================================== */
+  /* ━━━ Errors ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   AlgorithmMismatchError,
-  AlgorithmMismatchErrorLocalization__English,
+  algorithmMismatchErrorLocalization__english,
   ClassRedundantSubsequentInitializationError,
-  ClassRedundantSubsequentInitializationErrorLocalization__English,
+  classRedundantSubsequentInitializationErrorLocalization__english,
   ClassRequiredInitializationHasNotBeenExecutedError,
-  ClassRequiredInitializationHasNotBeenExecutedErrorLocalization__English,
+  classRequiredInitializationHasNotBeenExecutedErrorLocalization__english,
   ConfigFileNotFoundError,
-  ConfigFileNotFoundErrorLocalization__English,
+  configFileNotFoundErrorLocalization__english,
   CrossBrowserIssueError,
-  CrossBrowserIssueErrorLocalization__English,
+  crossBrowserIssueErrorLocalization__english,
   DataRetrievingFailedError,
-  DataRetrievingFailedErrorLocalization__English,
+  dataRetrievingFailedErrorLocalization__english,
   DataSubmittingFailedError,
-  DataSubmittingFailedErrorLocalization__English,
+  dataSubmittingFailedErrorLocalization__english,
   DOM_ElementRetrievingFailedError,
-  DOM_ElementRetrievingFailedErrorLocalization__English,
+  DOM_ElementRetrievingFailedErrorLocalization__english,
   FileReadingFailedError,
-  FileReadingFailedErrorLocalization__English,
+  fileReadingFailedErrorLocalization__english,
   FileWritingFailedError,
-  FileWritingFailedErrorLocalization__English,
+  fileWritingFailedErrorLocalization__english,
   ImproperUsageError,
-  ImproperUsageErrorLocalization__English,
+  improperUsageErrorLocalization__english,
   IncompatiblePropertiesInObjectTypeParameterError,
-  IncompatiblePropertiesInObjectTypeParameterErrorLocalization__English,
+  incompatiblePropertiesInObjectTypeParameterErrorLocalization__english,
   InterProcessInteractionFailedError,
-  InterProcessInteractionFailedErrorLocalization__English,
+  interProcessInteractionFailedErrorLocalization__english,
   InvalidConfigError,
-  InvalidConfigErrorLocalization__English,
+  invalidConfigErrorLocalization__english,
   InvalidExternalDataError,
-  InvalidExternalDataErrorLocalization__English,
+  invalidExternalDataErrorLocalization__english,
   InvalidParameterValueError,
-  InvalidParameterValueErrorLocalization__English,
+  invalidParameterValueErrorLocalization__english,
   ModuleDynamicLoadingFailedError,
-  ModuleDynamicLoadingFailedErrorLocalization__English,
+  moduleDynamicLoadingFailedErrorLocalization__english,
   UnexpectedEventError,
-  UnexpectedEventErrorLocalization__English,
+  unexpectedEventErrorLocalization__english,
   UnsupportedScenarioError,
-  UnsupportedScenarioErrorLocalization__English,
+  unsupportedScenarioErrorLocalization__english,
 
 
-  /* === Logging ==================================================================================================== */
-  /* --- PoliteErrorsMessageBuilder --------------------------------------------------------------------------------- */
+  /* ━━━ Files ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  encodeFileToBase64,
+
+  /* ━━━ Logging ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── PoliteErrorsMessageBuilder ───────────────────────────────────────────────────────────────────────────────── */
   PoliteErrorsMessagesBuilder,
   PoliteErrorsMessagesBuilder__English,
 
-  /* --- Rest ------------------------------------------------------------------------------------------------------- */
+  /* ─── Rest ─────────────────────────────────────────────────────────────────────────────────────────────────────── */
   Logger,
-  LoggerLocalization__English,
+  loggerLocalization__english,
 
 
-  /* === Maps ======================================================================================================= */
+  /* ━━━ Maps ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   addMultiplePairsToMap,
   createMapBasedOnOtherMap,
   filterMap,
 
 
-  /* === Numbers ==================================================================================================== */
+  /* ━━━ Numbers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   formatNumberWith4KetaKanji,
   getArithmeticMean,
   isStringifiedNonNegativeIntegerOfRegularNotation,
@@ -130,21 +141,22 @@ export {
   separateEach4DigitsGroupWithComma,
 
 
-  /* === Objects ===================================================================================================== */
+  /* ━━━ Objects ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   getObjectPropertySafely,
 
 
-  /* === Pagination ================================================================================================= */
+  /* ━━━ Pagination ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   computeFirstItemNumberForSpecificPaginationPage,
   computeLastItemNumberForSpecificPaginationPage,
-  splitToPaginationCollection,
+  getItemsOfPaginationPage,
+  PaginationCollection,
 
 
-  /* === Promises queue ============================================================================================= */
+  /* ━━━ Promises ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   PromisesQueue,
 
 
-  /* === Random values generators =================================================================================== */
+  /* ━━━ Random values generators ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   getRandomString,
   RandomStringsGenerator,
   getRandomArrayElement,
@@ -157,7 +169,7 @@ export {
   removeRandomArrayElement,
 
 
-  /* === Raw object data processor ================================================================================== */
+  /* ━━━ Raw object data processor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   RawObjectDataProcessor,
   RawObjectDataProcessorLocalization__English,
   convertPotentialStringToNumberIfPossible,
@@ -165,13 +177,13 @@ export {
   convertPotentialStringToFloatIfPossible,
 
 
-  /* === Sets ======================================================================================================= */
+  /* ━━━ Sets ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   createSetBasedOnOtherSet,
   addMultipleElementsToSet,
 
 
-  /* === Strings ==================================================================================================== */
-  /* --- Characters assets ------------------------------------------------------------------------------------------ */
+  /* ━━━ Strings ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── Characters assets ────────────────────────────────────────────────────────────────────────────────────────── */
   EscapeCharacters,
   lowercaseLatinCharacters,
   SpaceCharacters,
@@ -179,25 +191,30 @@ export {
   stringifiedDigits,
   uppercaseLatinCharacters,
 
-  /* --- Regular expressions ---------------------------------------------------------------------------------------- */
+  /* ─── Regular expressions ──────────────────────────────────────────────────────────────────────────────────────── */
   getMatchingWithFirstRegularExpressionCapturingGroup,
   extractMatchingsWithRegularExpression,
+  replaceMatchesWithRegularExpressionToDynamicValue,
 
-  /* --- URI -------------------------------------------------------------------------------------------------------- */
-  /* --- Files and directories --- */
+  /* ─── URI ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
+  /* --- Files and directories -------------------------------------------------------------------------------------- */
   appendLastFileNameExtension,
   extractAllFileNameExtensions,
   extractLastExtensionOfFileName,
+  removeAllFileNameExtensions,
 
-  /* --- Rest --- */
+  /* --- Rest ------------------------------------------------------------------------------------------------------- */
   appendFragmentToURI,
   getURI_PartWithoutFragment,
   getURI_Fragment,
+  removeSpecificSegmentsFromURI_Path,
+  explodeURI_PathToSegments,
 
-  /* --- Rest ------------------------------------------------------------------------------------------------------- */
+  /* ─── Rest ─────────────────────────────────────────────────────────────────────────────────────────────────────── */
   appendCharacterIfItDoesNotPresentInLastPosition,
   areStringifiedDigitsOnly,
   capitalizeFirstCharacter,
+  cropString,
   EmailAddress,
   explodeCasedPhraseToWords,
   getEnglishAbbreviatedOrdinalNumber,
@@ -224,14 +241,14 @@ export {
   trimSpaces,
 
 
-  /* === Type guards ================================================================================================ */
-  /* --- Arrays ----------------------------------------------------------------------------------------------------- */
+  /* ━━━ Type guards ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── Arrays ───────────────────────────────────────────────────────────────────────────────────────────────────── */
   isArrayOfCertainTypeElements,
   isArrayOfLength,
   isEmptyArray,
   isNonEmptyArray,
 
-  /* --- Nullables -------------------------------------------------------------------------------------------------- */
+  /* ─── Nullables ────────────────────────────────────────────────────────────────────────────────────────────────── */
   isNeitherUndefinedNorNull,
   isEitherUndefinedOrNull,
   isNotNull,
@@ -239,7 +256,7 @@ export {
   isNull,
   isUndefined,
 
-  /* --- Numbers ---------------------------------------------------------------------------------------------------- */
+  /* ─── Numbers ──────────────────────────────────────────────────────────────────────────────────────────────────── */
   isDecimalFractionOfAnySign,
   isNaturalNumber,
   isNegativeDecimalFraction,
@@ -249,27 +266,27 @@ export {
   isNumber,
   isPositiveDecimalFraction,
 
-  /* --- Objects ---------------------------------------------------------------------------------------------------- */
+  /* ─── Objects ──────────────────────────────────────────────────────────────────────────────────────────────────── */
   isArbitraryObject,
   isEmptyObject,
   isNonEmptyArbitraryObject,
   isNonEmptyObject,
   isNonNullObject,
 
-  /* --- Strings ---------------------------------------------------------------------------------------------------- */
+  /* ─── Strings ──────────────────────────────────────────────────────────────────────────────────────────────────── */
   isEmptyString,
   isNonEmptyString,
   isString,
   isStringOfLength,
   IsStringOfLengthCheckingOperation,
 
-  /* --- Others ----------------------------------------------------------------------------------------------------- */
+  /* ─── Rest ─────────────────────────────────────────────────────────────────────────────────────────────────────── */
   isBoolean,
   isElementOfEnumeration,
   isFunctionLike,
 
 
-  /* === Value transformers ========================================================================================= */
+  /* ━━━ Value transformers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   emptyStringToNull,
   nullToEmptyString,
   nullToUndefined,

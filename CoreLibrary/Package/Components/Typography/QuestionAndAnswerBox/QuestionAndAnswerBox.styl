@@ -31,7 +31,7 @@ provideQuestionAndAnswerBoxYDF_Component()
       aspect-ratio 1/1
 
       float left
-      margin-right 0.4em
+      margin-right 0.8em
       margin-bottom 0.4em
 
 
@@ -75,8 +75,8 @@ provideQuestionAndAnswerBoxYDF_Component()
     &-Text
 
       applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
-        fontSize: BASIC_FONT_SIZE,
-        lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS
+        fontSize: YDF_Configuration.textGeometry.basicFontSize,
+        lineHeight: YDF_Configuration.textGeometry.basicLineHeightInMultilineTextBlocks
       })
 
       color: ShadesOfGray__39ColorsW3C_Palette[12]

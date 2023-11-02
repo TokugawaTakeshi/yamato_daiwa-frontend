@@ -6,31 +6,31 @@ provideClippedShadowsAndOutlinesVisibility(compoundParameter, restParameters__MU
     targetParameter: compoundParameter,
     schema: {
       requiredHorizontalSymmetricSpace: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false
       },
       requiredSpaceAtLeft: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false,
         incompatibleWith: "requiredHorizontalSymmetricSpace"
       },
       requiredSpaceAtRight: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false,
         incompatibleWith: "requiredHorizontalSymmetricSpace"
       },
 
       requiredVerticalSymmetricSpace: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false
       },
       requiredSpaceAtTop: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false,
         incompatibleWith: "requiredVerticalSymmetricSpace"
       },
       requiredSpaceAtBottom: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: false,
         incompatibleWith: "requiredVerticalSymmetricSpace"
       },

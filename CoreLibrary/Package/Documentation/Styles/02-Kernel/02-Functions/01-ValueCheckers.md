@@ -189,18 +189,17 @@ That is why `isDimensionalAmount` has second parameter, but to make it's meaning
 
 
 ```stylus
-p(isDimensionalOrDimensionlessAmount(2px))  // => true
+p(isDimensionalOrDimensionlessQuantity(2px))  // => true
 p(isDimensionalAmount(2px, { considerDimensionlessZeroAsDimensionalAmount: true }))      // => true
-p(isDimensionlessAmount(2px, { considerDimensionlessZeroAsDimensionlessAmount: true }))  // => false
+p(isDimensionlessQuantity(2px))  // => false
 
-p(isDimensionalOrDimensionlessAmount(2))    // => true
+p(isDimensionalOrDimensionlessQuantity(2))    // => true
 p(isDimensionalAmount(2, { considerDimensionlessZeroAsDimensionalAmount: true }))    // => false
-p(isDimensionlessAmount(2))  // => true
+p(isDimensionlessQuantity(2))  // => true
 
 p(isDimensionalAmount(0, { considerDimensionlessZeroAsDimensionalAmount: true }))    // => true
 p(isDimensionalAmount(0, { considerDimensionlessZeroAsDimensionalAmount: false }))   // => false
-p(isDimensionlessAmount(0))  // => true
-p(isDimensionlessAmount(0))  // => true
+p(isDimensionlessQuantity(0))  // => true
 ```
 
 

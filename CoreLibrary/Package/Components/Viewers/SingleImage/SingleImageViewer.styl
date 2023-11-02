@@ -68,8 +68,7 @@ provideSingleImageViewerYDF_Component(preset = SingleImageViewer--YDF.defaultPro
 
       display block
 
-      // [ Approach ] As default, the image always takes 100% of available space however the maximal width could be limited.
-      width 100%
+      max-width 100%
 
       background-color: ShadesOfGray__39ColorsW3C_Palette[36]
 
@@ -105,7 +104,7 @@ provideSingleImageViewerYDF_Component(preset = SingleImageViewer--YDF.defaultPro
       right 0
       top 0
       bottom 0
-      z-index: ZIndexes.modalsUnderlay
+      z-index: YDF_Configuration.zIndexes.modalsUnderlay
 
       background-color alpha(black, 50%)
 

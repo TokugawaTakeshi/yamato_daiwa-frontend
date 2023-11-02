@@ -38,8 +38,8 @@
   "module": "./LogicDistributable/index.js",
   "types": "./LogicDistributable/index.d.ts",
   "dependencies": {
-    "@yamato-daiwa/es-extensions": "../../../YamatoDaiwaES_Extensions/CoreLibrary/Package",
-    "@yamato-daiwa/es-extensions-browserjs": "../../../YamatoDaiwaES_Extensions/BrowserJS/Package",
+    "@yamato-daiwa/es-extensions": "1.7.0-alpha.5",
+    "@yamato-daiwa/es-extensions-browserjs": "1.7.0-alpha.1",
     "clipboard": "2.0.11",
     "prismjs": "1.29.0",
     "slide-element": "2.3.1"

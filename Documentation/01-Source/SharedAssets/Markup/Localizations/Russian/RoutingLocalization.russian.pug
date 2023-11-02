@@ -65,6 +65,8 @@
 
           colors: {
 
+            $tableOfContentsTitle: "Цвета",
+
             PracticalColorCoordinateSystem: {
               $tableOfContentsTitle: "Палитра PCCS (<code>PracticalColorCoordinateSystem</code>)"
             },
@@ -85,13 +87,14 @@
 
           $tableOfContentsTitle: "Фундаментальная функциональность",
 
-          basicVariables: {
-            $tableOfContentsTitle: "Базовые переменные",
+          YDF_Configuration: {
+            $tableOfContentsTitle: "Конфигурация",
             fontsStacks: { $tableOfContentsTitle: "Стэки шрифтов" },
-            dimensions: { $tableOfContentsTitle: "Переменные размеров" },
-            zIndexes: { $tableOfContentsTitle: "z-индексы" },
-            BEM: { $tableOfContentsTitle: "БЭМ" }
+            textGeometry: { $tableOfContentsTitle: "Переменные размеров" },
+            zIndexes: { $tableOfContentsTitle: "z-индексы" }
           },
+
+          specificationsSchemas: { $tableOfContentsTitle: "Схемы спецификаций" },
 
           functions: {
 
@@ -100,7 +103,10 @@
             typeCheckers: {
               $tableOfContentsTitle: "Проверка типов значений",
               strings: { $tableOfContentsTitle : "Строковые значения" },
-              quantities: { $tableOfContentsTitle : "Величины" }
+              quantities: { $tableOfContentsTitle : "Величины" },
+              booleans: { $tableOfContentsTitle : "Булевские значения" },
+              nullables: { $tableOfContentsTitle : "Пустые значения" },
+              others: { $tableOfContentsTitle : "Остальные" }
             },
 
             strings: { $tableOfContentsTitle: "Работа со строками" },

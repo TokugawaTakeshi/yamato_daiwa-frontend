@@ -16,46 +16,71 @@ provideClosingButtonYDF_Component()
     cursor pointer
 
 
-    &:focus
+    &__RegularDecoration
 
-      outline outline 3px solid JQueryUI_BaseTheme.warning.borderColor
+      &:focus
+
+        outline outline 3px solid #007fff
+
+
+    &__LightForegroundDecoration
+
+      &:focus
+
+        outline: outline 3px solid YDF_ColorPalette.amber.mediumDark
 
 
     &-Icon
 
-      height 20px
+      height 24px
       flex-shrink 0
 
-      fill: JQueryUI_BaseTheme.clickableElements.defaultState.iconsColor
+
+      /.ClosingButton--YDF__RegularDecoration &
+
+        fill: JQueryUI_BaseTheme.clickableElements.defaultState.iconsColor
 
 
-      /.ClosingButton--YDF-Icon:hover &
+      /.ClosingButton--YDF__LightForegroundDecoration &
 
-        fill: JQueryUI_BaseTheme.clickableElements.hoverState.iconsColor
+        fill white
 
 
-      /.ClosingButton--YDF-Icon:active &
+      /.ClosingButton--YDF__LightForegroundDecoration:hover &
 
-        fill: JQueryUI_BaseTheme.clickableElements.activeState.iconsColor
+        opacity 0.8
+
+
+      /.ClosingButton--YDF__LightForegroundDecoration:active &
+
+        opacity 0.5
 
 
     &-Label
 
-      font-size 10px
+      font-size 12px
       font-weight bold
       user-select none
-
-      color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
 
       flex-shrink 0
       margin-top 4px
 
 
-      /.ClosingButton--YDF-Icon:hover &
+      /.ClosingButton--YDF__RegularDecoration &
 
-        fill: JQueryUI_BaseTheme.clickableElements.hoverState.fontColor
+        color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
 
 
-      /.ClosingButton--YDF-Icon:active &
+      /.ClosingButton--YDF__LightForegroundDecoration &
 
-        fill: JQueryUI_BaseTheme.clickableElements.activeState.fontColor
+        color: white
+
+
+      /.ClosingButton--YDF__LightForegroundDecoration:hover &
+
+        opacity 0.8
+
+
+      /.ClosingButton--YDF__LightForegroundDecoration:active &
+
+        opacity 0.5

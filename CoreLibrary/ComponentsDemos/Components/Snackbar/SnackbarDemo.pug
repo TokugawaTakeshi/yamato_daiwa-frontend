@@ -1,11 +1,11 @@
 mixin SnackbarDemo(options)
 
-  +Snackbar--YDF({
-    decoration: Snackbar__YDF.DecorativeVariations.success,
-    text: "Static preview works fine!"
-  })
-
   //-
-    button#DisplaySnackbarButton(
-      type="button"
-    ) Display snackbar
+    +Snackbar--YDF({
+      decoration: Snackbar__YDF.DecorativeVariations.success,
+      text: "Static preview works fine!"
+    })
+
+  button#DisplaySnackbarButton(
+    type="button"
+  ) Display snackbar

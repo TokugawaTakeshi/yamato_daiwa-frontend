@@ -1,0 +1,15 @@
+<span class=@composeClassAttributeValueForRootElement(namespaceCSS_Class: "Badge--YDF")>
+
+  @if (PrependedSVG_Icon is not null)
+  {
+    @PrependedSVG_Icon
+  }
+
+  @if (!String.IsNullOrEmpty(key))
+  {
+    <span class="Badge--YDF-Key">@key</span>
+  }
+
+  <span class="Badge--YDF-Value">@value</span>
+
+</span>

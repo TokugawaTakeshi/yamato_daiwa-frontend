@@ -1,4 +1,54 @@
-provideCompactTableOfContentsComponent()
+CompactTableOfContents--YDF_DK = {
+  defaultProperties: {
+
+    link: {
+      normalState: {
+        textColor: ShadesOfGray__39ColorsW3C_Palette[12]
+      },
+      hoverState: {
+        backgroundColor: ShadesOfGray__39ColorsW3C_Palette[34]
+      },
+      focusState: {
+        shadowColor: ShadesOfGray__39ColorsW3C_Palette[16]
+      },
+      activeState: {
+        backgroundColor: ShadesOfGray__39ColorsW3C_Palette[32]
+      },
+      selectedState: {
+        textColor: white,
+        backgroundColor: ShadesOfGray__39ColorsW3C_Palette[12]
+      }
+    },
+
+    title: {
+      textColor: ShadesOfGray__39ColorsW3C_Palette[12]
+    },
+
+    collapsingToggle: {
+      normalState: {
+        backgroundColor: ShadesOfGray__39ColorsW3C_Palette[24]
+      },
+      hoverState: {
+        backgroundColor: ShadesOfGray__39ColorsW3C_Palette[16]
+      },
+      focusState: {
+        shadowColor: YDF_ColorPalette.amber.mediumLight
+      },
+      activeState: {
+        backgroundColor: YDF_ColorPalette.amber.bright
+      }
+    }
+
+  }
+}
+
+provideCompactTableOfContentsComponent(
+  preset = CompactTableOfContents--YDF_DK.defaultProperties,
+  overridings = {}
+)
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+
 
   .CompactTableOfContents--YDF_DK
 
@@ -19,8 +69,7 @@ provideCompactTableOfContentsComponent()
 
       &-Link
 
-        display flex
-        align-items center
+        display block
 
         border-radius 8px
         Paddings({
@@ -35,29 +84,32 @@ provideCompactTableOfContentsComponent()
           mustApplyNegativeMarginsToRootElement: true
         })
 
-        color: ShadesOfGray__39ColorsW3C_Palette[12]
+        color: properties.link.normalState.textColor
 
         grid-area LINK_OR_TITLE
 
 
         &:hover
 
-          background: YDF_ColorPalette.skyBlue.pastelMediumLight
+          background-color: properties.link.hoverState.backgroundColor
 
 
         &:focus
 
-          box-shadow: inset 0 0 0 2px YDF_ColorPalette.amber.mediumLight
+          box-shadow: inset 0 0 0 2px properties.link.focusState.shadowColor
 
 
         &:active
 
-          background: YDF_ColorPalette.amber.light
+          background-color: properties.link.activeState.backgroundColor
 
 
         &__Current
 
-          background: YDF_ColorPalette.amber.light
+          color: properties.link.selectedState.textColor
+          background-color: properties.link.selectedState.backgroundColor
+
+          pointer-events none
 
 
         code
@@ -65,13 +117,12 @@ provideCompactTableOfContentsComponent()
           font-family Consolas, monaco, monospace
 
           font-weight bold
-          color: ShadesOfGray__39ColorsW3C_Palette[20]
 
 
       &-Title
 
         font-weight bold
-        color: ShadesOfGray__39ColorsW3C_Palette[12]
+        color: properties.title.textColor
 
 
       &-CollapsingToggle
@@ -89,24 +140,24 @@ provideCompactTableOfContentsComponent()
 
         &:focus
 
-          box-shadow: 0 0 3px 4px YDF_ColorPalette.amber.mediumLight
+          box-shadow: 0 0 3px 4px properties.collapsingToggle.focusState.shadowColor
 
 
         &-Icon
 
           height 20px
 
-          fill: ShadesOfGray__39ColorsW3C_Palette[24]
+          fill: properties.collapsingToggle.normalState.backgroundColor
 
 
           ../:hover &
 
-            fill: ShadesOfGray__39ColorsW3C_Palette[16]
+            fill: properties.collapsingToggle.hoverState.backgroundColor
 
 
           ../:active &
 
-            fill: YDF_ColorPalette.amber.bright
+            fill: properties.collapsingToggle.activeState.backgroundColor
 
 
       >.CompactTableOfContents--YDF_DK

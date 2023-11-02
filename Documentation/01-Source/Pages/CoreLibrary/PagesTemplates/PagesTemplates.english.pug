@@ -21,7 +21,7 @@ block append Metadata
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
     styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
-    scriptsURIs.endOfBody = [ "@Common" ];
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.pagesTemplates");
 
@@ -43,3 +43,17 @@ block append SpecificContent
   article
 
     h1.Article-Heading1 Pages templates
+
+    +AttentionBox--YDF({
+      title: "This page is under construction",
+      decoration: AttentionBox__YDF.DecorativeVariations.guidance,
+      hasPrependedSVG_Icon: true
+    })
+      | Apologies, but this page is currently being worked on.
+      | Rest assured, it will be completed during the alpha versions.
+      | For now, you can refer to the
+      |
+      +Link--YDF({
+        endorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/README.md#pages-templates"
+      }).Article-Link temporary markdown documentation
+      |   of this functionality.

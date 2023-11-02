@@ -23,10 +23,17 @@
     "url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/issues",
     "email": "tokugawa.takesi@gmail.com"
   },
-  "files": [
-    "StaticPreviewAnywherePageLocalization.pug"
-  ],
+  "module": "./LogicDistributable/index.js",
+  "types": "./LogicDistributable/index.d.ts",
   "peerDependencies": {
-    "@yamato-daiwa/es-extensions": "2.0.0-alpha.0"
+    "@yamato-daiwa/frontend": "2.0.0-alpha.3"
+  },
+  "devDependencies": {
+    "@yamato-daiwa/frontend": "2.0.0-alpha.4",
+    "@yamato-daiwa/style_guides": "0.0.59"
+  },
+  "scripts": {
+    "Rebuild distributable": "rimraf LogicDistributable & tsc",
+    "Lint": "eslint ."
   }
 }

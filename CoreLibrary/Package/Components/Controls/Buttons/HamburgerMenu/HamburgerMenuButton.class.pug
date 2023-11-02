@@ -18,14 +18,14 @@ include HamburgerMenuButtonLocalization.english.pug
     static Themes = { regular: "REGULAR" };
 
     static defineCustomThemes(themesNames) {
-      return ComponentsAuxiliaries.defineNewThemes(themesNames, Button__YDF);
+      return ComponentsAuxiliaries.defineNewThemes(themesNames, HamburgerMenuButton__YDF);
     }
 
     static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
 
     static considerThemesAsCommon() {
-      Button__YDF.areThemesCSS_ClassesCommon = true;
-      return Button__YDF;
+      HamburgerMenuButton__YDF.areThemesCSS_ClassesCommon = true;
+      return HamburgerMenuButton__YDF;
     }
 
 
@@ -56,7 +56,7 @@ include HamburgerMenuButtonLocalization.english.pug
         required: false
       },
 
-      englishLabel: {
+      alwaysEnglishLabel: {
         type: Boolean,
         required: false
       },
@@ -69,6 +69,29 @@ include HamburgerMenuButtonLocalization.english.pug
       labelLetterCase: {
         type: String,
         allowedAlternatives: HamburgerMenuButton__YDF.LabelLetterCases
+      },
+
+      theme: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(HamburgerMenuButton__YDF.Themes)
+      },
+
+      areThemesCSS_ClassesCommon: {
+        type: Boolean,
+        required: false
+      },
+
+      geometry: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(HamburgerMenuButton__YDF.GeometricVariations)
+      },
+
+      decoration: {
+        type: String,
+        required: false,
+        allowedAlternatives: Object.values(HamburgerMenuButton__YDF.DecorativeVariations)
       }
 
     };

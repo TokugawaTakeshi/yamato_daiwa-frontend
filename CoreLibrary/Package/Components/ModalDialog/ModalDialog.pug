@@ -38,12 +38,12 @@ mixin ModalDialog--YDF(properties, statesSimulations)
 
           .ModalDialog--YDF-Header
 
-            .ModalDialog--YDF-Title= title
+            if title
 
-            +Button--YDF({
-              geometry: Button__YDF.GeometricVariations.small
-            }).ModalDialog--YDF-DismissingButton
-              +MultiplicationSign--YDF_Icon.Button--YDF-SVG_Icon
-              span.Button--YDF-Label 閉じる
+              .ModalDialog--YDF-Title= title
+
+            if !noDismissingButton
+
+              +ClosingButton--YDF.ModalDialog--YDF-DismissingButton
 
         block

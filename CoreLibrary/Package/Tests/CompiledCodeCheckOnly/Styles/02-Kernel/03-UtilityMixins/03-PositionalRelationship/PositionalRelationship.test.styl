@@ -53,10 +53,10 @@ stylus Tests/CompiledCodeCheckOnly/Styles/02-Kernel/03-UtilityMixins/03-Position
 
   &-Paragraph
 
-    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
+    // TODO before/afterが利用出来ん
+    applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
       fontSize: 14px,
-      lineHeight: 17px,
-      doNotUsePseudoElements: true
+      lineHeight: 17px
     })
 
     PositionalRelationship({

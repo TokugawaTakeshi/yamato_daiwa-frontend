@@ -74,7 +74,7 @@ provideImprovedListYDF_Component(preset = ImprovedList--YDF.defaultProperties, o
     &-TargetContent
 
       applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
-        fontSize: BASIC_FONT_SIZE,
-        lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS,
+        fontSize: YDF_Configuration.textGeometry.basicFontSize,
+        lineHeight: YDF_Configuration.textGeometry.basicLineHeight,
         mustAllowWordsBreakingAnywhere: true
       })

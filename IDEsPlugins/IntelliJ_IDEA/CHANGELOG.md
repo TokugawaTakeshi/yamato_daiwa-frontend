@@ -1,25 +1,58 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
+<!-- ⚠️ "kbd" tag will not be displayed in Jet Brains Marketplace -->
 
 # Yamato-Daiwa Frontend IntelliJ IDEA plugin changelog
+
+
+## [0.0.8]
+
+### Added
+
+- **BordersSizingSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
+- **fs** - accessing to selected value of `YDF_Configuration.fontsStacks` associative array
+- **oydfc** - overriding of `YDF_Configuration` object
+- **PaddingsSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
+- **tg** - accessing to selected value of `YDF_Configuration.textGeometry` associative array
+- **TextElementHeightSizingSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
+- **WidthSizingSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
+- **ydfc** - autocomplete for `YDF_Configuration` object
+
+
+### Changed 
+
+- **zi**, previously the live template for the `ZIndexes` associative array-like mutable object, now associated with similar `YDF_Configuration.zIndexes` object 
+
+### Removed
+
+- **MAIN_SANS_SERIF_FONT_STACK** - autocomplete imitator for eponymous variable
+- **MAIN_SERIF_FONT_STACK** - autocomplete imitator for eponymous variable
+- **MAIN_MONOSPACED_FONT_STACK** - autocomplete imitator for eponymous variable
+- **MAIN_FONT_STACK** - autocomplete imitator for eponymous variable
+- **BASIC_FONT_SIZE** - autocomplete imitator for eponymous variable
+- **BASIC_LINE_HEIGHT** - autocomplete imitator for eponymous variable
+- **BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS** - autocomplete imitator for eponymous variable
+- **BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS** - autocomplete imitator for eponymous variable
+- **BEM_ELEMENT_SEPARATOR** - autocomplete imitator for eponymous variable
+- **BEM_MODIFIER_SEPARATOR** - autocomplete imitator for eponymous variable
 
 
 ## [0.0.7]
 
 ### Added
 
-- <kbd>ydfcp</kbd> - Live template for the **YDF_ColorPalette** object-type constant
-- <kbd>th-bgc</kbd> - same as <kbd>th</kbd>, but in the position of the value of `background-color` property
+- **ydfcp** - Live template for the **YDF_ColorPalette** object-type constant
+- **th-bgc** - same as **th**, but in the position of the value of `background-color` property
 
 ### Changed
 
 - Some elements of <kbd>dt</kbd> live template has been updated according 2.X API of **@yamato-daiwa/frontend**. 
-- <kbd>th</kbd> has been updated according 2.X API of **@yamato-daiwa/frontend**.
+- **th** has been updated according 2.X API of **@yamato-daiwa/frontend**.
 
 ### Removed
 
-- <kbd>isDimensionalOrDimensionlessAmount</kbd> has been replaced with <kbd>isDimensionalOrDimensionlessQuantity</kbd>
-- <kbd>isDimensionalAmount</kbd> has been replaced with <kbd>isDimensionalQuantity</kbd>
-- <kbd>isDimensionlessAmount</kbd> has been replaced with <kbd>isDimensionlessQuantity</kbd>
+- **isDimensionalOrDimensionlessAmount** has been replaced with **isDimensionalOrDimensionlessQuantity**
+- **isDimensionalAmount** has been replaced with **isDimensionalQuantity**
+- **isDimensionlessAmount** has been replaced with **isDimensionlessQuantity**
 
 
 ## [0.0.6]
@@ -28,13 +61,13 @@
 
 - Support IntelliJ IDEA platform build 232 
 - [File template](https://www.jetbrains.com/help/idea/using-file-and-code-templates.html) for **Badge** components styles customization
-- **buildEmailLinkHREF_AttributeValue** Autocomplete imitators for eponymous function
-- **buildPhoneNumberLinkHrefAttributeValue** Autocomplete imitators for eponymous function
+- **buildEmailLinkHREF_AttributeValue** - autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.english.html)
+- **buildPhoneNumberLinkHrefAttributeValue** - autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.english.html)
 
 ### Changed
 
 - Update <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> - live templates for the **Badge** component and its loading placeholder respectively (core package).
-- Update <kbd>badge-ydf-vue</kdb>, <kbd>badge-lp-ydf-vue</kdb> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
+- Update <kbd>badge-ydf-vue</kbd>, <kbd>badge-lp-ydf-vue</kbd> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
 - Remove `screen` keyword from <kbd>med2p</kbd>, <kbd>med3p</kbd>, <kbd>med4p</kbd>, <kbd>med5px</kbd> live templates
 - Improve <kbd>fbv</kbd> live template
 
@@ -51,13 +84,13 @@
 - <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> - live templates for the **Badge** component and its loading placeholder respectively
 - <kbd>badge-ydf-vue</kbd>, <kbd>badge-lp-ydf-vue</kbd> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
 - <kbd>dius</kbd> - **DummyImagesURIs** enumeration
-- <kbd>hd<kbd> - live template inserting the heading tag and dedicated CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
+- <kbd>hd</kbd> - live template inserting the heading tag and dedicated CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
 - <kbd>ossll</kbd> (Markup) - live template for **OverflowSafeSingleLineLabel** component markup 
 - <kbd>ossll</kbd> (Styles) - live template for **OverflowSafeSingleLineLabel** component styles
 - <kbd>ossll</kbd> (Vue) - live template for Vue adaptation of **OverflowSafeSingleLineLabel** component
-- <kbd>par<kbd> - live template inserting the <code>p</code> tag and dedicated CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
-- <kbd>shd<kbd> - live template inserting the <code>div</code> tag with subheading CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
-- <kbd>ydfcp<kbd> - live template for YDF Color Palette
+- <kbd>par</kbd> - live template inserting the <code>p</code> tag and dedicated CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
+- <kbd>shd</kbd> - live template inserting the <code>div</code> tag with subheading CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
+- <kbd>ydfcp</kbd> - live template for YDF Color Palette
 
 
 ## [0.0.3]
@@ -73,28 +106,28 @@
 - <kbd>pccs</kbd> - live template for [**PracticalColorCoordinateSystem**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md) object
 - <kbd>fuic</kbd> - live template for [**FlatUI_Colors**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md) enumeration
 - <kbd>zi</kbd> - live template for [**ZIndexes**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#zindexes) mutable object
-- <kbd>MAIN_SANS_SERIF_FONT_STACK</kbd> - autocomplete imitator for [eponymous variable](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#font-stacks)
-- <kbd>MAIN_SERIF_FONT_STACK</kbd> - autocomplete imitator for [eponymous variable](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#font-stacks)
-- <kbd>MAIN_MONOSPACED_FONT_STACK</kbd> - autocomplete imitator for [eponymous variable](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#font-stacks)
-- <kbd>MAIN_FONT_STACK</kbd> - autocomplete imitator for [eponymous variable](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#font-stacks)
-- <kbd>BASIC_FONT_SIZE</kbd> - autocomplete imitator for [eponymous variable](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#dimensions)
-- <kbd>BASIC_LINE_HEIGHT</kbd> - autocomplete imitator for [eponymous variable](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#dimensions)
-- <kbd>BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS</kbd> - autocomplete imitator for [eponymous variable](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#dimensions)
-- <kbd>BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS</kbd> - autocomplete imitator for [eponymous variable](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#dimensions)
-- <kbd>BEM_ELEMENT_SEPARATOR</kbd> - autocomplete imitator for [eponymous variable](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#bem-related)
-- <kbd>BEM_MODIFIER_SEPARATOR</kbd> - autocomplete imitator for [eponymous variable](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#bem-related)
+- <kbd>MAIN_SANS_SERIF_FONT_STACK</kbd> - autocomplete imitator for eponymous variable
+- <kbd>MAIN_SERIF_FONT_STACK</kbd> - autocomplete imitator for eponymous variable
+- <kbd>MAIN_MONOSPACED_FONT_STACK</kbd> - autocomplete imitator for eponymous variable
+- <kbd>MAIN_FONT_STACK</kbd> - autocomplete imitator for eponymous variable
+- <kbd>BASIC_FONT_SIZE</kbd> - autocomplete imitator for eponymous variable
+- <kbd>BASIC_LINE_HEIGHT</kbd> - autocomplete imitator for eponymous variable
+- <kbd>BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS</kbd> - autocomplete imitator for eponymous variable
+- <kbd>BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS</kbd> - autocomplete imitator for eponymous variable
+- <kbd>BEM_ELEMENT_SEPARATOR</kbd> - autocomplete imitator for eponymous variable
+- <kbd>BEM_MODIFIER_SEPARATOR</kbd> - autocomplete imitator for eponymous variable
 - <kbd>isNull</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnull--isnotnull)
 - <kbd>isNotNull</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnull--isnotnull)
-- <kbd>isString</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
-- <kbd>isEmptyString</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
-- <kbd>isNonEmptyString</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
-- <kbd>isDimensionalOrDimensionlessAmount</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isdimensionalamount--isdimensionlessamount--isdimensionalordimensionlessamount)
-- <kbd>isDimensionalAmount</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isdimensionalamount--isdimensionlessamount--isdimensionalordimensionlessamount)
-- <kbd>isDimensionlessAmount</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isdimensionalamount--isdimensionlessamount--isdimensionalordimensionlessamount)
-- <kbd>isNaturalNumber</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnaturalnumber)
-- <kbd>isTrue</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#istrue--isfalse)
-- <kbd>isFalse</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#istrue--isfalse)
-- <kbd>isBoolean</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+- **isString** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+- **isEmptyString** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+- **isNonEmptyString** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+- **isDimensionalOrDimensionlessAmount** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isdimensionalamount--isdimensionlessamount--isdimensionalordimensionlessamount)
+- **isDimensionalAmount** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isdimensionalamount--isdimensionlessamount--isdimensionalordimensionlessamount)
+- **isDimensionlessAmount** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isdimensionalamount--isdimensionlessamount--isdimensionalordimensionlessamount)
+- **isNaturalNumber** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnaturalnumber)
+- **isTrue** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#istrue--isfalse)
+- **isFalse** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#istrue--isfalse)
+- **isBoolean** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 - <kbd>isObject</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 - <kbd>isIdentifier</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 - <kbd>emptyStringToNull</kbd> - autocomplete imitator for eponymous value converter

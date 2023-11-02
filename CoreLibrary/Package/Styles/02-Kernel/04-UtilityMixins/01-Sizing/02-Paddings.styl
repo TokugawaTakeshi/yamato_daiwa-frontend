@@ -4,7 +4,7 @@ Paddings(paddingsSpecification, restParameters__MUST_NOT_BE...)
     mixinOrFunctionName: "Paddings",
     targetParameterNumber: 1,
     targetParameter: paddingsSpecification,
-    schema: PaddingsSpecificationSchema,
+    schema: PaddingsSpecificationSchema--YDF,
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
   })
 
@@ -32,6 +32,23 @@ Paddings(paddingsSpecification, restParameters__MUST_NOT_BE...)
     )
   }
 
+  if isNotNull(paddingsSpecification.upwardShifting)
+
+    if isNotNull(topPadding)
+
+      topPadding = buildCalcExpression(
+        "${ topPadding } - ${ upwardShifting }",
+        { topPadding: topPadding, upwardShifting: paddingsSpecification.upwardShifting }
+      )
+
+    if isNotNull(bottomPadding)
+
+      bottomPadding = buildCalcExpression(
+        "${ bottomPadding } + ${ upwardShifting }",
+        { bottomPadding: bottomPadding, upwardShifting: paddingsSpecification.upwardShifting }
+      )
+
+
   applyIfNotNull({
     padding-left: leftPadding,
     padding-right: rightPadding,
@@ -46,7 +63,7 @@ specifyPaddings(paddingsSpecification, restParameters__MUST_NOT_BE...)
     mixinOrFunctionName: "specifyPaddings",
     targetParameterNumber: 1,
     targetParameter: paddingsSpecification,
-    schema: PaddingsSpecificationSchema,
+    schema: PaddingsSpecificationSchema--YDF,
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
   })
 

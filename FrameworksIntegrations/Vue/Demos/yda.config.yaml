@@ -11,7 +11,7 @@ projectBuilding:
 
       All:
 
-        topDirectoryRelativePath: 01-Source
+        sourceFilesTopDirectoryRelativePath: 01-Source
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
           excludeSubdirectoriesWithPrefixes: "_"
@@ -29,7 +29,7 @@ projectBuilding:
 
       All:
 
-        topDirectoryRelativePath: 01-Source
+        sourceFilesTopDirectoryRelativePath: 01-Source
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
@@ -47,7 +47,7 @@ projectBuilding:
 
       All:
 
-        topDirectoryRelativePath: 01-Source
+        sourceFilesTopDirectoryRelativePath: 01-Source
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"

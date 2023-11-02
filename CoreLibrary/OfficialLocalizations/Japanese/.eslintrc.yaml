@@ -1,0 +1,7 @@
+extends: ./node_modules/@yamato-daiwa/style_guides/ECMAScript.js
+
+
+rules:
+
+  # The Node.js version limitations is not applicable to this package for BrowserJS
+  node/no-unsupported-features/es-syntax: off

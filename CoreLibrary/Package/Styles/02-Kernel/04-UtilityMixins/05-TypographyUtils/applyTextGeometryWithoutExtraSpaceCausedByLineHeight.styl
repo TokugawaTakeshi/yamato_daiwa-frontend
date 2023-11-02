@@ -7,17 +7,17 @@ applyTextGeometryWithoutExtraSpaceCausedByLineHeight(compoundParameter, restPara
     schema: {
 
       fontSize: {
-        type: DataTypes.dimensionalAmount,
+        type: DataTypes.dimensionalQuantity,
         required: true
       },
 
       lineHeight: {
-        type: DataTypes.dimensionalAmount DataTypes.dimensionlessAmount,
+        type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity,
         required: false
       },
 
       lineSpacing: {
-        type: DataTypes.dimensionalAmount DataTypes.dimensionlessAmount,
+        type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity,
         requiredIf: {
           predicate: @(compoundParameter) { return isNull(compoundParameter.lineHeight) },
           descriptionForLogging: "The 'lineHeight' is not specified"
@@ -43,7 +43,7 @@ applyTextGeometryWithoutExtraSpaceCausedByLineHeight(compoundParameter, restPara
       paddingsWhichMustBeDecreasedInsteadOfAddingOfNegativeMargins: {
         type: DataTypes.object,
         required: false,
-        properties: PaddingsSpecificationSchema
+        properties: PaddingsSpecificationSchema--YDF
       },
 
       mustComputeAbsoluteExtraSpaceIfPossible: {
@@ -95,7 +95,7 @@ applyTextGeometryWithoutExtraSpaceCausedByLineHeight(compoundParameter, restPara
       // === [ Branch A1 ] 0 line spacing
       extraSpaceCausedByLineHeightAtTopOrBottom = 0
 
-    else if isDimensionlessAmount(lineSpacing)
+    else if isDimensionlessQuantity(lineSpacing)
 
       // === [ Branch A2 ] Dimensionless line spacing
       extraSpaceCausedByLineHeightAtTopOrBottom = fontSize * lineSpacing / 2
@@ -121,7 +121,7 @@ applyTextGeometryWithoutExtraSpaceCausedByLineHeight(compoundParameter, restPara
       // === [ Branch B1 ] 0 line height: basically it could not be but must be processed correctly
       extraSpaceCausedByLineHeightAtTopOrBottom = 0
 
-    else if isDimensionlessAmount(lineHeight)
+    else if isDimensionlessQuantity(lineHeight)
 
       // === [ Branch B2 ] Dimensionless line height
       extraSpaceCausedByLineHeightAtTopOrBottom = ((fontSize * lineHeight) - fontSize) / 2
@@ -201,7 +201,7 @@ applyTextGeometryWithoutExtraSpaceCausedByLineHeight(compoundParameter, restPara
 
     else if compoundParameter.mustApplyNegativeMarginsToRootElement
 
-      if isDimensionalOrDimensionlessAmount(extraSpaceCausedByLineHeightAtTopOrBottom, "MUST_CONSIDER_DIMEMSIONLESS_ZERO_AS_DIMENSIONAL_AMOUNT")
+      if isDimensionalOrDimensionlessQuantity(extraSpaceCausedByLineHeightAtTopOrBottom)
 
         margin-top: -(extraSpaceCausedByLineHeightAtTopOrBottom)
         margin-bottom: -(extraSpaceCausedByLineHeightAtTopOrBottom)
@@ -222,7 +222,7 @@ applyTextGeometryWithoutExtraSpaceCausedByLineHeight(compoundParameter, restPara
 
       &:before
 
-        if isDimensionalOrDimensionlessAmount(extraSpaceCausedByLineHeightAtTopOrBottom, "MUST_CONSIDER_DIMEMSIONLESS_ZERO_AS_DIMENSIONAL_AMOUNT")
+        if isDimensionalOrDimensionlessQuantity(extraSpaceCausedByLineHeightAtTopOrBottom)
 
           margin-top: -(extraSpaceCausedByLineHeightAtTopOrBottom)
 
@@ -233,7 +233,7 @@ applyTextGeometryWithoutExtraSpaceCausedByLineHeight(compoundParameter, restPara
 
       &:after
 
-        if isDimensionalOrDimensionlessAmount(extraSpaceCausedByLineHeightAtTopOrBottom, "MUST_CONSIDER_DIMEMSIONLESS_ZERO_AS_DIMENSIONAL_AMOUNT")
+        if isDimensionalOrDimensionlessQuantity(extraSpaceCausedByLineHeightAtTopOrBottom)
 
           margin-bottom: -(extraSpaceCausedByLineHeightAtTopOrBottom)
 

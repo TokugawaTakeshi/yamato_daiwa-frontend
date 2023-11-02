@@ -1,9 +1,9 @@
 UnorderedListDefaultProperties--YDF = {
   geometry: {
     text: {
-      size: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
+      size: YDF_Configuration.textGeometry.basicFontSize,
       lineSpacing: null,
-      lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS
+      lineHeight: YDF_Configuration.textGeometry.basicLineHeightInMultilineTextBlocks
     },
     paddings: { left: 28px },
     verticalSpaceBetweenItems: 8px,
@@ -68,8 +68,8 @@ UnorderedList--YDF(
 
 OrderedListDefaultProperties--YDF = {
   geometry: {
-    fontSize: BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS,
-    lineHeight: BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS,
+    fontSize: YDF_Configuration.textGeometry.basicFontSize,
+    lineHeight: YDF_Configuration.textGeometry.basicLineHeightInMultilineTextBlocks,
     paddings: { left: 28px },
     verticalSpaceBetweenItems: 8px
   }
@@ -91,9 +91,12 @@ OrderedList--YDF(preset = OrderedListDefaultProperties--YDF, overridings = {})
 
   li
 
-    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight({
+    // [ Theory ] We can not use ::before and ::auto pseudo elements with "list-style-position inside"
+    applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
       fontSize: geometry.fontSize,
-      lineHeight: geometry.lineHeight
+      lineHeight: geometry.lineHeight,
+      mustApplyNegativeMarginsToRootElement: true,
+      mustTryToProvideHyphenations: true
     })
 
 

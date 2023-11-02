@@ -1,55 +1,66 @@
-computeTotalHeightByTextElementHeightSizingSpecification(textElementHeightSizingSpecification, restParameters__MUST_NOT_BE...)
+computeTotalHeightByTextElementHeightSizingSpecification(properties, restParameters__MUST_NOT_BE...)
 
   validateObjectTypeParameter({
     mixinOrFunctionName: "computeTotalHeightByTextElementHeightSizingSpecification",
     targetParameterNumber: 1,
-    targetParameter: textElementHeightSizingSpecification,
-    schema: TextElementHeightSizingSpecificationSchema,
+    targetParameter: properties,
+    schema: TextElementHeightSizingSpecificationSchema--YDF,
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
   })
 
-  if isNotNull(textElementHeightSizingSpecification.fixedHeight)
+  if isNotNull(properties.fixedHeight)
 
-    return textElementHeightSizingSpecification.fixedHeight
+    return properties.fixedHeight
 
 
-  verticalBorderThicknessSum = null
+  else
 
-  borders = textElementHeightSizingSpecification.borders
-  paddings = textElementHeightSizingSpecification.paddings
+    // ━━━ Font ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    fontSize = properties.fontSize
+    fixedLinesCount = properties.fixedLinesCount
 
-  lineHeight = textElementHeightSizingSpecification.lineHeight
 
-  if (isNull(lineHeight)) {
-    lineHeight = buildCalcExpression(
-      "${fontSize} + ${lineSpacing}",
-      { fontSize: textElementHeightSizingSpecification.fontSize, lineSpacing: textElementHeightSizingSpecification.lineSpacing }
+    // ━━━ Line height / line spacing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    lineHeight = isNull(properties.lineHeight) ?\
+        getLineHeightByFontSizeAndLineSpacing({
+          fontSize: fontSize,
+          lineSpacing: properties.lineSpacing,
+          mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0:
+              properties.mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0,
+          mustOutputDimensionalQuantityIfPossible: properties.mustApplyDimensionalLineHeightIfPossible
+        }) :
+        properties.lineHeight
+
+
+    // ━━━ Paddings ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+    borders = properties.borders.thickness || {}
+    paddings = properties.paddings
+
+    heightOfAllLines = buildCalcExpression(
+      "${ fixedLinesCount } * ${ lineHeight }",
+      {
+        fixedLinesCount: substituteNull(properties.fixedLinesCount, 1),
+        lineHeight: isDimensionlessQuantity(lineHeight) ? "" + (fontSize * lineHeight) : lineHeight
+      }
     )
-  }
 
-  heightOfAllLines = buildCalcExpression(
-    "${ fixedLinesCount } * ${ lineHeight }",
-    {
-      fixedLinesCount: substituteNull(textElementHeightSizingSpecification.fixedLinesCount, 1),
-      lineHeight: lineHeight
-    }
-  )
+    summands = YDF_Array-create()
 
-  summands = createYDF_Array()
-
-  addElementsToEndOfYDF_ArrayIf(
-    summands,
-    @(summand) { return isNotNull(summand) },
-    isNotNull(borders.all) ? 2 * borders.all : null,
-    isNotNull(borders.verticalSymmetric) ? 2 * borders.verticalSymmetric : null,
-    borders.top,
-    borders.bottom,
-    isNotNull(paddings.all) ? 2 * paddings.all : null,
-    isNotNull(paddings.verticalSymmetric) ? 2 * paddings.verticalSymmetric : null,
-    paddings.top,
-    paddings.bottom,
-    heightOfAllLines
-  )
+    addElementsToEndOfYDF_ArrayIf(
+      summands,
+      @(summand) { return isNotNull(summand) },
+      isNotNull(borders.all) ? 2 * borders.all : null,
+      isNotNull(borders.verticalSymmetric) ? 2 * borders.verticalSymmetric : null,
+      borders.top,
+      borders.bottom,
+      isNotNull(paddings.all) ? 2 * paddings.all : null,
+      isNotNull(paddings.verticalSymmetric) ? 2 * paddings.verticalSymmetric : null,
+      paddings.top,
+      paddings.bottom,
+      heightOfAllLines
+    )
 
 
-  return unquote("calc(" + join(" + ", values(summands)) + ")")
+    return unquote("calc(" + join(" + ", values(summands)) + ")")
