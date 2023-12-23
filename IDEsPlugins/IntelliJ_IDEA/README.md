@@ -53,7 +53,7 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 * <kbd>th</kbd>, <kbd>th-bgc</kbd> The Live template for the [`TemporaryHighlighting` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md)   
 * <kbd>ydfcp</kbd> The Live template for the `YDF_ColorPalette` object-type constant 
 * <kbd>fuic</kbd> The Live template for the [`FlatUI_Colors` enumeration](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md)
-* <kbd>mdc</kbd> The Live template for the [`MaterialDesignColors` object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md) 
+* <kbd>mdc</kbd> The Live template for the [`MaterialDesignColors` object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md)
 
 <!-- * <kbd>pccs</kbd> The Live template for the [`PracticalColorCoordinateSystem` object-type constant](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Assets/Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.english.html) -->
 <!-- * <kbd>sogw3c</kbd> The Live template for the [`ShadesOfGray__39ColorsW3C_Palette` array](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.english.html) -->
@@ -90,28 +90,43 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
   <!-- - **isString** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isString--SECTION) -->
 
 - Quantities
-  - **isBoolean** - autocomplete imitator type Live template for the eponymous function
   - **isDimensionalOrDimensionlessQuantity** - autocomplete imitator type Live template for the eponymous function
   - **isDimensionalQuantity** - autocomplete imitator type Live template for the eponymous function
   - **isDimensionlessQuantity** - autocomplete imitator type Live template for the eponymous function
-  - **isFalse** - autocomplete imitator type Live template for the eponymous function
   - **isNaturalNumber** - autocomplete imitator type Live template for the eponymous function
-  - **isTrue** - autocomplete imitator type Live template for the eponymous function
 
-  <!-- - **isBoolean** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isBoolean--SECTION) -->
   <!-- - **isDimensionalOrDimensionlessQuantity** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isDimensionalOrDimensionlessQuantity--SECTION) -->
   <!-- - **isDimensionalQuantity** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isDimensionalQuantity--SECTION) -->
   <!-- - **isDimensionlessQuantity** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isDimensionlessQuantity--SECTION) -->
-  <!-- - **isFalse** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isFalse--SECTION) -->
   <!-- - **isNaturalNumber** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isNaturalNumber--SECTION) -->
+
+- Booleans
+  - **isBoolean** - autocomplete imitator type Live template for the eponymous function
+  - **isFalse** - autocomplete imitator type Live template for the eponymous function
+  - **isTrue** - autocomplete imitator type Live template for the eponymous function
+
+  <!-- - **isBoolean** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isBoolean--SECTION) -->
+  <!-- - **isFalse** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isFalse--SECTION) -->
   <!-- - **isTrue** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isTrue--SECTION) -->
 
+- Nullables
+  - **isNotNull** - autocomplete imitator type Live template for the eponymous function
+  - **isNull** - autocomplete imitator type Live template for the eponymous function 
+  
+  <!-- - **isNotNull** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isNotNull--SECTION) -->
+  <!-- - **isNull** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isNull--SECTION) -->
 
-* Autocomplete imitators (no abbreviations) for [value checkers](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md) 
-  * <kbd>isNull</kbd> ([check documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnull--isnotnull)) 
-  * <kbd>isNotNull</kbd> ([check documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnull--isnotnull)) 
-  * <kbd>isObject</kbd> ([check documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md))
-  * <kbd>isIdentifier</kbd> ([check documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md))
+- Others
+  - **isCalcExpression** autocomplete imitator type Live template for the eponymous function
+  - **isFunction** autocomplete imitator type Live template for the eponymous function
+  - **isIdentifier** autocomplete imitator type Live template for the eponymous function
+  - **isObject** - autocomplete imitator type Live template for the eponymous function
+
+  <!-- - **isCalcExpression** autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isCalcExpression--SECTION) -->
+  <!-- - **isFunction** autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isFunction--SECTION) -->
+  <!-- - **isIdentifier** autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isIdentifier--SECTION) -->
+  <!-- - **isObject** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isObject--SECTION) -->
+
 
 * Autocomplete imitators (no abbreviations) for value converters
   * <kbd>emptyStringToNull</kbd>

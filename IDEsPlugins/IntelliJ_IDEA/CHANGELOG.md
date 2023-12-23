@@ -10,6 +10,8 @@
 
 - **BordersSizingSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
 - **fs** - accessing to selected value of `YDF_Configuration.fontsStacks` associative array
+- **isIdentifier** autocomplete imitator type Live template for the eponymous function
+- **isObject** autocomplete imitator type Live template for the eponymous function
 - **oydfc** - overriding of `YDF_Configuration` object
 - **PaddingsSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
 - **tg** - accessing to selected value of `YDF_Configuration.textGeometry` associative array
@@ -21,6 +23,7 @@
 ### Changed 
 
 - **zi**, previously the live template for the `ZIndexes` associative array-like mutable object, now associated with similar `YDF_Configuration.zIndexes` object 
+- Drop support for IntelliJ IDEA 2022.X
 
 ### Removed
 
@@ -116,8 +119,8 @@
 - <kbd>BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS</kbd> - autocomplete imitator for eponymous variable
 - <kbd>BEM_ELEMENT_SEPARATOR</kbd> - autocomplete imitator for eponymous variable
 - <kbd>BEM_MODIFIER_SEPARATOR</kbd> - autocomplete imitator for eponymous variable
-- <kbd>isNull</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnull--isnotnull)
-- <kbd>isNotNull</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnull--isnotnull)
+- **isNull** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnull--isnotnull)
+- **isNotNull** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#isnull--isnotnull)
 - **isString** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 - **isEmptyString** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 - **isNonEmptyString** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
@@ -128,8 +131,8 @@
 - **isTrue** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#istrue--isfalse)
 - **isFalse** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md#istrue--isfalse)
 - **isBoolean** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
-- <kbd>isObject</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
-- <kbd>isIdentifier</kbd> - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+- **isObject** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+- **isIdentifier** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 - <kbd>emptyStringToNull</kbd> - autocomplete imitator for eponymous value converter
 - <kbd>nullToZero</kbd> - autocomplete imitator for eponymous value converter
 - <kbd>nullToEmptyString</kbd> - autocomplete imitator for eponymous value converter
