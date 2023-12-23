@@ -11,4 +11,18 @@ overrides:
     rules:
 
       # The SVG attributes could be arbitrary long
-      "max-len": off
+      "@stylistic/max-len": off
+
+  - files: [ "Source/Components/**/*.tsx" ]
+    rules:
+
+      # The ordering by access modifiers basically is not suited with GUI components classes
+      "@typescript-eslint/member-ordering": off
+
+  - files: [ "Source/Components/**/*.tsx", "Source/SVG_Icons/SVG_IconComponent.ts" ]
+    rules:
+
+      # The merging of type/interface/class/function and namespace is completely valid TypeScript, but
+      #   @typescript-eslint community does not wish to support it.
+      #   https://github.com/eslint/eslint/issues/15504 */
+      "@typescript-eslint/no-redeclare": off

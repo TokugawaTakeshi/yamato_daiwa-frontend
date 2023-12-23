@@ -20,7 +20,13 @@ block append Metadata
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents"
+    ];
+
     scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.components");
@@ -29,6 +35,8 @@ block append Metadata
       english: "./Components.english.html",
       russian: "./Components.russian.html"
     });
+
+    const pageTableOfContents = localizedRouting.coreLibrary.$children.components.$sectioning;
 
 
 block append HeadScriptsLinks
@@ -42,12 +50,12 @@ block append SpecificContent
 
   article
 
-    h1 グラフィック・ユーザー・インターフェース・コンポーネント
+    h1.Article-Heading1 グラフィック・ユーザー・インターフェース・コンポーネント
 
-    +AttentionBox--YDF({
+    +AdmonitionBlock--YDF({
       title: "準備中",
-      decoration: AttentionBox__YDF.DecorativeVariations.guidance,
-      hasPrependedSVG_Icon: true
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.guidance,
+      SVG_Icon: true
     })
       | 恐れ入りますが、当ページは未だ準備中でございます。
       | アルファ版の期間無い用意を終わらせる予定です。

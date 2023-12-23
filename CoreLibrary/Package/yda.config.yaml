@@ -4,9 +4,9 @@ projectBuilding:
 
     selectiveExecutions:
 
-      PugExtensions:
+      PugAuxiliaries:
         tasksAndSourceFilesSelection:
-          ECMA_ScriptLogicProcessing: [ PugExtensions ]
+          ECMA_ScriptLogicProcessing: [ PugExtensions, ComponentsDefaultLocalizations ]
 
       Logic:
         tasksAndSourceFilesSelection:
@@ -17,6 +17,7 @@ projectBuilding:
         tasksAndSourceFilesSelection:
           markupProcessing: [ StylesAndComponentsTesting ]
           stylesProcessing: [ StylesAndComponentsTesting ]
+          ECMA_ScriptLogicProcessing: [ StylesAndComponentsTesting ]
 
         browserLiveReloadingSetupID: StylesAndComponentsTesting
 
@@ -30,7 +31,7 @@ projectBuilding:
     entryPointsGroups:
 
       StylesAndComponentsTesting:
-        sourceFilesTopDirectoryRelativePath: Tests
+        sourceFilesTopDirectoryRelativePath: Tests/Source
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
           excludeSubdirectoriesWithPrefixes: "_"
@@ -47,7 +48,7 @@ projectBuilding:
 
       StylesAndComponentsTesting:
 
-        sourceFilesTopDirectoryRelativePath: Tests
+        sourceFilesTopDirectoryRelativePath: Tests/Source
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
@@ -117,6 +118,40 @@ projectBuilding:
           PRODUCTION:
             outputTopDirectoryRelativePath: Markup/InlineECMAScript/Temporary
             revisioning: { disable: true }
+
+
+      ComponentsDefaultLocalizations:
+
+        singleEntryPointSourceFileRelativePath: Markup/InlineECMAScript/Source/ComponentsDefaultLocalizations.ts
+
+        targetRuntime:
+          type: PUG
+
+        distributing:
+          exposingOfExportsFromEntryPoints:
+            mustExpose: true
+            namespace: __COMPONENTS_DEFAULT_LOCALIZATIONS_EXPORTS__
+
+        buildingModeDependent:
+          PRODUCTION:
+            outputTopDirectoryRelativePath: Markup/InlineECMAScript/Temporary
+            revisioning: { disable: true }
+
+      StylesAndComponentsTesting:
+
+        sourceFilesTopDirectoryRelativePath: Tests/Source
+
+        targetRuntime:
+          type: BROWSER
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+          excludeSubdirectoriesWithNames: [ "CompiledCodeCheckOnly" ]
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Tests/Build
 
 
   # === Development server =============================================================================================

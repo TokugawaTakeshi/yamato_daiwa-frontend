@@ -1,0 +1,12 @@
+extends ../../../../CompletePages/Components/Controls/FilesUploader/_FilesUploaderGalleryPage.template.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_TITLE = generateHTML_Page_Title("Multiple Images Preview");
+
+    FilesUploaderGalleryOptions.
+        renderSinglePartial(FilesUploaderGalleryOptions.Partials.multipleImagesPreview).
+        visuallyHideAllHeadings();

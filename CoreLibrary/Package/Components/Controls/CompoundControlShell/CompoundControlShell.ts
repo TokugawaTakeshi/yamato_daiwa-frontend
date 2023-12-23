@@ -1,21 +1,21 @@
 /* eslint-disable no-underscore-dangle -- [ CONVENTION ]
 * The instance files begins from the underscore MUST be changed only via setters. */
 
-/* ─── アセット ───────────────────────────────────────────────────────────────────────────────────────────────────────── */
+/* ─── Assets ─────────────────────────────────────────────────────────────────────────────────────────────────────── */
 import componentDynamicPartsHTML from "./CompoundControlShell.parts.pug";
-
-/* ─── フレームワーク ────────────────────────────────────────────────────────────────────────────────────────────────────── */
-import type InputtedValueValidation from "../_Validation/InputtedValueValidation";
 import ExpandingAnimation from "../../../Animations/ExpandingAnimation";
 import CollapsingAnimation from "../../../Animations/CollapsingAnimation";
 
-/* ─── 補助 ─────────────────────────────────────────────────────────────────────────────────────────────────────────── */
+/* ─── Validation ─────────────────────────────────────────────────────────────────────────────────────────────────── */
+import type InputtedValueValidation from "../_Validation/InputtedValueValidation";
+
+/* ─── Utils ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
 import {
   getExpectedToBeSingleDOM_Element,
   cloneDOM_Element,
   createDOM_ElementFromHTML_Code
 } from "@yamato-daiwa/es-extensions-browserjs";
-import { isNotUndefined, isNull, isUndefined } from "@yamato-daiwa/es-extensions";
+import { isNull, isUndefined } from "@yamato-daiwa/es-extensions";
 
 
 export default class CompoundControlShell {
@@ -91,11 +91,10 @@ export default class CompoundControlShell {
 
   /* ━━━ Public static methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public static pickOneBySelector(
-    compoundParameter: Readonly<{
+    initializationProperties: Readonly<{
       targetCompoundControlShellSelector: string;
       mustDisplayErrorsMessagesIfAny: boolean;
-      contextElement?: Element;
-      contextElementSelector?: string;
+      contextElement?: ParentNode | Readonly<{ selector: string; }>;
     }>
   ): CompoundControlShell {
 
@@ -103,24 +102,17 @@ export default class CompoundControlShell {
       CompoundControlShell.initializeCommonDOM_Parts();
     }
 
-    const targetCompoundControlShellSelector: string = compoundParameter.targetCompoundControlShellSelector;
-    let contextElement: Element | undefined;
-
-    if (isNotUndefined(compoundParameter.contextElement)) {
-      contextElement = compoundParameter.contextElement;
-    } else if (isNotUndefined(compoundParameter.contextElementSelector)) {
-      contextElement = document.querySelectorAll(compoundParameter.contextElementSelector)[0];
-    }
+    const targetCompoundControlShellSelector: string = initializationProperties.targetCompoundControlShellSelector;
 
     const rootElement: HTMLElement = getExpectedToBeSingleDOM_Element<HTMLElement>({
       selector: targetCompoundControlShellSelector,
-      context: contextElement,
+      contextElement: initializationProperties.contextElement,
       expectedDOM_ElementSubtype: HTMLElement
     });
 
     return new CompoundControlShell({
       rootElement,
-      mustDisplayErrorsMessagesIfAny: compoundParameter.mustDisplayErrorsMessagesIfAny
+      mustDisplayErrorsMessagesIfAny: initializationProperties.mustDisplayErrorsMessagesIfAny
     });
 
   }
@@ -128,24 +120,24 @@ export default class CompoundControlShell {
 
   /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   private constructor(
-    compoundParameter: Readonly<{
+    initializationProperties: Readonly<{
       rootElement: HTMLElement;
       mustDisplayErrorsMessagesIfAny: boolean;
     }>
   ) {
 
-    this.rootElement = compoundParameter.rootElement;
+    this.rootElement = initializationProperties.rootElement;
 
-    this._mustDisplayErrorsMessagesIfAny = compoundParameter.mustDisplayErrorsMessagesIfAny;
+    this._mustDisplayErrorsMessagesIfAny = initializationProperties.mustDisplayErrorsMessagesIfAny;
 
     this.validationErrorsMessagesCollapsableListMountingPoint = getExpectedToBeSingleDOM_Element({
       selector: CompoundControlShell.VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT_SELECTOR,
-      context: this.rootElement
+      contextElement: this.rootElement
     });
 
     this.asynchronousValidationsStatusesCollapsableListMountingPoint = getExpectedToBeSingleDOM_Element({
       selector: CompoundControlShell.ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MOUNTING_POINT_SELECTOR,
-      context: this.rootElement
+      contextElement: this.rootElement
     });
 
   }
@@ -265,7 +257,7 @@ export default class CompoundControlShell {
 
       getExpectedToBeSingleDOM_Element({
         selector: CompoundControlShell.ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_ITEM_SELECTOR,
-        context: asynchronousValidationsStatusesCollapsableListItemElement
+        contextElement: asynchronousValidationsStatusesCollapsableListItemElement
       }).textContent = asynchronousCheck.message;
 
       this.asynchronousValidationsStatusesCollapsableList.
@@ -346,27 +338,27 @@ export default class CompoundControlShell {
 
     CompoundControlShell.validationErrorsMessagesCollapsableList = getExpectedToBeSingleDOM_Element({
       selector: CompoundControlShell.VALIDATION_ERRORS_MESSAGES_LIST_SELECTOR,
-      context: CompoundControlShell.dynamicParts,
+      contextElement: CompoundControlShell.dynamicParts,
       expectedDOM_ElementSubtype: HTMLElement
     });
 
     CompoundControlShell.validationErrorsMessagesCollapsableListEmptyItem = getExpectedToBeSingleDOM_Element({
       selector: CompoundControlShell.VALIDATION_ERRORS_MESSAGES_LIST_ITEM_SELECTOR,
-      context: CompoundControlShell.validationErrorsMessagesCollapsableList
+      contextElement: CompoundControlShell.validationErrorsMessagesCollapsableList
     });
     CompoundControlShell.validationErrorsMessagesCollapsableListEmptyItem.remove();
 
 
     CompoundControlShell.asynchronousValidationsStatusesCollapsableList = getExpectedToBeSingleDOM_Element({
       selector: CompoundControlShell.ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_SELECTOR,
-      context: CompoundControlShell.dynamicParts,
+      contextElement: CompoundControlShell.dynamicParts,
       expectedDOM_ElementSubtype: HTMLElement
     });
 
     CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressStateEmptyItem =
         getExpectedToBeSingleDOM_Element({
           selector: CompoundControlShell.ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_IN_PROGRESS_STATE_ITEM_TEMPLATE_SELECTOR,
-          context: CompoundControlShell.asynchronousValidationsStatusesCollapsableList
+          contextElement: CompoundControlShell.asynchronousValidationsStatusesCollapsableList
         });
     CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressStateEmptyItem.remove();
 
@@ -374,7 +366,7 @@ export default class CompoundControlShell {
         getExpectedToBeSingleDOM_Element({
           selector: CompoundControlShell.
               ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_SUCCEEDED_AND_VALID_STATE_ITEM_TEMPLATE_SELECTOR,
-          context: CompoundControlShell.asynchronousValidationsStatusesCollapsableList
+          contextElement: CompoundControlShell.asynchronousValidationsStatusesCollapsableList
         });
     CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressSucceededAndValidStateEmptyItem.remove();
 
@@ -382,7 +374,7 @@ export default class CompoundControlShell {
         getExpectedToBeSingleDOM_Element({
           selector: CompoundControlShell.
               ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_MALFUNCTION_STATE_ITEM_TEMPLATE_SELECTOR,
-          context: CompoundControlShell.asynchronousValidationsStatusesCollapsableList
+          contextElement: CompoundControlShell.asynchronousValidationsStatusesCollapsableList
         });
     CompoundControlShell.asynchronousValidationsStatusesCollapsableListInProgressMalfunctionStateEmptyItem.remove();
 

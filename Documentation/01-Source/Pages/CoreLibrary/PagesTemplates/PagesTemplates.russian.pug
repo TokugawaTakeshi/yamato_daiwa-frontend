@@ -20,7 +20,13 @@ block append Metadata
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents"
+    ];
+
     scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.pagesTemplates");
@@ -44,10 +50,10 @@ block append SpecificContent
 
     h1.Article-Heading1 Шаблоны страниц
 
-    +AttentionBox--YDF({
+    +AdmonitionBlock--YDF({
       title: "Документация ещё не готова",
-      decoration: AttentionBox__YDF.DecorativeVariations.guidance,
-      hasPrependedSVG_Icon: true
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.guidance,
+      SVG_Icon: true
     })
       | Документация для этой функциональности пока не готова к публикации, однако её планируется завершить до начала
       |   выпуска бета-версий.

@@ -1,0 +1,158 @@
+-
+
+  class AdmonitionBlock__YDF {
+
+    static CSS_NAMESPACE = "AdmonitionBlock--YDF";
+
+
+    /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static Themes = { regular: "REGULAR" };
+
+    static defineThemes(themesNames) {
+      return ComponentsAuxiliaries.defineThemes(themesNames, AdmonitionBlock__YDF);
+    }
+
+    static areThemesCSS_ClassesCommon = ComponentsAuxiliaries.areComponentsThemesCommon;
+
+    static considerThemesAsCommon() {
+      AdmonitionBlock__YDF.areThemesCSS_ClassesCommon = true;
+      return AdmonitionBlock__YDF;
+    }
+
+
+    /* ─── Geometric Variations ───────────────────────────────────────────────────────────────────────────────────── */
+    static GeometricVariations = {
+      regular: "REGULAR",
+      stickyNoteLike: "STICKY_NOTE_LIKE"
+    };
+
+    static defineGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineGeometricVariations(geometricVariationsNames, AdmonitionBlock__YDF);
+    }
+
+
+    /* ─── Decorative Variations ──────────────────────────────────────────────────────────────────────────────────── */
+    static DecorativeVariations = {
+      notice: "NOTICE",
+      error: "ERROR",
+      warning: "WARNING",
+      success: "SUCCESS",
+      guidance: "GUIDANCE",
+      question: "QUESTION"
+    };
+
+    static defineDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineDecorativeVariations(decorativeVariationsNames, AdmonitionBlock__YDF);
+    }
+
+
+    /* ━━━ Properties Specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static propertiesSpecification = {
+
+      title: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
+      SVG_Icon: {
+
+        type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
+        required: false,
+
+        alternatives: [
+          { type: Boolean },
+          {
+
+            type: Object,
+            required: false,
+
+            properties: {
+
+              innerElementID: {
+                type: String,
+                required: true,
+                minimalCharactersCount: 1
+              },
+
+              SVG_ElementAttributes: {
+                type: RawObjectDataProcessor.ValuesTypesIDs.associativeArrayOfUniformTypeValues,
+                defaultValue: {},
+                value: {
+                  type: String,
+                  minimalCharactersCount: 1
+                }
+              }
+
+            }
+
+          }
+        ]
+
+      },
+
+      dismissible: {
+        type: Boolean,
+        defaultValue: false
+      },
+
+      theme: {
+        type: String,
+        defaultValue: AdmonitionBlock__YDF.Themes.regular,
+        allowedAlternatives: Object.
+            entries(AdmonitionBlock__YDF.Themes).
+            map(([ key, value ]) => ({ key: `AdmonitionBlock__YDF.Themes.${ key }`, value }))
+      },
+
+      areThemesCSS_ClassesCommon: {
+        type: Boolean,
+        defaultValue: AdmonitionBlock__YDF.areThemesCSS_ClassesCommon
+      },
+
+      geometricVariation: {
+        type: String,
+        defaultValue: AdmonitionBlock__YDF.GeometricVariations.regular,
+        allowedAlternatives: Object.
+            entries(AdmonitionBlock__YDF.GeometricVariations).
+            map(([ key, value ]) => ({ key: `AdmonitionBlock__YDF.GeometricVariations.${ key }`, value }))
+      },
+
+      decorativeVariation: {
+        type: String,
+        required: true,
+        allowedAlternatives: Object.
+            entries(AdmonitionBlock__YDF.DecorativeVariations).
+            map(([ key, value ]) => ({ key: `AdmonitionBlock__YDF.DecorativeVariations.${ key }`, value }))
+      }
+
+    };
+
+
+    /* ━━━ Localization ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static localization = admonitionBlockYDF_ComponentLocalization__english;
+
+
+    /* ━━━ ID Generating ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    static counterForInstancesIDs_Generating = 0;
+
+    static generateInstanceID() {
+      AdmonitionBlock__YDF.counterForInstancesIDs_Generating++;
+      return `ADMONITION_BLOCK--YDF-${ AdmonitionBlock__YDF.counterForInstancesIDs_Generating }`;
+    }
+
+
+    /* ─── SVG Icons ──────────────────────────────────────────────────────────────────────────────────────────────── */
+    static counterForCustomSVG_IconsIDs_Generating = 0;
+    static customSVG_IconCurrentID = null;
+
+    static generateCustomIconNewID() {
+
+      AdmonitionBlock__YDF.counterForCustomSVG_IconsIDs_Generating++;
+      AdmonitionBlock__YDF.customSVG_IconCurrentID =
+            `ADMONITION_BLOCK--YDF-SVG_ICON-${ this.counterForCustomSVG_IconsIDs_Generating }`;
+
+      return this.customSVG_IconCurrentID;
+
+    }
+
+  }

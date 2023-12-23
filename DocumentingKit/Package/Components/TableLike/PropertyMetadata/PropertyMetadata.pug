@@ -3,19 +3,14 @@ include PropertyMetadata.class.pug
 
 mixin PropertyMetadata--YDF_DK(propertySpecification)
 
-  dl.PropertyMetadata--YDF_DK
-
-    if propertySpecification.localizedInterpretation
-
-      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.localizedInterpretation
-      dd.PropertyMetadata--YDF_DK-Value= propertySpecification.localizedInterpretation
+  mixin ValueTypeRow(type)
 
     dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.type
     dd.PropertyMetadata--YDF_DK-Value(
       class="PropertyMetadata--YDF_DK-Value__Accented"
     )
 
-      case propertySpecification.type
+      case type
 
         when Number
           | number
@@ -28,37 +23,111 @@ mixin PropertyMetadata--YDF_DK(propertySpecification)
 
         default
 
-          | #{ propertySpecification.type }
+          | #{ type }
 
 
-    //- [ Theory ] "defaultValue" could be added in the documentation above `required.false`.
-    if isNotUndefined(propertySpecification.defaultValue)
+  mixin ValueTypeSpecificMetadataRows(propertySpecification)
 
-      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.defaultvalue
-      dd.PropertyMetadata--YDF_DK-Value= propertySpecification.defaultValue
+    if propertySpecification.minimalCharactersCount
 
-    else if propertySpecification.required === true
+      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.minimalCharactersCount
+      dd.PropertyMetadata--YDF_DK-Value.PropertyMetadata--YDF_DK-Value__Accented
+        | #{ propertySpecification.minimalCharactersCount }
 
-      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.required
-      dd.PropertyMetadata--YDF_DK-Value= PropertyMetadata__YDF_DK.localization.yes
+    if propertySpecification.maximalCharactersCount
 
-    else if propertySpecification.required === false
+      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.maximalCharactersCount
+      dd.PropertyMetadata--YDF_DK-Value.PropertyMetadata--YDF_DK-Value__Accented
+        | #{ propertySpecification.maximalCharactersCount }
 
-      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.required
-      dd.PropertyMetadata--YDF_DK-Value= PropertyMetadata__YDF_DK.localization.no
+    if propertySpecification.minimalValue
 
+      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.minimalValue
+      dd.PropertyMetadata--YDF_DK-Value.PropertyMetadata--YDF_DK-Value__Accented
+        | #{ propertySpecification.minimalValue }
+
+    if propertySpecification.maximalValue
+
+      dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.maximalValue
+      dd.PropertyMetadata--YDF_DK-Value.PropertyMetadata--YDF_DK-Value__Accented
+        | #{ propertySpecification.maximalValue }
 
     if propertySpecification.allowedAlternatives
+
       dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.allowedAlternatives
       dd.PropertyMetadata--YDF_DK-Value
-        ul
+
+        ul.PropertyMetadata--YDF_DK-AllowedAlternativesList
+
           each allowedAlternative in propertySpecification.allowedAlternatives
+
             li
+
               if isString(allowedAlternative)
                 | #{ allowedAlternative }
+
               else if Array.isArray(allowedAlternative)
                 each segment in allowedAlternative
                   if segment.text
                     | #{ segment.text }
                   else if segment.code
                     code= segment.code
+
+              else
+
+                | #{ allowedAlternative.key }
+
+
+  //- [ Extra Wrapper Role ] The Query Container Provider
+  div.PropertyMetadata--YDF_DK
+
+    dl
+
+      if propertySpecification.localizedInterpretation
+
+        dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.localizedInterpretation
+        dd.PropertyMetadata--YDF_DK-Value= propertySpecification.localizedInterpretation
+
+
+      if propertySpecification.type === RawObjectDataProcessor.ValuesTypesIDs.oneOf
+
+        dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.typesAlternatives
+        dd.PropertyMetadata--YDF_DK-Value
+
+          each alternative in propertySpecification.alternatives
+
+            dl
+
+              +ValueTypeRow(alternative.type)
+
+              +ValueTypeSpecificMetadataRows(propertySpecification)
+
+      else
+
+        +ValueTypeRow(propertySpecification.type)
+
+
+      if isNotUndefined(propertySpecification.defaultValue)
+
+        dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.defaultValue
+        dd.PropertyMetadata--YDF_DK-Value= propertySpecification.defaultValue
+
+      else if propertySpecification.required === true
+
+        dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.required
+        dd.PropertyMetadata--YDF_DK-Value= PropertyMetadata__YDF_DK.localization.yes
+
+      else if propertySpecification.required === false
+
+        dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.required
+        dd.PropertyMetadata--YDF_DK-Value= PropertyMetadata__YDF_DK.localization.no
+
+      if propertySpecification.requiredIf
+
+        dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.requiredIf
+        dd.PropertyMetadata--YDF_DK-Value= propertySpecification.requiredIf.descriptionForLogging
+
+
+      if propertySpecification.type !== RawObjectDataProcessor.ValuesTypesIDs.oneOf
+
+        +ValueTypeSpecificMetadataRows(propertySpecification)

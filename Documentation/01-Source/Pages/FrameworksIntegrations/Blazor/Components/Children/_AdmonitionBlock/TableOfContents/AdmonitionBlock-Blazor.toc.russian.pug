@@ -1,0 +1,27 @@
+include AdmonitionBlock-Blazor.toc.pug
+
+
+-
+
+  localizedRouting.frameworksIntegrations.$children.
+      blazor.$children.
+      components.$children.
+      AdmonitionBlock.$sectioning =
+
+          generatePageTableOfContents({
+            synopsis: { $heading: "Сводка" },
+            usage: {
+              $heading: "Использование",
+              markup: {
+                $heading: "Разметка",
+                includingToProject: {
+                  $heading: "Подключение в проект"
+                },
+                pugMixin: {
+                  $heading: "Pug-примесь <code>AdmonitionBlock--YDF</code>",
+                  minimalExample: { $heading: "Минимальный пример (только обязательные свойства)" },
+                  title: { $heading: "Заголовок (свойство <code>title</code>)" }
+                }
+              }
+            }
+          });

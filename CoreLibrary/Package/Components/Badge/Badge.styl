@@ -19,6 +19,8 @@
 
 Badge--YDF = {
 
+  CSS_NAMESPACE: "Badge--YDF",
+
   defaultProperties: {
 
     themes: {
@@ -176,31 +178,31 @@ provideBadgeYDF_Component(
         valueLabelTextSize: { dotSeparatedPath: "valueLabel.text.size", required: true },
         valueLabelLineSpacing: { dotSeparatedPath: "valueLabel.text.lineSpacing", required: false },
         valueLabelLineHeight: { dotSeparatedPath: "valueLabel.text.lineHeight", mustBeInsteadOf: "valueLabel.text.lineSpacing" },
-        valueLabelVerticalSymmerticSpacingAsTopSpacing: {
+        valueLabelVerticalSymmetricSpacingAsTopSpacing: {
           newName: "valueLabelTopSpacing",
-          dotSeparatedPath: "valueLabel.spacing.verticalSymmertic",
+          dotSeparatedPath: "valueLabel.spacing.verticalSymmetric",
           required: false
         },
-        valueLabelVerticalSymmerticSpacingAsBottomSpacing: {
+        valueLabelVerticalSymmetricSpacingAsBottomSpacing: {
           newName: "valueLabelBottomSpacing",
-          dotSeparatedPath: "valueLabel.spacing.verticalSymmertic",
+          dotSeparatedPath: "valueLabel.spacing.verticalSymmetric",
           required: false
         },
         valueLabelTopSpacing: {
           dotSeparatedPath: "valueLabel.spacing.top",
           required: false,
-          incompatibleWith: "SVG_Icon.spacing.verticalSymmertic"
+          incompatibleWith: "SVG_Icon.spacing.verticalSymmetric"
         },
         valueLabelBottomSpacing: {
           dotSeparatedPath: "valueLabel.spacing.bottom",
           required: false,
-          incompatibleWith: "SVG_Icon.spacing.verticalSymmertic"
+          incompatibleWith: "SVG_Icon.spacing.verticalSymmetric"
         }
       }
     })
 
 
-    +provideDefaultSelectorWhenRootAndApply(".Badge--YDF")
+    +provideDefaultSelectorWhenRootAndApply("." + Badge--YDF.CSS_NAMESPACE)
 
       BordersSizing(cachedValidReusables.bordersSizing)
 
@@ -211,17 +213,17 @@ provideBadgeYDF_Component(
 
       &.Badge--YDF__PillShapeGeometricModifier
 
-        TEXT_SIZE_TO_BORDER_RADIUS_RATIO = extractAndValidateObjectProperties({
+        BORDER_RADIUS_TO_VALUE_TEXT_SIZE_RATIO = extractAndValidateObjectProperties({
           targetObject: variation,
           targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
           extracts: {
-            textSizeToBorderRadiusRatio: {
-              dotSeparatedPath: "rootElement.modifiers.pillShape.textSizeToBorderRadiusRatio", required: true
+            borderRadiusToValueTextSizeRatio: {
+              dotSeparatedPath: "rootElement.modifiers.pillShape.borderRadiusToValueTextSizeRatio", required: true
             }
           }
-        }).textSizeToBorderRadiusRatio
+        }).borderRadiusToValueTextSizeRatio
 
-        border-radius cachedValidReusables.valueLabelTextSize * TEXT_SIZE_TO_BORDER_RADIUS_RATIO
+        border-radius cachedValidReusables.valueLabelTextSize * BORDER_RADIUS_TO_VALUE_TEXT_SIZE_RATIO
 
 
     .Badge--YDF-SVG_Icon
@@ -238,27 +240,27 @@ provideBadgeYDF_Component(
               conditionDescription: "'SVG_Icon.width' icon is null"
             }
           },
-          verticalSymmerticMarginsAsTopMargin: {
+          verticalSymmetricMarginsAsTopMargin: {
             newName: "margin-top",
-            dotSeparatedPath: "SVG_Icon.spacing.verticalSymmertic",
+            dotSeparatedPath: "SVG_Icon.spacing.verticalSymmetric",
             required: false
           },
-          verticalSymmerticMarginsAsBottomMargin: {
+          verticalSymmetricMarginsAsBottomMargin: {
             newName: "margin-bottom",
-            dotSeparatedPath: "SVG_Icon.spacing.verticalSymmertic",
+            dotSeparatedPath: "SVG_Icon.spacing.verticalSymmetric",
             required: false
           },
           topMargin: {
             newName: "margin-top",
             dotSeparatedPath: "SVG_Icon.spacing.top",
             required: false,
-            incompatibleWith: "SVG_Icon.spacing.verticalSymmertic"
+            incompatibleWith: "SVG_Icon.spacing.verticalSymmetric"
           },
           bottomMargin: {
             newName: "margin-bottom",
             dotSeparatedPath: "SVG_Icon.spacing.bottom",
             required: false,
-            incompatibleWith: "SVG_Icon.spacing.verticalSymmertic"
+            incompatibleWith: "SVG_Icon.spacing.verticalSymmetric"
           },
           margin-left: { dotSeparatedPath: "SVG_Icon.spacing.left", required: true }
         }
@@ -274,27 +276,27 @@ provideBadgeYDF_Component(
         targetObject: variation,
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
-          verticalSymmerticPaddingsAsTopPadding: {
+          verticalSymmetricPaddingsAsTopPadding: {
             newName: "padding-top",
-            dotSeparatedPath: "keyLabel.spacing.verticalSymmertic",
+            dotSeparatedPath: "keyLabel.spacing.verticalSymmetric",
             required: false
           },
-          verticalSymmerticPaddingsAsBottomPadding: {
+          verticalSymmetricPaddingsAsBottomPadding: {
             newName: "padding-bottom",
-            dotSeparatedPath: "keyLabel.spacing.verticalSymmertic",
+            dotSeparatedPath: "keyLabel.spacing.verticalSymmetric",
             required: false
           },
           topPadding: {
             newName: "padding-top",
             dotSeparatedPath: "keyLabel.spacing.top",
             required: false,
-            incompatibleWith: "keyLabel.spacing.verticalSymmertic"
+            incompatibleWith: "keyLabel.spacing.verticalSymmetric"
           },
           bottomPadding: {
             newName: "padding-bottom",
             dotSeparatedPath: "keyLabel.spacing.bottom",
             required: false,
-            incompatibleWith: "keyLabel.spacing.verticalSymmertic"
+            incompatibleWith: "keyLabel.spacing.verticalSymmetric"
           }
         }
       })
@@ -454,6 +456,14 @@ provideBadgeYDF_Component(
 
         LoadingPlaceholder()
 
+        validateAndAssignStoredInObjectCSS_Properties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          assigments: {
+            min-width: { dotSeparatedPath: "rootElement.loadingPlaceholder.minimalWidth", required: true }
+          }
+        })
+
         HEIGHT = computeTotalHeightByTextElementHeightSizingSpecification({
           type: TextElementHeightSizingTypes--YDF.natural,
           borders: cachedValidReusables.bordersSizing,
@@ -465,7 +475,6 @@ provideBadgeYDF_Component(
           lineHeight: 1
         })
 
-        min-width: variation.rootElement.loadingPlaceholder.minimalWidth
         height HEIGHT
 
 
@@ -501,12 +510,12 @@ provideBadgeYDF_Component(
   applyDecorativeVariation(themeName, variationName, variation)
 
     VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
-      "Badge.${themeName}Theme.${variationName}Decoration",
+      "Badge.${ themeName }Theme.${ variationName }Decoration",
       { themeName: themeName, variationName: variationName }
     )
 
 
-    +provideDefaultSelectorWhenRootAndApply(".Badge--YDF")
+    +provideDefaultSelectorWhenRootAndApply("." + Badge--YDF.CSS_NAMESPACE)
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
@@ -585,7 +594,7 @@ provideBadgeYDF_Component(
   if !options.themeIndependentStylesOnly
 
     applyComponentThemes({
-      CSS_Namespace: "Badge--YDF",
+      CSS_Namespace: Badge--YDF.CSS_NAMESPACE,
       themes: properties.themes,
       areThemesCSS_ClassesCommon: options.areThemesCSS_ClassesCommon,
       themeIndependentGeometricVariations: options.themeIndependentGeometricVariations,

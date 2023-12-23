@@ -51,7 +51,8 @@ mixin ThemesShowcase--YDF(properties)
       skipDecorativeVariationIf = () => false,
       iterationData,
       decorativeVariationsWrapperTag = "ul",
-      decorativeVariationsWrapperAdditionalCSS_Classes
+      decorativeVariationsWrapperAdditionalCSS_Classes,
+      decorativeVariationsListItemAdditionalCSS_Classes
     } = properties;
 
 
@@ -99,7 +100,9 @@ mixin ThemesShowcase--YDF(properties)
 
                     if decorativeVariationsWrapperTag === "ul"
 
-                      li
+                      li(
+                        class=decorativeVariationsListItemAdditionalCSS_Classes
+                      )
 
                         span.ThemesShowcase--YDF-Label= `${ decorativeVariationLabelPrefix }${ decorativeVariationKey }`
 

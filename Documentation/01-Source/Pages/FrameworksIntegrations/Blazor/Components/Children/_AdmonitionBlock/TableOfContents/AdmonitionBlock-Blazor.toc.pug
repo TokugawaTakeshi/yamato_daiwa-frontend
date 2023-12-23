@@ -1,0 +1,73 @@
+-
+
+  generatePageTableOfContents = localizedStrings => {
+
+    const PAGE_URI = localizedRouting.frameworksIntegrations.$children.blazor.$children.components.$children.AdmonitionBlock;
+
+    const tableOfContents = {
+
+      synopsis: {
+        $heading: localizedStrings.synopsis.$heading,
+        $anchor: "SYNOPSIS--SECTION",
+        get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+      },
+
+      usage: {
+
+        $heading: localizedStrings.usage.$heading,
+        $anchor: "USAGE--SECTION",
+        get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; },
+
+        $children: {
+
+          markup: {
+
+            $heading: localizedStrings.usage.markup.$heading,
+            $anchor: "MARKUP--SECTION",
+            get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; },
+
+            $children: {
+
+              includingToProject: {
+                $heading: localizedStrings.usage.markup.includingToProject.$heading,
+                $anchor: "INCLUDING_OF_MARKUP_TO_PROJECT--SECTION",
+                get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; },
+              },
+
+              pugMixin: {
+
+                $heading: localizedStrings.usage.markup.pugMixin.$heading,
+                $anchor: "PUG_MIXIN--SECTION",
+                get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; },
+
+                $children: {
+
+                  minimalExample: {
+                    $heading: localizedStrings.usage.markup.pugMixin.minimalExample.$heading,
+                    $anchor: "EXAMPLE-MINIMAL--SECTION",
+                    get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+                  },
+
+                  title: {
+                    $heading: localizedStrings.usage.markup.pugMixin.title.$heading,
+                    $anchor: "EXAMPLE-TITLE--SECTION",
+                    get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+                  }
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    };
+
+    return tableOfContents;
+
+  }

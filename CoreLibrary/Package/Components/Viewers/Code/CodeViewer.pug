@@ -9,7 +9,7 @@ mixin CodeViewer--YDF(properties)
       title,
       resultWebViewURI,
       defaultPaddingsInViewport = false
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -30,13 +30,14 @@ mixin CodeViewer--YDF(properties)
       iframe.CodeViewer--YDF-IFrame(
         src= resultWebViewURI
         class= defaultPaddingsInViewport && "CodeViewer--YDF-IFrame__DefaultPaddings"
+        title="The visual output of the code"
       )
 
 
     .CodeViewer--YDF-ActionBar
 
       +Button--YDF({
-        geometry: Button__YDF.GeometricVariations.small
+        geometricVariation: Button__YDF.GeometricVariations.small
       }).CodeViewer--YDF-ActionBar-Button.CodeViewer--YDF-ActionBar-Button__CodeCopying
         +Copying--YDF_Icon.Button--YDF-SVG_Icon
         span.Button--YDF-Label= CodeViewer__YDF.localization.actionBar.codeCopyingButton.label
@@ -72,7 +73,7 @@ mixin CodeViewer-TabPanel--YDF(properties, logging)
       fileLabel,
       isActive = false,
       codeLanguage
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",

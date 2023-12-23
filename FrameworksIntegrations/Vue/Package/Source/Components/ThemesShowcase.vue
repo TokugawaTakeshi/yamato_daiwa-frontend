@@ -35,7 +35,9 @@ ul.ThemesShowcase--YDF
               span.ThemesShowcase--YDF-Label {{ decorativeVariationLabelPrefix }}{{ decorativeVariationKey }}
 
               slot(
-                :themeKey="themeKey"
+                :theme="{ key: themeKey, value: themeValue }"
+                :geometricVariation="{ key: geometricVariationKey, value: geometricVariationValue }"
+                :decorativeVariation="{ key: decorativeVariationKey, value: decorativeVariationValue }"
               )
 
             template(

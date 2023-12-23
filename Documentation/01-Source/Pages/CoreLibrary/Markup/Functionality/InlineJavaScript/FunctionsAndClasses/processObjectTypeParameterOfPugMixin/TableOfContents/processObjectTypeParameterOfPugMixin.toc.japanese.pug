@@ -1,0 +1,42 @@
+include processObjectTypeParameterOfPugMixin.toc.pug
+
+
+-
+
+  localizedRouting.coreLibrary.$children.
+      markup.$children.
+      functionality.$children.
+      inlineJavaScript.$children.
+      functionsAndClasses.$children.
+      processObjectTypeParameterOfPugMixin.$sectioning = generatePageTableOfContents(
+        (() => {
+
+          /* [ Maintainability ] Keep this constant to make able the copying of qualified names in IntelliJ IDEA IDEs. */
+          const localizedStrings = {
+
+            problems: { $heading: "問題の考察" },
+
+            YDF_Solution: { $heading: "YDFの解決" },
+
+            singleParameterProperties: {
+              $heading: "単一引数のプロパティ",
+              rawParameter: { $heading: "<code>rawParameter</code>：ミックスイン実行時点のミックスイン引数" },
+              parameterPropertiesSpecification: {
+                $heading: "<code>parameterPropertiesSpecification</code>：—単一の引数のプロパティの仕様"
+              },
+              loggingProperties: {
+                $heading: "ロギング変数：<code>parameterNumber</code>、<code>parameterName</code>、<code>mixinName</code>"
+              }
+            },
+
+            IntelliJ_IDEA_IDEs_LiveTemplateUsageGuidance:
+                IntelliJ_IDEA_IDEs_LiveTemplateUsageGuidanceTableOfContentsMetadataLocalization__japanese,
+
+            externalLinks: { $heading: "外部リンク" }
+
+          };
+
+          return localizedStrings;
+
+        })()
+      );

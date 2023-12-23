@@ -37,7 +37,7 @@ LinkDefaultProperties--YDF = {
       tabbedState: {
         font: JQueryUI_BaseTheme.clickableElements.activeState.background,
         underline: rgba(JQueryUI_BaseTheme.clickableElements.activeState.background, 0.75),
-        boxShadow: JQueryUI_BaseTheme.focusShadow,
+        boxShadow: null,
         outline: none,
         customDeclarations: {}
       },
@@ -60,8 +60,6 @@ Link--YDF(preset = LinkDefaultProperties--YDF, overridings = {})
 
   properties = deeplyCloneAndOverrideObject(preset, overridings)
 
-
-  display inline-block
 
   applyIfNotNull({
     font-family: properties.geometry.fontFamily,

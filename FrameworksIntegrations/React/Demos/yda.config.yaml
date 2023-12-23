@@ -1,53 +1,78 @@
 projectBuilding:
 
-  # === Markup =========================================================================================================
+  commonSettings:
+
+    selectiveExecutions:
+
+      LocalGalleries:
+
+        tasksAndSourceFilesSelection:
+          markupProcessing: [ LocalGalleriesIndexPage, CompletePages ]
+          ECMA_ScriptLogicProcessing: [ CompletePages ]
+          plainCopying: [ ExternalStyles ]
+
+        browserLiveReloadingSetupID: LocalGalleries
+
+      Distributions:
+
+        tasksAndSourceFilesSelection:
+          markupProcessing: [ CompletePages, PartialDemos ]
+          ECMA_ScriptLogicProcessing: [ CompletePages ]
+          plainCopying: [ ExternalStyles ]
+
+      PartialDemosSourceFiles:
+
+        tasksAndSourceFilesSelection:
+          plainCopying: [ PartialDemos ]
+
+
+  # ━━━ Markup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   markupProcessing:
 
     common:
       buildingModeDependent:
         LOCAL_DEVELOPMENT: { mustResolveResourceReferencesToRelativePaths: true }
+        PRODUCTION: { mustResolveResourceReferencesToRelativePaths: true }
 
     entryPointsGroups:
 
-      All:
+      LocalGalleriesIndexPage:
 
-        topDirectoryRelativePath: 01-Source
-        partialsRecognition:
-          excludeFilesWithPrefixes: "_"
-          excludeSubdirectoriesWithPrefixes: "_"
-
+        singleEntryPointSourceFileRelativePath: Source/LocalGalleriesIndexPage.pug
         buildingModeDependent:
-          LOCAL_DEVELOPMENT:
-            outputTopDirectoryRelativePath: 02-Build
+          LOCAL_DEVELOPMENT: { outputTopDirectoryRelativePath: LocalGalleriesBuild }
 
+      CompletePages:
 
-
-  # === Styles =========================================================================================================
-  stylesProcessing:
-
-    entryPointsGroups:
-
-      All:
-
-        topDirectoryRelativePath: 01-Source
+        sourceFilesTopDirectoryRelativePath: Source/CompletePages
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
           excludeSubdirectoriesWithPrefixes: "_"
 
         buildingModeDependent:
-          LOCAL_DEVELOPMENT:
-            outputTopDirectoryRelativePath: 02-Build
+          LOCAL_DEVELOPMENT: { outputTopDirectoryRelativePath: LocalGalleriesBuild }
+          PRODUCTION: { outputTopDirectoryRelativePath: Distributions }
+
+      PartialDemos:
+
+        sourceFilesTopDirectoryRelativePath: Source/PartialDemos
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        buildingModeDependent: { PRODUCTION: { outputTopDirectoryRelativePath: Distributions } }
 
 
-  # === ECMAScript logic processing ====================================================================================
+  # ━━━ ECMAScript Logic Processing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   ECMA_ScriptLogicProcessing:
 
     entryPointsGroups:
 
-      All:
+      CompletePages:
 
-        topDirectoryRelativePath: 01-Source
+        sourceFilesTopDirectoryRelativePath: Source/CompletePages
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
@@ -57,19 +82,49 @@ projectBuilding:
           type: BROWSER
 
         buildingModeDependent:
+          LOCAL_DEVELOPMENT: { outputTopDirectoryRelativePath: LocalGalleriesBuild }
+          PRODUCTION: { outputTopDirectoryRelativePath: Distributions }
+
+
+  # ━━━ Plain copying ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  plainCopying:
+
+    filesGroups:
+
+      ExternalStyles:
+        sourceTopDirectoryRelativePath: node_modules/@yamato-daiwa/frontend-demos/Distributions
+        fileNameLastExtensions: [ "css" ]
+        buildingModeDependent:
           LOCAL_DEVELOPMENT:
-            outputTopDirectoryRelativePath: 02-Build
+            outputTopDirectoryRelativePath: LocalGalleriesBuild
+          PRODUCTION:
+            outputTopDirectoryRelativePath: Distributions/Demos
+            outputDirectoryPathTransformations: { segmentsCountRelativeToGroupTopDirectoryWhichMustBeRemoved: 1 }
+
+      PartialDemos:
+        sourceTopDirectoryRelativePath: node_modules/@yamato-daiwa/frontend-demos/Source/PartialDemos
+        buildingModeDependent:
+          PRODUCTION: { outputTopDirectoryRelativePath: Source/PartialDemos }
 
 
-  # === Development server =============================================================================================
+  # ━━━ Browser Live Reloading ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   browserLiveReloading:
 
     setups:
 
-      Tests:
+      LocalGalleries:
 
         localServer:
 
-          rootDirectoryRelativePath: 02-Build
+          rootDirectoryRelativePath: LocalGalleriesBuild
+          customStartingFileNameWithExtension: LocalGalleriesIndexPage.html
 
         openInBrowsers: chrome
+
+
+  # ━━━ Files Watching ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  filesWatching:
+
+    relativePathsOfExcludeDirectories:
+      - Distributions
+      - LocalGalleriesBuild

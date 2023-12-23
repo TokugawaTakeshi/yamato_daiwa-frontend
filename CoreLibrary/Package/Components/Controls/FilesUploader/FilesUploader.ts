@@ -1,12 +1,12 @@
-/* --- Validation --------------------------------------------------------------------------------------------------- */
+/* ─── Validation ─────────────────────────────────────────────────────────────────────────────────────────────────── */
 import ValidatableControl from "../_Validation/ValidatableControl";
 import type InputtedValueValidation from "../_Validation/InputtedValueValidation";
 
-/* --- Children components ------------------------------------------------------------------------------------------ */
+/* ─── Children components ────────────────────────────────────────────────────────────────────────────────────────── */
 import CompoundControlShell from "../CompoundControlShell/CompoundControlShell";
 
-/* --- Utils -------------------------------------------------------------------------------------------------------- */
-import { encodeFileToBase64, isNotNull, isNotUndefined, isNull, Logger } from "@yamato-daiwa/es-extensions";
+/* ─── Utils ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
+import { encodeFileToBase64, Logger, isNotNull, isNull, InvalidParameterValueError } from "@yamato-daiwa/es-extensions";
 import { getExpectedToBeSingleDOM_Element, addLeftClickEventHandler } from "@yamato-daiwa/es-extensions-browserjs";
 
 
@@ -16,34 +16,38 @@ class FilesUploader<
   Validation extends InputtedValueValidation
 > implements ValidatableControl {
 
-  protected static readonly NATIVE_INPUT_ELEMENT_SELECTOR: string = ".FilesUploader--YDF-HiddenInputElement";
+  /* ━━━ Static fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── Accessing to DOM ─────────────────────────────────────────────────────────────────────────────────────────── */
+  protected static readonly INPUT_ELEMENT_SELECTOR: string = ".FilesUploader--YDF-HiddenInputElement";
   protected static readonly FILES_PICKING_BUTTON_ELEMENT_SELECTOR: string = ".FilesUploader--YDF-FilePickingButton";
   protected static readonly DRAG_AND_DROP_AREA_ELEMENT_SELECTOR: string = ".FilesUploader--YDF-DragAndDropArea";
 
   protected static readonly INVALID_VALUE_STATE_CSS_CLASS: string = ".FilesUploader--YDF-FilesUploader__InvalidValueState";
 
+  /* ━━━ Instance fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public readonly payload: ValidatableControl.Payload<ValidValue, InvalidValue, Validation>;
 
-  protected invalidInputHighlightingIfAnyValidationErrorsMessages: boolean = false;
+  protected mustDisplayErrorsMessagesImmideatlyIfAny: boolean = false;
 
+
+  /* ─── DOM ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
   protected readonly shellComponent: CompoundControlShell;
-
-  protected readonly nativeInputElement: HTMLInputElement;
+  protected readonly inputElement: HTMLInputElement;
   protected readonly filesPickingButtonElement: HTMLInputElement | null;
   protected readonly dragAndDropAreaElement: HTMLInputElement | null;
 
 
-  /* === Public static methods ====================================================================================== */
+  /* ━━━ Public static methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public static pickOneBySelector<Validation extends InputtedValueValidation>(
-    properties: FilesUploader.InitializationProperties.SingleRequiredFileCase<Validation>
+    initializationProperties: FilesUploader.InitializationProperties.SingleRequiredFileScenario<Validation>
   ): FilesUploader<string, string | null, Validation>;
 
   public static pickOneBySelector<Validation extends InputtedValueValidation>(
-    properties: FilesUploader.InitializationProperties.SingleOptionalFileCase<Validation>
+    initializationProperties: FilesUploader.InitializationProperties.SingleOptionalFileScenario<Validation>
   ): FilesUploader<string | null, string | null, Validation>;
 
   public static pickOneBySelector<Validation extends InputtedValueValidation>(
-    properties: FilesUploader.InitializationProperties.MultipleFilesCase<Validation>
+    initializationProperties: FilesUploader.InitializationProperties.ArbitraryFilesCountScenario<Validation>
   ): FilesUploader<Array<string>, Array<string>, Validation>;
 
   public static pickOneBySelector<
@@ -59,50 +63,86 @@ class FilesUploader<
   }
 
 
-  /* === Constructor ================================================================================================ */
-  protected constructor(properties: FilesUploader.InitializationProperties<Validation>) {
-
-    let contextElement: Element | undefined;
-
-    if (isNotUndefined(properties.contextElement)) {
-      contextElement = properties.contextElement;
-    } else if (isNotUndefined(properties.contextElementSelector)) {
-      contextElement = document.querySelectorAll(properties.contextElementSelector)[0];
-    }
-
+  /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  protected constructor(initializationProperties: FilesUploader.InitializationProperties<Validation>) {
 
     this.shellComponent = CompoundControlShell.pickOneBySelector({
-      ...isNotUndefined(contextElement) ? { contextElement } : null,
-      targetCompoundControlShellSelector: properties.selector,
-      mustDisplayErrorsMessagesIfAny: this.invalidInputHighlightingIfAnyValidationErrorsMessages
+      targetCompoundControlShellSelector: initializationProperties.selector,
+      contextElement: initializationProperties.contextElement,
+      mustDisplayErrorsMessagesIfAny: this.mustDisplayErrorsMessagesImmideatlyIfAny
     });
 
-    this.nativeInputElement = getExpectedToBeSingleDOM_Element({
-      selector: FilesUploader.NATIVE_INPUT_ELEMENT_SELECTOR,
-      context: this.shellComponent.rootElement,
+    this.inputElement = getExpectedToBeSingleDOM_Element({
+      selector: FilesUploader.INPUT_ELEMENT_SELECTOR,
+      contextElement: this.shellComponent.rootElement,
       expectedDOM_ElementSubtype: HTMLInputElement
     });
 
     this.filesPickingButtonElement = document.querySelector(FilesUploader.FILES_PICKING_BUTTON_ELEMENT_SELECTOR);
     this.dragAndDropAreaElement = document.querySelector(FilesUploader.DRAG_AND_DROP_AREA_ELEMENT_SELECTOR);
 
-    let payloadInitialValue: ValidValue | InvalidValue;
 
+    let payloadInitialValue: FilesUploader.SupportedValidatablePayloadValuesTypes;
 
-    if ("maximalFilesCount" in properties) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore 時間的に
-      payloadInitialValue = null;
-    } else {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore 時間的に
-      payloadInitialValue = [];
+    switch (initializationProperties.scenario) {
+
+      case FilesUploader.Scenarios.singleRequiredFile: {
+
+        if (!initializationProperties.validation.isInputRequired()) {
+          Logger.throwErrorAndLog({
+            errorInstance: new InvalidParameterValueError({
+              parameterNumber: 1,
+              parameterName: "properties",
+              messageSpecificPart:
+                  "Contradictory initialization options. " +
+                  "The \"singleRequiredFile\" scenario has been specified, while according to the \"validation\" the " +
+                    "input is not required."
+            }),
+            title: InvalidParameterValueError.localization.defaultTitle,
+            occurrenceLocation: "FilesUploader.pickOneBySelector(initializationProperties)"
+          });
+        }
+
+        payloadInitialValue = initializationProperties.initialFileURI ?? null;
+
+        break;
+
+      }
+
+      case FilesUploader.Scenarios.singleOptionalFile: {
+
+        if (!initializationProperties.validation.isInputRequired()) {
+          Logger.throwErrorAndLog({
+            errorInstance: new InvalidParameterValueError({
+              parameterNumber: 1,
+              parameterName: "properties",
+              messageSpecificPart:
+                  "Contradictory initialization options. " +
+                  "The \"singleOptionalFile\" scenario has been specified, while according to the \"validation\" the " +
+                    "input is required."
+            }),
+            title: InvalidParameterValueError.localization.defaultTitle,
+            occurrenceLocation: "FilesUploader.pickOneBySelector(initializationProperties)"
+          });
+        }
+
+        payloadInitialValue = initializationProperties.initialFileURI ?? null;
+
+        break;
+
+      }
+
+      case FilesUploader.Scenarios.arbitraryFilesCount: {
+        payloadInitialValue = initializationProperties.initialFilesURIs ?? [];
+      }
+
     }
 
+    // TODO 再開点 ======================================================================================================
     this.payload = new ValidatableControl.Payload<ValidValue, InvalidValue, Validation>({
       initialValue: payloadInitialValue,
       getComponentInstance: (): ValidatableControl => this,
-      validation: properties.validation
+      validation: initializationProperties.validation
     });
 
   }
@@ -111,7 +151,7 @@ class FilesUploader<
   /* === Interface implementation =================================================================================== */
   public highlightInvalidInput(): this {
 
-    this.invalidInputHighlightingIfAnyValidationErrorsMessages = true;
+    this.mustDisplayErrorsMessagesImmideatlyIfAny = true;
 
     if (this.payload.isInvalid) {
       this.shellComponent.rootElement.classList.add(FilesUploader.INVALID_VALUE_STATE_CSS_CLASS);
@@ -169,7 +209,7 @@ class FilesUploader<
 
   protected initializeNativeInputElement(): this {
 
-    this.nativeInputElement.addEventListener("change", (event: Event): void => {
+    this.inputElement.addEventListener("change", (event: Event): void => {
 
       // eslint-disable-next-line no-inline-comments
       if (!(event.target instanceof HTMLInputElement)) { /* Empty */ }
@@ -183,7 +223,7 @@ class FilesUploader<
 
   /* --- Actions handling ------------------------------------------------------------------------------------------- */
   protected onClickPickFilesButton(): void {
-    this.nativeInputElement.click();
+    this.inputElement.click();
   }
 
 
@@ -229,49 +269,47 @@ namespace FilesUploader {
 
   export type SupportedValidatablePayloadValuesTypes = string | Array<string> | null;
 
+  export enum Scenarios {
+    singleRequiredFile = "SINGLE_REQUIRED_FILE",
+    singleOptionalFile = "SINGLE_OPTIONAL_FILE",
+    arbitraryFilesCount = "ARBITRARY_FILES_COUNT"
+  }
+
   export type InitializationProperties<Validation extends InputtedValueValidation> =
-      InitializationProperties.SingleRequiredFileCase<Validation> |
-      InitializationProperties.SingleOptionalFileCase<Validation> |
-      InitializationProperties.MultipleFilesCase<Validation>;
+      InitializationProperties.SingleRequiredFileScenario<Validation> |
+      InitializationProperties.SingleOptionalFileScenario<Validation> |
+      InitializationProperties.ArbitraryFilesCountScenario<Validation>;
 
   export namespace InitializationProperties {
 
     export type Common<Validation extends InputtedValueValidation> = Readonly<
       {
         selector: string;
+        contextElement?: ParentNode | Readonly<{ selector: string; }>;
         validation: Validation;
         mustHighlightInvalidInputIfAnyValidationErrorsMessagesImmediately: boolean;
-      } & (
-        {
-          contextElement: Element;
-          contextElementSelector?: undefined;
-        } |
-        {
-          contextElement?: undefined;
-          contextElementSelector: string;
-        } |
-        {
-          contextElement?: undefined;
-          contextElementSelector?: undefined;
-        }
-      )
-    >;
+      }>;
 
-    export type SingleRequiredFileCase<Validation extends InputtedValueValidation> =
-        Common<Validation> &
+    export type SingleRequiredFileScenario<Validation extends InputtedValueValidation> =
         Readonly<{
-          required: true;
-          maximalFilesCount: 1;
-        }>;
+          initialFileURI?: string;
+          scenario: Scenarios.singleRequiredFile;
+        }> &
+        Common<Validation>;
 
-    export type SingleOptionalFileCase<Validation extends InputtedValueValidation> =
-        Common<Validation> &
+    export type SingleOptionalFileScenario<Validation extends InputtedValueValidation> =
         Readonly<{
-          required: false;
-          maximalFilesCount: 1;
-        }>;
+          initialFileURI?: string;
+          scenario: Scenarios.singleOptionalFile;
+        }> &
+        Common<Validation>;
 
-    export type MultipleFilesCase<Validation extends InputtedValueValidation> = Common<Validation>;
+    export type ArbitraryFilesCountScenario<Validation extends InputtedValueValidation> =
+        Readonly<{
+          initialFilesURIs?: Array<string>;
+          scenario: Scenarios.arbitraryFilesCount;
+        }> &
+        Common<Validation>;
 
   }
 

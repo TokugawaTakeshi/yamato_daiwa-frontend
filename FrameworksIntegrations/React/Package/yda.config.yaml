@@ -21,14 +21,18 @@ projectBuilding:
         browserLiveReloadingSetupID: Tests
 
 
-  # === Markup =========================================================================================================
+  # ━━━ Markup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   markupProcessing:
+
+    common:
+      buildingModeDependent:
+        LOCAL_DEVELOPMENT: { mustResolveResourceReferencesToRelativePaths: true }
 
     entryPointsGroups:
 
       Tests:
 
-        topDirectoryRelativePath: Tests/Source
+        sourceFilesTopDirectoryRelativePath: Tests/Source
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
           excludeSubdirectoriesWithPrefixes: "_"
@@ -38,15 +42,14 @@ projectBuilding:
             outputTopDirectoryRelativePath: Tests/Output
 
 
-
-  # === Styles =========================================================================================================
+  # ━━━ Styles ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   stylesProcessing:
 
     entryPointsGroups:
 
       Tests:
 
-        topDirectoryRelativePath: Tests/Source
+        sourceFilesTopDirectoryRelativePath: Tests/Source
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
@@ -57,22 +60,14 @@ projectBuilding:
             outputTopDirectoryRelativePath: Tests/Output
 
 
-  # === フロントエンド挙動制御記法事前処理 ======================================================================================
+  # ━━━ ECMAScript Logic Processing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   ECMA_ScriptLogicProcessing:
-
-    common:
-
-      directoriesRelativePathsAliases:
-
-        "@Source": Source
-        "@SVG_Icons": Source/SVG_Icons
-        "@Components": Source/Components
 
     entryPointsGroups:
 
       Distributable:
 
-        singleEntryPointRelativePath: Source/index.ts
+        singleEntryPointSourceFileRelativePath: Source/index.ts
 
         targetRuntime:
           type: BROWSER
@@ -80,7 +75,7 @@ projectBuilding:
         distributing:
           exposingOfExportsFromEntryPoints:
             mustExpose: true
-          externalizingDependencies: [ vue ]
+          externalizingDependencies: [ @yamato-daiwa/frontend, react, react-dom, react-router-dom, next ]
           typeScriptTypesDeclarations:
             mustGenerate: true
 
@@ -93,9 +88,10 @@ projectBuilding:
             outputTopDirectoryRelativePath: Distributable
             revisioning: { disable: true }
 
+
       Tests:
 
-        topDirectoryRelativePath: Tests/Source
+        sourceFilesTopDirectoryRelativePath: Tests/Source
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
@@ -109,7 +105,7 @@ projectBuilding:
             outputTopDirectoryRelativePath: Tests/Output
 
 
-  # === Development server =============================================================================================
+  # ━━━ Development Server ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   browserLiveReloading:
 
     setups:
@@ -122,3 +118,11 @@ projectBuilding:
           customStartingFileNameWithExtension: Tests.html
 
         openInBrowsers: chrome
+
+
+  # ━━━ Files Watching ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  filesWatching:
+
+    relativePathsOfExcludeDirectories:
+      - Distributable
+      - LocalDatabase

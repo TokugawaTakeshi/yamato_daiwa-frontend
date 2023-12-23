@@ -5,78 +5,78 @@
     fileNameLocalizationExtensions: "russian",
 
     top: {
-      $tableOfContentsTitle: "Главная страница",
+      $heading: "Главная страница",
       URI: "@All/Top/TopPage.russian"
     },
 
     coreLibrary: {
 
-      $tableOfContentsTitle: "Основная библиотека",
+      $heading: "Основная библиотека",
 
       markup: {
 
-        $tableOfContentsTitle: "Pug-разметка",
+        $heading: "Pug-разметка",
 
         functionality: {
 
-          $tableOfContentsTitle: "Функциональность",
+          $heading: "Функциональность",
 
           inlineJavaScript: {
 
-            $tableOfContentsTitle: "Внутренний JavaScript",
+            $heading: "Внутренний JavaScript",
 
             YDEE_Integration: {
-              $tableOfContentsTitle: "Интеграция с YDEE"
+              $heading: "Интеграция с YDEE"
             },
 
             functionsAndClasses: {
-              $tableOfContentsTitle: "Функции и классы"
+              $heading: "Функции и классы"
             },
 
-            assets: { $tableOfContentsTitle: "Ассеты" }
+            assets: { $heading: "Ассеты" }
 
           },
 
           pugMixins: {
-            $tableOfContentsTitle: "Pug-примеси",
-            dummies: { $tableOfContentsTitle: "<code>WideDummy</code> и <code>HighDummy</code>" },
-            SVG_Icons: { $tableOfContentsTitle: "SVG-иконки" },
-            yamatoDaiwaInformationDesign: { $tableOfContentsTitle: "Информационный дизайн «Ямато Дайва»" }
+            $heading: "Pug-примеси",
+            dummies: { $heading: "<code>WideDummy</code> и <code>HighDummy</code>" },
+            SVG_Icons: { $heading: "SVG-иконки" },
+            yamatoDaiwaInformationDesign: { $heading: "Информационный дизайн «Ямато Дайва»" }
           },
 
-          pagesTemplates: { $tableOfContentsTitle: "Шаблоны страниц" },
+          pagesTemplates: { $heading: "Шаблоны страниц" },
 
-          usageOnServerSide: { $tableOfContentsTitle: "Использование на серверной стороне" }
+          usageOnServerSide: { $heading: "Использование на серверной стороне" }
 
         }
       },
 
       styles: {
 
-        $tableOfContentsTitle: "Стили",
+        $heading: "Стили",
 
         assets: {
 
-          $tableOfContentsTitle: "Ассеты",
+          $heading: "Ассеты",
 
           fundamentalConstantsAndEnums: {
-            $tableOfContentsTitle: "Фундаментальные константы и перечисления"
+            $heading: "Фундаментальные константы и перечисления"
           },
 
           colors: {
 
-            $tableOfContentsTitle: "Цвета",
+            $heading: "Цвета",
 
             PracticalColorCoordinateSystem: {
-              $tableOfContentsTitle: "Палитра PCCS (<code>PracticalColorCoordinateSystem</code>)"
+              $heading: "Палитра PCCS (<code>PracticalColorCoordinateSystem</code>)"
             },
 
             ShadesOfGray__39ColorsW3C_Palette: {
-              $tableOfContentsTitle: "Палитра 39 оттенков серого (<code>ShadesOfGray__39ColorsW3C_Palette</code>)"
+              $heading: "Палитра 39 оттенков серого (<code>ShadesOfGray__39ColorsW3C_Palette</code>)"
             },
 
             YDF_ColorPalette: {
-              $tableOfContentsTitle: "Палитра YDF (<code>YDF_ColorPalette</code>)"
+              $heading: "Палитра YDF (<code>YDF_ColorPalette</code>)"
             }
 
           }
@@ -85,84 +85,87 @@
 
         kernel: {
 
-          $tableOfContentsTitle: "Фундаментальная функциональность",
+          $heading: "Фундаментальная функциональность",
 
           YDF_Configuration: {
-            $tableOfContentsTitle: "Конфигурация",
-            fontsStacks: { $tableOfContentsTitle: "Стэки шрифтов" },
-            textGeometry: { $tableOfContentsTitle: "Переменные размеров" },
-            zIndexes: { $tableOfContentsTitle: "z-индексы" }
+            $heading: "Конфигурация",
+            fontsStacks: { $heading: "Стэки шрифтов" },
+            textGeometry: { $heading: "Переменные размеров" },
+            zIndexes: { $heading: "z-индексы" }
           },
 
-          specificationsSchemas: { $tableOfContentsTitle: "Схемы спецификаций" },
+          specificationsSchemas: { $heading: "Схемы спецификаций" },
 
           functions: {
 
-            $tableOfContentsTitle: "Функции",
+            $heading: "Функции",
 
             typeCheckers: {
-              $tableOfContentsTitle: "Проверка типов значений",
-              strings: { $tableOfContentsTitle : "Строковые значения" },
-              quantities: { $tableOfContentsTitle : "Величины" },
-              booleans: { $tableOfContentsTitle : "Булевские значения" },
-              nullables: { $tableOfContentsTitle : "Пустые значения" },
-              others: { $tableOfContentsTitle : "Остальные" }
+              $heading: "Проверка типов значений",
+              strings: { $heading : "Строковые значения" },
+              quantities: { $heading : "Величины" },
+              booleans: { $heading : "Булевские значения" },
+              nullables: { $heading : "Пустые значения" },
+              others: { $heading : "Остальные" }
             },
 
-            strings: { $tableOfContentsTitle: "Работа со строками" },
-            objects: { $tableOfContentsTitle: "Работа с объектами" },
-            arrays: { $tableOfContentsTitle: "Работа с массивами" },
-            parametersValidation: { $tableOfContentsTitle: "Валидация параметров" },
-            other: { $tableOfContentsTitle: "Другие функции" }
+            valueTransformers: { $heading: "Преобразователи значений" },
+
+            strings: { $heading: "Работа со строками" },
+            quantities: { $heading: "Работа с величинами" },
+            objects: { $heading: "Работа с объектами" },
+            arrays: { $heading: "Работа с массивами" },
+            YDF_Arrays: { $heading: "Работа с YDF-массивами" },
+            parametersValidation: { $heading: "Валидация параметров" },
+            other: { $heading: "Другие функции" }
           },
 
           mixins: {
-            $tableOfContentsTitle: "Утилитарные примеси",
-            general: { $tableOfContentsTitle: "Общего назначения" },
+            $heading: "Утилитарные примеси",
+            general: { $heading: "Общего назначения" },
             sizing: {
-              $tableOfContentsTitle: "Задание размеров",
-              width: { $tableOfContentsTitle: "Ширина" }
+              $heading: "Задание размеров",
+              width: { $heading: "Ширина" }
             },
-            positioning: { $tableOfContentsTitle: "Позиционирование" },
-            positionalRelationship: { $tableOfContentsTitle: "Взаимное позиционирование" },
-            layout: { $tableOfContentsTitle: "Компоновка" },
-            typography: { $tableOfContentsTitle: "Типографика" },
-            other: { $tableOfContentsTitle: "Другие" }
+            positioning: { $heading: "Позиционирование" },
+            positionalRelationship: { $heading: "Взаимное позиционирование" },
+            layout: { $heading: "Компоновка" },
+            typography: { $heading: "Типографика" },
+            other: { $heading: "Другие" }
           },
 
-          stylesInitialization: { $tableOfContentsTitle: "Инициализация стилей" },
+          stylesInitialization: { $heading: "Инициализация стилей" }
 
         },
 
         buildInPlugins: {
-          $tableOfContentsTitle: "Плагины в комплекте",
+          $heading: "Плагины в комплекте",
           additionalColorPalettes: {
-            $tableOfContentsTitle: "Дополнительные цветовые палитры"
+            $heading: "Дополнительные цветовые палитры"
           }
         }
 
       },
 
       components: {
-        $tableOfContentsTitle: "GUI компоненты",
-        badge: { $tableOfContentsTitle: "Badge (Значок)" },
+        $heading: "GUI компоненты",
+        admonitionBlock: { $heading: "<code>AdmonitionBlock</code> — Рамка с текстом" },
         controls: {
+          $heading: "Управляющие",
           buttons: {
-            $tableOfContentsTitle: "Кнопки",
-            plain: { $tableOfContentsTitle: "Button (Простая)" }
-          },
-          $tableOfContentsTitle: "Управляющие"
+            $heading: "Кнопки"
+          }
         }
       }
 
     },
 
-    frameworksAdaptations: {
-      $tableOfContentsTitle: "Адаптации сторонних фреймворков"
+    frameworksIntegrations: {
+      $heading: "Адаптации сторонних фреймворков"
     },
 
     realiseNotes: {
-      $tableOfContentsTitle: "Что нового"
+      $heading: "Что нового"
     }
 
   };

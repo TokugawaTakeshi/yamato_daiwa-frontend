@@ -1,0 +1,12 @@
+extends ../../../CompletePages/Components/Badge/_BadgeGalleryPage.template.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_TITLE = generateHTML_Page_Title("Loading Placeholder");
+
+    BadgeGalleryOptions.
+        renderSinglePartial(BadgeGalleryOptions.Partials.loadingPlaceholder).
+        visuallyHideAllHeadings();

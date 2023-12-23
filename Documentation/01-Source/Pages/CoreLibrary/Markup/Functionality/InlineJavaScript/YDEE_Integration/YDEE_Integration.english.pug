@@ -23,7 +23,13 @@ block append Metadata
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents"
+    ];
+
     scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.YDEE_Integration");
@@ -71,11 +77,11 @@ block append SpecificContent
           In the case of your #[+Term--YDID Pug file], the #[+Term__Contrast--YDID relative path] to the
             #[+ImportantEntity__Code--YDID node_modules] directory could differ.
 
-    +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.warning, hasPrependedSVG_Icon: true }).
+    +AdmonitionBlock--YDF({ decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning, SVG_Icon: true }).
       Required #[+Keyword--YDID minimal] version of #[+ImportantEntity--YDID Pug] #[+Term--YDID preprocessor]:
         #[+ImportantEntity--YDID 3.0].
 
-    +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.warning, hasPrependedSVG_Icon: true })
+    +AdmonitionBlock--YDF({ decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning, SVG_Icon: true })
       | When using the
       |
       +Link--YDF({
@@ -168,7 +174,7 @@ block append SpecificContent
             functionality.$children.
             inlineJavaScript.$children.
             functionsAndClasses.$children.
-            processPugMixinsObjectTypeParameter.$URI,
+            processObjectTypeParameterOfPugMixin.$URI,
       }).Article-Link Pug mixin's parameters validation
       | :
 
@@ -244,7 +250,7 @@ block append SpecificContent
               functionality.$children.
               inlineJavaScript.$children.
               functionsAndClasses.$children.
-              processPugMixinsObjectTypeParameter.$URI,
+              processObjectTypeParameterOfPugMixin.$URI,
         }).Article-Link Pug mixins parameters validation
         //- [ Pug bug ] No whitespace will be added by Pug after `#[+Term--YDID mixins]`, `&nbsp;` is required.
         |   , including #[+Term--YDID mixins]&nbsp;of the

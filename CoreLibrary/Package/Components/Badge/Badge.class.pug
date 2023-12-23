@@ -8,11 +8,11 @@
     /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     static Themes = { regular: "REGULAR" };
 
-    static defineCustomThemes(themesNames) {
-      return ComponentsAuxiliaries.defineNewThemes(themesNames, Badge__YDF);
+    static defineThemes(themesNames) {
+      return ComponentsAuxiliaries.defineThemes(themesNames, Badge__YDF);
     }
 
-    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+    static areThemesCSS_ClassesCommon = ComponentsAuxiliaries.areComponentsThemesCommon;
 
     static considerThemesAsCommon() {
       Badge__YDF.areThemesCSS_ClassesCommon = true;
@@ -23,8 +23,8 @@
     /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
     static GeometricVariations = { regular: "REGULAR" };
 
-    static defineCustomGeometricVariations(geometricVariationsNames) {
-      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, Badge__YDF);
+    static defineGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineGeometricVariations(geometricVariationsNames, Badge__YDF);
     }
 
     static GeometricModifiers = {
@@ -51,8 +51,8 @@
       achromaticPastel: "ACHROMATIC_PASTEL"
     };
 
-    static defineCustomDecorativeVariations(decorativeVariationsNames) {
-      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, Badge__YDF);
+    static defineDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineDecorativeVariations(decorativeVariationsNames, Badge__YDF);
     }
 
     static DecorativeModifiers = {
@@ -61,7 +61,7 @@
     };
 
 
-    /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ━━━ Properties Specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     static propertiesSpecification = {
 
       key: {
@@ -76,43 +76,55 @@
 
       theme: {
         type: String,
-        required: false,
-        allowedAlternatives: Object.values(Badge__YDF.Themes)
+        defaultValue: Badge__YDF.Themes.regular,
+        allowedAlternatives: Object.
+            entries(Badge__YDF.Themes).
+            map(([ key, value ]) => ({ key: `Badge__YDF.Themes.${ key }`, value }))
       },
 
       areThemesCSS_ClassesCommon: {
         type: Boolean,
-        required: false
+        defaultValue: Badge__YDF.areThemesCSS_ClassesCommon
       },
 
-      geometry: {
+      geometricVariation: {
         type: String,
-        required: false,
-        allowedAlternatives: Object.values(Badge__YDF.GeometricVariations)
+        defaultValue: Badge__YDF.GeometricVariations.regular,
+        allowedAlternatives: Object.
+            entries(Badge__YDF.GeometricVariations).
+            map(([ key, value ]) => ({ key: `Badge__YDF.GeometricVariations.${ key }`, value }))
       },
 
       geometricModifiers: {
         type: Array,
-        required: false,
+        defaultValue: [],
         element: {
           type: String,
           allowedAlternatives: Object.values(Badge__YDF.GeometricModifiers)
         }
       },
 
-      decoration: {
+      decorativeVariation: {
         type: String,
         required: true,
-        allowedAlternatives: Object.values(Badge__YDF.DecorativeVariations)
+        allowedAlternatives: Object.
+            entries(Badge__YDF.DecorativeVariations).
+            map(([ key, value ]) => ({ key: `Badge__YDF.DecorativeVariations.${ key }`, value }))
       },
 
       decorativeModifiers: {
         type: Array,
-        required: false,
+        defaultValue: [],
         element: {
           type: String,
           allowedAlternatives: Object.values(Badge__YDF.DecorativeModifiers)
         }
+      },
+
+      rootElementTag: {
+        type: String,
+        defaultValue: "span",
+        minimalCharactersCount: 1
       }
 
     }

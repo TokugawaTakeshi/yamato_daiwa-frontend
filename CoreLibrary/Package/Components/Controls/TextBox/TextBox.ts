@@ -32,7 +32,7 @@ class TextBox<
   Validation extends InputtedValueValidation
 > implements ValidatableControl {
 
-  /* ━━━ Static fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Static Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   /* ─── Accessing to DOM ─────────────────────────────────────────────────────────────────────────────────────────── */
   protected static readonly NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR: string = ".TextBox--YDF-InputOrTextAreaElement";
   protected static readonly INVALID_VALUE_STATE_CSS_CLASS: string = "TextBox--YDF__InvalidInputState";
@@ -40,7 +40,6 @@ class TextBox<
 
   /* ━━━ Instance fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public readonly payload: ValidatableControl.Payload<ValidValue, InvalidValue, Validation>;
-
 
   protected readonly ID: string = TextBox.generateSelfID();
 
@@ -50,6 +49,7 @@ class TextBox<
   private readonly rawInputTypeTransformer: (rawInput: string) => ValidValue | InvalidValue;
 
   protected readonly validityHighlightingActivationMode: TextBox.ValidityHighlightingActivationModes;
+
 
   /* ─── Must be changed only via setters ─────────────────────────────────────────────────────────────────────────── */
   /* eslint-disable no-underscore-dangle -- [ CONVENTION ]
@@ -84,18 +84,9 @@ class TextBox<
   /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   private constructor(properties: TextBox.InitializationProperties<ValidValue, InvalidValue, Validation>) {
 
-    let contextElement: Element | undefined;
-
-    if (isNotUndefined(properties.contextElement)) {
-      contextElement = properties.contextElement;
-    } else if (isNotUndefined(properties.contextElementSelector)) {
-      contextElement = document.querySelectorAll(properties.contextElementSelector)[0];
-    }
-
-
     this.shellComponent = CompoundControlShell.pickOneBySelector({
-      contextElement,
       targetCompoundControlShellSelector: properties.selector,
+      contextElement: properties.contextElement,
       mustDisplayErrorsMessagesIfAny:
           properties.validityHighlightingActivationMode === TextBox.ValidityHighlightingActivationModes.immediate
     });
@@ -103,7 +94,7 @@ class TextBox<
 
     const nativeInputAcceptingElement: Element = getExpectedToBeSingleDOM_Element({
       selector: TextBox.NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR,
-      context: this.shellComponent.rootElement
+      contextElement: this.shellComponent.rootElement
     });
 
     if (nativeInputAcceptingElement instanceof HTMLInputElement || nativeInputAcceptingElement instanceof HTMLTextAreaElement) {
@@ -368,25 +359,25 @@ class TextBox<
 
     if (isNonNegativeInteger(invalidInputPrevention?.minimalCharactersCount)) {
       this.nativeInputAcceptingElement.setAttribute(
-        "minlength", String(invalidInputPrevention?.minimalCharactersCount)
+        "minlength", String(invalidInputPrevention.minimalCharactersCount)
       );
     }
 
     if (isNonNegativeInteger(invalidInputPrevention?.maximalCharactersCount)) {
       this.nativeInputAcceptingElement.setAttribute(
-          "maxlength", String(invalidInputPrevention?.maximalCharactersCount)
+          "maxlength", String(invalidInputPrevention.maximalCharactersCount)
       );
     }
 
     if (isNonNegativeInteger(invalidInputPrevention?.minimalNumericValue)) {
       this.nativeInputAcceptingElement.setAttribute(
-        "min", String(invalidInputPrevention?.minimalNumericValue)
+        "min", String(invalidInputPrevention.minimalNumericValue)
       );
     }
 
     if (isNonNegativeInteger(invalidInputPrevention?.maximalNumericValue)) {
       this.nativeInputAcceptingElement.setAttribute(
-        "max", String(invalidInputPrevention?.maximalNumericValue)
+        "max", String(invalidInputPrevention.maximalNumericValue)
       );
     }
 
@@ -449,25 +440,11 @@ namespace TextBox {
     export type Common<Validation extends InputtedValueValidation> =
         Readonly<{
           selector: string;
+          contextElement?: ParentNode | Readonly<{ selector: string; }>;
           invalidInputPrevention?: InvalidInputPrevention;
           validation: Validation;
           validityHighlightingActivationMode: ValidityHighlightingActivationModes;
-        }> & ContextElementDefinition;
-
-    export type ContextElementDefinition = Readonly<
-      {
-        contextElement: Element;
-        contextElementSelector?: undefined;
-      } |
-      {
-        contextElement?: undefined;
-        contextElementSelector: string;
-      } |
-      {
-        contextElement?: undefined;
-        contextElementSelector?: undefined;
-      }
-    >;
+        }>;
 
     export type StringPayloadValue<Validation extends InputtedValueValidation> =
         Common<Validation> &

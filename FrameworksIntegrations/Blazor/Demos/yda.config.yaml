@@ -1,0 +1,17 @@
+projectBuilding:
+
+  plainCopying:
+
+    filesGroups:
+            
+      Primer:
+        sourceFileRelativePath: node_modules/@yamato-daiwa/frontend-demos/Distributions/Primer.css
+        buildingModeDependent:
+          PRODUCTION: { outputDirectoryRelativePath: wwwroot/css }
+          
+          
+      CommonRequirements:
+        sourceFileRelativePath: node_modules/@yamato-daiwa/frontend-demos/Distributions/CommonRequirements.css
+        buildingModeDependent:
+          PRODUCTION: { outputDirectoryRelativePath: wwwroot/css }
+ 

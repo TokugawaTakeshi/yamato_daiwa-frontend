@@ -1,0 +1,22 @@
+include AdmonitionBlock-React.toc.pug
+
+
+-
+
+  localizedRouting.frameworksIntegrations.react.components.AdmonitionBlock.$sectioning = generatePageTableOfContents({
+    synopsis: { $heading: "Synopsis" },
+    usage: {
+      $heading: "Usage",
+      markup: {
+        $heading: "Markup",
+        includingToProject: {
+          $heading: "Including to project"
+        },
+        pugMixin: {
+          $heading: "Pug mixin <code>AdmonitionBlock--YDF</code>",
+          minimalExample: { $heading: "Minimal example (required properties only)" },
+          title: { $heading: "Title (<code>title</code> property)" }
+        }
+      }
+    }
+  });

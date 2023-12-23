@@ -14,16 +14,16 @@ mixin FilesUploader--YDF(properties, statesSimulations)
       externalLabelHTML_ID,
       guidance,
 
-      disabled = false,
-      readonly = false,
+      disabled,
+      readonly,
 
-      required = false,
-      mustDisplayAppropriateBadgeIfInputIsRequired = false,
-      mustDisplayAppropriateBadgeIfInputIsOptional = false,
-      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge = false,
-      minimalFilesCount = 0,
+      required,
+      mustDisplayAppropriateBadgeIfInputIsRequired,
+      mustDisplayAppropriateBadgeIfInputIsOptional,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
+      minimalFilesCount,
       maximalFilesCount,
-      supportedFilesNamesExtensions = [],
+      supportedFilesNamesExtensions,
 
       noButton = false,
       noDragAndDropArea = false,
@@ -31,34 +31,34 @@ mixin FilesUploader--YDF(properties, statesSimulations)
       inputElementHTML_ID = `${ COMPONENT_ID }-INPUT`,
       labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
 
-      theme = FilesUploader__YDF.Themes.regular,
-      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || FilesUploader__YDF.areThemesExternal,
-      geometry = FilesUploader__YDF.GeometricVariations.regular,
-      decoration = FilesUploader__YDF.GeometricVariations.regular
+      theme,
+      areThemesCSS_ClassesCommon ,
+      geometricVariation,
+      decorativeVariation
 
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
       parameterPropertiesSpecification: FilesUploader__YDF.propertiesSpecification,
-      mixinName: "FilesUploader--YDF"
+      mixinName: FilesUploader__YDF.CSS_NAMESPACE
     });
 
-    statesSimulations = PugMixinsObjectTypeParametersProcessor.processParameter({
+    const {
+      uploadingStatuses,
+      singleImagePreview,
+      imagesPreviewFlow,
+      invalidInputHighlightingIfAnyValidationErrorsMessages,
+      validValueHighlightingIfNoValidationErrorsMessages,
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: statesSimulations,
       parameterNumber: 2,
       parameterName: "statesSimulations",
       parameterPropertiesSpecification: FilesUploader__YDF.statesSimulationsSpecification,
-      mixinName: "FilesUploader--YDF"
+      mixinName: FilesUploader__YDF.CSS_NAMESPACE
     });
-
-    const {
-      singleImagePreview = false,
-      imagesPreviewFlow = false,
-      invalidInputHighlightingIfAnyValidationErrorsMessages,
-      validValueHighlightingIfNoValidationErrorsMessages,
-      validationErrorsMessages
-    } = statesSimulations;
 
     const rootElementModifierCSS_Classes = [
 
@@ -69,12 +69,24 @@ mixin FilesUploader--YDF(properties, statesSimulations)
       ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
           [ `${ FilesUploader__YDF.CSS_NAMESPACE }__ValueState` ] : [],
 
-      ...Object.entries(FilesUploader__YDF.Themes).length > 1 && !areThemesExternal ?
-          [ ComponentsAuxiliaries.generateThemeCSS_Class(FilesUploader__YDF.CSS_NAMESPACE, theme) ] : [],
-      ...Object.entries(FilesUploader__YDF.GeometricVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateGeometricVariationCSS_Class(FilesUploader__YDF.CSS_NAMESPACE, geometry) ] : [],
-      ...Object.entries(FilesUploader__YDF.DecorativeVariations).length > 1 ?
-          [ ComponentsAuxiliaries.generateDecorativeVariationCSS_Class(FilesUploader__YDF.CSS_NAMESPACE, decoration) ] : []
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: FilesUploader__YDF.Themes,
+        CSS_Namespace: FilesUploader__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometricVariation,
+        allGeometricVariations: FilesUploader__YDF.GeometricVariations,
+        CSS_Namespace: FilesUploader__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decorativeVariation,
+        allDecorativeVariations: FilesUploader__YDF.DecorativeVariations,
+        CSS_Namespace: FilesUploader__YDF.CSS_NAMESPACE
+      })
 
     ];
 
@@ -100,23 +112,26 @@ mixin FilesUploader--YDF(properties, statesSimulations)
       mustDisplayAppropriateBadgeIfInputIsRequired,
       mustDisplayAppropriateBadgeIfInputIsOptional,
       mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
-      coreElementHTML_ID: inputElementHTML_ID,
-      labelElementHTML_ID: labelElementHTML_ID,
 
-      theme: FilesUploader__YDF.selfAndCompoundControlShellThemesCorrespondence[theme],
-      areThemesExternal,
-      geometry: FilesUploader__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[geometry],
-      decoration: FilesUploader__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[decoration]
+      coreElementHTML_ID: inputElementHTML_ID,
+      labelElementHTML_ID,
+
+      theme: FilesUploader__YDF.selfAndChildrenComponentsThemesCorrespondence.compoundControlShell[theme],
+      areThemesCSS_ClassesCommon,
+      geometricVariation: FilesUploader__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.compoundControlShell[geometricVariation],
+      decorativeVariation: FilesUploader__YDF.selfAndChildrenComponentsDecorativeVariationsCorrespondence.compoundControlShell[decorativeVariation]
 
     },
     {
       invalidInputHighlightingIfAnyValidationErrorsMessages,
       validValueHighlightingIfNoValidationErrorsMessages,
-      validationErrorsMessages
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
     }
   ).FilesUploader--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
 
-    if statesSimulations.status
+    //- TODO < ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    if uploadingStatuses
 
       table.FilesUploader--YDF-StatusTable
         tbody
@@ -140,12 +155,21 @@ mixin FilesUploader--YDF(properties, statesSimulations)
             td.FilesUploader--YDF-StatusTable-FileNameCell File3.png
             td.FilesUploader--YDF-StatusTable-TextingCell File is ready for uploading
 
+          tr.FilesUploader--YDF-StatusTable-Row.FilesUploader--YDF-StatusTable-Row__SucceededState
+            td: +Checkmark__Circled__Filled--YDF_Icon.FilesUploader--YDF-StatusTable-Icon
+            td.FilesUploader--YDF-StatusTable-FileNameCell File4.png
+            td.FilesUploader--YDF-StatusTable-TextingCell File has been uploaded successfully
+
 
     if !noButton
 
-      +Button--YDF.FilesUploader--YDF-FilePickingButton
+      +Button--YDF({
+        theme: FilesUploader__YDF.selfAndChildrenComponentsThemesCorrespondence.button[theme],
+        geometricVariation: FilesUploader__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.button[geometricVariation],
+        decorativeVariation: FilesUploader__YDF.selfAndChildrenComponentsDecorativeVariationsCorrespondence.button[decorativeVariation],
+      }).FilesUploader--YDF-FilePickingButton
         +FileAdding--YDF_Icon.Button--YDF-SVG_Icon
-        span.Button--YDF-Label Pick file
+        span.Button--YDF-Label= FilesUploader__YDF.localization.buttons.filePicking.label
 
 
     if !noDragAndDropArea
@@ -154,7 +178,7 @@ mixin FilesUploader--YDF(properties, statesSimulations)
         tabindex="0"
       )
         +FileAdding--YDF_Icon.FilesUploader--YDF-Icon
-        p.FilesUploader--YDF-Guidance Drag and drop files here
+        p.FilesUploader--YDF-Guidance=FilesUploader__YDF.localization.uploadSingleFileByDragAndDropGuidance
 
 
     if singleImagePreview
@@ -168,7 +192,7 @@ mixin FilesUploader--YDF(properties, statesSimulations)
 
       +Button--YDF.FilesUploader--YDF-FileDeletingButton
         +TrashCan__Filled--YDF_Icon.Button--YDF-SVG_Icon
-        span.Button--YDF-Label Delete file
+        span.Button--YDF-Label=FilesUploader__YDF.localization.buttons.fileDeleting.label
 
 
     if imagesPreviewFlow

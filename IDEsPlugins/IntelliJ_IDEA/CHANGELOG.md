@@ -4,6 +4,20 @@
 # Yamato-Daiwa Frontend IntelliJ IDEA plugin changelog
 
 
+## [0.0.9]
+
+### Added
+
+- **appendUnit** — autocomplete imitator type Live template for the eponymous function
+- **computeExtraSpaceCausedByLineHeightAtTopOrBottom** - autocomplete imitator type Live template for the eponymous function
+
+
+### Changed
+
+* **bs** Live template has been replaced with **buildString** autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString.md)
+* **cflc** Live template has been replaced with **capitalizeFirstLatinCharacter** autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md)
+
+
 ## [0.0.8]
 
 ### Added
@@ -133,12 +147,12 @@
 - **isBoolean** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 - **isObject** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
 - **isIdentifier** - autocomplete imitator for [eponymous value checker](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
-- <kbd>emptyStringToNull</kbd> - autocomplete imitator for eponymous value converter
-- <kbd>nullToZero</kbd> - autocomplete imitator for eponymous value converter
-- <kbd>nullToEmptyString</kbd> - autocomplete imitator for eponymous value converter
-- <kbd>nullToEmptyObject</kbd> - autocomplete imitator for eponymous value converter
-- <kbd>bs</kbd> - live template for [buildString](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString.md) function
-- <kbd>cflc</kbd> - live template for [capitalizeFirstLatinCharacter](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md) function
+- **emptyStringToNull** — autocomplete imitator type Live template for the eponymous function
+- **nullToZero** — autocomplete imitator type Live template for the eponymous function
+- **nullToEmptyString** — autocomplete imitator type Live template for the eponymous function
+- **nullToEmptyObject** — autocomplete imitator type Live template for the eponymous function
+- **bs** — live template for [buildString](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString.md) function
+- **cflc** — live template for [capitalizeFirstLatinCharacter](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md) function
 - <kbd>dcaoo</kbd> - live template for [deeplyCloneAndOverrideObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject.md) function
 - <kbd>dco</kbd> - live template for [deeplyCloneObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject.md) function
 - <kbd>fo</kbd> - live template for [formatObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/formatObject.md) function

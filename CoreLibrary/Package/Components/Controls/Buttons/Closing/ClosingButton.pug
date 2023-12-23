@@ -11,11 +11,11 @@ mixin ClosingButton--YDF(properties)
       labelLetterCase = ClosingButton__YDF.LabelLetterCases.uppercase,
 
       theme = ClosingButton__YDF.Themes.regular,
-      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || ClosingButton__YDF.areThemesCSS_ClassesCommon,
-      geometry = ClosingButton__YDF.GeometricVariations.regular,
-      decoration = ClosingButton__YDF.DecorativeVariations.regular
+      areThemesExternal = ComponentsAuxiliaries.areComponentsThemesCommon || ClosingButton__YDF.areThemesCSS_ClassesCommon,
+      geometricVariation = ClosingButton__YDF.GeometricVariations.regular,
+      decorativeVariation = ClosingButton__YDF.DecorativeVariations.regular
 
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -33,13 +33,13 @@ mixin ClosingButton--YDF(properties)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: ClosingButton__YDF.GeometricVariations,
         CSS_Namespace: ClosingButton__YDF.CSS_NAMESPACE
       }),
 
       ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
-        decoration,
+        decorativeVariation,
         allDecorativeVariations: ClosingButton__YDF.DecorativeVariations,
         CSS_Namespace: ClosingButton__YDF.CSS_NAMESPACE
       })

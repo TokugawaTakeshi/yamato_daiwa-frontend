@@ -1,62 +1,64 @@
 {
-  "name": "@yamato-daiwa/frontend",
-  "version": "2.0.0-alpha.4",
-  "description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
-  "keywords": [
-    "frontend",
-    "pug",
-    "stylus"
-  ],
-  "author": {
-    "name": "Takeshi Tokugawa",
-    "email": "tokugawa.takesi@gmail.com"
-  },
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend.git"
-  },
-  "bugs": {
-    "url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/issues",
-    "email": "tokugawa.takesi@gmail.com"
-  },
-  "files": [
-    "Components",
-    "!Components/**/*.ts",
-    "!Components/**/*.template.pug",
-    "LogicDistributable",
-    "Markup",
-    "!Markup/Source",
-    "PagesTemplates",
-    "!PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.styl",
-    "Styles",
-    "Components.pug",
-    "Components.styl",
-    "Functionality.pug",
-    "Functionality.styl"
-  ],
-  "module": "./LogicDistributable/index.js",
-  "types": "./LogicDistributable/index.d.ts",
-  "dependencies": {
-    "@yamato-daiwa/es-extensions": "1.7.0-alpha.5",
-    "@yamato-daiwa/es-extensions-browserjs": "1.7.0-alpha.1",
-    "clipboard": "2.0.11",
-    "prismjs": "1.29.0",
-    "slide-element": "2.3.1"
-  },
-  "devDependencies": {
-    "@types/prismjs": "1.26.0",
-    "@yamato-daiwa/automation": "../../../YamatoDaiwaAutomation/MainPackage",
-    "@yamato-daiwa/style_guides": "0.0.57",
-    "rimraf": "5.0.1",
-    "ts-node": "10.9.1",
-    "typescript": "5.2.2"
-  },
-  "scripts": {
-    "Production building of Pug extensions": "yda build --selectiveExecution PugExtensions --mode PRODUCTION && ts-node Markup/InlineECMAScript/Source/PugExtensionsOutputFileGenerator.ts",
-    "Production building of logic": "rimraf LogicDistributable && yda build --selectiveExecution Logic --mode PRODUCTION && tsc --project tsconfig.declarations.json --declaration --emitDeclarationOnly --outDir LogicDistributable",
-    "AnywherePageStyles:IncrementalBuild": "yda build --selectiveExecution StaticPreviewAnywherePage --mode LOCAL_DEVELOPMENT",
-    "Tests": "yda build --selectiveExecution StylesAndComponentsTesting --mode LOCAL_DEVELOPMENT",
-    "Alpha realize": "npm publish --tag alpha"
-  }
+	"name": "@yamato-daiwa/frontend",
+	"version": "2.0.0-alpha.5",
+	"description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
+	"keywords": [
+		"frontend",
+		"pug",
+		"stylus"
+	],
+	"author": {
+		"name": "Takeshi Tokugawa",
+		"email": "tokugawa.takesi@gmail.com"
+	},
+	"license": "MIT",
+	"homepage": "https://ee.yamato-daiwa.com",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend.git"
+	},
+	"bugs": {
+		"url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/issues",
+		"email": "tokugawa.takesi@gmail.com"
+	},
+	"files": [
+		"Components",
+		"!Components/**/*.ts",
+		"!Components/**/*.template.pug",
+		"LogicDistributable",
+		"Markup",
+		"!Markup/Source",
+		"PagesTemplates",
+		"!PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.styl",
+		"Styles",
+		"Components.pug",
+		"Components.styl",
+		"Functionality.pug",
+		"Functionality.styl"
+	],
+	"module": "./LogicDistributable/index.js",
+	"types": "./LogicDistributable/index.d.ts",
+	"dependencies": {
+		"@yamato-daiwa/es-extensions": "../../../YamatoDaiwaES_Extensions/CoreLibrary/Package",
+		"@yamato-daiwa/es-extensions-browserjs": "../../../YamatoDaiwaES_Extensions/BrowserJS/Package",
+		"clipboard": "2.0.11",
+		"fundamental-constants": "0.1.0",
+		"prismjs": "1.29.0",
+		"slide-element": "2.3.1"
+	},
+	"devDependencies": {
+		"@types/prismjs": "1.26.4",
+		"@yamato-daiwa/automation": "../../../YamatoDaiwaAutomation/MainPackage",
+		"@yamato-daiwa/style_guides": "0.2.6",
+		"rimraf": "5.0.7",
+		"ts-node": "10.9.2",
+		"typescript": "5.4.5"
+	},
+	"scripts": {
+		"Production building of Pug auxiliaries": "yda build --selectiveExecution PugAuxiliaries --mode PRODUCTION && ts-node Markup/InlineECMAScript/PugAuxiliariesOutputFileGenerator.ts",
+		"Production building of logic": "rimraf LogicDistributable && yda build --selectiveExecution Logic --mode PRODUCTION && tsc --project tsconfig.declarations.json --declaration --emitDeclarationOnly --outDir LogicDistributable",
+		"AnywherePageStyles:IncrementalBuild": "yda build --selectiveExecution StaticPreviewAnywherePage --mode LOCAL_DEVELOPMENT",
+		"Tests": "yda build --selectiveExecution StylesAndComponentsTesting --mode LOCAL_DEVELOPMENT",
+		"Alpha realize": "npm publish --tag alpha"
+	}
 }

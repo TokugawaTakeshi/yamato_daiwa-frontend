@@ -8,7 +8,7 @@ buildCalcExpressionFromFragments(fragmentsObject)
 
       fragment = polymorphicValue()
 
-      addElementsToEndOfYDF_ArrayIf(
+      YDF_Array-appendElementsIf(
         stringifiedFragments,
         @(_fragment) { return isNotNull(_fragment) },
         fragment
@@ -16,7 +16,7 @@ buildCalcExpressionFromFragments(fragmentsObject)
 
     else
 
-      YDF_Array-append(stringifiedFragments, polymorphicValue)
+      YDF_Array-appendElement(stringifiedFragments, polymorphicValue)
 
 
   // [ Stylus theory ] With plain string variable, the changed will lost with next iteration

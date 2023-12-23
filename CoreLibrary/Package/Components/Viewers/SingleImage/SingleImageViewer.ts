@@ -61,12 +61,12 @@ export default class SingleImageViewer {
 
     this.modalViewElement = getExpectedToBeSingleDOM_Element({
       selector: SingleImageViewer.MODAL_VIEW_ELEMENT_SELECTOR,
-      context: this.rootElement
+      contextElement: this.rootElement
     });
 
     this.imageInModalElement = getExpectedToBeSingleDOM_Element({
       selector: SingleImageViewer.IMAGE_IN_MODAL_ELEMENT_SELECTOR,
-      context: this.rootElement,
+      contextElement: this.rootElement,
       expectedDOM_ElementSubtype: HTMLImageElement
     });
 
@@ -77,7 +77,7 @@ export default class SingleImageViewer {
     addLeftClickEventHandler({
       targetElement: getExpectedToBeSingleDOM_Element({
         selector: SingleImageViewer.FULL_SCREEN_VIEW_ACTIVATING_BUTTON_ELEMENT_SELECTOR,
-        context: this.rootElement
+        contextElement: this.rootElement
       }),
       handler: this.onClickFullScreenViewActivatingButton.bind(this)
     });
@@ -85,7 +85,7 @@ export default class SingleImageViewer {
     addLeftClickEventHandler({
       targetElement: getExpectedToBeSingleDOM_Element({
         selector: SingleImageViewer.FULL_SCREEN_VIEW_DEACTIVATING_BUTTON_ELEMENT_SELECTOR,
-        context: this.rootElement
+        contextElement: this.rootElement
       }),
       handler: this.onClickFullScreenViewDeactivatingButton.bind(this)
     });
@@ -93,7 +93,7 @@ export default class SingleImageViewer {
     addLeftClickEventHandler({
       targetElement: getExpectedToBeSingleDOM_Element({
         selector: SingleImageViewer.ZOOMING_IN__BUTTON_ELEMENT_SELECTOR,
-        context: this.rootElement
+        contextElement: this.rootElement
       }),
       handler: this.onClickZoomingInButton.bind(this)
     });
@@ -101,7 +101,7 @@ export default class SingleImageViewer {
     addLeftClickEventHandler({
       targetElement: getExpectedToBeSingleDOM_Element({
         selector: SingleImageViewer.ZOOMING_OUT__BUTTON_ELEMENT_SELECTOR,
-        context: this.rootElement
+        contextElement: this.rootElement
       }),
       handler: this.onClickZoomingOutButton.bind(this)
     });
@@ -109,7 +109,7 @@ export default class SingleImageViewer {
     addLeftClickEventHandler({
       targetElement: getExpectedToBeSingleDOM_Element({
         selector: SingleImageViewer.WIDTH_FITTING__BUTTON_ELEMENT_SELECTOR,
-        context: this.rootElement
+        contextElement: this.rootElement
       }),
       handler: this.onClickWidthFittingButton.bind(this)
     });
@@ -117,7 +117,7 @@ export default class SingleImageViewer {
     addLeftClickEventHandler({
       targetElement: getExpectedToBeSingleDOM_Element({
         selector: SingleImageViewer.HEIGHT_FITTING__BUTTON_ELEMENT_SELECTOR,
-        context: this.rootElement
+        contextElement: this.rootElement
       }),
       handler: this.onClickHeightFittingButton.bind(this)
     });
@@ -125,7 +125,7 @@ export default class SingleImageViewer {
     addLeftClickEventHandler({
       targetElement: getExpectedToBeSingleDOM_Element({
         selector: SingleImageViewer.FULL_FITTING__BUTTON_ELEMENT_SELECTOR,
-        context: this.rootElement
+        contextElement: this.rootElement
       }),
       handler: this.onClickFullFittingButton.bind(this)
     });

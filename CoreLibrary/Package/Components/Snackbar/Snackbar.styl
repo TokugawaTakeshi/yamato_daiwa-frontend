@@ -1,45 +1,55 @@
-@require "Themes/Regular/GeometricVariations/Snackbar-RegularGeometry.styl"
+@require "Themes/Regular/GeometricVariations/Snackbar-RegularTheme-RegularGeometry.styl"
 
-@require "Themes/Regular/DecorativeVariations/Snackbar-ErrorDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Snackbar-WarningDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Snackbar-GudanceDecoration.styl"
-@require "Themes/Regular/DecorativeVariations/Snackbar-SuccessDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Snackbar-RegularTheme-ErrorDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Snackbar-RegularTheme-WarningDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Snackbar-RegularTheme-GuidanceDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Snackbar-RegularTheme-SuccessDecoration.styl"
 
 
 Snackbar--YDF = {
+
+  CSS_NAMESPACE: "Snackbar--YDF",
 
   defaultProperties: {
 
     themes: {
       regular: {
 
+        componentIndependentCSS_Class: "RegularTheme--YDF",
+
         geometricVariations: {
-          regular: Snackbar-RegularGeometry--YDF
+          regular: Snackbar-RegularTheme-RegularGeometry--YDF
         },
 
         decorativeVariations: {
-          error: Snackbar-ErrorDecoration--YDF,
-          warning: Snackbar-WarningDecoration--YDF,
-          guidance: Snackbar-GuidanceDecoration--YDF,
-          success: Snackbar-SuccessDecoration--YDF
+          error: Snackbar-RegularTheme-ErrorDecoration--YDF,
+          warning: Snackbar-RegularTheme-WarningDecoration--YDF,
+          guidance: Snackbar-RegularTheme-GuidanceDecoration--YDF,
+          success: Snackbar-RegularTheme-SuccessDecoration--YDF
         }
+
       }
     }
+
+  },
+
+  defaultOptions: {
+    themeIndependentStylesOnly: false,
+    areThemesCSS_ClassesCommon: false,
+    themeIndependentGeometricVariations: true
   }
+
 }
 
 
 provideSnackbarYDF_Component(
   preset = Snackbar--YDF.defaultProperties,
-  overridings = {},
-  options = {
-    themeIndependentStylesOnly: false,
-    externalThemes: false
-  },
+  overrides = {},
+  options = Snackbar--YDF.defaultOptions,
   restParameters__MUST_NOT_BE...
 )
 
-  properties = deeplyCloneAndOverrideObject(preset, overridings)
+  properties = deeplyCloneAndOverrideObject(preset, overrides)
 
   validateObjectTypeParameter({
     mixinOrFunctionName: "provideSnackbarYDF_Component",
@@ -48,18 +58,22 @@ provideSnackbarYDF_Component(
     schema: {
       themeIndependentStylesOnly: {
         type: DataTypes.boolean,
-        required: true
+        defaultValue: Snackbar--YDF.defaultOptions.themeIndependentStylesOnly
       },
-      externalThemes: {
+      areThemesCSS_ClassesCommon: {
         type: DataTypes.boolean,
-        required: true
+        defaultValue: Snackbar--YDF.defaultOptions.areThemesCSS_ClassesCommon
+      },
+      themeIndependentGeometricVariations: {
+        type: DataTypes.boolean,
+        defaultValue: Snackbar--YDF.defaultOptions.themeIndependentGeometricVariations
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
   })
 
 
-  // === Methods =======================================================================================================
+  //- ━━━ Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   applyBasicRules()
 
     .Snackbar--YDF
@@ -68,20 +82,19 @@ provideSnackbarYDF_Component(
       align-items center
 
       position fixed
-      top 96px
-      left "calc(50% - 0.5*%s)" % 280px
       z-index: YDF_Configuration.zIndexes.floatingNotifications
 
 
-      &-Icon
+      &-SVG_Icon
 
         flex-shrink 0
 
 
       &-Message
 
+        word-break break-all
+
         flex-grow 1
-        margin-left 8px
 
 
       &-DismissingButton
@@ -91,43 +104,260 @@ provideSnackbarYDF_Component(
         cursor pointer
 
         flex-shrink 0
-        margin-left 8px
 
 
-  // --- Geometry ------------------------------------------------------------------------------------------------------
+        &-Icon
+
+          display block    // [ Why? ] Te remove the extra space at bottom causes by line-height
+
+
+      &-Transition
+
+        &__DisplayingState
+
+          opacity 1
+
+
+        &__HiddenState
+
+          opacity 0
+
+
+        &__Appearing,
+        &__Disappearing
+
+          transition-property: x, y, left, right, bottom, top, opacity, transform
+
+
+        &__Appearing
+
+          transition-timing-function ease-out
+
+
+        &__Disappearing
+
+          transition-timing-function ease-in
+
+
+  // ─── Geometry ──────────────────────────────────────────────────────────────────────────────────────────────────────
   applyGeometricVariation(themeName, variationName, variation)
 
     VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
-      "Snackbar.${themeName}Theme.${variationName}Geometry",
-      {
-        themeName: themeName,
-        variationName: variationName
-      }
+      "Snackbar.${ themeName }Theme.${ variationName }Geometry",
+      { themeName: themeName, variationName: variationName }
     )
 
-    +provideDefaultSelectorWhenRootAndApply(".Snackbar--YDF")
+    CONTEXT_SELECTOR = selector() == "&" ? null : selector()
+
+
+    WideScreensConfiguration()
+      @media (min-width: variation.rootElement.positioning.wideScreensMinimalWidth)
+        {block}
+
+    NarrowScreensConfiguration()
+      @media (max-width: variation.rootElement.positioning.wideScreensMinimalWidth - 1)
+        {block}
+
+
+    +provideDefaultSelectorWhenRootAndApply("." + Snackbar--YDF.CSS_NAMESPACE)
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
-          width: { dotSeparatedPath: "rootElement.width", required: true },
-          min-height: { dotSeparatedPath: "rootElement.minimalHeight", required: true },
           borders: {
             dotSeparatedPath: "rootElement.borders",
             required: false,
             applier: BordersSizing
-          },
-          padding: {
-            dotSeparatedPath: "rootElement.paddings",
-            required: false,
-            applier: Paddings
           }
         }
       })
 
+      applyMixinStoredInObjectIfItIsNotNull(variation.rootElement.customDeclarations)
 
-    .Snackbar--YDF-Icon
+
+    .Snackbar--YDF__TopLeftPosition,
+    .Snackbar--YDF__BottomLeftPosition,
+    .Snackbar--YDF__TopMiddlePosition,
+    .Snackbar--YDF__BottomMiddlePosition,
+    .Snackbar--YDF__TopRightPosition,
+    .Snackbar--YDF__BottomRightPosition
+
+      +NarrowScreensConfiguration()
+
+        left 50%
+
+
+        &.Snackbar--YDF-Transition__DisplayingState
+
+          transform translateX(-50%)
+
+
+        &.Snackbar--YDF-Transition__HiddenState
+
+          left 50%
+
+
+    .Snackbar--YDF__TopLeftPosition,
+    .Snackbar--YDF__TopMiddlePosition,
+    .Snackbar--YDF__TopRightPosition
+
+      +WideScreensConfiguration()
+
+        validateAndAssignStoredInObjectCSS_Properties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          assigments: {
+            top: {
+              dotSeparatedPath: "rootElement.positioning.boundingRectangleForWideScreens.verticalOffset",
+              required: true
+            }
+          }
+        })
+
+
+      +NarrowScreensConfiguration()
+
+        validateAndAssignStoredInObjectCSS_Properties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          assigments: {
+            top: {
+              dotSeparatedPath: "rootElement.positioning.verticalOffsetForNarrowScreens",
+              required: true
+            }
+          }
+        })
+
+
+        &.Snackbar--YDF-Transition__HiddenState
+
+          top 0
+          transform translate(-50%, -100%)
+
+
+    .Snackbar--YDF__BottomLeftPosition,
+    .Snackbar--YDF__BottomMiddlePosition,
+    .Snackbar--YDF__BottomRightPosition
+
+      +WideScreensConfiguration()
+
+        validateAndAssignStoredInObjectCSS_Properties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          assigments: {
+            bottom: {
+              dotSeparatedPath: "rootElement.positioning.boundingRectangleForWideScreens.verticalOffset",
+              required: true
+            }
+          }
+        })
+
+
+      +NarrowScreensConfiguration()
+
+        validateAndAssignStoredInObjectCSS_Properties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          assigments: {
+            bottom: {
+              dotSeparatedPath: "rootElement.positioning.verticalOffsetForNarrowScreens",
+              required: true
+            }
+          }
+        })
+
+
+        &.Snackbar--YDF-Transition__HiddenState
+
+          bottom 0
+          transform translate(-50%, 100%)
+
+
+    .Snackbar--YDF__TopLeftPosition,
+    .Snackbar--YDF__BottomLeftPosition
+
+      +WideScreensConfiguration()
+
+        &.Snackbar--YDF-Transition__DisplayingState
+
+          validateAndAssignStoredInObjectCSS_Properties({
+            targetObject: variation,
+            targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+            assigments: {
+              left: {
+                dotSeparatedPath: "rootElement.positioning.boundingRectangleForWideScreens.horizontalOffset",
+                required: true
+              }
+            }
+          })
+
+
+        &.Snackbar--YDF-Transition__HiddenState
+
+          left 0
+          transform translateX(-100%)
+
+
+    .Snackbar--YDF__TopMiddlePosition,
+    .Snackbar--YDF__BottomMiddlePosition
+
+      +WideScreensConfiguration()
+
+        left 50%
+
+
+        &.Snackbar--YDF-Transition__DisplayingState
+
+          transform translateX(-50%)
+
+
+    .Snackbar--YDF__TopRightPosition,
+    .Snackbar--YDF__BottomRightPosition
+
+      +WideScreensConfiguration()
+
+        &.Snackbar--YDF-Transition__DisplayingState
+
+          validateAndAssignStoredInObjectCSS_Properties({
+            targetObject: variation,
+            targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+            assigments: {
+              right: {
+                dotSeparatedPath: "rootElement.positioning.boundingRectangleForWideScreens.horizontalOffset",
+                required: true
+              }
+            }
+          })
+
+
+        &.Snackbar--YDF-Transition__HiddenState
+
+          right 0
+          transform translateX(100%)
+
+
+    .Snackbar--YDF__TopMiddlePosition
+
+      +WideScreensConfiguration()
+
+        &.Snackbar--YDF-Transition__HiddenState
+
+          top 0
+          transform translate(-50%, -100%)
+
+
+    .Snackbar--YDF__BottomMiddlePosition
+
+      +WideScreensConfiguration()
+
+        &.Snackbar--YDF-Transition__HiddenState
+
+          bottom 0
+          transform translate(-50%, 100%)
+
+
+    .Snackbar--YDF-SVG_Icon
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
@@ -140,9 +370,12 @@ provideSnackbarYDF_Component(
               predicate: @(variation) { return isNull(getObjectValueByDotSeparatedPathSafely(variation, "SVG_Icon.width")) },
               conditionDescription: "'SVG_Icon.width' icon is null"
             }
-          }
+          },
+          margin-left: { dotSeparatedPath: "SVG_Icon.spacing.left", required: true }
         }
       })
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.SVG_Icon.customDeclarations)
 
 
     .Snackbar--YDF-Message
@@ -151,16 +384,57 @@ provideSnackbarYDF_Component(
         targetObject: variation,
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
+          min-width: { dotSeparatedPath: "message.minimalWidth", required: false },
+          max-width: { dotSeparatedPath: "message.maximalWidth", required: false },
           text: { dotSeparatedPath: "message.text", applier: @(textProperties) {
             applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
               fontSize: textProperties.size,
               lineSpacing: textProperties.lineSpacing,
               lineHeight: textProperties.lineHeight,
-              mustAllowWordsBreakingAnywhere: true
+              mustApplyNegativeMarginsToRootElement: true
             })
-          }}
+          }},
+          verticalSymmetricMarginsAsTopPadding: {
+            newName: "padding-top",
+            dotSeparatedPath: "message.spacing.verticalSymmetric",
+            required: false
+          },
+          verticalSymmetricMarginsAsBottomPadding: {
+            newName: "padding-bottom",
+            dotSeparatedPath: "message.spacing.verticalSymmetric",
+            required: false
+          },
+          topPadding: {
+            newName: "padding-top",
+            dotSeparatedPath: "message.spacing.top",
+            required: false,
+            incompatibleWith: "message.spacing.verticalSymmetric"
+          },
+          bottomPadding: {
+            newName: "padding-bottom",
+            dotSeparatedPath: "message.spacing.bottom",
+            required: false,
+            incompatibleWith: "message.spacing.verticalSymmetric"
+          },
+          margin-left: { dotSeparatedPath: "message.spacing.left", required: true }
         }
       })
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.message.customDeclarations)
+
+
+    .Snackbar--YDF-DismissingButton
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          margin-left: { dotSeparatedPath: "dismissingButton.spacing.left", required: true },
+          margin-right: { dotSeparatedPath: "dismissingButton.spacing.right", required: true }
+        }
+      })
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.dismissingButton.customDeclarations)
 
 
     .Snackbar--YDF-DismissingButton-Icon
@@ -169,12 +443,12 @@ provideSnackbarYDF_Component(
         targetObject: variation,
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
-          width: { dotSeparatedPath: "dismissingButton.icon.width", required: false },
+          width: { dotSeparatedPath: "dismissingButton.SVG_Icon.width", required: false },
           height: {
-            dotSeparatedPath: "dismissingButton.icon.height",
+            dotSeparatedPath: "dismissingButton.SVG_Icon.height",
             requiredIf: {
               predicate: @(variation) {
-                return isNull(getObjectValueByDotSeparatedPathSafely(variation, "dismissingButton.icon.width"))
+                return isNull(getObjectValueByDotSeparatedPathSafely(variation, "dismissingButton.SVG_Icon.width"))
               },
               conditionDescription: "'dismissingButton.SVG_Icon.width' icon is null"
             }
@@ -183,24 +457,25 @@ provideSnackbarYDF_Component(
       })
 
 
-  // --- Decoration ----------------------------------------------------------------------------------------------------
+  // ─── Decoration ────────────────────────────────────────────────────────────────────────────────────────────────────
   applyDecorativeVariation(themeName, variationName, variation)
 
     VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
-      "Snackbar.${themeName}Theme.${variationName}Decoration",
-      {
-        themeName: themeName,
-        variationName: variationName
-      }
+      "Snackbar.${ themeName }Theme.${ variationName }Decoration",
+      { themeName: themeName, variationName: variationName }
     )
 
-    +provideDefaultSelectorWhenRootAndApply(".Snackbar--YDF")
+
+    +provideDefaultSelectorWhenRootAndApply("." + Snackbar--YDF.CSS_NAMESPACE)
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
+          border-style: { dotSeparatedPath: "rootElement.borders.style", required: false },
+          border-color: { dotSeparatedPath: "rootElement.borders.color", required: false },
           background-color: { dotSeparatedPath: "rootElement.background.color", required: false },
+          background-image: { dotSeparatedPath: "rootElement.background.image", required: false },
           box-shadow: {
             dotSeparatedPath: "rootElement.shadow",
             required: false,
@@ -209,16 +484,20 @@ provideSnackbarYDF_Component(
         }
       })
 
+      applyMixinStoredInObjectIfItIsNotNull(variation.rootElement.customDeclarations)
 
-    .Snackbar--YDF-Icon
+
+    .Snackbar--YDF-SVG_Icon
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
-          fill: { dotSeparatedPath: "icon.color", required: false }
+          fill: { dotSeparatedPath: "SVG_Icon.color", required: false }
         }
       })
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.SVG_Icon.customDeclarations)
 
 
     .Snackbar--YDF-Message
@@ -227,18 +506,84 @@ provideSnackbarYDF_Component(
         targetObject: variation,
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
-          fill: { dotSeparatedPath: "message.text.color", required: false }
+          "font-weight": { dotSeparatedPath: "message.text.fontWeight", required: false },
+          color: { dotSeparatedPath: "message.text.color", required: false }
         }
       })
 
+      applyMixinStoredInObjectIfItIsNotNull(variation.message.customDeclarations)
 
-  // --- Applying ------------------------------------------------------------------------------------------------------
+
+    DismissingButtonStyles(state)
+
+      statePseudoClass = null
+
+      if (state == "hoverState")
+
+        statePseudoClass = ":hover"
+
+      else if (state == "focusState")
+
+        statePseudoClass = ":focus"
+
+      else if (state == "activeState")
+
+        statePseudoClass = ":active"
+
+
+      .Snackbar--YDF-DismissingButton{statePseudoClass}
+
+        validateAndAssignStoredInObjectCSS_Properties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          assigments: {
+            box-shadow: {
+              dotSeparatedPath: "dismissingButton." + state + ".shadow",
+              required: false,
+              applier: applyObjectTypeBoxShadowDefinition
+            }
+          }
+        })
+
+        applyMixinStoredInObjectIfItIsNotNull(variation.dismissingButton[state].customDeclarations)
+
+
+      SVG_IconStyles()
+
+        validateAndAssignStoredInObjectCSS_Properties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          assigments: {
+            fill: { dotSeparatedPath: "dismissingButton." + state + ".iconColor", required: true }
+          }
+        })
+
+
+      if (isNull(statePseudoClass))
+
+        .Snackbar--YDF-DismissingButton-Icon
+
+          SVG_IconStyles()
+
+      else
+
+        .Snackbar--YDF-DismissingButton{statePseudoClass} .Snackbar--YDF-DismissingButton-Icon
+
+          SVG_IconStyles()
+
+
+    for state in variation.dismissingButton
+
+      DismissingButtonStyles(state)
+
+
+  //- ━━━ Applying ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   applyBasicRules()
 
   if !options.themeIndependentStylesOnly
 
     applyComponentThemes({
-      CSS_Namespace: "Snackbar--YDF",
+      CSS_Namespace: Snackbar--YDF.CSS_NAMESPACE,
       themes: properties.themes,
       applyGeometricVariation: applyGeometricVariation,
       applyDecorativeVariation: applyDecorativeVariation

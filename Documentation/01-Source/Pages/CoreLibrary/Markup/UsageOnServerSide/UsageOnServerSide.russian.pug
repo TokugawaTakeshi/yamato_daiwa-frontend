@@ -27,7 +27,13 @@ block append Metadata
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents"
+    ];
+
     scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.usageOnServerSide");
@@ -51,10 +57,10 @@ block append SpecificContent
 
     h1.Article-Heading1 Использование не серверной стороне
 
-    +AttentionBox--YDF({
+    +AdmonitionBlock--YDF({
       title: "Документация ещё не готова",
-      decoration: AttentionBox__YDF.DecorativeVariations.guidance,
-      hasPrependedSVG_Icon: true
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.guidance,
+      SVG_Icon: true
     })
       | Документация для этой функциональности пока не готова к публикации, однако её планируется завершить до начала
       |   выпуска бета-версий.
@@ -139,7 +145,7 @@ block append SpecificContent
       +CodeViewer--YDF
         +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }).
           +Button--YDF({
-            geometry: Button__YDF.GeometricVariations.small
+            geometricVariation: Button__YDF.GeometricVariations.small
           })
             +Pencil__Filled--YDF_Icon.Button--YDF-SVG_Icon
             span.Button--YDF-Label Редактировать
@@ -189,7 +195,7 @@ block append SpecificContent
             #[+Keyword--YDID окончательный] #[+Term--YDID HTML-код].
           Этот этап осуществляется #[+Keyword--YDID каждый] раз при формировании ответа на #[+Term--YDID HTTP-запрос]
 
-      +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.notice, hasPrependedSVG_Icon: true }).
+      +AdmonitionBlock--YDF({ decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.notice, SVG_Icon: true }).
         Если рассмотреть процесс более детально, то многие препроцессоры имеют кэширование, которое разделяет
           #[+ImportantEntity--YDID 2-ой] этап ещё на #[+ImportantEntity--YDID 2]: преобразование шаблона
           в #[+Term--YDID JavaScript-функцию] и выполннение этой функции соответственно.

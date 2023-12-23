@@ -27,7 +27,7 @@ mixin ComboBox--YDF(properties, statesSimulations)
       listBoxElementHTML_ID = `${ COMPONENT_ID }-LIST_BOX`,
       listBoxElementAccessibilityGuidance = ComboBox__YDF.localization.listBox.defaultAccessibilityGuidance
 
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -41,10 +41,11 @@ mixin ComboBox--YDF(properties, statesSimulations)
 
     const {
       expanded = false,
-      invalidInputHighlightingIfAnyValidationErrorsMessages = false,
-      validValueHighlightingIfNoValidationErrorsMessages = false,
-      errorsMessages = []
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      invalidInputHighlightingIfAnyValidationErrorsMessages,
+      validValueHighlightingIfNoValidationErrorsMessages,
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: statesSimulations,
       parameterNumber: 2,
       parameterName: "statesSimulations",
@@ -82,7 +83,8 @@ mixin ComboBox--YDF(properties, statesSimulations)
     {
       invalidInputHighlightingIfAnyValidationErrorsMessages,
       validValueHighlightingIfNoValidationErrorsMessages,
-      errorsMessages
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
     }
   ).DropDownList--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
 
@@ -101,7 +103,7 @@ mixin ComboBox--YDF(properties, statesSimulations)
       aria-label=ComboBox__YDF.localization.buttons.toggleExpanding
       aria-expanded=expanded
       aria-controls=listBoxElementHTML_ID
-    )//- TODO Icon
+    )
 
     .DropDownList--YDF-ListBox(
       role="listbox"

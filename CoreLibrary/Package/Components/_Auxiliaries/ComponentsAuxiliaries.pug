@@ -1,41 +1,34 @@
 -
 
-  let ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT = false;
-
   class ComponentsAuxiliaries {
+
+    static areComponentsThemesCommon = false;
 
     static validatableControlGeneralStatesSimulationsSpecification = {
 
       invalidInputHighlightingIfAnyValidationErrorsMessages: {
         type: Boolean,
-        required: false
+        defaultValue: false
       },
 
       validValueHighlightingIfNoValidationErrorsMessages: {
         type: Boolean,
-        required: false
+        defaultValue: false
       },
 
       validationErrorsMessages: {
         type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
-        required: false,
-        alternatives: [
-          {
-            type: Array,
-            element: {
-              type: String,
-              minimalCharactersCount: 1
-            }
-          },
-          {
-            type: Boolean
-          }
-        ]
+        defaultValue: [],
+        type: Array,
+          element: {
+          type: String,
+          minimalCharactersCount: 1
+        }
       },
 
       asynchronousValidationsStatuses: {
         type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
-        required: false,
+        defaultValue: false,
         alternatives: [
           {
             type: Array,
@@ -64,7 +57,7 @@
     };
 
 
-    static defineNewThemes(themesNames, TargetComponentClass) {
+    static defineThemes(themesNames, TargetComponentClass) {
 
       for (const themeName of themesNames) {
         TargetComponentClass.Themes[toLowerCamelCase(themeName)] = toScreamingSnakeCase(themeName);
@@ -74,7 +67,7 @@
 
     }
 
-    static defineNewGeometricVariations(geometricVariationsNames, TargetComponentClass) {
+    static defineGeometricVariations(geometricVariationsNames, TargetComponentClass) {
 
       for (const geometricVariationName of geometricVariationsNames) {
         TargetComponentClass.GeometricVariations[toLowerCamelCase(geometricVariationName)] =
@@ -85,7 +78,7 @@
 
     }
 
-    static defineNewDecorativeVariations(decorativeVariationsNames, TargetComponentClass) {
+    static defineDecorativeVariations(decorativeVariationsNames, TargetComponentClass) {
 
       for (const decorativeVariationName of decorativeVariationsNames) {
         TargetComponentClass.DecorativeVariations[toLowerCamelCase(decorativeVariationName)] =
@@ -97,70 +90,145 @@
     }
 
 
-    static defineThemesAndAssociateThemWithParentCompoundControlShellOnes(
-      ownAndCorrespondingCompoundControlShellThemes_Names,
-      TargetComponentClass
-    ) {
+    /**
+     * @param {
+     *   { [ ownThemeKey: string ]: { [ childrenComponentKey: string ]: string; } }
+     * } themesAndCorrespondenceDefinition
+     * @param { Object } TargetComponentClass
+     */
+    static defineThemesAndSetCorrespondenceWithOnesOfChildrenComponents(
+      themesAndCorrespondenceDefinition, TargetComponentClass
+    ){
 
-      ComponentsAuxiliaries.defineNewThemes(Object.keys(ownAndCorrespondingCompoundControlShellThemes_Names));
+      ComponentsAuxiliaries.defineThemes(Object.keys(themesAndCorrespondenceDefinition), TargetComponentClass);
+
+      //- [ Approach ] Triggering the initialization of `_selfAndChildrenComponentsThemesCorrespondence`.
+      TargetComponentClass.selfAndChildrenComponentsThemesCorrespondence;
 
       for (
-        const [ ownThemeName, compoundControlShell_sThemeName ] of
-        Object.entries(ownAndCorrespondingCompoundControlShellThemes_Names)
+        const [ ownThemeName, correspondenceWithThemesOfChildrenComponents ] of
+            Object.entries(themesAndCorrespondenceDefinition)
       ) {
-        /* [ Optimization ] The recomputing of screaming shake case (usually 1-2 words) which already has been computed
-         * in `defineNewThemes` is cheaper for the performance than creating of additional methods, caching variables etc. */
-        TargetComponentClass.selfAndCompoundControlShellThemesCorrespondence[themeName__screamingSnakeCase(ownThemeName)] =
-            compoundControlShell_sThemeName;
+
+        const ownThemeName__screamingSnakeCase = toScreamingSnakeCase(ownThemeName);
+
+        for (
+          const [ childComponentName, childComponent_sThemeName ] of
+              Object.entries(correspondenceWithThemesOfChildrenComponents)
+        ) {
+
+          if (isUndefined(TargetComponentClass._selfAndChildrenComponentsThemesCorrespondence[childComponentName])) {
+            TargetComponentClass._selfAndChildrenComponentsThemesCorrespondence[childComponentName] = {
+              [ownThemeName__screamingSnakeCase]: toScreamingSnakeCase(childComponent_sThemeName)
+            };
+          } else {
+            TargetComponentClass.
+                _selfAndChildrenComponentsThemesCorrespondence[childComponentName][ownThemeName__screamingSnakeCase] =
+                    toScreamingSnakeCase(childComponent_sThemeName)
+          }
+
+        }
+
       }
 
       return TargetComponentClass;
+
     }
 
-    static defineGeometricVariationAndAssociateThemWithParentCompoundControlShellOnes(
-      ownAndCorrespondingCompoundControlShellGeometricVariations_Names,
-      TargetComponentClass
-    ) {
+    /**
+     * @param {
+     *   { [ ownGeometricVariationName: string ]: { [ childrenComponentName: string ]: string; } }
+     * } geometricVariationsAndCorrespondenceDefinition
+     * @param { Object } TargetComponentClass
+     */
+    static defineGeometricVariationsAndSetCorrespondenceWithOnesOfChildrenComponents(
+      geometricVariationsAndCorrespondenceDefinition, TargetComponentClass
+    ){
 
-      ComponentsAuxiliaries.defineNewGeometricVariations(
-        Object.keys(ownAndCorrespondingCompoundControlShellGeometricVariations_Names)
+      ComponentsAuxiliaries.defineGeometricVariations(
+        Object.keys(geometricVariationsAndCorrespondenceDefinition), TargetComponentClass
       );
 
+      //- [ Approach ] Triggering the initialization of `_selfAndChildrenComponentsGeometricVariationsCorrespondence`.
+      TargetComponentClass.selfAndChildrenComponentsGeometricVariationsCorrespondence;
+
       for (
-        const [ ownGeometricVariationName, compoundControlShell_sGeometricVariationName ] of
-        Object.entries(ownAndCorrespondingCompoundControlShellGeometricVariations_Names)
+        const [ ownGeometricVariationName, correspondenceWithGeometricVariationsOfChildrenComponents ] of
+            Object.entries(geometricVariationsAndCorrespondenceDefinition)
       ) {
-        /* [ Optimization ] The recomputing of screaming shake case (usually 1-2 words) which already has been computed
-         * in `defineNewGeometricVariations` is cheaper for the performance than creating of additional methods, caching variables etc.  */
-        TargetComponentClass.selfAndCompoundControlShellGeometricVariationsCorrespondence[
-          ownGeometricVariationName(ownGeometricVariationName)
-        ] = compoundControlShell_sGeometricVariationName;
+
+        const ownGeometricVariationName__screamingSnakeCase = toScreamingSnakeCase(ownGeometricVariationName);
+
+        for (
+          const [ childComponentName, childComponent_sGeometricVariationName ] of
+              Object.entries(correspondenceWithGeometricVariationsOfChildrenComponents)
+        ) {
+
+          if (isUndefined(TargetComponentClass.selfAndChildrenComponentsGeometricVariationsCorrespondence[childComponentName])) {
+            TargetComponentClass.selfAndChildrenComponentsGeometricVariationsCorrespondence[childComponentName] = {
+              [ownGeometricVariationName__screamingSnakeCase]: toScreamingSnakeCase(childComponent_sGeometricVariationName)
+            };
+          } else {
+            TargetComponentClass.
+                selfAndChildrenComponentsGeometricVariationsCorrespondence[childComponentName]
+                    [ownGeometricVariationName__screamingSnakeCase] =
+                        toScreamingSnakeCase(childComponent_sGeometricVariationName)
+          }
+
+        }
+
       }
 
       return TargetComponentClass;
+
     }
 
-    static defineDecorativeVariationAndAssociateThemWithParentCompoundControlShellOnes(
-      ownAndCorrespondingCompoundControlShellDecorativeVariations_Names,
-      TargetComponentClass
-    ) {
+    /**
+     * @param {
+     *   { [ ownDecorativeVariationName: string ]: { [ childrenComponentName: string ]: string; } }
+     * } decorativeVariationsAndCorrespondenceDefinition
+     * @param { Object } TargetComponentClass
+     */
+    static defineDecorativeVariationsAndSetCorrespondenceWithOnesOfChildrenComponents(
+      decorativeVariationsAndCorrespondenceDefinition, TargetComponentClass
+    ){
 
-      ComponentsAuxiliaries.defineNewDecorativeVariations(
-        Object.keys(ownAndCorrespondingCompoundControlShellDecorativeVariations_Names)
+      ComponentsAuxiliaries.defineDecorativeVariations(
+        Object.keys(decorativeVariationsAndCorrespondenceDefinition), TargetComponentClass
       );
 
+      //- [ Approach ] Triggering the initialization of `_selfAndChildrenComponentsDecorativeVariationsCorrespondence`.
+      TargetComponentClass.selfAndChildrenComponentsDecorativeVariationsCorrespondence;
+
       for (
-        const [ ownDecorativeVariationName, compoundControlShell_sDecorativeVariationName ] of
-        Object.entries(ownAndCorrespondingCompoundControlShellDecorativeVariations_Names)
+        const [ ownDecorativeVariationName, correspondenceWithDecorativeVariationsOfChildrenComponents ] of
+            Object.entries(decorativeVariationsAndCorrespondenceDefinition)
       ) {
-        /* [ Optimization ] The recomputing of screaming shake case (usually 1-2 words) which already has been computed
-         * in `defineNewDecorativeVariations` is cheaper for the performance than creating of additional methods, caching variables etc. */
-        TargetComponentClass.selfAndCompoundControlShellDecorativeVariationsCorrespondence[
-          ownDecorativeVariationName(ownDecorativeVariationName)
-        ] = compoundControlShell_sDecorativeVariationName;
+
+        const ownDecorativeVariationName__screamingSnakeCase = toScreamingSnakeCase(ownDecorativeVariationName);
+
+        for (
+          const [ childComponentName, childComponent_sDecorativeVariationName ] of
+              Object.entries(correspondenceWithDecorativeVariationsOfChildrenComponents)
+        ) {
+
+          if (isUndefined(TargetComponentClass.selfAndChildrenComponentsDecorativeVariationsCorrespondence[childComponentName])) {
+            TargetComponentClass.selfAndChildrenComponentsDecorativeVariationsCorrespondence[childComponentName] = {
+              [ownDecorativeVariationName__screamingSnakeCase]: toScreamingSnakeCase(childComponent_sDecorativeVariationName)
+            };
+          } else {
+            TargetComponentClass.
+                selfAndChildrenComponentsDecorativeVariationsCorrespondence[childComponentName]
+                    [ownDecorativeVariationName__screamingSnakeCase] =
+                        toScreamingSnakeCase(childComponent_sDecorativeVariationName)
+          }
+
+        }
+
       }
 
       return TargetComponentClass;
+
     }
 
 
@@ -178,24 +246,24 @@
 
     static addGeometricVariationCSS_ClassToArrayIfMust(
       {
-        geometry,
+        geometricVariation,
         allGeometricVariations,
         CSS_Namespace
       }
     ) {
       return Object.entries(allGeometricVariations).length > 1 ?
-          [ `${ CSS_Namespace }__${ toUpperCamelCase(geometry) }Geometry` ] : []
+          [ `${ CSS_Namespace }__${ toUpperCamelCase(geometricVariation) }GeometricVariation` ] : [];
     }
 
     static addDecorativeVariationCSS_ClassToArrayIfMust(
       {
-        decoration,
+        decorativeVariation,
         allDecorativeVariations,
         CSS_Namespace
       }
     ) {
       return Object.entries(allDecorativeVariations).length > 1 ?
-          [ `${ CSS_Namespace }__${ toUpperCamelCase(decoration)}Decoration` ] : []
+          [ `${ CSS_Namespace }__${ toUpperCamelCase(decorativeVariation) }DecorativeVariation` ] : [];
     }
 
 
@@ -219,22 +287,6 @@
       return demandedDecorativeModifiersNames.map(
         decorativeModifierName => `${ CSS_Namespace }__${ toUpperCamelCase(decorativeModifierName) }DecorativeModifier`
       )
-    }
-
-
-    /** @deprecated Use `addThemeCSS_ClassToArrayIfMust` instead. */
-    static generateThemeCSS_Class(CSS_Namespace, themeName) {
-      return `${CSS_Namespace}__${toUpperCamelCase(themeName)}Theme`;
-    }
-
-    /** @deprecated Use `addGeometricVariationCSS_ClassToArrayIfMust` instead. */
-    static generateGeometricVariationCSS_Class(CSS_Namespace, geometricVariationName) {
-      return `${CSS_Namespace}__${toUpperCamelCase(geometricVariationName)}Geometry`;
-    }
-
-    /** @deprecated Use `generateDecorativeVariationCSS_Class` instead. */
-    static generateDecorativeVariationCSS_Class(CSS_Namespace, decorativeVariationName) {
-      return `${CSS_Namespace}__${toUpperCamelCase(decorativeVariationName)}Decoration`;
     }
 
   }

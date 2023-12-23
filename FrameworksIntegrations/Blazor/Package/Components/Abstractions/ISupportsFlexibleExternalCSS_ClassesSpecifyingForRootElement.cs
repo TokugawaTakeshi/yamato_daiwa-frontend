@@ -1,4 +1,4 @@
-﻿using YamatoDaiwaCS_Extensions;
+﻿using YamatoDaiwa.CSharpExtensions;
 
 
 namespace YamatoDaiwa.Frontend.Components.Abstractions;

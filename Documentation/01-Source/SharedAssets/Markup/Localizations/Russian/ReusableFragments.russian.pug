@@ -3,34 +3,52 @@ mixin ComponentMarkupProvidingGuidanceFragment(properties)
   -
     const {
       componentName,
-      pugMixinName = `${ componentName }__YDF`
+      pugMixinName = `${ componentName }--YDF`
     } = properties
 
-  p.Article-Paragraph.
-    Данный #[+Term--YDID компонент] поставляется в виде
-      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.mixins }).Article-Link Pug-примеси]
-      #[+ImportantEntity__Code--YDID #{ pugMixinName }].
-    Способ подключения -
-      #[+Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.components.$sectioning.providingOfMarkup.$URI }).Article-Link стандартный]:
-      путём #[+Link--YDF({ internalURI: sharedExternalLinks.pug.homePage.includes }).Article-Link включения Pug-файла]
-      #[+ImportantEntity__Code--YDID Components.pug] в Ваш #[+Term--YDID pug-файл], при этом туда же
-      #[+Keyword--YDID предварительно] должен быть включён файл #[+ImportantEntity__Code--YDID Functionality.pug]
-      (последний уже входит в
-      #[+Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI }).Article-Link шаблоны страниц]
-      , предоставляемых #[+ImportantEntity--YDID YDF]).
+  p.Article-Paragraph
+    | Разметка данного #[+Term--YDID компонента] поставляется в виде
+    |   #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.mixins }).Article-Link Pug-примеси]
+    |   #[+ImportantEntity__Code--YDID #{ pugMixinName }].
+    | Способ подключения —
+    |
+    +Link--YDF({
+      internalURI: localizedRouting.coreLibrary.$children.components.$sectioning.markup.$children.providing.$URI
+    }).Article-Link стандартный
+    |:
+    |   путём
+    |
+    +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }).Article-Link включения Pug-файла
+    |   #[+ImportantEntity__Code--YDID Components.pug] в Ваш #[+Term--YDID pug-файл], при этом туда же
+    |   #[+Keyword--YDID предварительно] #[+Keyword__Contrast--YDID должен] быть включён #[+Term--YDID файл]
+    |   #[+ImportantEntity__Code--YDID Functionality.pug] (#[+Keyword--YDID последний] #[+Keyword__Contrast--YDID уже]
+    |   входит в
+    |
+    +Link--YDF({
+      internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
+    }).Article-Link шаблоны страниц
+    |   , #[+Keyword--YDID повторное] включение #[+Keyphrase--YDID приведёт к ошибке]).
 
   +CodeViewer--YDF
     +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
       +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
         include ../../node_modules/@yamato-daiwa/frontend/Functionality.pug
         include ../../node_modules/@yamato-daiwa/frontend/Components.pug
-      +CodeViewer-Explanation--YDF.
-        В Вашем случае #[+Term--YDID относительный путь] к директории #[+ImportantEntity--YDID node_modules] может быть
-          другим в в зависимости от того, насколько глубже корневой директории проекта находится Ваш Pug-файл с этим кодом.
-        Напомним, что одно только включение этих файлов #[+Keyword--YDID никакого] выходного #[+Term--YDID HTML-кода]
-          #[+Keyword--YDID не] даст: чтобы сгенерировать #[+Term--YDID HTML-код] компонента
-          #[+ImportantEntity--YDID #{ componentName }], нужно вызывать #[+Term--YDID Pug-примесь]
-          #[+ImportantEntity__Code--YDID #{ pugMixinName }].
+      +CodeViewer-Explanation--YDF
+        p.Article-Paragraph.
+          В Вашем случае #[+Term--YDID относительный путь] к #[+Term__Contrast--YDID директории]
+            #[+ImportantEntity--YDID node_modules] может быть другим в в зависимости от того, насколько глубже
+            #[+Term--YDID корневой директории проекта] находится Ваш #[+Term--YDID Pug-файл] с этим кодом.
+        p.Article-Paragraph.
+          Напомним, что #[+Keyword--YDID одно] #[+Keyword__Contrast--YDID только] включение этих файлов
+            #[+Keyword--YDID никакого] выходного #[+Term--YDID HTML-кода]
+            #[+Keyword--YDID не]&nbsp;даст: чтобы сгенерировать #[+Term--YDID HTML-код] компонента
+            #[+ImportantEntity--YDID #{ componentName }], нужно вызывать #[+Term--YDID Pug-примесь]
+            #[+ImportantEntity__Code--YDID #{ pugMixinName }].
+          Кроме того, #[+Keyphrase--YDID на данном этапе] пока ещё #[+Keyword--YDID не]&nbsp;подключены
+            #[+Term--YDID стили], а потому при вызове этой #[+Term--YDID примеси] #[+Term__Contrast--YDID HTML-код]
+            хотя и будет сгенерирован, но корректного отображения
+            #[+Keyword--YDID пока]&nbsp;#[+Keyword__Contrast--YDID не]&nbsp;будет.
 
 
 mixin ComponentStylesProvidingGuidanceFragment(properties)
@@ -67,3 +85,132 @@ mixin ComponentStylesProvidingGuidanceFragment(properties)
           #[+ImportantEntity__Code--YDID CrossBrowserStylesReset] и #[+ImportantEntity__Code--YDID InitialGlobalCSS_Rules],
           чтобы исключить влияние #[+Term--YDID стандартных стилей браузера] и унифицировать основные наследуемые стили,
           такие как размер шрифта и высота строки.
+
+
+-
+
+  const IntelliJ_IDEA_IDEs_LiveTemplateUsageGuidanceTableOfContentsMetadataLocalization__russian = {
+    $heading: "Быстрый ввод в интегрированных средах разработки семейства IntelliJ IDEA",
+    steps: { $heading: "Пошаговое описание процесса использования шаблона" }
+  };
+
+
+mixin IntelliJ_IDEA_IDEs_LiveTemplateUsageGuidance(properties)
+
+  -
+
+    const {
+      imageURI,
+      target,
+      relatedTableOfContentsMetadata
+    } = properties;
+
+    let target__pluralForm__accusativeCase;
+
+    switch (target) {
+      case "function": {
+        target__pluralForm__accusativeCase = "выражения вызова функции"
+      }
+    }
+
+
+  //- ━━━ Быстрый ввод в интегрированных средах разработки семейства IntelliJ IDEA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  +Heading--YDF({
+    level: 2,
+    text: relatedTableOfContentsMetadata.$heading,
+    HTML_ID: relatedTableOfContentsMetadata.$anchor
+  }).Article-Heading2
+
+  +SingleImageViewer--YDF({
+    imageURI: imageURI,
+    imageAlternateText:
+        "Быстрый ввод в интегрированных средах разработки семейства IntelliJ IDEA с использованием функциональности " +
+        "«Live Template»."
+  })
+
+  p.Article-Paragraph.
+    Использование
+      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.liveTemplates }).Article-Link Live template-ов]
+      в семействе #[+Term--YDID интегрированных сред разработки]
+      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.intelliJ_IDEA_FamilyIDEs }).Article-Link IntelliJ IDEA]
+      позволяет вводить код такой так #[+Term--YDID #{ target__pluralForm__accusativeCase }] быстрее.
+    Для получения доступа к #[+Term--YDID Live Template-ам] библиотеки #[+ImportantEntity--YDID YDF] потребуется установить
+      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.YDF_Plugin }).Article-Link официальный плагин]
+      этой библиотеки.
+
+
+  //- ─── Пошаговое описание процесса использования шаблона ────────────────────────────────────────────────────────────
+  +Heading--YDF({
+    level: 3,
+    text: relatedTableOfContentsMetadata.$children.steps.$heading,
+    HTML_ID: relatedTableOfContentsMetadata.$children.steps.$anchor
+  }).Article-Heading3
+
+  p.Article-Paragraph.
+    Если Вы ранее не пользовались #[+Term--YDID Live template-ами], то пусть Вас не пугает приведённая ниже объёмная
+      инструкция: при сформированной привычке использования #[+Term--YDID Live template-ов] (эта привычка сходна с
+      повседневным применением сочетаний клавиш) скорость выполнения описанных ниже операций займёт считанные секунды.
+
+  block
+
+
+mixin AdmonitionBlockComponentAbstract
+
+  p.Article-Paragraph.
+      Рамки с текстом использовались ещё задолго до компьютеризации — в книгах и другой печатной продукции.
+      Хотя чаще всего в рамку выделяется важный текст, иногда рамкой обрамляются заметки, примечания и прочая
+        второстепенная информация.
+
+  p.Article-Paragraph.
+    В разработке сайтов и приложений, выделение блока текста в рамку также актуально.
+    Чтобы посетитель мог мгновенно оценить важность выделяемого текста, используется цветовая кодировка: для важных
+      блоков обычно выбирают тёплые цвета (красный, оранжевый, жёлтый),
+      в остальных случаях — холодные (синий, голубой, зелёный) или ахроматические (чёрная или серая рамка с белым
+      или светло-серым фоном).
+    Кроме того, иногда используются #[+Term--YDID иконки].
+
+  p.Article-Paragraph.
+    В #[+Term--YDID графических пользовательских интерфейсах] (#[+Term--YDID GUI]) рамка с текстом
+      приобрела дополнительную функцию, став одним из способов донесения сообщений до пользователя.
+    В отличие от #[+Term--YDID всплывающих сообщений], отображающихся короткий промежуток времени, рамка с текстом
+      обычно отображается постоянно или до тех пор, пока пока пользователь&nbsp;не скроет её с помощью
+      соответствующей кнопки (если таковая имеется).
+    Рекомендуется также предложить пользователю отреагировать на сообщение, добавив внутрь рамки дополнительные кнопки.
+
+  p.Article-Paragraph.
+    Использовать рамку с текстом для отображения сообщений пользователю рекомендуется в следующих случаях:
+
+  dl.Article-DescriptionList
+
+    dt Отображение ошибки при #[+Keyword--YDID получении] данных с #[+Term--YDID сервера]
+    dd В этом случае рекомендуется добавить кнопку для повторной попытки получения данных.
+
+    dt Отображение сообщения об отсутствии данных, которые можно отобразить
+    dd.
+      Следует подготовить #[+Keyword--YDID отдельные] сообщения для случаев, когда нет&nbsp;данных, удовлетворяющих
+        поисковому запросу, и для случая, когда данных нет&nbsp;вообще.
+      Предложить пользователю отреагировать на сообщение тоже следует по-разному: в первом случае — подготовить копку
+        для сброса поискового запроса, а во втором — предложить добавить данные (если пользователю это позволяется).
+
+    dt Отображение #[+Keyword--YDID коротких] инструкций по использованию сайта или приложения
+    dd.
+      Это очень важно делать для не&nbsp;только для новых пользователей конкретно Вашего сайта или приложения, но и
+        для пользователей с низким уровнем компьютерной грамотности, которых ещё очень много.
+
+    dt Побуждение пользователей к конкретному действию
+    dd.
+      Например, если в Вашем приложении авторизация опциональная, то можно предложить пользователю зарегистрироваться
+        и объяснить, какие преимущества это даст.
+      Разумеется, в данном случае должна быть кнопка или ссылка для начала совершения целевого действия.
+
+  p.Article-Paragraph.
+    Напротив, в следующих случах рамка с текстом #[+Keyword--YDID не]&nbsp;является лучших выбором:
+
+  ul.Article-UnorderedList
+    li Отображение ошибки при #[+Keyword--YDID отправке] данных
+    li Отображение сообщение об успешной отправке данных
+    li Отображение сообщения об успешном входе в систему или выходе из неё
+
+  p.Article-Paragraph.
+    Для этих сценариев гораздо лучше подходят #[+Term--YDID всплывающие сообщения] (в #[+ImportantEntity--YDID YDF]
+      это компонент #[+ImportantEntity--YDID Snackbar]).

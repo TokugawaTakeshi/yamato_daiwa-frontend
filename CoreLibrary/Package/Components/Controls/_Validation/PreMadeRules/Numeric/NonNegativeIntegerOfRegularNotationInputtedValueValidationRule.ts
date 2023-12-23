@@ -56,7 +56,7 @@ class NonNegativeIntegerOfRegularNotationInputtedValueValidationRule implements 
     }
 
 
-    return /^\d+$/u.test(String(rawValue)) ?
+    return (/^\d+$/u).test(String(rawValue)) ?
         { isValid: true } :
         {
           isValid: false,

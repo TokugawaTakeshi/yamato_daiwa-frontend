@@ -41,6 +41,7 @@ Button--YDF = {
     geometricModifiers: {
       pillShape: true,
       squareShape: true,
+      squareShapeUnlessOverflowed: true,
       singleLine: true,
       noLeftBorderAndRoundings: true,
       noRightBorderAndRoundings: true
@@ -92,6 +93,10 @@ provideButtonYDF_Component(
             defaultValue: Button--YDF.defaultOptions.geometricModifiers.pillShape
           },
           squareShape: {
+            type: DataTypes.boolean,
+            defaultValue: Button--YDF.defaultOptions.geometricModifiers.squareShape
+          },
+          squareShapeUnlessOverflowed: {
             type: DataTypes.boolean,
             defaultValue: Button--YDF.defaultOptions.geometricModifiers.squareShape
           },
@@ -221,6 +226,10 @@ provideButtonYDF_Component(
           dotSeparatedPath: "label.text.lineHeight",
           required: false
         },
+        horizontalSymmetricLabelSpacingWhenItIsLone: {
+          dotSeparatedPath: "label.spacing.horizontalSymmetricWhenLone",
+          required: true
+        }
         topSpacing: {
           dotSeparatedPath: "label.spacing.top",
           required: false,
@@ -231,12 +240,12 @@ provideButtonYDF_Component(
           required: false,
           incompatibleWith: "label.spacing.verticalSymmetric"
         },
-        verticalSymmerticSpacingAsTopSpacing: {
+        verticalSymmetricSpacingAsTopSpacing: {
           newName: "topSpacing",
           dotSeparatedPath: "label.spacing.verticalSymmetric",
           required: false
         },
-        verticalSymmerticSpacingAsBottomSpacing: {
+        verticalSymmetricSpacingAsBottomSpacing: {
           newName: "bottomSpacing",
           dotSeparatedPath: "label.spacing.verticalSymmetric",
           required: false
@@ -332,11 +341,15 @@ provideButtonYDF_Component(
 
     if options.geometricModifiers.squareShape
 
+      &.Button--YDF__SquareShapeUnlessOverflowedGeometricModifier,
       &.Button--YDF__SquareShapeGeometricModifier
 
         min-width HEIGHT
+
+
+      &.Button--YDF__SquareShapeGeometricModifier
+
         max-width HEIGHT
-        height HEIGHT
 
 
     .Button--YDF-Label
@@ -368,13 +381,8 @@ provideButtonYDF_Component(
 
       &:first-child:last-child
 
-        validateAndAssignStoredInObjectCSS_Properties({
-          targetObject: variation,
-          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
-          assigments: {
-            margin-left: { dotSeparatedPath: "label.spacing.horizontalSymmetricWhenLone", required: true }
-          }
-        })
+        margin-left: cachedValidReusables.horizontalSymmetricLabelSpacingWhenItIsLone
+        margin-right: cachedValidReusables.horizontalSymmetricLabelSpacingWhenItIsLone
 
 
       &:first-child:not(:last-child)
@@ -382,7 +390,7 @@ provideButtonYDF_Component(
         margin-left: cachedValidReusables.leftSpacingWhenLabelGoingFirst
 
 
-      &:not(first-child):last-child
+      &:not(:first-child):last-child
 
         margin-right: cachedValidReusables.rightSpacingWhenLabelGoingLast
 
@@ -513,7 +521,6 @@ provideButtonYDF_Component(
 
         &.{iconSpecificCSS_Class}
 
-          // TODO Как и выше, но сначала разберись с неточностями в размерах
           validateAndAssignStoredInObjectCSS_Properties({
             targetObject: dimensions,
             targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING + ".variation.SVG_Icon.specials." + iconSpecificCSS_Class ,
@@ -553,15 +560,19 @@ provideButtonYDF_Component(
 
     if options.geometricModifiers.squareShape
 
-      input.Button--YDF__SquareShapeGeometricModifier
+      input.Button--YDF__SquareShapeGeometricModifier,
+      input.Button--YDF__SquareShapeUnlessOverflowedGeometricModifier
 
         SingleLineTextElementOverflowSafety({ displayEllipsis: false })
         padding 0
 
 
-      .Button--YDF__SquareShapeGeometricModifier .Button--YDF-Label
+      .Button--YDF__SquareShapeGeometricModifier .Button--YDF-Label,
+      .Button--YDF__SquareShapeUnlessOverflowedGeometricModifier .Button--YDF-Label
 
         SingleLineTextElementOverflowSafety({ displayEllipsis: false })
+        margin-right 0 !important
+        margin-left 0 !important
 
 
     if options.geometricModifiers.singleLine
@@ -681,20 +692,33 @@ provideButtonYDF_Component(
         })
 
 
-        applySVG_IconStateDependentStyles()
+      applySVG_IconStateDependentStyles()
 
-          validateAndAssignStoredInObjectCSS_Properties({
-            targetObject: variation,
-            targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
-            assigments: {
-              fill: { dotSeparatedPath: "stateDependent." + state + ".SVG_Icon.color", required: false }
-            }
-          })
+        validateAndAssignStoredInObjectCSS_Properties({
+          targetObject: variation,
+          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+          assigments: {
+            fill: { dotSeparatedPath: "stateDependent." + state + ".SVG_Icon.color", required: false }
+          }
+        })
 
 
-      if state == "hover" || state == "focus" || state == "active"
+      if state == "hover" || state == "focus"
 
         &:{state}
+
+          applyRootElementStateDependentStyles()
+
+
+          .Button--YDF-SVG_Icon
+
+            applySVG_IconStateDependentStyles()
+
+
+      else if state == "active"
+
+        &:active,
+        &[aria-pressed="true"]
 
           applyRootElementStateDependentStyles()
 

@@ -11,11 +11,11 @@ include SingleImageViewerLocalization.english.pug
     /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     static Themes = { regular: "REGULAR" };
 
-    static defineCustomThemes(themesNames) {
-      return ComponentsAuxiliaries.defineNewThemes(themesNames, CompoundControlShell__YDF);
+    static defineThemes(themesNames) {
+      return ComponentsAuxiliaries.defineThemes(themesNames, CompoundControlShell__YDF);
     }
 
-    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+    static areThemesCSS_ClassesCommon = ComponentsAuxiliaries.areComponentsThemesCommon;
 
     static considerThemesAsCommon() {
       CompoundControlShell__YDF.areThemesCSS_ClassesCommon = true;
@@ -29,8 +29,8 @@ include SingleImageViewerLocalization.english.pug
       minimalistic: "MINIMALISTIC"
     };
 
-    static defineNewGeometricVariations(geometricVariationsNames) {
-      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, CompoundControlShell__YDF);
+    static defineGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineGeometricVariations(geometricVariationsNames, CompoundControlShell__YDF);
     }
 
 
@@ -40,8 +40,8 @@ include SingleImageViewerLocalization.english.pug
       minimalistic: "MINIMALISTIC"
     };
 
-    defineNewDecorativeVariations(decorativeVariationsNames) {
-      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, CompoundControlShell__YDF);
+    defineDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineDecorativeVariations(decorativeVariationsNames, CompoundControlShell__YDF);
     }
 
 
@@ -98,13 +98,13 @@ include SingleImageViewerLocalization.english.pug
         required: false
       },
 
-      geometry: {
+      geometricVariation: {
         type: String,
         required: false,
         allowedAlternatives: Object.values(SingleImageViewer__YDF.GeometricVariations)
       },
 
-      decoration: {
+      decorativeVariation: {
         type: String,
         required: false,
         allowedAlternatives: Object.values(SingleImageViewer__YDF.DecorativeVariations)

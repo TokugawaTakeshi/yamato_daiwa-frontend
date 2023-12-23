@@ -1,0 +1,12 @@
+extends {{ relativePathToPathTemplate }}
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_TITLE = generateHTML_Page_Title("{{ pageTitleSpecificPart }}");
+
+    {{ componentName__upperCamelCase }}Options.
+        renderSinglePartial({{ componentName__upperCamelCase }}Options.Partials.{{ partialKey }}).
+        visuallyHideAllHeadings();

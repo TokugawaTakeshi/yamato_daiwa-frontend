@@ -1,32 +1,55 @@
 {
   "name": "@yamato-daiwa/frontend-react",
-  "private": true,
   "version": "0.0.0",
+  "description": "The adaptation of '@yamato-daiwa/frontend' package for React framework and also some additional functionality.",
+  "keywords": [
+    "frontend",
+    "react"
+  ],
+  "author": {
+    "name": "Takeshi Tokugawa",
+    "email": "tokugawa.takesi@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/issues",
+    "email": "tokugawa.takesi@gmail.com"
+  },
   "module": "./Distributable/index.js",
   "types": "./Distributable/index.d.ts",
+  "peerDependencies": {
+    "@yamato-daiwa/frontend": ">=2.0.0-alpha.3",
+    "next": "~14.2.0",
+    "react": "~18.2.0",
+    "react-dom": "~18.2.0",
+    "react-router-dom": "~6.23.0"
+  },
   "dependencies": {
-    "@yamato-daiwa/es-extensions": "1.6.0-alpha.5",
-    "@yamato-daiwa/frontend": "2.0.0-alpha.1",
+    "@yamato-daiwa/es-extensions": "1.7.0-alpha.14",
+    "@yamato-daiwa/es-extensions-browserjs": "1.7.0-alpha.3",
     "prop-types": "15.8.1"
   },
   "devDependencies": {
-    "@types/react": "18.0.26",
-    "@types/react-dom": "18.0.10",
-    "@yamato-daiwa/automation": "0.3.0-alpha.0",
-    "@yamato-daiwa/style_guides": "0.0.36",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "rimraf": "3.0.2",
-    "ts-node": "10.9.1",
-    "typescript": "4.9.4"
-  },
-  "peerDependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "@yamato-daiwa/automation": "0.4.1",
+    "@yamato-daiwa/frontend": "../../../CoreLibrary/Package",
+    "@yamato-daiwa/style_guides": "0.2.6",
+    "next": "14.2.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.23.1",
+    "rimraf": "5.0.7",
+    "typescript": "5.4.5"
   },
   "scripts": {
-    "Rebuilding of distributable": "rimraf Distributable & yda build --selectiveExecution Distributable --mode PRODUCTION & npm run \"TypeScript types generating\"",
-    "TypeScript types generating": "tsc --project tsconfig.declarations.json --declaration --emitDeclarationOnly --outDir Distributable",
-    "Tests incremental build": "rimraf Tests/Output & yda build --selectiveExecution Tests --mode LOCAL_DEVELOPMENT"
+    "Rebuild Distributable": "rimraf Distributable & yda build --selectiveExecution Distributable --mode PRODUCTION & npm run \"Generate TypeScript Types\"",
+    "Generate TypeScript Types": "tsc --project tsconfig.declarations.json --declaration --emitDeclarationOnly --outDir Distributable",
+    "Incrementally Build Tests": "rimraf Tests/Output & yda build --selectiveExecution Tests --mode LOCAL_DEVELOPMENT",
+    "Lint": "eslint ."
   }
 }

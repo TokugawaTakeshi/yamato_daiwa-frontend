@@ -1,0 +1,20 @@
+@require "../../../../node_modules/@yamato-daiwa/frontend/Functionality.styl"
+@require "../../../../node_modules/@yamato-daiwa/frontend/Components.styl"
+
+
+admonitionBlockDemoDefaultPropertiesOverriding = {};
+
+// <==  [ Testing ] Comment out if need to display standard themes only
+//attentionBoxDefaultPropertiesOverriding = {
+//
+//}
+// ==> =================================================================================================================
+
+provideAdmonitionBlockYDF_Component(
+  overridings: admonitionBlockDemoDefaultPropertiesOverriding
+)
+
+provideButtonYDF_Component()
+
+
+@require "../../../Galleries/Components/AdmonitionBlock/AdmonitionBlockGallery.styl"

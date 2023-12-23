@@ -45,6 +45,7 @@ provideLinksCardsFlowYDF_Component()
       grid-template-rows auto auto 1fr
       grid-template-columns auto minmax(0, 1fr)
 
+      row-gap 0.1rem
       column-gap 0.8rem
 
 
@@ -70,7 +71,7 @@ provideLinksCardsFlowYDF_Component()
       applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
         fontSize: 2rem,
         lineSpacing: 0.2rem,
-        mustAllowWordBreakingAnywhere: true
+        mustAllowWordsBreakingAnywhere: true
       })
 
       font-family Arial Black, Arial Bold, Gadget, sans-serif
@@ -92,12 +93,13 @@ provideLinksCardsFlowYDF_Component()
       grid-area DESCRIPTION
 
 
-      /.LinksList-Image + .LinksList-Title:last-child
+      /.LinksList-Image + .LinksList-Title:last-child,
+      /.LinksList-SVG_Icon + .LinksList-Title:last-child
 
         applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
           fontSize: 1rem,
           lineSpacing: 4px,
-          mustAllowWordBreakingAnywhere: true
+          mustAllowWordsBreakingAnywhere: true
         })
 
         align-self center

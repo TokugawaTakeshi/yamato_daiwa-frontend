@@ -55,7 +55,7 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
 
     let isCurrentInvalidControlPayloadTheFirstInvalidOne: boolean = true;
 
-    for (const validatableControlPayload of Array.isArray(controlsPayload) ? controlsPayload : Object.values(controlsPayload)) {
+    for (const validatableControlPayload of Object.values(controlsPayload)) {
 
       if (validatableControlPayload.isInvalid) {
 
@@ -112,10 +112,7 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
     const isEachControlPayloadValid: { [controlPayloadID: string]: boolean; } = {};
     const areAsynchronousChecksBeingExecutedForEachControlPayload: { [controlPayloadID: string]: boolean; } = {};
 
-    for (
-      const controlPayload of
-      Array.isArray(this.controlsPayload) ? this.controlsPayload.values() : Object.values(this.controlsPayload)
-    ) {
+    for (const controlPayload of Object.values(this.controlsPayload)) {
 
       isEachControlPayloadValid[controlPayload.ID] = !controlPayload.isInvalid;
 
@@ -172,6 +169,19 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
     /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- The validity of data has been guaranteed. */
     return payload as ValidData;
 
+  }
+
+  public getPossiblyInvalidPayload(): ValidatableControlsGroup.PossiblyInvalidData {
+    return Object.entries(this.controlsPayload).reduce(
+      (
+        possiblyInvalidData: ValidatableControlsGroup.PossiblyInvalidData,
+        [ controlKey, controlPayload ]: [ string, ValidatableControlsGroup.GeneralizedControlPayload ]
+      ): ValidatableControlsGroup.PossiblyInvalidData => {
+        possiblyInvalidData[controlKey] = controlPayload.value;
+        return possiblyInvalidData;
+      },
+      {}
+    );
   }
 
 
@@ -284,14 +294,13 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
 
 namespace ValidatableControlsGroup {
 
-  export type GeneralizedControlsPayload =
-      Readonly<{ [controlKey: string]: GeneralizedControlPayload; }> |
-      Array<GeneralizedControlPayload>;
+  export type GeneralizedControlsPayload = Readonly<{ [controlKey: string]: GeneralizedControlPayload; }>;
 
   export type GeneralizedControlPayload = ValidatableControl.Payload<unknown, unknown, InputtedValueValidation>;
 
   export type GeneralizedEventHandler = () => void;
 
+  export type PossiblyInvalidData = { [controlKey: string]: unknown; };
 
   export type OnAnyChangeEventHandler = (compoundParameter: OnAnyChangeEventHandler.CompoundParameter) => void;
 

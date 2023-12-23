@@ -17,11 +17,11 @@ mixin HamburgerMenuButton--YDF(properties)
       labelLetterCase = HamburgerMenuButton__YDF.LabelLetterCases.uppercase,
 
       theme = HamburgerMenuButton__YDF.Themes.regular,
-      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || HamburgerMenuButton__YDF.areThemesCSS_ClassesCommon,
-      geometry = HamburgerMenuButton__YDF.GeometricVariations.regular,
-      decoration = HamburgerMenuButton__YDF.DecorativeVariations.regular
+      areThemesExternal = ComponentsAuxiliaries.areComponentsThemesCommon || HamburgerMenuButton__YDF.areThemesCSS_ClassesCommon,
+      geometricVariation = HamburgerMenuButton__YDF.GeometricVariations.regular,
+      decorativeVariation = HamburgerMenuButton__YDF.DecorativeVariations.regular
 
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -39,13 +39,13 @@ mixin HamburgerMenuButton--YDF(properties)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: HamburgerMenuButton__YDF.GeometricVariations,
         CSS_Namespace: HamburgerMenuButton__YDF.CSS_NAMESPACE
       }),
 
       ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
-        decoration,
+        decorativeVariation,
         allDecorativeVariations: HamburgerMenuButton__YDF.DecorativeVariations,
         CSS_Namespace: HamburgerMenuButton__YDF.CSS_NAMESPACE
       })

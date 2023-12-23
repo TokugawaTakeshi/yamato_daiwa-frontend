@@ -1,0 +1,9 @@
+extends _FilesUploaderGalleryPage.template.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_TITLE = generateHTML_Page_Title();
+    FilesUploaderGalleryOptions.visuallyHideTopHeadingIf(__IS_PRODUCTION_BUILDING_MODE__)

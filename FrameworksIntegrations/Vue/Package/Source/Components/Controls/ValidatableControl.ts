@@ -105,11 +105,12 @@ namespace ValidatableControl {
 
   export class Payload<ValidValue, InvalidValue, Validation extends InputtedValueValidation> {
 
+    public readonly ID: string;
     public readonly VUE_REFERENCE_ID: string;
 
     public readonly value: ValidValue | InvalidValue;
     public readonly validation: Validation;
-    public readonly isValidationPending: boolean;
+    public readonly lastChangeSourceID?: string;
 
     private readonly validationResult: InputtedValueValidation.Result;
 
@@ -118,48 +119,91 @@ namespace ValidatableControl {
       compoundParameter: Readonly<{
         initialValue: ValidValue | InvalidValue;
         validation: Validation;
+        vueReferenceID?: string;
       }>
     ): Payload<ValidValue, InvalidValue, Validation> {
-      return new Payload<ValidValue, InvalidValue, Validation>(compoundParameter);
+      return new Payload<ValidValue, InvalidValue, Validation>({
+        value: compoundParameter.initialValue,
+        validation: compoundParameter.validation,
+        vueReferenceID: compoundParameter.vueReferenceID
+      });
     }
 
 
     private constructor(
       {
-        initialValue,
+        ID,
+        vueReferenceID,
+        value,
         validation,
-        vueReferenceID
+        summarizingValidationErrorsMessages = [],
+        lastChangeSourceID
       }: Readonly<{
-        initialValue: ValidValue | InvalidValue;
+
+        /** @description Immutable for each instance. */
+        value: ValidValue | InvalidValue;
         validation: Validation;
+
+        summarizingValidationErrorsMessages?: ReadonlyArray<string>;
+        lastChangeSourceID?: string;
+
+        /** @description Need to be kept when creating the new instance based on outdated one. */
+        ID?: string;
         vueReferenceID?: string;
+
       }>
     ) {
 
-      this.value = initialValue;
-      this.validation = validation;
-
-      this.validationResult = validation.validate(this.value);
-      this.isValidationPending = false;
-
+      this.ID = ID ?? Payload.generateSelfID();
       this.VUE_REFERENCE_ID = vueReferenceID ?? Payload.generateAssociatedComponentVueReferenceID();
+
+      this.value = value;
+      this.validation = validation;
+      this.lastChangeSourceID = lastChangeSourceID;
+
+      if (summarizingValidationErrorsMessages.length === 0) {
+        this.validationResult = validation.validate(this.value);
+      } else {
+
+        const validationResult: InputtedValueValidation.Result = validation.validate(this.value);
+
+        const validationErrorsMessages: ReadonlyArray<string> = [
+          ...validationResult.isValid ? [] : validationResult.errorsMessages, ...summarizingValidationErrorsMessages
+        ];
+
+        this.validationResult = {
+          errorsMessages: validationErrorsMessages,
+          isValid: validationErrorsMessages.length === 0
+        };
+
+      }
 
     }
 
+    public getComponentInstance(ownerComponent: VueComponentPublicInstance): ValidatableControl {
+      return getValidatableControlInstanceByVueReferenceID({
+        vueReferenceID: this.VUE_REFERENCE_ID,
+        parentVueComponentInstance: ownerComponent,
+        mustThrowErrorIsNotFoundOrNotValidatableControl: true
+      });
+    }
 
     public get validationErrorsMessages(): Array<string> {
-      return this.validationResult.errorsMessages;
+      return this.validationResult.isValid ? [] : [ ...this.validationResult.errorsMessages ];
     }
 
     public get isInvalid(): boolean {
       return !this.validationResult.isValid;
     }
 
+
     public getExpectedToBeValidValue(): ValidValue {
 
       if (this.isInvalid) {
         Logger.throwErrorAndLog({
-          errorInstance: new UnexpectedEventError("Contrary os expectations, the value is still 'null'."), // TODO Чё?
+          errorInstance: new UnexpectedEventError(
+            "Contrary os expectations, the value of the validatable control payload is still invalid."
+          ),
           title: UnexpectedEventError.localization.defaultTitle,
           occurrenceLocation: "ValidatableControl.Payload.getExpectedToBeValidValue()"
         });
@@ -169,8 +213,8 @@ namespace ValidatableControl {
       /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
       * In this case, we are guarantee the ValidValue by "this.isInvalid" check */
       return this.value as ValidValue;
-    }
 
+    }
 
     public updateImmutably(
       {
@@ -180,14 +224,21 @@ namespace ValidatableControl {
       }
     ): Payload<ValidValue, InvalidValue, Validation> {
       return new Payload<ValidValue, InvalidValue, Validation>({
-        initialValue: newValue,
+        value: newValue,
         validation: this.validation
       });
     }
 
 
-    /* === Routines ================================================================================================= */
-    /* --- IDs generating ------------------------------------------------------------------------------------------- */
+    /* ━━━ Routines ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* ─── IDs generating ─────────────────────────────────────────────────────────────────────────────────────────── */
+    protected static counterForSelfID_Generating: number = 0;
+
+    protected static generateSelfID(): string {
+      Payload.counterForSelfID_Generating++;
+      return `${ Payload.counterForSelfID_Generating }`;
+    }
+
     protected static counterForAssociatedComponentVueReferenceID_Generating: number = 0;
 
     protected static generateAssociatedComponentVueReferenceID(): string {

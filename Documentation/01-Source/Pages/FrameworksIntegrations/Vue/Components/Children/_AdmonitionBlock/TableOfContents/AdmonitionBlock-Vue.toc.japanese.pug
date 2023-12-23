@@ -1,0 +1,23 @@
+include AdmonitionBlock-Vue.toc.pug
+
+
+-
+
+  localizedRouting.frameworksIntegrations.vue.components.AdmonitionBlock.$sectioning = generatePageTableOfContents({
+    synopsis: { $heading: "要約" },
+    usage: {
+      $heading: "利用",
+      markup: {
+        $heading: "マークアップ",
+        includingToProject: {
+          $heading: "プロジェクトに含む方法"
+        },
+        pugMixin: {
+          $heading: "Pug混入の<code>AdmonitionBlock--YDF</code>",
+          minimalExample: { $heading: "最低限の例（必須プロパティのみ）" },
+          title: { $heading: "見出し (<code>title</code>プロパティ)" }
+        }
+      }
+    }
+  });
+

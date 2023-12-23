@@ -1,6 +1,7 @@
 ﻿include RadioButtonsGroup.class.pug
 
 
+//- [ Reference ] https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/radio_role
 mixin RadioButtonsGroup--YDF(properties, statesSimulations)
 
   -
@@ -9,30 +10,31 @@ mixin RadioButtonsGroup--YDF(properties, statesSimulations)
 
     const {
 
-      selectingOptions,
-
       label,
       accessibilityGuidance,
       externalLabelHTML_ID,
       guidance,
 
-      disabled = false,
-      readonly = false,
+      selectingOptions,
+      initiallySelectedOptionKey,
+      radioButtonsHTML_Name = COMPONENT_ID,
 
-      required = false,
-      mustDisplayAppropriateBadgeIfInputIsRequired = false,
-      mustDisplayAppropriateBadgeIfInputIsOptional = false,
-      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge = false,
+      disabled,
+      readonly,
+
+      required,
+      mustDisplayAppropriateBadgeIfInputIsRequired,
+      mustDisplayAppropriateBadgeIfInputIsOptional,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
+
+      labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
 
       theme = RadioButtonsGroup__YDF.Themes.regular,
       areThemesCSS_ClassesCommon = RadioButtonsGroup__YDF.areThemesCSS_ClassesCommon,
-      geometry = RadioButtonsGroup__YDF.GeometricVariations.regular,
-      decoration = RadioButtonsGroup__YDF.GeometricVariations.regular,
+      geometricVariation = RadioButtonsGroup__YDF.GeometricVariations.regular,
+      decorativeVariation = RadioButtonsGroup__YDF.DecorativeVariations.regular
 
-      labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
-      radioButtonsHTML_Name = COMPONENT_ID
-
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -41,11 +43,11 @@ mixin RadioButtonsGroup--YDF(properties, statesSimulations)
     });
 
     const {
-      invalidInputHighlightingIfAnyValidationErrorsMessages = false,
-      validValueHighlightingIfNoValidationErrorsMessages = false,
-      validationErrorsMessages = [],
-      asynchronousValidationsStatuses = false
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      invalidInputHighlightingIfAnyValidationErrorsMessages,
+      validValueHighlightingIfNoValidationErrorsMessages,
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: statesSimulations,
       parameterNumber: 2,
       parameterName: "statesSimulations",
@@ -56,7 +58,6 @@ mixin RadioButtonsGroup--YDF(properties, statesSimulations)
     const rootElementModifierCSS_Classes = [
 
       ...disabled ? [ `${ RadioButtonsGroup__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
-      ...readonly ? [ `${ RadioButtonsGroup__YDF.CSS_NAMESPACE }__ReadOnlyState` ] : [],
 
       ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
         theme,
@@ -66,13 +67,13 @@ mixin RadioButtonsGroup--YDF(properties, statesSimulations)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: RadioButtonsGroup__YDF.GeometricVariations,
         CSS_Namespace: RadioButtonsGroup__YDF.CSS_NAMESPACE
       }),
 
       ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
-        decoration,
+        decorativeVariation,
         allDecorativeVariations: RadioButtonsGroup__YDF.DecorativeVariations,
         CSS_Namespace: RadioButtonsGroup__YDF.CSS_NAMESPACE
       })
@@ -89,16 +90,18 @@ mixin RadioButtonsGroup--YDF(properties, statesSimulations)
       mustDisplayAppropriateBadgeIfInputIsRequired,
       mustDisplayAppropriateBadgeIfInputIsOptional,
       mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
-      coreElementHTML_ID: radioButtonsFlowElementID,
-      labelElementHTML_ID: labelElementHTML_ID,
 
-      theme: RadioButtonsGroup__YDF.selfAndCompoundControlShellThemesCorrespondence[theme],
+      labelElementHTML_ID,
+
+      theme: RadioButtonsGroup__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.compoundControlShell[theme],
       areThemesCSS_ClassesCommon,
-      geometry: RadioButtonsGroup__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[geometry],
-      decoration: RadioButtonsGroup__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[decoration]
+      geometricVariation: RadioButtonsGroup__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.compoundControlShell[geometricVariation],
+      decorativeVariation: RadioButtonsGroup__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.compoundControlShell[decorativeVariation]
 
     },
     {
+      invalidInputHighlightingIfAnyValidationErrorsMessages,
+      validValueHighlightingIfNoValidationErrorsMessages,
       validationErrorsMessages,
       asynchronousValidationsStatuses
     }
@@ -107,15 +110,27 @@ mixin RadioButtonsGroup--YDF(properties, statesSimulations)
     .RadioButtonsGroup--YDF-Flow(
       role="radiogroup"
       aria-label=accessibilityGuidance
-      aria-labelledby=labelElementHTML_ID || externalLabelHTML_ID
+      aria-labelledby=(labelElementHTML_ID || externalLabelHTML_ID)
       aria-disabled=disabled
     )
 
-      each selectingOption in selectingOptions
+      if isNonEmptyArray(selectingOptions)
 
-        +RadioButton--YDF({
-          label: selectingOption.label,
-          HTML_Name: radioButtonsHTML_Name,
-          HTML_Value: selectingOption.value,
-          checked: selectingOption.isSelected
-        })
+        each option in selectingOptions
+
+          -
+            const isCurrentOptionSelected = isNotUndefined(
+              (selectingOptions ?? []).find(option => option.key === initiallySelectedOptionKey)
+            );
+
+
+          +RadioButton--YDF({
+            label: option.label,
+            HTML_Name: radioButtonsHTML_Name,
+            HTML_Value: option.key,
+            checked: isCurrentOptionSelected,
+            theme: RadioButtonsGroup__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.radioButton[theme],
+            areThemesCSS_ClassesCommon,
+            geometricVariation: RadioButtonsGroup__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.radioButton[geometricVariation],
+            decorativeVariation: RadioButtonsGroup__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.radioButton[decorativeVariation]
+          }).RadioButtonsGroup--YDF-RadioButton

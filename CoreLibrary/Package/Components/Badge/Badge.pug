@@ -10,14 +10,16 @@ mixin Badge--YDF(properties)
       key,
       value,
 
-      theme = Badge__YDF.Themes.regular,
-      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || Badge__YDF.areThemesCSS_ClassesCommon,
-      geometry = Badge__YDF.GeometricVariations.regular,
-      geometricModifiers = [],
-      decoration,
-      decorativeModifiers = []
+      theme,
+      areThemesCSS_ClassesCommon,
+      geometricVariation,
+      geometricModifiers,
+      decorativeVariation,
+      decorativeModifiers,
 
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      rootElementTag = "span"
+
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -35,7 +37,7 @@ mixin Badge--YDF(properties)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: Badge__YDF.GeometricVariations,
         CSS_Namespace: Badge__YDF.CSS_NAMESPACE
       }),
@@ -43,7 +45,7 @@ mixin Badge--YDF(properties)
       ...ComponentsAuxiliaries.generateDemandedGeometricModifiersCSS_Classes(Badge__YDF.CSS_NAMESPACE, geometricModifiers),
 
       ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
-        decoration,
+        decorativeVariation,
         allDecorativeVariations: Badge__YDF.DecorativeVariations,
         CSS_Namespace: Badge__YDF.CSS_NAMESPACE
       }),
@@ -53,7 +55,7 @@ mixin Badge--YDF(properties)
     ];
 
 
-  span.Badge--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
+  #{ rootElementTag }.Badge--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
 
     if block
 
@@ -72,18 +74,18 @@ mixin Badge--YDF-LoadingPlaceholder(properties)
   -
 
     const {
-      theme = Badge__YDF.Themes.regular,
-      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || Badge__YDF.areThemesCSS_ClassesCommon,
-      geometry = Badge__YDF.GeometricVariations.regular,
-      geometricModifiers = []
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      theme,
+      areThemesCSS_ClassesCommon,
+      geometricVariation,
+      geometricModifiers
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
       parameterPropertiesSpecification: {
         theme: Badge__YDF.propertiesSpecification.theme,
         areThemesCSS_ClassesCommon: Badge__YDF.propertiesSpecification.areThemesCSS_ClassesCommon,
-        geometry: Badge__YDF.propertiesSpecification.geometry,
+        geometricVariation: Badge__YDF.propertiesSpecification.geometricVariation,
         geometricModifiers: Badge__YDF.propertiesSpecification.geometricModifiers
       },
       mixinName: `${ Badge__YDF.CSS_NAMESPACE }-LoadingPlaceholder`
@@ -99,7 +101,7 @@ mixin Badge--YDF-LoadingPlaceholder(properties)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: Badge__YDF.GeometricVariations,
         CSS_Namespace: Badge__YDF.CSS_NAMESPACE
       }),
@@ -110,5 +112,5 @@ mixin Badge--YDF-LoadingPlaceholder(properties)
 
 
   span.Badge--YDF.Badge--YDF__LoadingPlaceholder(
-    class= rootElementModifierCSS_Classes
-  )
+    class=rootElementModifierCSS_Classes
+  )&attributes(attributes)

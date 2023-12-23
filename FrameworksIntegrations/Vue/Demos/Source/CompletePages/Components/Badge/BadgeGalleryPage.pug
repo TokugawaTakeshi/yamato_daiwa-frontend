@@ -1,0 +1,9 @@
+extends _BadgeGalleryPage.template.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_TITLE = generateHTML_Page_Title();
+    BadgeGalleryOptions.visuallyHideTopHeadingIf(__IS_PRODUCTION_BUILDING_MODE__);

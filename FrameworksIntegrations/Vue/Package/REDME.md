@@ -15,7 +15,7 @@ npm i @yamato-daiwa/frontend-vue @yamato-daiwa/frontend -E
 You can import everything what you need from the root of library.
 
 ```typescript
-import { OverflowSafeSingleLineLabel } from "OverflowSafeSingleLineLabel";
+import { OverflowSafeSingleLineLabel } from "@yamato-daiwa/frontend-vue";
 ```
 
 
@@ -23,7 +23,8 @@ import { OverflowSafeSingleLineLabel } from "OverflowSafeSingleLineLabel";
 
 ### Components
 
-Please note that `@yamato-daiwa/frontend-vue` suggests only the logic for the Vue components **without styles**. To enable the styles, get them from `@yamato-daiwa/frontend-vue` and setup according core package documentation.
+Please note that `@yamato-daiwa/frontend-vue` suggests only the logic for the Vue components *without styles*. 
+To enable the styles, get them from `@yamato-daiwa/frontend` and setup according core package documentation.
 
 * [`OverflowSafeSingleLineLabel`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md)
 

@@ -1,0 +1,12 @@
+extends ../../../CompletePages/Components/AdmonitionBlock/_AdmonitionBlockGalleryPage.template.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_TITLE = generateHTML_Page_Title("Action Bar");
+
+    AdmonitionBlockGalleryOptions.
+        renderSinglePartial(AdmonitionBlockGalleryOptions.Partials.actionBar).
+        visuallyHideAllHeadings();

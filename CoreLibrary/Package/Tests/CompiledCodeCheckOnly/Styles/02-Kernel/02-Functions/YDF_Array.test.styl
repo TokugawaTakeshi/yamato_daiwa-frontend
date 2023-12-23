@@ -23,4 +23,4 @@ experimentalSample1 = YDF_Array-create("AA", "BB", "CC");
 //log(")))))))))))))))")
 //log(experimentalSample1)
 //
-log(addElementsToEndOfYDF_ArrayIf(experimentalSample1, @(element) { return length(element) == 2 }, "DD", "EEE", "FF"))
+log(YDF_Array-appendElementsIf(experimentalSample1, @(element) { return length(element) == 2 }, "DD", "EEE", "FF"))

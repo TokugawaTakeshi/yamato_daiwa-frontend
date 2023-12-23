@@ -6,4 +6,8 @@ testForEquality(description, value1, value2)
 
   else
 
-    p("🛑 [ Test failed ] " + description)
+    p(
+      "🛑 [ Test failed ] " + description + "\n" +\
+      "  Expected: " + value2 + "\n" +\
+      "       Got: " + value1
+    )

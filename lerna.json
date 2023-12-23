@@ -8,7 +8,7 @@
   "packages": [
     "CoreLibrary/Package",
     "CoreLibrary/OfficialLocalizations/*",
-    "CoreLibrary/ComponentsDemos",
+    "CoreLibrary/Demos",
     "CoreLibrary/AdditionalThemes",
     "FrameworksIntegrations/React/Package",
     "FrameworksIntegrations/React/Demos",

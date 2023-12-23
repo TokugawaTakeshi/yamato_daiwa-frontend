@@ -1,0 +1,39 @@
+extends ../../../../../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+block append Requirements
+
+  include  ../../../../../../node_modules/@yamato-daiwa/frontend-demos/Source/Galleries/Components/Controls/Buttons/Plain/ButtonGalleryOptions.pug
+  include  ../../../../../_addDataAttributesGeneratingMethodToGalleryOptionsClass.pug
+
+
+block append Metadata
+
+  -
+
+    addDataAttributesGeneratingMethodToGalleryOptionsClass(ButtonGalleryOptions)
+
+    /**
+     * @param { string } [partialTitle]
+     * @returns { string }
+     * */
+    function generateHTML_Page_Title(partialTitle) {
+      return [
+        "Button Component Demos",
+        ...partialTitle ? [ ` — ${ partialTitle }` ] : [],
+        " — Yamato Daiwa Frontend (YDF)"
+      ].join("");
+    }
+
+    styleSheetsURIs = [
+      "$ExternalStyles/YDF-Demos-Primer.css",
+      "$ExternalStyles/YDF-Demos-CommonRequirements.css",
+      "$ExternalStyles/Components/Controls/Buttons/Plain/ButtonGalleryPage.css"
+    ];
+
+    scriptsURIs.endOfBody = [ "@CompletePages/Components/Controls/Buttons/Plain/ButtonGalleryPage" ];
+
+
+block append PageContent
+
+  .YDF_Gallery#APPLICATION&attributes(ButtonGalleryOptions.generateDataAttributes())

@@ -1,0 +1,36 @@
+extends ../node_modules/@yamato-daiwa/frontend/PagesTemplates/StaticPreviewAnywherePage.pug
+
+
+block append Metadata
+
+  -
+    HTML_PAGE_LANGUAGE = "en";
+    HTML_PAGE_TITLE = "YDF React — Demos";
+
+
+block append TableOfContents
+
+  h1.AnywherePage-TopHeading= HTML_PAGE_TITLE
+
+  h2.AnywherePage-PagesGroupHeading Components
+
+  //-
+    +PageLink({
+      label: "AdmonitionBlock",
+      URI: "@CompletePages/Components/AdmonitionBlock/AdmonitionBlockGalleryPage",
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+    })
+
+    +PageLink({
+      label: "Badge",
+      URI: "@CompletePages/Components/Badge/BadgeGalleryPage",
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+    })
+
+  h3.AnywherePage-PagesSubgroupHeading Controls
+
+  +PageLink({
+    label: "Button",
+    URI: "@CompletePages/Components/Controls/Buttons/Plain/ButtonGalleryPage.pug",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })

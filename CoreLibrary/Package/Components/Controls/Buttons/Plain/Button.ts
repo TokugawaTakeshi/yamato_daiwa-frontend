@@ -26,6 +26,15 @@ class Button {
 
     });
   }
+
+  public toggle(): void {
+    this.nativeElement.setAttribute("aria-pressed", "true");
+  }
+
+  public untoggle(): void {
+    this.nativeElement.removeAttribute("aria-pressed");
+  }
+
 }
 
 

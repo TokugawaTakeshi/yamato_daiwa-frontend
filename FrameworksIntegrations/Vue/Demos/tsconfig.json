@@ -14,11 +14,10 @@
     "skipLibCheck": true,
 
     "baseUrl": "./Source",
-    "paths": {
-    }
+
   },
   "include": [
     "Project.d.ts",
-    "01-Source/**/*"
+    "Source/**/*"
   ]
 }

@@ -23,7 +23,13 @@ block append Metadata
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents"
+    ];
+
     scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.YDEE_Integration");
@@ -71,11 +77,11 @@ block append SpecificContent
           В случае Вашего #[+Term--YDID pug-файла] #[+Term__Contrast--YDID относительный путь] к директории
             #[+ImportantEntity--YDID node_modules] может быть другим.
 
-    +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.warning, hasPrependedSVG_Icon: true }).
+    +AdmonitionBlock--YDF({ decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning, SVG_Icon: true }).
       #[+Keyword--YDID Минимальная] требуемая версия #[+Term--YDID препроцессора] #[+ImportantEntity--YDID Pug]:
         #[+ImportantEntity--YDID 3.0].
 
-    +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.warning, hasPrependedSVG_Icon: true })
+    +AdmonitionBlock--YDF({ decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning, SVG_Icon: true })
       | При использовании
       |
       +Link--YDF({
@@ -168,7 +174,7 @@ block append SpecificContent
             functionality.$children.
             inlineJavaScript.$children.
             functionsAndClasses.$children.
-            processPugMixinsObjectTypeParameter.$URI,
+            processObjectTypeParameterOfPugMixin.$URI,
       }).Article-Link валидации параметров Pug-примесей
       | :
 
@@ -242,7 +248,7 @@ block append SpecificContent
               functionality.$children.
               inlineJavaScript.$children.
               functionsAndClasses.$children.
-              processPugMixinsObjectTypeParameter.$URI
+              processObjectTypeParameterOfPugMixin.$URI
         }).Article-Link валидация параметров Pug-примесей
         |   (в частности #[+Term--YDID примесей]
         |

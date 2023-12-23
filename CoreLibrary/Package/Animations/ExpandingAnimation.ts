@@ -43,7 +43,7 @@ class ExpandingAnimation {
 
     animateExpanding(animatedElement, { duration: animationDurations__milliseconds }).
         then((): void => { compoundParameter.callback?.(); }).
-        catch((error: Error): void => {
+        catch((error: unknown): void => {
           Logger.logError({
             errorType: UnexpectedEventError.NAME,
             title: UnexpectedEventError.localization.defaultTitle,

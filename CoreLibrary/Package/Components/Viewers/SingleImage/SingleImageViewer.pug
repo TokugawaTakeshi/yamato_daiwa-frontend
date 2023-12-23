@@ -16,11 +16,11 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
       maximalHeight__anyValidCSS_Value,
 
       theme = SingleImageViewer__YDF.Themes.regular,
-      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || SingleImageViewer__YDF.areThemesCSS_ClassesCommon,
-      geometry = SingleImageViewer__YDF.GeometricVariations.regular,
-      decoration = SingleImageViewer__YDF.DecorativeVariations.regular
+      areThemesExternal = ComponentsAuxiliaries.areComponentsThemesCommon || SingleImageViewer__YDF.areThemesCSS_ClassesCommon,
+      geometricVariation = SingleImageViewer__YDF.GeometricVariations.regular,
+      decorativeVariation = SingleImageViewer__YDF.DecorativeVariations.regular
 
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -30,7 +30,7 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
 
     const {
       fullScreenMode = false
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: statesSimulations,
       parameterNumber: 2,
       parameterName: "statesSimulations",
@@ -57,13 +57,13 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: SingleImageViewer__YDF.GeometricVariations,
         CSS_Namespace: SingleImageViewer__YDF.CSS_NAMESPACE
       }),
 
       ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
-        decoration,
+        decorativeVariation,
         allDecorativeVariations: SingleImageViewer__YDF.DecorativeVariations,
         CSS_Namespace: SingleImageViewer__YDF.CSS_NAMESPACE
       })
@@ -82,13 +82,12 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
 
         +Button--YDF({
           HTML_Type: Button__YDF.HTML_Types.regular,
-          geometry: Button__YDF.GeometricVariations.small
+          geometricVariation: Button__YDF.GeometricVariations.small
         }).SingleImageViewer--YDF-Button__FullScreenViewActivating
           +FittingWithin--YDF_Icon.Button--YDF-SVG_Icon
           span.Button--YDF-Label= SingleImageViewer__YDF.localization.buttons.fullScreenViewActivating.label
 
 
-    //- TODO ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     figure.SingleImageViewer--YDF-Figure
 
       mixin ImgTag()
@@ -118,7 +117,6 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
         ]
       })
 
-        //- TODO Класс "SingleImageViewer--YDF-ModalView-UpperButton" убрать
         +Button--YDF({
           HTML_Type: Button__YDF.HTML_Types.regular
         }).SingleImageViewer--YDF-ModalView-UpperButton.SingleImageViewer--YDF-Button__FullScreenViewDeactivating
@@ -127,8 +125,8 @@ mixin SingleImageViewer--YDF(properties, statesSimulations)
 
         figure.SingleImageViewer--YDF-ModalView-PositioningWrapper
           img.SingleImageViewer--YDF-ModalView-Image(
-            src= imageURI
-            alt= imageAlternateText
+            src=imageURI
+            alt=imageAlternateText
             data-yda-auto_aspect_ratio=autoAspectRatioByYDA
           )
 

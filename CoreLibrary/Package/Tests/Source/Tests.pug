@@ -1,0 +1,86 @@
+extends ../../PagesTemplates/StaticPreviewAnywherePage.pug
+
+
+block append Metadata
+
+  - HTML_PAGE_TITLE = "Tests";
+
+
+block append TableOfContents
+
+  h1.AnywherePage-TopHeading= HTML_PAGE_TITLE
+
+  +PageLink({
+    label: "Typography",
+    URI: "./05-Typography/Typography.test.html",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+
+  h2.AnywherePage-PagesGroupHeading Assets
+
+  +PageLink({
+    label: "YDF Color palette",
+    URI: "./Assets/Colors/YDF_ColorPalette.test.html",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+
+  h2.AnywherePage-PagesGroupHeading Components
+
+  +PageLink({
+    label: "AdmonitionBlock",
+    URI: "@StylesAndComponentsTesting/Components/AdmonitionBlock/AdmonitionBlock.workbench",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+  +PageLink({
+    label: "ConfirmationModalDialog",
+    URI: "./Components/Controls/ModalDialogs/Confirmation/ConfirmationModalDialog.test.html",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+  +PageLink({
+    label: "DateTimePicker",
+    URI: "@StylesAndComponentsTesting/Components/Controls/DateTimePicker/DateTimePicker.workbench",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+  +PageLink({
+    label: "DropDownList",
+    URI: "./Components/Controls/DropDownList/DropDownList.test.html",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+  +PageLink({
+    label: "NumberBox",
+    URI: "@StylesAndComponentsTesting/Components/Controls/NumberBox/NumberBox.test",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+  +PageLink({
+    label: "Pagination",
+    URI: "./Components/Controls/Pagination/Pagination.test.html",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+  +PageLink({
+    label: "RadioButtonsGroup",
+    URI: "@StylesAndComponentsTesting/Components/Controls/RadioButtonsGroup/RadioButtonsGroup.test",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+  +PageLink({
+    label: "Snackbar",
+    URI: "Components/Snackbar/Snackbar.test.html",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+
+  h2.AnywherePage-PagesGroupHeading Pages templates
+
+  +PageLink({
+    label: "StaticPreviewAnywherePageDemo",
+    URI: "./PagesTemplates/StaticPreviewAnywherePageDemo.test.html",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
+  })

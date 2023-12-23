@@ -1,21 +1,26 @@
 {
-  "private": "true",
-  "name": "@yamato-daiwa/frontend-vue-demos",
-  "version": "0.0.0",
-  "dependencies": {
-    "@yamato-daiwa/es-extensions": "1.7.0-alpha.5",
-    "@yamato-daiwa/frontend": "../../../CoreLibrary/Package",
-    "@yamato-daiwa/frontend-components_demos": "../../../CoreLibrary/ComponentsDemos",
-    "@yamato-daiwa/frontend-vue": "../Package",
-    "vue": "3.3.12",
-    "vue-facing-decorator": "3.0.4"
-  },
-  "devDependencies": {
-    "@yamato-daiwa/automation": "../../../../YamatoDaiwaAutomation/MainPackage",
-    "@yamato-daiwa/style_guides": "0.0.60",
-    "typescript": "5.3.3"
-  },
-  "scripts": {
-    "build": "yda build --mode LOCAL_DEVELOPMENT"
-  }
+	"private": "true",
+	"name": "@yamato-daiwa/frontend-vue-demos",
+	"version": "0.0.0",
+	"dependencies": {
+		"@yamato-daiwa/es-extensions": "1.7.0-alpha.13",
+		"@yamato-daiwa/es-extensions-browserjs": "1.7.0-alpha.2",
+		"@yamato-daiwa/frontend": "../../../CoreLibrary/Package",
+		"@yamato-daiwa/frontend-demos": "../../../CoreLibrary/Demos",
+		"@yamato-daiwa/frontend-vue": "../Package",
+		"vue": "3.4.21",
+		"vue-facing-decorator": "3.0.4"
+	},
+	"devDependencies": {
+		"@yamato-daiwa/automation": "../../../../YamatoDaiwaAutomation/MainPackage",
+		"@yamato-daiwa/style_guides": "0.2.1",
+		"rimraf": "5.0.5",
+		"typescript": "5.4.5"
+	},
+	"scripts": {
+		"Watch Local Gallereys": "rimraf LocalGalleriesBuild && yda build --selectiveExecution LocalGalleries --mode LOCAL_DEVELOPMENT",
+		"Build Distributions": "rimraf Distributions && yda build --selectiveExecution Distributions --mode PRODUCTION && cd Distributions && git add .",
+		"Get Source Markup of Partial Demos": "yda build --selectiveExecution PartialDemosSourceFiles --mode PRODUCTION",
+		"Lint": "eslint ."
+	}
 }

@@ -1,6 +1,0 @@
-User-agent: *
-Disallow: /CoreLibrary/Components
-Disallow: /CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs
-Disallow: /CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/processPugMixinsObjectTypeParameter
-Disallow: /CoreLibrary/Markup/UsageOnServerSide
-Disallow: /CoreLibrary/PagesTemplates

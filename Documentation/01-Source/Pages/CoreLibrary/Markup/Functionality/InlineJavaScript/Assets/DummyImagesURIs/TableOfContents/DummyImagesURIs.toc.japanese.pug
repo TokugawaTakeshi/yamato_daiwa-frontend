@@ -1,0 +1,16 @@
+include DummyImagesURIs.toc.pug
+
+
+-
+
+  localizedRouting.coreLibrary.$children.
+      markup.$children.
+      functionality.$children.
+      inlineJavaScript.$children.
+      assets.$children.
+      DummyImagesURIs.$sectioning = generatePageTableOfContents(
+        {
+          problematics: "問題学",
+          example: "例"
+        }
+      );

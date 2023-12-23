@@ -5,6 +5,7 @@ import type InputtedValueValidation from "./InputtedValueValidation";
 import {
   Logger,
   UnexpectedEventError,
+  isUndefined,
   isNotUndefined,
   nullToUndefined,
   secondsToMilliseconds
@@ -31,10 +32,10 @@ namespace ValidatableControl {
   export class Payload<ValidValue, InvalidValue, Validation extends InputtedValueValidation> {
 
     public readonly ID: string = Payload.generateSelfID();
-    public readonly getComponentInstance: () => ValidatableControl;
     public readonly validation: Validation;
+    public readonly getComponentInstance: () => ValidatableControl;
 
-    /* [ Convention ] The fields begins from the underscore mush be changes only via constructor or setters. */
+    /* [ Convention ] The fields begin from the underscore mush be changes only via constructor or setters. */
     protected _value: ValidValue | InvalidValue;
     protected _validationResult: InputtedValueValidation.Result;
     protected _asynchronousChecksStatus: InputtedValueValidation.AsynchronousChecks.Status | null = null;
@@ -45,17 +46,16 @@ namespace ValidatableControl {
     protected readonly onAsynchronousValidationStatusChangedEventHandlers: Payload.
         OnAsynchronousValidationStatusChangedEventHandlersMap = new Map();
 
-    private waitingForStaringOfAsynchronousValidationTimeID: number | null = null;
+    protected waitingForStaringOfAsynchronousValidationTimeID: number | null = null;
 
 
     public constructor(compoundParameter: Payload.ConstructorCompoundParameter<ValidValue, InvalidValue, Validation>) {
 
-      this.getComponentInstance = compoundParameter.getComponentInstance;
-
       this._value = compoundParameter.initialValue;
       this.validation = compoundParameter.validation;
-
       this._validationResult = this.validation.validate(this._value);
+
+      this.getComponentInstance = compoundParameter.getComponentInstance;
 
       if (isNotUndefined(compoundParameter.onHasBecomeValidEventHandler)) {
         this.setOnHasBecomeValidEventHandler(compoundParameter.onHasBecomeValidEventHandler);
@@ -97,31 +97,34 @@ namespace ValidatableControl {
         }
       );
 
-      if (isNotUndefined(asynchronousValidationDelay__seconds)) {
-
-        clearTimeout(
-          nullToUndefined(this.waitingForStaringOfAsynchronousValidationTimeID)
-        );
-
-        if (this.isInvalid) {
-          return;
-        }
-
-
-        this.waitingForStaringOfAsynchronousValidationTimeID = window.setTimeout(
-          (): void => {
-
-            this.validation.executeAsynchronousChecksIfAny(
-              this._value,
-              this.validationResult,
-              this.onAsynchronousChecksStatusChanged.bind(this)
-            );
-
-          },
-          secondsToMilliseconds(asynchronousValidationDelay__seconds)
-        );
-
+      if (isUndefined(asynchronousValidationDelay__seconds)) {
+        return;
       }
+
+
+      clearTimeout(
+        nullToUndefined(this.waitingForStaringOfAsynchronousValidationTimeID)
+      );
+
+      /* [ Approach ] No need in asynchronous validations if the value has not passed the static validations. */
+      if (this.isInvalid) {
+        return;
+      }
+
+
+      this.waitingForStaringOfAsynchronousValidationTimeID = window.setTimeout(
+        (): void => {
+
+          this.validation.executeAsynchronousChecksIfAny(
+            this._value,
+            this.validationResult,
+            this.onAsynchronousChecksStatusChanged.bind(this)
+          );
+
+        },
+        secondsToMilliseconds(asynchronousValidationDelay__seconds)
+      );
+
 
     }
 
@@ -210,7 +213,7 @@ namespace ValidatableControl {
       this.asynchronousChecksStatus = asynchronousChecksStatus;
     }
 
-    /* ─── Additional setters ─────────────────────────────────────────────────────────────────────────────────────── */
+    /* ─── Additional getters & setters ───────────────────────────────────────────────────────────────────────────── */
     protected get validationResult(): InputtedValueValidation.Result {
       return this._validationResult;
     }

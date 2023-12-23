@@ -3,6 +3,7 @@ import React from "react";
 
 
 const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
+
     (
       {
         themes,
@@ -26,7 +27,7 @@ const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
 
                   <li key={ `THEME-${ themeKey }` }>
 
-                    <span className="ThemesShowcase--YDF-Label">{ themeKeyLabelPrefix }{ themeKey }</span>
+                    <span className="ThemesShowcase--YDF-Label">{ `${ themeKeyLabelPrefix }${ themeKey }` }</span>
 
                     <ul className="ThemesShowcase--YDF-ChildList">
 
@@ -38,13 +39,12 @@ const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
                               <li key={ `GEOMETRIC_VARIATION-${ themeKey }-${ geometricVariationKey }` }>
 
                                 <span className="ThemesShowcase--YDF-Label">
-                                  { geometricVariationLabelPrefix }{ geometricVariationKey }
+                                  { `${ geometricVariationLabelPrefix }${ geometricVariationKey }` }
                                 </span>
 
                                 <DecorativeVariationsWrapperTag
-                                  className={ decorativeVariationsWrapperAdditionalCSS_Classes.join("") }
+                                  className={ decorativeVariationsWrapperAdditionalCSS_Classes.join(" ") }
                                   key={ `DECORATIVE_VARIATIONS-${ themeKey }-${ geometricVariationKey }` }
-                                  data-test={ `DECORATIVE_VARIATIONS-${ themeKey }-${ geometricVariationKey }` }
                                 >
 
                                   {
@@ -64,7 +64,7 @@ const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
                                                   <li key={ `DECORATIVE_VARIATION-${ themeKey }-${ decorativeVariationKey }` } >
 
                                                     <span className="ThemesShowcase--YDF-Label">
-                                                      { decorativeVariationLabelPrefix }{ decorativeVariationKey }
+                                                      { `${ decorativeVariationLabelPrefix }${ decorativeVariationKey }` }
                                                     </span>
 
                                                     {
@@ -113,7 +113,6 @@ const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
 
                                   }
 
-
                                 </DecorativeVariationsWrapperTag>
 
                               </li>
@@ -128,10 +127,9 @@ const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
 
           }
 
-      </ul>;
+        </ul>;
 
 
-/* eslint-disable-next-line @typescript-eslint/no-redeclare -- */
 namespace ThemesShowcase {
 
   export interface Properties {

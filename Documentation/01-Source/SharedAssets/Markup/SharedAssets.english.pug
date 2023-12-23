@@ -13,6 +13,19 @@ include ThirdPartyEmbeddableScripts/GoogleAnalyticsScript.pug
 -
 
   const localizedRouting = generateLocalizedRouting(routingEnglishLocalization);
+  let generatePageTableOfContents;
+
+
+include ../../Pages/CoreLibrary/Components/TableOfContents/Components.toc.english.pug
+//include ../../Pages/CoreLibrary/Components/Children/_AdmonitionBlock/TableOfContents/AdmonitionBlock.toc.english.pug
+include ../../Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/TableOfContents/DummyImagesURIs.toc.english.pug
+include ../../Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/processObjectTypeParameterOfPugMixin/TableOfContents/processObjectTypeParameterOfPugMixin.toc.english.pug
+include ../../Pages/CoreLibrary/Styles/Kernel/Functions/Strings/buildString/TableOfContents/buildString.toc.english.pug
+
+-
+
+  generatePageTableOfContents = null;
+
   RoutingEmulator.initialize(localizedRouting);
 
   const sharedExternalLinks = generateSharedExternalLinks(sharedExternalLinksEnglishLocalization);

@@ -4,9 +4,13 @@ applyStylesToRootElementOfYDF_Component(defaultSelector, areThemesCSS_ClassesCom
 
   for theme in values(themes)
 
-    addElementsToEndOfYDF_ArrayIf(commonThemesCSS_Classes, isNonEmptyString(theme.componentIndependentCSS_Class), theme.componentIndependentCSS_Class)
+    YDF_Array-appendElementsIf(
+      commonThemesCSS_Classes,
+      isNonEmptyString(theme.componentIndependentCSS_Class),
+      theme.componentIndependentCSS_Class
+    )
 
-  hasCommonCSS_Class = YDF_Array-IsIncludes(commonThemesCSS_Classes, theme.componentIndependentCSS_Class)
+  hasCommonCSS_Class = YDF_Array-isIncludes(commonThemesCSS_Classes, theme.componentIndependentCSS_Class)
 
 
   if selector() == "&" || selector() == "" || hasCommonCSS_Class
@@ -101,7 +105,7 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
 
           geometricVariationCSS_Class = buildBEM_ClassName({
             block: CSS_Namespace,
-            modifier: capitalizeFirstLatinCharacter(geometricVariationName) + "Geometry"
+            modifier: capitalizeFirstLatinCharacter(geometricVariationName) + "GeometricVariation"
             elementSeparator: "-",
             modifierSeparator: "__"
           })
@@ -141,7 +145,7 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
 
         decorativeVariationCSS_Class = buildBEM_ClassName({
           block: CSS_Namespace,
-          modifier: capitalizeFirstLatinCharacter(decorativeVariationName) + "Decoration",
+          modifier: capitalizeFirstLatinCharacter(decorativeVariationName) + "DecorativeVariation",
           elementSeparator: "-",
           modifierSeparator: "__"
         })

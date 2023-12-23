@@ -20,7 +20,13 @@ block append Metadata
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents"
+    ];
+
     scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.styles.kernel.configuration");
@@ -42,46 +48,46 @@ block append SpecificContent
     //- ━━━ `fontsStacks` ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h2.Article-Heading2(
       id= sectioning.fontsStacks.$anchor
-    )= sectioning.fontsStacks.$tableOfContentsTitle
+    )= sectioning.fontsStacks.$heading
 
     //- ─── `mainSansSerif` ────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.fontsStacks.$sectioning.mainSansSerif.$anchor
-    )= sectioning.fontsStacks.$sectioning.mainSansSerif.$tableOfContentsTitle
+    )= sectioning.fontsStacks.$sectioning.mainSansSerif.$heading
 
     //- ─── `mainSerif` ────────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.fontsStacks.$sectioning.mainSerif.$anchor
-    )= sectioning.fontsStacks.$sectioning.mainSerif.$tableOfContentsTitle
+    )= sectioning.fontsStacks.$sectioning.mainSerif.$heading
 
     //- ─── `mainMonospaced` ───────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.fontsStacks.$sectioning.mainMonospaced.$anchor
-    )= sectioning.fontsStacks.$sectioning.mainMonospaced.$tableOfContentsTitle
+    )= sectioning.fontsStacks.$sectioning.mainMonospaced.$heading
 
 
     //- ━━━ `textGeometry` ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h2.Article-Heading2(
       id= sectioning.textGeometry.$anchor
-    )= sectioning.textGeometry.$tableOfContentsTitle
+    )= sectioning.textGeometry.$heading
 
     //- ─── `mainSansSerif` ────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.textGeometry.$sectioning.basicFontSize.$anchor
-    )= sectioning.textGeometry.$sectioning.basicFontSize.$tableOfContentsTitle
+    )= sectioning.textGeometry.$sectioning.basicFontSize.$heading
 
     //- ─── `mainSerif` ────────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.textGeometry.$sectioning.basicLineHeight.$anchor
-    )= sectioning.textGeometry.$sectioning.basicLineHeight.$tableOfContentsTitle
+    )= sectioning.textGeometry.$sectioning.basicLineHeight.$heading
 
     //- ─── `mainMonospaced` ───────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.textGeometry.$sectioning.basicLineHeightInMultilineTextBlocks.$anchor
-    )= sectioning.textGeometry.$sectioning.basicLineHeightInMultilineTextBlocks.$tableOfContentsTitle
+    )= sectioning.textGeometry.$sectioning.basicLineHeightInMultilineTextBlocks.$heading
 
 
     //- ━━━ `zIndexes` ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h2.Article-Heading2(
       id= sectioning.zIndexes.$anchor
-    )= sectioning.zIndexes.$tableOfContentsTitle
+    )= sectioning.zIndexes.$heading

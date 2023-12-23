@@ -8,12 +8,13 @@ export {
 
   /* ━━━ Arrays ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   addElementsToArray,
-  createArrayOfNatualNumbers,
+  createArrayOfNaturalNumbers,
   cropArray,
   getArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne,
   getIndexesOfArrayElementsWhichSatisfiesThePredicate,
   getIndexOfArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne,
   getLastElementOfArray,
+  moveArrayElementTo1Position,
   removeArrayElementsByIndexes,
   removeArrayElementsByPredicates,
   replaceArrayElementsByIndexesImmutably,
@@ -22,16 +23,6 @@ export {
 
 
   /* ━━━ Constants and enumerations ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  /* ─── Date & Time ──────────────────────────────────────────────────────────────────────────────────────────────── */
-  CHARACTERS_COUNT_OF_DATE_PART_IN_ISO8601_STRING,
-  DaysOfWeek,
-  HOURS_PER_STELLAR_DAY,
-  MAXIMAL_DAYS_AT_MONTH,
-  MINUTES_PER_HOUR,
-  MONTHS_PER_YEAR,
-  MonthsNames,
-  SECONDS_PER_MINUTE,
-
   /* ─── HTTP ─────────────────────────────────────────────────────────────────────────────────────────────────────── */
   HTTP_Methods,
   HTTP_StatusCodes,
@@ -40,6 +31,25 @@ export {
   RedirectionResponsesHTTP_StatusCodes,
   ClientErrorsHTTP_StatusCodes,
   ServerErrorsHTTP_StatusCodes,
+
+  /* ─── Re-exporting from "fundamental-constants" ────────────────────────────────────────────────────────────────── */
+  HTTP_DEFAULT_PORT,
+  HTTPS_DEFAULT_PORT,
+  NETWORK_PORT_MAXIMAL_VALUE,
+  NETWORK_PORT_MINIMAL_VALUE,
+  DAYS_COUNT_IN_WEEK,
+  DaysOfWeekNames,
+  HOURS_COUNT_IN_STELLAR_DAY,
+  MAXIMAL_DAYS_IN_MONTH,
+  MINUTES_COUNT_IN_HOUR,
+  MONTHS_COUNT_IN_YEAR,
+  MonthsNames,
+  SECONDS_COUNT_IN_MINUTE,
+  CHARACTERS_COUNT_IN_DATE_PART_OF_ISO8601_STRING,
+  CHARACTERS_COUNT_IN_FULL_ISO8601_STRING,
+  EMAIL_ADDRESS_VALID_PATTERN,
+  MAXIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS,
+  MINIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS,
 
 
   /* ━━━ Data mocking ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -127,12 +137,15 @@ export {
   addMultiplePairsToMap,
   createMapBasedOnOtherMap,
   filterMap,
+  removeEntriesFromMap,
 
 
   /* ━━━ Numbers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   formatNumberWith4KetaKanji,
   getArithmeticMean,
   isStringifiedNonNegativeIntegerOfRegularNotation,
+  limitMaximalValue,
+  limitMinimalValue,
   roundDownToSpecificIntegerPlaceValue,
   roundToSpecificNearestIntegerPlaceValue,
   roundToSpecifiedNearestDecimalPlaceValue,
@@ -171,7 +184,7 @@ export {
 
   /* ━━━ Raw object data processor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   RawObjectDataProcessor,
-  RawObjectDataProcessorLocalization__English,
+  rawObjectDataProcessorLocalization__english,
   convertPotentialStringToNumberIfPossible,
   convertPotentialStringToIntegerIfPossible,
   convertPotentialStringToFloatIfPossible,
@@ -191,6 +204,10 @@ export {
   stringifiedDigits,
   uppercaseLatinCharacters,
 
+  /* ─── Line separators ──────────────────────────────────────────────────────────────────────────────────────────── */
+  getLineSeparatorType,
+  LineSeparators,
+
   /* ─── Regular expressions ──────────────────────────────────────────────────────────────────────────────────────── */
   getMatchingWithFirstRegularExpressionCapturingGroup,
   extractMatchingsWithRegularExpression,
@@ -200,23 +217,27 @@ export {
   /* --- Files and directories -------------------------------------------------------------------------------------- */
   appendLastFileNameExtension,
   extractAllFileNameExtensions,
+  extractFileNameWithAllExtensionsFromPath,
+  extractFileNameWithoutAnyExtensions,
+  extractFileNameWithoutLastExtension,
   extractLastExtensionOfFileName,
   removeAllFileNameExtensions,
 
   /* --- Rest ------------------------------------------------------------------------------------------------------- */
   appendFragmentToURI,
-  getURI_PartWithoutFragment,
-  getURI_Fragment,
-  removeSpecificSegmentsFromURI_Path,
   explodeURI_PathToSegments,
+  getURI_Fragment,
+  getURI_PartWithoutFragment,
+  removeSpecificSegmentsFromURI_Path,
+  replaceLastURI_PathSegment,
 
   /* ─── Rest ─────────────────────────────────────────────────────────────────────────────────────────────────────── */
   appendCharacterIfItDoesNotPresentInLastPosition,
-  areStringifiedDigitsOnly,
   capitalizeFirstCharacter,
   cropString,
   EmailAddress,
   explodeCasedPhraseToWords,
+  explodeStringToLines,
   getEnglishAbbreviatedOrdinalNumber,
   getLastCharacter,
   getPositionsOfAllSubstringOccurrences,
@@ -235,6 +256,7 @@ export {
   reverseString,
   splitString,
   stringifyAndFormatArbitraryValue,
+  surroundLabelByOrnament,
   toLowerCamelCase,
   toScreamingSnakeCase,
   toUpperCamelCase,
@@ -273,7 +295,12 @@ export {
   isNonEmptyObject,
   isNonNullObject,
 
+  /* ─── ParsedJSON ───────────────────────────────────────────────────────────────────────────────────────────────── */
+  isPossiblyReadonlyParsedJSON,
+  isPossiblyReadonlyParsedJSON_Object,
+
   /* ─── Strings ──────────────────────────────────────────────────────────────────────────────────────────────────── */
+  areStringifiedDigitsOnly,
   isEmptyString,
   isNonEmptyString,
   isString,
@@ -300,4 +327,4 @@ export {
 export { default as buildEmailLinkHrefAttributeValue } from "./PugExtensions/buildEmailLinkHrefAttributeValue";
 export { default as buildPhoneNumberLinkHrefAttributeValue } from "./PugExtensions/buildPhoneNumberLinkHrefAttributeValue";
 
-export { default as PugMixinsObjectTypeParametersProcessor } from "./PugExtensions/PugMixinsObjectTypeParametersProcessor";
+export { default as processObjectTypeParameterOfPugMixin } from "./PugExtensions/processObjectTypeParameterOfPugMixin";

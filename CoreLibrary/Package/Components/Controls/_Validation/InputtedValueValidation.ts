@@ -1,6 +1,6 @@
 /* eslint-disable max-classes-per-file --
-* This limitation is unsolicited for the namespaced classes, however there is no ESLint option allowing this case. */
-import { isBoolean, isNonEmptyString, Logger } from "@yamato-daiwa/es-extensions";
+* This limitation is unsolicited for the namespaced classes, however, there is no ESLint option allowing this case. */
+import { isBoolean, Logger } from "@yamato-daiwa/es-extensions";
 
 import inputtedValueValidationLocalization__english from "./InputtedValueValidationLocaization.english";
 
@@ -37,7 +37,6 @@ abstract class InputtedValueValidation {
 
     this.staticRules = compoundParameter.staticRules ?? [];
     this.contextDependentRules = compoundParameter.contextDependentRules ?? [];
-
     this.asynchronousRules = compoundParameter.asynchronousRules ?? [];
 
   }
@@ -198,13 +197,13 @@ abstract class InputtedValueValidation {
 
 					}).
 
-          catch((error: Error): void => {
+          catch((error: unknown): void => {
 
             Logger.logError({
               errorType: "AsynchronousValidationFailure",
               title: "Asynchronous validation failed",
               description: `The asynchronous validation ${ validationRule.ID } has failed.`,
-              occurrenceLocation: "inputtedValueValidation.executeAsynchronousValidationIfAny(rawValue)",
+              occurrenceLocation: "inputtedValueValidation.executeAsynchronousChecksIfAny(rawValue)",
               caughtError: error
             });
 
@@ -345,14 +344,9 @@ namespace InputtedValueValidation {
           }
 
           if (checking.hasInvalidValueBeenConfirmed) {
-
             this.hasNoInvalidValuesBeenConfirmed = false;
             this.hasAtLeastOneInvalidValueBeenConfirmed = true;
-
-            if (isNonEmptyString(checking.message)) {
-              this.errorsMessages.push(checking.message);
-            }
-
+            this.errorsMessages.push(checking.message);
           }
 
         }

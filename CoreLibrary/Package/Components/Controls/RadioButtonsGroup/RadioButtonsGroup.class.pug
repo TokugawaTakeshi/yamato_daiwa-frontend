@@ -8,22 +8,48 @@
     /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     static Themes = { regular: "REGULAR" };
 
-    static selfAndCompoundControlShellThemesCorrespondence = {
-      [RadioButtonsGroup__YDF.Themes.regular]: CompoundControlShell__YDF.Themes.regular
-    };
+    /* [ Pitfall ] The classes of other components may not be declared yet, initialization on demand required. */
+    /** @type { { [ childComponentName: string ]: { [ownThemeValue: string]: string } } | null } */
+    static _selfAndChildrenComponentsThemesCorrespondence = null;
 
-    static defineNewThemes(ownAndCorrespondingCompoundControlShellThemes_Names) {
-      return ComponentsAuxiliaries.defineThemesAndAssociateThemWithParentCompoundControlShellOnes(
-        ownAndCorrespondingCompoundControlShellThemes_Names, RadioButtonsGroup__YDF
+    /** @type { { [ childComponentName: string ]: { [ownThemeValue: string]: string } } } */
+    static get selfAndChildrenComponentsThemesCorrespondence() {
+      return RadioButtonsGroup__YDF._selfAndChildrenComponentsThemesCorrespondence ?? (
+        RadioButtonsGroup__YDF._selfAndChildrenComponentsThemesCorrespondence = {
+          compoundControlShell: { [RadioButtonsGroup__YDF.Themes.regular]: CompoundControlShell__YDF.Themes.regular },
+          radioButton: { [RadioButtonsGroup__YDF.Themes.regular]: RadioButton__YDF.Themes.regular }
+        }
       );
     }
 
-    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+    /**
+     * @param {
+     *   { [ ownThemeKey: string ]: { [ childrenComponentKey: string ]: string; } }
+     * } ownAndCorrespondingCompoundControlShellThemesDefinition
+     * @example
+     * RadioButtonsGroup__YDF.defineThemes({
+     *   redmond: {
+     *     compoundControlShell: CompoundControlShell__YDF.Themes.redmond,
+     *     button: Button__YDF.Themes.redmond
+     *   },
+     *   cupertino: {
+     *     compoundControlShell: CompoundControlShell__YDF.Themes.cupertino,
+     *     button: Button__YDF.Themes.cupertino
+     *   }
+     * });
+     */
+    static defineThemes(ownAndCorrespondingCompoundControlShellThemesDefinition) {
+      return ComponentsAuxiliaries.defineThemesAndSetCorrespondenceWithOnesOfChildrenComponents(
+        ownAndCorrespondingCompoundControlShellThemesDefinition, RadioButtonsGroup__YDF
+      );
+    }
+
+    static areThemesCSS_ClassesCommon = ComponentsAuxiliaries.areComponentsThemesCommon;
 
     static considerThemesAsCommon() {
       RadioButtonsGroup__YDF.areThemesCSS_ClassesCommon = true;
       return RadioButtonsGroup__YDF;
-    };
+    }
 
 
     /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
@@ -32,14 +58,29 @@
       small: "SMALL"
     };
 
-    static selfAndCompoundControlShellGeometricVariationsCorrespondence = {
-      [RadioButtonsGroup__YDF.GeometricVariations.regular]: CompoundControlShell__YDF.GeometricVariations.regular,
-      [RadioButtonsGroup__YDF.GeometricVariations.small]: CompoundControlShell__YDF.GeometricVariations.small
-    };
+    /* [ Pitfall ] The classes of other components may not be declared yet, initialization on demand required. */
+    /** @type { { [ childComponentName: string ]: { [ownGeometricVariationValue: string]: string } } | null } */
+    static _selfAndChildrenComponentsGeometricVariationsCorrespondence = null;
 
-    static defineNewGeometricVariations(ownAndCorrespondingCompoundControlShellGeometricVariations_Names) {
-      return ComponentsAuxiliaries.defineGeometricVariationAndAssociateThemWithParentCompoundControlShellOnes(
-        ownAndCorrespondingCompoundControlShellGeometricVariations_Names, RadioButtonsGroup__YDF
+    /** @type { { [ childComponentName: string ]: { [ownGeometricVariationValue: string]: string } } } */
+    static get selfAndChildrenComponentsGeometricVariationsCorrespondence() {
+      return RadioButtonsGroup__YDF._selfAndChildrenComponentsGeometricVariationsCorrespondence ?? (
+        RadioButtonsGroup__YDF._selfAndChildrenComponentsGeometricVariationsCorrespondence = {
+          compoundControlShell: {
+            [RadioButtonsGroup__YDF.GeometricVariations.regular]: CompoundControlShell__YDF.GeometricVariations.regular,
+            [RadioButtonsGroup__YDF.GeometricVariations.small]: CompoundControlShell__YDF.GeometricVariations.small
+          },
+          radioButton: {
+            [RadioButtonsGroup__YDF.GeometricVariations.regular]: RadioButton__YDF.GeometricVariations.regular,
+            [RadioButtonsGroup__YDF.GeometricVariations.small]: RadioButton__YDF.GeometricVariations.small
+          }
+        }
+      );
+    }
+
+    static defineGeometricVariations(ownAndCorrespondingCompoundControlShellGeometricVariationsDefinition) {
+      return ComponentsAuxiliaries.defineGeometricVariationsAndSetCorrespondenceWithOnesOfChildrenComponents(
+        ownAndCorrespondingCompoundControlShellGeometricVariationsDefinition, RadioButtonsGroup__YDF
       );
     }
 
@@ -47,43 +88,33 @@
     /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
     static DecorativeVariations = { regular: "REGULAR" };
 
-    static selfAndCompoundControlShellDecorativeVariationsCorrespondence = {
-      [RadioButtonsGroup__YDF.DecorativeVariations.regular]: CompoundControlShell__YDF.DecorativeVariations.regular
-    };
+    /* [ Pitfall ] The classes of other components may not be declared yet, initialization on demand required. */
+    /** @type { { [ childComponentName: string ]: { [ownDecorativeVariationValue: string]: string } } | null } */
+    static _selfAndChildrenComponentsDecorativeVariationsCorrespondence = null;
 
-    static defineNewDecorativeVariation(ownAndCorrespondingCompoundControlShellDecorativeVariations_Names) {
-      return ComponentsAuxiliaries.defineDecorativeVariationAndAssociateThemWithParentCompoundControlShellOnes(
-        ownAndCorrespondingCompoundControlShellDecorativeVariations_Names, RadioButtonsGroup__YDF
+    /** @type { { [ childComponentName: string ]: { [ownDecorativeVariationValue: string]: string } } } */
+    static get selfAndChildrenComponentsDecorativeVariationsCorrespondence() {
+      return RadioButtonsGroup__YDF._selfAndChildrenComponentsDecorativeVariationsCorrespondence ?? (
+        RadioButtonsGroup__YDF._selfAndChildrenComponentsDecorativeVariationsCorrespondence = {
+          compoundControlShell: {
+            [RadioButtonsGroup__YDF.DecorativeVariations.regular]: CompoundControlShell__YDF.DecorativeVariations.regular
+          },
+          radioButton: {
+            [RadioButtonsGroup__YDF.DecorativeVariations.regular]: RadioButton__YDF.DecorativeVariations.regular
+          }
+        }
+      );
+    }
+
+    static defineDecorativeVariations(ownAndCorrespondingCompoundControlShellDecorativeVariationsDefinition) {
+      return ComponentsAuxiliaries.defineDecorativeVariationsAndSetCorrespondenceWithOnesOfChildrenComponents(
+        ownAndCorrespondingCompoundControlShellDecorativeVariationsDefinition, RadioButtonsGroup__YDF
       );
     }
 
 
     /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     static propertiesSpecification = {
-
-      selectingOptions: {
-
-        type: Array,
-        required: true,
-
-        element: {
-          type: Object,
-          properties: {
-            label: {
-              type: String,
-              minimalCharactersCount: 1
-            },
-            value: {
-              type: String,
-              minimalCharactersCount: 1
-            },
-            checked: {
-              type: Boolean
-            }
-          }
-        }
-
-      },
 
       label: {
         type: String,
@@ -99,7 +130,13 @@
 
       externalLabelHTML_ID: {
         type: String,
-        required: false,
+        requiredIf: {
+          predicate: properties =>
+              !isNonEmptyString(properties.label) &&
+              !isNonEmptyString(properties.accessibilityGuidance),
+          descriptionForLogging:
+              "Neither \"label\" nor \"accessibilityGuidance\" has been specified with non-empty strings"
+        },
         minimalCharactersCount: 1
       },
 
@@ -109,57 +146,96 @@
         minimalCharactersCount: 1
       },
 
+      selectingOptions: {
+
+        type: Array,
+        required: false,
+
+        element: {
+          type: Object,
+          properties: {
+            key: {
+              type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
+              required: true,
+              alternatives: [
+                {
+                  type: String,
+                  minimalCharactersCount: 1
+                },
+                {
+                  type: Number,
+                  numbersSet: RawObjectDataProcessor.NumbersSets.anyRealNumber
+                }
+              ]
+            },
+            label: {
+              type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
+              required: true,
+              alternatives: [
+                {
+                  type: String,
+                  minimalCharactersCount: 1
+                },
+                {
+                  type: Number,
+                  numbersSet: RawObjectDataProcessor.NumbersSets.anyRealNumber
+                }
+              ]
+            }
+          }
+        }
+
+      },
+
+      initiallySelectedOptionKey: {
+        type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
+        required: false,
+        alternatives: [
+          {
+            type: String,
+            minimalCharactersCount: 1
+          },
+          {
+            type: Number,
+            numbersSet: RawObjectDataProcessor.NumbersSets.anyRealNumber
+          }
+        ]
+      },
+
+      radioButtonsHTML_Name: {
+        type: String,
+        required: false,
+        minimalCharactersCount: 1
+      },
+
       disabled: {
         type: Boolean,
-        required: false
+        defaultValue: false
       },
 
       readonly: {
         type: Boolean,
-        required: false
+        defaultValue: false
       },
 
       required: {
         type: Boolean,
-        required: false
+        defaultValue: false
       },
 
       mustDisplayAppropriateBadgeIfInputIsRequired: {
         type: Boolean,
-        required: false
+        defaultValue: false
       },
 
       mustDisplayAppropriateBadgeIfInputIsOptional: {
         type: Boolean,
-        required: false
+        defaultValue: false
       },
 
       mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge: {
         type: Boolean,
-        required: false
-      },
-
-      theme: {
-        type: String,
-        required: false,
-        allowedAlternatives: Object.values(RadioButtonsGroup__YDF.Themes)
-      },
-
-      areThemesCSS_ClassesCommon: {
-        type: Boolean,
-        required: false
-      },
-
-      geometry: {
-        type: String,
-        required: false,
-        allowedAlternatives: Object.values(RadioButtonsGroup__YDF.GeometricVariations)
-      },
-
-      decoration: {
-        type: String,
-        required: false,
-        allowedAlternatives: Object.values(RadioButtonsGroup__YDF.DecorativeVariations)
+        defaultValue: false
       },
 
       labelElementHTML_ID: {
@@ -168,10 +244,33 @@
         minimalCharactersCount: 1
       },
 
-      radioButtonsHTML_Name: {
+      theme: {
         type: String,
-        required: false,
-        minimalCharactersCount: 1
+        defaultValue: RadioButtonsGroup__YDF.Themes.regular,
+        allowedAlternatives: Object.
+            entries(RadioButtonsGroup__YDF.Themes).
+            map(([ key, value ]) => ({ key: `RadioButtonsGroup__YDF.Themes.${ key }`, value }))
+      },
+
+      areThemesCSS_ClassesCommon: {
+        type: Boolean,
+        defaultValue: RadioButtonsGroup__YDF.areThemesCSS_ClassesCommon
+      },
+
+      geometricVariation: {
+        type: String,
+        defaultValue: RadioButtonsGroup__YDF.GeometricVariations.regular,
+        allowedAlternatives: Object.
+            entries(RadioButtonsGroup__YDF.GeometricVariations).
+            map(([ key, value ]) => ({ key: `RadioButtonsGroup__YDF.GeometricVariations.${ key }`, value }))
+      },
+
+      decorativeVariation: {
+        type: String,
+        defaultValue: RadioButtonsGroup__YDF.DecorativeVariations.regular,
+        allowedAlternatives: Object.
+            entries(RadioButtonsGroup__YDF.DecorativeVariations).
+            map(([ key, value ]) => ({ key: `RadioButtonsGroup__YDF.DecorativeVariations.${ key }`, value }))
       }
 
     };

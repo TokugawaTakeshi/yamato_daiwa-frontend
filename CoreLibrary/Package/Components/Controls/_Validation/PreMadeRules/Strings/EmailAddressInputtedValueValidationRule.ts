@@ -1,7 +1,11 @@
+import { EMAIL_ADDRESS_VALID_PATTERN } from "fundamental-constants";
+
 import type InputtedValueValidation from "../../InputtedValueValidation";
+
 import emailAddressInputtedValueValidationRuleLocalization__english from
     "./EmailAddressInputtedValueValidationRuleLocalization.english";
-import { isNotUndefined, isString, EmailAddress, Logger, InvalidParameterValueError } from "@yamato-daiwa/es-extensions";
+
+import { EmailAddress, Logger, InvalidParameterValueError, isNotUndefined, isString } from "@yamato-daiwa/es-extensions";
 
 
 class EmailAddressInputtedValueValidationRule implements InputtedValueValidation.Rule {
@@ -9,6 +13,7 @@ class EmailAddressInputtedValueValidationRule implements InputtedValueValidation
   public static localization: EmailAddressInputtedValueValidationRule.Localization =
       emailAddressInputtedValueValidationRuleLocalization__english;
 
+  public readonly regularExpression: RegExp;
   public readonly mustFinishValidationIfValueIsInvalid: boolean;
 
   private readonly errorMessageBuilder: EmailAddressInputtedValueValidationRule.ErrorMessage.Builder;
@@ -18,11 +23,13 @@ class EmailAddressInputtedValueValidationRule implements InputtedValueValidation
     compoundParameter:
         InputtedValueValidation.Rule.ConstructorParameter &
         Readonly<{
+          regularExpression?: RegExp;
           errorMessageBuilder?: EmailAddressInputtedValueValidationRule.ErrorMessage.Builder;
           errorMessage?: string;
         }> = {}
   ) {
 
+    this.regularExpression = compoundParameter.regularExpression ?? EMAIL_ADDRESS_VALID_PATTERN;
     this.mustFinishValidationIfValueIsInvalid = compoundParameter.mustFinishValidationIfValueIsInvalid ?? false;
 
     if (isNotUndefined(compoundParameter.errorMessageBuilder)) {
@@ -37,6 +44,7 @@ class EmailAddressInputtedValueValidationRule implements InputtedValueValidation
 
   }
 
+
   public check(rawValue: unknown): InputtedValueValidation.Rule.CheckingResult {
 
     if (!isString(rawValue)) {
@@ -46,7 +54,7 @@ class EmailAddressInputtedValueValidationRule implements InputtedValueValidation
         title: InvalidParameterValueError.localization.defaultTitle,
         description: "Unable to execute this validation because the raw value is not the string " +
             `and actually has type "${ typeof rawValue }".`,
-        occurrenceLocation: "MaximalCharactersCountInputtedValueValidationRule.check(rawValue)"
+        occurrenceLocation: "EmailAddressInputtedValueValidationRule.check(rawValue)"
       });
 
       return { isValid: true };

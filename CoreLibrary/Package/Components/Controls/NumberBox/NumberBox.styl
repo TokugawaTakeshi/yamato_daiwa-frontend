@@ -1,1 +1,154 @@
 provideNumberBoxYDF_Component()
+@require "Themes/Regular/GeometricVariations/NumberBox-RegularTheme-RegularGeometry.styl"
+@require "Themes/Regular/GeometricVariations/NumberBox-RegularTheme-SmallGeometry.styl"
+
+@require "Themes/Regular/DecorativeVariations/NumberBox-RegularTheme-RegularDecoration.styl"
+
+
+NumberBox--YDF = {
+
+  componentIndependentCSS_Class: "RegularTheme--YDF",
+
+  defaultProperties: {
+
+    themes: {
+      regular: {
+
+        geometricVariations: {
+          regular: NumberBox-RegularTheme-RegularGeometry--YDF
+        },
+
+        decorativeVariations: {
+          regular: NumberBox-RegularTheme-RegularDecoration--YDF
+        }
+
+      }
+    }
+  },
+
+  defaultOptions: {
+    themeIndependentStylesOnly: false,
+    areThemesCSS_ClassesCommon: false,
+    loadingPlaceholder: true,
+    themeIndependentGeometricVariations: true
+  }
+
+}
+
+
+provideNumberBoxYDF_Component(
+  preset = NumberBox--YDF.defaultProperties,
+  overridings = {},
+  options = NumberBox--YDF.defaultOptions,
+  restParameters__MUST_NOT_BE...
+)
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "provideNumberBoxYDF_Component",
+    targetParameterNumber: 3,
+    targetParameter: options,
+    schema: {
+      themeIndependentStylesOnly: {
+        type: DataTypes.boolean,
+        defaultValue: NumberBox--YDF.defaultOptions.themeIndependentStylesOnly
+      },
+      areThemesCSS_ClassesCommon: {
+        type: DataTypes.boolean,
+        defaultValue: NumberBox--YDF.defaultOptions.externalThemes
+      },
+      loadingPlaceholder: {
+        type: DataTypes.boolean,
+        defaultValue: NumberBox--YDF.defaultOptions.loadingPlaceholder
+      },
+      themeIndependentGeometricVariations: {
+        type: DataTypes.boolean,
+        defaultValue: NumberBox--YDF.defaultOptions.themeIndependentGeometricVariations
+      }
+    },
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+
+  // ━━━ Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  applyBasicRules()
+
+    .NumberBox--YDF
+
+      &-LinearFlow
+
+        display flex
+
+
+        /.NumberBox--YDF__VerticalOrientation &
+
+          flex-direction column
+
+
+  // ─── Geometry ──────────────────────────────────────────────────────────────────────────────────────────────────────
+  applyGeometricVariation(themeName, variationName, variation)
+
+    VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
+      "NumberBox.${ themeName }Theme.${ variationName }Geometry",
+      { themeName: themeName, variationName: variationName }
+    )
+
+    CONTEXT_SELECTOR = selector() == "&" ? null : selector()
+
+    +provideDefaultSelectorWhenRootAndApply(ROOT_ELEMENT_SELECTOR)
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.rootElement.customDeclarations)
+  //    validateAndAssignStoredInObjectCSS_Properties({
+  //      targetObject: variation,
+  //      targetObjectName: VARIATION_DATA_FOR_LOGGING,
+  //      assigments: {
+  //        height: {
+  //          dotSeparatedPath: "childElement.height",
+  //          required: false
+  //        }
+  //      }
+  //    })
+  //
+  //
+  //// ─── Decoration ────────────────────────────────────────────────────────────────────────────────────────────────────
+  //applyDecorativeVariation(themeName, variationName, variation)
+  //
+  //  VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
+  //    "NumberBox.${ themeName }Theme.${ variationName }Decoration",
+  //    { themeName: themeName, variationName: variationName }
+  //  )
+  //
+  //  CONTEXT_SELECTOR = selector() == "&" ? null : selector()
+  //
+  //  +provideDefaultSelectorWhenRootAndApply(".NumberBox--YDF")
+  //
+  //    validateAndAssignStoredInObjectCSS_Properties({
+  //      targetObject: variation,
+  //      targetObjectName: VARIATION_DATA_FOR_LOGGING,
+  //      assigments: {
+  //        background-color: { dotSeparatedPath: "rootElement.background.color", required: false }
+  //      }
+  //    })
+  //
+  //
+  //  .NumberBox--YDF-ChildElement
+  //
+  //    validateAndAssignStoredInObjectCSS_Properties({
+  //      targetObject: variation,
+  //      targetObjectName: VARIATION_DATA_FOR_LOGGING,
+  //      assigments: {
+  //        color: { dotSeparatedPath: "childElement.text.color", required: false }
+  //      }
+  //    })
+
+
+  // ━━━ Applying ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  applyBasicRules()
+
+  //applyComponentThemes({
+  //  CSS_Namespace: "NumberBox--YDF",
+  //  themes: properties.themes,
+  //  applyGeometricVariation: applyGeometricVariation,
+  //  applyDecorativeVariation: applyDecorativeVariation
+  //})

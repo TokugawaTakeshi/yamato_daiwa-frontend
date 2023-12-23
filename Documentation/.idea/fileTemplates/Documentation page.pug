@@ -22,8 +22,14 @@ block append Metadata
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
-    scriptsURIs.endOfBody = [ "@Common" ];
+    styleSheetsURIs = [
+      "${DS}CommonStyles",
+      "${DS}LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "${DS}PreMadesStyles",
+      "@CustomizedExternalComponents"
+    ];
+
+    scriptsURIs.endOfBody = [ "${DS}CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("${ROUTE}");
 
@@ -31,6 +37,8 @@ block append Metadata
       japanese: "./${FILE_NAME_WITHOUT_EXTENSION}.japanese.html",
       russian: "./${FILE_NAME_WITHOUT_EXTENSION}.russian.html"
     });
+    
+    const pageTableOfContents = localizedRouting.${ROUTE_PATH}.${DS}sectioning;
 
 
 block append HeadScriptsLinks
@@ -58,7 +66,7 @@ block append SpecificContent
         }
       ],
       returnedValue: "boolean"
-    }).Article-CallableExpressionScheme
+    })
 
     +CodeViewer--YDF.Article-CodeViewer
       +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.TypeScript })
@@ -66,6 +74,5 @@ block append SpecificContent
         +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
           console.log("OK");
 
-        +CodeViewer-Explanation--YDF
-          p.Article-Paragraph.
-            This code outputs "OK" to console (thanks, cap).
+        +CodeViewer-Explanation--YDF.
+          This code outputs "OK" to console (thanks, cap).

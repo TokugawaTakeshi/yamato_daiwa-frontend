@@ -24,7 +24,7 @@ namespace InvalidVuePropertiesCombinationError {
   export type Localization = Readonly<{
     defaultTitle: string;
     generateMessage: (
-      parametersObject: Localization.GenericDescriptionPartTemplateParameters
+      compoundParameter: Localization.GenericDescriptionPartTemplateParameters
     ) => string;
   }>;
 

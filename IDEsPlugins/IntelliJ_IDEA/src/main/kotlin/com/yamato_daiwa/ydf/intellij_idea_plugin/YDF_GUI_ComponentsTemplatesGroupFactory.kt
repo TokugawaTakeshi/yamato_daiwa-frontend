@@ -12,6 +12,7 @@ class YDF_GUI_ComponentsTemplatesGroupFactory : FileTemplateGroupDescriptorFacto
     val groupDescriptor = FileTemplateGroupDescriptor("YDF GUI Components", AllIcons.Nodes.Folder)
 
     /* [ Theory ] No ".ft" must be here. */
+    groupDescriptor.addTemplate(FileTemplateDescriptor("AdmonitionBlock.styl"))
     groupDescriptor.addTemplate(FileTemplateDescriptor("Badge.styl"))
 
     return groupDescriptor

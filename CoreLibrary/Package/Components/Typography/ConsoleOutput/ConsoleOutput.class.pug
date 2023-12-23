@@ -8,11 +8,11 @@
     /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     static Themes = { regular: "REGULAR" };
 
-    static defineCustomThemes(themesNames) {
-      return ComponentsAuxiliaries.defineNewThemes(themesNames, ConsoleOutput__YDF);
+    static defineThemes(themesNames) {
+      return ComponentsAuxiliaries.defineThemes(themesNames, ConsoleOutput__YDF);
     }
 
-    static areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT;
+    static areThemesCSS_ClassesCommon = ComponentsAuxiliaries.areComponentsThemesCommon;
 
     static considerThemesAsCommon() {
       ConsoleOutput__YDF.areThemesCSS_ClassesCommon = true;
@@ -23,16 +23,16 @@
     /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
     static GeometricVariations = { regular: "REGULAR" }
 
-    static defineCustomGeometricVariations(geometricVariationsNames) {
-      return ComponentsAuxiliaries.defineNewGeometricVariations(geometricVariationsNames, ConsoleOutput__YDF);
+    static defineGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineGeometricVariations(geometricVariationsNames, ConsoleOutput__YDF);
     }
 
 
     /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
     static DecorativeVariations = { regular: "REGULAR" };
 
-    static defineCustomDecorativeVariations(decorativeVariationsNames) {
-      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, ConsoleOutput__YDF);
+    static defineDecorativeVariations(decorativeVariationsNames) {
+      return ComponentsAuxiliaries.defineDecorativeVariations(decorativeVariationsNames, ConsoleOutput__YDF);
     }
 
 

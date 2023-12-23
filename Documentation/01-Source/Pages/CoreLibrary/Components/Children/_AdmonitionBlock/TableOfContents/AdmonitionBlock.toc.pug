@@ -1,0 +1,113 @@
+-
+
+  generatePageTableOfContents = localizedStrings => {
+
+    const PAGE_URI = localizedRouting.coreLibrary.$children.components.$children.AdmonitionBlock.$URI;
+
+    const pageTableOfContents = {
+
+      synopsis: {
+        $heading: localizedStrings.synopsis.$heading,
+        $anchor: "SYNOPSIS--SECTION",
+        get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+      },
+
+      usage: {
+
+        $heading: localizedStrings.usage.$heading,
+        $anchor: "USAGE--SECTION",
+        get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; },
+
+        $children: {
+
+          markup: {
+
+            $heading: localizedStrings.usage.markup.$heading,
+            $anchor: "MARKUP--SECTION",
+            get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; },
+
+            $children: {
+
+              includingToProject: {
+                $heading: localizedStrings.usage.markup.includingToProject.$heading,
+                $anchor: "INCLUDING_OF_MARKUP_TO_PROJECT--SECTION",
+                get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+              },
+
+              pugMixin: {
+
+                $heading: localizedStrings.usage.markup.pugMixin.$heading,
+                $anchor: "PUG_MIXIN--SECTION",
+                get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; },
+
+                $children: {
+
+                  minimalExample: {
+                    $heading: localizedStrings.usage.markup.pugMixin.minimalExample.$heading,
+                    $anchor: "USAGE-MINIMAL--SECTION",
+                    get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+                  },
+
+                  title: {
+                    $heading: localizedStrings.usage.markup.pugMixin.title.$heading,
+                    $anchor: "USAGE-TITLE--SECTION",
+                    get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+                  },
+
+                  SVG_Icon: {
+
+                    $heading: localizedStrings.usage.markup.pugMixin.SVG_Icon.$heading,
+                    $anchor: "USAGE-SVG_ICON--SECTION",
+                    get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; },
+
+                    $children: {
+                      custom: {
+                        $heading: localizedStrings.usage.markup.pugMixin.SVG_Icon.custom.$heading,
+                        $anchor: "EXAMPLE-SVG_ICON-CUSTOM--SECTION",
+                        get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+                      }
+                    }
+
+                  },
+
+                  centeredButton: {
+                    $heading: localizedStrings.usage.markup.pugMixin.centeredButton.$heading,
+                    $anchor: "USAGE-CENTERED_BUTTON--SECTION",
+                    get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+                  },
+
+                  actionBar: {
+                    $heading: localizedStrings.usage.markup.pugMixin.actionBar.$heading,
+                    $anchor: "USAGE-ACTIONBAR--SECTION",
+                    get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+                  },
+
+                  dismissing: {
+                    $heading: localizedStrings.usage.markup.pugMixin.dismissing.$heading,
+                    $anchor: "USAGE-DISMISSING--SECTION",
+                    get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+                  }
+
+                }
+
+              }
+
+            }
+
+          },
+
+          logic: {
+            $heading: localizedStrings.usage.logic.$heading,
+            $anchor: "LOGIC--SECTION",
+            get $URI() { return `${ PAGE_URI }#${ this.$anchor }`; }
+          }
+
+        }
+
+      }
+
+    };
+
+    return pageTableOfContents;
+
+  }

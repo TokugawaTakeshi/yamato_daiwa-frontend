@@ -10,11 +10,9 @@ const vueComponentNotFoundErrorLocalization__english: VueComponentNotFoundError.
     { vueReferenceID, messageSpecificPart }: VueComponentNotFoundError.Localization.DescriptionTemplateVariables
   ): string {
     return `Vue component referring to the Vue reference "${ vueReferenceID }" not found.` +
-        `${
-          insertSubstring(
-            messageSpecificPart, { modifier: (_messageSpecificPart: string): string => `\n${ _messageSpecificPart }` }
-          )
-        }`;
+        insertSubstring(
+          messageSpecificPart, { modifier: (_messageSpecificPart: string): string => `\n${ _messageSpecificPart }` }
+        );
   }
 
 

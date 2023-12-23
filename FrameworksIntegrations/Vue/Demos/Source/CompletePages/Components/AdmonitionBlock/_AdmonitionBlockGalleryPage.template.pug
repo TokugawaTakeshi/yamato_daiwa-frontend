@@ -1,0 +1,39 @@
+extends ../../../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+block append Requirements
+
+  include  ../../../../node_modules/@yamato-daiwa/frontend-demos/Source/Galleries/Components/AdmonitionBlock/AdmonitionBlockGalleryOptions.pug
+  include  ../../../_addDataAttributesGeneratingMethodToGalleryOptionsClass.pug
+
+
+block append Metadata
+
+  -
+
+    addDataAttributesGeneratingMethodToGalleryOptionsClass(AdmonitionBlockGalleryOptions)
+
+    /**
+     * @param { string } [partialTitle]
+     * @returns { string }
+     * */
+    function generateHTML_Page_Title(partialTitle) {
+      return [
+        "AdmonitionBlock Component Demos",
+        ...partialTitle ? [ ` — ${ partialTitle }` ] : [],
+        " — Yamato Daiwa Frontend (YDF)"
+      ].join("");
+    }
+
+    styleSheetsURIs = [
+      "$ExternalStyles/YDF-Demos-Primer.css",
+      "$ExternalStyles/YDF-Demos-CommonRequirements.css",
+      "$ExternalStyles/Components/AdmonitionBlock/AdmonitionBlockGalleryPage.css"
+    ];
+
+    scriptsURIs.endOfBody = [ "@CompletePages/Components/AdmonitionBlock/AdmonitionBlockGalleryPage" ];
+
+
+block append PageContent
+
+  .YDF_Gallery#APPLICATION&attributes(AdmonitionBlockGalleryOptions.generateDataAttributes())

@@ -1,22 +1,16 @@
-import type {
-  EmailAddressInputtedValueValidation,
-  MinimalCharactersCountInputtedValueValidationRule
-} from "@yamato-daiwa/frontend";
+import type { EmailAddressInputtedValueValidation } from "@yamato-daiwa/frontend";
+import emailAddressInputtedValueValidationRuleLocalization__english from
+    "../../PreMadeRules/Strings/EmailAddressInputtedValueValidationRuleLocalization.english";
 
 
 const emailAddressInputtedValueValidationLocalization__japanese: EmailAddressInputtedValueValidation.Localization = {
 
-  requiredInputIsMissingValidationErrorMessage:
-      "メールアドレスは必須となっております。お手数ですが、メールアドレスをご入力下さい。",
+  requiredInputIsMissingValidationErrorMessage: "メールアドレスは必須です。ご入力をお願いいたします。",
 
-  invalidEmailAddressErrorMessageBuilder: (): string =>
-      "入力されたメールアドレスは不正です。お手数ですが、メールアドレスを確認の上、正しいメールアドレスを入力してください。",
+  minimalCharactersCountValidationErrorMessageBuilder: (): string =>
+      "入力されたメールアドレスは「文字数が少なすぎる」可能性があります。正しいメールアドレスかどうかご確認ください。",
 
-  minimalCharactersCountValidationErrorMessageBuilder: (
-    { rawValue, minimalCharactersCount }: MinimalCharactersCountInputtedValueValidationRule.ErrorMessage.TemplateVariables
-  ): string =>
-      `${ rawValue.length } characters is not enough for the email address. ` +
-      `Please check the correct email address and input at least ${ minimalCharactersCount } characters.`
+  invalidEmailAddressErrorMessageBuilder: emailAddressInputtedValueValidationRuleLocalization__english.errorMessageBuilder
 
 };
 

@@ -1,0 +1,71 @@
+extends ../../../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../../../SharedAssets/Markup/SharedAssets.russian.pug
+  include ../../../../../../SharedComponents/SharedComponents.russian.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_LANGUAGE = "ru";
+    HTML_PAGE_TITLE = buildHTML_PageTitle("AdmonitionBlock (Blazor)");
+    HTML_PageMetaData = {
+      description:
+          "В GUI, компонент «AdmonitionBlock» является одним из способов донесения сообщений до пользователей с " +
+              "возможностью предложить отреагировать на сообщение с помощью кнопок." +
+          "В типографике, этот компонент используется для выделения блоков текста разной степени важности.",
+      author: HTML_PAGE_AUTHOR
+    };
+
+    FAVICON_URI = "@MustBeInPublicRoot/favicon";
+
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents"
+    ];
+
+    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+
+    RoutingEmulator.setCurrentRoute("frameworksIntegrations.blazor.components.AdmonitionBlock");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      english: "./AdmonitionBlock-Vue.english.html",
+      japanese: "./AdmonitionBlock-Vue.japanese.html"
+    });
+
+    const {
+      $sectioning: pageTableOfContents,
+      $heading: PAGE_TOP_HEADING
+    } = localizedRouting.frameworksIntegrations.$children.blazor.$children.components.$children.AdmonitionBlock;
+
+
+block append HeadScriptsLinks
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1!= PAGE_TOP_HEADING
+
+    +WebPageViewer--YDF({
+      URI: "$Demos:Vue/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Minimal.html",
+      title: "Примеры использования компонента «AdmonitionBlockGalleryPage»"
+    })
+
+    +AdmonitionBlockComponentAbstract
+
+    //- ━━━ Сводка ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    h2.Article-Heading2(
+      id=pageTableOfContents.synopsis.$anchor
+    )= pageTableOfContents.synopsis.$heading

@@ -3,26 +3,27 @@
   <PropertyGroup>
     <PackageId>YamatoDaiwaFrontend</PackageId>
     <Title>Yamato Daiwa Frontend</Title>
+    <Description>The adaptation of the "Yamato Daiwa Frontend" toolkit for the Blazor framework</Description>
+    <Version>0.0.8</Version>
     <RootNamespace>YamatoDaiwa.Frontend</RootNamespace>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Description>The adaptation of the "Yamato Daiwa Frontend" toolkit for the Blazor framework</Description>
+    <PackageProjectUrl>https://frontend.yamato-daiwa.com/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend.git</RepositoryUrl>
-    <Version>0.0.1</Version>
+    <PackageIcon>NuGetProjectIcon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
-
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.5" />
-    <PackageReference Include="YamatoDaiwaCS_Extensions" Version="0.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.0" />
+    <PackageReference Include="YamatoDaiwaCS_Extensions" Version="0.0.7" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,11 +36,8 @@
     <None Include="README.md" Pack="true" PackagePath="\"/>
     <None Include="NuGetProjectIcon.png">
       <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Components\Badge\LoadingPlaceholder\" />
   </ItemGroup>
 
 </Project>

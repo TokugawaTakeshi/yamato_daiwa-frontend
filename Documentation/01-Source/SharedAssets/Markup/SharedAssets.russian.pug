@@ -13,6 +13,23 @@ include ThirdPartyEmbeddableScripts/GoogleAnalyticsScript.pug
 -
 
   const localizedRouting = generateLocalizedRouting(routingRussianLocalization);
+  let generatePageTableOfContents;
+
+
+include ../../Pages/CoreLibrary/Components/TableOfContents/Components.toc.russian.pug
+//include ../../Pages/CoreLibrary/Components/Children/_AdmonitionBlock/TableOfContents/AdmonitionBlock.toc.russian.pug
+include ../../Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/TableOfContents/DummyImagesURIs.toc.russian.pug
+include ../../Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/processObjectTypeParameterOfPugMixin/TableOfContents/processObjectTypeParameterOfPugMixin.toc.russian.pug
+//include ../../Pages/FrameworksIntegrations/Blazor/Components/Children/_AdmonitionBlock/TableOfContents/AdmonitionBlock-Blazor.toc.russian.pug
+//include ../../Pages/FrameworksIntegrations/React/Components/Children/_AdmonitionBlock/TableOfContents/AdmonitionBlock-React.toc.russian.pug
+//include ../../Pages/FrameworksIntegrations/Vue/Components/Children/_AdmonitionBlock/TableOfContents/AdmonitionBlock-Vue.toc.russian.pug
+include ../../Pages/CoreLibrary/Styles/Kernel/Functions/Strings/buildString/TableOfContents/buildString.toc.russian.pug
+
+
+-
+
+  generatePageTableOfContents = null;
+
   RoutingEmulator.initialize(localizedRouting);
 
   const sharedExternalLinks = generateSharedExternalLinks(sharedExternalLinksRussianLocalization);

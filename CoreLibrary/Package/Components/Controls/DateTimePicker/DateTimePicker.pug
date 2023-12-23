@@ -1,0 +1,130 @@
+include DateTimePicker.class.pug
+
+
+mixin DateTimePicker--YDF(properties, statesSimulations)
+
+  -
+
+    const COMPONENT_ID = DateTimePicker__YDF.generateComponentID();
+
+    const {
+
+      label,
+      accessibilityGuidance,
+      externalLabelHTML_ID,
+      guidance,
+
+      disabled,
+      readonly,
+
+      required,
+      mustDisplayAppropriateBadgeIfInputIsRequired,
+      mustDisplayAppropriateBadgeIfInputIsOptional,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
+
+      coreElementHTML_ID,
+      labelElementHTML_ID,
+
+      theme,
+      areThemesCSS_ClassesCommon,
+      geometricVariation,
+      geometricModifiers,
+      decorativeVariation,
+      decorativeModifiers
+
+    } = processObjectTypeParameterOfPugMixin({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: DateTimePicker__YDF.propertiesSpecification,
+      mixinName: DateTimePicker__YDF.CSS_NAMESPACE
+    });
+
+    const {
+      expanded,
+      activeMatrix,
+      invalidInputHighlightingIfAnyValidationErrorsMessages,
+      validValueHighlightingIfNoValidationErrorsMessages,
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
+    } = processObjectTypeParameterOfPugMixin({
+      rawParameter: statesSimulations,
+      parameterNumber: 2,
+      parameterName: "statesSimulations",
+      parameterPropertiesSpecification: DateTimePicker__YDF.statesSimulationsSpecification,
+      mixinName: DateTimePicker__YDF.CSS_NAMESPACE
+    });
+
+    const rootElementModifierCSS_Classes = [
+
+      ...disabled ? [ `${ DateTimePicker__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
+      ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
+          [ `${ DateTimePicker.CSS_NAMESPACE }__InvalidValueState` ] : [],
+      ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
+          [ `${ DateTimePicker.CSS_NAMESPACE }__ValueState` ] : [],
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: DateTimePicker__YDF.Themes,
+        CSS_Namespace: DateTimePicker__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometricVariation,
+        allGeometricVariations: DateTimePicker__YDF.GeometricVariations,
+        CSS_Namespace: DateTimePicker__YDF.CSS_NAMESPACE
+      }),
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decorativeVariation,
+        allDecorativeVariations: DateTimePicker__YDF.DecorativeVariations,
+        CSS_Namespace: DateTimePicker__YDF.CSS_NAMESPACE
+      })
+
+    ];
+
+  +CompoundControlShell--YDF(
+    {
+
+      label,
+      guidance,
+
+      required,
+      mustDisplayAppropriateBadgeIfInputIsRequired,
+      mustDisplayAppropriateBadgeIfInputIsOptional,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
+      coreElementHTML_ID: coreElementHTML_ID,
+      labelElementHTML_ID: labelElementHTML_ID,
+
+      theme: DateTimePicker__YDF.selfAndChildrenComponentsThemesCorrespondence.compoundControlShell[theme],
+      areThemesCSS_ClassesCommon,
+      geometricVariation: DateTimePicker__YDF.selfAndChildrenComponentsThemesCorrespondence.
+          compoundControlShell[geometricVariation],
+      decorativeVariation: DateTimePicker__YDF.selfAndChildrenComponentsThemesCorrespondence.
+          compoundControlShell[decorativeVariation]
+
+    },
+    {
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
+    }
+  ).DateTimePicker--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
+
+    -
+      const toggleAccessibilityGuidance = expanded ?
+          DateTimePicker__YDF.localization.expandingToggle.collapsedState.accessibilityGuidance :
+          DateTimePicker__YDF.localization.expandingToggle.expandedState.accessibilityGuidance;
+
+    button.DateTimePicker-SelectedDateTimeDisplaying(
+      type="button"
+      aria-label=toggleAccessibilityGuidance
+    )
+      +Calendar__Date--YDF_Icon.DateTimePicker-SelectedDateTimeDisplaying-Icon
+
+    if expanded
+
+      .DateTimePicker-Dialog(
+        role="dialog"
+        aria-modal="true"
+      )

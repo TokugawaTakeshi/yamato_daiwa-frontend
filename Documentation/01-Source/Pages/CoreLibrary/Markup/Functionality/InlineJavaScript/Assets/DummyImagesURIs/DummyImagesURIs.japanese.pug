@@ -6,6 +6,8 @@ block append Requirements
   include ../../../../../../../SharedAssets/Markup/SharedAssets.japanese.pug
   include ../../../../../../../SharedComponents/SharedComponents.japanese.pug
 
+  include _DummyImagesURIs-Example.pug
+
 
 block append Metadata
 
@@ -14,14 +16,27 @@ block append Metadata
     HTML_PAGE_LANGUAGE = "ja";
     HTML_PAGE_TITLE = buildHTML_PageTitle("DummyImagesURIs");
     HTML_PageMetaData = {
-      description: "",
+      description:
+          "「Yamato Daiwa Frontend（YDF）」ライブラリの、連速配列系の「DummyImagesURIs」オブジェクトはあらゆる大小と幅・高比率のエンコードされた" +
+            "(base64)画像を含めている。" +
+          "アダプティブレイアウトに於いて画像の正常な表示のテストの為に役に立っている事が多い。",
       author: HTML_PAGE_AUTHOR
     };
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents",
+      "@Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/DummyImagesURIs"
+    ];
+
+    scriptsURIs.endOfBody = [
+      "$CommonLogic",
+      "@Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/DummyImagesURIs"
+    ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.assets.DummyImagesURIs");
 
@@ -29,6 +44,13 @@ block append Metadata
       english: "./DummyImagesURIs.english.html",
       russian: "./DummyImagesURIs.russian.html"
     });
+
+    const pageTableOfContents = localizedRouting.coreLibrary.$children.
+        markup.$children.
+        functionality.$children.
+        inlineJavaScript.$children.
+        assets.$children.
+        DummyImagesURIs.$sectioning;
 
 
 block append HeadScriptsLinks
@@ -44,15 +66,98 @@ block append SpecificContent
 
     h1.Article-Heading1 #[code DummyImagesURIs]
 
-    +AttentionBox--YDF({
-      title: "準備中",
-      decoration: AttentionBox__YDF.DecorativeVariations.guidance,
-      hasPrependedSVG_Icon: true
+    +ThisPageHasNotBeenCheckedByNativeSpeakersYetWarning
+
+    p.Article-Paragraph.
+      あらゆる大小と幅・高の比率の
+        #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.wikipedia.Base64 }).Article-Link Base64エンコード]
+        された簡易な画像（事実上単調な背景と幅・高の表記）を含めている#[+Keyword--YDID 連想配列系]の#[+Term--YDID オブジェクト]。
+      エンコードの御蔭で、インターネット接続が無くても画像が表示されます。
+      こう言った画像をアダプティブレイアウトのテストとして使えば便利で、若しくは直ぐ使える実画像が無い事が多い開発の初期段階に使えば良い。
+
+    p.Article-Paragraph.
+      初期的に、#[+ImportantEntity__Code--YDID DummyImagesURIs]は下記の#[+Term--YDID キー]を持っている。
+
+    dl.Article-DescriptionList
+
+      dt #[+ImportantEntity__Code--YDID aspectRatio19x6]
+      dd #[+ImportantEntity--YDID 19 x 6]比率の画像
+
+      dt #[+ImportantEntity__Code--YDID aspectRatio4x3]
+      dd #[+ImportantEntity--YDID 4 x 3]比率の画像
+
+      dt #[+ImportantEntity__Code--YDID wideAndLow]
+      dd 非常に長いがとても低い画像
+
+      dt #[+ImportantEntity__Code--YDID highAndNarrow]
+      dd 非常に高いがとても短い画像
+
+      dt #[+ImportantEntity__Code--YDID small]
+      dd 小さな画像
+
+    +AdmonitionBlock--YDF({ decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.guidance, SVG_Icon: true }).
+      #[+ImportantEntity__Code--YDID DummyImagesURIs]#[+Term--YDID オブジェクト]の望ましいプロパティへのアクセス表現をクリップボードへコピー
+        するには該当している画像をクリックして下さい。
+
+    ul.DummyImagesURIsGallery(
+      data-snackbar_text="「{{ expression }}」がコピーされました。"
+    )
+
+      each imageURI, key in DummyImagesURIs
+
+        li
+
+          button(
+            aria-label=`オブジェクト「DummyImagesURIs」の「${ key }」プロパティへのアクセス表現をコピーする`
+            data-clipboard-text=`DummyImagesURIs.${ key }`
+          )
+
+            span(
+              role="presentation"
+              style=`background-image: url("${ imageURI }");`
+            )
+
+            code= key
+
+
+    //- ━━━ 問題額 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    +Heading--YDF({
+      level: 2,
+      text: pageTableOfContents.problematics.$heading,
+      HTML_ID: pageTableOfContents.problematics.$anchor
+    }).Article-Heading2
+
+    p.Article-Paragraph.
+      ウェブ開発者達にとっては、同様な画像（例えば何れかの商品の写真からなりたっているミニギャラリー）は同じ大小か、少なくとも同じ幅・高比率であれば便利だが、
+        事実が異なる事が多い。
+      依頼側は異なる大小・比率の写真を用意してはいるが、受注側から「高度な専門家だから何と上手く表示させてくれる」と期待している。
+
+    p.Article-Paragraph.
+      レイアウトは本当に様々な画像に対応されているとある程度安心するには、異なる大小と幅・高さ比率の画像（幅が数倍の高さに成っていると言った極端な場合を含めて）
+        が何枚か直ぐ使える様にしなければいけない。
+      こう言った揃いが用意してあれば、使えば良い。
+      然し十中八九、こう言った直ぐ使える揃いが無くて、用意する事も時間が無い。
+      此の様な状況の為こそ#[+ImportantEntity__Code--YDID DummyImagesURIs]が用意してある。
+
+
+    //- ━━━ 例 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    +Heading--YDF({
+      level: 2,
+      text: pageTableOfContents.example.$heading,
+      HTML_ID: pageTableOfContents.example.$anchor
+    }).Article-Heading2
+
+    p.Article-Paragraph.
+      上記のクリック可能な画像カードが下記の様に作ってあります。
+
+    +DummyImagesURIs-Example({
+      fileLabels: {
+        markup: "マークアップ",
+        styles: "スタイル"
+      },
+      copyingButtonAccessibilityGuidanceRawValue:
+          "`オブジェクト「DummyImagesURIs」の「${ key }」プロパティへのアクセス表現をコピーする`"
     })
-      | 恐れ入りますが、当ページは未だ準備中でございます。
-      | アルファ版の期間無い用意を終わらせる予定です。
-      | 御手数ですが、今は
-      +Link--YDF({
-        endorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Markup/Assets/Dummies.pug"
-      }).Article-Link ソースコード
-      |   を確認して下さいませんでしょうか。
+
+    p.Article-Paragraph.
+      通信販売ストア専用のミニギャラリーの様なものを作らなければいけないなら、上記のコードを基本にし、上に選択中の写真の表示の為大きい区域を用意すれば良い。

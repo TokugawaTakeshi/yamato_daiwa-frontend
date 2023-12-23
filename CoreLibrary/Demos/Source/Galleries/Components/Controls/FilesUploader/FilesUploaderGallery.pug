@@ -1,0 +1,55 @@
+include FilesUploaderGalleryOptions.pug
+
+
+mixin FilesUploaderGallery
+
+  -
+
+    ThemesShowcase__YDF.
+        setDefaultThemeKeyLabelPrefix("FilesUploader__YDF.Themes.").
+        setDefaultGeometricVariationLabelPrefix("FilesUploader__YDF.GeometricVariations.").
+        setDefaultDecorativeVariationLabelPrefix("FilesUploader__YDF.DecorativeVariations.");
+
+    const themeShowcaseCurrentIterationData = ThemesShowcase__YDF.initializeCurrentIterationData()
+
+
+  h1.Heading1(
+    class=(FilesUploaderGalleryOptions.mustVisuallyHideTopHeading ? "YDF_Gallery-InvisibleHeading" : [])
+  ) FilesUploader Component Demos
+
+
+  //- ━━━ Minimal ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  if FilesUploaderGalleryOptions.partialsRenderingFlags[FilesUploaderGalleryOptions.Partials.minimal]
+
+    h2.Heading2(
+      class=(FilesUploaderGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+    ) Minimal
+
+    +ThemesShowcase--YDF({
+      themes: FilesUploader__YDF.Themes,
+      geometricVariations: FilesUploader__YDF.GeometricVariations,
+      decorativeVariations: FilesUploader__YDF.DecorativeVariations,
+      iterationData: themeShowcaseCurrentIterationData
+    })
+
+      +FilesUploader--YDF({ label: "File" })
+
+
+  //- ━━━ Uploading Status ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  if FilesUploaderGalleryOptions.partialsRenderingFlags[FilesUploaderGalleryOptions.Partials.uploadingStatus]
+
+    h2.Heading2(
+      class=(FilesUploaderGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+    ) Uploaded Status
+
+    +ThemesShowcase--YDF({
+      themes: FilesUploader__YDF.Themes,
+      geometricVariations: FilesUploader__YDF.GeometricVariations,
+      decorativeVariations: FilesUploader__YDF.DecorativeVariations,
+      iterationData: themeShowcaseCurrentIterationData
+    })
+
+      +FilesUploader--YDF(
+        { label: "File" },
+        { uploadingStatuses: true }
+      )

@@ -19,7 +19,14 @@ block append Metadata
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon.ico";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/Minimal/MinimalLayout", "@Shared/ExternalComponents", "@Pages/Top/TopPage" ];
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/Minimal/MinimalLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents",
+      "@Pages/Top/TopPage"
+    ];
+
     scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("top");
@@ -55,9 +62,9 @@ block append SpecificContent
     p.TopPage-ShortDescription-Heading.
       Rich libraries for types in high-quality frontend web development with Pug, Stylus and TypeScript
 
-    +AttentionBox--YDF({
-      decoration: AttentionBox__YDF.DecorativeVariations.warning,
-      hasPrependedSVG_Icon: true
+    +AdmonitionBlock--YDF({
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning,
+      SVG_Icon: true
     }).TopPage-Disclaimer.
 
       This documentation site is under development.
@@ -66,9 +73,9 @@ block append SpecificContent
       Please understand that high-quality documentation requires more time than library development, and the top priority
         of library development is new functionality.
 
-    +AttentionBox--YDF({
-      decoration: AttentionBox__YDF.DecorativeVariations.warning,
-      hasPrependedSVG_Icon: true
+    +AdmonitionBlock--YDF({
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning,
+      SVG_Icon: true
     }).TopPage-Disclaimer
       | All internal pages of this web side are associated with newest alpha version of the major version #[+ImportantEntity--YDID 2].
       | The #[+Term--YDID markdown] documentation for major version #[+ImportantEntity--YDID 1] is available on the

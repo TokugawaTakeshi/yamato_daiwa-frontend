@@ -1,14 +1,8 @@
 /* ━━━ Components ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-/* ─── Badge ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-export { default as Badge } from "./Components/Badge/Badge";
-export { default as BadgeBasicImplementation } from "./Components/Badge/BadgeBasicImplementation";
-export { default as BadgeLoadingPlaceholder } from
-    "./Components/Badge/LoadingPlaceholder/Badge-LoadingPlaceholder-BasicLogic";
-export { default as BadgeLoadingPlaceholderBasicImplementation } from
-    "./Components/Badge/LoadingPlaceholder/Badge-LoadingPlaceholder-BasicImplementation";
+export { default as Button } from "./Components/Controls/Buttons/Plain/Button";
+export { default as ButtonLoadingPlaceholder } from "./Components/Controls/Buttons/Plain/Button-LoadingPlaceholder";
 
 /* ─── Other ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-export { default as OverflowSafeSingleLineLabel } from "./Components/OverflowSafeSingleLineLabel";
 export { default as ThemesShowcase } from "./Components/ThemesShowcase";
 
 

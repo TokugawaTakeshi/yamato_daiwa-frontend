@@ -1,0 +1,133 @@
+projectBuilding:
+
+  commonSettings:
+
+    selectiveExecutions:
+
+      LocalGalleries:
+
+        tasksAndSourceFilesSelection:
+          markupProcessing: [ LocalGalleriesIndexPage, CompletePages ]
+          stylesProcessing: [ Pages, Partials ]
+          ECMA_ScriptLogicProcessing: [ CompletePages ]
+
+        browserLiveReloadingSetupID: LocalGalleries
+
+      Distributions:
+
+        tasksAndSourceFilesSelection:
+          markupProcessing: [ CompletePages, PartialDemos ]
+          stylesProcessing: [ Pages, Partials ]
+          ECMA_ScriptLogicProcessing: [ CompletePages ]
+
+
+  # ━━━ Markup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  markupProcessing:
+
+    common:
+      buildingModeDependent:
+        LOCAL_DEVELOPMENT: { mustResolveResourceReferencesToRelativePaths: true }
+        PRODUCTION: { mustResolveResourceReferencesToRelativePaths: true }
+
+    entryPointsGroups:
+
+      LocalGalleriesIndexPage:
+
+        singleEntryPointSourceFileRelativePath: Source/LocalGalleriesIndexPage.pug
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT: { outputTopDirectoryRelativePath: LocalGalleriesBuild }
+
+      CompletePages:
+
+        sourceFilesTopDirectoryRelativePath: Source/CompletePages
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT: { outputTopDirectoryRelativePath: LocalGalleriesBuild }
+          PRODUCTION: { outputTopDirectoryRelativePath: Distributions }
+
+      PartialDemos:
+
+        sourceFilesTopDirectoryRelativePath: Source/PartialDemos
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        buildingModeDependent: { PRODUCTION: { outputTopDirectoryRelativePath: Distributions } }
+
+
+  # ━━━ Styles ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  stylesProcessing:
+
+    entryPointsGroups:
+
+      Pages:
+
+        sourceFilesTopDirectoryRelativePath: Source/CompletePages
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT: { outputTopDirectoryRelativePath: LocalGalleriesBuild }
+          PRODUCTION:
+            outputTopDirectoryRelativePath: Distributions
+            revisioning: { disable: true }
+
+      Partials:
+
+        sourceFilesTopDirectoryRelativePath: Source/PartialStylesheets
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT: { outputTopDirectoryRelativePath: LocalGalleriesBuild }
+          PRODUCTION:
+            outputTopDirectoryRelativePath: Distributions
+            revisioning: { disable: true }
+
+
+  # ━━━ ECMAScript Logic Processing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ECMA_ScriptLogicProcessing:
+
+    entryPointsGroups:
+
+      CompletePages:
+
+        sourceFilesTopDirectoryRelativePath: Source/CompletePages
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        targetRuntime:
+          type: BROWSER
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT: { outputTopDirectoryRelativePath: LocalGalleriesBuild }
+          PRODUCTION: { outputTopDirectoryRelativePath: Distributions }
+
+
+  # ━━━ Browser Live Reloading ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  browserLiveReloading:
+
+    setups:
+
+      LocalGalleries:
+
+        localServer:
+
+          rootDirectoryRelativePath: LocalGalleriesBuild
+          customStartingFileNameWithExtension: LocalGalleriesIndexPage.html
+
+        openInBrowsers: chrome
+
+  # ━━━ Files Watching ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  filesWatching:
+
+    relativePathsOfExcludeDirectories:
+      - Distributions
+      - LocalGalleriesBuild

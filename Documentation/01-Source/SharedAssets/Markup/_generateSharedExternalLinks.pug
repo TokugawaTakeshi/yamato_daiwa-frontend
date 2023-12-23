@@ -9,7 +9,9 @@
         homePage: {
           top: "https://pugjs.org/api/getting-started.html",
           mixins: "https://pugjs.org/language/mixins.html",
+          mixinBlocks: "https://pugjs.org/language/mixins.html#mixin-blocks",
           includes: "https://pugjs.org/language/includes.html",
+          templateInheritance: "https://pugjs.org/language/inheritance.html",
           inlineJavaScript: "https://pugjs.org/language/code.html",
           conditionalRendering: "https://pugjs.org/language/conditionals.html"
         }
@@ -23,15 +25,37 @@
         }
       },
 
+      vue: {
+        officialSite: {
+          top: "https://vuejs.org",
+          slots: localization.vue.officialSite.slots
+        }
+      },
+
       YamatoDaiwaES_Extensions: {
         top: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-ES-Extensions/blob/master/CoreLibrary/Package/README.md",
-        RawObjectDataProcessor: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-ES-Extensions/blob/master/CoreLibrary/Package/Documentation/RawObjectDataProcessor/RawObjectDataProcessor.md"
+        RawObjectDataProcessor: {
+          top: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-ES-Extensions/blob/master/CoreLibrary/Package/Documentation/RawObjectDataProcessor/RawObjectDataProcessor.md",
+          PropertiesSpecification: localization.YamatoDaiwaES_Extensions.RawObjectDataProcessor.PropertiesSpecification
+        }
       },
 
       jetBrains: {
         intelliJ_IDEA_FamilyIDEs: "https://www.jetbrains.com/products/#type=ide",
         liveTemplates: localization.jetBrains.liveTemplates,
         YDF_Plugin: "https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend"
+      },
+
+      wikipedia: {
+        Base64: localization.wikipedia.Base64
+      },
+
+      mdn: {
+        javaScript: {
+          string: {
+            ES6TemplateLiteral: localization.mdn.javaScript.string.ES6TemplateLiteral
+          }
+        }
       }
 
     };

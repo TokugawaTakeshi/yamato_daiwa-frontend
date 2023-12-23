@@ -1,9 +1,3 @@
--
-
-  /* [ Theory ] Required for HTML validity */
-  const HTML_PAGE_DEFAULT_LANGUAGE_SPECIFICATION__BCP47 = "en";
-
-
 include Markup/InlineECMAScript/PugExtensions.generated.pug
 
 -
@@ -18,12 +12,13 @@ include Markup/InlineECMAScript/PugExtensions.generated.pug
 
     /* ━━━ Arrays ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     addElementsToArray,
-    createArrayOfNatualNumbers,
+    createArrayOfNaturalNumbers,
     cropArray,
     getArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne,
     getIndexesOfArrayElementsWhichSatisfiesThePredicate,
     getIndexOfArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne,
     getLastElementOfArray,
+    moveArrayElementTo1Position,
     removeArrayElementsByIndexes,
     removeArrayElementsByPredicates,
     replaceArrayElementsByIndexesImmutably,
@@ -32,16 +27,6 @@ include Markup/InlineECMAScript/PugExtensions.generated.pug
 
 
     /* ━━━ Constants and enumerations ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    /* ─── Date & Time ────────────────────────────────────────────────────────────────────────────────────────────── */
-    CHARACTERS_COUNT_OF_DATE_PART_IN_ISO8601_STRING,
-    DaysOfWeek,
-    HOURS_PER_STELLAR_DAY,
-    MAXIMAL_DAYS_AT_MONTH,
-    MINUTES_PER_HOUR,
-    MONTHS_PER_YEAR,
-    MonthsNames,
-    SECONDS_PER_MINUTE,
-
     /* ─── HTTP ───────────────────────────────────────────────────────────────────────────────────────────────────── */
     HTTP_Methods,
     HTTP_StatusCodes,
@@ -50,6 +35,25 @@ include Markup/InlineECMAScript/PugExtensions.generated.pug
     RedirectionResponsesHTTP_StatusCodes,
     ClientErrorsHTTP_StatusCodes,
     ServerErrorsHTTP_StatusCodes,
+
+    /* ─── Re-exporting from "fundamental-constants" ──────────────────────────────────────────────────────────────── */
+    HTTP_DEFAULT_PORT,
+    HTTPS_DEFAULT_PORT,
+    NETWORK_PORT_MAXIMAL_VALUE,
+    NETWORK_PORT_MINIMAL_VALUE,
+    DAYS_COUNT_IN_WEEK,
+    DaysOfWeekNames,
+    HOURS_COUNT_IN_STELLAR_DAY,
+    MAXIMAL_DAYS_IN_MONTH,
+    MINUTES_COUNT_IN_HOUR,
+    MONTHS_COUNT_IN_YEAR,
+    MonthsNames,
+    SECONDS_COUNT_IN_MINUTE,
+    CHARACTERS_COUNT_IN_DATE_PART_OF_ISO8601_STRING,
+    CHARACTERS_COUNT_IN_FULL_ISO8601_STRING,
+    EMAIL_ADDRESS_VALID_PATTERN,
+    MAXIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS,
+    MINIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS,
 
 
     /* ━━━ Data mocking ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -138,12 +142,15 @@ include Markup/InlineECMAScript/PugExtensions.generated.pug
     addMultiplePairsToMap,
     createMapBasedOnOtherMap,
     filterMap,
+    removeEntriesFromMap,
 
 
     /* ━━━ Numbers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     formatNumberWith4KetaKanji,
     getArithmeticMean,
     isStringifiedNonNegativeIntegerOfRegularNotation,
+    limitMaximalValue,
+    limitMinimalValue,
     roundDownToSpecificIntegerPlaceValue,
     roundToSpecificNearestIntegerPlaceValue,
     roundToSpecifiedNearestDecimalPlaceValue,
@@ -181,7 +188,7 @@ include Markup/InlineECMAScript/PugExtensions.generated.pug
 
     /* ━━━ Random values generators ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     RawObjectDataProcessor,
-    RawObjectDataProcessorLocalization__English,
+    rawObjectDataProcessorLocalization__english,
     convertPotentialStringToNumberIfPossible,
     convertPotentialStringToIntegerIfPossible,
     convertPotentialStringToFloatIfPossible,
@@ -201,6 +208,10 @@ include Markup/InlineECMAScript/PugExtensions.generated.pug
     stringifiedDigits,
     uppercaseLatinCharacters,
 
+    /* ─── Line separators ──────────────────────────────────────────────────────────────────────────────────────────── */
+    getLineSeparatorType,
+    LineSeparators,
+
     /* ─── Regular expressions ────────────────────────────────────────────────────────────────────────────────────── */
     getMatchingWithFirstRegularExpressionCapturingGroup,
     extractMatchingsWithRegularExpression,
@@ -211,24 +222,27 @@ include Markup/InlineECMAScript/PugExtensions.generated.pug
     /* --- Files and directories ------------------------------------------------------------------------------------ */
     appendLastFileNameExtension,
     extractAllFileNameExtensions,
+    extractFileNameWithAllExtensionsFromPath,
+    extractFileNameWithoutAnyExtensions,
+    extractFileNameWithoutLastExtension,
     extractLastExtensionOfFileName,
     removeAllFileNameExtensions,
 
     /* --- Rest ----------------------------------------------------------------------------------------------------- */
     appendFragmentToURI,
-    getURI_PartWithoutFragment,
-    getURI_Fragment,
-    removeSpecificSegmentsFromURI_Path,
     explodeURI_PathToSegments,
-
+    getURI_Fragment,
+    getURI_PartWithoutFragment,
+    removeSpecificSegmentsFromURI_Path,
+    replaceLastURI_PathSegment,
 
     /* ─── Rest ───────────────────────────────────────────────────────────────────────────────────────────────────── */
     appendCharacterIfItDoesNotPresentInLastPosition,
-    areStringifiedDigitsOnly,
     capitalizeFirstCharacter,
     cropString,
     EmailAddress,
     explodeCasedPhraseToWords,
+    explodeStringToLines,
     getEnglishAbbreviatedOrdinalNumber,
     getLastCharacter,
     getPositionsOfAllSubstringOccurrences,
@@ -247,6 +261,7 @@ include Markup/InlineECMAScript/PugExtensions.generated.pug
     reverseString,
     splitString,
     stringifyAndFormatArbitraryValue,
+    surroundLabelByOrnament,
     toLowerCamelCase,
     toScreamingSnakeCase,
     toUpperCamelCase,
@@ -285,7 +300,12 @@ include Markup/InlineECMAScript/PugExtensions.generated.pug
     isNonEmptyObject,
     isNonNullObject,
 
+    /* ─── ParsedJSON ─────────────────────────────────────────────────────────────────────────────────────────────── */
+    isPossiblyReadonlyParsedJSON,
+    isPossiblyReadonlyParsedJSON_Object,
+
     /* ─── Strings ────────────────────────────────────────────────────────────────────────────────────────────────── */
+    areStringifiedDigitsOnly,
     isEmptyString,
     isNonEmptyString,
     isString,
@@ -311,7 +331,7 @@ include Markup/InlineECMAScript/PugExtensions.generated.pug
     /* ━━━ Specialities for Pug ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     buildEmailLinkHrefAttributeValue,
     buildPhoneNumberLinkHrefAttributeValue,
-    PugMixinsObjectTypeParametersProcessor
+    processObjectTypeParameterOfPugMixin
 
   } = (
     //- [ Theory ] `global` is actual for "gulp-pug" with Pug 3, while `globalThis` for `pug-plugin` for Webpack.

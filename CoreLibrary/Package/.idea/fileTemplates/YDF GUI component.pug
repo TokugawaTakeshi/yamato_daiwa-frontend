@@ -15,23 +15,25 @@ mixin ${NAME}--YDF(properties, statesSimulations)
       guidance,
       placeholder,
 
-      disabled = false,
-      readonly = false,
+      disabled,
+      readonly,
 
-      required = false,
-      mustDisplayAppropriateBadgeIfInputIsRequired = false,
-      mustDisplayAppropriateBadgeIfInputIsOptional = false,
-      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge = false,
+      required,
+      mustDisplayAppropriateBadgeIfInputIsRequired,
+      mustDisplayAppropriateBadgeIfInputIsOptional,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
 
-      coreElementHTML_ID = `${ COMPONENT_ID }-INPUT_OR_TEXT_AREA`, // TODO Replace "core" with more specific element name
-      labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
+      coreElementHTML_ID,
+      labelElementHTML_ID,
 
-      theme = ${NAME}__YDF.Themes.regular,
-      areThemesExternal = ${NAME}__YDF.areThemesExternal,
-      geometry = ${NAME}__YDF.GeometricVariations.regular,
-      decoration = ${NAME}__YDF.GeometricVariations.regular,
+      theme,
+      areThemesCSS_ClassesCommon,
+      geometricVariation,
+      geometricModifiers,
+      decorativeVariation,
+      decorativeModifiers
 
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -40,14 +42,15 @@ mixin ${NAME}--YDF(properties, statesSimulations)
     });
 
     const {
-      invalidInputHighlightingIfAnyValidationErrorsMessages = false,
-      validValueHighlightingIfNoValidationErrorsMessages = false,
-      validationErrorsMessages = []
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      invalidInputHighlightingIfAnyValidationErrorsMessages,
+      validValueHighlightingIfNoValidationErrorsMessages,
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: statesSimulations,
       parameterNumber: 2,
       parameterName: "statesSimulations",
-      parameterPropertiesSpecification: ${NAME}__YDF.stateSimulationsSpecification,
+      parameterPropertiesSpecification: ${NAME}__YDF.statesSimulationsSpecification,
       mixinName: ${NAME}__YDF.CSS_NAMESPACE
     });
 
@@ -67,7 +70,7 @@ mixin ${NAME}--YDF(properties, statesSimulations)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: ${NAME}__YDF.GeometricVariations,
         CSS_Namespace: ${NAME}__YDF.CSS_NAMESPACE
       }),
@@ -75,7 +78,7 @@ mixin ${NAME}--YDF(properties, statesSimulations)
       ...ComponentsAuxiliaries.generateDemandedGeometricModifiersCSS_Classes(${NAME}__YDF.CSS_NAMESPACE, geometricModifiers),
 
       ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
-        decoration,
+        decorativeVariation,
         allDecorativeVariations: ${NAME}__YDF.DecorativeVariations,
         CSS_Namespace: ${NAME}__YDF.CSS_NAMESPACE
       }),
@@ -97,15 +100,16 @@ mixin ${NAME}--YDF(properties, statesSimulations)
       coreElementHTML_ID: coreElementHTML_ID,
       labelElementHTML_ID: labelElementHTML_ID,
 
-      theme: ${NAME}__YDF.selfAndCompoundControlShellThemesCorrespondence[theme],
-      areThemesExternal,
-      geometry: ${NAME}__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[geometry],
-      decoration: ${NAME}__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[decoration]
+      theme: ${NAME}__YDF.selfAndCompoundControlShellThemesCorrespondence.compoundControlShell[theme],
+      areThemesCSS_ClassesCommon,
+      geometricVariation: ${NAME}__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence.
+          compoundControlShell[geometricVariation],
+      decorativeVariation: ${NAME}__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence.
+          compoundControlShell[decorativeVariation]
 
     },
     {
-      invalidInputHighlightingIfAnyValidationErrorsMessages,
-      validValueHighlightingIfNoValidationErrorsMessages,
-      validationErrorsMessages
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
     }
-  ).${NAME}--YDF&attributes(attributes)(class= rootElementModifierCSS_Classes)
+  ).${NAME}--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)

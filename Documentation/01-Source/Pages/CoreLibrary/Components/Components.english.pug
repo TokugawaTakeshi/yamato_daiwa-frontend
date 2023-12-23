@@ -20,7 +20,13 @@ block append Metadata
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents"
+    ];
+
     scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.components");
@@ -29,6 +35,8 @@ block append Metadata
       japanese: "./Components.japanese.html",
       russian: "./Components.russian.html"
     });
+
+    const pageTableOfContents = localizedRouting.coreLibrary.$children.components.$sectioning;
 
 
 block append HeadScriptsLinks
@@ -42,12 +50,12 @@ block append SpecificContent
 
   article
 
-    h1 GUI components
+    h1.Article-Heading1 GUI components
 
-    +AttentionBox--YDF({
+    +AdmonitionBlock--YDF({
       title: "This page is under construction",
-      decoration: AttentionBox__YDF.DecorativeVariations.guidance,
-      hasPrependedSVG_Icon: true
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.guidance,
+      SVG_Icon: true
     })
       | Apologies, but this page is currently being worked on.
       | Rest assured, it will be completed during the alpha versions.

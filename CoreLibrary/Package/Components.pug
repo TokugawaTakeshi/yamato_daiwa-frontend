@@ -1,10 +1,27 @@
 //- === Must be defined primarily ======================================================================================
+include Markup/InlineECMAScript/ComponentsDefaultLocalizations.generated.pug
+
+-
+
+  const {
+    admonitionBlockYDF_ComponentLocalization__english,
+    dateTimePickerYDF_ComponentLocalization__english,
+    dropDownListYDF_ComponentLocalization__english,
+    filesUploaderYDF_ComponentLocalization__english,
+    numberBoxYDF_ComponentLocalization__english,
+    paginationYDF_ComponentLocalization__english,
+    snackbarYDF_ComponentLocalization__english
+  } = (
+    //- [ Theory ] `global` is actual for "gulp-pug" with Pug 3, while `globalThis` for `pug-plugin` for Webpack.
+    global ?? globalThis
+  ).__COMPONENTS_DEFAULT_LOCALIZATIONS_EXPORTS__;
+
 include Components/_Auxiliaries/ComponentsAuxiliaries.pug
 include Components/Controls/CompoundControlShell/CompoundControlShell.pug
 //- ====================================================================================================================
 
 
-include Components/AttentionBox/AttentionBox.pug
+include Components/AdmonitionBlock/AdmonitionBlock.pug
 include Components/Badge/Badge.pug
 include Components/BlockingLoadingOverlay/BlockingLoadingOverlay.pug
 
@@ -12,9 +29,15 @@ include Components/Controls/Buttons/Closing/ClosingButton.pug
 include Components/Controls/Buttons/HamburgerMenu/HamburgerMenuButton.pug
 include Components/Controls/Buttons/Plain/Button.pug
 
+include Components/Controls/Chip/Chip.pug
 include Components/Controls/ComboBox/ComboBox.pug
+include Components/Controls/DateTimePicker/DateTimePicker.pug
+include Components/Controls/DropDownList/DropDownList.pug
 include Components/Controls/FilesUploader/FilesUploader.pug
+include Components/Controls/ModalDialogs/Common/ModalDialog.pug
+include Components/Controls/ModalDialogs/Confirmation/ConfirmationModalDialog.pug
 include Components/Controls/NumberBox/NumberBox.pug
+include Components/Controls/Pagination/Pagination.pug
 include Components/Controls/RadioButton/RadioButton.pug
 include Components/Controls/RadioButtonsGroup/RadioButtonsGroup.pug
 include Components/Controls/SearchBox/SearchBox.pug
@@ -23,7 +46,6 @@ include Components/Controls/TextBox/TextBox.pug
 
 include Components/InformationSourceReference/InformationSourceReference.pug
 include Components/LoadingIndicator/LoadingIndicator.pug
-include Components/ModalDialog/ModalDialog.pug
 include Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.pug
 
 include Components/Prototyping/DummyLogoLink/DummyLogoLink.pug
@@ -36,11 +58,13 @@ include Components/Typography/ArticleAbstract/ArticleAbstract.pug
 include Components/Typography/ConsoleOutput/ConsoleOutput.pug
 include Components/Typography/CodeListing/CodeListing.pug
 include Components/Typography/Footnote/Footnote.pug
-include Components/Typography/ImprovedBlockquote/ImprovedBlockquote.pug
+include Components/Typography/Heading/Heading.pug
+include Components/Typography/Blockquote/Blockquote.pug
 include Components/Typography/ImprovedList/ImprovedList.pug
+include Components/Typography/Link/Link.pug
 include Components/Typography/LinksCardsFlow/LinksCardsFlow.pug
 include Components/Typography/QuestionAndAnswerBox/QuestionAndAnswerBox.pug
-include Components/Typography/Link.pug
 
 include Components/Viewers/Code/CodeViewer.pug
 include Components/Viewers/SingleImage/SingleImageViewer.pug
+include Components/Viewers/WebPageViewer/WebPageViewer.pug

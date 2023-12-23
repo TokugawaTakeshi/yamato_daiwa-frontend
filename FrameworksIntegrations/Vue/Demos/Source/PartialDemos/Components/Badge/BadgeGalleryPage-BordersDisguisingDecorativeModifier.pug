@@ -1,0 +1,12 @@
+extends ../../../CompletePages/Components/Badge/_BadgeGalleryPage.template.pug
+
+
+block append Metadata
+
+  -
+
+    HTML_PAGE_TITLE = generateHTML_Page_Title("Borders Disguising Decorative Modifier");
+
+    BadgeGalleryOptions.
+        renderSinglePartial(BadgeGalleryOptions.Partials.bordersDisguisingDecorativeModifier).
+        visuallyHideAllHeadings();

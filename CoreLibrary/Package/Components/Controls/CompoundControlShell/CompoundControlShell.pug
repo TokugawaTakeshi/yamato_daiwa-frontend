@@ -21,11 +21,11 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
       mainSlotWrapperAdditionalCSS_Classes = [],
 
       theme = CompoundControlShell__YDF.Themes.regular,
-      areThemesExternal = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || CompoundControlShell__YDF.areThemesCSS_ClassesCommon,
-      geometry = CompoundControlShell__YDF.GeometricVariations.regular,
-      decoration = CompoundControlShell__YDF.DecorativeVariations.regular
+      areThemesExternal = ComponentsAuxiliaries.areComponentsThemesCommon || CompoundControlShell__YDF.areThemesCSS_ClassesCommon,
+      geometricVariation = CompoundControlShell__YDF.GeometricVariations.regular,
+      decorativeVariation = CompoundControlShell__YDF.DecorativeVariations.regular
 
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -36,7 +36,7 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
     const {
       validationErrorsMessages = false,
       asynchronousValidationsStatuses = false
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: statesSimulations,
       parameterNumber: 2,
       parameterName: "statesSimulations",
@@ -66,7 +66,19 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
 
       }
 
-      formattedGuidance = guidanceSegments.join("")
+      formattedGuidance = replaceMatchesWithRegularExpressionToDynamicValue({
+        targetString: guidanceSegments.join(""),
+        regularExpressionWithCapturingGroups: /\[(?<anchorText>.+?)\]\((?<URI>.+?)\)/gu,
+        replacer: ({ namedCapturingGroups }) =>
+            `<a ` +
+              `class="CompoundControlShell--YDF-Guidance-Link" ` +
+              `href="${ namedCapturingGroups.URI }" ` +
+              `target="_blank" ` +
+              `rel="noopener noreferrer nofollow"` +
+            `>` +
+              `${ namedCapturingGroups.anchorText }` +
+            `</a>` }
+      );
 
     }
 
@@ -82,13 +94,13 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: CompoundControlShell__YDF.GeometricVariations,
         CSS_Namespace: CompoundControlShell__YDF.CSS_NAMESPACE
       }),
 
       ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
-        decoration,
+        decorativeVariation,
         allDecorativeVariations: CompoundControlShell__YDF.DecorativeVariations,
         CSS_Namespace: CompoundControlShell__YDF.CSS_NAMESPACE
       })
@@ -183,7 +195,7 @@ mixin CompoundControlShell--YDF(properties, statesSimulations)
               )
                 +LoadingIndicator--YDF({
                   type: LoadingIndicator__YDF.Types.variableWidthArcSpinner,
-                  geometry: LoadingIndicator__YDF.GeometricVariations.small
+                  geometricVariation: LoadingIndicator__YDF.GeometricVariations.small
                 }).CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-LoadingIndicator
                 p.CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item-Text= asynchronousValidationsStatus.message
 

@@ -193,12 +193,21 @@ provideCompoundControlShellYDF_Component(
 
         retireFrom({
           definitions:\
-              (".CompoundControlShell--YDF-Header" {
+              (".CompoundControlShell--YDF-Header:not(:has(.CompoundControlShell--YDF-Badge))" {
                 y: extractAndValidateObjectProperties({
                   targetObject: variation,
                   targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
                   extracts: {
-                    spacingAfterHeading: { dotSeparatedPath: "mainSlot.spacing.afterHeader", required: true },
+                    spacingAfterHeading: { dotSeparatedPath: "mainSlot.spacing.afterHeaderWithoutBadge", required: true },
+                  }
+                }).spacingAfterHeading
+              })\
+              (".CompoundControlShell--YDF-Header:has(.CompoundControlShell--YDF-Badge)" {
+                y: extractAndValidateObjectProperties({
+                  targetObject: variation,
+                  targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+                  extracts: {
+                    spacingAfterHeading: { dotSeparatedPath: "mainSlot.spacing.afterHeaderWithBadge", required: true },
                   }
                 }).spacingAfterHeading
               })\
@@ -326,6 +335,39 @@ provideCompoundControlShellYDF_Component(
           color: { dotSeparatedPath: "guidance.text.color", required: false }
         }
       })
+
+
+    .CompoundControlShell--YDF-Guidance-AccentedFragment
+
+      font-weight bold
+      color: YDF_ColorPalette.red.slightlyDark
+
+
+    .CompoundControlShell--YDF-Guidance-Link
+
+      color: JQueryUI_BaseTheme.clickableElements.activeState.borderColor
+      text-decoration-color: rgba(JQueryUI_BaseTheme.clickableElements.activeState.borderColor, 0.5)
+      text-underline-offset 2px
+      text-decoration-line underline
+
+
+      &:hover
+
+        color: JQueryUI_BaseTheme.clickableElements.activeState.background
+        text-decoration-color: rgba(JQueryUI_BaseTheme.clickableElements.activeState.background, 0.75)
+
+
+      &:focus
+
+        color: JQueryUI_BaseTheme.clickableElements.activeState.background
+        text-decoration: rgba(JQueryUI_BaseTheme.clickableElements.activeState.background, 0.75)
+        box-shadow: 0 0 0 2px JQueryUI_BaseTheme.clickableElements.focusState.shadowColor
+
+
+      &:active
+
+        color: JQueryUI_BaseTheme.warning.fontColor
+        text-decoration-color: rgba(JQueryUI_BaseTheme.clickableElements.activeState.background, 0.75)
 
 
     .CompoundControlShell--YDF-ValidationErrorMessage

@@ -8,10 +8,11 @@ mixin LoadingIndicator--YDF(properties, statesSimulations)
     const {
       type,
       theme = LoadingIndicator__YDF.Themes.regular,
-      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || LoadingIndicator__YDF.areThemesCSS_ClassesCommon,
-      geometry = LoadingIndicator__YDF.GeometricVariations.regular,
-      decoration = LoadingIndicator__YDF.DecorativeVariations.regular,
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      areThemesCSS_ClassesCommon =
+          ComponentsAuxiliaries.areComponentsThemesCommon || LoadingIndicator__YDF.areThemesCSS_ClassesCommon,
+      geometricVariation = LoadingIndicator__YDF.GeometricVariations.regular,
+      decorativeVariation = LoadingIndicator__YDF.DecorativeVariations.regular,
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -31,16 +32,16 @@ mixin LoadingIndicator--YDF(properties, statesSimulations)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: LoadingIndicator__YDF.GeometricVariations,
         CSS_Namespace: LoadingIndicator__YDF.CSS_NAMESPACE
       }),
 
       ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
-        decoration,
+        decorativeVariation,
         allDecorativeVariations: LoadingIndicator__YDF.DecorativeVariations,
         CSS_Namespace: LoadingIndicator__YDF.CSS_NAMESPACE
-      }),
+      })
 
     ];
 

@@ -1,0 +1,798 @@
+h1.Heading1(
+  :class="mustVisuallyHideTopHeading ? 'YDF_Gallery-InvisibleHeading' : null"
+) Button Component Demos
+
+
+//- ━━━ Minimal ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+template(
+  v-if="mustRenderAllPartials || partialsFlags.minimal"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Minimal
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            label="Click 押下"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Link
+        dd
+          Button(
+            label="Click 押下"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Input
+        dd
+          Button(
+            label="Click 押下",
+            :HTML_Type="Button.HTML_Types.inputButton"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+
+//- ━━━ Long Labels ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+template(
+  v-if="mustRenderAllPartials || partialsFlags.longLabels"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Long Labels
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Link
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Input
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            :HTML_Type="Button.HTML_Types.inputButton"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+
+//- ━━━ Prepended SVG Icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+template(
+  v-if="mustRenderAllPartials || partialsFlags.prependedSVG_Icons"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Prepended SVG Icons
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            label="Like!"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+            template(v-slot:prependedSVG_Icon): HeartIcon.Button--YDF-SVG_Icon
+
+        dt Link
+        dd
+          Button(
+            label="Like!"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+            template(v-slot:prependedSVG_Icon): HeartIcon.Button--YDF-SVG_Icon
+
+        dt Input
+        dd Unavailable
+
+
+//- ━━━ Labels With Appended SVG Icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+template(
+  v-if="mustRenderAllPartials || partialsFlags.appendedSVG_Icons"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Labels With Appended SVG Icons
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            label="Like!"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+            template(v-slot:appendedSVG_Icon): HeartIcon.Button--YDF-SVG_Icon
+
+        dt Link
+        dd
+          Button(
+            label="Like!"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+            template(v-slot:appendedSVG_Icon): HeartIcon.Button--YDF-SVG_Icon
+
+        dt Input
+        dd Unavailable
+
+
+//- ━━━ Lone Icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+template(
+  v-if="mustRenderAllPartials || partialsFlags.loneSVG_Icons"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Lone Icons
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            accessibilityGuidance="Like this video"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+            template(v-slot:loneSVG_Icon): HeartIcon.Button--YDF-SVG_Icon
+
+        dt Link
+        dd
+          Button(
+            accessibilityGuidance="Like this video"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+            template(v-slot:loneSVG_Icon): HeartIcon.Button--YDF-SVG_Icon
+
+        dt Input
+        dd Unavailable
+
+
+//- ━━━ Custom SVG Icon ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+template(
+  v-if="mustRenderAllPartials || partialsFlags.customIcons"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Custom SVG Icon
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            label="Menu"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+            template(
+              v-slot:prependedSVG_Icon
+            ): MenuIcon__ThreeDots__Horizontal.Button--YDF-SVG_Icon.Button--YDF-SVG_Icon__Menu__ThreeDots__Horizontal
+
+        dt Link
+        dd
+          Button(
+            label="Menu"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+          )
+            template(
+              v-slot:prependedSVG_Icon
+            ): MenuIcon__ThreeDots__Horizontal.Button--YDF-SVG_Icon.Button--YDF-SVG_Icon__Menu__ThreeDots__Horizontal
+
+        dt Input
+        dd Unavailable
+
+
+//- ━━━ Geometric modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+h2.Heading2(
+  v-if="!mustVisuallyHideAllHeadings && mustRenderAtLeansOnePartialRelatedWithGeometricModifier"
+) Geometric Modifiers
+
+//- ─── Pill Shape ─────────────────────────────────────────────────────────────────────────────────────────────────────
+template(
+  v-if="mustRenderAllPartials || partialsFlags.pillShapeGeometricModifier"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Pill Shape
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            label="Click 押下"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.pillShape ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Link
+        dd
+          Button(
+            label="Click 押下"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.pillShape ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Input
+        dd
+          Button(
+            label="Click 押下",
+            :HTML_Type="Button.HTML_Types.inputButton"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.pillShape ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+//- ─── Square Shape ───────────────────────────────────────────────────────────────────────────────────────────────────
+template(
+  v-if="mustRenderAllPartials || partialsFlags.squareShapeGeometricModifier"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Square Shape
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            label="Click 押下"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.squareShape ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Link
+        dd
+          Button(
+            label="Click 押下"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.squareShape ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Input
+        dd
+          Button(
+            label="Click 押下",
+            :HTML_Type="Button.HTML_Types.inputButton"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.squareShape ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+//- ─── Square Shape Unless Overflowed ─────────────────────────────────────────────────────────────────────────────────
+template(
+  v-if="mustRenderAllPartials || partialsFlags.squareShapeUnlessOverflowedGeometricModifier"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Square Shape Unless Overflowed
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            label="Click 押下"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.squareShapeUnlessOverflowed ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Link
+        dd
+          Button(
+            label="Click 押下"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.squareShapeUnlessOverflowed ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Input
+        dd
+          Button(
+            label="Click 押下",
+            :HTML_Type="Button.HTML_Types.inputButton"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.squareShapeUnlessOverflowed ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+//- ─── Single Line ────────────────────────────────────────────────────────────────────────────────────────────────────
+template(
+  v-if="mustRenderAllPartials || partialsFlags.singleLineGeometricModifier"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Single Line
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.singleLine ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Link
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.singleLine ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Input
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            :HTML_Type="Button.HTML_Types.inputButton"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.singleLine ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+
+//- ─── No Left Border and Roundings ───────────────────────────────────────────────────────────────────────────────────
+template(
+  v-if="mustRenderAllPartials || partialsFlags.noLeftBorderAndRoundingsGeometricModifier"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) No Left Border and Roundings
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.noLeftBorderAndRoundings ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Link
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.noLeftBorderAndRoundings ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Input
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            :HTML_Type="Button.HTML_Types.inputButton"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.noLeftBorderAndRoundings ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+
+//- ─── No Right Border and Roundings ──────────────────────────────────────────────────────────────────────────────────
+template(
+  v-if="mustRenderAllPartials || partialsFlags.noRightBorderAndRoundingsGeometricModifier"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) No Right Border and Roundings
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.noRightBorderAndRoundings ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Link
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.noRightBorderAndRoundings ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+        dt Input
+        dd
+          Button(
+            :label="textOverflowSafetyTest"
+            :HTML_Type="Button.HTML_Types.inputButton"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :geometricModifiers="[ Button.GeometricModifiers.noRightBorderAndRoundings ]"
+            :decorativeVariation="decorativeVariation.value"
+          )
+
+
+//- ━━━ Decorative modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+h2.Heading2(
+  v-if="!mustVisuallyHideAllHeadings && mustRenderAtLeansOnePartialRelatedWithDecorativeModifier"
+) Decorative Modifiers
+
+//- ─── Borders Disguising ─────────────────────────────────────────────────────────────────────────────────────────────
+template(
+  v-if="mustRenderAllPartials || partialsFlags.bordersDisguisingDecorativeModifier"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Borders Disguising
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            label="Click 押下"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+            :decorativeModifiers="[ Button.DecorativeModifiers.bordersDisguising ]"
+          )
+
+        dt Link
+        dd
+          Button(
+            label="Click 押下"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+            :decorativeModifiers="[ Button.DecorativeModifiers.bordersDisguising ]"
+          )
+
+        dt Input
+        dd
+          Button(
+            label="Click 押下",
+            :HTML_Type="Button.HTML_Types.inputButton"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+            :decorativeModifiers="[ Button.DecorativeModifiers.bordersDisguising ]"
+          )
+
+//- ─── Borders Disguising ─────────────────────────────────────────────────────────────────────────────────────────────
+template(
+  v-if="mustRenderAllPartials || partialsFlags.noBackgroundDecorativeModifier"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Borders Disguising
+
+  ThemesShowcase(
+    :themes="Button.Themes"
+    :themeKeyLabelPrefix="THEME_KEY_LABEL_PREFIX"
+    :geometricVariations="Button.GeometricVariations"
+    :geometricVariationLabelPrefix="GEOMETRIC_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariations="Button.DecorativeVariations"
+    :decorativeVariationLabelPrefix="DECORATIVE_VARIATION_KEY_LABEL_PREFIX"
+    :decorativeVariationsListItemAdditionalCSS_Classes="[ 'ButtonGallery-DecorativeVariationsListItem' ]"
+  )
+    template(
+      v-slot="{ theme, geometricVariation, decorativeVariation }"
+    )
+
+      dl.ButtonGallery-PseudoTable
+
+        dt Button
+        dd
+          Button(
+            label="Click 押下"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+            :decorativeModifiers="[ Button.DecorativeModifiers.noBackground ]"
+          )
+
+        dt Link
+        dd
+          Button(
+            label="Click 押下"
+            URI="#"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+            :decorativeModifiers="[ Button.DecorativeModifiers.noBackground ]"
+          )
+
+        dt Input
+        dd
+          Button(
+            label="Click 押下",
+            :HTML_Type="Button.HTML_Types.inputButton"
+            :theme="theme.value"
+            :geometricVariation="geometricVariation.value"
+            :decorativeVariation="decorativeVariation.value"
+            :decorativeModifiers="[ Button.DecorativeModifiers.noBackground ]"
+          )
+
+
+//- ━━━ Loading Placeholder ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+template(
+  v-if="mustRenderAllPartials || partialsFlags.loadingPlaceholder"
+)
+
+  h2.Heading2(
+    :class="mustVisuallyHideAllHeadings ? 'YDF_Gallery-InvisibleHeading' : null"
+  ) Loading Placeholder
+
+  .ButtonGallery-ButtonsFlow
+
+    ButtonLoadingPlaceholder(
+      v-for="geometricVariation of Object.values(Button.GeometricVariations)"
+      :key="`BUTTON-LOADING_PLACEHOLDER-${ geometricVariation }`"
+      :geometricVariation="geometricVariation"
+    )
+
+    ButtonLoadingPlaceholder(
+      v-for="geometricVariation of Object.values(Button.GeometricVariations)"
+      :key="`BUTTON-LOADING_PLACEHOLDER-${ geometricVariation }-PILL_SHAPE`"
+      :geometricVariation="geometricVariation"
+      :geometricModifiers="[ Button.GeometricModifiers.pillShape ]"
+    )

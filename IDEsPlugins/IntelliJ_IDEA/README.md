@@ -18,8 +18,8 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 
 - **buildEmailLinkHREF_AttributeValue** Autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.english.html)
 - **buildPhoneNumberLinkHrefAttributeValue** Autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.english.html)
-- **tost** - Autocomplete imitator for [`textOverflowSafetyTest` constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Markup/ConstantsAssets/textOverflowSafetyTest/textOverflowSafetyTest.md)
-- **dius** - Autocomplete imitator for <code>DummyImagesURIs</code> enumeration 
+- **tost** — Autocomplete imitator for [`textOverflowSafetyTest` constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Markup/ConstantsAssets/textOverflowSafetyTest/textOverflowSafetyTest.md)
+- **dius** — Autocomplete imitator for <code>DummyImagesURIs</code> enumeration 
 
 <!-- * <kbd>dius</kbd> Autocomplete imitator for [`DummyImagesURIs` enumeration](#) -->
 
@@ -64,80 +64,89 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 #### Kernel
 ##### Configuration
 
-- **fs** - accessing to selected value of `YDF_Configuration.fontsStacks` associative array
-- **tg** - accessing to selected value of `YDF_Configuration.textGeometry` associative array
-- **oydfc** - overriding of `YDF_Configuration` object
-- **ydfc** - autocomplete for `YDF_Configuration` object
-- **zi** - accessing to selected value of `YDF_Configuration.zIndexes` associative array
+- **fs** — accessing to selected value of `YDF_Configuration.fontsStacks` associative array
+- **tg** — accessing to selected value of `YDF_Configuration.textGeometry` associative array
+- **oydfc** — overriding of `YDF_Configuration` object
+- **ydfc** — autocomplete for `YDF_Configuration` object
+- **zi** — accessing to selected value of `YDF_Configuration.zIndexes` associative array
 
 ##### Specification schemas
 
-- **BordersSizingSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
-- **PaddingsSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
-- **TextElementHeightSizingSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
-- **WidthSizingSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
+- **BordersSizingSpecificationSchema--YDF** — autocomplete imitator type Live Template for eponymous object
+- **PaddingsSpecificationSchema--YDF** — autocomplete imitator type Live Template for eponymous object
+- **TextElementHeightSizingSpecificationSchema--YDF** — autocomplete imitator type Live Template for eponymous object
+- **WidthSizingSpecificationSchema--YDF** — autocomplete imitator type Live Template for eponymous object
 
 ##### Functions
 ###### Type checkers
 
 - Strings
-  - **isEmptyString** - autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
-  - **isNonEmptyString** - autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
-  - **isString** - autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+  - **isEmptyString** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+  - **isNonEmptyString** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
+  - **isString** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md)
   
-  <!-- - **isEmptyString** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isEmptyString--SECTION) -->
-  <!-- - **isNonEmptyString** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isNonEmptyString--SECTION) -->
-  <!-- - **isString** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isString--SECTION) -->
+  <!-- - **isEmptyString** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isEmptyString--SECTION) -->
+  <!-- - **isNonEmptyString** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isNonEmptyString--SECTION) -->
+  <!-- - **isString** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isString--SECTION) -->
 
 - Quantities
-  - **isDimensionalOrDimensionlessQuantity** - autocomplete imitator type Live template for the eponymous function
-  - **isDimensionalQuantity** - autocomplete imitator type Live template for the eponymous function
-  - **isDimensionlessQuantity** - autocomplete imitator type Live template for the eponymous function
-  - **isNaturalNumber** - autocomplete imitator type Live template for the eponymous function
+  - **isDimensionalOrDimensionlessQuantity** — autocomplete imitator type Live template for the eponymous function
+  - **isDimensionalQuantity** — autocomplete imitator type Live template for the eponymous function
+  - **isDimensionlessQuantity** — autocomplete imitator type Live template for the eponymous function
+  - **isNaturalNumber** — autocomplete imitator type Live template for the eponymous function
 
-  <!-- - **isDimensionalOrDimensionlessQuantity** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isDimensionalOrDimensionlessQuantity--SECTION) -->
-  <!-- - **isDimensionalQuantity** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isDimensionalQuantity--SECTION) -->
-  <!-- - **isDimensionlessQuantity** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isDimensionlessQuantity--SECTION) -->
-  <!-- - **isNaturalNumber** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isNaturalNumber--SECTION) -->
+  <!-- - **isDimensionalOrDimensionlessQuantity** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isDimensionalOrDimensionlessQuantity--SECTION) -->
+  <!-- - **isDimensionalQuantity** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isDimensionalQuantity--SECTION) -->
+  <!-- - **isDimensionlessQuantity** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isDimensionlessQuantity--SECTION) -->
+  <!-- - **isNaturalNumber** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isNaturalNumber--SECTION) -->
 
 - Booleans
-  - **isBoolean** - autocomplete imitator type Live template for the eponymous function
-  - **isFalse** - autocomplete imitator type Live template for the eponymous function
-  - **isTrue** - autocomplete imitator type Live template for the eponymous function
+  - **isBoolean** — autocomplete imitator type Live template for the eponymous function
+  - **isFalse** — autocomplete imitator type Live template for the eponymous function
+  - **isTrue** — autocomplete imitator type Live template for the eponymous function
 
-  <!-- - **isBoolean** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isBoolean--SECTION) -->
-  <!-- - **isFalse** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isFalse--SECTION) -->
-  <!-- - **isTrue** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isTrue--SECTION) -->
+  <!-- - **isBoolean** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isBoolean--SECTION) -->
+  <!-- - **isFalse** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isFalse--SECTION) -->
+  <!-- - **isTrue** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isTrue--SECTION) -->
 
 - Nullables
-  - **isNotNull** - autocomplete imitator type Live template for the eponymous function
-  - **isNull** - autocomplete imitator type Live template for the eponymous function 
+  - **isNotNull** — autocomplete imitator type Live template for the eponymous function
+  - **isNull** — autocomplete imitator type Live template for the eponymous function 
   
-  <!-- - **isNotNull** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isNotNull--SECTION) -->
-  <!-- - **isNull** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isNull--SECTION) -->
+  <!-- - **isNotNull** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isNotNull--SECTION) -->
+  <!-- - **isNull** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isNull--SECTION) -->
 
 - Others
   - **isCalcExpression** autocomplete imitator type Live template for the eponymous function
   - **isFunction** autocomplete imitator type Live template for the eponymous function
   - **isIdentifier** autocomplete imitator type Live template for the eponymous function
-  - **isObject** - autocomplete imitator type Live template for the eponymous function
+  - **isObject** — autocomplete imitator type Live template for the eponymous function
 
-  <!-- - **isCalcExpression** autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isCalcExpression--SECTION) -->
-  <!-- - **isFunction** autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isFunction--SECTION) -->
-  <!-- - **isIdentifier** autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isIdentifier--SECTION) -->
-  <!-- - **isObject** - autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isObject--SECTION) -->
+  <!-- - **isCalcExpression** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isCalcExpression--SECTION) -->
+  <!-- - **isFunction** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isFunction--SECTION) -->
+  <!-- - **isIdentifier** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isIdentifier--SECTION) -->
+  <!-- - **isObject** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.english.html#isObject--SECTION) -->
 
 
-* Autocomplete imitators (no abbreviations) for value converters
-  * <kbd>emptyStringToNull</kbd>
-  * <kbd>nullToZero</kbd>
-  * <kbd>nullToEmptyString</kbd>
-  * <kbd>nullToEmptyObject</kbd>
+###### Value converters
+
+- **emptyStringToNull** — autocomplete imitator type Live template for the eponymous function
+- **nullToZero** — autocomplete imitator type Live template for the eponymous function
+- **nullToEmptyString** — autocomplete imitator type Live template for the eponymous function
+- **nullToEmptyObject** — autocomplete imitator type Live template for the eponymous function
       
-* Strings
-  * <kbd>bs</kbd> - live template for [buildString](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString.md) function
-  * <kbd>cflc</kbd> - live template for [capitalizeFirstLatinCharacter](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md) function
-      
+
+###### Strings 
+
+- **buildString** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString.md)
+- **capitalizeFirstLatinCharacter** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md)
+
+###### Quantities
+
+- **appendUnit** — autocomplete imitator type Live template for the eponymous function
+- **computeExtraSpaceCausedByLineHeightAtTopOrBottom** - autocomplete imitator type Live template for the eponymous function
+
+
 * Objects
   * <kbd>dcaoo</kbd> - live template for [deeplyCloneAndOverrideObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject.md) function
   * <kbd>dco</kbd> - live template for [deeplyCloneObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject.md) function

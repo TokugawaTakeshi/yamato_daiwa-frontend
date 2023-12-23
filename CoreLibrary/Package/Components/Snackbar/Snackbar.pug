@@ -6,12 +6,13 @@ mixin Snackbar--YDF(properties, statesSimulations)
   -
 
     const {
-      text,
-      theme = Snackbar__YDF.Themes.regular,
-      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || Snackbar__YDF.areThemesCSS_ClassesCommon,
-      geometry = Snackbar__YDF.GeometricVariations.regular,
-      decoration
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      textOrHTML,
+      position,
+      theme,
+      areThemesCSS_ClassesCommon,
+      geometricVariation,
+      decorativeVariation
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -20,8 +21,9 @@ mixin Snackbar--YDF(properties, statesSimulations)
     });
 
     const {
-      mustDisplay = true
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+      mounted,
+      hidden
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: statesSimulations,
       parameterNumber: 2,
       parameterName: "statesSimulations",
@@ -39,31 +41,45 @@ mixin Snackbar--YDF(properties, statesSimulations)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: Snackbar__YDF.GeometricVariations,
         CSS_Namespace: Snackbar__YDF.CSS_NAMESPACE
       }),
 
       ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
-        decoration,
+        decorativeVariation,
         allDecorativeVariations: Snackbar__YDF.DecorativeVariations,
         CSS_Namespace: Snackbar__YDF.CSS_NAMESPACE
-      })
+      }),
+
+      `${ Snackbar__YDF.CSS_NAMESPACE }__${ toUpperCamelCase(position) }Position`,
+
+      ...hidden ?
+          [
+            `${ Snackbar__YDF.CSS_NAMESPACE }-Transition__Appearing`,
+            `${ Snackbar__YDF.CSS_NAMESPACE }-Transition__HiddenState`
+          ] :
+          [
+            `${ Snackbar__YDF.CSS_NAMESPACE }-Transition__DisplayingState`,
+            `${ Snackbar__YDF.CSS_NAMESPACE }-Transition__Disappearing`
+          ]
 
     ];
 
+  //- [ Reference ] https://www.magentaa11y.com/checklist-web/toast-snackbar/
 
-  if mustDisplay
+  if mounted
 
     .Snackbar--YDF&attributes(attributes)(
       class=rootElementModifierCSS_Classes
       role="status"
-      aria-live="polite"
+      aria-live="assertive"
+      hidden=hidden
     )
 
-      +ExclamationMark__Circled__Filled--YDF_Icon.Snackbar--YDF-Icon
+      +ExclamationMark__Circled__Filled--YDF_Icon.Snackbar--YDF-SVG_Icon
 
-      p.Snackbar--YDF-Message= text
+      p.Snackbar--YDF-Message!= textOrHTML
 
       button.Snackbar--YDF-DismissingButton(
         type="button"

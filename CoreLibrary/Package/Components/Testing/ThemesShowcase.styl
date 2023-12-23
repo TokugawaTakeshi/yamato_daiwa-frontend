@@ -1,3 +1,8 @@
+ThemesShowcase--YDF = {
+ CSS_NAMESPACE: "ThemesShowcase--YDF"
+}
+
+
 provideThemesShowcaseYDF__Component()
 
   .ThemesShowcase--YDF
@@ -6,25 +11,27 @@ provideThemesShowcaseYDF__Component()
 
       +li
 
-        margin-top 12px
+        margin-top 16px
 
-      >li
+      >ul
 
-        +li
+        >li
 
-          margin-top 8px
+          +li
+
+            margin-top 12px
 
 
     &-Label
 
       applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
         fontSize: 1.2rem,
-        lineSpacing: 0.2rem
+        lineSpacing: 0.2rem,
+        mustAllowWordsBreakingAnywhere: true
       })
 
       font-weight bold
       color: ShadesOfGray__39ColorsW3C_Palette[12]
-
 
 
     &-ChildList

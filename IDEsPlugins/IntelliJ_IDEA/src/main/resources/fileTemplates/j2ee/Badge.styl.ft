@@ -1,8 +1,9 @@
-// === Scenario 1: Use default styles ==================================================================================
+// ━━━ Scenario 1: Using of Default Styles ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 // With default options:
 provideBadgeYDF_Component()
 
-// With custom options:
+// With custom options (currently all values are even with default, you can omit the ones you don't want to change):
 provideBadgeYDF_Component(
   options: {
     themeIndependentStylesOnly: false,
@@ -21,7 +22,8 @@ provideBadgeYDF_Component(
 )
 
 
-// === Scenario 2: Override default preset a little ====================================================================
+// ━━━ Scenario 2: Override Default Preset a Little ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// [ Hint ] Currently all values are even with default, you can omit the ones you don't want to change
 provideBadgeYDF_Component(
   overrides: {
     themes: {
@@ -44,12 +46,12 @@ provideBadgeYDF_Component(
 
               modifiers: {
                 pillShape: {
-                  textSizeToBorderRadiusRatio: 2
+                  borderRadiusToValueTextSizeRatio: 2 // [ Non-null property ]
                 }
               },
 
               loadingPlaceholder: {
-                minimalWidth: 80px
+                minimalWidth: 80px // [ Non nullable ! ]
               },
 
               customDeclarations: null
@@ -58,6 +60,7 @@ provideBadgeYDF_Component(
 
             SVG_Icon: {
 
+              // [ Conditional requirement ] At least one of `width` or `height` must be non-null
               width: null,
               height: 1em,
 
@@ -75,17 +78,21 @@ provideBadgeYDF_Component(
             keyLabel: {
 
               text: {
-                size: 1em,
+
+                size: 1em, // [ Non nullable ! ]
+
+                // [ Conditional requirement ] Either `lineSpacing` or `lineHeight` must non-null but not both
                 lineSpacing: 0.2em,
                 lineHeight: null
+
               },
 
               spacing: {
                 verticalSymmertic: 0.3em,
                 top: null,
                 bottom: null,
-                leftWhenGoingFirst: 0.8em,
-                afterSVG_Icon: 0.4em
+                leftWhenGoingFirst: 0.8em, // [ Non nullable ! ]
+                afterSVG_Icon: 0.4em // [ Non nullable ! ]
               },
 
               customDeclarations: null
@@ -104,10 +111,10 @@ provideBadgeYDF_Component(
                 verticalSymmertic: 0.3em,
                 top: null,
                 bottom: null,
-                leftWhenGoingFirst: 0.8em,
-                afterSVG_Icon: 0.6em,
-                afterKeyLabel: 0.4em,
-                right: 0.8em
+                leftWhenGoingFirst: 0.8em, // [ Non nullable ! ]
+                afterSVG_Icon: 0.6em, // [ Non nullable ! ]
+                afterKeyLabel: 0.4em, // [ Non nullable ! ]
+                right: 0.8em // [ Non nullable ! ]
               },
 
               customDeclarations: null
@@ -226,10 +233,9 @@ provideBadgeYDF_Component(
 )
 
 
-// === Scenario 3: Define own preset ===================================================================================
-// TODO Define the geometric variations (like `Badge-RegularTheme-RegularGeometry`) and the decorative variations
-//   (like `Badge-RegularTheme-VeryCatchyBrightDecoration` or `Badge-RegularTheme-CatchyBrightDecoration`)
-//   in the external files then include them here
+// ━━━ Scenario 3: Define Own Preset ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// TODO Define the geometric variations (like `Badge-RegularTheme-RegularGeometry`) and the decorative
+//  variations (like `Badge-RegularTheme-VeryCatchyBrightDecoration`) in the separate files then include them here.
 @require "Themes/Regular/GeometricVariations/Badge-RegularTheme-RegularGeometry.styl"
 
 @require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-VeryCatchyBrightDecoration.styl"
@@ -249,6 +255,7 @@ provideBadgeYDF_Component(
 @require "Themes/Regular/DecorativeVariations/Pastel/Badge-RegularTheme-AchromaticPastelDecoration.styl"
 
 provideBadgeYDF_Component(
+
   preset: {
 
     themes: {
@@ -284,7 +291,8 @@ provideBadgeYDF_Component(
     }
 
   },
-  // TODO Remove below parameter if options are default
+
+  // TODO Remove below parameter if you are not going to change the specified below default values
   options: {
     themeIndependentStylesOnly: false,
     areThemesCSS_ClassesCommon: false,
@@ -299,14 +307,26 @@ provideBadgeYDF_Component(
       noBackground: true
     }
   }
+
 )
 
 
-// === Scenario 4: Writhe the CSS theme dependent CSS yourself =========================================================
+// ━━━ Scenario 4: Writhe the CSS Theme Dependent Styles Yourself ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 provideBadgeYDF_Component(
   options: {
-    themeIndependentStylesOnly: true
+    themeIndependentStylesOnly: true, // You need this option to be `true`, but cam omit remain ones if you are fine with below default values
+    areThemesCSS_ClassesCommon: false,
+    loadingPlaceholder: true,
+    themeIndependentGeometricVariations: true,
+    geometricModifiers: {
+      pillShape: true,
+      singleLine: true
+    },
+    decorativeModifiers: {
+      bordersDisguising: true,
+      noBackground: true
+    }
   }
 )
 
-// TODO Now define the styles as usual
+// TODO Now define the styles for themes, geometric and decorative variations

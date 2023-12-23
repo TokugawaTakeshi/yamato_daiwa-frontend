@@ -14,17 +14,23 @@ mixin RadioButton--YDF(properties)
       HTML_Value,
       inputElementHTML_ID = `${ COMPONENT_ID }-INPUT`,
       checked,
-      disabled = false,
-      readonly = false,
+      disabled,
+      readonly,
 
-      theme = RadioButton__YDF.Themes.regular,
-      areThemesCSS_ClassesCommon = ARE_YDF_COMPONENTS_THEMES_COMMON_BY_DEFAULT || RadioButton__YDF.areThemesCSS_ClassesCommon,
-      geometry = RadioButton__YDF.GeometricVariations.regular,
-      geometricModifiers = [],
-      decoration = RadioButton__YDF.DecorativeVariations.regular,
-      decorativeModifiers = []
+      theme,
+      areThemesCSS_ClassesCommon,
+      geometricVariation,
+      geometricModifiers,
+      decorativeVariation,
+      decorativeModifiers
 
-    } = properties ?? {};
+    } = processObjectTypeParameterOfPugMixin({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: RadioButton__YDF.propertiesSpecification,
+      mixinName: RadioButton__YDF.CSS_NAMESPACE
+    });
 
     const rootElementModifierCSS_Classes = [
 
@@ -43,20 +49,22 @@ mixin RadioButton--YDF(properties)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: RadioButton__YDF.GeometricVariations,
         CSS_Namespace: RadioButton__YDF.CSS_NAMESPACE
       }),
 
-      ...ComponentsAuxiliaries.generateDemandedGeometricModifiersCSS_Classes(RadioButton__YDF.CSS_NAMESPACE, geometricModifiers),
+      ...ComponentsAuxiliaries.
+          generateDemandedGeometricModifiersCSS_Classes(RadioButton__YDF.CSS_NAMESPACE, geometricModifiers),
 
       ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
-        decoration,
+        decorativeVariation,
         allDecorativeVariations: RadioButton__YDF.DecorativeVariations,
         CSS_Namespace: RadioButton__YDF.CSS_NAMESPACE
       }),
 
-      ...ComponentsAuxiliaries.generateDemandedDecorativeModifiersCSS_Classes(RadioButton__YDF.CSS_NAMESPACE, decorativeModifiers)
+      ...ComponentsAuxiliaries.
+          generateDemandedDecorativeModifiersCSS_Classes(RadioButton__YDF.CSS_NAMESPACE, decorativeModifiers)
 
     ];
 
@@ -70,15 +78,15 @@ mixin RadioButton--YDF(properties)
     if label
 
       label.RadioButton--YDF-Label(
-        for= inputElementHTML_ID
-      )= label
+        for=inputElementHTML_ID
+      )=label
 
     input.RadioButton--YDF-HiddenInputElement(
       type="radio"
       name=HTML_Name
       value=HTML_Value
       checked=checked
-      disabled= disabled
-      readonly= readonly
+      disabled=disabled
+      readonly=readonly
       id=inputElementHTML_ID
     )

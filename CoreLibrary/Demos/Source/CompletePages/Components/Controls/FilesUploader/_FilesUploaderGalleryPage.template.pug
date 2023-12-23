@@ -1,0 +1,39 @@
+extends ../../../../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+block append Requirements
+
+  include ../../../../../node_modules/@yamato-daiwa/frontend/Components.pug
+  include ../../../../Galleries/Components/Controls/FilesUploader/FilesUploaderGallery.pug
+
+
+block append Metadata
+
+  -
+
+    /**
+     * @param { string } [partialTitle]
+     * @returns { string }
+     * */
+    function generateHTML_Page_Title(partialTitle) {
+      return [
+        "FilesUploader Component Demos",
+        ...partialTitle ? [ ` — ${ partialTitle }` ] : [],
+        " — Yamato Daiwa Frontend (YDF)"
+      ].join("");
+    }
+
+    styleSheetsURIs = [
+      "@Partials/YDF-Demos-Primer",
+      "@Partials/YDF-Demos-CommonRequirements",
+      "@Pages/Components/Controls/FilesUploader/FilesUploaderGalleryPage"
+    ];
+
+    scriptsURIs.endOfBody = [ "@CompletePages/Components/Controls/FilesUploader/FilesUploaderGalleryPage" ];
+
+
+block append PageContent
+
+  .YDF_Gallery
+
+    +FilesUploaderGallery

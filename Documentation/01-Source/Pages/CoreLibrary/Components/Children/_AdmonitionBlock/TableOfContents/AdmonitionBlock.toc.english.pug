@@ -1,0 +1,41 @@
+include AdmonitionBlock.toc.pug
+
+
+-
+
+  localizedRouting.coreLibrary.$children.components.$children.AdmonitionBlock.$sectioning =
+
+      generatePageTableOfContents(
+        (() => {
+
+          /* [ Maintainability ] Keep this constant to make able the copying of qualified names in IntelliJ IDEA IDEs. */
+          const localizedStrings = {
+            synopsis: { $heading: "Synopsis" },
+            usage: {
+              $heading: "Usage",
+              markup: {
+                $heading: "Markup",
+                includingToProject: {
+                  $heading: "Including to project"
+                },
+                pugMixin: {
+                  $heading: "Pug mixin <code>AdmonitionBlock--YDF</code>",
+                  minimalExample: { $heading: "Minimal example (required properties only)" },
+                  title: { $heading: "Title (<code>title</code> property)" },
+                  SVG_Icon: {
+                    $heading: "SVG Icon (<code>SVG_Icon</code> property)",
+                    custom: { $heading: "Custom Icons" }
+                  },
+                  centeredButton: { $heading: "Centered Button" },
+                  actionBar: { $heading: "Actionbar" },
+                  dismissing: { $heading: "Dismissing" }
+                }
+              },
+              logic: { $heading: "Markup" }
+            }
+          };
+
+          return localizedStrings;
+
+        })()
+      );

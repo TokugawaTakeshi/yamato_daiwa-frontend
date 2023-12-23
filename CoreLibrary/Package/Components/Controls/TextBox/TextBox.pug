@@ -38,10 +38,10 @@ mixin TextBox--YDF(properties, statesSimulations)
 
       theme = TextBox__YDF.Themes.regular,
       areThemesExternal = TextBox__YDF.areThemesExternal,
-      geometry = TextBox__YDF.GeometricVariations.regular,
-      decoration = TextBox__YDF.GeometricVariations.regular,
+      geometricVariation = TextBox__YDF.GeometricVariations.regular,
+      decorativeVariation = TextBox__YDF.DecorativeVariations.regular,
 
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
       parameterName: "properties",
@@ -54,7 +54,7 @@ mixin TextBox--YDF(properties, statesSimulations)
       validValueHighlightingIfNoValidationErrorsMessages = false,
       validationErrorsMessages = false,
       asynchronousValidationsStatuses = false
-    } = PugMixinsObjectTypeParametersProcessor.processParameter({
+    } = processObjectTypeParameterOfPugMixin({
       rawParameter: statesSimulations,
       parameterNumber: 2,
       parameterName: "statesSimulations",
@@ -81,13 +81,13 @@ mixin TextBox--YDF(properties, statesSimulations)
       }),
 
       ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
-        geometry,
+        geometricVariation,
         allGeometricVariations: TextBox__YDF.GeometricVariations,
         CSS_Namespace: TextBox__YDF.CSS_NAMESPACE
       }),
 
       ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
-        decoration,
+        decorativeVariation,
         allDecorativeVariations: TextBox__YDF.DecorativeVariations,
         CSS_Namespace: TextBox__YDF.CSS_NAMESPACE
       })
@@ -108,10 +108,12 @@ mixin TextBox--YDF(properties, statesSimulations)
       coreElementHTML_ID: inputOrTextAreaElementHTML_ID,
       labelElementHTML_ID: labelElementHTML_ID,
 
-      theme: TextBox__YDF.selfAndCompoundControlShellThemesCorrespondence[theme],
+      theme: TextBox__YDF.selfAndChildrenComponentsThemesCorrespondence.compoundControlShell[theme],
       areThemesExternal,
-      geometry: TextBox__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[geometry],
-      decoration: TextBox__YDF.selfAndCompoundControlShellGeometricVariationsCorrespondence[decoration]
+      geometricVariation: TextBox__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.
+          compoundControlShell[geometricVariation],
+      decorativeVariation: TextBox__YDF.selfAndChildrenComponentsDecorativeVariationsCorrespondence.
+          compoundControlShell[decorativeVariation]
 
     },
     {

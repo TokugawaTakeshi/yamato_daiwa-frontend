@@ -22,7 +22,13 @@ block append Metadata
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents"
+    ];
+
     scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.YDEE_Integration");
@@ -66,10 +72,10 @@ block append SpecificContent
         +CodeViewer-Explanation--YDF.
           貴方の#[+Term--YDID Pugファイル]場合、#[+ImportantEntity--YDID node_modules]への#[+Term--YDID 相対パス]が異なる可能性が有ります。
 
-    +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.warning, hasPrependedSVG_Icon: true }).
+    +AdmonitionBlock--YDF({ decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning, SVG_Icon: true }).
       #[+ImportantEntity--YDID Pug]#[+Term--YDID プリプロセッサ]の必要な#[+Keyword--YDID 最低]バージョン：#[+ImportantEntity--YDID 3.0]。
 
-    +AttentionBox--YDF({ decoration: AttentionBox__YDF.DecorativeVariations.warning, hasPrependedSVG_Icon: true })
+    +AdmonitionBlock--YDF({ decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning, SVG_Icon: true })
       +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
       }).Article-Link ウェブページの原型
@@ -154,7 +160,7 @@ block append SpecificContent
             functionality.$children.
             inlineJavaScript.$children.
             functionsAndClasses.$children.
-            processPugMixinsObjectTypeParameter.$URI,
+            processObjectTypeParameterOfPugMixin.$URI,
       }).Article-Link Pug混入の引数の妥当性確認
       |   をするのに使われています。
 
@@ -218,7 +224,7 @@ block append SpecificContent
               functionality.$children.
               inlineJavaScript.$children.
               functionsAndClasses.$children.
-              processPugMixinsObjectTypeParameter.$URI,
+              processObjectTypeParameterOfPugMixin.$URI,
         }).Article-Link Pug混入の引数の妥当性確認
         |   （
         +Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.components.$URI }).Article-Link UI・UXコンポーネント

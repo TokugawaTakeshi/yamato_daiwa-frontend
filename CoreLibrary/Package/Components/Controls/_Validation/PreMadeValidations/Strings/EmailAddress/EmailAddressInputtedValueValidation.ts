@@ -1,3 +1,5 @@
+import { MINIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS } from "fundamental-constants";
+
 import InputtedValueValidation from "../../../InputtedValueValidation";
 
 import EmailAddressInputtedValueValidationRule from
@@ -17,11 +19,13 @@ class EmailAddressInputtedValueValidation extends InputtedValueValidation {
   *    passed via constructor. */
   public readonly MINIMAL_CHARACTERS_COUNT: number;
 
+
   public constructor(
     compoundParameter:
         Readonly<{
           isInputRequired: boolean;
-          minimalCharactersCount: number;
+          minimalCharactersCount?: number;
+          regularExpression?: RegExp;
         }> &
         Pick<
           InputtedValueValidation.ConstructorCompoundParameter,
@@ -31,20 +35,26 @@ class EmailAddressInputtedValueValidation extends InputtedValueValidation {
         >
   ) {
 
+    const MINIMAL_CHARACTERS_COUNT: number =
+        compoundParameter.minimalCharactersCount ??
+        MINIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS;
+
     super({
       isInputRequired: compoundParameter.isInputRequired,
       omittedValueChecker: isEmptyString,
       requiredInputIsMissingValidationErrorMessage: EmailAddressInputtedValueValidation.localization.
           requiredInputIsMissingValidationErrorMessage,
       staticRules: [
+        new MinimalCharactersCountInputtedValueValidationRule({
+          minimalCharactersCount: MINIMAL_CHARACTERS_COUNT,
+          errorMessageBuilder: EmailAddressInputtedValueValidation.localization.
+              minimalCharactersCountValidationErrorMessageBuilder,
+          mustFinishValidationIfValueIsInvalid: true
+        }),
         new EmailAddressInputtedValueValidationRule({
+          regularExpression: compoundParameter.regularExpression,
           errorMessageBuilder: EmailAddressInputtedValueValidation.localization.
               invalidEmailAddressErrorMessageBuilder
-        }),
-        new MinimalCharactersCountInputtedValueValidationRule({
-          minimalCharactersCount: compoundParameter.minimalCharactersCount,
-          errorMessageBuilder: EmailAddressInputtedValueValidation.localization.
-              minimalCharactersCountValidationErrorMessageBuilder
         })
       ],
       contextDependentRules: compoundParameter.contextDependentRules,
@@ -52,7 +62,7 @@ class EmailAddressInputtedValueValidation extends InputtedValueValidation {
       asynchronousValidationsCallback: compoundParameter.asynchronousValidationsCallback
     });
 
-    this.MINIMAL_CHARACTERS_COUNT = compoundParameter.minimalCharactersCount;
+    this.MINIMAL_CHARACTERS_COUNT = MINIMAL_CHARACTERS_COUNT;
 
   }
 
@@ -64,10 +74,10 @@ namespace EmailAddressInputtedValueValidation {
   export type Localization =
       InputtedValueValidation.Localization &
       Readonly<{
-        invalidEmailAddressErrorMessageBuilder:
-            EmailAddressInputtedValueValidationRule.ErrorMessage.Builder;
         minimalCharactersCountValidationErrorMessageBuilder:
             MinimalCharactersCountInputtedValueValidationRule.ErrorMessage.Builder;
+        invalidEmailAddressErrorMessageBuilder:
+            EmailAddressInputtedValueValidationRule.ErrorMessage.Builder;
       }>;
 
 }

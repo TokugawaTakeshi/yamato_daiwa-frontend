@@ -1,0 +1,31 @@
+include buildString.toc.pug
+
+
+-
+
+  localizedRouting.coreLibrary.$children.
+      styles.$children.
+      kernel.$children.
+      functions.$children.
+      strings.$children.
+      buildString.$sectioning =
+
+        generatePageTableOfContents(
+          (() => {
+
+            /* [ Maintainability ] Keep this constant to make able the copying of qualified names in IntelliJ IDEA IDEs. */
+            const localizedStrings = {
+
+              interpolationMethodsComparison: {
+                $heading: "String Building Methods Comparison",
+                concatenation: { $heading: "String Concatenation (Native)" },
+                sprintf: { $heading: "Sprintf (Native)" },
+                buildString: { $heading: "<code>buildString</code> (YDF)" }
+              }
+
+            };
+
+            return localizedStrings;
+
+          })()
+        );

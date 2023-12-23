@@ -20,7 +20,13 @@ block append Metadata
 
     FAVICON_URI = "@MustBeInPublicRoot/favicon";
 
-    styleSheetsURIs = [ "@Shared/CommonStyles", "@Layouts/TwoColumns/TwoColumnsLayout", "@Shared/ExternalComponents" ];
+    styleSheetsURIs = [
+      "$CommonStyles",
+      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+      "$PreMadesStyles",
+      "@CustomizedExternalComponents"
+    ];
+
     scriptsURIs.endOfBody = [ "$CommonLogic" ];
 
     RoutingEmulator.setCurrentRoute("coreLibrary.styles.kernel.functions.typeCheckers");
@@ -47,108 +53,108 @@ block append SpecificContent
     //- ━━━ 文字列 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h2.Article-Heading2(
       id= sectioning.strings.$anchor
-    )= sectioning.strings.$tableOfContentsTitle
+    )= sectioning.strings.$heading
 
     //- ─── isEmptyString ──────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.strings.$sectioning.isEmptyString.$anchor
-    )= sectioning.strings.$sectioning.isEmptyString.$tableOfContentsTitle
+    )= sectioning.strings.$sectioning.isEmptyString.$heading
 
     //- ─── isNonEmptyString ───────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.strings.$sectioning.isNonEmptyString.$anchor
-    )= sectioning.strings.$sectioning.isNonEmptyString.$tableOfContentsTitle
+    )= sectioning.strings.$sectioning.isNonEmptyString.$heading
 
     //- ─── isString ───────────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.strings.$sectioning.isString.$anchor
-    )= sectioning.strings.$sectioning.isString.$tableOfContentsTitle
+    )= sectioning.strings.$sectioning.isString.$heading
 
 
     //- ━━━ 量 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h2.Article-Heading2(
       id= sectioning.quantities.$anchor
-    )= sectioning.quantities.$tableOfContentsTitle
+    )= sectioning.quantities.$heading
 
     //- ─── isDimensionalOrDimensionlessQuantity ───────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.quantities.$sectioning.isDimensionalOrDimensionlessQuantity.$anchor
-    )= sectioning.quantities.$sectioning.isDimensionalOrDimensionlessQuantity.$tableOfContentsTitle
+    )= sectioning.quantities.$sectioning.isDimensionalOrDimensionlessQuantity.$heading
 
     //- ─── isDimensionalQuantity ──────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.quantities.$sectioning.isDimensionalQuantity.$anchor
-    )= sectioning.quantities.$sectioning.isDimensionalQuantity.$tableOfContentsTitle
+    )= sectioning.quantities.$sectioning.isDimensionalQuantity.$heading
 
     //- ─── isDimensionlessQuantity ────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.quantities.$sectioning.isDimensionlessQuantity.$anchor
-    )= sectioning.quantities.$sectioning.isDimensionlessQuantity.$tableOfContentsTitle
+    )= sectioning.quantities.$sectioning.isDimensionlessQuantity.$heading
 
     //- ─── isNaturalNumber ────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.quantities.$sectioning.isNaturalNumber.$anchor
-    )= sectioning.quantities.$sectioning.isNaturalNumber.$tableOfContentsTitle
+    )= sectioning.quantities.$sectioning.isNaturalNumber.$heading
 
 
     //- ━━━ 真偽 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h2.Article-Heading2(
       id= sectioning.booleans.$anchor
-    )= sectioning.booleans.$tableOfContentsTitle
+    )= sectioning.booleans.$heading
 
     //- ─── isBoolean ──────────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.strings.$sectioning.isBoolean.$anchor
-    )= sectioning.strings.$sectioning.isBoolean.$tableOfContentsTitle
+    )= sectioning.strings.$sectioning.isBoolean.$heading
 
     //- ─── isFalse ────────────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.strings.$sectioning.isFalse.$anchor
-    )= sectioning.strings.$sectioning.isFalse.$tableOfContentsTitle
+    )= sectioning.strings.$sectioning.isFalse.$heading
 
     //- ─── isTrue ─────────────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.strings.$sectioning.isTrue.$anchor
-    )= sectioning.strings.$sectioning.isTrue.$tableOfContentsTitle
+    )= sectioning.strings.$sectioning.isTrue.$heading
 
 
     //- ━━━ Null系 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h2.Article-Heading2(
       id= sectioning.nullables.$anchor
-    )= sectioning.nullables.$tableOfContentsTitle
+    )= sectioning.nullables.$heading
 
     //- ─── isNull ─────────────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.nullables.$sectioning.isNull.$anchor
-    )= sectioning.nullables.$sectioning.isNull.$tableOfContentsTitle
+    )= sectioning.nullables.$sectioning.isNull.$heading
 
     //- ─── isFalse ────────────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.nullables.$sectioning.isFalse.$anchor
-    )= sectioning.nullables.$sectioning.isFalse.$tableOfContentsTitle
+    )= sectioning.nullables.$sectioning.isFalse.$heading
 
 
     //- ━━━ 其の他 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h2.Article-Heading2(
       id= sectioning.others.$anchor
-    )= sectioning.others.$tableOfContentsTitle
+    )= sectioning.others.$heading
 
     //- ─── isCalcExpression ───────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.others.$sectioning.isCalcExpression.$anchor
-    )= sectioning.others.$sectioning.isCalcExpression.$tableOfContentsTitle
+    )= sectioning.others.$sectioning.isCalcExpression.$heading
 
     //- ─── isFunction ─────────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.others.$sectioning.isFunction.$anchor
-    )= sectioning.others.$sectioning.isFunction.$tableOfContentsTitle
+    )= sectioning.others.$sectioning.isFunction.$heading
 
     //- ─── isIdentifier ───────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.others.$sectioning.isIdentifier.$anchor
-    )= sectioning.others.$sectioning.isIdentifier.$tableOfContentsTitle
+    )= sectioning.others.$sectioning.isIdentifier.$heading
 
     //- ─── isObject ───────────────────────────────────────────────────────────────────────────────────────────────────
     h3.Article-Heading3(
       id= sectioning.others.$sectioning.isObject.$anchor
-    )= sectioning.others.$sectioning.isObject.$tableOfContentsTitle
+    )= sectioning.others.$sectioning.isObject.$heading

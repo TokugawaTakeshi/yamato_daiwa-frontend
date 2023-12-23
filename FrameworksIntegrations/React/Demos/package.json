@@ -1,25 +1,28 @@
 {
-  "private": "true",
-  "name": "@yamato-daiwa/frontend-react-demos",
-  "version": "0.0.0",
-  "dependencies": {
-    "@yamato-daiwa/es-extensions": "1.6.2",
-    "@yamato-daiwa/es-extensions-browserjs": "1.6.0-alpha.0",
-    "@yamato-daiwa/frontend": "2.0.0-alpha.2",
-    "@yamato-daiwa/frontend-components_demos": "0.0.0",
-    "@yamato-daiwa/frontend-react": "0.0.0",
-    "prop-types": "15.8.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
-  },
-  "devDependencies": {
-    "@types/react": "18.0.26",
-    "@types/react-dom": "18.0.10",
-    "@yamato-daiwa/automation": "0.3.0-alpha.0",
-    "@yamato-daiwa/style_guides": "0.0.44",
-    "typescript": "4.9.5"
-  },
-  "scripts": {
-    "build": "yda build --mode LOCAL_DEVELOPMENT"
-  }
+	"private": "true",
+	"name": "@yamato-daiwa/frontend-react-demos",
+	"version": "0.0.0",
+	"dependencies": {
+		"@yamato-daiwa/es-extensions": "1.7.0-alpha.5",
+		"@yamato-daiwa/es-extensions-browserjs": "1.7.0-alpha.1",
+		"@yamato-daiwa/frontend": "../../../CoreLibrary/Package",
+		"@yamato-daiwa/frontend-demos": "../../../CoreLibrary/Demos",
+		"@yamato-daiwa/frontend-react": "../Package",
+		"prop-types": "15.8.1",
+		"react": "18.2.0",
+		"react-dom": "18.2.0"
+	},
+	"devDependencies": {
+		"@types/react": "18.0.26",
+		"@types/react-dom": "18.0.10",
+		"@yamato-daiwa/automation": "0.4.0",
+		"@yamato-daiwa/style_guides": "0.0.60",
+		"rimraf": "5.0.5",
+		"typescript": "5.3.3"
+	},
+	"scripts": {
+		"Watch Local Gallereys": "rimraf LocalGalleriesBuild && yda build --selectiveExecution LocalGalleries --mode LOCAL_DEVELOPMENT",
+		"Build Distributions": "rimraf Distributions && yda build --selectiveExecution Distributions --mode PRODUCTION && cd Distributions && git add .",
+		"Get Source Markup of Partial Demos": "yda build --selectiveExecution PartialDemosSourceFiles --mode PRODUCTION"
+	}
 }

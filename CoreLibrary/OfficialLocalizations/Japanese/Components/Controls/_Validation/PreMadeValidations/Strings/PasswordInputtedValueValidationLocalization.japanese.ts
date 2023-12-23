@@ -14,18 +14,16 @@ const passwordInputtedValueValidationLocalization__japanese: PasswordInputtedVal
   disallowedCharactersFoundValidationErrorMessageBuilder: (
     { inputtedDisallowedCharacters }: AllowedCharactersInputtedValueValidationRule.ErrorMessage.TemplateVariables
   ): string =>
-      `パスワードに${ inputtedDisallowedCharacters.join(",") }文字が許可されていないです。` +
-      "お手数ですが、こも文字を削除するか、別の文字に置き換えて下さい。",
+      `入力文中の「${ inputtedDisallowedCharacters.join(",") }」は、パスワードでご使用いただけない文字です。ほかの文字をお使いください。`,
 
   minimalCharactersCountValidationErrorMessageBuilder: (
     { minimalCharactersCount }: MinimalCharactersCountInputtedValueValidationRule.ErrorMessage.TemplateVariables
-  ): string => `パスワードは短すぎます。お手数ですが、少なくとも${ minimalCharactersCount }文字を入力して下さい。`,
+  ): string => `入力されたパスワード文字数が少なすぎます。${ minimalCharactersCount }文字以上でもう一度入力してください。`,
 
   tooManyCharactersValidationErrorMessageBuilder: (
     { maximalCharactersCount }: MaximalCharactersCountInputtedValueValidationRule.ErrorMessage.TemplateVariables
   ): string =>
-      "パスワードは文字が多すぎます。" +
-      `長いパスワードは常にお薦めされてはいるが、恐れがシステムの制限上最大${ maximalCharactersCount }文字を入力してくださいませんでしょうか。`
+      `入力されたパスワードは長すぎます。最大${ maximalCharactersCount }文字以下で入力してください。`
 
 };
 

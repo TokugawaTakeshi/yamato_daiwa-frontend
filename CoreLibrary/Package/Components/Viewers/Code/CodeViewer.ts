@@ -15,13 +15,16 @@ import {
 
 import {
   getExpectedToBeSingleDOM_Element,
-  delegateClickEventHandling,
+  delegateLeftClickEventHandling,
   cloneDOM_Element
 } from "@yamato-daiwa/es-extensions-browserjs";
 
 /* --- Temporary ---------------------------------------------------------------------------------------------------- */
 import "prismjs/components/prism-typescript.js";
 import "prismjs/components/prism-pug.js";
+import "prismjs/components/prism-stylus.js";
+import "prismjs/components/prism-yaml.js";
+import "prismjs/components/prism-csharp.js";
 import {
   getExpectedToBeSingleChildOfTemplateElement
 } from "../../../../../../YamatoDaiwaES_Extensions/BrowserJS/Package";
@@ -71,9 +74,16 @@ export class CodeViewer {
 
 
   protected constructor(componentRootElement: Element) {
+
     this.rootElement = componentRootElement;
-    this.tabsFlow = getExpectedToBeSingleDOM_Element({ selector: CodeViewer.TABS_FLOW_SELECTOR, context: componentRootElement });
+
+    this.tabsFlow = getExpectedToBeSingleDOM_Element({
+      selector: CodeViewer.TABS_FLOW_SELECTOR,
+      contextElement: componentRootElement
+    });
+
     this.tabsPanels = componentRootElement.querySelectorAll<HTMLElement>(CodeViewer.TAB_PANEL_SELECTOR);
+
   }
 
 
@@ -110,8 +120,8 @@ export class CodeViewer {
 
     const emptyTab: HTMLElement = getExpectedToBeSingleChildOfTemplateElement({
       templateElementSelector: CodeViewer.TAB_TEMPLATE_ELEMENT_SELECTOR,
+      contextElement: this.rootElement,
       expectedChildElementSubtype: HTMLElement,
-      context: this.rootElement,
       mustRemoveTemplateElementOnceDone: true
     });
 
@@ -229,14 +239,17 @@ export class CodeViewer {
 
       getExpectedToBeSingleDOM_Element({
         selector: CodeViewer.TAB_FILE_LANGUAGE_VALUE_LABEL_SELECTOR,
-        context: currentTab
+        contextElement: currentTab
       }).textContent = tabPanelData.codeLanguageLabel;
 
       if (isNotUndefined(tabPanelData.fileLabel)) {
-        getExpectedToBeSingleDOM_Element({ selector: CodeViewer.TAB_FILE_LABEL_SELECTOR, context: currentTab }).
+        getExpectedToBeSingleDOM_Element({ selector: CodeViewer.TAB_FILE_LABEL_SELECTOR, contextElement: currentTab }).
             textContent = tabPanelData.fileLabel;
       } else {
-        getExpectedToBeSingleDOM_Element({ selector: CodeViewer.TAB_FILE_LABEL_SELECTOR, context: currentTab }).remove();
+        getExpectedToBeSingleDOM_Element({
+          selector: CodeViewer.TAB_FILE_LABEL_SELECTOR,
+          contextElement: currentTab
+        }).remove();
       }
 
       this.tabs.push(currentTab);
@@ -252,7 +265,7 @@ export class CodeViewer {
       this.activeTabPanel = this.tabsPanels[0];
     }
 
-    delegateClickEventHandling(
+    delegateLeftClickEventHandling(
       {
         delegatingContainerOrItsSelector: this.tabsFlow,
         eventTargetSelector: CodeViewer.TAB_SELECTOR,
@@ -286,7 +299,7 @@ export class CodeViewer {
         errorType: InvalidExternalDataError.NAME,
         title: InvalidExternalDataError.localization.defaultTitle,
         description: "Invalid dataset on clicked tab:\n" +
-            `${ RawObjectDataProcessor.formatValidationErrorsList(clickedTabDataProcessingResult.validationErrorsMessages) }`,
+            RawObjectDataProcessor.formatValidationErrorsList(clickedTabDataProcessingResult.validationErrorsMessages),
         occurrenceLocation: "codeViewer.onClickTab()"
       });
       return;
@@ -321,11 +334,11 @@ export class CodeViewer {
   private initializeActionBar(): this {
 
     const actionBar: Element = getExpectedToBeSingleDOM_Element({
-      selector: CodeViewer.ACTION_BAR_SELECTOR, context: this.rootElement
+      selector: CodeViewer.ACTION_BAR_SELECTOR, contextElement: this.rootElement
     });
 
     const codeCopyingButton: Element = getExpectedToBeSingleDOM_Element({
-      selector: CodeViewer.CODE_COPYING_BUTTON_SELECTOR, context: actionBar
+      selector: CodeViewer.CODE_COPYING_BUTTON_SELECTOR, contextElement: actionBar
     });
 
     const clipboard: ClipboardAccess = new ClipboardAccess(codeCopyingButton, {
@@ -350,9 +363,9 @@ export class CodeViewer {
         let accumulatingValue: string = "";
 
         codeListings.forEach((codeListing: Element): void => {
-          accumulatingValue = `${ accumulatingValue }` +
-            `${ insertSubstringIf("\n", codeListing.textContent?.endsWith("\n") !== true) }` +
-            `${ codeListing.textContent }`;
+          accumulatingValue = accumulatingValue +
+            insertSubstringIf("\n", codeListing.textContent?.endsWith("\n") !== true) +
+            codeListing.textContent;
         });
 
         return accumulatingValue;

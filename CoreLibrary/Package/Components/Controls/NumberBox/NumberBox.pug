@@ -1,6 +1,165 @@
 include NumberBox.class.pug
 
 
-mixin NumberBox--YDF()
+//- [ Reference ] https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role
+//- [ Reference ] https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/
+//- [ Reference ] https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/
+mixin NumberBox--YDF(properties, statesSimulations)
 
-  .NumberBox--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
+  -
+
+    const COMPONENT_ID = NumberBox__YDF.generateComponentID();
+
+    const {
+
+      label,
+      accessibilityGuidance,
+      externalLabelHTML_ID,
+      guidance,
+      placeholder,
+
+      initialValue,
+
+      disabled,
+      readonly,
+
+      required,
+      mustDisplayAppropriateBadgeIfInputIsRequired,
+      mustDisplayAppropriateBadgeIfInputIsOptional,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
+      step,
+      minimalValue,
+      maximalValue,
+
+      nativeInputElementHTML_ID,
+      labelElementHTML_ID,
+
+      theme,
+      areThemesCSS_ClassesCommon,
+      geometricVariation,
+      orientation,
+      decorativeVariation
+
+    } = processObjectTypeParameterOfPugMixin({
+      rawParameter: properties,
+      parameterNumber: 1,
+      parameterName: "properties",
+      parameterPropertiesSpecification: NumberBox__YDF.propertiesSpecification,
+      mixinName: NumberBox__YDF.CSS_NAMESPACE
+    });
+
+    const {
+      invalidInputHighlightingIfAnyValidationErrorsMessages,
+      validValueHighlightingIfNoValidationErrorsMessages,
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
+    } = processObjectTypeParameterOfPugMixin({
+      rawParameter: statesSimulations,
+      parameterNumber: 2,
+      parameterName: "statesSimulations",
+      parameterPropertiesSpecification: NumberBox__YDF.statesSimulationsSpecification,
+      mixinName: NumberBox__YDF.CSS_NAMESPACE
+    });
+
+    const rootElementModifierCSS_Classes = [
+
+      ...disabled ? [ `${ NumberBox__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
+      ...invalidInputHighlightingIfAnyValidationErrorsMessages && validationErrorsMessages.length > 0 ?
+          [ `${ NumberBox__YDF.CSS_NAMESPACE }__InvalidValueState` ] : [],
+      ...validValueHighlightingIfNoValidationErrorsMessages && validationErrorsMessages.length === 0 ?
+          [ `${ NumberBox__YDF.CSS_NAMESPACE }__ValueState` ] : [],
+
+      ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
+        theme,
+        allThemes: NumberBox__YDF.Themes,
+        CSS_Namespace: NumberBox__YDF.CSS_NAMESPACE,
+        areThemesCSS_ClassesCommon
+      }),
+
+      ...ComponentsAuxiliaries.addGeometricVariationCSS_ClassToArrayIfMust({
+        geometricVariation,
+        allGeometricVariations: NumberBox__YDF.GeometricVariations,
+        CSS_Namespace: NumberBox__YDF.CSS_NAMESPACE
+      }),
+
+      ...orientation === NumberBox__YDF.Orientations.horizontal ?
+          [ `${ NumberBox__YDF.CSS_NAMESPACE }__HorizontalOrientation` ] :
+          [ `${ NumberBox__YDF.CSS_NAMESPACE }__VerticalOrientation` ],
+
+      ...ComponentsAuxiliaries.addDecorativeVariationCSS_ClassToArrayIfMust({
+        decorativeVariation,
+        allDecorativeVariations: NumberBox__YDF.DecorativeVariations,
+        CSS_Namespace: NumberBox__YDF.CSS_NAMESPACE
+      })
+
+    ];
+
+  +CompoundControlShell--YDF(
+    {
+
+      label,
+      guidance,
+
+      required,
+      mustDisplayAppropriateBadgeIfInputIsRequired,
+      mustDisplayAppropriateBadgeIfInputIsOptional,
+      mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
+      coreElementHTML_ID: nativeInputElementHTML_ID,
+      labelElementHTML_ID: labelElementHTML_ID,
+
+      mainSlotWrapperAdditionalCSS_Classes: [ "NumberBox--YDF-LinearFlow" ],
+
+      theme: NumberBox__YDF.selfAndChildrenComponentsThemesCorrespondence.compoundControlShell[theme],
+      areThemesCSS_ClassesCommon,
+      geometricVariation: NumberBox__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.
+          compoundControlShell[geometricVariation],
+      decorativeVariation: NumberBox__YDF.selfAndChildrenComponentsDecorativeVariationsCorrespondence.
+          compoundControlShell[decorativeVariation]
+
+    },
+    {
+      validationErrorsMessages,
+      asynchronousValidationsStatuses
+    }
+  ).NumberBox--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
+
+    +Button--YDF({
+      HTML_Type: Button__YDF.HTML_Types.regular,
+      accessibilityGuidance: NumberBox__YDF.localization.buttons.incrementing.generateAccessibilityGuidance({ step }),
+      disabled: disabled || readonly,
+      theme: NumberBox__YDF.selfAndChildrenComponentsThemesCorrespondence.button[theme],
+      geometricVariation: NumberBox__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.button[geometricVariation],
+      geometricModifiers: [ Button__YDF.GeometricModifiers.squareShape ],
+      decorativeVariation: NumberBox__YDF.selfAndChildrenComponentsDecorativeVariationsCorrespondence.button[decorativeVariation]
+    }).NumberBox--YDF-Button(
+      aria-controls=nativeInputElementHTML_ID
+      tabindex="-1"
+    ) ▴
+
+    input.NumberBox--YDF-NativeInput(
+      type="text"
+      autocomplete="off"
+      spellcheck="false"
+      value=initialValue
+      min=minimalNumericValue
+      max=maximalNumericValue
+      placeholder=placeholder
+      disabled=disabled
+      readonly=readonly
+      id=nativeInputElementHTML_ID
+      aria-label=accessibilityGuidance
+      aria-labelledby=externalLabelHTML_ID
+    )
+
+    +Button--YDF({
+      HTML_Type: Button__YDF.HTML_Types.regular,
+      accessibilityGuidance: NumberBox__YDF.localization.buttons.decrementing.generateAccessibilityGuidance({ step }),
+      disabled: disabled || readonly,
+      theme: NumberBox__YDF.selfAndChildrenComponentsThemesCorrespondence.button[theme],
+      geometricVariation: NumberBox__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.button[geometricVariation],
+      geometricModifiers: [ Button__YDF.GeometricModifiers.squareShape ],
+      decorativeVariation: NumberBox__YDF.selfAndChildrenComponentsDecorativeVariationsCorrespondence.button[decorativeVariation]
+    }).NumberBox--YDF-Button(
+      aria-controls=nativeInputElementHTML_ID
+      tabindex="-1"
+    ) ▾

@@ -1,0 +1,80 @@
+computeTotalHeightByTextElementHeightSizingSpecification(properties, restParameters__MUST_NOT_BE...)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "computeTotalHeightByTextElementHeightSizingSpecification",
+    targetParameterNumber: 1,
+    targetParameter: properties,
+    schema: TextElementHeightSizingSpecificationSchema--YDF,
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+  if isNotNull(properties.fixedHeight)
+
+    return properties.fixedHeight
+
+
+  else
+
+    // ━━━ Font ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    fontSize = properties.fontSize
+    fixedLinesCount = properties.fixedLinesCount
+
+
+    // ━━━ Line Height / line Spacing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    lineHeight = isNull(properties.lineHeight) ?\
+        getLineHeightByFontSizeAndLineSpacing({
+          fontSize: fontSize,
+          lineSpacing: properties.lineSpacing,
+          mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0:
+              properties.mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0,
+          mustOutputDimensionalQuantityIfPossible: properties.mustApplyDimensionalLineHeightIfPossible
+        }) :
+        properties.lineHeight
+
+
+    // ━━━ Height of All Lines ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    heightOfAllLines = null
+
+    if isNaturalNumber(properties.fixedLinesCount)
+
+      heightOfAllLines = buildCalcExpression(
+        "${ fixedLinesCount } * ${ lineHeight }",
+        {
+          fixedLinesCount: properties.fixedLinesCount,
+          lineHeight: isDimensionlessQuantity(lineHeight) ? "" + (fontSize * lineHeight) : lineHeight
+        }
+      )
+
+    else if isDimensionlessQuantity(lineHeight)
+
+      heightOfAllLines = fontSize * lineHeight
+
+    else
+
+      heightOfAllLines = lineHeight
+
+
+    // ━━━ Borders / Paddings ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    borders = substituteNull(properties.borders.thickness, {})
+    paddings = properties.paddings
+
+
+    // ━━━ Sum ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    summands = YDF_Array-create()
+
+    YDF_Array-appendElementsIf(
+      summands,
+      @(summand) { return isNotNull(summand) },
+      isNotNull(borders.all) ? 2 * borders.all : null,
+      isNotNull(borders.verticalSymmetric) ? 2 * borders.verticalSymmetric : null,
+      borders.top,
+      borders.bottom,
+      isNotNull(paddings.all) ? 2 * paddings.all : null,
+      isNotNull(paddings.verticalSymmetric) ? 2 * paddings.verticalSymmetric : null,
+      paddings.top,
+      paddings.bottom,
+      heightOfAllLines
+    )
+
+
+    return unquote("calc(" + join(" + ", values(summands)) + ")")
