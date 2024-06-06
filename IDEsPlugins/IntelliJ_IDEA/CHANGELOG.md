@@ -10,12 +10,27 @@
 
 - **appendUnit** — autocomplete imitator type Live template for the eponymous function
 - **computeExtraSpaceCausedByLineHeightAtTopOrBottom** - autocomplete imitator type Live template for the eponymous function
-
+- **getLineHeightByFontSizeAndLineSpacing** - autocomplete imitator type Live template for the eponymous function
+- **getLineSpacingByFontSizeAndLineHeight** - autocomplete imitator type Live template for the eponymous function
+- **processObjectTypeParameterOfPugMixin** — Autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/processObjectTypeParameterOfPugMixin/processObjectTypeParameterOfPugMixin.english.html)
+- **removeUnitFromAmount** - autocomplete imitator type Live template for the eponymous function
+- **ab-ydf** — Live template for the inserting of invocation of  **AdmonitionBlock--YDF** Pug mixin corresponding to the
+    **AdmonitionBlock** component
+- **AdmonitionBlock.styl** — file template for providing and customizing styles of the **AdmonitionBlock** component
+- **createObjectWithComputedProperties** — autocomplete imitator type Live template for the eponymous function
 
 ### Changed
 
-* **bs** Live template has been replaced with **buildString** autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString.md)
-* **cflc** Live template has been replaced with **capitalizeFirstLatinCharacter** autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md)
+- **bs** Live template has been replaced with **buildString** autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/buildString/buildString.english.html)
+- **cflc** Live template has been replaced with **capitalizeFirstLatinCharacter** autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md)
+- **Badge.styl**  file template for providing and customizing styles of the **Badge** component has been improved
+- **dcaoo** Live template has been replaced with **deeplyCloneAndOverrideObject** autocomplete imitator
+- **dco** Live template has been replaced with **deeplyCloneObject** autocomplete imitator
+- **fo** Live template has been replaced with **formatObject** autocomplete imitator
+- **gnnovc** Live template has been replaced with **getObjectNonNullValuesCount** autocomplete imitator
+- **govbdsps** Live template has been replaced with **getObjectValueByDotSeparatedPathSafely** autocomplete imitator
+- **iosnv** Live template has been replaced with **iterateObjectSkippingNullValues** autocomplete imitator
+- **oo** Live template has been replaced with **overrideObject** autocomplete imitator
 
 
 ## [0.0.8]
@@ -83,7 +98,7 @@
 
 ### Changed
 
-- Update <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> - live templates for the **Badge** component and its loading placeholder respectively (core package).
+- Update **badge-ydf** and **badge-lp-ydf** Live templates
 - Update <kbd>badge-ydf-vue</kbd>, <kbd>badge-lp-ydf-vue</kbd> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
 - Remove `screen` keyword from <kbd>med2p</kbd>, <kbd>med3p</kbd>, <kbd>med4p</kbd>, <kbd>med5px</kbd> live templates
 - Improve <kbd>fbv</kbd> live template
@@ -98,7 +113,9 @@
 ## [0.0.4]
 ### Added
 
-- <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> - live templates for the **Badge** component and its loading placeholder respectively
+- **badge-ydf**, **badge-lp-ydf** — Live templates for the inserting of invocation of **Badge--YDF** and
+    **Badge--YDF-LoadingPlaceholder** Pug mixins corresponding to **Badge** component and its loading placeholder
+    respectively
 - <kbd>badge-ydf-vue</kbd>, <kbd>badge-lp-ydf-vue</kbd> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
 - <kbd>dius</kbd> - **DummyImagesURIs** enumeration
 - <kbd>hd</kbd> - live template inserting the heading tag and dedicated CSS class provided by <code>provideYDF_Typography</code> Stylus mixin
@@ -151,7 +168,7 @@
 - **nullToZero** — autocomplete imitator type Live template for the eponymous function
 - **nullToEmptyString** — autocomplete imitator type Live template for the eponymous function
 - **nullToEmptyObject** — autocomplete imitator type Live template for the eponymous function
-- **bs** — live template for [buildString](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString.md) function
+- **bs** — live template for [buildString](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/buildString/buildString.english.html) function
 - **cflc** — live template for [capitalizeFirstLatinCharacter](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md) function
 - <kbd>dcaoo</kbd> - live template for [deeplyCloneAndOverrideObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject.md) function
 - <kbd>dco</kbd> - live template for [deeplyCloneObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject.md) function

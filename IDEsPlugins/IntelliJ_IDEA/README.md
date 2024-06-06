@@ -1,27 +1,28 @@
-# Yamato-Daiwa Frontend
+# Yamato Daiwa Frontend — Official Plugin for IntelliJ IDEA Family IDEs
 
 [![Version](https://img.shields.io/jetbrains/plugin/v/17677.svg)](https://plugins.jetbrains.com/plugin/17677)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/17677.svg)](https://plugins.jetbrains.com/plugin/17677)
 
 
 <!-- Plugin description -->
-<!-- ⚠️ "kbd" tag will not be displayed in Jet Brains Marketplace -->
-<!-- ⚠️ "dl" tag has no styles in Jet Brains Marketplace -->
+<!-- ⚠️ Don't use "kbd" tag because it has no appropriate styles in Jet Brains Marketplace -->
+<!-- ⚠️ Don't use "dl" tag because it has no appropriate styles in Jet Brains Marketplace -->
+
 Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templates.html) and
   [files templates](https://www.jetbrains.com/help/idea/using-file-and-code-templates.html) for the
-  [@yamato-daiwa/frontend](https://www.npmjs.com/package/@yamato-daiwa/frontend) library.
+  [Yamato Daiwa Frontend](https://frontend.yamato-daiwa.com/) libraries.
 
 
-## Live templates
+## Live Templates
 ### Markup (Pug)
 #### Inline JavaScript
 
-- **buildEmailLinkHREF_AttributeValue** Autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.english.html)
-- **buildPhoneNumberLinkHrefAttributeValue** Autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.english.html)
-- **tost** — Autocomplete imitator for [`textOverflowSafetyTest` constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Markup/ConstantsAssets/textOverflowSafetyTest/textOverflowSafetyTest.md)
-- **dius** — Autocomplete imitator for <code>DummyImagesURIs</code> enumeration 
+- **buildEmailLinkHREF_AttributeValue** — Autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.english.html)
+- **buildPhoneNumberLinkHrefAttributeValue** — Autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.english.html)
+- **processObjectTypeParameterOfPugMixin** —Autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/processObjectTypeParameterOfPugMixin/processObjectTypeParameterOfPugMixin.english.html)
+- **tost** — Autocomplete imitator for [`textOverflowSafetyTest` constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Markup/ConstantsAssets/textOverflowSafetyTest/textOverflowSafetyTest.md)
+- **dius** — Autocomplete imitator for [`DummyImagesURIs` enumeration](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/DummyImagesURIs.english.html) 
 
-<!-- * <kbd>dius</kbd> Autocomplete imitator for [`DummyImagesURIs` enumeration](#) -->
 
 #### Mixins
 
@@ -31,8 +32,12 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 
 #### Components
 
-* <kbd>badge-ydf</kbd>, <kbd>badge-lp-ydf</kbd> Live templates for the **Badge** component and its loading placeholder respectively  
-* <kbd>ossll</kbd> Live template for **OverflowSafeSingleLineLabel** component markup
+- **ab-ydf** — Live template for the inserting of invocation of **AdmonitionBlock--YDF** Pug mixin corresponding to the 
+    **AdmonitionBlock** component
+- **badge-ydf**, **badge-lp-ydf** — Live templates for the inserting of invocation of **Badge--YDF** and 
+    **Badge--YDF-LoadingPlaceholder** Pug mixins corresponding to **Badge** component and its loading placeholder 
+    respectively  
+* **ossll** — Live template for **OverflowSafeSingleLineLabel** component
 
 
 ### Styles (Stylus)
@@ -138,23 +143,27 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 
 ###### Strings 
 
-- **buildString** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/buildString.md)
+- **buildString** — autocomplete imitator type Live template for the [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/Functions/Strings/buildString/buildString.english.html)
 - **capitalizeFirstLatinCharacter** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md)
 
 ###### Quantities
 
 - **appendUnit** — autocomplete imitator type Live template for the eponymous function
 - **computeExtraSpaceCausedByLineHeightAtTopOrBottom** - autocomplete imitator type Live template for the eponymous function
+- **getLineHeightByFontSizeAndLineSpacing** - autocomplete imitator type Live template for the eponymous function
+- **getLineSpacingByFontSizeAndLineHeight** - autocomplete imitator type Live template for the eponymous function
+- **removeUnitFromAmount** - autocomplete imitator type Live template for the eponymous function
 
+###### Objects
 
-* Objects
-  * <kbd>dcaoo</kbd> - live template for [deeplyCloneAndOverrideObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject.md) function
-  * <kbd>dco</kbd> - live template for [deeplyCloneObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject.md) function
-  * <kbd>fo</kbd> - live template for [formatObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/formatObject.md) function
-  * <kbd>gnnovc</kbd> - live template for [getObjectNonNullValuesCount](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectNonNullValuesCount.md) function
-  * <kbd>govbdsps</kbd> - live template for [getObjectValueByDotSeparatedPathSafely](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely.md) function
-  * <kbd>iosnv</kbd> - live template for [iterateObjectSkippingNullValues](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues.md) function
-  * <kbd>oo</kbd> - live template for [overrideObject](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/overrideObject.md) function
+- **createObjectWithComputedProperties** — autocomplete imitator type Live template for the eponymous function
+- **deeplyCloneAndOverrideObject** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject.md)
+- **deeplyCloneObject** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject.md)
+- **formatObject** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/formatObject.md)
+- **getObjectNonNullValuesCount** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectNonNullValuesCount.md)
+- **getObjectValueByDotSeparatedPathSafely** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely.md)
+- **iterateObjectSkippingNullValues** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues.md)
+- **overrideObject** — autocomplete imitator type Live template for the [eponymous function](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/overrideObject.md)
 
 * Autocomplete imitators (no abbreviations) for value converters array functions
   * <kbd>arrayConstructor__POLYFILL</kbd> ([check documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/arrayConstructor__POLYFILL.md))
@@ -262,6 +271,7 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 ## Files templates
 ### Styles customizing 
 
+* **Files and Code Templates/Other/YDF GUI Components/AdmonitionBlock.styl**
 * **Files and Code Templates/Other/YDF GUI Components/Badge.styl**
 
 

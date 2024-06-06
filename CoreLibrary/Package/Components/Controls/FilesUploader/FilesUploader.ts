@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/member-ordering --
+ * The members of this class has been organized semantically. */
+
 /* ─── Validation ─────────────────────────────────────────────────────────────────────────────────────────────────── */
 import ValidatableControl from "../_Validation/ValidatableControl";
 import type InputtedValueValidation from "../_Validation/InputtedValueValidation";
@@ -6,7 +9,7 @@ import type InputtedValueValidation from "../_Validation/InputtedValueValidation
 import CompoundControlShell from "../CompoundControlShell/CompoundControlShell";
 
 /* ─── Utils ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
-import { encodeFileToBase64, Logger, isNotNull, isNull, InvalidParameterValueError } from "@yamato-daiwa/es-extensions";
+import { encodeFileToBase64, isNull, Logger, InvalidParameterValueError } from "@yamato-daiwa/es-extensions";
 import { getExpectedToBeSingleDOM_Element, addLeftClickEventHandler } from "@yamato-daiwa/es-extensions-browserjs";
 
 
@@ -16,15 +19,16 @@ class FilesUploader<
   Validation extends InputtedValueValidation
 > implements ValidatableControl {
 
-  /* ━━━ Static fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Static Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   /* ─── Accessing to DOM ─────────────────────────────────────────────────────────────────────────────────────────── */
-  protected static readonly INPUT_ELEMENT_SELECTOR: string = ".FilesUploader--YDF-HiddenInputElement";
+  protected static readonly NATIVE_INPUT_ELEMENT_SELECTOR: string = ".FilesUploader--YDF-HiddenInputElement";
   protected static readonly FILES_PICKING_BUTTON_ELEMENT_SELECTOR: string = ".FilesUploader--YDF-FilePickingButton";
   protected static readonly DRAG_AND_DROP_AREA_ELEMENT_SELECTOR: string = ".FilesUploader--YDF-DragAndDropArea";
 
   protected static readonly INVALID_VALUE_STATE_CSS_CLASS: string = ".FilesUploader--YDF-FilesUploader__InvalidValueState";
 
-  /* ━━━ Instance fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+  /* ━━━ Instance Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public readonly payload: ValidatableControl.Payload<ValidValue, InvalidValue, Validation>;
 
   protected mustDisplayErrorsMessagesImmideatlyIfAny: boolean = false;
@@ -32,12 +36,49 @@ class FilesUploader<
 
   /* ─── DOM ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
   protected readonly shellComponent: CompoundControlShell;
-  protected readonly inputElement: HTMLInputElement;
+  protected readonly nativeInputElement: HTMLInputElement;
   protected readonly filesPickingButtonElement: HTMLInputElement | null;
   protected readonly dragAndDropAreaElement: HTMLInputElement | null;
 
 
-  /* ━━━ Public static methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── Reactivity ───────────────────────────────────────────────────────────────────────────────────────────────── */
+  /* eslint-disable no-underscore-dangle -- [ CONVENTION ]
+   * The instance fields begins from the underscore MUST be changed only via setters or constructor. */
+  protected _mustHighlightInvalidInputIfAnyValidationErrorsMessages: boolean = false;
+
+  protected get $mustHighlightInvalidInputIfAnyValidationErrorsMessages(): boolean {
+    return this._mustHighlightInvalidInputIfAnyValidationErrorsMessages;
+  }
+
+  protected set $mustHighlightInvalidInputIfAnyValidationErrorsMessages(value: boolean) {
+
+    if (this._mustHighlightInvalidInputIfAnyValidationErrorsMessages === value) {
+      return;
+    }
+
+
+    this._mustHighlightInvalidInputIfAnyValidationErrorsMessages = value;
+
+    if (this._mustHighlightInvalidInputIfAnyValidationErrorsMessages) {
+
+      this.shellComponent.$mustDisplayErrorsMessagesIfAny = true;
+
+      if (this.payload.isInvalid) {
+        this.shellComponent.rootElement.classList.add(FilesUploader.INVALID_VALUE_STATE_CSS_CLASS);
+      }
+
+      return;
+
+    }
+
+
+    this.shellComponent.rootElement.classList.remove(FilesUploader.INVALID_VALUE_STATE_CSS_CLASS);
+    this.shellComponent.$mustDisplayErrorsMessagesIfAny = false;
+
+  }
+
+
+  /* ━━━ Public Static Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public static pickOneBySelector<Validation extends InputtedValueValidation>(
     initializationProperties: FilesUploader.InitializationProperties.SingleRequiredFileScenario<Validation>
   ): FilesUploader<string, string | null, Validation>;
@@ -63,6 +104,29 @@ class FilesUploader<
   }
 
 
+  /* ━━━ Interface Implementation ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  public highlightInvalidInput(): this {
+    this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages = true;
+    return this;
+  }
+
+  public focus(): this {
+    (this.filesPickingButtonElement ?? this.dragAndDropAreaElement)?.focus();
+    return this;
+  }
+
+  public getRootElementOffsetCoordinates(): ValidatableControl.RootElementOffsetCoordinates {
+    return {
+      top: this.shellComponent.rootElement.offsetTop,
+      left: this.shellComponent.rootElement.offsetLeft
+    };
+  }
+
+  public resetValidityHighlightingStateToInitial(): void {
+    this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages = this.mustDisplayErrorsMessagesImmideatlyIfAny;
+  }
+
+
   /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   protected constructor(initializationProperties: FilesUploader.InitializationProperties<Validation>) {
 
@@ -72,15 +136,16 @@ class FilesUploader<
       mustDisplayErrorsMessagesIfAny: this.mustDisplayErrorsMessagesImmideatlyIfAny
     });
 
-    this.inputElement = getExpectedToBeSingleDOM_Element({
-      selector: FilesUploader.INPUT_ELEMENT_SELECTOR,
+    this.nativeInputElement = getExpectedToBeSingleDOM_Element({
+      selector: FilesUploader.NATIVE_INPUT_ELEMENT_SELECTOR,
       contextElement: this.shellComponent.rootElement,
       expectedDOM_ElementSubtype: HTMLInputElement
     });
 
-    this.filesPickingButtonElement = document.querySelector(FilesUploader.FILES_PICKING_BUTTON_ELEMENT_SELECTOR);
-    this.dragAndDropAreaElement = document.querySelector(FilesUploader.DRAG_AND_DROP_AREA_ELEMENT_SELECTOR);
-
+    this.filesPickingButtonElement = this.shellComponent.rootElement.
+        querySelector(FilesUploader.FILES_PICKING_BUTTON_ELEMENT_SELECTOR);
+    this.dragAndDropAreaElement = this.shellComponent.rootElement.
+        querySelector(FilesUploader.DRAG_AND_DROP_AREA_ELEMENT_SELECTOR);
 
     let payloadInitialValue: FilesUploader.SupportedValidatablePayloadValuesTypes;
 
@@ -92,11 +157,11 @@ class FilesUploader<
           Logger.throwErrorAndLog({
             errorInstance: new InvalidParameterValueError({
               parameterNumber: 1,
-              parameterName: "properties",
+              parameterName: "initializationProperties",
               messageSpecificPart:
                   "Contradictory initialization options. " +
-                  "The \"singleRequiredFile\" scenario has been specified, while according to the \"validation\" the " +
-                    "input is not required."
+                  "The \"singleRequiredFile\" scenario has been specified, while according to \"validation\", " +
+                    "the input is optional."
             }),
             title: InvalidParameterValueError.localization.defaultTitle,
             occurrenceLocation: "FilesUploader.pickOneBySelector(initializationProperties)"
@@ -111,14 +176,14 @@ class FilesUploader<
 
       case FilesUploader.Scenarios.singleOptionalFile: {
 
-        if (!initializationProperties.validation.isInputRequired()) {
+        if (initializationProperties.validation.isInputRequired()) {
           Logger.throwErrorAndLog({
             errorInstance: new InvalidParameterValueError({
               parameterNumber: 1,
               parameterName: "properties",
               messageSpecificPart:
                   "Contradictory initialization options. " +
-                  "The \"singleOptionalFile\" scenario has been specified, while according to the \"validation\" the " +
+                  "The \"singleOptionalFile\" scenario has been specified, while according to \"validation\" the " +
                     "input is required."
             }),
             title: InvalidParameterValueError.localization.defaultTitle,
@@ -138,9 +203,12 @@ class FilesUploader<
 
     }
 
-    // TODO 再開点 ======================================================================================================
     this.payload = new ValidatableControl.Payload<ValidValue, InvalidValue, Validation>({
-      initialValue: payloadInitialValue,
+      /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
+       * TypeScript complains that "Type null is not assignable to type ValidValue | InvalidValue" while both `ValidValue`
+       *   and `InvalidValue` are constrained to polymorphic type `FilesUploader.SupportedValidatablePayloadValuesTypes`
+       *   which could be `null`. */
+      initialValue: payloadInitialValue as ValidValue | InvalidValue,
       getComponentInstance: (): ValidatableControl => this,
       validation: initializationProperties.validation
     });
@@ -148,38 +216,36 @@ class FilesUploader<
   }
 
 
-  /* === Interface implementation =================================================================================== */
-  public highlightInvalidInput(): this {
-
-    this.mustDisplayErrorsMessagesImmideatlyIfAny = true;
-
-    if (this.payload.isInvalid) {
-      this.shellComponent.rootElement.classList.add(FilesUploader.INVALID_VALUE_STATE_CSS_CLASS);
-    }
-
-    this.shellComponent.$mustDisplayErrorsMessagesIfAny = true;
-
-    return this;
-
+  /* ━━━ Reactivity ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  protected get $mustHighlightInvalidInputIfAnyValidationErrorsMessages(): boolean {
+    return this._mustHighlightInvalidInputIfAnyValidationErrorsMessages;
   }
 
-  public focus(): this {
+  protected set $mustHighlightInvalidInputIfAnyValidationErrorsMessages(value: boolean) {
 
-    if (isNotNull(this.filesPickingButtonElement)) {
-      this.filesPickingButtonElement.focus();
-    } else if (isNotNull(this.dragAndDropAreaElement)) {
-      this.dragAndDropAreaElement.focus();
+    if (this._mustHighlightInvalidInputIfAnyValidationErrorsMessages === value) {
+      return;
     }
 
-    return this;
 
-  }
+    this._mustHighlightInvalidInputIfAnyValidationErrorsMessages = value;
 
-  public getRootElementOffsetCoordinates(): ValidatableControl.RootElementOffsetCoordinates {
-    return {
-      top: this.shellComponent.rootElement.offsetTop,
-      left: this.shellComponent.rootElement.offsetLeft
-    };
+    if (this._mustHighlightInvalidInputIfAnyValidationErrorsMessages) {
+
+      this.shellComponent.$mustDisplayErrorsMessagesIfAny = true;
+
+      if (this.payload.isInvalid) {
+        this.shellComponent.rootElement.classList.add(FilesUploader.INVALID_VALUE_STATE_CSS_CLASS);
+      }
+
+      return;
+
+    }
+
+
+    this.shellComponent.rootElement.classList.remove(FilesUploader.INVALID_VALUE_STATE_CSS_CLASS);
+    this.shellComponent.$mustDisplayErrorsMessagesIfAny = false;
+
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -209,7 +275,7 @@ class FilesUploader<
 
   protected initializeNativeInputElement(): this {
 
-    this.inputElement.addEventListener("change", (event: Event): void => {
+    this.nativeInputElement.addEventListener("change", (event: Event): void => {
 
       // eslint-disable-next-line no-inline-comments
       if (!(event.target instanceof HTMLInputElement)) { /* Empty */ }
@@ -223,7 +289,7 @@ class FilesUploader<
 
   /* --- Actions handling ------------------------------------------------------------------------------------------- */
   protected onClickPickFilesButton(): void {
-    this.inputElement.click();
+    this.nativeInputElement.click();
   }
 
 

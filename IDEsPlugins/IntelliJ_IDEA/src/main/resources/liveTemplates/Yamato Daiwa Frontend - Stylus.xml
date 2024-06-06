@@ -337,83 +337,11 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="MAIN_SANS_SERIF_FONT_STACK" value="MAIN_SANS_SERIF_FONT_STACK" description="`MAIN_SANS_SERIF_FONT_STACK` variable" toReformat="false" toShortenFQNames="true">
+  <template name="zi" value="YDF_Configuration.zIndexes.$LAYER$" description="`ZIndexes` object" toReformat="false" toShortenFQNames="true">
+    <variable name="LAYER" expression="enum(&quot;lowermostLayer&quot;, &quot;drawers&quot;, &quot;floatingBelowModalsComponents&quot;, &quot;modalsUnderlay&quot;, &quot;floatingAboveModalsComponents&quot;, &quot;blockingOverlay&quot;, &quot;floatingNotifications&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_RULESET_LIST" value="false" />
-    </context>
-  </template>
-  <template name="MAIN_SERIF_FONT_STACK" value="MAIN_SERIF_FONT_STACK" description="`MAIN_SERIF_FONT_STACK` variable" toReformat="false" toShortenFQNames="true">
-    <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_RULESET_LIST" value="false" />
-    </context>
-  </template>
-  <template name="MAIN_MONOSPACED_FONT_STACK" value="MAIN_MONOSPACED_FONT_STACK" description="`MAIN_MONOSPACED_FONT_STACK` variable" toReformat="false" toShortenFQNames="true">
-    <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_RULESET_LIST" value="false" />
-    </context>
-  </template>
-  <template name="MAIN_FONT_STACK" value="MAIN_FONT_STACK" description="`MAIN_FONT_STACK` variable" toReformat="false" toShortenFQNames="true">
-    <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_RULESET_LIST" value="false" />
-    </context>
-  </template>
-  <template name="BASIC_FONT_SIZE" value="BASIC_FONT_SIZE" description="`BASIC_FONT_SIZE`  variable" toReformat="false" toShortenFQNames="true">
-    <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_RULESET_LIST" value="false" />
-    </context>
-  </template>
-  <template name="BASIC_LINE_HEIGHT" value="BASIC_LINE_HEIGHT" description="`BASIC_LINE_HEIGHT`  variable" toReformat="false" toShortenFQNames="true">
-    <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_RULESET_LIST" value="false" />
-    </context>
-  </template>
-  <template name="BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS" value="BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS" description="`BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS`  variable" toReformat="false" toShortenFQNames="true">
-    <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_RULESET_LIST" value="false" />
-    </context>
-  </template>
-  <template name="BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS" value="BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS" description="`BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS`  variable" toReformat="false" toShortenFQNames="true">
-    <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_RULESET_LIST" value="false" />
-    </context>
-  </template>
-  <template name="zi" value="ZIndexes.$ELEMENT$" description="`ZIndexes` object" toReformat="false" toShortenFQNames="true">
-    <variable name="ELEMENT" expression="enum(&quot;floatingNotifications&quot;, &quot;blockingOverlay&quot;, &quot;floatingAboveModalsComponents&quot;, &quot;modalsUnderlay&quot;, &quot;floatingBelowModalsComponents&quot;, &quot;drawers&quot;, &quot;lowermostLayer&quot;)" defaultValue="" alwaysStopAt="true" />
-    <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_RULESET_LIST" value="false" />
-    </context>
-  </template>
-  <template name="BEM_ELEMENT_SEPARATOR" value="BEM_ELEMENT_SEPARATOR" description="`BEM_ELEMENT_SEPARATOR` constant" toReformat="false" toShortenFQNames="true">
-    <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_PROPERTY_VALUE" value="false" />
-      <option name="CSS_RULESET_LIST" value="false" />
-    </context>
-  </template>
-  <template name="BEM_MODIFIER_SEPARATOR" value="BEM_MODIFIER_SEPARATOR" description="`BEM_MODIFIER_SEPARATOR` constant" toReformat="false" toShortenFQNames="true">
-    <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-      <option name="CSS_PROPERTY_VALUE" value="false" />
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
@@ -441,7 +369,7 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="bs" value="buildString(&quot;$END$Good morning, ${name}&quot;, { name: &quot;Takeshi&quot; })&#10;&#10;buildString(&#10;  &quot;Good morning, ${givenName} ${familyName}&quot;, &#10;  {&#10;    givenName: &quot;Takeshi&quot;,&#10;    familyName: &quot;Tokugawa&quot;&#10;  }&#10;)&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`buildString` function" toReformat="false" toShortenFQNames="true">
+  <template name="buildString" value="buildString(&quot;$END$Good morning, ${ name }&quot;, { name: &quot;Takeshi&quot; })&#10;&#10;buildString(&#10;  &quot;Good morning, ${ givenName } ${ familyName }&quot;, &#10;  {&#10;    givenName: &quot;Takeshi&quot;,&#10;    familyName: &quot;Tokugawa&quot;&#10;  }&#10;)&#10;// ━━━ END OF AUTOMATICALLY GENERATED CODE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" description="`buildString` function" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
@@ -449,7 +377,7 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="cflc" value="capitalizeFirstLatinCharacter($END$)" description="`capitalizeFirstLatinCharacter` function" toReformat="false" toShortenFQNames="true">
+  <template name="capitalizeFirstLatinCharacter" value="capitalizeFirstLatinCharacter($END$)" description="`capitalizeFirstLatinCharacter` function" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
@@ -457,7 +385,7 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="dcaoo" value="// One-line example&#10;deeplyCloneAndOverrideObject($TARGET_OBJECT$, { $OVERRIDINGS$: &quot;newValue&quot; })&#10;&#10;// Multi-line example&#10;deeplyCloneAndOverrideObject($TARGET_OBJECT$, { &#10;  $OVERRIDINGS$: &quot;newValue&quot;,&#10;  otherProperty: &quot;newValue&quot;&#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="`deeplyCloneAndOverrideObject` function" toReformat="false" toShortenFQNames="true">
+  <template name="deeplyCloneAndOverrideObject" value="// One-line example&#10;deeplyCloneAndOverrideObject($TARGET_OBJECT$, { $OVERRIDINGS$: &quot;newValue&quot; })&#10;&#10;// Multi-line example&#10;deeplyCloneAndOverrideObject($TARGET_OBJECT$, { &#10;  $OVERRIDINGS$: &quot;newValue&quot;,&#10;  otherProperty: &quot;newValue&quot;&#10;})&#10;// --- END OF AUTOMATICALLY GENERATED CODE -----------------------------------------------------------------------------" description="Eponymous YDF function calling expression" toReformat="false" toShortenFQNames="true">
     <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
     <variable name="OVERRIDINGS" expression="" defaultValue="&quot;oneProperty&quot;" alwaysStopAt="true" />
     <context>
@@ -467,7 +395,7 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="dco" value="deeplyCloneObject($TARGET_OBJECT$)" description="`deeplyCloneObject` function" toReformat="false" toShortenFQNames="true">
+  <template name="deeplyCloneObject" value="deeplyCloneObject($TARGET_OBJECT$)" description="Eponymous YDF function calling expression" toReformat="false" toShortenFQNames="true">
     <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
@@ -476,7 +404,7 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="gnnovc" value="getNonNullObjectValuesCount($TARGET_OBJECT$)" description="`getNonNullObjectValuesCount` function" toReformat="false" toShortenFQNames="true">
+  <template name="getNonNullObjectValuesCount" value="getNonNullObjectValuesCount($TARGET_OBJECT$)" description="Eponymous function calling expression (YDF)" toReformat="false" toShortenFQNames="true">
     <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
@@ -485,7 +413,7 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="govbdsps" value="getObjectValueByDotSeparatedPathSafely($TARGET_OBJECT$, $DOT_SEPARATED_PATH$)" description="`getObjectValueByDotSeparatedPathSafely` function" toReformat="false" toShortenFQNames="true">
+  <template name="getObjectValueByDotSeparatedPathSafely" value="getObjectValueByDotSeparatedPathSafely($TARGET_OBJECT$, $DOT_SEPARATED_PATH$)" description="Eponymous function calling expression (YDF)" toReformat="false" toShortenFQNames="true">
     <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
     <variable name="DOT_SEPARATED_PATH" expression="" defaultValue="&quot;\&quot;foo.bar.baz\&quot;&quot;" alwaysStopAt="true" />
     <context>
@@ -495,7 +423,7 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="iosnv" value="iterateObjectSkippingNullValues($TARGET_OBJECT$, @(key, value) {&#10;&#10;})" description="`iterateObjectSkippingNullValues` function" toReformat="false" toShortenFQNames="true">
+  <template name="iterateObjectSkippingNullValues" value="iterateObjectSkippingNullValues($TARGET_OBJECT$, @(key, value) {&#10;&#10;})" description="Eponymous function calling expression (YDF)" toReformat="false" toShortenFQNames="true">
     <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
@@ -503,7 +431,7 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="fo" value="formatObject($END$)" description="`formatObject` function" toReformat="false" toShortenFQNames="true">
+  <template name="formatObject" value="formatObject($END$)" description="Eponymous YDF function calling expression" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
@@ -685,7 +613,7 @@
       <option name="CSS_DECLARATION_BLOCK" value="true" />
     </context>
   </template>
-  <template name="oo" value="overrideObject($TARGET_OBJECT$, $OVERRIDINGS$)" description="`overrideObject` function" toReformat="false" toShortenFQNames="true">
+  <template name="overrideObject" value="overrideObject($TARGET_OBJECT$, $OVERRIDINGS$)" description="Eponymous function calling expression (YDF)" toReformat="false" toShortenFQNames="true">
     <variable name="TARGET_OBJECT" expression="clipboard()" defaultValue="&quot;targetObject&quot;" alwaysStopAt="true" />
     <variable name="OVERRIDINGS" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
@@ -738,6 +666,106 @@
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
+    </context>
+  </template>
+  <template name="fs" value="YDF_Configuration.fontsStacks.$FONTS_STACK$" description="The element of `YDF_Configuration.fontsStacks` associative array" toReformat="false" toShortenFQNames="true">
+    <variable name="FONTS_STACK" expression="enum(&quot;mainSansSerif&quot;, &quot;mainSerif&quot;, &quot;mainMonospaced&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="tg" value="YDF_Configuration.textGeometry.$PROPERTY$" description="The element of `YDF_Configuration.textGeometry` associative array" toReformat="false" toShortenFQNames="true">
+    <variable name="PROPERTY" expression="enum(&quot;basicFontSize&quot;, &quot;basicLineHeight&quot;, &quot;basicLineHeightInMultilineTextBlocks&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="oydfc" value="// TODO Either replace or delete the following values from the 2nd parameter&#10;overrideObject(&#10;&#9;YDF_Configuration, &#10;&#9;{$END$&#10;&#10;&#9;&#9;fontsStacks: {&#10;&#10;&#9;&#9;&#9;mainSansSerif: unquote(\&#10;&#9;&#9;&#9;&#9;&quot;system-ui,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;-apple-system,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;BlinkMacSystemFont,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Segoe UI,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Roboto,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Helvetica Neue,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Arial,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Noto Sans,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Liberation Sans,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;sans-serif,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Apple Color Emoji,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Segoe UI Emoji,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Segoe UI Symbol,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Noto Color Emoji&quot;&#10;&#9;&#9;&#9;),&#10;&#10;&#9;&#9;&#9;mainSerif: unquote(&#10;&#9;&#9;&#9;&#9;&quot;TimesNewRoman,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Times New Roman,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Times,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Baskerville,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Georgia,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;serif&quot;&#10;&#9;&#9;&#9;),&#10;&#10;&#9;&#9;&#9;mainMonospaced: unquote(&#10;&#9;&#9;&#9;&#9;&quot;Lucida Console,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Lucida Sans Typewriter,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;monaco,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Bitstream Vera Sans Mono,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;monospace&quot;&#10;&#9;&#9;&#9;)&#10;&#10;&#9;&#9;},&#10;&#10;&#9;&#9;textGeometry: {&#10;&#9;&#9;&#9;basicFontSize: 14px,&#10;&#9;&#9;&#9;basicLineHeight: 1,&#10;&#9;&#9;&#9;basicLineHeightInMultilineTextBlocks: 1.4&#10;&#9;&#9;},&#10;&#10;&#9;&#9;zIndexes: {&#10;&#9;&#9;&#9;lowermostLayer: 0,&#10;&#9;&#9;&#9;drawers: 10,&#10;&#9;&#9;&#9;floatingBelowModalsComponents: 20,&#10;&#9;&#9;&#9;modalsUnderlay: 30,&#10;&#9;&#9;&#9;floatingAboveModalsComponents: 40,&#10;&#9;&#9;&#9;blockingOverlay: 50,&#10;&#9;&#9;&#9;floatingNotifications: 60&#10;&#9;&#9;}&#10;&#10;&#9;}&#10;)" description="Override the `YDF_Configuration` object" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_RULESET_LIST" value="true" />
+    </context>
+  </template>
+  <template name="ydfc" value="YDF_Configuration" description="`YDF_Configuration` object" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+    </context>
+  </template>
+  <template name="isCalcExpression" value="isCalcExpression($END$)" description="`isCalcExpression` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="isFunction" value="isFunction($END$)" description="`isFunction` function" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="appendUnit" value="appendUnit($NUMBER$, &quot;$UNIT$&quot;)" description="`appendUnit` function (YDF)" toReformat="false" toShortenFQNames="true">
+    <variable name="NUMBER" expression="" defaultValue="&quot;1&quot;" alwaysStopAt="true" />
+    <variable name="UNIT" expression="" defaultValue="&quot;px&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="computeExtraSpaceCausedByLineHeightAtTopOrBottom" value="// One line&#10;computeExtraSpaceCausedByLineHeightAtTopOrBottom({ fontSize: $FONT_SIZE$, lineSpacing: $LINE_SPACING$, lineHeight: $LINE_HEIGHT$ })&#10;&#10;// Multi lines&#10;computeExtraSpaceCausedByLineHeightAtTopOrBottom({ &#10;  fontSize: $FONT_SIZE$, &#10;  lineSpacing: $LINE_SPACING$, &#10;  lineHeight: $LINE_HEIGHT$ &#10;})&#10;// TODO Select between &quot;lineSpacing&quot; and &quot;lineHeight&quot; then delete remaining one&#10;// === END OF AUTOMATICALLY GENERATED CODE =============================================================================" description="`computeExtraSpaceCausedByLineHeightAtTopOrBottom` function (YDF)" toReformat="false" toShortenFQNames="true">
+    <variable name="FONT_SIZE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LINE_SPACING" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LINE_HEIGHT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="getLineHeightByFontSizeAndLineSpacing" value="getLineHeightByFontSizeAndLineSpacing({&#10;  fontSize: $FONT_SIZE$,&#10;  lineSpacing: $LINE_SPACING$,&#10;  mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0: $MUST_MAKE_LINE_HEIGHT_EQUAL_TO_FONT_SIZE_WHEN_LINE_SPACING_IS_0$,&#10;  mustOutputDimensionalQuantityIfPossible: $MUST_OUTPUT_DIMENSIONAL_QUANTITY_IF_POSSIBLE$&#10;})" description="Eponymous function calling expression (YDF)" toReformat="false" toShortenFQNames="true">
+    <variable name="FONT_SIZE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LINE_SPACING" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MUST_MAKE_LINE_HEIGHT_EQUAL_TO_FONT_SIZE_WHEN_LINE_SPACING_IS_0" expression="enum(&quot;true&quot;, &quot;false&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="MUST_OUTPUT_DIMENSIONAL_QUANTITY_IF_POSSIBLE" expression="enum(&quot;true&quot;, &quot;false&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="getLineSpacingByFontSizeAndLineHeight" value="getLineSpacingByFontSizeAndLineHeight({&#10;  fontSize: $FONT_SIZE$,&#10;  lineHeight: $LINE_HEIGHT$,&#10;  mustOutputDimensionalQuantityIfPossible: $MUST_OUTPUT_DIMENSIONAL_QUANTITY_IF_POSSIBLE$&#10;})" description="Eponymous function calling expression (YDF)" toReformat="false" toShortenFQNames="true">
+    <variable name="FONT_SIZE" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LINE_HEIGHT" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MUST_OUTPUT_DIMENSIONAL_QUANTITY_IF_POSSIBLE" expression="enum(&quot;true&quot;, &quot;false&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="removeUnitFromAmount" value="removeUnitFromAmount($AMOUNT$)" description="Eponymous function calling expression (YDF)" toReformat="false" toShortenFQNames="true">
+    <variable name="AMOUNT" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="createObjectWithComputedProperties" value="createObjectWithComputedProperties(&#10;  {&#10;    // TODO Specify properties&#10;    $END$&#10;  }, &#10;  @(objectWithoutGetters) =&gt; {&#10;    // TODO Add computed properties  &#10;  }&#10;)" description="Eponymous YDF function calling expression" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
 </templateSet>

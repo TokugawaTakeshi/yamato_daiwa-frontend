@@ -8,7 +8,7 @@ import YDF_BUG_REPORTING_PAGE_URI from "../../_Auxiliaries/YDF_BUG_REPORTING_PAG
 import ValidatableControl from "../_Validation/ValidatableControl";
 import type InputtedValueValidation from "../_Validation/InputtedValueValidation";
 
-/* ─── Children components ────────────────────────────────────────────────────────────────────────────────────────── */
+/* ─── Children Components ────────────────────────────────────────────────────────────────────────────────────────── */
 import CompoundControlShell from "../CompoundControlShell/CompoundControlShell";
 
 /* ─── Utils ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
@@ -38,231 +38,25 @@ class TextBox<
   protected static readonly INVALID_VALUE_STATE_CSS_CLASS: string = "TextBox--YDF__InvalidInputState";
 
 
-  /* ━━━ Instance fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Instance Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public readonly payload: ValidatableControl.Payload<ValidValue, InvalidValue, Validation>;
+
+  protected readonly rawInputTypeTransformer: (rawInput: string) => ValidValue | InvalidValue;
+  protected readonly validityHighlightingActivationMode: TextBox.ValidityHighlightingActivationModes;
 
   protected readonly ID: string = TextBox.generateSelfID();
 
+
+  /* ─── DOM ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
   protected readonly shellComponent: CompoundControlShell;
   protected readonly nativeInputAcceptingElement: HTMLInputElement | HTMLTextAreaElement;
 
-  private readonly rawInputTypeTransformer: (rawInput: string) => ValidValue | InvalidValue;
 
-  protected readonly validityHighlightingActivationMode: TextBox.ValidityHighlightingActivationModes;
-
-
-  /* ─── Must be changed only via setters ─────────────────────────────────────────────────────────────────────────── */
+  /* ─── Reactivity ───────────────────────────────────────────────────────────────────────────────────────────────── */
   /* eslint-disable no-underscore-dangle -- [ CONVENTION ]
-   * The instance files begins from the underscore MUST be changed only via setters or constructor. */
+   * The instance fields begins from the underscore MUST be changed only via setters. */
   protected _mustHighlightInvalidInputIfAnyValidationErrorsMessages: boolean = false;
 
-
-  /* ━━━ Public static methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  public static pickOneBySelector<Validation extends InputtedValueValidation>(
-    properties: TextBox.InitializationProperties.StringPayloadValue<Validation>
-  ): TextBox<string, string, Validation>;
-
-  public static pickOneBySelector<
-    ValidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
-    InvalidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
-    Validation extends InputtedValueValidation
-  >(
-    properties: TextBox.InitializationProperties.CustomPayloadValue<ValidValue, InvalidValue, Validation>
-  ): TextBox<ValidValue, InvalidValue, Validation>;
-
-  public static pickOneBySelector<
-    ValidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
-    InvalidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
-    Validation extends InputtedValueValidation
-  >(
-    properties: TextBox.InitializationProperties<ValidValue, InvalidValue, Validation>
-  ): TextBox<ValidValue, InvalidValue, Validation> {
-    return new TextBox<ValidValue, InvalidValue, Validation>(properties);
-  }
-
-
-  /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  private constructor(properties: TextBox.InitializationProperties<ValidValue, InvalidValue, Validation>) {
-
-    this.shellComponent = CompoundControlShell.pickOneBySelector({
-      targetCompoundControlShellSelector: properties.selector,
-      contextElement: properties.contextElement,
-      mustDisplayErrorsMessagesIfAny:
-          properties.validityHighlightingActivationMode === TextBox.ValidityHighlightingActivationModes.immediate
-    });
-
-
-    const nativeInputAcceptingElement: Element = getExpectedToBeSingleDOM_Element({
-      selector: TextBox.NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR,
-      contextElement: this.shellComponent.rootElement
-    });
-
-    if (nativeInputAcceptingElement instanceof HTMLInputElement || nativeInputAcceptingElement instanceof HTMLTextAreaElement) {
-
-      this.nativeInputAcceptingElement = nativeInputAcceptingElement;
-
-    } else {
-
-      Logger.logError({
-        errorType: UnexpectedEventError.NAME,
-        title: UnexpectedEventError.localization.defaultTitle,
-        description: PoliteErrorsMessagesBuilder.buildMessage({
-          technicalDetails:
-              `The element corresponding to selector "${ TextBox.NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR }" ` +
-                "must be the instance either of \"HTMLInputElement\" or \"HTMLTextAreaElement\" while actually none of them.",
-          politeExplanation:
-              "When trying to pick the native \"input\" or \"textarea\" element, we did expected that it will " +
-                "be the instance of \"HTMLInputElement\"/\"HTMLTextAreaElement\" respectively and during test is was such as. " +
-              "This bug means that we has missed some combination of circumstances so we must to investigate it.",
-          bugTrackerURI: YDF_BUG_REPORTING_PAGE_URI
-        }),
-        occurrenceLocation: "TextBox.constructor(properties)"
-      });
-
-      /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
-      * For the valid TypeScript, ever `nativeInputAcceptingElement` must be initialized, or error must be thrown.
-      * The second scenario makes this class completely unable to use. */
-      this.nativeInputAcceptingElement = nativeInputAcceptingElement as HTMLInputElement;
-
-    }
-
-
-    this.rawInputTypeTransformer = "rawInputTypeTransformer" in properties ?
-        properties.rawInputTypeTransformer :
-        /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
-        * Maybe it is impossible to specify for `TextBox` class that when there is no `rawInputTypeTransformer`,
-        *   both `ValidaValue` and `InvalidValue` are strings.
-        * If to make `rawInputTypeTransformer` required on `properties`, no type assertion will require anymore,
-        *   but it will be troublesome from the library users to specify it explicitly each time even for string
-        *   payload value. */
-        ((rawValue: string): string => rawValue) as (rawInput: string) => ValidValue | InvalidValue;
-
-
-    let payloadInitialValue: ValidValue | InvalidValue;
-
-    if (isNotUndefined(properties.overridingPreInputtedInitialValue)) {
-
-      /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
-       * For the `TextBox.InitializationProperties.StringPayloadValue`, the both `ValidValue` and `InvalidValue` are strings,
-       *    but maybe it is impossible to specify this relationship for the TypeScript. */
-      payloadInitialValue = properties.overridingPreInputtedInitialValue as ValidValue | InvalidValue;
-
-      if (isString(payloadInitialValue)) {
-
-        this.nativeInputAcceptingElement.value = payloadInitialValue;
-
-      } else if (isNumber(payloadInitialValue)) {
-
-        this.nativeInputAcceptingElement.value = payloadInitialValue.toString();
-
-      } else if (isNull(payloadInitialValue)) {
-
-        this.nativeInputAcceptingElement.value = "";
-
-      } else {
-
-        Logger.throwErrorAndLog({
-          errorInstance: new InvalidParameterValueError({
-            parameterNumber: 1,
-            parameterName: "properties",
-            messageSpecificPart: "The value of \"overridingPreInputtedInitialValue\" must be either string or number or " +
-                `null, while actually has type "${ typeof payloadInitialValue }".`
-          }),
-          title: InvalidParameterValueError.localization.defaultTitle,
-          occurrenceLocation: "TextBox.constructor(properties)"
-        });
-
-      }
-
-    } else {
-
-      payloadInitialValue = this.rawInputTypeTransformer(this.nativeInputAcceptingElement.value);
-
-    }
-
-    this.payload = new ValidatableControl.Payload<ValidValue, InvalidValue, Validation>({
-      initialValue: payloadInitialValue,
-      getComponentInstance: (): ValidatableControl => this,
-      validation: properties.validation,
-      onHasBecomeValidEventHandler: {
-        handler: this.onPayloadHasBecomeValidEventHandler.bind(this),
-        ID: TextBox.generateOnPayloadHasBecomeValidEventHandlerID(this.ID)
-      },
-      onHasBecomeInvalidEventHandler: {
-        handler: this.onPayloadHasBecomeInvalidEventHandler.bind(this),
-        ID: TextBox.generateOnPayloadHasBecomeInvalidEventHandlerID(this.ID)
-      },
-      onAsynchronousValidationStatusChangedEventHandler: {
-        handler: this.onPayloadAsynchronousValidationStatusChangedEventHandler.bind(this),
-        ID: TextBox.generateOnAsynchronousValidationStatusChangedEventHandlerID(this.ID)
-      }
-    });
-
-    this.initializeHTML_Attributes(properties.invalidInputPrevention);
-
-    this.validityHighlightingActivationMode = properties.validityHighlightingActivationMode;
-    this.shellComponent.$validationErrorsMessages = this.payload.validationErrorsMessages;
-
-    this._mustHighlightInvalidInputIfAnyValidationErrorsMessages =
-        this.validityHighlightingActivationMode === TextBox.ValidityHighlightingActivationModes.immediate;
-
-    addInputEventHandler({
-      targetElement: this.nativeInputAcceptingElement,
-      handler: this.onInputEventListener.bind(this)
-    });
-
-    this.nativeInputAcceptingElement.addEventListener("blur", this.onFocusOutEventListener.bind(this));
-
-  }
-
-
-  /* ━━━ Interface implementation ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  public highlightInvalidInput(): this {
-    this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages = true;
-    return this;
-  }
-
-  public focus(): this {
-    this.nativeInputAcceptingElement.focus();
-    return this;
-  }
-
-  public getRootElementOffsetCoordinates(): ValidatableControl.RootElementOffsetCoordinates {
-    return {
-      top: this.shellComponent.rootElement.offsetTop,
-      left: this.shellComponent.rootElement.offsetLeft
-    };
-  }
-
-  public resetValidityHighlightingStateToInitial(): void {
-    this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages =
-        this.validityHighlightingActivationMode === TextBox.ValidityHighlightingActivationModes.immediate;
-  }
-
-
-  /* ━━━ Public accessors / mutators ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  public get $isReadonly(): boolean {
-    return this.nativeInputAcceptingElement.readOnly;
-  }
-
-  public set $isReadonly(value: boolean) {
-    if (this.nativeInputAcceptingElement.readOnly !== value) {
-      this.nativeInputAcceptingElement.readOnly = value;
-    }
-  }
-
-  public get $isDisabled(): boolean {
-    return this.nativeInputAcceptingElement.disabled;
-  }
-
-  public set $isDisabled(value: boolean) {
-    if (this.nativeInputAcceptingElement.disabled !== value) {
-      this.nativeInputAcceptingElement.disabled = value;
-    }
-  }
-
-
-  /* ━━━ Reactivity ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   protected get $mustHighlightInvalidInputIfAnyValidationErrorsMessages(): boolean {
     return this._mustHighlightInvalidInputIfAnyValidationErrorsMessages;
   }
@@ -295,6 +89,211 @@ class TextBox<
   }
 
 
+  /* ━━━ Public Static Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  public static pickOneBySelector<Validation extends InputtedValueValidation>(
+    initializationProperties: TextBox.InitializationProperties.StringPayloadValue<Validation>
+  ): TextBox<string, string, Validation>;
+
+  public static pickOneBySelector<
+    ValidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
+    InvalidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
+    Validation extends InputtedValueValidation
+  >(
+    initializationProperties: TextBox.InitializationProperties.CustomPayloadValue<ValidValue, InvalidValue, Validation>
+  ): TextBox<ValidValue, InvalidValue, Validation>;
+
+  public static pickOneBySelector<
+    ValidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
+    InvalidValue extends TextBox.SupportedValidatablePayloadValuesTypes,
+    Validation extends InputtedValueValidation
+  >(
+    initializationProperties: TextBox.InitializationProperties<ValidValue, InvalidValue, Validation>
+  ): TextBox<ValidValue, InvalidValue, Validation> {
+    return new TextBox<ValidValue, InvalidValue, Validation>(initializationProperties);
+  }
+
+
+  /* ━━━ Interface implementation ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  public highlightInvalidInput(): this {
+    this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages = true;
+    return this;
+  }
+
+  public focus(): this {
+    this.nativeInputAcceptingElement.focus();
+    return this;
+  }
+
+  public getRootElementOffsetCoordinates(): ValidatableControl.RootElementOffsetCoordinates {
+    return {
+      top: this.shellComponent.rootElement.offsetTop,
+      left: this.shellComponent.rootElement.offsetLeft
+    };
+  }
+
+  public resetValidityHighlightingStateToInitial(): void {
+    this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages =
+        this.validityHighlightingActivationMode === TextBox.ValidityHighlightingActivationModes.immediate;
+  }
+
+  // TODO ==============================================================================================================
+  /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  protected constructor(initializationProperties: TextBox.InitializationProperties<ValidValue, InvalidValue, Validation>) {
+
+    this.shellComponent = CompoundControlShell.pickOneBySelector({
+      targetCompoundControlShellSelector: initializationProperties.selector,
+      contextElement: initializationProperties.contextElement,
+      mustDisplayErrorsMessagesIfAny:
+          initializationProperties.validityHighlightingActivationMode ===
+              TextBox.ValidityHighlightingActivationModes.immediate
+    });
+    // TODO ============================================================================================================
+    const nativeInputAcceptingElement: Element = getExpectedToBeSingleDOM_Element({
+      selector: TextBox.NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR,
+      contextElement: this.shellComponent.rootElement
+    });
+
+    if (nativeInputAcceptingElement instanceof HTMLInputElement || nativeInputAcceptingElement instanceof HTMLTextAreaElement) {
+
+      this.nativeInputAcceptingElement = nativeInputAcceptingElement;
+
+    } else {
+
+      Logger.logError({
+        errorType: UnexpectedEventError.NAME,
+        title: UnexpectedEventError.localization.defaultTitle,
+        description: PoliteErrorsMessagesBuilder.buildMessage({
+          technicalDetails:
+              `The element corresponding to selector "${ TextBox.NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR }" ` +
+                "must be the instance either of \"HTMLInputElement\" or \"HTMLTextAreaElement\" while actually none of them.",
+          politeExplanation:
+              "When trying to pick the native \"input\" or \"textarea\" element, we did expected that it will " +
+                "be the instance of \"HTMLInputElement\"/\"HTMLTextAreaElement\" respectively and during test is was such as. " +
+              "This bug means that we has missed some combination of circumstances so we must to investigate it.",
+          bugTrackerURI: YDF_BUG_REPORTING_PAGE_URI
+        }),
+        occurrenceLocation: "TextBox.constructor(initializationProperties)"
+      });
+
+      /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
+      * For the valid TypeScript, ever `nativeInputAcceptingElement` must be initialized, or error must be thrown.
+      * The second scenario makes this class completely unable to use. */
+      this.nativeInputAcceptingElement = nativeInputAcceptingElement as HTMLInputElement;
+
+    }
+
+
+    this.rawInputTypeTransformer = "rawInputTypeTransformer" in initializationProperties ?
+        initializationProperties.rawInputTypeTransformer :
+        /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
+        * Maybe it is impossible to specify for `TextBox` class that when there is no `rawInputTypeTransformer`,
+        *   both `ValidaValue` and `InvalidValue` are strings.
+        * If to make `rawInputTypeTransformer` required on `initializationProperties`, no type assertion will require anymore,
+        *   but it will be troublesome from the library users to specify it explicitly each time even for string
+        *   payload value. */
+        ((rawValue: string): string => rawValue) as (rawInput: string) => ValidValue | InvalidValue;
+
+
+    let payloadInitialValue: ValidValue | InvalidValue;
+
+    if (isNotUndefined(initializationProperties.overridingPreInputtedInitialValue)) {
+
+      /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
+       * For the `TextBox.InitializationProperties.StringPayloadValue`, the both `ValidValue` and `InvalidValue` are strings,
+       *    but maybe it is impossible to specify this relationship for the TypeScript. */
+      payloadInitialValue = initializationProperties.overridingPreInputtedInitialValue as ValidValue | InvalidValue;
+
+      if (isString(payloadInitialValue)) {
+
+        this.nativeInputAcceptingElement.value = payloadInitialValue;
+
+      } else if (isNumber(payloadInitialValue)) {
+
+        this.nativeInputAcceptingElement.value = payloadInitialValue.toString();
+
+      } else if (isNull(payloadInitialValue)) {
+
+        this.nativeInputAcceptingElement.value = "";
+
+      } else {
+
+        Logger.throwErrorAndLog({
+          errorInstance: new InvalidParameterValueError({
+            parameterNumber: 1,
+            parameterName: "properties",
+            messageSpecificPart: "The value of \"overridingPreInputtedInitialValue\" must be either string or number or " +
+                `null, while actually has type "${ typeof payloadInitialValue }".`
+          }),
+          title: InvalidParameterValueError.localization.defaultTitle,
+          occurrenceLocation: "TextBox.constructor(initializationProperties)"
+        });
+
+      }
+
+    } else {
+
+      payloadInitialValue = this.rawInputTypeTransformer(this.nativeInputAcceptingElement.value);
+
+    }
+
+    this.payload = new ValidatableControl.Payload<ValidValue, InvalidValue, Validation>({
+      initialValue: payloadInitialValue,
+      getComponentInstance: (): ValidatableControl => this,
+      validation: initializationProperties.validation,
+      onHasBecomeValidEventHandler: {
+        handler: this.onPayloadHasBecomeValidEventHandler.bind(this),
+        ID: TextBox.generateOnPayloadHasBecomeValidEventHandlerID(this.ID)
+      },
+      onHasBecomeInvalidEventHandler: {
+        handler: this.onPayloadHasBecomeInvalidEventHandler.bind(this),
+        ID: TextBox.generateOnPayloadHasBecomeInvalidEventHandlerID(this.ID)
+      },
+      onAsynchronousValidationStatusChangedEventHandler: {
+        handler: this.onPayloadAsynchronousValidationStatusChangedEventHandler.bind(this),
+        ID: TextBox.generateOnAsynchronousValidationStatusChangedEventHandlerID(this.ID)
+      }
+    });
+
+    this.initializeHTML_Attributes(initializationProperties.invalidInputPrevention);
+
+    this.validityHighlightingActivationMode = initializationProperties.validityHighlightingActivationMode;
+    this.shellComponent.$validationErrorsMessages = this.payload.validationErrorsMessages;
+
+    this._mustHighlightInvalidInputIfAnyValidationErrorsMessages =
+        this.validityHighlightingActivationMode === TextBox.ValidityHighlightingActivationModes.immediate;
+
+    addInputEventHandler({
+      targetElement: this.nativeInputAcceptingElement,
+      handler: this.onInputEventListener.bind(this)
+    });
+
+    this.nativeInputAcceptingElement.addEventListener("blur", this.onFocusOutEventListener.bind(this));
+
+  }
+
+
+  /* ━━━ Public accessors / mutators ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  public get $isReadonly(): boolean {
+    return this.nativeInputAcceptingElement.readOnly;
+  }
+
+  public set $isReadonly(value: boolean) {
+    if (this.nativeInputAcceptingElement.readOnly !== value) {
+      this.nativeInputAcceptingElement.readOnly = value;
+    }
+  }
+
+  public get $isDisabled(): boolean {
+    return this.nativeInputAcceptingElement.disabled;
+  }
+
+  public set $isDisabled(value: boolean) {
+    if (this.nativeInputAcceptingElement.disabled !== value) {
+      this.nativeInputAcceptingElement.disabled = value;
+    }
+  }
+
+
   /* ━━━ Events ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   protected onPayloadHasBecomeValidEventHandler(): void {
     this.shellComponent.rootElement.classList.remove(TextBox.INVALID_VALUE_STATE_CSS_CLASS);
@@ -324,7 +323,7 @@ class TextBox<
 
   }
 
-  private onInputEventListener(): void {
+  protected onInputEventListener(): void {
 
     this.payload.$setValue({
       newValue: this.rawInputTypeTransformer(this.nativeInputAcceptingElement.value),

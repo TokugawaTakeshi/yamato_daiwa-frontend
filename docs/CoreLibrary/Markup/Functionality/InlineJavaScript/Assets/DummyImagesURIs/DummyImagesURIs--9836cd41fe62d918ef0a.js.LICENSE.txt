@@ -1,0 +1,14 @@
+/*!
+ * @yamato-daiwa/es-extensions-browserjs v1.7
+ * (c) 2023 Yamato Daiwa Co., Ltd.
+ * Released under the MIT License.
+ */
+
+/*!
+ * clipboard.js v2.0.11
+ * https://clipboardjs.com/
+ *
+ * Licensed MIT © Zeno Rocha
+ */
+
+/*! For license information please see index.js.LICENSE.txt */

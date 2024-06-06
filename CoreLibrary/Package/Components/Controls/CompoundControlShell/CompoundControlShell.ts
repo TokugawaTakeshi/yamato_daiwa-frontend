@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle -- [ CONVENTION ]
-* The instance files begins from the underscore MUST be changed only via setters. */
+* The instance fields begins from the underscore MUST be changed only via setters. */
 
 /* ─── Assets ─────────────────────────────────────────────────────────────────────────────────────────────────────── */
 import componentDynamicPartsHTML from "./CompoundControlShell.parts.pug";

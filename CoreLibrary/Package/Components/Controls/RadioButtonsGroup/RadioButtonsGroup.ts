@@ -24,7 +24,7 @@ class RadioButtonsGroup<
   protected static readonly INVALID_VALUE_STATE_CSS_CLASS: string = "RadioButtonsGroup--YDF__InvalidInputState";
 
 
-  /* ━━━ Instance fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Instance Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public readonly payload: ValidatableControl.Payload<ValidValue, InvalidValue, Validation>;
 
   protected readonly mustDisplayErrorsMessagesImmideatlyIfAny: boolean;
@@ -38,13 +38,44 @@ class RadioButtonsGroup<
   protected readonly radioButtons: ReadonlyArray<RadioButton>;
 
 
-  /* ─── Must be changed only via setters ─────────────────────────────────────────────────────────────────────────── */
+  /* ─── Reactivity ───────────────────────────────────────────────────────────────────────────────────────────────── */
   /* eslint-disable no-underscore-dangle -- [ CONVENTION ]
-   * The instance files begins from the underscore MUST be changed only via setters or constructor. */
+   * The instance fields begins from the underscore MUST be changed only via setters or constructor. */
   protected _mustHighlightInvalidInputIfAnyValidationErrorsMessages: boolean = false;
 
+  protected get $mustHighlightInvalidInputIfAnyValidationErrorsMessages(): boolean {
+    return this._mustHighlightInvalidInputIfAnyValidationErrorsMessages;
+  }
 
-  /* ━━━ Public static methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  protected set $mustHighlightInvalidInputIfAnyValidationErrorsMessages(value: boolean) {
+
+    if (this._mustHighlightInvalidInputIfAnyValidationErrorsMessages === value) {
+      return;
+    }
+
+
+    this._mustHighlightInvalidInputIfAnyValidationErrorsMessages = value;
+
+    if (this._mustHighlightInvalidInputIfAnyValidationErrorsMessages) {
+
+      this.shellComponent.$mustDisplayErrorsMessagesIfAny = true;
+
+      if (this.payload.isInvalid) {
+        this.shellComponent.rootElement.classList.add(RadioButtonsGroup.INVALID_VALUE_STATE_CSS_CLASS);
+      }
+
+      return;
+
+    }
+
+
+    this.shellComponent.rootElement.classList.remove(RadioButtonsGroup.INVALID_VALUE_STATE_CSS_CLASS);
+    this.shellComponent.$mustDisplayErrorsMessagesIfAny = false;
+
+  }
+
+
+  /* ━━━ Public Static Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public static pickOneBySelector<Validation extends InputtedValueValidation = InputtedValueValidation>(
     initializationProperties: RadioButtonsGroup.InitializationProperties.AlwaysSelectedStringKeyOptionScenario<Validation>
   ): RadioButtonsGroup<string, string, Validation>;
@@ -110,7 +141,7 @@ class RadioButtonsGroup<
 
 
   /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  private constructor(initializationProperties: RadioButtonsGroup.InitializationProperties<Validation>) {
+  protected constructor(initializationProperties: RadioButtonsGroup.InitializationProperties<Validation>) {
 
     this.mustDisplayErrorsMessagesImmideatlyIfAny = initializationProperties.mustDisplayErrorsMessagesImmideatlyIfAny;
 
@@ -250,39 +281,6 @@ class RadioButtonsGroup<
     });
 
     this.shellComponent.$validationErrorsMessages = this.payload.validationErrorsMessages;
-
-  }
-
-
-  /* ━━━ Reactivity ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  protected get $mustHighlightInvalidInputIfAnyValidationErrorsMessages(): boolean {
-    return this._mustHighlightInvalidInputIfAnyValidationErrorsMessages;
-  }
-
-  protected set $mustHighlightInvalidInputIfAnyValidationErrorsMessages(value: boolean) {
-
-    if (this._mustHighlightInvalidInputIfAnyValidationErrorsMessages === value) {
-      return;
-    }
-
-
-    this._mustHighlightInvalidInputIfAnyValidationErrorsMessages = value;
-
-    if (this._mustHighlightInvalidInputIfAnyValidationErrorsMessages) {
-
-      this.shellComponent.$mustDisplayErrorsMessagesIfAny = true;
-
-      if (this.payload.isInvalid) {
-        this.shellComponent.rootElement.classList.add(RadioButtonsGroup.INVALID_VALUE_STATE_CSS_CLASS);
-      }
-
-      return;
-
-    }
-
-
-    this.shellComponent.rootElement.classList.remove(RadioButtonsGroup.INVALID_VALUE_STATE_CSS_CLASS);
-    this.shellComponent.$mustDisplayErrorsMessagesIfAny = false;
 
   }
 

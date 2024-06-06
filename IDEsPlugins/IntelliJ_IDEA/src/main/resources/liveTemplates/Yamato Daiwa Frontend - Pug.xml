@@ -30,7 +30,7 @@
       <option name="JADE" value="true" />
     </context>
   </template>
-  <template name="badge-ydf" value="+Badge--YDF({&#10;  key: &quot;$KEY$&quot;, // TODO Remove if the badge is value-only&#10;  value: &quot;$VALUE$&quot;,&#10;  theme: Badge__YDF.Themes.regular, // TODO Remove if theme is only one, default or external&#10;  areThemesCSS_ClassesCommon: true, // TODO Remove if false or has been set to `true` globally&#10;  geometry: Badge__YDF.GeometricVariations.regular, // TODO Remove if the geometric variation is only one or default&#10;  geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape, Badge__YDF.GeometricModifiers.singleLine ], // TODO Remove if no geometric modifiers required&#10;  decoration: Badge__YDF.DecorativeVariations.$DECORATIVE_VARIATION$,&#10;  decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising, Badge__YDF.DecorativeModifiers.noBackground ] // TODO Remove if no decorative modifiers required&#10;}): +Calendar__Date--YDF_Icon.Badge--YDF-Icon&#10;//- ↑ TODO Remove if no icon required " description="`Badge`, the YDF component" toReformat="false" toShortenFQNames="true">
+  <template name="badge-ydf" value="+Badge--YDF({&#10;  key: &quot;$KEY$&quot;, // TODO Remove if the badge is value-only&#10;  value: &quot;$VALUE$&quot;,&#10;  rootElementTag: &quot;a&quot;, // TODO Remove is &quot;span&quot; is fine&#10;  theme: Badge__YDF.Themes.regular, // TODO Remove if theme is only one, default or common&#10;  areThemesCSS_ClassesCommon: true, // TODO Remove if false or has been set to `true` globally&#10;  geometricVariation: Badge__YDF.GeometricVariations.regular, // TODO Remove if the geometric variation is only one or default&#10;  geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape, Badge__YDF.GeometricModifiers.singleLine ], // TODO Remove if no geometric modifiers required&#10;  decorativeVariation: Badge__YDF.DecorativeVariations.$DECORATIVE_VARIATION$,&#10;  decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising, Badge__YDF.DecorativeModifiers.noBackground ] // TODO Remove if no decorative modifiers required&#10;}): +Calendar__Date--YDF_Icon.Badge--YDF-Icon &#10;//- ↑ TODO Remove if no icon required" description="Badge (YDF component)" toReformat="false" toShortenFQNames="true">
     <variable name="DECORATIVE_VARIATION" expression="enum(&quot;veryCatchyBright&quot;, &quot;catchyBright&quot;, &quot;modestlyCatchyBright&quot;, &quot;neutralBright&quot;, &quot;modestlyCalmingBright&quot;, &quot;calmingBright&quot;, &quot;achromaticBright&quot;, &quot;veryCatchyPastel&quot;, &quot;catchyPastel&quot;, &quot;modestlyCatchyPastel&quot;, &quot;neutralPastel&quot;, &quot;modestlyCalmingPastel&quot;, &quot;calmingPastel&quot;, &quot;achromaticPastel&quot;)" defaultValue="" alwaysStopAt="true" />
     <variable name="KEY" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="VALUE" expression="" defaultValue="" alwaysStopAt="true" />
@@ -38,9 +38,11 @@
       <option name="JADE" value="true" />
     </context>
   </template>
-  <template name="hd" value="h$LEVEL$.$PREFIX$Heading$LEVEL$ $END$" description="The heading tag with dedicated typography class" toReformat="false" toShortenFQNames="true">
+  <template name="hd" value="h$LEVEL$.$PREFIX$Heading$LEVEL$ $END$&#10;&#10;//- ━━━ $TEXT$ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━&#10;//- ─── $TEXT$ ─────────────────────────────────────────────────────────────────────────────────────────────────────&#10;+Heading--YDF({&#10;  level: $LEVEL$,&#10;  text: $ROUTE_PATH$.$heading,&#10;  HTML_ID: $ROUTE_PATH$.$anchor&#10;}).$PREFIX$Heading$LEVEL$" description="The heading tag with dedicated typography class" toReformat="false" toShortenFQNames="true">
     <variable name="LEVEL" expression="" defaultValue="" alwaysStopAt="true" />
     <variable name="PREFIX" expression="" defaultValue="&quot;Article-&quot;" alwaysStopAt="true" />
+    <variable name="ROUTE_PATH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TEXT" expression="" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="JADE" value="true" />
     </context>
@@ -58,7 +60,7 @@
       <option name="JADE" value="true" />
     </context>
   </template>
-  <template name="badge-lp-ydf" value="+Badge--YDF-LoadingPlaceholder({&#10;  theme: Badge__YDF.Themes.regular,$END$ // TODO Remove if theme is only one, default or external&#10;  areThemesCSS_ClassesCommon: true, // TODO Remove if false or has been set to `true` globally&#10;  geometry: Badge__YDF.GeometricVariations.regular, // TODO Remove if the geometric variation is only one or default&#10;  geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ] // TODO Remove if no geometric modifiers required&#10;})" description="`Badge` (loading placeholder), the YDF component" toReformat="false" toShortenFQNames="true">
+  <template name="badge-lp-ydf" value="+Badge--YDF-LoadingPlaceholder({&#10;  theme: Badge__YDF.Themes.regular,$END$ // TODO Remove if theme is only one, default or common&#10;  areThemesCSS_ClassesCommon: true, // TODO Remove if false or has been set to `true` globally&#10;  geometricVariation: Badge__YDF.GeometricVariations.regular, // TODO Remove if the geometric variation is only one or default&#10;  geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ] // TODO Remove if no geometric modifiers required&#10;})" description="Badge Loading Placeholder (YDF component)" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="JADE" value="true" />
     </context>
@@ -71,6 +73,30 @@
   </template>
   <template name="buildPhoneNumberLinkHrefAttributeValue" value="buildPhoneNumberLinkHrefAttributeValue($PHONE_NUMBER$)" description="`buildPhoneNumberLinkHrefAttributeValue` function" toReformat="false" toShortenFQNames="true">
     <variable name="PHONE_NUMBER" expression="clipboard()" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JADE" value="true" />
+    </context>
+  </template>
+  <template name="processObjectTypeParameterOfPugMixin" value="const {&#10;  $END$&#10;} = processObjectTypeParameterOfPugMixin({&#10;  rawParameter: $MIXIN_PARAMETER$,&#10;  parameterNumber: $MIXIN_PARAMETER_NUMBER$,&#10;  parameterName: &quot;$MIXIN_PARAMETER_NAME$&quot;,&#10;  parameterPropertiesSpecification: $MIXIN_PARAMETER_PROPERTIES_SPECIFICATION$,&#10;  mixinName: &quot;$MIXIN_NAME$&quot;&#10;});" description="Usage example of eponymous function (YDF)" toReformat="false" toShortenFQNames="true">
+    <variable name="MIXIN_PARAMETER" expression="" defaultValue="&quot;properties&quot;" alwaysStopAt="true" />
+    <variable name="MIXIN_PARAMETER_NUMBER" expression="enum(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="MIXIN_PARAMETER_NAME" expression="" defaultValue="&quot;properties&quot;" alwaysStopAt="true" />
+    <variable name="MIXIN_PARAMETER_PROPERTIES_SPECIFICATION" expression="" defaultValue="&quot;{}&quot;" alwaysStopAt="true" />
+    <variable name="MIXIN_NAME" expression="" defaultValue="&quot;ExampleMixin&quot;" alwaysStopAt="true" />
+    <context>
+      <option name="JS_CLASS_MEMBER_STATEMENT" value="false" />
+      <option name="JS_STATEMENT" value="true" />
+    </context>
+  </template>
+  <template name="ab-ydf" value="//- One-line examples&#10;+AdmonitionBlock--YDF({ decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.$DECORATIVE_VARIATION$ })&#10;&#10;  $END$&#10;&#10;+AdmonitionBlock--YDF({ decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.$DECORATIVE_VARIATION$, SVG_Icon: true })&#10;&#10;&#10;//- Full example&#10;+AdmonitionBlock--YDF({&#10;  title: &quot;Title&quot;, // TODO Remove is no title&#10;  SVG_Icon: true, // TODO Remove if default icon is not required&#10;  SVG_Icon: { innerElementID: &quot;INNER_ELEMENT&quot;, SVG_ElementAttributes: { viewBox: &quot;0 0 24 24&quot; } }, // TODO Remove if custom icon is not required&#10;  theme: AdmonitionBlock__YDF.Themes.regular, // TODO Remove if theme is only one, default or common&#10;  areThemesCSS_ClassesCommon: true, // TODO Remove if false or has been set to `true` globally&#10;  geometricVariation: AdmonitionBlock__YDF.GeometricVariations.$GEOMETRIC_VARIATION$, // TODO Remove if the geometric variation is `regular` &#10;  decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.$DECORATIVE_VARIATION$, &#10;  dismissible: true // TODO Remove if `false`&#10;})&#10;//- === END OF GENERATED CODE ==========================================================================================" description="AdmonitionBlock (YDF Component)" toReformat="false" toShortenFQNames="true">
+    <variable name="DECORATIVE_VARIATION" expression="enum(&quot;notice&quot;, &quot;error&quot;, &quot;warning&quot;, &quot;success&quot;, &quot;guidance&quot;, &quot;question&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="GEOMETRIC_VARIATION" expression="enum(&quot;regular&quot;, &quot;stickyNoteLike&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JADE" value="true" />
+    </context>
+  </template>
+  <template name="button--ydf" value="+Button--YDF({&#10;  HTML_Type: Button__YDF.HTML_Types.$HTML_TYPE$, // TODO (optional) Remove if default value (&quot;regular&quot;) or link&#10;  label: &quot;Click me&quot;, // TODO Replace with child element span.Button--YDF-Label if other children elements like icons required &#10;  URI: &quot;#&quot;, // TODO Remove for non-links&#10;  theme: Button__YDF.Themes.regular, // TODO Remove in only one theme defined&#10;  geometricVariation: Button__YDF.GeometricVariations.small,&#10;  decorativeVariation: Button__YDF.DecorativeVariations.accented&#10;})&#10;&#10;  //- Prepended icon&#10;  +Pencil__Filled--YDF_Icon.Button--YDF-SVG_Icon&#10;&#10;  //- TODO Remove in no icons &#10;  span.Button--YDF-Label Click me&#10;&#10;  //- Appended icon&#10;  +Pencil__Filled--YDF_Icon.Button--YDF-SVG_Icon&#10;//- === END OF AUTOMATICALLY_GENERATED_CODE ============================================================================" description="Button (YDF component)" toReformat="false" toShortenFQNames="true">
+    <variable name="HTML_TYPE" expression="enum(&quot;regular&quot;, &quot;submit&quot;, &quot;inputButton&quot;, &quot;inputSubmit&quot;, &quot;inputReset&quot;)" defaultValue="&quot;regular&quot;" alwaysStopAt="true" />
     <context>
       <option name="JADE" value="true" />
     </context>
