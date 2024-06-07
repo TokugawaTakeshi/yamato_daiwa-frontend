@@ -48,18 +48,57 @@ block append SpecificContent
 
   article
 
-    h1.Article-Heading1 Шаблоны страниц
+    //- ━━━ Шаблоны страниц ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    h1.Article-Heading1= localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$heading
 
-    +AdmonitionBlock--YDF({
-      title: "Документация ещё не готова",
-      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.guidance,
-      SVG_Icon: true
-    })
-      | Документация для этой функциональности пока не готова к публикации, однако её планируется завершить до начала
-      |   выпуска бета-версий.
-      | Пока что для получения информации об этой функциональности просим Вам посмотреть
+    p.Article-Paragraph
+      | Как и другие полноценные #[+Term--YDID HTML-препроцессоры], #[+ImportantEntity--YDID Pug] имеет функцию
       |
       +Link--YDF({
-        endorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/README.md#pages-templates"
-      }).Article-Link временную markdown-документацию
+        unendorsedExternalURI: sharedExternalLinks.pug.homePage.templateInheritance
+      }).Article-Link наследования шаблонов
       | .
+      | В реальных проектах с большим количеством страниц, наследование #[+Keyword--YDID обычно]
+      |   #[+Keyword__Contrast--YDID многоуровневое].
+
+    p.Article-Paragraph.
+      Как известно, #[+Keyword--YDID валидная] #[+Term--YDID HTML-страница] #[+Keyword--YDID должна] включать в себя
+        набор #[+Keyword--YDID обязательных] #[+Term--YDID тэгов].
+      Для #[+ImportantEntity--YDID 2024] актуален следующий #[+Keyword--YDID минимальный] #[+Term--YDID HTML-код]:
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.HTML }): :code_listing--yda
+        <!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>title</title>
+          </head>
+          <body>
+            <!-- page content -->
+          </body>
+        </html>
+
+
+    p.Article-Paragraph.
+      Помимо обязательной части, есть необаятельные, но часто используемые фрагменты кода, например следующая
+        декларация:
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.HTML }): :code_listing--yda
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    p.Article-Paragraph
+      | С использованием наследования шаблонов, можно вынести обязательные и частые необязательные части в родительский
+      |   шаблон, а с помощью
+      |
+      +Link--YDF({
+        unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
+      }).Article-Link внутреннего JavaScript
+      |
+      |   можно ещё сделать генерацию шаблонного кода динамической (например, можно лишь указать пути к стилям и скриптам
+      |   через переменные, а родительский шаблон на основе этих переменных сгенерирует нужные тэги в нужном месте).
+
+    p.Article-Paragraph.
+      Библиотека YDF предлагает следующие готовые шаблоны для их дальнейшего наследования:
+

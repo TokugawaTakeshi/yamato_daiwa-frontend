@@ -17,9 +17,7 @@ import {
   isNumber,
   isNonNegativeInteger,
   isNotUndefined,
-  isNull,
   Logger,
-  InvalidParameterValueError,
   UnexpectedEventError,
   PoliteErrorsMessagesBuilder
 } from "@yamato-daiwa/es-extensions";
@@ -136,7 +134,7 @@ class TextBox<
         this.validityHighlightingActivationMode === TextBox.ValidityHighlightingActivationModes.immediate;
   }
 
-  // TODO ==============================================================================================================
+
   /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   protected constructor(initializationProperties: TextBox.InitializationProperties<ValidValue, InvalidValue, Validation>) {
 
@@ -147,7 +145,7 @@ class TextBox<
           initializationProperties.validityHighlightingActivationMode ===
               TextBox.ValidityHighlightingActivationModes.immediate
     });
-    // TODO ============================================================================================================
+
     const nativeInputAcceptingElement: Element = getExpectedToBeSingleDOM_Element({
       selector: TextBox.NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR,
       contextElement: this.shellComponent.rootElement
@@ -182,7 +180,6 @@ class TextBox<
 
     }
 
-
     this.rawInputTypeTransformer = "rawInputTypeTransformer" in initializationProperties ?
         initializationProperties.rawInputTypeTransformer :
         /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
@@ -204,30 +201,11 @@ class TextBox<
       payloadInitialValue = initializationProperties.overridingPreInputtedInitialValue as ValidValue | InvalidValue;
 
       if (isString(payloadInitialValue)) {
-
         this.nativeInputAcceptingElement.value = payloadInitialValue;
-
       } else if (isNumber(payloadInitialValue)) {
-
         this.nativeInputAcceptingElement.value = payloadInitialValue.toString();
-
-      } else if (isNull(payloadInitialValue)) {
-
-        this.nativeInputAcceptingElement.value = "";
-
       } else {
-
-        Logger.throwErrorAndLog({
-          errorInstance: new InvalidParameterValueError({
-            parameterNumber: 1,
-            parameterName: "properties",
-            messageSpecificPart: "The value of \"overridingPreInputtedInitialValue\" must be either string or number or " +
-                `null, while actually has type "${ typeof payloadInitialValue }".`
-          }),
-          title: InvalidParameterValueError.localization.defaultTitle,
-          occurrenceLocation: "TextBox.constructor(initializationProperties)"
-        });
-
+        this.nativeInputAcceptingElement.value = "";
       }
 
     } else {
@@ -294,7 +272,7 @@ class TextBox<
   }
 
 
-  /* ━━━ Events ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Events Handling ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   protected onPayloadHasBecomeValidEventHandler(): void {
     this.shellComponent.rootElement.classList.remove(TextBox.INVALID_VALUE_STATE_CSS_CLASS);
     this.nativeInputAcceptingElement.removeAttribute("aria-invalid");

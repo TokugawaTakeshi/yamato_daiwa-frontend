@@ -2,7 +2,7 @@
  * The members of this class has been organized semantically. */
 
 /* ─── Validation ─────────────────────────────────────────────────────────────────────────────────────────────────── */
-import type ValidatableControl from "../_Validation/ValidatableControl";
+import ValidatableControl from "../_Validation/ValidatableControl";
 import type InputtedValueValidation from "../_Validation/InputtedValueValidation";
 
 /* ─── Children Components ────────────────────────────────────────────────────────────────────────────────────────── */
@@ -10,6 +10,7 @@ import CompoundControlShell from "../CompoundControlShell/CompoundControlShell";
 
 /* ─── Utils ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
 import { getExpectedToBeSingleDOM_Element } from "@yamato-daiwa/es-extensions-browserjs";
+import { isNotUndefined, isNumber } from "../../../Markup/InlineECMAScript/Source/PugExtensions";
 
 
 class NumberBox<
@@ -21,7 +22,8 @@ class NumberBox<
   /* ━━━ Static Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   /* ─── Accessing to DOM ─────────────────────────────────────────────────────────────────────────────────────────── */
   protected static readonly NATIVE_INPUT_ELEMENT_SELECTOR: string = ".NumberBox--YDF-NativeInput";
-  protected static readonly BUTTONS_SELECTOR: string = ".NumberBox--YDF-Button";
+  protected static readonly VALUE_INCREMENTING_BUTTON_SELECTOR: string = "[data-button-incrementing]";
+  protected static readonly VALUE_DECREMENTING_BUTTON_SELECTOR: string = "[data-button-decrementing]";
 
   protected static readonly INVALID_VALUE_STATE_CSS_CLASS: string = "NumberBox--YDF__InvalidInputState";
 
@@ -37,6 +39,8 @@ class NumberBox<
   /* ─── DOM ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
   protected readonly shellComponent: CompoundControlShell;
   protected readonly nativeInputElement: HTMLInputElement;
+  protected readonly valueIncrementingButton: Element;
+  protected readonly valueDecrementingButton: Element;
 
 
   /* ─── Reactivity ───────────────────────────────────────────────────────────────────────────────────────────────── */

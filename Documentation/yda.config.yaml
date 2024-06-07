@@ -63,27 +63,27 @@ projectBuilding:
             outputTopDirectoryRelativePath: 03-ProductionBuild
 
 
-#  # ━━━ ECMA_Script Logic ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-#  ECMA_ScriptLogicProcessing:
-#
-#    entryPointsGroups:
-#
-#      Pages:
-#
-#        sourceFilesTopDirectoryRelativePath: 01-Source/Pages
-#
-#        partialsRecognition:
-#          excludeFilesWithPrefixes: "_"
-#          excludeSubdirectoriesWithPrefixes: "_"
-#
-#        targetRuntime:
-#          type: BROWSER
-#
-#        buildingModeDependent:
-#          LOCAL_DEVELOPMENT:
-#            outputTopDirectoryRelativePath: 02-LocalDevelopmentBuild
-#          PRODUCTION:
-#            outputTopDirectoryRelativePath: 03-ProductionBuild
+  # ━━━ ECMA_Script Logic ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ECMA_ScriptLogicProcessing:
+
+    entryPointsGroups:
+
+      Pages:
+
+        sourceFilesTopDirectoryRelativePath: 01-Source/Pages
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        targetRuntime:
+          type: BROWSER
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: 02-LocalDevelopmentBuild
+          PRODUCTION:
+            outputTopDirectoryRelativePath: 03-ProductionBuild
 
 
   # ━━━ Images ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -9,7 +9,7 @@ import type InputtedValueValidation from "../_Validation/InputtedValueValidation
 import CompoundControlShell from "../CompoundControlShell/CompoundControlShell";
 
 /* ─── Utils ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
-import { encodeFileToBase64, isNull, Logger, InvalidParameterValueError } from "@yamato-daiwa/es-extensions";
+import { encodeFileToBase64, Logger, InvalidParameterValueError, isNotNull } from "@yamato-daiwa/es-extensions";
 import { getExpectedToBeSingleDOM_Element, addLeftClickEventHandler } from "@yamato-daiwa/es-extensions-browserjs";
 
 
@@ -45,6 +45,7 @@ class FilesUploader<
   /* eslint-disable no-underscore-dangle -- [ CONVENTION ]
    * The instance fields begins from the underscore MUST be changed only via setters or constructor. */
   protected _mustHighlightInvalidInputIfAnyValidationErrorsMessages: boolean = false;
+  protected _isUserDraggingFileNow: boolean = false;
 
   protected get $mustHighlightInvalidInputIfAnyValidationErrorsMessages(): boolean {
     return this._mustHighlightInvalidInputIfAnyValidationErrorsMessages;
@@ -52,7 +53,7 @@ class FilesUploader<
 
   protected set $mustHighlightInvalidInputIfAnyValidationErrorsMessages(value: boolean) {
 
-    if (this._mustHighlightInvalidInputIfAnyValidationErrorsMessages === value) {
+    if (value === this._mustHighlightInvalidInputIfAnyValidationErrorsMessages) {
       return;
     }
 
@@ -77,6 +78,21 @@ class FilesUploader<
 
   }
 
+  protected get $isUserDraggingNow(): boolean {
+    return this._isUserDraggingFileNow;
+  }
+
+  protected set $isUserDraggingNow(value: boolean) {
+
+    if (value === this._isUserDraggingFileNow) {
+      return;
+    }
+
+
+    this._isUserDraggingFileNow = value;
+
+  }
+
 
   /* ━━━ Public Static Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public static pickOneBySelector<Validation extends InputtedValueValidation>(
@@ -98,9 +114,7 @@ class FilesUploader<
   >(
     properties: FilesUploader.InitializationProperties<Validation>
   ): FilesUploader<ValidValue, InvalidValue, Validation> {
-    return new FilesUploader<ValidValue, InvalidValue, Validation>(properties).
-        initializeNativeInputElement().
-        initializeFilesPickingButtonIfItPresents();
+    return new FilesUploader<ValidValue, InvalidValue, Validation>(properties);
   }
 
 
@@ -144,8 +158,23 @@ class FilesUploader<
 
     this.filesPickingButtonElement = this.shellComponent.rootElement.
         querySelector(FilesUploader.FILES_PICKING_BUTTON_ELEMENT_SELECTOR);
+
+    if (isNotNull(this.filesPickingButtonElement)) {
+      addLeftClickEventHandler({
+        targetElement: this.filesPickingButtonElement,
+        handler: this.onClickPickFilesButton.bind(this)
+      });
+    }
+
+
     this.dragAndDropAreaElement = this.shellComponent.rootElement.
         querySelector(FilesUploader.DRAG_AND_DROP_AREA_ELEMENT_SELECTOR);
+
+    if (isNotNull(this.dragAndDropAreaElement)) {
+      this.dragAndDropAreaElement.ondragover = this.onDraggingStarted.bind(this);
+      this.dragAndDropAreaElement.ondragleave = this.onDraggingTerminated.bind(this);
+    }
+
 
     let payloadInitialValue: FilesUploader.SupportedValidatablePayloadValuesTypes;
 
@@ -216,80 +245,19 @@ class FilesUploader<
   }
 
 
-  /* ━━━ Reactivity ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  protected get $mustHighlightInvalidInputIfAnyValidationErrorsMessages(): boolean {
-    return this._mustHighlightInvalidInputIfAnyValidationErrorsMessages;
-  }
-
-  protected set $mustHighlightInvalidInputIfAnyValidationErrorsMessages(value: boolean) {
-
-    if (this._mustHighlightInvalidInputIfAnyValidationErrorsMessages === value) {
-      return;
-    }
-
-
-    this._mustHighlightInvalidInputIfAnyValidationErrorsMessages = value;
-
-    if (this._mustHighlightInvalidInputIfAnyValidationErrorsMessages) {
-
-      this.shellComponent.$mustDisplayErrorsMessagesIfAny = true;
-
-      if (this.payload.isInvalid) {
-        this.shellComponent.rootElement.classList.add(FilesUploader.INVALID_VALUE_STATE_CSS_CLASS);
-      }
-
-      return;
-
-    }
-
-
-    this.shellComponent.rootElement.classList.remove(FilesUploader.INVALID_VALUE_STATE_CSS_CLASS);
-    this.shellComponent.$mustDisplayErrorsMessagesIfAny = false;
-
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  public resetValidityHighlightingStateToInitial(): void {
-    // eslint-disable-next-line no-warning-comments
-    // TODO
-  }
-
-
-  /* === Protected methods ========================================================================================== */
-  /* --- Initializing ----------------------------------------------------------------------------------------------- */
-  protected initializeFilesPickingButtonIfItPresents(): this {
-
-    if (isNull(this.filesPickingButtonElement)) {
-      return this;
-    }
-
-
-    addLeftClickEventHandler({
-      targetElement: this.filesPickingButtonElement,
-      handler: this.onClickPickFilesButton.bind(this)
-    });
-
-    return this;
-
-  }
-
-  protected initializeNativeInputElement(): this {
-
-    this.nativeInputElement.addEventListener("change", (event: Event): void => {
-
-      // eslint-disable-next-line no-inline-comments
-      if (!(event.target instanceof HTMLInputElement)) { /* Empty */ }
-
-    });
-
-    return this;
-
-  }
-
-
-  /* --- Actions handling ------------------------------------------------------------------------------------------- */
+  /* ━━━ Protected Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── Actions Handling ─────────────────────────────────────────────────────────────────────────────────────────── */
   protected onClickPickFilesButton(): void {
     this.nativeInputElement.click();
+  }
+
+  protected onDraggingStarted(dragEvent: DragEvent): void {
+    dragEvent.preventDefault();
+    this.$isUserDraggingNow = true;
+  }
+
+  protected onDraggingTerminated(): void {
+    this.$isUserDraggingNow = false;
   }
 
 
