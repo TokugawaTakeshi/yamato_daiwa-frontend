@@ -232,8 +232,6 @@ class TextBox<
       }
     });
 
-    this.initializeHTML_Attributes(initializationProperties.invalidInputPrevention);
-
     this.validityHighlightingActivationMode = initializationProperties.validityHighlightingActivationMode;
     this.shellComponent.$validationErrorsMessages = this.payload.validationErrorsMessages;
 
@@ -246,6 +244,8 @@ class TextBox<
     });
 
     this.nativeInputAcceptingElement.addEventListener("blur", this.onFocusOutEventListener.bind(this));
+
+    this.initializeHTML_AttributesOfNativeInputAcceptingElement(initializationProperties.invalidInputPrevention);
 
   }
 
@@ -325,7 +325,9 @@ class TextBox<
 
 
   /* ━━━ Initialization ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  protected initializeHTML_Attributes(invalidInputPrevention?: TextBox.InitializationProperties.InvalidInputPrevention): void {
+  protected initializeHTML_AttributesOfNativeInputAcceptingElement(
+    invalidInputPrevention?: TextBox.InitializationProperties.InvalidInputPrevention
+  ): void {
 
     if (this.payload.validation.isInputRequired()) {
       this.nativeInputAcceptingElement.setAttribute("required", "");

@@ -9,8 +9,8 @@ import type InputtedValueValidation from "../_Validation/InputtedValueValidation
 import CompoundControlShell from "../CompoundControlShell/CompoundControlShell";
 
 /* ─── Utils ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
-import { getExpectedToBeSingleDOM_Element } from "@yamato-daiwa/es-extensions-browserjs";
-import { isNotUndefined, isNumber } from "../../../Markup/InlineECMAScript/Source/PugExtensions";
+import { getExpectedToBeSingleDOM_Element, addInputEventHandler } from "@yamato-daiwa/es-extensions-browserjs";
+import { isNotUndefined, isNumber } from "@yamato-daiwa/es-extensions";
 
 
 class NumberBox<
@@ -22,8 +22,8 @@ class NumberBox<
   /* ━━━ Static Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   /* ─── Accessing to DOM ─────────────────────────────────────────────────────────────────────────────────────────── */
   protected static readonly NATIVE_INPUT_ELEMENT_SELECTOR: string = ".NumberBox--YDF-NativeInput";
-  protected static readonly VALUE_INCREMENTING_BUTTON_SELECTOR: string = "[data-button-incrementing]";
-  protected static readonly VALUE_DECREMENTING_BUTTON_SELECTOR: string = "[data-button-decrementing]";
+  protected static readonly VALUE_INCREMENTING_BUTTON_DATE_ATTRIBUTE_KEY: string = "data-button-incrementing";
+  protected static readonly VALUE_DECREMENTING_BUTTON_DATE_ATTRIBUTE_KEY: string = "data-button-decrementing";
 
   protected static readonly INVALID_VALUE_STATE_CSS_CLASS: string = "NumberBox--YDF__InvalidInputState";
 
@@ -33,7 +33,11 @@ class NumberBox<
 
   protected readonly ID: string = NumberBox.generateSelfID();
 
+  protected readonly scenario: NumberBox.Scenarios;
   protected readonly validityHighlightingActivationMode: NumberBox.ValidityHighlightingActivationModes;
+  protected readonly minimalValue?: number;
+  protected readonly maximalValue?: number;
+  protected readonly step: number;
 
 
   /* ─── DOM ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
@@ -131,6 +135,12 @@ class NumberBox<
   /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   protected constructor(initializationProperties: NumberBox.InitializationProperties<Validation>) {
 
+    this.scenario = initializationProperties.scenario;
+    this.validityHighlightingActivationMode = initializationProperties.validityHighlightingActivationMode;
+    this.minimalValue = initializationProperties.invalidInputPrevention?.minimalValue;
+    this.maximalValue = initializationProperties.invalidInputPrevention?.minimalValue;
+    this.step = initializationProperties.invalidInputPrevention?.step ?? 1;
+
     this.shellComponent = CompoundControlShell.pickOneBySelector({
       targetCompoundControlShellSelector: initializationProperties.selector,
       contextElement: initializationProperties.contextElement,
@@ -144,10 +154,203 @@ class NumberBox<
       contextElement: this.shellComponent.rootElement,
       expectedDOM_ElementSubtype: HTMLInputElement
     });
+
+
+    this.valueIncrementingButton = getExpectedToBeSingleDOM_Element({
+      selector: `[${ NumberBox.VALUE_INCREMENTING_BUTTON_DATE_ATTRIBUTE_KEY }]`,
+      contextElement: this.shellComponent.rootElement
+    });
+
+    this.valueIncrementingButton.removeAttribute(NumberBox.VALUE_INCREMENTING_BUTTON_DATE_ATTRIBUTE_KEY);
+
+
+    this.valueDecrementingButton = getExpectedToBeSingleDOM_Element({
+      selector: `[${ NumberBox.VALUE_DECREMENTING_BUTTON_DATE_ATTRIBUTE_KEY }]`,
+      contextElement: this.shellComponent.rootElement
+    });
+
+    this.valueDecrementingButton.removeAttribute(NumberBox.VALUE_DECREMENTING_BUTTON_DATE_ATTRIBUTE_KEY);
+
+
+    let payloadInitialValue: NumberBox.SupportedValidatablePayloadValuesTypes;
+
+    if (isNotUndefined(initializationProperties.overridingPreInputtedInitialValue)) {
+
+      payloadInitialValue = initializationProperties.overridingPreInputtedInitialValue;
+
+      this.nativeInputElement.value = isNumber(payloadInitialValue) ? payloadInitialValue.toString() : "";
+
+    } else {
+
+      payloadInitialValue = this.transformInputtedRawValue(this.nativeInputElement.value);
+
+      if (
+        this.nativeInputElement.value.length === 0 &&
+            initializationProperties.scenario === NumberBox.Scenarios.alwaysNonEmptyValue
+      ) {
+        this.nativeInputElement.value = "0";
+      }
+
+    }
+
+    this.payload = new ValidatableControl.Payload<ValidValue, InvalidValue, Validation>({
+
+      /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
+      * Although both `ValidValue` and `InvalidValue` constrained to `NumberBox.SupportedValidatablePayloadValuesTypes`
+      *   it is not enough to convince the TypeScript. Most likely, there is no way to pass the correspondence
+      *   between specific scenario and `ValidValue`/`InvalidValue`. */
+      initialValue: payloadInitialValue as ValidValue | InvalidValue,
+      getComponentInstance: (): ValidatableControl => this,
+      validation: initializationProperties.validation,
+      onHasBecomeValidEventHandler: {
+        handler: this.onPayloadHasBecomeValidEventHandler.bind(this),
+        ID: NumberBox.generateOnPayloadHasBecomeValidEventHandlerID(this.ID)
+      },
+      onHasBecomeInvalidEventHandler: {
+        handler: this.onPayloadHasBecomeInvalidEventHandler.bind(this),
+        ID: NumberBox.generateOnPayloadHasBecomeInvalidEventHandlerID(this.ID)
+      },
+      onAsynchronousValidationStatusChangedEventHandler: {
+        handler: this.onPayloadAsynchronousValidationStatusChangedEventHandler.bind(this),
+        ID: NumberBox.generateOnAsynchronousValidationStatusChangedEventHandlerID(this.ID)
+      }
+
+    });
+
+    this.shellComponent.$validationErrorsMessages = this.payload.validationErrorsMessages;
+
+    this._mustHighlightInvalidInputIfAnyValidationErrorsMessages =
+        this.validityHighlightingActivationMode === NumberBox.ValidityHighlightingActivationModes.immediate;
+
+    addInputEventHandler({
+      targetElement: this.nativeInputElement,
+      handler: this.onTypeCharacterEventListener.bind(this)
+    });
+
+    this.nativeInputElement.addEventListener("blur", this.onFocusOutEventListener.bind(this));
+
+    this.initializeHTML_AttributesOfNativeInputElement();
+
+  }
+
+
+  /* ━━━ Public Accessors / Mutators ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  public get $isReadonly(): boolean {
+    return this.nativeInputElement.readOnly;
+  }
+
+  public set $isReadonly(value: boolean) {
+    if (this.nativeInputElement.readOnly !== value) {
+      this.nativeInputElement.readOnly = value;
+    }
+  }
+
+  public get $isDisabled(): boolean {
+    return this.nativeInputElement.disabled;
+  }
+
+  public set $isDisabled(value: boolean) {
+    if (this.nativeInputElement.disabled !== value) {
+      this.nativeInputElement.disabled = value;
+    }
+  }
+
+
+  /* ━━━ Events Handling ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  protected onPayloadHasBecomeValidEventHandler(): void {
+    this.shellComponent.rootElement.classList.remove(NumberBox.INVALID_VALUE_STATE_CSS_CLASS);
+    this.nativeInputElement.removeAttribute("aria-invalid");
+  }
+
+  protected onPayloadHasBecomeInvalidEventHandler(): void {
+
+    if (this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages) {
+      this.shellComponent.rootElement.classList.add(NumberBox.INVALID_VALUE_STATE_CSS_CLASS);
+    }
+
+    this.nativeInputElement.setAttribute("aria-invalid", "");
+
+  }
+
+  protected onPayloadAsynchronousValidationStatusChangedEventHandler(
+    asynchronousValidationStatus: InputtedValueValidation.AsynchronousChecks.Status
+  ): void {
+
+    this.shellComponent.$asynchronousValidationsStatus = asynchronousValidationStatus;
+    this.shellComponent.$validationErrorsMessages = this.payload.validationErrorsMessages;
+
+    if (asynchronousValidationStatus.hasAtLeastOneInvalidValueBeenConfirmed) {
+      this.shellComponent.$mustDisplayErrorsMessagesIfAny = true;
+    }
+
+  }
+
+  protected onTypeCharacterEventListener(): void {
+
+    const newValue: ValidValue | InvalidValue = this.transformInputtedRawValue(this.nativeInputElement.value);
+
+    this.payload.$setValue({
+      newValue,
+      asynchronousValidationDelay__seconds: 1
+    });
+
+    this.shellComponent.$validationErrorsMessages = this.payload.validationErrorsMessages;
+
+    if (
+      !this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages &&
+      this.validityHighlightingActivationMode === NumberBox.ValidityHighlightingActivationModes.onFirstInputtedCharacter
+    ) {
+      this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages = true;
+    }
+
+  }
+
+  protected onIncremenValue(): void {
+
+    /* [ Theory ] The `Number(null)` will be `0`. */
+    /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- */
+    this.payload.$setValue({ newValue: (Number(this.payload.value) + this.step) as ValidValue | InvalidValue });
+
+  }
+
+  protected onDecrementValue(): void {
+
+    /* [ Theory ] The `Number(null)` will be `0`. */
+    /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- */
+    this.payload.$setValue({ newValue: (Number(this.payload.value) - this.step) as ValidValue | InvalidValue });
+
+  }
+
+  protected onFocusOutEventListener(): void {
+    this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages = true;
+  }
+
+
+  /* ━━━ Initialization ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  protected initializeHTML_AttributesOfNativeInputElement(): void {
+    if (this.payload.validation.isInputRequired()) {
+      this.nativeInputElement.setAttribute("required", "");
+    } else {
+      this.nativeInputElement.removeAttribute("required");
+    }
   }
 
 
   /* ━━━ Routines ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  protected transformInputtedRawValue(rawValue: string): ValidValue | InvalidValue {
+
+    if (rawValue.length > 0) {
+      /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- */
+      return Number(rawValue) as ValidValue | InvalidValue;
+    }
+
+
+    /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- */
+    return (this.scenario === NumberBox.Scenarios.alwaysNonEmptyValue ? 0 : null) as ValidValue | InvalidValue;
+
+  }
+
+
   /* ─── IDs generating ───────────────────────────────────────────────────────────────────────────────────────────── */
   protected static counterForSelfID_Generating: number = 0;
 
@@ -235,8 +438,9 @@ namespace NumberBox {
   }
 
   export type InvalidInputPrevention = Readonly<{
-    minimalNumericValue?: number;
-    maximalNumericValue?: number;
+    minimalValue?: number;
+    maximalValue?: number;
+    step?: number;
   }>;
 
   export enum ValidityHighlightingActivationModes {

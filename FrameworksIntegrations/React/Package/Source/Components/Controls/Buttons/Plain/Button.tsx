@@ -3,8 +3,6 @@ import React from "react";
 import ReactPropertiesValidation from "prop-types";
 import { Link as ReactLink } from "react-router-dom";
 import type { To as ReactLinkRoute } from "react-router-dom";
-import type { Url as NextJS_LinkRoute } from "next/dist/shared/lib/router/router";
-import NextJS_Link from "next/link";
 
 /* ─── Utils ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
 import ComponentsAuxiliaries from "../../../ComponentsAuxiliaries";
@@ -40,10 +38,6 @@ class Button extends React.Component<Button.Properties> {
         ReactPropertiesValidation.string,
         ReactPropertiesValidation.object
       ]),
-      nextJS_LinkRoute: ReactPropertiesValidation.oneOf([
-        ReactPropertiesValidation.string,
-        ReactPropertiesValidation.object
-      ]),
       externalURI: ReactPropertiesValidation.string,
       mustOpenURI_OnNewTab: ReactPropertiesValidation.bool,
       requestingForIgnoringOfLinkRelationshipToSearchEngine: ReactPropertiesValidation.bool,
@@ -62,6 +56,8 @@ class Button extends React.Component<Button.Properties> {
       "areThemesCSS_ClassesCommon" |
       "geometricVariation" |
       "geometricModifiers" |
+      "decorativeVariation" |
+      "decorativeModifiers" |
       "mustOpenURI_OnNewTab" |
       "requestingForIgnoringOfLinkRelationshipToSearchEngine"
     >
@@ -74,10 +70,32 @@ class Button extends React.Component<Button.Properties> {
       areThemesCSS_ClassesCommon: Button.areThemesCSS_ClassesCommon,
       geometricVariation: Button.GeometricVariations.regular,
       geometricModifiers: [],
+      decorativeVariation: Button.DecorativeVariations.regular,
+      decorativeModifiers: [],
       mustOpenURI_OnNewTab: false,
       requestingForIgnoringOfLinkRelationshipToSearchEngine: false
     };
   }
+
+
+  /* [ Implementation example ] Next.js link (the type of `to` property is different with `href` of "react-router-dom"'s link).
+   *  protected get() customRouterLink {
+   *    return (
+   *      <NextJS_Link
+   *        href={ this.props.nextJS_LinkRoute }
+   *        { ...this.props.mustOpenURI_OnNewTab ? { target: "_blank" } : null }
+   *        aria-label={ this.props.accessibilityGuidance }
+   *        aria-disabled={ this.props.disabled }
+   *        aria-pressed={ this.props.toggled }
+   *        tabIndex={ this.props.disabled ? -1 : 0 }
+   *        className={ this.rootElementCSS_Classes.join(" ") }
+   *      >
+   *        { this.childrenElements }
+   *      </NextJS_Link>
+   *    );
+   * }
+   * */
+  protected readonly customRouterLink?: React.ReactElement;
 
 
   /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -183,6 +201,11 @@ class Button extends React.Component<Button.Properties> {
   /* ━━━ Rendering ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public render(): React.ReactNode {
 
+    if (isNotUndefined(this.customRouterLink)) {
+      return this.customRouterLink;
+    }
+
+
     if (isNotUndefined(this.props.reactLinkRoute)) {
       return (
         <ReactLink
@@ -196,23 +219,6 @@ class Button extends React.Component<Button.Properties> {
         >
           { this.childrenElements }
         </ReactLink>
-      );
-    }
-
-
-    if (isNotUndefined(this.props.nextJS_LinkRoute)) {
-      return (
-        <NextJS_Link
-          href={ this.props.nextJS_LinkRoute }
-          { ...this.props.mustOpenURI_OnNewTab ? { target: "_blank" } : null }
-          aria-label={ this.props.accessibilityGuidance }
-          aria-disabled={ this.props.disabled }
-          aria-pressed={ this.props.toggled }
-          tabIndex={ this.props.disabled ? -1 : 0 }
-          className={ this.rootElementCSS_Classes.join(" ") }
-        >
-          { this.childrenElements }
-        </NextJS_Link>
       );
     }
 
@@ -326,7 +332,6 @@ namespace Button {
     appendedSVG_Icon?: React.ElementType<{ className: string; }>;
     loneSVG_Icon?: React.ElementType<{ className: string; }>;
     reactLinkRoute?: ReactLinkRoute;
-    nextJS_LinkRoute?: NextJS_LinkRoute;
     externalURI?: string;
     mustOpenURI_OnNewTab: boolean;
     requestingForIgnoringOfLinkRelationshipToSearchEngine: boolean;

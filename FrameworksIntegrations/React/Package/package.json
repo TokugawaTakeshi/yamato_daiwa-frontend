@@ -23,7 +23,6 @@
   "types": "./Distributable/index.d.ts",
   "peerDependencies": {
     "@yamato-daiwa/frontend": ">=2.0.0-alpha.3",
-    "next": "~14.2.0",
     "react": "~18.2.0",
     "react-dom": "~18.2.0",
     "react-router-dom": "~6.23.0"
@@ -36,10 +35,9 @@
   "devDependencies": {
     "@types/react": "18.3.3",
     "@types/react-dom": "18.3.0",
-    "@yamato-daiwa/automation": "0.4.1",
+    "@yamato-daiwa/automation": "0.4.2",
     "@yamato-daiwa/frontend": "../../../CoreLibrary/Package",
-    "@yamato-daiwa/style_guides": "0.2.6",
-    "next": "14.2.3",
+    "@yamato-daiwa/style_guides": "0.2.7",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-router-dom": "6.23.1",
@@ -47,7 +45,7 @@
     "typescript": "5.4.5"
   },
   "scripts": {
-    "Rebuild Distributable": "rimraf Distributable & yda build --selectiveExecution Distributable --mode PRODUCTION & npm run \"Generate TypeScript Types\"",
+    "Rebuild Distributable": "yda build --selectiveExecution Distributable --mode PRODUCTION & npm run \"Generate TypeScript Types\"",
     "Generate TypeScript Types": "tsc --project tsconfig.declarations.json --declaration --emitDeclarationOnly --outDir Distributable",
     "Incrementally Build Tests": "rimraf Tests/Output & yda build --selectiveExecution Tests --mode LOCAL_DEVELOPMENT",
     "Lint": "eslint ."

@@ -9,7 +9,7 @@ import type InputtedValueValidation from "../_Validation/InputtedValueValidation
 import CompoundControlShell from "../CompoundControlShell/CompoundControlShell";
 
 /* ─── Utils ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
-import { encodeFileToBase64, Logger, InvalidParameterValueError, isNotNull } from "@yamato-daiwa/es-extensions";
+import { encodeFileToBase64, Logger, InvalidParameterValueError, isNull, isNotNull } from "@yamato-daiwa/es-extensions";
 import { getExpectedToBeSingleDOM_Element, addLeftClickEventHandler } from "@yamato-daiwa/es-extensions-browserjs";
 
 
@@ -156,13 +156,15 @@ class FilesUploader<
       expectedDOM_ElementSubtype: HTMLInputElement
     });
 
+    this.nativeInputElement.onchange = this.onPickFilesByExplorerDialog.bind(this);
+
     this.filesPickingButtonElement = this.shellComponent.rootElement.
         querySelector(FilesUploader.FILES_PICKING_BUTTON_ELEMENT_SELECTOR);
 
     if (isNotNull(this.filesPickingButtonElement)) {
       addLeftClickEventHandler({
         targetElement: this.filesPickingButtonElement,
-        handler: this.onClickPickFilesButton.bind(this)
+        handler: this.onClickFilesPickingButton.bind(this)
       });
     }
 
@@ -171,8 +173,9 @@ class FilesUploader<
         querySelector(FilesUploader.DRAG_AND_DROP_AREA_ELEMENT_SELECTOR);
 
     if (isNotNull(this.dragAndDropAreaElement)) {
-      this.dragAndDropAreaElement.ondragover = this.onDraggingStarted.bind(this);
-      this.dragAndDropAreaElement.ondragleave = this.onDraggingTerminated.bind(this);
+      this.dragAndDropAreaElement.ondragover = this.onFileDraggingStarted.bind(this);
+      this.dragAndDropAreaElement.ondragleave = this.onFileDraggingTerminated.bind(this);
+      this.dragAndDropAreaElement.ondrop = this.onFilesDropped.bind(this);
     }
 
 
@@ -247,25 +250,46 @@ class FilesUploader<
 
   /* ━━━ Protected Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   /* ─── Actions Handling ─────────────────────────────────────────────────────────────────────────────────────────── */
-  protected onClickPickFilesButton(): void {
+  protected async onPickFilesByExplorerDialog(): Promise<void> {
+    return this.issueFilesURIs(Array.from(this.nativeInputElement.files ?? []));
+  }
+
+  protected onClickFilesPickingButton(): void {
     this.nativeInputElement.click();
   }
 
-  protected onDraggingStarted(dragEvent: DragEvent): void {
+  protected onFileDraggingStarted(dragEvent: DragEvent): void {
     dragEvent.preventDefault();
     this.$isUserDraggingNow = true;
   }
 
-  protected onDraggingTerminated(): void {
+  protected onFileDraggingTerminated(dragEvent: DragEvent): void {
+    dragEvent.preventDefault();
     this.$isUserDraggingNow = false;
   }
 
+  protected async onFilesDropped(droppingEvent: DragEvent): Promise<void> {
 
-  /* --- 未整理 ------------------------------------------------------------------------------------------------------- */
-  protected async tempName1(newFiles: ReadonlyArray<File>): Promise<void> {
+    droppingEvent.preventDefault();
 
-    // eslint-disable-next-line no-warning-comments
-    // TODO 表示
+    if (isNull(droppingEvent.dataTransfer)) {
+      return;
+    }
+
+
+    return this.issueFilesURIs(Array.from(droppingEvent.dataTransfer.files));
+
+  }
+
+
+  /* ─── Uploading ────────────────────────────────────────────────────────────────────────────────────────────────── */
+  protected async issueFilesURIs(newFiles: ReadonlyArray<File>): Promise<void> {
+
+    if (newFiles.length === 0) {
+      return;
+    }
+
+
     let newBase64EncodedFiles: Array<string>;
 
     try {
@@ -289,9 +313,9 @@ class FilesUploader<
     }
 
 
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore 時間的に
-    this.payload.$value = Array.from(newBase64EncodedFiles);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- Temporary
+    // @ts-ignore
+    this.payload.$setValue({ newValue: Array.from(newBase64EncodedFiles) });
 
   }
 
@@ -320,6 +344,10 @@ namespace FilesUploader {
       {
         selector: string;
         contextElement?: ParentNode | Readonly<{ selector: string; }>;
+        invalidInputPrevention?: Readonly<{
+          minimalFilesCount?: number;
+          maximalFilesCount?: number;
+        }>;
         validation: Validation;
         mustHighlightInvalidInputIfAnyValidationErrorsMessagesImmediately: boolean;
       }>;

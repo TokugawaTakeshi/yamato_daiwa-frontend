@@ -14,7 +14,10 @@ block append Metadata
     HTML_PAGE_LANGUAGE = "ru";
     HTML_PAGE_TITLE = buildHTML_PageTitle("Шаблоны страниц");
     HTML_PageMetaData = {
-      description: "",
+      description:
+          "Библиотека для фронтенд-разработки «Yamato Daiwa Frontend» (сокращённо: «YDF») предлагает Pug-шаблоны " +
+            "веб-страниц, содержащие минимальный HTML-код и некоторые часто используемые фрагменты кода. "
+      ,
       author: HTML_PAGE_AUTHOR
     };
 
@@ -52,53 +55,62 @@ block append SpecificContent
     h1.Article-Heading1= localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$heading
 
     p.Article-Paragraph
-      | Как и другие полноценные #[+Term--YDID HTML-препроцессоры], #[+ImportantEntity--YDID Pug] имеет функцию
+      | Как и другие полноценные #[+Term--YDID HTML-препроцессоры], #[+ImportantEntity--YDID Pug] имеет функциональность
       |
       +Link--YDF({
         unendorsedExternalURI: sharedExternalLinks.pug.homePage.templateInheritance
       }).Article-Link наследования шаблонов
       | .
-      | В реальных проектах с большим количеством страниц, наследование #[+Keyword--YDID обычно]
+      | В реальных проектах с большим количеством страниц, такое наследование #[+Keyword--YDID обычно]
       |   #[+Keyword__Contrast--YDID многоуровневое].
 
     p.Article-Paragraph.
-      Как известно, #[+Keyword--YDID валидная] #[+Term--YDID HTML-страница] #[+Keyword--YDID должна] включать в себя
-        набор #[+Keyword--YDID обязательных] #[+Term--YDID тэгов].
-      Для #[+ImportantEntity--YDID 2024] актуален следующий #[+Keyword--YDID минимальный] #[+Term--YDID HTML-код]:
+      #[+Keyword--YDID Валидная] #[+Term--YDID HTML-страница] #[+Keyword--YDID должна] включать в себя
+        #[+Keyword--YDID обязательную] часть, и это не&nbsp;только конкретные #[+Term--YDID HTML-тэги], но и
+        их правильная вложенность, а так же определённые #[+Term--YDID аттрибуты].
+      Для #[+ImportantEntity--YDID 2024 года] #[+Keyword--YDID минимальный] #[+Term--YDID HTML-код]
+        #[+Keyword--YDID валидной] #[+Term--YDID веб-страницы] таков:
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.HTML }): :code_listing--yda
         <!DOCTYPE html>
-        <html lang="en">
+        <html lang="ru">
           <head>
             <meta charset="utf-8">
-            <title>title</title>
+            <title>Заголовок страницы</title>
           </head>
           <body>
-            <!-- page content -->
+            <!-- Видимое содержимое -->
           </body>
         </html>
 
 
     p.Article-Paragraph.
-      Помимо обязательной части, есть необаятельные, но часто используемые фрагменты кода, например следующая
-        декларация:
+      Помимо обязательной части, есть необязательные, но часто используемые фрагменты кода, например следующая
+        декларация, указывающая, что содержимое страницы не&nbsp;нужно вписывать в размеры экрана (ввиду того, что
+        сегодня отзывчивая/адаптивная вёрстка де-факто обязательна):
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.HTML }): :code_listing--yda
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     p.Article-Paragraph
-      | С использованием наследования шаблонов, можно вынести обязательные и частые необязательные части в родительский
-      |   шаблон, а с помощью
+      | С использованием #[+Term--YDID наследования шаблонов], можно вынести обязательные и частые необязательные части
+      |   в родительский файл, а с помощью
       |
       +Link--YDF({
         unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
       }).Article-Link внутреннего JavaScript
       |
-      |   можно ещё сделать генерацию шаблонного кода динамической (например, можно лишь указать пути к стилям и скриптам
-      |   через переменные, а родительский шаблон на основе этих переменных сгенерирует нужные тэги в нужном месте).
+      |   можно ещё и сделать генерацию шаблонного кода.
+      | Например, можно лишь указать пути к #[+Term--YDID стилям] и #[+Term--YDID скриптам] через
+      |   #[+Term__Contrast--YDID переменные], а родительский шаблон на основе этих #[+Term--YDID переменных]
+      |   сгенерирует нужные #[+Term--YDID тэги] в нужном месте.
 
     p.Article-Paragraph.
-      Библиотека YDF предлагает следующие готовые шаблоны для их дальнейшего наследования:
+      Библиотека #[+ImportantEntity--YDID YDF] предлагает следующие #[+Keyword--YDID готовые] шаблоны для их
+        дальнейшего #[+Term--YDID наследования]:
 
+    +CompactTableOfContents--YDF_DK(
+      localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children
+    )

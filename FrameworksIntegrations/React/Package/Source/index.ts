@@ -1,4 +1,6 @@
 /* ━━━ Components ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+export { default as AdmonitionBlock } from "./Components/AdmonitionBlock";
+
 export { default as Button } from "./Components/Controls/Buttons/Plain/Button";
 export { default as ButtonLoadingPlaceholder } from "./Components/Controls/Buttons/Plain/Button-LoadingPlaceholder";
 

@@ -1,6 +1,12 @@
 /* ─── Assets ─────────────────────────────────────────────────────────────────────────────────────────────────────── */
 import type { AdmonitionBlockLocalization } from "@yamato-daiwa/frontend";
 import { admonitionBlockYDF_ComponentLocalization__english } from "@yamato-daiwa/frontend";
+import PencilIcon__Circled__Filled from "../SVG_Icons/Pencil/PencilIcon__Circled__Filled";
+import ExclamationMarkIcon__Circled__Filled from "../SVG_Icons/ExclamationMark/ExclamationMarkIcon__Circled__Filled";
+import ExclamationMarkIcon__Triangled__Filled from "../SVG_Icons/ExclamationMark/ExclamationMarkIcon__Triangled__Filled";
+import CheckmarkIcon__Circled__Filled from "../SVG_Icons/Checkmark/CheckmarkIcon__Circled__Filled";
+import InfoSignIcon__Circled__Filled from "../SVG_Icons/InfoSign/InfoSignIcon__Circled__Filled";
+import QuestionMarkIcon__Circled__Filled from "../SVG_Icons/QuestionMark/QuestionMarkIcon__Circled__Filled";
 import MultiplicationSignIcon__Boxed__Filled from "../SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Boxed__Filled";
 
 /* ─── Framework ──────────────────────────────────────────────────────────────────────────────────────────────────── */
@@ -58,11 +64,6 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
   };
 
   public static localization: AdmonitionBlockLocalization = admonitionBlockYDF_ComponentLocalization__english;
-
-
-  protected onClickDismissingButton(): void {
-    this.setState({ isDisplaying: false });
-  }
 
 
   /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -166,19 +167,21 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
         { this.SVG_Icon }
 
         {
-          isNotUndefined(this.props.title) && (
-            <div
-              className="AdmonitionBlock--YDF-Title"
-              id={ this.TITLE_HTML_ID }
-            >
-              { this.props.title }
-            </div>
-          )
+
+          isNotUndefined(this.props.title) &&
+
+              <div
+                className="AdmonitionBlock--YDF-Title"
+                id={ this.TITLE_HTML_ID }
+              >
+                { this.props.title }
+              </div>
+
         }
 
         <div
           className="AdmonitionBlock--YDF-MainContent"
-          aria-labelledby={ isNotUndefined(this.props.title) ? this.TITLE_HTML_ID : null }
+          { ...{ ...isNotUndefined(this.props.title) ? { "aria-labelledby": this.TITLE_HTML_ID } : null } }
         >
 
           { isNotUndefined(this.props.children) ? this.props.children : null }
@@ -187,16 +190,16 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
 
         {
 
-          this.props.dismissible ? (
-            <button
-              className="AdmonitionBlock--YDF-DismissingButton"
-              type="button"
-              aria-label={ AdmonitionBlock.localization.dismissingButton.accessibilityGuidance }
-              onClick={ (): void => { this.setState({ isDisplaying: false }); } }
-            >
-              <MultiplicationSignIcon__Boxed__Filled className="AdmonitionBlock--YDF-DismissingButton-Icon"/>
-            </button>
-          ) : null
+          this.props.dismissible &&
+
+              <button
+                className="AdmonitionBlock--YDF-DismissingButton"
+                type="button"
+                aria-label={ AdmonitionBlock.localization.dismissingButton.accessibilityGuidance }
+                onClick={ (): void => { this.setState({ isDisplaying: false }); } }
+              >
+                <MultiplicationSignIcon__Boxed__Filled className="AdmonitionBlock--YDF-DismissingButton-Icon"/>
+              </button>
 
         }
 
@@ -204,6 +207,33 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
     );
   }
 
+  protected get SVG_Icon(): React.ReactNode {
+
+    switch (this.props.decorativeVariation) {
+
+      case AdmonitionBlock.DecorativeVariations.notice:
+          return <PencilIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+
+      case AdmonitionBlock.DecorativeVariations.error:
+          return <ExclamationMarkIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+
+      case AdmonitionBlock.DecorativeVariations.warning:
+          return <ExclamationMarkIcon__Triangled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+
+      case AdmonitionBlock.DecorativeVariations.success:
+          return <CheckmarkIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+
+      case AdmonitionBlock.DecorativeVariations.guidance:
+          return <InfoSignIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+
+      case AdmonitionBlock.DecorativeVariations.question:
+          return <QuestionMarkIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+
+    }
+
+    return null;
+    
+  }
 
 }
 
