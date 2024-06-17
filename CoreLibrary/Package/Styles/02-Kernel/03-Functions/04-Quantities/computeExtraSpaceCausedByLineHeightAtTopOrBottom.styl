@@ -54,9 +54,7 @@ computeExtraSpaceCausedByLineHeightAtTopOrBottom(compoundParameter, restParamete
     else
 
       // === [ Branch A4 ] Font size and line spacing of different units
-      return buildCalcExpression(
-        "${ fontSize } * (${ lineSpacing } / 2)" , { fontSize: fontSize, lineSpacing: lineSpacing }
-      )
+      return lineSpacing / 2
 
   else
 

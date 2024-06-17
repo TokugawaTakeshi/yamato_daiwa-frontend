@@ -15,7 +15,7 @@
 	"homepage": "https://frontend.yamato-daiwa.com/",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend.git"
+		"url": "git+https://github.com/TokugawaTakeshi/yamato_daiwa-frontend.git"
 	},
 	"bugs": {
 		"url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/issues",
@@ -42,23 +42,25 @@
 		"@yamato-daiwa/es-extensions": "../../../YamatoDaiwaES_Extensions/CoreLibrary/Package",
 		"@yamato-daiwa/es-extensions-browserjs": "../../../YamatoDaiwaES_Extensions/BrowserJS/Package",
 		"clipboard": "2.0.11",
-		"fundamental-constants": "0.1.0",
+		"fundamental-constants": "0.2.1",
 		"prismjs": "1.29.0",
 		"slide-element": "2.3.1"
 	},
 	"devDependencies": {
 		"@types/prismjs": "1.26.4",
 		"@yamato-daiwa/automation": "0.4.2",
-		"@yamato-daiwa/style_guides": "0.2.6",
-		"rimraf": "5.0.7",
+		"@yamato-daiwa/style_guides": "0.2.12",
+		"rimraf": "6.0.1",
 		"ts-node": "10.9.2",
-		"typescript": "5.4.5"
+		"typescript": "5.5.4"
 	},
 	"scripts": {
-		"Production building of Pug auxiliaries": "yda build --selectiveExecution PugAuxiliaries --mode PRODUCTION && ts-node Markup/InlineECMAScript/PugAuxiliariesOutputFileGenerator.ts",
-		"Production building of logic": "rimraf LogicDistributable && yda build --selectiveExecution Logic --mode PRODUCTION && tsc --project tsconfig.declarations.json --declaration --emitDeclarationOnly --outDir LogicDistributable",
-		"AnywherePageStyles:IncrementalBuild": "yda build --selectiveExecution StaticPreviewAnywherePage --mode LOCAL_DEVELOPMENT",
+		"Production Building of Pug Auxiliaries": "yda build --selectiveExecution PugAuxiliaries --mode PRODUCTION && ts-node Markup/InlineECMAScript/PugAuxiliariesOutputFileGenerator.ts",
+		"Production Building of Logic": "rimraf LogicDistributable && yda build --selectiveExecution Logic --mode PRODUCTION && tsc --project tsconfig.declarations.json --declaration --emitDeclarationOnly --outDir LogicDistributable",
+		"Incremental Building of Anywhere Page Template Styles": "yda build --selectiveExecution StaticPreviewAnywherePage --mode LOCAL_DEVELOPMENT",
 		"Tests": "yda build --selectiveExecution StylesAndComponentsTesting --mode LOCAL_DEVELOPMENT",
-		"Alpha realize": "npm publish --tag alpha"
+		"Realize Alpha": "npm publish --tag alpha",
+		"Realize Beta": "npm publish --tag beta",
+		"Realize RC": "npm publish --tag rc"
 	}
 }

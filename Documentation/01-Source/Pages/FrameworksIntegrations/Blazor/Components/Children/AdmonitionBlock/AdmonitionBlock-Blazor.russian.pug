@@ -1,0 +1,206 @@
+extends ../../../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../../../SharedAssets/Markup/SharedAssets.russian.pug
+  include ../../../../../../SharedComponents/SharedComponents.russian.pug
+  include Data/AdmonitionBlockComponentPropertiesSpecification__Blazor.pug
+
+block append Metadata
+
+  -
+
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("AdmonitionBlock (Blazor)"),
+        description: MetaDescriptionTemplates.components.AdmonitionBlock
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
+
+    RoutingEmulator.setCurrentRoute("frameworksIntegrations.blazor.components.AdmonitionBlock");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      english: routing.english.frameworksIntegrations.$children.blazor.$children.components.$children.AdmonitionBlock.$URI,
+      japanese: routing.japanese.frameworksIntegrations.$children.blazor.$children.components.$children.AdmonitionBlock.$URI
+    });
+
+    const {
+      $sectioning: localizedSectioning,
+      $heading: topHeading
+    } = localizedRouting.frameworksIntegrations.$children.blazor.$children.components.$children.AdmonitionBlock;
+
+
+block append HeadScripts
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1!= topHeading
+
+    +WebPageViewer--YDF({
+      URI: "$Demos:Vue/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Minimal.html",
+      title: "Примеры использования компонента «AdmonitionBlock» " +
+          "(библиотека: «Yamato Daiwa Frontend Blazor», сокращённо: «YDF-Blazor»). "
+    })
+
+    +AdmonitionBlockComponent-Abstract
+
+
+    //- ━━━ Сводка ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    +Heading--YDF({
+      level: 2,
+      text: localizedSectioning.synopsis.$heading,
+      HTML_ID: localizedSectioning.synopsis.$anchor
+    }).Article-Heading2
+
+    +GUI_ComponentSummaryViewer({
+      framework: SupportedFrameworks.vue,
+      metadataClass: AdmonitionBlock__YDF,
+      intelliJ_IDEA_FamilyIDEsLiveTemplateAbbreviation: "ab-ydf",
+      stylusMixinName: "provideAdmonitionBlockYDF_Component",
+      themesNamesTranslations: {
+        [AdmonitionBlock__YDF.Themes.regular]: "Базовая (по умолчанию)"
+      },
+      geometricVariationsTranslations: {
+        [AdmonitionBlock__YDF.GeometricVariations.regular]: "Базовая (по умолчанию)",
+        [AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike]: "Похожая на клейкие листочки"
+      },
+      decorativeVariationsTranslations: {
+        [AdmonitionBlock__YDF.DecorativeVariations.notice]: "Заметка",
+        [AdmonitionBlock__YDF.DecorativeVariations.error]: "Ошибка либо критически важное примечание",
+        [AdmonitionBlock__YDF.DecorativeVariations.warning]: "Предупреждение",
+        [AdmonitionBlock__YDF.DecorativeVariations.success]: "Успешное выполннение действия",
+        [AdmonitionBlock__YDF.DecorativeVariations.guidance]: "Объяснение",
+        [AdmonitionBlock__YDF.DecorativeVariations.question]: "Вопрос"
+      }
+    })
+
+
+    //- ━━━ Класс `AdmonitionBlock` ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    +Heading--YDF({
+      level: 2,
+      innerHTML: localizedSectioning.AdmonitionBlockClass.$heading,
+      HTML_ID: localizedSectioning.AdmonitionBlockClass.$anchor
+    }).Article-Heading2
+
+    //- ─── Blazor-свойства ───────────────────────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 3,
+      text: localizedSectioning.AdmonitionBlockClass.$children.blazorProperties.$heading,
+      HTML_ID: localizedSectioning.AdmonitionBlockClass.$children.blazorProperties.$anchor
+    }).Article-Heading3
+
+    -
+
+      AdmonitionBlockComponentPropertiesSpecification.localizedDescriptiveHeading = "Свойства";
+      AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.title.
+          localizedInterpretation = "Заголовок";
+      AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.hasDefaultSVG_Icon.
+          localizedInterpretation = "Имеется ли SVG-иконка по умолчанию";
+      AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.dismissible.
+          localizedInterpretation = "Возможно ли убрать";
+
+      AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.theme.localizedInterpretation = "Тема";
+      AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.theme.allowedAlternatives = [
+        ...AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.theme.allowedAlternatives,
+        [
+          { text: "(Любые, определённые через " },
+          { code: "AdmonitionBlock.defineThemes(themesNames)" },
+          { text: ")" }
+        ]
+      ];
+
+      AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.areThemesCSS_ClassesCommon.
+          localizedInterpretation = "Являются ли CSS-классы тем общими для всех компонентов";
+
+      AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.geometricVariation.
+          localizedInterpretation = "Геометрическая вариация";
+      AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.geometricVariation.allowedAlternatives = [
+        ...AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.geometricVariation.allowedAlternatives,
+        [
+          { text: "(Любые, определённые через " },
+          { code: "AdmonitionBlock.defineGeometricVariations(geometricVariationsNames)" },
+          { text: ")" }
+        ]
+      ];
+
+      AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.decorativeVariation.
+          localizedInterpretation = "Декоративная вариация";
+      AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.decorativeVariation.allowedAlternatives = [
+        ...AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.decorativeVariation.allowedAlternatives,
+        [
+          { text: "(Любые, определённые через " },
+          { code: "AdmonitionBlock.defineDecorativeVariations(decorativeVariationsNames)" },
+          { text: ")" }
+        ]
+      ];
+
+    +ObjectTypeAbstract--YDF_DK(
+      AdmonitionBlockComponentPropertiesSpecification
+    )
+
+
+    //- ─── Примеры ────────────────────────────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 3,
+      text: localizedSectioning.AdmonitionBlockClass.$children.examples.$heading,
+      HTML_ID: localizedSectioning.AdmonitionBlockClass.$children.examples.$anchor
+    }).Article-Heading3
+
+    //- ─── Минимальный пример (только обязательные свойства) ──────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 4,
+      innerHTML: localizedSectioning.AdmonitionBlockClass.$children.examples.$children.minimal.$heading,
+      HTML_ID: localizedSectioning.AdmonitionBlockClass.$children.examples.$children.minimal.$anchor
+    }).Article-Heading4
+
+    +AdmonitionBlockComponent-MinimalExampleDescription({ framework: SupportedFrameworks.blazor })
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({
+        codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.TypeScript
+      }): :code_listing--yda
+        <AdmonitionBlock
+          title="Looks like works fine!"
+          decorativeVariation=@(AdmonitionBlock.StandardDecorativeVariations.notice)
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.
+        </AdmonitionBlock>
+
+
+    //- ─── Заголовок (свойство `title`) ───────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 4,
+      innerHTML: localizedSectioning.AdmonitionBlockClass.$children.examples.$children.title.$heading,
+      HTML_ID: localizedSectioning.AdmonitionBlockClass.$children.examples.$children.title.$anchor
+    }).Article-Heading4
+
+    +PropertyMetadata--YDF_DK(AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.title)
+
+    +AdmonitionBlockComponent-TitlePropertyDescription({ framework: SupportedFrameworks.blazor })
+
+
+    //- ─── SVG-иконки ─────────────────────────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 4,
+      text: localizedSectioning.AdmonitionBlockClass.$children.examples.$children.SVG_Icons.$heading,
+      HTML_ID: localizedSectioning.AdmonitionBlockClass.$children.examples.$children.SVG_Icons.$anchor
+    }).Article-Heading4
+
+    +PropertyMetadata--YDF_DK(AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.hasDefaultSVG_Icon)

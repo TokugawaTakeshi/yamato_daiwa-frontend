@@ -11,43 +11,39 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "ja";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("buildString");
-    HTML_PageMetaData = {
-      description: MetaDescriptionTemplates.stylusFunction({
-        functionName: "buildString",
-        whatFunctionDoes: "ES6テンプレートリテラルと似た様な構文を活用し、文字列を組み合わせる機能を提供。"
-      }),
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("buildString"),
+        description: MetaDescriptionTemplates.stylusFunction({
+          functionName: "buildString",
+          whatFunctionDoes: "ES6テンプレートリテラルと似た様な構文を活用し、文字列を組み合わせる機能を提供。"
+        })
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute("coreLibrary.styles.kernel.functions.strings.buildString");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./buildString.english.html",
-      russian: "./buildString.russian.html"
+      english: routing.english.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.
+          strings.$children.buildString.$URI,
+      russian: routing.russian.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.
+          strings.$children.buildString.$URI
     });
 
-    const pageTableOfContents = localizedRouting.coreLibrary.$children.
-        styles.$children.
-        kernel.$children.
-        functions.$children.
-        strings.$children.
-        buildString.$sectioning;
+    const {
+      $sectioning: localizedSectioning,
+      $heading: topHeading
+    } = routing.japanese.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.
+        strings.$children.buildString;
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 
@@ -140,15 +136,15 @@ block append SpecificContent
     //- ━━━ 文字列組み合わせ方法の比較 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     +Heading--YDF({
       level: 2,
-      text: pageTableOfContents.interpolationMethodsComparison.$heading,
-      HTML_ID: pageTableOfContents.interpolationMethodsComparison.$anchor
+      text: localizedSectioning.interpolationMethodsComparison.$heading,
+      HTML_ID: localizedSectioning.interpolationMethodsComparison.$anchor
     }).Article-Heading2
 
     //- ─── ネイティブ連結 ─────────────────────────────────────────────────────────────────────────────────────────────────
     +Heading--YDF({
       level: 3,
-      text: pageTableOfContents.interpolationMethodsComparison.$children.concatenation.$heading,
-      HTML_ID: pageTableOfContents.interpolationMethodsComparison.$children.concatenation.$anchor
+      text: localizedSectioning.interpolationMethodsComparison.$children.concatenation.$heading,
+      HTML_ID: localizedSectioning.interpolationMethodsComparison.$children.concatenation.$anchor
     }).Article-Heading3
 
     +CodeViewer--YDF
@@ -162,8 +158,8 @@ block append SpecificContent
     //- ─── Sprintf （ネイティブ） ─────────────────────────────────────────────────────────────────────────────────────────
     +Heading--YDF({
       level: 3,
-      text: pageTableOfContents.interpolationMethodsComparison.$children.sprintf.$heading,
-      HTML_ID: pageTableOfContents.interpolationMethodsComparison.$children.sprintf.$anchor
+      text: localizedSectioning.interpolationMethodsComparison.$children.sprintf.$heading,
+      HTML_ID: localizedSectioning.interpolationMethodsComparison.$children.sprintf.$anchor
     }).Article-Heading3
 
     +CodeViewer--YDF
@@ -179,8 +175,8 @@ block append SpecificContent
     //- ─── `buildString` (YDF) ────────────────────────────────────────────────────────────────────────────────────────
     +Heading--YDF({
      level: 3,
-     innerHTML: pageTableOfContents.interpolationMethodsComparison.$children.buildString.$heading,
-     HTML_ID: pageTableOfContents.interpolationMethodsComparison.$children.buildString.$anchor
+     innerHTML: localizedSectioning.interpolationMethodsComparison.$children.buildString.$heading,
+     HTML_ID: localizedSectioning.interpolationMethodsComparison.$children.buildString.$anchor
     }).Article-Heading3
 
     +CodeViewer--YDF

@@ -3,11 +3,14 @@
 @require "Themes/Regular/GeometricVariations/Button-RegularTheme-LinkLikeGeometry.styl"
 
 @require "Themes/Regular/DecorativeVariations/Button-RegularTheme-RegularDecoration.styl"
+@require "Themes/Regular/DecorativeVariations/Button-RegularTheme-DangerDecoration.styl"
 @require "Themes/Regular/DecorativeVariations/Button-RegularTheme-AccentedDecoration.styl"
 @require "Themes/Regular/DecorativeVariations/Button-RegularTheme-LinkLikeDecoration.styl"
 
 
 Button--YDF = {
+
+  CSS_NAMESPACE: "Button--YDF",
 
   defaultProperties: {
 
@@ -25,6 +28,7 @@ Button--YDF = {
         decorativeVariations: {
           regular: Button-RegularTheme-RegularDecoration--YDF,
           accented: Button-RegularTheme-AccentedDecoration--YDF,
+          danger: Button-RegularTheme-DangerDecoration--YDF,
           linkLike: Button-RegularTheme-LinkLikeDecoration--YDF
         }
 
@@ -144,6 +148,11 @@ provideButtonYDF_Component(
       cursor pointer
 
 
+      &:focus-visible
+
+        outline none
+
+
       &:disabled
 
         cursor not-allowed
@@ -226,10 +235,6 @@ provideButtonYDF_Component(
           dotSeparatedPath: "label.text.lineHeight",
           required: false
         },
-        horizontalSymmetricLabelSpacingWhenItIsLone: {
-          dotSeparatedPath: "label.spacing.horizontalSymmetricWhenLone",
-          required: true
-        }
         topSpacing: {
           dotSeparatedPath: "label.spacing.top",
           required: false,
@@ -254,6 +259,10 @@ provideButtonYDF_Component(
           dotSeparatedPath: "label.spacing.upwardShifting",
           required: false
         },
+        horizontalSymmetricLabelSpacingWhenItIsLone: {
+          dotSeparatedPath: "label.spacing.horizontalSymmetricWhenLone",
+          required: true
+        },
         leftSpacingWhenLabelGoingFirst: {
           dotSeparatedPath: "label.spacing.leftWhenGoingFirst",
           required: true
@@ -275,12 +284,14 @@ provideButtonYDF_Component(
       paddings: {
         top: cachedValidReusables.topSpacing,
         bottom: cachedValidReusables.bottomSpacing,
+        upwardShifting: cachedValidReusables.upwardShifting
       },
       fontSize: cachedValidReusables.textSize,
       lineHeight: 1
     })
 
-    +provideDefaultSelectorWhenRootAndApply(".Button--YDF")
+
+    +provideDefaultSelectorWhenRootAndApply("." + Button--YDF.CSS_NAMESPACE)
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
@@ -295,18 +306,14 @@ provideButtonYDF_Component(
       applyMixinStoredInObjectIfItIsNotNull(variation.rootElement.customDeclarations)
 
 
-    /input{getCurrentSelectorSubstitutingRoot(".Button--YDF")}
+    /input{getCurrentSelectorSubstitutingRoot("." + Button--YDF.CSS_NAMESPACE)}
 
-      // [ Approach ] The vertical padding will be defined by `TextElementHeightSizing`, herewith it will be
-      //    the corrected value respecting the extra space caused the line height
-      Paddings({
-        horizontalSymmetric: cachedValidReusables.horizontalSymmetricSpacingOfLoneLabel,
-        left: cachedValidReusables.leftSpacingWhenLabelGoingFirst,
-        right: cachedValidReusables.rightSpacingWhenLabelGoingLast
-      })
+      //* [ Approach ] The vertical padding will be defined by `TextElementHeightSizing` herewith it will be
+      //*   the corrected value respecting the extra space caused the line height
+      Paddings({ horizontalSymmetric: cachedValidReusables.horizontalSymmetricLabelSpacingWhenItIsLone })
 
-      // [ Approach ] For both single line and multi line modes the settings will be same because the text overflow
-      //   already has been set in the common declarations.
+      //* [ Approach ] For both single line and multi line modes the settings will be same because the text overflow
+      //*   already has been set in the common declarations.
       TextElementHeightSizing({
         type: TextElementHeightSizingTypes--YDF.natural,
         fontSize: cachedValidReusables.textSize,
@@ -321,6 +328,7 @@ provideButtonYDF_Component(
         },
         mustReduceVerticalPaddingsByExtraSpaceCausedByLineHeight: true
       })
+
 
     if options.geometricModifiers.pillShape
 
@@ -354,20 +362,17 @@ provideButtonYDF_Component(
 
     .Button--YDF-Label
 
-      Paddings({
-        top: cachedValidReusables.topSpacing,
-        bottom: cachedValidReusables.topSpacing,
-        upwardShifting: cachedValidReusables.labelUpwardShifting
-      })
-
-
       MultilineValueLabelStyles()
 
         applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
           fontSize: cachedValidReusables.textSize,
           lineSpacing: cachedValidReusables.lineSpacing,
           lineHeight: cachedValidReusables.lineHeight,
-          mustApplyNegativeMarginsToRootElement: true,
+          paddingsWhichMustBeDecreasedInsteadOfAddingOfNegativeMargins: {
+            top: cachedValidReusables.topSpacing,
+            bottom: cachedValidReusables.topSpacing,
+            upwardShifting: cachedValidReusables.labelUpwardShifting
+          },
           mustAllowWordsBreakingAnywhere: !options.geometricModifiers.singleLine
         })
 
@@ -400,6 +405,11 @@ provideButtonYDF_Component(
         /{CONTEXT_SELECTOR}.Button--YDF__SingleLineGeometricModifier .Button--YDF-Label
 
           font-size: cachedValidReusables.textSize
+
+          Paddings({
+            top: cachedValidReusables.topSpacing,
+            bottom: cachedValidReusables.topSpacing
+          })
 
 
         /{CONTEXT_SELECTOR}:not(.Button--YDF__SingleLineGeometricModifier) .Button--YDF-Label
@@ -450,9 +460,9 @@ provideButtonYDF_Component(
 
       &:first-child:last-child
 
-        /* [ Initial equation ] labelFontSize + labelTopSpacing = iconHeight + iconTopSpacing
-         * [ Formula ] iconPopMargin = labelFontSize + labelTopSpacing - iconHeight
-         * The `labelUpwardShifting` could be eliminated because it presents in bots sides of initial equation. */
+        //* [ Initial equation ] labelFontSize + labelTopSpacing = iconHeight + iconTopSpacing
+        //* [ Formula ] iconPopMargin = labelFontSize + labelTopSpacing - iconHeight
+        //* The `labelUpwardShifting` could be eliminated because it presents in bots sides of initial equation. */
         topMargin = buildCalcExpressionFromFragments({
           textSize: cachedValidReusables.textSize,
           basicTopSpacing: @() {
@@ -473,7 +483,6 @@ provideButtonYDF_Component(
           iconHeight: @() { return " - " + iconHeight }
         })
 
-
         validateAndAssignStoredInObjectCSS_Properties({
           targetObject: variation,
           targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
@@ -491,6 +500,7 @@ provideButtonYDF_Component(
 
         margin-top: topMargin
         margin-bottom: bottomMargin
+
 
         if isNotNull(variation.SVG_Icon.default.spacing.horizontalSymmetricWhenLone)
 
@@ -539,7 +549,7 @@ provideButtonYDF_Component(
             }
           })
 
-
+  //* [ Approach ] Being the modifiers, must be applied after theme-dependent styles. */
   applyThemeIndependentGeometricModifiers()
 
     if options.geometricModifiers.noLeftBorderAndRoundings
@@ -601,7 +611,7 @@ provideButtonYDF_Component(
           word-break break-all
 
 
-  // ─── Decoration ───────────────────────────────────────────────────────────────────────────────────────────────────
+  // ─── Decoration ────────────────────────────────────────────────────────────────────────────────────────────────────
   applyDecorativeVariation(themeName, variationName, variation)
 
     VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
@@ -612,139 +622,82 @@ provideButtonYDF_Component(
       }
     )
 
+    StateDependentStyles(state)
 
-    +provideDefaultSelectorWhenRootAndApply(".Button--YDF")
-
-      validateAndAssignStoredInObjectCSS_Properties({
-        targetObject: variation,
-        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
-        assigments: {
-          color: { dotSeparatedPath: "rootElement.text.color", required: false },
-          underline: {
-            dotSeparatedPath: "rootElement.text.underline",
-            required: false,
-            applier: applyObjectTypeUnderlineDefinition
-          },
-          background-color: { dotSeparatedPath: "rootElement.background.color", required: false },
-          background-image: { dotSeparatedPath: "rootElement.background.image", required: false },
-          border-style: { dotSeparatedPath: "rootElement.borders.style", required: false },
-          border-color: { dotSeparatedPath: "rootElement.borders.color", required: false },
-          outline: {
-            dotSeparatedPath: "rootElement.outline",
-            required: false,
-            applier: applyOutlineObjectTypeDefinition
-          },
-          box-shadow: {
-            dotSeparatedPath: "rootElement.shadow",
-            required: false,
-            applier: applyObjectTypeBoxShadowDefinition
-          }
-        }
-      })
-
-      applyMixinStoredInObjectIfItIsNotNull(variation.rootElement.customDeclarations)
-
-
-    .Button--YDF-SVG_Icon
-
-      validateAndAssignStoredInObjectCSS_Properties({
-        targetObject: variation,
-        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
-        assigments: {
-          fill: { dotSeparatedPath: "SVG_Icon.color", required: true }
-        }
-      })
-
-      applyMixinStoredInObjectIfItIsNotNull(variation.rootElement.customDeclarations)
-
-
-    stateDependentStyles = isNotNull(variation.stateDependent) ? variation.stateDependent : {}
-
-    for state, element in stateDependentStyles
-
-      applyRootElementStateDependentStyles()
+      Declarations()
 
         validateAndAssignStoredInObjectCSS_Properties({
-          targetObject: variation,
+          targetObject: variation[state].rootElement,
           targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
           assigments: {
-            color: { dotSeparatedPath: "stateDependent." + state + ".rootElement.text.color", required: false },
-            underline: {
-              dotSeparatedPath: "stateDependent." + state + ".rootElement.text.underline",
-              required: false,
-              applier: applyObjectTypeUnderlineDefinition
-            },
-            background-color: { dotSeparatedPath: "stateDependent." + state + ".rootElement.background.color", required: false },
-            background-image: { dotSeparatedPath: "stateDependent." + state + ".rootElement.background.image", required: false },
-            border-style: { dotSeparatedPath: "stateDependent." + state + ".rootElement.borders.style", required: false },
-            border-color: { dotSeparatedPath: "stateDependent." + state + ".rootElement.borders.color", required: false },
-            outline: {
-              dotSeparatedPath: "rootElement." + state + ".outline",
-              required: false,
-              applier: applyOutlineObjectTypeDefinition
-            },
-            box-shadow: {
-              dotSeparatedPath: "stateDependent." + state + ".rootElement.shadow",
-              required: false,
-              applier: applyObjectTypeBoxShadowDefinition
+            color: { dotSeparatedPath: "text.color", required: false },
+            underline: { dotSeparatedPath: "text.underline", required: false, applier: applyObjectTypeUnderlineDefinition },
+            background-color: { dotSeparatedPath: "background.color", required: false },
+            background-image: { dotSeparatedPath: "background.image", required: false },
+            border-style: { dotSeparatedPath: "borders.style", required: false },
+            border-color: { dotSeparatedPath: "borders.color", required: false },
+            outline: { dotSeparatedPath: "outline", required: false, applier: applyOutlineObjectTypeDefinition },
+            box-shadow: { dotSeparatedPath: "shadow", required: false, applier: applyObjectTypeBoxShadowDefinition }
+          }
+        })
+
+        applyMixinStoredInObjectIfItIsNotNull(variation[state].rootElement.customDeclarations)
+
+
+        ROOT_ELEMENT_REFERENCE__NULL_IF_NOT_REQUIRED = selector() == "." + Button--YDF.CSS_NAMESPACE ? "/" : null
+
+        { ROOT_ELEMENT_REFERENCE__NULL_IF_NOT_REQUIRED }.Button--YDF-SVG_Icon
+
+          validateAndAssignStoredInObjectCSS_Properties({
+            targetObject: variation[state].SVG_Icon,
+            targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+            assigments: {
+              fill: { dotSeparatedPath: "color", required: false }
             }
-          }
-        })
+          })
+
+          applyMixinStoredInObjectIfItIsNotNull(variation[state].SVG_Icon.customDeclarations)
 
 
-      applySVG_IconStateDependentStyles()
+      +provideDefaultSelectorWhenRootAndApply("." + Button--YDF.CSS_NAMESPACE)
 
-        validateAndAssignStoredInObjectCSS_Properties({
-          targetObject: variation,
-          targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
-          assigments: {
-            fill: { dotSeparatedPath: "stateDependent." + state + ".SVG_Icon.color", required: false }
-          }
-        })
+        if (state == "defaultState")
 
+          Declarations(state)
 
-      if state == "hover" || state == "focus"
+        else if (state == "hoverState")
 
-        &:{state}
+          &:hover
 
-          applyRootElementStateDependentStyles()
+            Declarations(state)
 
+        else if (state == "focusVisibleState")
 
-          .Button--YDF-SVG_Icon
+          &:focus-visible
 
-            applySVG_IconStateDependentStyles()
+            Declarations(state)
 
+        else if (state == "activeState")
 
-      else if state == "active"
+          &:active,
+          &[aria-pressed="true"]
 
-        &:active,
-        &[aria-pressed="true"]
+            Declarations(state)
 
-          applyRootElementStateDependentStyles()
+        else if (state == "disabledState")
 
+          &:disabled,
+          &.Button--YDF__DisabledState
 
-          .Button--YDF-SVG_Icon
-
-            applySVG_IconStateDependentStyles()
+            Declarations(state)
 
 
-      else if state == "disabled"
+    for state in variation
 
-        /button{getCurrentSelectorSubstitutingRoot(".Button--YDF")}:disabled,
-        /input{getCurrentSelectorSubstitutingRoot(".Button--YDF")}:disabled,
-        /a{getCurrentSelectorSubstitutingRoot(".Button--YDF")}.Button--YDF__DisabledState
-
-          applyRootElementStateDependentStyles()
+      StateDependentStyles(state)
 
 
-        /button{getCurrentSelectorSubstitutingRoot(".Button--YDF")}:disabled,
-        /a{getCurrentSelectorSubstitutingRoot(".Button--YDF")}.Button--YDF__DisabledState
-
-          .Button--YDF-SVG_Icon
-
-            applySVG_IconStateDependentStyles()
-
-
+  //* [ Approach ] Being the modifiers, must be applied after theme-dependent styles. */
   applyThemeIndependentDecorativeModifiers()
 
     if options.decorativeModifiers.bordersDisguising

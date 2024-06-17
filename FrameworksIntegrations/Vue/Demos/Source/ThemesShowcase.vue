@@ -1,55 +1,59 @@
 <template lang="pug">
 
-ul.ThemesShowcase--YDF
+dl.ThemesShowcase--YDF
 
-  li(
+  template(
     v-for="(themeValue, themeKey) of themes"
-    :key="`THEME-${ themeKey }`"
+    :key="themeKey"
   )
 
-    span.ThemesShowcase--YDF-Label {{ themeKeyLabelPrefix }}{{ themeKey }}
+    dt.ThemesShowcase--YDF-KeyLabel {{ themeKeyLabelPrefix }}{{ themeKey }}
+    dd.ThemesShowcase--YDF-ValueSection
 
-    ul.ThemesShowcase--YDF-ChildList
+      dl.ThemesShowcase--YDF-ChildList
 
-      li(
-        v-for="(geometricVariationValue, geometricVariationKey) of geometricVariations"
-        :key="`GEOMETRIC_VARIATION-${ themeKey }-${ geometricVariationKey }`"
-      )
-
-        span.ThemesShowcase--YDF-Label {{ geometricVariationLabelPrefix }}{{ geometricVariationKey }}
-
-        component.ThemesShowcase--YDF-ChildList(
-          :is="decorativeVariationsWrapperTag"
-          :class="decorativeVariationsWrapperAdditionalCSS_Classes"
+        template(
+          v-for="(geometricVariationValue, geometricVariationKey) of geometricVariations"
+          :key="`${ themeKey }-${ geometricVariationKey }`"
         )
 
-          template(
-            v-for="(decorativeVariationValue, decorativeVariationKey) of decorativeVariations"
-            :key="`DECORATIVE_VARIATION-${ themeKey }-${ decorativeVariationKey }`"
-          )
+          dt.ThemesShowcase--YDF-KeyLabel {{ geometricVariationLabelPrefix }}{{ geometricVariationKey }}
+          dd.ThemesShowcase--YDF-ValueSection
 
-            li(
-              v-if="decorativeVariationsWrapperTag === 'ul'"
-              :class="decorativeVariationsListItemAdditionalCSS_Classes"
+            component.ThemesShowcase--YDF-ChildList(
+              :is="decorativeVariationsWrapperTag"
+              :class="decorativeVariationsWrapperAdditionalCSS_Classes"
             )
 
-              span.ThemesShowcase--YDF-Label {{ decorativeVariationLabelPrefix }}{{ decorativeVariationKey }}
-
-              slot(
-                :theme="{ key: themeKey, value: themeValue }"
-                :geometricVariation="{ key: geometricVariationKey, value: geometricVariationValue }"
-                :decorativeVariation="{ key: decorativeVariationKey, value: decorativeVariationValue }"
+              template(
+                v-for="(decorativeVariationValue, decorativeVariationKey) of decorativeVariations"
+                :key="`${ themeKey }-${ decorativeVariationKey }`"
               )
 
-            template(
-              v-else
-            )
+                template(
+                  v-if="decorativeVariationsWrapperTag === 'dl'"
+                )
 
-              slot(
-                :theme="{ key: themeKey, value: themeValue }"
-                :geometricVariation="{ key: geometricVariationKey, value: geometricVariationValue }"
-                :decorativeVariation="{ key: decorativeVariationKey, value: decorativeVariationValue }"
-              )
+                  dt.ThemesShowcase--YDF-KeyLabel {{ decorativeVariationLabelPrefix }}{{ decorativeVariationKey }}
+                  dd.ThemesShowcase--YDF-ValueSection(
+                    :class="decorativeVariationsListItemAdditionalCSS_Classes"
+                  )
+
+                    slot(
+                      :theme="{ key: themeKey, value: themeValue }"
+                      :geometricVariation="{ key: geometricVariationKey, value: geometricVariationValue }"
+                      :decorativeVariation="{ key: decorativeVariationKey, value: decorativeVariationValue }"
+                    )
+
+                template(
+                  v-else
+                )
+
+                  slot(
+                    :theme="{ key: themeKey, value: themeValue }"
+                    :geometricVariation="{ key: geometricVariationKey, value: geometricVariationValue }"
+                    :decorativeVariation="{ key: decorativeVariationKey, value: decorativeVariationValue }"
+                  )
 
 </template>
 
@@ -104,7 +108,7 @@ ul.ThemesShowcase--YDF
 
     @VueProperty({
       type: String,
-      default: "ul"
+      default: "dl"
     })
     protected readonly decorativeVariationsWrapperTag!: string;
 

@@ -11,40 +11,37 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "ja";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("buildEmailLinkHrefAttributeValue");
-    HTML_PageMetaData = {
-      description: MetaDescriptionTemplates.pugFunction({
-        functionName: "buildEmailLinkHrefAttributeValue",
-        whatFunctionDoes:
-            "単一の引数として渡されたメールアドレスを使用して、HTMLのaタグのhref属性の値を生成する。" +
-            "描画されたリンクをクリックまたはタップすると、新規メールの送信を提案するような状態で、メールソフトウェアが起動する。"
-      }),
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("buildEmailLinkHrefAttributeValue"),
+        description: MetaDescriptionTemplates.pugFunction({
+          functionName: "buildEmailLinkHrefAttributeValue",
+          whatFunctionDoes:
+              "単一の引数として渡されたメールアドレスを使用して、HTMLのaタグのhref属性の値を生成する。" +
+              "描画されたリンクをクリックまたはタップすると、新規メールの送信を提案するような状態で、メールソフトウェアが起動する。"
+        })
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute(
-      "coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.$children.buildEmailLinkHrefAttributeValue"
+      "coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.buildEmailLinkHrefAttributeValue"
     );
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./buildEmailLinkHrefAttributeValue.english.html",
-      russian: "./buildEmailLinkHrefAttributeValue.russian.html"
+      english: routing.english.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.functionsAndClasses.$children.buildEmailLinkHrefAttributeValue.$URI,
+      russian: routing.russian.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.functionsAndClasses.$children.buildEmailLinkHrefAttributeValue.$URI
     });
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 

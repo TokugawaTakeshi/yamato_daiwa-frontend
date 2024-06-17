@@ -50,13 +50,13 @@ mixin ThemesShowcase--YDF(properties)
       decorativeVariationLabelPrefix = ThemesShowcase__YDF.defaultDecorativeVariationLabelPrefix,
       skipDecorativeVariationIf = () => false,
       iterationData,
-      decorativeVariationsWrapperTag = "ul",
+      decorativeVariationsWrapperTag = "dl",
       decorativeVariationsWrapperAdditionalCSS_Classes,
       decorativeVariationsListItemAdditionalCSS_Classes
     } = properties;
 
 
-  ul.ThemesShowcase--YDF
+  dl.ThemesShowcase--YDF
 
     each themeValue, themeKey in themes
 
@@ -66,11 +66,10 @@ mixin ThemesShowcase--YDF(properties)
           value: themeValue
         };
 
-      li
+      dt.ThemesShowcase--YDF-KeyLabel= `${ themeKeyLabelPrefix }${ themeKey }`
+      dd.ThemesShowcase--YDF-ValueSection
 
-        span.ThemesShowcase--YDF-Label= `${ themeKeyLabelPrefix }${ themeKey }`
-
-        ul.ThemesShowcase--YDF-ChildList
+        dl.ThemesShowcase--YDF-ChildList
 
           each geometricVariationValue, geometricVariationKey in geometricVariations
 
@@ -80,11 +79,10 @@ mixin ThemesShowcase--YDF(properties)
                 value: geometricVariationValue
               };
 
-            li
+            dt.ThemesShowcase--YDF-KeyLabel= `${ geometricVariationLabelPrefix }${ geometricVariationKey }`
+            dd.ThemesShowcase--YDF-ValueSection
 
-              span.ThemesShowcase--YDF-Label= `${ geometricVariationLabelPrefix }${ geometricVariationKey }`
-
-              #{decorativeVariationsWrapperTag}.ThemesShowcase--YDF-ChildList(
+              #{ decorativeVariationsWrapperTag }.ThemesShowcase--YDF-ChildList(
                 class=decorativeVariationsWrapperAdditionalCSS_Classes
               )
 
@@ -98,13 +96,12 @@ mixin ThemesShowcase--YDF(properties)
 
                   if !skipDecorativeVariationIf(iterationData)
 
-                    if decorativeVariationsWrapperTag === "ul"
+                    if decorativeVariationsWrapperTag === "dl"
 
-                      li(
+                      dt.ThemesShowcase--YDF-KeyLabel= `${ decorativeVariationLabelPrefix }${ decorativeVariationKey }`
+                      dd.ThemesShowcase--YDF-ValueSection(
                         class=decorativeVariationsListItemAdditionalCSS_Classes
                       )
-
-                        span.ThemesShowcase--YDF-Label= `${ decorativeVariationLabelPrefix }${ decorativeVariationKey }`
 
                         block
 

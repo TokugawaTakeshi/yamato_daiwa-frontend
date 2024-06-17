@@ -23,13 +23,16 @@ block append Metadata
       ].join("");
     }
 
-    styleSheetsURIs = [
-      "@Partials/YDF-Demos-Primer",
-      "@Partials/YDF-Demos-CommonRequirements",
-      "@Pages/Components/Controls/FilesUploader/FilesUploaderGalleryPage"
-    ];
-
-    scriptsURIs.endOfBody = [ "@CompletePages/Components/Controls/FilesUploader/FilesUploaderGalleryPage" ];
+    RegularWebPageTemplate__YDF.configure({
+      stylesSheetsURIs: [
+        "@Partials/YDF-Demos-Primer",
+        "@Partials/YDF-Demos-CommonRequirements",
+        "@Pages/Components/Controls/FilesUploader/FilesUploaderGalleryPage"
+      ],
+      scriptsURIs: {
+        atEndOfBody: [ "@CompletePages/Components/Controls/FilesUploader/FilesUploaderGalleryPage" ]
+      }
+    });
 
 
 block append PageContent

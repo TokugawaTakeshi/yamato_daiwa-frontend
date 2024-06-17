@@ -97,6 +97,8 @@ provideAdmonitionBlockYDF_Component(
       grid-template-columns auto minmax(0, 1fr) auto
       align-items center
 
+      border-width 0 //* [ Why ? ] There is browser-dependent default border-width applied when set `border-style`. */
+
 
       &-SVG_Icon
 
@@ -120,6 +122,11 @@ provideAdmonitionBlockYDF_Component(
         cursor pointer
 
         grid-area DISMISSING_BUTTON
+
+
+        &:focus
+
+          outline none
 
 
         &-Icon
@@ -409,9 +416,9 @@ provideAdmonitionBlockYDF_Component(
 
         statePseudoClass = ":hover"
 
-      else if (state == "focusState")
+      else if (state == "focusVisibleState")
 
-        statePseudoClass = ":focus"
+        statePseudoClass = ":focus-visible"
 
       else if (state == "activeState")
 

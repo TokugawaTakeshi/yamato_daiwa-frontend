@@ -11,26 +11,20 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "ru";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("Шаблоны страниц");
-    HTML_PageMetaData = {
-      description:
-          "Библиотека для фронтенд-разработки «Yamato Daiwa Frontend» (сокращённо: «YDF») предлагает Pug-шаблоны " +
-            "веб-страниц, содержащие минимальный HTML-код и некоторые часто используемые фрагменты кода. "
-      ,
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("Шаблоны страниц"),
+        description:
+            "Библиотека для фронтенд-разработки «Yamato Daiwa Frontend» (сокращённо: «YDF») предлагает Pug-шаблоны " +
+              "веб-страниц, содержащие минимальный HTML-код и некоторые часто используемые фрагменты кода. "
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute("coreLibrary.pagesTemplates");
 
@@ -40,7 +34,7 @@ block append Metadata
     });
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 

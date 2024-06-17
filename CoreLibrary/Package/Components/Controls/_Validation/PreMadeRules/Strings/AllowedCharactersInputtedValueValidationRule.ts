@@ -34,6 +34,7 @@ class AllowedCharactersInputtedValueValidationRule implements InputtedValueValid
             other?: ReadonlyArray<string>;
           }>;
           errorMessageBuilder?: AllowedCharactersInputtedValueValidationRule.ErrorMessage.Builder;
+          localization?: AllowedCharactersInputtedValueValidationRule.Localization;
         }>
   ) {
 
@@ -65,6 +66,7 @@ class AllowedCharactersInputtedValueValidationRule implements InputtedValueValid
 
     this.errorMessageBuilder =
         compoundParameter.errorMessageBuilder ??
+        compoundParameter.localization?.errorMessageBuilder ??
         AllowedCharactersInputtedValueValidationRule.localization.errorMessageBuilder;
 
   }

@@ -1,0 +1,171 @@
+fileNameLocalizationExtensions: "russian"
+
+top:
+
+  $heading: "Главная страница"
+  $URI: "@All/Top/TopPage.russian"
+
+coreLibrary:
+
+  $heading: "Основная библиотека"
+
+  markup:
+
+    $heading: "Pug-разметка"
+
+    functionality:
+
+      $heading: "Функциональность"
+
+      inlineJavaScript:
+
+        $heading: "Внутренний JavaScript"
+
+        YDEE_Integration:
+
+          $heading: "Интеграция с @yamato-daiwa/es-extensions (YDEE)"
+
+        functionsAndClasses:
+
+          $heading: "Функции и классы"
+
+        assets:
+
+          $heading: "Ассеты"
+
+      pugMixins:
+
+        $heading: "Pug-примеси"
+
+        dummies:
+
+          $heading: "<code>WideDummy</code> и <code>HighDummy</code>"
+
+        SVG_Icons:
+
+          $heading: "SVG-иконки"
+
+#        yamatoDaiwaInformationDesign:
+#
+#          $heading: "Информационный дизайн «Ямато Дайва»"
+
+      pagesTemplates:
+
+        $heading: "Шаблоны страниц"
+
+      usageOnServerSide:
+
+        $heading: "Использование на серверной стороне"
+
+  styles:
+
+    $heading: "Стили"
+
+    assets:
+
+      $heading: "Ассеты"
+
+      fundamentalConstantsAndEnums:
+
+        $heading: "Фундаментальные константы и перечисления"
+
+      colors:
+
+        $heading: "Цвета"
+
+        PracticalColorCoordinateSystem:
+
+          $heading: "Палитра PCCS (<code>PracticalColorCoordinateSystem</code>)"
+
+        ShadesOfGray__39ColorsW3C_Palette:
+
+          $heading: "Палитра 39 оттенков серого (<code>ShadesOfGray__39ColorsW3C_Palette</code>)"
+
+        YDF_ColorPalette:
+
+          $heading: "Палитра YDF (<code>YDF_ColorPalette</code>)"
+
+    kernel:
+
+      $heading: "Фундаментальная функциональность"
+
+      YDF_Configuration:
+
+        $heading: "Конфигурация"
+
+        fontsStacks:
+
+          $heading: "Стэки шрифтов"
+
+        textGeometry:
+
+          $heading: "Переменные размеров"
+
+        zIndexes:
+
+          $heading: "z-индексы"
+
+      specificationsSchemas:
+
+        $heading: "Схемы спецификаций"
+
+      functions:
+
+        $heading: "Функции"
+
+        typeCheckers:
+
+          $heading: "Проверка типов значений"
+
+          strings:
+
+            $heading: "Строковые значения"
+
+          quantities:
+
+            $heading: "Величины"
+
+          booleans:
+
+            $heading : "Булевские значения"
+
+          nullables:
+
+            $heading : "Пустые значения"
+
+          others:
+
+            $heading : "Остальные"
+
+        valueTransformers:
+
+          $heading: "Преобразователи значений"
+
+        strings:
+
+          $heading: "Работа со строками"
+frameworksIntegrations:
+
+  $heading: "Адаптации сторонних фреймворков"
+
+  vue:
+
+    components:
+
+      $heading: "GUI-компоненты"
+
+  react:
+
+    components:
+
+      $heading: "GUI-компоненты"
+
+  blazor:
+
+    components:
+
+      $heading: "GUI-компоненты"
+
+realiseNotes:
+
+  $heading: "Что нового"

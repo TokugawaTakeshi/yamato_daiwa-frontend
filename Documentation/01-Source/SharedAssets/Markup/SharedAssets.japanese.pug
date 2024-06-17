@@ -1,9 +1,8 @@
+include _Constants.pug
 include _HTML_PageMetadata.pug
-include _generateLocalizedRouting.pug
 include _generateSharedExternalLinks.pug
 
 include Localizations/Japanese/MetaDescriptionTemplates.japanese.pug
-include Localizations/Japanese/RoutingLocalization.japanese.pug
 include Localizations/Japanese/SharedExternalLinksLocalization.japanese.pug
 include Localizations/Japanese/ReusableFragments.japanese.pug
 
@@ -12,21 +11,9 @@ include ThirdPartyEmbeddableScripts/GoogleAnalyticsScript.pug
 
 -
 
-  const localizedRouting = generateLocalizedRouting(routingJapaneseLocalization);
-  let generatePageTableOfContents;
+  RegularWebPageTemplate__YDF.metadata.locale = "ja";
 
-
-include ../../Pages/CoreLibrary/Components/TableOfContents/Components.toc.japanese.pug
-//include ../../Pages/CoreLibrary/Components/Children/_AdmonitionBlock/TableOfContents/AdmonitionBlock.toc.japanese.pug
-include ../../Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/TableOfContents/DummyImagesURIs.toc.japanese.pug
-include ../../Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/processObjectTypeParameterOfPugMixin/TableOfContents/processObjectTypeParameterOfPugMixin.toc.japanese.pug
-include ../../Pages/CoreLibrary/Styles/Kernel/Functions/Strings/buildString/TableOfContents/buildString.toc.japanese.pug
-
-
--
-
-  generatePageTableOfContents = null;
-
+  const localizedRouting = routing.japanese;
   RoutingEmulator.initialize(localizedRouting);
 
   const sharedExternalLinks = generateSharedExternalLinks(sharedExternalLinksJapaneseLocalization);

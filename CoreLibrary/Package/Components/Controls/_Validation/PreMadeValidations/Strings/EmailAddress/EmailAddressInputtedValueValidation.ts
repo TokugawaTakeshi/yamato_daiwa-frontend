@@ -1,4 +1,7 @@
-import { MINIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS } from "fundamental-constants";
+import {
+  MINIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS,
+  MAXIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS
+} from "fundamental-constants";
 
 import InputtedValueValidation from "../../../InputtedValueValidation";
 
@@ -6,6 +9,8 @@ import EmailAddressInputtedValueValidationRule from
     "../../../PreMadeRules/Strings/EmailAddressInputtedValueValidationRule";
 import MinimalCharactersCountInputtedValueValidationRule from
     "../../../PreMadeRules/Strings/MinimalCharactersCountInputtedValueValidationRule";
+import MaximalCharactersCountInputtedValueValidationRule from
+    "../../../PreMadeRules/Strings/MaximalCharactersCountInputtedValueValidationRule";
 
 import { isEmptyString } from "@yamato-daiwa/es-extensions";
 
@@ -14,10 +19,11 @@ class EmailAddressInputtedValueValidation extends InputtedValueValidation {
 
   public static localization: EmailAddressInputtedValueValidation.Localization;
 
-  /* [ Approach ] Although YDF library can suggest the minimal characters count for the email address,
+  /* [ Approach ] Although YDF library can suggest the minimal and maximal characters count for the email address,
   *    in the applications with good architecture this value must be taken from the business rules and
   *    passed via constructor. */
   public readonly MINIMAL_CHARACTERS_COUNT: number;
+  public readonly MAXIMAL_CHARACTERS_COUNT: number;
 
 
   public constructor(
@@ -25,7 +31,9 @@ class EmailAddressInputtedValueValidation extends InputtedValueValidation {
         Readonly<{
           isInputRequired: boolean;
           minimalCharactersCount?: number;
+          maximalCharactersCount?: number;
           regularExpression?: RegExp;
+          localization?: EmailAddressInputtedValueValidation.Localization;
         }> &
         Pick<
           InputtedValueValidation.ConstructorCompoundParameter,
@@ -39,22 +47,32 @@ class EmailAddressInputtedValueValidation extends InputtedValueValidation {
         compoundParameter.minimalCharactersCount ??
         MINIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS;
 
+    const MAXIMAL_CHARACTERS_COUNT: number =
+        compoundParameter.maximalCharactersCount ??
+          MAXIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS;
+
     super({
       isInputRequired: compoundParameter.isInputRequired,
       omittedValueChecker: isEmptyString,
-      requiredInputIsMissingValidationErrorMessage: EmailAddressInputtedValueValidation.localization.
-          requiredInputIsMissingValidationErrorMessage,
+      requiredInputIsMissingValidationErrorMessage:
+          compoundParameter.localization?.requiredInputIsMissingValidationErrorMessage ??
+          EmailAddressInputtedValueValidation.localization.requiredInputIsMissingValidationErrorMessage,
       staticRules: [
         new MinimalCharactersCountInputtedValueValidationRule({
           minimalCharactersCount: MINIMAL_CHARACTERS_COUNT,
           errorMessageBuilder: EmailAddressInputtedValueValidation.localization.
-              minimalCharactersCountValidationErrorMessageBuilder,
-          mustFinishValidationIfValueIsInvalid: true
+              minimalCharactersCountValidationErrorMessageBuilder
         }),
         new EmailAddressInputtedValueValidationRule({
           regularExpression: compoundParameter.regularExpression,
           errorMessageBuilder: EmailAddressInputtedValueValidation.localization.
-              invalidEmailAddressErrorMessageBuilder
+              invalidEmailAddressErrorMessageBuilder,
+          mustFinishValidationIfValueIsInvalid: true
+        }),
+        new MaximalCharactersCountInputtedValueValidationRule({
+          maximalCharactersCount: MAXIMAL_CHARACTERS_COUNT,
+          errorMessageBuilder: EmailAddressInputtedValueValidation.localization.
+              maximalCharactersCountValidationErrorMessageBuilder
         })
       ],
       contextDependentRules: compoundParameter.contextDependentRules,
@@ -63,6 +81,7 @@ class EmailAddressInputtedValueValidation extends InputtedValueValidation {
     });
 
     this.MINIMAL_CHARACTERS_COUNT = MINIMAL_CHARACTERS_COUNT;
+    this.MAXIMAL_CHARACTERS_COUNT = MAXIMAL_CHARACTERS_COUNT;
 
   }
 
@@ -76,6 +95,8 @@ namespace EmailAddressInputtedValueValidation {
       Readonly<{
         minimalCharactersCountValidationErrorMessageBuilder:
             MinimalCharactersCountInputtedValueValidationRule.ErrorMessage.Builder;
+        maximalCharactersCountValidationErrorMessageBuilder:
+            MaximalCharactersCountInputtedValueValidationRule.ErrorMessage.Builder;
         invalidEmailAddressErrorMessageBuilder:
             EmailAddressInputtedValueValidationRule.ErrorMessage.Builder;
       }>;

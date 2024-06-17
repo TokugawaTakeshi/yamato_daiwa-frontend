@@ -23,11 +23,13 @@ block append Metadata
       ].join("");
     }
 
-    styleSheetsURIs = [
-      "@Partials/YDF-Demos-Primer",
-      "@Partials/YDF-Demos-CommonRequirements",
-      "@Pages/Components/Controls/Buttons/Plain/ButtonGalleryPage"
-    ];
+    RegularWebPageTemplate__YDF.configure({
+      stylesSheetsURIs: [
+        "@Partials/YDF-Demos-Primer",
+        "@Partials/YDF-Demos-CommonRequirements",
+        "@Pages/Components/Controls/Buttons/Plain/ButtonGalleryPage"
+      ]
+    });
 
 
 block append PageContent

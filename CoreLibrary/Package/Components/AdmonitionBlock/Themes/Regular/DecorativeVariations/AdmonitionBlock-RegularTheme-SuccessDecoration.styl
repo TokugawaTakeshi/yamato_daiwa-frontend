@@ -45,7 +45,7 @@ AdmonitionBlock-RegularTheme-SuccessDecoration--YDF = {
 
   dismissingButton: {
 
-    difaultState: {
+    defaultState: {
 
       iconColor: YDF_ColorPalette.mint.slightlyDark,
       shadow: null,
@@ -56,7 +56,7 @@ AdmonitionBlock-RegularTheme-SuccessDecoration--YDF = {
 
     hoverState: {
 
-      iconColor: YDF_ColorPalette.mint.pastelLight,
+      iconColor: YDF_ColorPalette.mint.mediumLight,
       shadow: null,
 
       customDeclarations: null
@@ -64,10 +64,14 @@ AdmonitionBlock-RegularTheme-SuccessDecoration--YDF = {
     },
 
 
-    focusState: {
+    focusVisibleState: {
 
-      iconColor: YDF_ColorPalette.mint.pastelLight,
-      shadow: null,
+      iconColor: YDF_ColorPalette.mint.mediumLight,
+      shadow: {
+        blurRadius: 3px,
+        spreadRadius: 1px,
+        color: YDF_ColorPalette.mint.mediumLight
+      },
 
       customDeclarations: null
 
@@ -75,7 +79,7 @@ AdmonitionBlock-RegularTheme-SuccessDecoration--YDF = {
 
     activeState: {
 
-      iconColor: YDF_ColorPalette.mint.pastelLight,
+      iconColor: YDF_ColorPalette.mint.light,
       shadow: null,
 
       customDeclarations: null

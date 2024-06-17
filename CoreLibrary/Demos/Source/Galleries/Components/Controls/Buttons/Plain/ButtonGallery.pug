@@ -41,8 +41,7 @@ mixin ButtonGallery
       geometricVariations: Button__YDF.GeometricVariations,
       decorativeVariations: Button__YDF.DecorativeVariations,
       iterationData: themeShowcaseCurrentIterationData,
-      skipDecorativeVariationIf,
-      decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem",
+      skipDecorativeVariationIf
     })
 
       dl.ButtonGallery-PseudoTable
@@ -252,7 +251,6 @@ mixin ButtonGallery
         dt Input
         dd Unavailable
 
-
   //- ━━━ Custom SVG Icon ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.customIcons]
 
@@ -295,316 +293,317 @@ mixin ButtonGallery
         dt Input
         dd Unavailable
 
-    //- ━━━ Geometric modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    if ButtonGalleryOptions.mustRenderGeometricModifiersSection
 
-      h2.Heading2(
+  //- ━━━ Geometric modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  if ButtonGalleryOptions.mustRenderGeometricModifiersSection
+
+    h2.Heading2(
+      class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+    ) Geometric Modifiers
+
+    //- ─── Pill Shape ─────────────────────────────────────────────────────────────────────────────────────────────────
+    if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.pillShapeGeometricModifier]
+
+      h3.Heading3(
         class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-      ) Geometric Modifiers
+      ) Pill Shape
 
-      //- ─── Pill Shape ───────────────────────────────────────────────────────────────────────────────────────────────
-      if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.pillShapeGeometricModifier]
+      +ThemesShowcase--YDF({
+        themes: Button__YDF.Themes,
+        geometricVariations: Button__YDF.GeometricVariations,
+        decorativeVariations: Button__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData,
+        skipDecorativeVariationIf,
+        decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
+      })
 
-        h3.Heading3(
-          class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-        ) Pill Shape
+        dl.ButtonGallery-PseudoTable
 
-        +ThemesShowcase--YDF({
-          themes: Button__YDF.Themes,
-          geometricVariations: Button__YDF.GeometricVariations,
-          decorativeVariations: Button__YDF.DecorativeVariations,
-          iterationData: themeShowcaseCurrentIterationData,
-          skipDecorativeVariationIf,
-          decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
-        })
+          dt Button
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.pillShape ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
-          dl.ButtonGallery-PseudoTable
+          dt Link
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              URI: "#",
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.pillShape ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
-            dt Button
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.pillShape ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
+          dt Input
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              HTML_Type: Button__YDF.HTML_Types.inputButton,
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.pillShape ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
-            dt Link
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                URI: "#",
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.pillShape ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
+    //- ─── Square Shape ───────────────────────────────────────────────────────────────────────────────────────────────
+    if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.squareShapeGeometricModifier]
 
-            dt Input
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                HTML_Type: Button__YDF.HTML_Types.inputButton,
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.pillShape ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
+      h3.Heading3(
+        class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+      ) Square Shape
 
+      +ThemesShowcase--YDF({
+        themes: Button__YDF.Themes,
+        geometricVariations: Button__YDF.GeometricVariations,
+        decorativeVariations: Button__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData,
+        skipDecorativeVariationIf,
+        decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
+      })
 
-      //- ─── Square Shape ─────────────────────────────────────────────────────────────────────────────────────────────
-      if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.squareShapeGeometricModifier]
+        dl.ButtonGallery-PseudoTable
 
-        h3.Heading3(
-          class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-        ) Square Shape
+          dt Button
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.squareShape ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
-        +ThemesShowcase--YDF({
-          themes: Button__YDF.Themes,
-          geometricVariations: Button__YDF.GeometricVariations,
-          decorativeVariations: Button__YDF.DecorativeVariations,
-          iterationData: themeShowcaseCurrentIterationData,
-          skipDecorativeVariationIf,
-          decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
-        })
+          dt Link
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              URI: "#",
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.squareShape ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
-          dl.ButtonGallery-PseudoTable
-
-            dt Button
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.squareShape ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
-
-            dt Link
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                URI: "#",
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.squareShape ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
-
-            dt Input
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                HTML_Type: Button__YDF.HTML_Types.inputButton,
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.squareShape ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
+          dt Input
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              HTML_Type: Button__YDF.HTML_Types.inputButton,
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.squareShape ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
 
-      //- ─── Square Shape Unless Overflowed ───────────────────────────────────────────────────────────────────────────
-      if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.squareShapeUnlessOverflowedGeometricModifier]
+    //- ─── Square Shape Unless Overflowed ─────────────────────────────────────────────────────────────────────────────
+    if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.squareShapeUnlessOverflowedGeometricModifier]
 
-        h3.Heading3(
-          class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-        ) Square Shape
+      h3.Heading3(
+        class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+      ) Square Shape
 
-        +ThemesShowcase--YDF({
-          themes: Button__YDF.Themes,
-          geometricVariations: Button__YDF.GeometricVariations,
-          decorativeVariations: Button__YDF.DecorativeVariations,
-          iterationData: themeShowcaseCurrentIterationData,
-          skipDecorativeVariationIf,
-          decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
-        })
+      +ThemesShowcase--YDF({
+        themes: Button__YDF.Themes,
+        geometricVariations: Button__YDF.GeometricVariations,
+        decorativeVariations: Button__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData,
+        skipDecorativeVariationIf,
+        decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
+      })
 
-          dl.ButtonGallery-PseudoTable
+        dl.ButtonGallery-PseudoTable
 
-            dt Button
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.squareShapeUnlessOverflowed ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
+          dt Button
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.squareShapeUnlessOverflowed ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
-            dt Link
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                URI: "#",
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.squareShapeUnlessOverflowed ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
+          dt Link
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              URI: "#",
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.squareShapeUnlessOverflowed ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
-            dt Input
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                HTML_Type: Button__YDF.HTML_Types.inputButton,
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.squareShapeUnlessOverflowed ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
-
-
-      //- ─── Single Line ──────────────────────────────────────────────────────────────────────────────────────────────
-      if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.singleLineGeometricModifier]
-
-        h3.Heading3(
-          class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-        ) Single Line
-
-        +ThemesShowcase--YDF({
-          themes: Button__YDF.Themes,
-          geometricVariations: Button__YDF.GeometricVariations,
-          decorativeVariations: Button__YDF.DecorativeVariations,
-          iterationData: themeShowcaseCurrentIterationData,
-          skipDecorativeVariationIf,
-          decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
-        })
-
-          dl.ButtonGallery-PseudoTable
-
-            dt Button
-            dd
-              +Button--YDF({
-                label: textOverflowSafetyTest,
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.singleLine ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
-
-            dt Link
-            dd
-              +Button--YDF({
-                label: textOverflowSafetyTest,
-                URI: "#",
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.singleLine ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
-
-            dt Input
-            dd
-              +Button--YDF({
-                label: textOverflowSafetyTest,
-                HTML_Type: Button__YDF.HTML_Types.inputButton,
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.singleLine ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
-
-      //- ─── No Left Border and Roundings ─────────────────────────────────────────────────────────────────────────────
-      if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.noLeftBorderAndRoundingsGeometricModifier]
-
-        h3.Heading3(
-          class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-        ) No Left Border and Roundings
-
-        +ThemesShowcase--YDF({
-          themes: Button__YDF.Themes,
-          geometricVariations: Button__YDF.GeometricVariations,
-          decorativeVariations: Button__YDF.DecorativeVariations,
-          iterationData: themeShowcaseCurrentIterationData,
-          skipDecorativeVariationIf,
-          decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
-        })
-
-          dl.ButtonGallery-PseudoTable
-
-            dt Button
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.noLeftBorderAndRoundings ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
-
-            dt Link
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                URI: "#",
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.noLeftBorderAndRoundings ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
-
-            dt Input
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                HTML_Type: Button__YDF.HTML_Types.inputButton,
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.noLeftBorderAndRoundings ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
+          dt Input
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              HTML_Type: Button__YDF.HTML_Types.inputButton,
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.squareShapeUnlessOverflowed ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
 
-      //- ─── No Right Border and Roundings ────────────────────────────────────────────────────────────────────────────
-      if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.noRightBorderAndRoundingsGeometricModifier]
+    //- ─── Single Line ────────────────────────────────────────────────────────────────────────────────────────────────
+    if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.singleLineGeometricModifier]
 
-        h3.Heading3(
-          class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-        ) No Right Border and Roundings
+      h3.Heading3(
+        class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+      ) Single Line
 
-        +ThemesShowcase--YDF({
-          themes: Button__YDF.Themes,
-          geometricVariations: Button__YDF.GeometricVariations,
-          decorativeVariations: Button__YDF.DecorativeVariations,
-          iterationData: themeShowcaseCurrentIterationData,
-          skipDecorativeVariationIf,
-          decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
-        })
+      +ThemesShowcase--YDF({
+        themes: Button__YDF.Themes,
+        geometricVariations: Button__YDF.GeometricVariations,
+        decorativeVariations: Button__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData,
+        skipDecorativeVariationIf,
+        decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
+      })
 
-          dl.ButtonGallery-PseudoTable
+        dl.ButtonGallery-PseudoTable
 
-            dt Button
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.noRightBorderAndRoundings ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
+          dt Button
+          dd
+            +Button--YDF({
+              label: textOverflowSafetyTest,
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.singleLine ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
-            dt Link
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                URI: "#",
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.noRightBorderAndRoundings ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
+          dt Link
+          dd
+            +Button--YDF({
+              label: textOverflowSafetyTest,
+              URI: "#",
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.singleLine ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
-            dt Input
-            dd
-              +Button--YDF({
-                label: "Click 押下",
-                HTML_Type: Button__YDF.HTML_Types.inputButton,
-                theme: themeShowcaseCurrentIterationData.theme.value,
-                geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-                geometricModifiers: [ Button__YDF.GeometricModifiers.noRightBorderAndRoundings ],
-                decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-              })
+          dt Input
+          dd
+            +Button--YDF({
+              label: textOverflowSafetyTest,
+              HTML_Type: Button__YDF.HTML_Types.inputButton,
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.singleLine ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
+
+
+    //- ─── No Left Border and Roundings ───────────────────────────────────────────────────────────────────────────────
+    if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.noLeftBorderAndRoundingsGeometricModifier]
+
+      h3.Heading3(
+        class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+      ) No Left Border and Roundings
+
+      +ThemesShowcase--YDF({
+        themes: Button__YDF.Themes,
+        geometricVariations: Button__YDF.GeometricVariations,
+        decorativeVariations: Button__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData,
+        skipDecorativeVariationIf,
+        decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
+      })
+
+        dl.ButtonGallery-PseudoTable
+
+          dt Button
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.noLeftBorderAndRoundings ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
+
+          dt Link
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              URI: "#",
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.noLeftBorderAndRoundings ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
+
+          dt Input
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              HTML_Type: Button__YDF.HTML_Types.inputButton,
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.noLeftBorderAndRoundings ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
+
+
+    //- ─── No Right Border and Roundings ──────────────────────────────────────────────────────────────────────────────
+    if ButtonGalleryOptions.partialsRenderingFlags[ButtonGalleryOptions.Partials.noRightBorderAndRoundingsGeometricModifier]
+
+      h3.Heading3(
+        class=(ButtonGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+      ) No Right Border and Roundings
+
+      +ThemesShowcase--YDF({
+        themes: Button__YDF.Themes,
+        geometricVariations: Button__YDF.GeometricVariations,
+        decorativeVariations: Button__YDF.DecorativeVariations,
+        iterationData: themeShowcaseCurrentIterationData,
+        skipDecorativeVariationIf,
+        decorativeVariationsListItemAdditionalCSS_Classes: "ButtonGallery-DecorativeVariationsListItem"
+      })
+
+        dl.ButtonGallery-PseudoTable
+
+          dt Button
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.noRightBorderAndRoundings ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
+
+          dt Link
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              URI: "#",
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.noRightBorderAndRoundings ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
+
+          dt Input
+          dd
+            +Button--YDF({
+              label: "Click 押下",
+              HTML_Type: Button__YDF.HTML_Types.inputButton,
+              theme: themeShowcaseCurrentIterationData.theme.value,
+              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+              geometricModifiers: [ Button__YDF.GeometricModifiers.noRightBorderAndRoundings ],
+              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+            })
 
 
     //- ━━━ Decorative modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

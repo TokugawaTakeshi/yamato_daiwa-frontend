@@ -3,6 +3,20 @@
 
 # Yamato-Daiwa Frontend IntelliJ IDEA plugin changelog
 
+## [0.0.10]
+
+### Added
+
+- **AdmonitionBlock--YDF** — Live template inserting the examples of 
+  [**AdmonitionBlock** component](https://frontend.yamato-daiwa.com/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html) 
+  usage.
+  Previously added **ab-ydf** one now is the alias of **AdmonitionBlock--YDF**. 
+- **AdmonitionBlock--YDF-V-P**, alias: **ab-ydf-vue-p** — Live template for 
+  [AdmonitionBlock--YDF](FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  component (Pug syntax).
+- **AdmonitionBlock--YDF-V-H**, alias: **ab-ydf-vue-h** — Live template for 
+  [AdmonitionBlock--YDF](FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  component (HTML syntax).
 
 ## [0.0.9]
 
@@ -14,9 +28,9 @@
 - **getLineSpacingByFontSizeAndLineHeight** - autocomplete imitator type Live template for the eponymous function
 - **processObjectTypeParameterOfPugMixin** — Autocomplete imitator for [eponymous function](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/processObjectTypeParameterOfPugMixin/processObjectTypeParameterOfPugMixin.english.html)
 - **removeUnitFromAmount** - autocomplete imitator type Live template for the eponymous function
-- **ab-ydf** — Live template for the inserting of invocation of  **AdmonitionBlock--YDF** Pug mixin corresponding to the
-    **AdmonitionBlock** component
-- **AdmonitionBlock.styl** — file template for providing and customizing styles of the **AdmonitionBlock** component
+- **ab-ydf** — Live template for the inserting of invocation of **AdmonitionBlock--YDF** Pug mixin corresponding to the
+  [**AdmonitionBlock** component](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html)
+- **AdmonitionBlock.styl** — file template for providing and customizing styles of the [**AdmonitionBlock** component](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html)
 - **createObjectWithComputedProperties** — autocomplete imitator type Live template for the eponymous function
 
 ### Changed

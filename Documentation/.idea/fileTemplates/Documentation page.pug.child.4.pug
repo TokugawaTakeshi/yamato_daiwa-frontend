@@ -1,10 +1,10 @@
-//- TODO Указать правильный путь
+//- TODO Редактировать глубину
 extends ../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
 
 
 block append Requirements
 
-  //- TODO Указать правильный путь
+  //- TODO Редактировать глубину
   include ../../SharedAssets/Markup/SharedAssets.russian.pug
   include ../../SharedComponents/SharedComponents.russian.pug
 
@@ -13,23 +13,18 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "ru";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("${FILE_NAME_WITHOUT_EXTENSION}");
-    HTML_PageMetaData = {
-      description: "", // TODO
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "${DS}CommonStyles",
-      "${DS}LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "${DS}PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "${DS}CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("${FILE_NAME_WITHOUT_EXTENSION}"),
+        description: "" // TODO
+      },
+      stylesSheetsURIs: [
+        "${DS}CommonStyles",
+        "${DS}LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "${DS}PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute("${ROUTE}");
 
@@ -37,7 +32,7 @@ block append Metadata
       english: "./${FILE_NAME_WITHOUT_EXTENSION}.english.html",
       japanese: "./${FILE_NAME_WITHOUT_EXTENSION}.japanese.html"
     });
-    
+
     const pageTableOfContents = localizedRouting.${ROUTE_PATH}.${DS}sectioning;
 
 
@@ -71,7 +66,7 @@ block append SpecificContent
     +CodeViewer--YDF.Article-CodeViewer
       +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.TypeScript })
 
-        +CodeViewer-PartialListing--YDF: :html_special_characters_to_html_entities
+        +CodeViewer-PartialListing--YDF: :code_listing--yda
           console.log("OK");
 
         +CodeViewer-Explanation--YDF.

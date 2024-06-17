@@ -11,39 +11,38 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "ru";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("buildPhoneNumberLinkHrefAttributeValue");
-    HTML_PageMetaData = {
-      description: MetaDescriptionTemplates.pugFunction({
-        functionName: "buildPhoneNumberLinkHrefAttributeValue",
-        whatFunctionDoes:
-            "генерирует такое значение HTML-аттрибута «href» для тэга «a», что при клике на ссылку, которая получится " +
-              "в итоге, будет открыто приложение для обеспечения телефонной связи и предложено позвонить на номер " +
-              "телефона, указанный через единственный параметр."
-      }),
-      author: HTML_PAGE_AUTHOR
-    };
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("buildPhoneNumberLinkHrefAttributeValue"),
+        description: MetaDescriptionTemplates.pugFunction({
+          functionName: "buildPhoneNumberLinkHrefAttributeValue",
+          whatFunctionDoes:
+              "генерирует такое значение HTML-аттрибута «href» для тэга «a», что при клике на ссылку, которая получится " +
+                "в итоге, будет открыто приложение для обеспечения телефонной связи и предложено позвонить на номер " +
+                "телефона, указанный через единственный параметр."
+        })
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
-
-    RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.buildPhoneNumberLinkHrefAttributeValue");
+    RoutingEmulator.setCurrentRoute(
+      "coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.buildPhoneNumberLinkHrefAttributeValue"
+    );
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./buildPhoneNumberLinkHrefAttributeValue.english.html",
-      japanese: "./buildPhoneNumberLinkHrefAttributeValue.japanese.html"
+      english: routing.english.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.functionsAndClasses.$children.buildPhoneNumberLinkHrefAttributeValue.$URI,
+      japanese: routing.japanese.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.functionsAndClasses.$children.buildPhoneNumberLinkHrefAttributeValue.$URI
     });
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 

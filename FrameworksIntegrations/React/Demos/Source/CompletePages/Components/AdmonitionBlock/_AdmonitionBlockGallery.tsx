@@ -28,7 +28,10 @@ class AdmonitionBlockGallery extends Gallery<AdmonitionBlockGallery.PartialsFlag
 
               <h2
                 className={
-                  [ "Heading2", ...this.props.mustVisuallyHideAllHeadings ? [ "YDF_Gallery-InvisibleHeading" ] : [] ].join(" ")
+                  [
+                    "Heading2",
+                    ...this.props.mustVisuallyHideAllHeadings ? [ "YDF_Gallery-InvisibleHeading" ] : []
+                  ].join(" ")
                 }
               >
                 Minimal
@@ -51,7 +54,7 @@ class AdmonitionBlockGallery extends Gallery<AdmonitionBlockGallery.PartialsFlag
                         geometricVariation={ geometricVariation.value }
                         decorativeVariation={ decorativeVariation.value }
                         className="AdmonitionBlockGallery-AdmonitionBlock"
-                        lang="la"
+                        rootElementAttributes={ { lang: "la" } }
                       >
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                           labore et dolore magna aliqua.
@@ -72,7 +75,10 @@ class AdmonitionBlockGallery extends Gallery<AdmonitionBlockGallery.PartialsFlag
 
             <h2
               className={
-                [ "Heading2", ...this.props.mustVisuallyHideAllHeadings ? [ "YDF_Gallery-InvisibleHeading" ] : [] ].join(" ")
+                [
+                  "Heading2",
+                  ...this.props.mustVisuallyHideAllHeadings ? [ "YDF_Gallery-InvisibleHeading" ] : []
+                ].join(" ")
               }
             >
               Titles
@@ -96,7 +102,7 @@ class AdmonitionBlockGallery extends Gallery<AdmonitionBlockGallery.PartialsFlag
                       geometricVariation={ geometricVariation.value }
                       decorativeVariation={ decorativeVariation.value }
                       className="AdmonitionBlockGallery-AdmonitionBlock"
-                      lang="la"
+                      rootElementAttributes={ { lang: "la" } }
                     >
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua.
@@ -109,252 +115,6 @@ class AdmonitionBlockGallery extends Gallery<AdmonitionBlockGallery.PartialsFlag
 
           </>
         }
-
-
-        { /* ━━━ Default SVG Icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */ }
-        {
-          (this.mustRenderAllPartials || this.props.partialsFlags.defaultSVG_Icons) && <>
-
-            <h2
-              className={
-                [ "Heading2", ...this.props.mustVisuallyHideAllHeadings ? [ "YDF_Gallery-InvisibleHeading" ] : [] ].join(" ")
-              }
-            >
-              Default SVG Icons
-            </h2>
-
-            <ThemesShowcase
-              themes={ AdmonitionBlock.Themes }
-              themeKeyLabelPrefix={ AdmonitionBlockGallery.THEME_KEY_LABEL_PREFIX }
-              geometricVariations={ AdmonitionBlock.GeometricVariations }
-              geometricVariationLabelPrefix={ AdmonitionBlockGallery.GEOMETRIC_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariations={ AdmonitionBlock.DecorativeVariations }
-              decorativeVariationLabelPrefix={ AdmonitionBlockGallery.DECORATIVE_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariationsListItemAdditionalCSS_Classes={ [ "AdmonitionBlockGallery-ListItem" ] }
-              renderChild={
-
-                ({ theme, geometricVariation, decorativeVariation }: ThemesShowcase.DataForChildren): React.ReactElement =>
-
-                    <AdmonitionBlock
-                      title="Test"
-                      theme={ theme.value }
-                      geometricVariation={ geometricVariation.value }
-                      decorativeVariation={ decorativeVariation.value }
-                      hasDefaultSVG_Icon={ true }
-                      className="AdmonitionBlockGallery-AdmonitionBlock"
-                      lang="la"
-                    >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                    </AdmonitionBlock>
-
-              }
-            />
-
-          </>
-        }
-
-
-        { /* ━━━ Custom SVG Icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */ }
-        {
-          (this.mustRenderAllPartials || this.props.partialsFlags.customSVG_Icons) && <>
-
-            <h2
-              className={
-                [ "Heading2", ...this.props.mustVisuallyHideAllHeadings ? [ "YDF_Gallery-InvisibleHeading" ] : [] ].join(" ")
-              }
-            >
-              Custom SVG Icons
-            </h2>
-
-            <ThemesShowcase
-              themes={ AdmonitionBlock.Themes }
-              themeKeyLabelPrefix={ AdmonitionBlockGallery.THEME_KEY_LABEL_PREFIX }
-              geometricVariations={ AdmonitionBlock.GeometricVariations }
-              geometricVariationLabelPrefix={ AdmonitionBlockGallery.GEOMETRIC_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariations={ AdmonitionBlock.DecorativeVariations }
-              decorativeVariationLabelPrefix={ AdmonitionBlockGallery.DECORATIVE_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariationsListItemAdditionalCSS_Classes={ [ "AdmonitionBlockGallery-ListItem" ] }
-              renderChild={
-
-                ({ theme, geometricVariation, decorativeVariation }: ThemesShowcase.DataForChildren): React.ReactElement =>
-
-                    // TODO has default SVG Icon устарело
-                    <AdmonitionBlock
-                      theme={ theme.value }
-                      geometricVariation={ geometricVariation.value }
-                      decorativeVariation={ decorativeVariation.value }
-                      className="AdmonitionBlockGallery-AdmonitionBlock"
-                      lang="la"
-                    >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                    </AdmonitionBlock>
-
-              }
-            />
-
-          </>
-        }
-
-
-        { /* ━━━ Titles and SVG Icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */ }
-        {
-          (this.mustRenderAllPartials || this.props.partialsFlags.titlesAndSVG_Icons) && <>
-
-            <h2
-              className={
-                [ "Heading2", ...this.props.mustVisuallyHideAllHeadings ? [ "YDF_Gallery-InvisibleHeading" ] : [] ].join(" ")
-              }
-            >
-              Custom SVG Icons
-            </h2>
-
-            <ThemesShowcase
-              themes={ AdmonitionBlock.Themes }
-              themeKeyLabelPrefix={ AdmonitionBlockGallery.THEME_KEY_LABEL_PREFIX }
-              geometricVariations={ AdmonitionBlock.GeometricVariations }
-              geometricVariationLabelPrefix={ AdmonitionBlockGallery.GEOMETRIC_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariations={ AdmonitionBlock.DecorativeVariations }
-              decorativeVariationLabelPrefix={ AdmonitionBlockGallery.DECORATIVE_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariationsListItemAdditionalCSS_Classes={ [ "AdmonitionBlockGallery-ListItem" ] }
-              renderChild={
-
-                ({ theme, geometricVariation, decorativeVariation }: ThemesShowcase.DataForChildren): React.ReactElement =>
-
-                    // TODO has default SVG Icon устарело
-                    <AdmonitionBlock
-                      title="Test"
-                      theme={ theme.value }
-                      geometricVariation={ geometricVariation.value }
-                      decorativeVariation={ decorativeVariation.value }
-                      className="AdmonitionBlockGallery-AdmonitionBlock"
-                      lang="la"
-                    >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                    </AdmonitionBlock>
-
-              }
-            />
-
-          </>
-        }
-
-
-        { /* ━━━ Dismissing Button ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */ }
-        {
-          (this.mustRenderAllPartials || this.props.partialsFlags.dismissingButton) &&
-
-            <ThemesShowcase
-              themes={ AdmonitionBlock.Themes }
-              themeKeyLabelPrefix={ AdmonitionBlockGallery.THEME_KEY_LABEL_PREFIX }
-              geometricVariations={ AdmonitionBlock.GeometricVariations }
-              geometricVariationLabelPrefix={ AdmonitionBlockGallery.GEOMETRIC_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariations={ AdmonitionBlock.DecorativeVariations }
-              decorativeVariationLabelPrefix={ AdmonitionBlockGallery.DECORATIVE_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariationsListItemAdditionalCSS_Classes={ [ "AdmonitionBlockGallery-ListItem" ] }
-              renderChild={
-
-                ({ theme, geometricVariation, decorativeVariation }: ThemesShowcase.DataForChildren): React.ReactElement =>
-
-                    // TODO has default SVG Icon устарело
-                    <AdmonitionBlock
-                      title="Test"
-                      theme={ theme.value }
-                      geometricVariation={ geometricVariation.value }
-                      decorativeVariation={ decorativeVariation.value }
-                      className="AdmonitionBlockGallery-AdmonitionBlock"
-                      lang="la"
-                    >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                    </AdmonitionBlock>
-
-              }
-            />
-        }
-
-
-        { /* ━━━ Centered Button ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */ }
-        {
-          (this.mustRenderAllPartials || this.props.partialsFlags.centeredButton) &&
-
-            <ThemesShowcase
-              themes={ AdmonitionBlock.Themes }
-              themeKeyLabelPrefix={ AdmonitionBlockGallery.THEME_KEY_LABEL_PREFIX }
-              geometricVariations={ AdmonitionBlock.GeometricVariations }
-              geometricVariationLabelPrefix={ AdmonitionBlockGallery.GEOMETRIC_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariations={ AdmonitionBlock.DecorativeVariations }
-              decorativeVariationLabelPrefix={ AdmonitionBlockGallery.DECORATIVE_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariationsListItemAdditionalCSS_Classes={ [ "AdmonitionBlockGallery-ListItem" ] }
-              renderChild={
-
-                ({ theme, geometricVariation, decorativeVariation }: ThemesShowcase.DataForChildren): React.ReactElement =>
-
-                    // TODO has default SVG Icon устарело
-                    <AdmonitionBlock
-                      title="Test"
-                      theme={ theme.value }
-                      geometricVariation={ geometricVariation.value }
-                      decorativeVariation={ decorativeVariation.value }
-                      className="AdmonitionBlockGallery-AdmonitionBlock"
-                      lang="la"
-                    >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                    </AdmonitionBlock>
-
-              }
-            />
-        }
-
-
-        { /* ━━━ Action Bar ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */ }
-        {
-          (this.mustRenderAllPartials || this.props.partialsFlags.actionBar) &&
-
-            <ThemesShowcase
-              themes={ AdmonitionBlock.Themes }
-              themeKeyLabelPrefix={ AdmonitionBlockGallery.THEME_KEY_LABEL_PREFIX }
-              geometricVariations={ AdmonitionBlock.GeometricVariations }
-              geometricVariationLabelPrefix={ AdmonitionBlockGallery.GEOMETRIC_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariations={ AdmonitionBlock.DecorativeVariations }
-              decorativeVariationLabelPrefix={ AdmonitionBlockGallery.DECORATIVE_VARIATION_KEY_LABEL_PREFIX }
-              decorativeVariationsListItemAdditionalCSS_Classes={ [ "AdmonitionBlockGallery-ListItem" ] }
-              renderChild={
-
-                ({ theme, geometricVariation, decorativeVariation }: ThemesShowcase.DataForChildren): React.ReactElement =>
-
-                    // TODO has default SVG Icon устарело
-                    <AdmonitionBlock
-                      title="Test"
-                      theme={ theme.value }
-                      geometricVariation={ geometricVariation.value }
-                      decorativeVariation={ decorativeVariation.value }
-                      className="AdmonitionBlockGallery-AdmonitionBlock"
-                      lang="la"
-                    >
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat.
-                    </AdmonitionBlock>
-
-              }
-            />
-        }
-
 
       </>
     );

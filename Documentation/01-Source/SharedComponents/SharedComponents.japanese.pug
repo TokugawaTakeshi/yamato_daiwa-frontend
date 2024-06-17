@@ -4,8 +4,8 @@ include ../../node_modules/@yamato-daiwa/programming_documentation/YDF_Component
 include ../../node_modules/@yamato-daiwa/programming_documentation/YDF_DK_ComponentsLocalization.japanese.pug
 
 
--
+- Header__YDPD.setLogoAlternatingText("「Yamato Daiwa Frontend」 (略: 「YDF」) ライブラリのアイコン。");
 
-  Header__YDPD.setLogoAlternatingText(
-    "「Yamato Daiwa Frontend」 (略: 「YDF」) ライブラリのアイコン。"
-  );
+
+include Reusables/Viewers/GUI_ComponentSummary/GUI_ComponentSummaryViewerLocalization.japanese.pug
+- GUI_ComponentSummaryViewer.localization = GUI_ComponentSummaryViewerComponentLocalization__japanese;

@@ -3,8 +3,8 @@
   "name": "@yamato-daiwa/frontend-demos",
   "version": "0.0.0",
   "dependencies": {
-    "@yamato-daiwa/es-extensions": "../../../YamatoDaiwaES_Extensions/CoreLibrary/Package",
-    "@yamato-daiwa/es-extensions-nodejs": "../../../YamatoDaiwaES_Extensions/NodeJS/Package",
+    "@yamato-daiwa/es-extensions": "1.7.0-rc.2",
+    "@yamato-daiwa/es-extensions-nodejs": "1.7.0-alpha.10",
     "@yamato-daiwa/frontend": "../Package",
     "@yamato-daiwa/frontend-additional_themes": "../AdditionalThemes"
   },

@@ -21,6 +21,7 @@ class NumericMinimumInputtedValueValidationRule implements InputtedValueValidati
           minimalNumericValue: number;
           errorMessageBuilder?: NumericMinimumInputtedValueValidationRule.ErrorMessage.Builder;
           errorMessage?: string;
+          localization?: NumericMinimumInputtedValueValidationRule.Localization;
         }>
   ) {
 
@@ -35,7 +36,9 @@ class NumericMinimumInputtedValueValidationRule implements InputtedValueValidati
        * It was proved that "errorMessage" is non-undefined, and it will not change. */
       this.errorMessageBuilder = (): string => compoundParameter.errorMessage as string;
     } else {
-      this.errorMessageBuilder = NumericMinimumInputtedValueValidationRule.localization.errorMessageBuilder;
+      this.errorMessageBuilder =
+          compoundParameter.localization?.errorMessageBuilder ??
+          NumericMinimumInputtedValueValidationRule.localization.errorMessageBuilder;
     }
 
   }

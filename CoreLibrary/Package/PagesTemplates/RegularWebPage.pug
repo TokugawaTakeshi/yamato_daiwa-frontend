@@ -1,8 +1,83 @@
 doctype html
 
+
 block Functionality
 
   include ../Functionality.pug
+
+  -
+
+    class RegularWebPageTemplate__YDF {
+
+      static metadata = {
+
+        /* [ Is it the official term ? ]
+         * No, the official one is "language tag" (see [1]) which could easily be confused with "HTML tag".
+         * See [2] for the usage of this term in relation to `lang` attribute.
+         * [1] https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#language_tag_syntax
+         * [2] https://stackoverflow.com/q/43196563 */
+        locale: "en",
+        title: "Untitled",
+        description: null,
+        keywords: null,
+        author: null
+
+      };
+
+      static faviconURI;
+      static AMP_VersionURI;
+
+      static stylesSheetsURIs = [];
+      static scriptsURIs = {
+        atEndOfHead: [],
+        atEndOfBody: []
+      };
+
+      static configure(
+        {
+          metadata: {
+            locale,
+            title,
+            description,
+            keywords,
+            author
+          } = {},
+          faviconURI,
+          AMP_VersionURI,
+          stylesSheetsURIs,
+          scriptsURIs: {
+            atEndOfHead,
+            atEndOfBody
+          } = {}
+        }
+      ) {
+
+        RegularWebPageTemplate__YDF.metadata.locale = locale ?? RegularWebPageTemplate__YDF.metadata.locale;
+        RegularWebPageTemplate__YDF.metadata.title = title ?? RegularWebPageTemplate__YDF.metadata.title;
+        RegularWebPageTemplate__YDF.metadata.description = description ?? RegularWebPageTemplate__YDF.metadata.description;
+        RegularWebPageTemplate__YDF.metadata.keywords = keywords ?? RegularWebPageTemplate__YDF.metadata.keywords;
+        RegularWebPageTemplate__YDF.metadata.author = author ?? RegularWebPageTemplate__YDF.metadata.author;
+
+        RegularWebPageTemplate__YDF.faviconURI = faviconURI ?? RegularWebPageTemplate__YDF.faviconURI;
+        RegularWebPageTemplate__YDF.AMP_VersionURI = AMP_VersionURI ?? RegularWebPageTemplate__YDF.AMP_VersionURI;
+
+        RegularWebPageTemplate__YDF.stylesSheetsURIs = stylesSheetsURIs ?? RegularWebPageTemplate__YDF.stylesSheetsURIs;
+
+        RegularWebPageTemplate__YDF.scriptsURIs.atEndOfHead =
+            atEndOfHead ?? RegularWebPageTemplate__YDF.scriptsURIs.atEndOfHead;
+        RegularWebPageTemplate__YDF.scriptsURIs.atEndOfBody =
+            atEndOfBody ?? RegularWebPageTemplate__YDF.scriptsURIs.atEndOfBody;
+
+        return RegularWebPageTemplate__YDF;
+
+      }
+
+      static addScriptsToEndOfBody(...scriptsURIs) {
+        RegularWebPageTemplate__YDF.scriptsURIs.atEndOfBody.push(...scriptsURIs);
+        return RegularWebPageTemplate__YDF;
+      }
+
+    }
 
 
 block Data
@@ -13,67 +88,50 @@ block Requirements
 
 block Metadata
 
-  -
 
-    let HTML_PAGE_LANGUAGE = "en";
-    let HTML_PAGE_TITLE = "Untitled";
-    let HTML_PageMetaData = {
-      description: undefined,
-      keywords: undefined,
-      author: undefined
-    };
-    let FAVICON_URI = undefined;
-    let PAGE_AMP_VERSION_URI = undefined
-
-    let styleSheetsURIs = []
-    let scriptsURIs = {
-      endOfHead: [],
-      endOfBody: []
-    }
+block StatesSimulations
 
 
-html(lang= HTML_PAGE_LANGUAGE)
-
-  block StatesSimulations
+html(lang= RegularWebPageTemplate__YDF.metadata.locale)
 
   head
 
     block HeadBegin
 
-    title= HTML_PAGE_TITLE
+    title= RegularWebPageTemplate__YDF.metadata.title
 
     meta(charset="utf-8")
     meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
 
-    if HTML_PageMetaData.description
-      meta(name="description" content= HTML_PageMetaData.description)
+    if RegularWebPageTemplate__YDF.metadata.description
+      meta(name="description" content= RegularWebPageTemplate__YDF.metadata.description)
 
-    if HTML_PageMetaData.keywords
-      meta(name="keywords" content= HTML_PageMetaData.keywords)
+    if RegularWebPageTemplate__YDF.metadata.keywords
+      meta(name="keywords" content= RegularWebPageTemplate__YDF.metadata.keywords)
 
-    if HTML_PageMetaData.author
-      meta(name="author" content= HTML_PageMetaData.author)
+    if RegularWebPageTemplate__YDF.metadata.author
+      meta(name="author" content= RegularWebPageTemplate__YDF.metadata.author)
 
-    if FAVICON_URI
-      link(rel="icon" type="image/x-icon" href= FAVICON_URI)
-      link(rel="shortcut icon" type="image/x-icon" href= FAVICON_URI)
+    if RegularWebPageTemplate__YDF.faviconURI
+      link(rel="icon" type="image/x-icon" href= RegularWebPageTemplate__YDF.faviconURI)
+      link(rel="shortcut icon" type="image/x-icon" href= RegularWebPageTemplate__YDF.faviconURI)
 
     if PAGE_AMP_VERSION_URI
-      link(rel="amphtml" href= PAGE_AMP_VERSION_URI)
+      link(rel="amphtml" href= RegularWebPageTemplate__YDF.AMP_VersionURI)
 
 
-    block StylesLinks
+    block Styles
 
-      each styleSheetURI in styleSheetsURIs
+      each styleSheetURI in RegularWebPageTemplate__YDF.stylesSheetsURIs
 
-        link(href= styleSheetURI rel="stylesheet")
+        link(href=styleSheetURI rel="stylesheet")
 
 
-    block HeadScriptsLinks
+    block HeadScripts
 
-      each scriptURI in scriptsURIs.endOfHead
+      each scriptURI in RegularWebPageTemplate__YDF.scriptsURIs.atEndOfHead
 
-        script(src= scriptURI)
+        script(src=scriptURI)
 
 
   body
@@ -82,9 +140,8 @@ html(lang= HTML_PAGE_LANGUAGE)
 
     block EndBodyContent
 
+    block EndBodyScripts
 
-    block EndBodyScriptsLinks
-
-      each scriptURI in scriptsURIs.endOfBody
+      each scriptURI in RegularWebPageTemplate__YDF.scriptsURIs.atEndOfBody
 
         script(src= scriptURI)

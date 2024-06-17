@@ -7,26 +7,14 @@ provideThemesShowcaseYDF__Component()
 
   .ThemesShowcase--YDF
 
-    >li
-
-      +li
-
-        margin-top 16px
-
-      >ul
-
-        >li
-
-          +li
-
-            margin-top 12px
+    margin 0
 
 
-    &-Label
+    &-KeyLabel
 
       applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
         fontSize: 1.2rem,
-        lineSpacing: 0.2rem,
+        lineSpacing: 0.2,
         mustAllowWordsBreakingAnywhere: true
       })
 
@@ -34,7 +22,7 @@ provideThemesShowcaseYDF__Component()
       color: ShadesOfGray__39ColorsW3C_Palette[12]
 
 
-    &-ChildList
+    &-ValueSection
 
       border-left-width 3px
       padding-left 8px
@@ -42,4 +30,31 @@ provideThemesShowcaseYDF__Component()
       border-left-style solid
       border-left-color: ShadesOfGray__39ColorsW3C_Palette[32]
 
-      retireFrom({ targetElementSelector: ".ThemesShowcase--YDF-Label", y: 4px })
+      margin-left 0     //* [ Reset defaults ]
+      margin-top 0.3rem
+
+
+      .ThemesShowcase--YDF-ValueSection .ThemesShowcase--YDF-ValueSection
+
+        border-left none
+        padding-left 0
+
+
+      pushTargetFromSelf({ targetElementSelector: ".ThemesShowcase--YDF-KeyLabel", y: 2rem })
+
+      pushTargetFromSelf({
+        targetElementSelector: ".ThemesShowcase--YDF-KeyLabel",
+        y: 1.2rem,
+        contextSelector: ".ThemesShowcase--YDF-ChildList"
+      })
+
+      pushTargetFromSelf({
+        targetElementSelector: ".ThemesShowcase--YDF-KeyLabel",
+        y: 0.8rem,
+        contextSelector: ".ThemesShowcase--YDF-ChildList .ThemesShowcase--YDF-ChildList"
+      })
+
+
+    &-ChildList
+
+      margin 0  //* [ Reset defaults ]

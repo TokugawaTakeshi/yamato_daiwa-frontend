@@ -11,37 +11,38 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "ja";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("@yamato-daiwa/es-extensions(YDEE)との結合");
-    HTML_PageMetaData = {
-      description:
-          "フロントエンドウェブ開発専用の「やまとダイワフロントエンド」（技術名：「Yamato Daiwa Frontend」、略：「YDF」）はPugプリプロセッサ内の" +
-            "JavaScriptにおいて「やまとダイワECMAScript拡張機能」（技術名：「Yamato Daiwa ES Extensions」、略：「YDEE」）ライブラリの機能の利用が可能。",
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("@yamato-daiwa/es-extensions(YDEE)との結合"),
+        description:
+            "フロントエンドウェブ開発専用の「やまとダイワフロントエンド」（技術名：「Yamato Daiwa Frontend」、略：「YDF」）はPugプリプロセッサ内の" +
+            "JavaScriptにおいて「やまとダイワECMAScript拡張機能」（技術名：「Yamato Daiwa ES Extensions」、略：「YDEE」）ライブラリの機能の利用が" +
+              "可能。"
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.YDEE_Integration");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./YDEE_Integration.english.html",
-      russian: "./YDEE_Integration.russian.html",
+      english: routing.english.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.YDEE_Integration.$URI,
+      russian: routing.russian.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.YDEE_Integration.$URI
     });
 
-    const ACTUAL_YDEE_VERSION = "1.7";
+    const {
+      $heading: topHeading
+    } = routing.japanese.coreLibrary.$children.markup.$children.functionality.$children.inlineJavaScript.
+        $children.YDEE_Integration;
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 
@@ -52,7 +53,8 @@ block append SpecificContent
 
   article
 
-    h1.Article-Heading1 @yamato-daiwa/es-extensions(YDEE)との結合
+    //- ━━━ @yamato-daiwa/es-extensions(YDEE)との結合 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    h1.Article-Heading1!= topHeading
 
     p.Article-Paragraph
       | #[+ImportantEntity--YDID @yamato-daiwa/frontend]と言う#[+Term--YDID npmパッケージ]の#[+Keyword--YDID ルート]ディレクトリに在る

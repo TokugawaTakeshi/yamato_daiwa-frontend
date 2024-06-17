@@ -11,25 +11,20 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "ru";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("Badge");
-    HTML_PageMetaData = {
-      description:
-          "В «Yamato Daiwa Frontend», «Badge» является неинтерактивным компонентом для отображения важных метаданных, " +
-            "например категории товара, даты и времени события и так далее.",
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("Badge"),
+        description:
+            "В «Yamato Daiwa Frontend», «Badge» является неинтерактивным компонентом для отображения важных метаданных, " +
+              "например категории товара, даты и времени события и так далее."
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute("coreLibrary.components.Badge");
 
@@ -147,7 +142,7 @@ block append Metadata
     };
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 

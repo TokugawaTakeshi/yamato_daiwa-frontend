@@ -8,6 +8,7 @@ export {
 
   /* ━━━ Arrays ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   addElementsToArray,
+  addElementsToArrayIfTheyAreNotPresentOtherwiseRemove,
   createArrayOfNaturalNumbers,
   cropArray,
   getArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne,
@@ -134,10 +135,11 @@ export {
 
 
   /* ━━━ Maps ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  addMultiplePairsToMap,
+  addEntriesToMap,
   createMapBasedOnOtherMap,
   filterMap,
   removeEntriesFromMap,
+  replaceValuesInMap,
 
 
   /* ━━━ Numbers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */

@@ -16,19 +16,9 @@ import {
 import {
   getExpectedToBeSingleDOM_Element,
   delegateLeftClickEventHandling,
-  cloneDOM_Element
-} from "@yamato-daiwa/es-extensions-browserjs";
-
-/* --- Temporary ---------------------------------------------------------------------------------------------------- */
-import "prismjs/components/prism-typescript.js";
-import "prismjs/components/prism-pug.js";
-import "prismjs/components/prism-stylus.js";
-import "prismjs/components/prism-yaml.js";
-import "prismjs/components/prism-csharp.js";
-import {
+  cloneDOM_Element,
   getExpectedToBeSingleChildOfTemplateElement
-} from "../../../../../../YamatoDaiwaES_Extensions/BrowserJS/Package";
-// ---------------------------------------------------------------------------------------------------------------------
+} from "@yamato-daiwa/es-extensions-browserjs";
 
 
 export class CodeViewer {

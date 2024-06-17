@@ -11,38 +11,38 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "en";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("@yamato-daiwa/es-extensions (YDEE) integration");
-    HTML_PageMetaData = {
-      description:
-          "The &quot;Yamato Daiwa Frontend&quot; (abbreviation: &quot;YDF&quot;) library for frontend web development " +
-            "enables the utilization of &quot;Yamato Daiwa ES Extensions&quot; (abbreviation: &quot;YDEE&quot;) library " +
-            "inside the inline JavaScript of the &quot;Pug&quot; pre-processor.",
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("@yamato-daiwa/es-extensions (YDEE) integration"),
+        description:
+            "The \"Yamato Daiwa Frontend\" (abbreviation: \"YDF\") library for frontend web development " +
+              "enables the utilization of \"Yamato Daiwa ES Extensions\" (abbreviation: \"YDEE\") library " +
+              "inside the inline JavaScript of the \"Pug\" pre-processor."
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.YDEE_Integration");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      japanese: "./YDEE_Integration.japanese.html",
-      russian: "./YDEE_Integration.russian.html",
+      japanese: routing.japanese.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.YDEE_Integration.$URI,
+      russian: routing.russian.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.YDEE_Integration.$URI
     });
 
-    const ACTUAL_YDEE_VERSION = "1.7";
+    const {
+      $heading: topHeading
+    } = routing.english.coreLibrary.$children.markup.$children.functionality.$children.inlineJavaScript.
+        $children.YDEE_Integration;
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 
@@ -53,7 +53,8 @@ block append SpecificContent
 
   article
 
-    h1.Article-Heading1 Integration　with @yamato-daiwa/es-extensions (YDEE)
+    //- ━━━ Integration　with @yamato-daiwa/es-extensions (YDEE) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    h1.Article-Heading1!= topHeading
 
     p.Article-Paragraph
       | Once the #[+ImportantEntity__Code--YDID Functionality.pug] file (located in the #[+Keyword--YDID root] directory

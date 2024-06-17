@@ -11,8 +11,8 @@ class MaximalCharactersCountInputtedValueValidationRule implements InputtedValue
 
   public readonly mustFinishValidationIfValueIsInvalid: boolean;
 
-  private readonly MAXIMAL_CHARACTERS_COUNT: number;
-  private readonly errorMessageBuilder: MaximalCharactersCountInputtedValueValidationRule.ErrorMessage.Builder;
+  protected readonly MAXIMAL_CHARACTERS_COUNT: number;
+  protected readonly errorMessageBuilder: MaximalCharactersCountInputtedValueValidationRule.ErrorMessage.Builder;
 
 
   public constructor(
@@ -22,6 +22,7 @@ class MaximalCharactersCountInputtedValueValidationRule implements InputtedValue
           maximalCharactersCount: number;
           errorMessageBuilder?: MaximalCharactersCountInputtedValueValidationRule.ErrorMessage.Builder;
           errorMessage?: string;
+          localization?: MaximalCharactersCountInputtedValueValidationRule.Localization;
         }>
   ) {
 
@@ -36,7 +37,9 @@ class MaximalCharactersCountInputtedValueValidationRule implements InputtedValue
        * It was proved that "errorMessage" is non-undefined, and it will not change. */
       this.errorMessageBuilder = (): string => compoundParameter.errorMessage as string;
     } else {
-      this.errorMessageBuilder = MaximalCharactersCountInputtedValueValidationRule.localization.errorMessageBuilder;
+      this.errorMessageBuilder = (
+        compoundParameter.localization ?? MaximalCharactersCountInputtedValueValidationRule.localization
+      ).errorMessageBuilder;
     }
 
   }

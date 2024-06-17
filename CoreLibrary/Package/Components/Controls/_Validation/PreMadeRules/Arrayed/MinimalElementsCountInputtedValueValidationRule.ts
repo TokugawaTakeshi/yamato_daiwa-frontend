@@ -27,6 +27,7 @@ class MinimalElementsCountInputtedValueValidationRule implements InputtedValueVa
           maximalElementsCount: number;
           errorMessageBuilder?: MinimalElementsCountInputtedValueValidationRule.ErrorMessage.Builder;
           errorMessage?: string;
+          localization?: MinimalElementsCountInputtedValueValidationRule.Localization;
         }>
   ) {
 
@@ -41,7 +42,9 @@ class MinimalElementsCountInputtedValueValidationRule implements InputtedValueVa
        * It was proved that "errorMessage" is non-undefined, and it will not change. */
       this.errorMessageBuilder = (): string => compoundParameter.errorMessage as string;
     } else {
-      this.errorMessageBuilder = MinimalElementsCountInputtedValueValidationRule.localization.errorMessageBuilder;
+      this.errorMessageBuilder =
+          compoundParameter.localization?.errorMessageBuilder ??
+          MinimalElementsCountInputtedValueValidationRule.localization.errorMessageBuilder;
     }
 
   }

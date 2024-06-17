@@ -25,8 +25,8 @@ mixin FilesUploader--YDF(properties, statesSimulations)
       maximalFilesCount,
       supportedFilesNamesExtensions,
 
-      noButton = false,
-      noDragAndDropArea = false,
+      noFilePickingButton,
+      noDragAndDropArea,
 
       inputElementHTML_ID = `${ COMPONENT_ID }-INPUT`,
       labelElementHTML_ID = `${ COMPONENT_ID }-LABEL`,
@@ -45,9 +45,9 @@ mixin FilesUploader--YDF(properties, statesSimulations)
     });
 
     const {
-      uploadingStatuses,
+      filesProcessingStatuses,
       singleImagePreview,
-      imagesPreviewFlow,
+      multipleImagesPreview,
       invalidInputHighlightingIfAnyValidationErrorsMessages,
       validValueHighlightingIfNoValidationErrorsMessages,
       validationErrorsMessages,
@@ -118,8 +118,10 @@ mixin FilesUploader--YDF(properties, statesSimulations)
 
       theme: FilesUploader__YDF.selfAndChildrenComponentsThemesCorrespondence.compoundControlShell[theme],
       areThemesCSS_ClassesCommon,
-      geometricVariation: FilesUploader__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.compoundControlShell[geometricVariation],
-      decorativeVariation: FilesUploader__YDF.selfAndChildrenComponentsDecorativeVariationsCorrespondence.compoundControlShell[decorativeVariation]
+      geometricVariation: FilesUploader__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.
+          compoundControlShell[geometricVariation],
+      decorativeVariation: FilesUploader__YDF.selfAndChildrenComponentsDecorativeVariationsCorrespondence.
+          compoundControlShell[decorativeVariation]
 
     },
     {
@@ -130,43 +132,14 @@ mixin FilesUploader--YDF(properties, statesSimulations)
     }
   ).FilesUploader--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
 
-    //- TODO < ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    if uploadingStatuses
-
-      table.FilesUploader--YDF-StatusTable
-        tbody
-          tr.FilesUploader--YDF-StatusTable-Row.FilesUploader--YDF-StatusTable-Row__InProgressState
-            td: +QuestionMark__Circled__Filled--YDF_Icon.FilesUploader--YDF-StatusTable-Icon
-            td.FilesUploader--YDF-StatusTable-FileNameCell File1.png
-            td.FilesUploader--YDF-StatusTable-TextingCell Reading file ...
-
-          tr.FilesUploader--YDF-StatusTable-Row.FilesUploader--YDF-StatusTable-Row__InProgressState
-            td: +QuestionMark__Circled__Filled--YDF_Icon.FilesUploader--YDF-StatusTable-Icon
-            td.FilesUploader--YDF-StatusTable-FileNameCell File2.png
-            td.FilesUploader--YDF-StatusTable-TextingCell Uploading file ...
-
-          tr.FilesUploader--YDF-StatusTable-Row.FilesUploader--YDF-StatusTable-Row__FailedState
-            td: +MultiplicationSign--YDF_Icon.FilesUploader--YDF-StatusTable-Icon
-            td.FilesUploader--YDF-StatusTable-FileNameCell File3.png
-            td.FilesUploader--YDF-StatusTable-TextingCell File reading failure
-
-          tr.FilesUploader--YDF-StatusTable-Row.FilesUploader--YDF-StatusTable-Row__SucceededState
-            td: +Checkmark__Circled__Filled--YDF_Icon.FilesUploader--YDF-StatusTable-Icon
-            td.FilesUploader--YDF-StatusTable-FileNameCell File3.png
-            td.FilesUploader--YDF-StatusTable-TextingCell File is ready for uploading
-
-          tr.FilesUploader--YDF-StatusTable-Row.FilesUploader--YDF-StatusTable-Row__SucceededState
-            td: +Checkmark__Circled__Filled--YDF_Icon.FilesUploader--YDF-StatusTable-Icon
-            td.FilesUploader--YDF-StatusTable-FileNameCell File4.png
-            td.FilesUploader--YDF-StatusTable-TextingCell File has been uploaded successfully
-
-
-    if !noButton
+    if !noFilePickingButton
 
       +Button--YDF({
         theme: FilesUploader__YDF.selfAndChildrenComponentsThemesCorrespondence.button[theme],
-        geometricVariation: FilesUploader__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.button[geometricVariation],
-        decorativeVariation: FilesUploader__YDF.selfAndChildrenComponentsDecorativeVariationsCorrespondence.button[decorativeVariation],
+        geometricVariation: FilesUploader__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.
+            button[geometricVariation],
+        decorativeVariation: FilesUploader__YDF.selfAndChildrenComponentsDecorativeVariationsCorrespondence.
+            button[decorativeVariation],
       }).FilesUploader--YDF-FilePickingButton
         +FileAdding--YDF_Icon.Button--YDF-SVG_Icon
         span.Button--YDF-Label= FilesUploader__YDF.localization.buttons.filePicking.label
@@ -177,25 +150,23 @@ mixin FilesUploader--YDF(properties, statesSimulations)
       .FilesUploader--YDF-DragAndDropArea(
         tabindex="0"
       )
-        +FileAdding--YDF_Icon.FilesUploader--YDF-Icon
-        p.FilesUploader--YDF-Guidance=FilesUploader__YDF.localization.uploadSingleFileByDragAndDropGuidance
-
+        +FileAdding--YDF_Icon.FilesUploader--YDF-DragAndDropArea-Icon
+        p.FilesUploader--YDF-DragAndDropArea-Guidance=FilesUploader__YDF.localization.uploadSingleFileByDragAndDropGuidance
 
     if singleImagePreview
 
       .FilesUploader--YDF-SingleImagePreviewer
 
-        img.FilesUploader--YDF-SingleImagePreview(
+        img.FilesUploader--YDF-SingleImagePreviewer-Image(
           src=isString(singleImagePreview) ? singleImagePreview: DummyImagesURIs.highAndNarrow
           alt="The preview of image which will be uploaded"
         )
 
       +Button--YDF.FilesUploader--YDF-FileDeletingButton
         +TrashCan__Filled--YDF_Icon.Button--YDF-SVG_Icon
-        span.Button--YDF-Label=FilesUploader__YDF.localization.buttons.fileDeleting.label
+        span.Button--YDF-Label= FilesUploader__YDF.localization.buttons.fileDeleting.label
 
-
-    if imagesPreviewFlow
+    if multipleImagesPreview
 
       ul.FilesUploader--YDF-ImagesPreviewFlow(
         aria-label="Images preview"
@@ -211,7 +182,7 @@ mixin FilesUploader--YDF(properties, statesSimulations)
                 alt="Image preview"
               )
 
-            +Button--YDF({ label: "削除" }).FilesUploader--YDF-PreviewCard-Button
+            +Button--YDF({ label: "Delete" }).FilesUploader--YDF-PreviewCard-Button
 
 
     //- TODO accept=acceptAttributeValueForInputTag

@@ -33,7 +33,7 @@ export default class RadioButton {
 
   /* ─── Must be Changed Only Via Setters ─────────────────────────────────────────────────────────────────────────── */
   /* eslint-disable no-underscore-dangle -- [ CONVENTION ]
-   * The instance files begins from the underscore MUST be changed only via setters or constructor. */
+   * The instance fields begins from the underscore MUST be changed only via setters or constructor. */
   protected _isSelected: boolean = false;
 
 

@@ -250,7 +250,7 @@ class TextBox<
   }
 
 
-  /* ━━━ Public accessors / mutators ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Public Accessors / Mutators ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public get $isReadonly(): boolean {
     return this.nativeInputAcceptingElement.readOnly;
   }

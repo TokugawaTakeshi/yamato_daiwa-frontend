@@ -1,7 +1,4 @@
-namespace Pages.Components.Badge;
+namespace Demos.Pages.Components.Badge;
 
 
-public partial class BadgeDemoPage : Microsoft.AspNetCore.Components.ComponentBase
-{
-
-}
+public partial class BadgeDemoPage : Microsoft.AspNetCore.Components.ComponentBase;

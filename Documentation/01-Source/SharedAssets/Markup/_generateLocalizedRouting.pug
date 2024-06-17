@@ -1,1162 +1,315 @@
--
+// YDF_Configuration: {
+//
+//   $heading: localization.coreLibrary.styles.kernel.YDF_Configuration.$heading,
+//   get $URI() { return `@All/CoreLibrary/Styles/Kernel/YDF_Configuration/YDF_Configuration.${ localization.fileNameLocalizationExtensions }`; },
+//   $mustDisplayDirectDecadentSectioning: true,
+//
+//   $sectioning: {
+//
+//     fontsStacks: {
+//
+//       $heading: localization.coreLibrary.styles.kernel.YDF_Configuration.fontsStacks.$heading,
+//       $anchor: "FONTS_STACKS--SECTION",
+//       get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$URI }#${ this.$anchor }`; },
+//
+//       $sectioning: {
+//
+//         mainSansSerif: {
+//           $heading: "<code>mainSansSerif</code>",
+//           $anchor: "FONT_STACKS-MAIN_SANS_SERIF--SECTION",
+//           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.fontsStacks.$URI }#${ this.$anchor }`; }
+//         },
+//
+//         mainSerif: {
+//           $heading: "<code>mainSerif</code>",
+//           $anchor: "FONT_STACKS-MAIN_SERIF--SECTION",
+//           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.fontsStacks.$URI }#${ this.$anchor }`; }
+//         },
+//
+//         mainMonospaced: {
+//           $heading: "<code>mainMonospaced</code>",
+//           $anchor: "FONT_STACKS-MAIN_MONOSPACED--SECTION",
+//           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.fontsStacks.$URI }#${ this.$anchor }`; }
+//         }
+//       }
+//
+//     },
+//
+//     textGeometry: {
+//
+//       $heading: localization.coreLibrary.styles.kernel.YDF_Configuration.textGeometry.$heading,
+//       $anchor: "TEXT_GEOMETRY--SECTION",
+//       get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$URI }#${ this.$anchor }`; },
+//
+//       $sectioning: {
+//
+//         basicFontSize: {
+//           $heading: "<code>basicFontSize</code>",
+//           $anchor: "TEXT_GEOMETRY-BASIC_FONT_SIZE--SECTION",
+//           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.textGeometry.$URI }#${ this.$anchor }`; }
+//         },
+//
+//         basicLineHeight: {
+//           $heading: "<code>basicLineHeight</code>",
+//           $anchor: "TEXT_GEOMETRY-BASIC_LINE_HEIGHT--SECTION",
+//           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.textGeometry.$URI }#${ this.$anchor }`; }
+//         },
+//
+//         basicLineHeightInMultilineTextBlocks: {
+//           $heading: "<code>basicLineHeightInMultilineTextBlocks</code>",
+//           $anchor: "TEXT_GEOMETRY-BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS--SECTION",
+//           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.textGeometry.$URI }#${ this.$anchor }`; }
+//         }
+//
+//       }
+//
+//     },
+//
+//     zIndexes: {
+//       $heading: localization.coreLibrary.styles.kernel.YDF_Configuration.zIndexes.$heading,
+//       $anchor: "Z_INDEXES--SECTION",
+//       get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$URI }#${ this.$anchor }`; }
+//     }
+//
+//   }
+//
+// },
 
-  function generateLocalizedRouting(localization) {
+// specificationsSchemas: {
+//
+//   $heading: localization.coreLibrary.styles.kernel.functions.$heading,
+//   $children: {
+//
+//     bordersSizing: {
+//       $heading: "<code>BordersSizingSpecificationSchema</code>",
+//       get $URI() { return `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/BordersSizing/BordersSizingSpecificationSchema.${ localization.fileNameLocalizationExtensions }`; }
+//     },
+//
+//     paddings: {
+//       $heading: "<code>PaddingsSpecificationSchema</code>",
+//       get $URI() { return `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/Paddings/PaddingsSpecificationSchema.${ localization.fileNameLocalizationExtensions }`; }
+//     },
+//
+//     textElementHeightSizing: {
+//       $heading: "<code>TextElementHeightSizingSpecificationSchema</code>",
+//       get $URI() { return `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/TextElementHeightSizing/TextElementHeightSizingSpecificationSchema.${ localization.fileNameLocalizationExtensions }`; }
+//     },
+//
+//     widthSizing: {
+//       $heading: "<code>WidthSizingSpecificationSchema</code>",
+//       get $URI() { return `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/WidthSizing/WidthSizingSpecificationSchema.${ localization.fileNameLocalizationExtensions }`; }
+//     }
+//
+//   }
+//
+// },
 
-    const localizedRouting = {
+            typeCheckers: {
 
-      top: {
-        $heading: localization.top.$heading,
-        $URI: localization.top.URI
-      },
+              $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.$heading,
+              $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md",
+              // get $URI() { return `@All/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.${ localization.fileNameLocalizationExtensions }` },
 
-      coreLibrary: {
+              $mustDisplayDirectDecadentSectioning: true,
+              $sectioning: {
 
-        $heading: localization.coreLibrary.$heading,
+                strings: {
 
-        $children: {
-
-          markup: {
-
-            $heading: localization.coreLibrary.markup.$heading,
-
-            $children: {
-
-              functionality: {
-
-                $heading: localization.coreLibrary.markup.functionality.$heading,
-
-                $children: {
-
-                  inlineJavaScript: {
-
-                    $heading: localization.coreLibrary.markup.functionality.inlineJavaScript.$heading,
-
-                    $children: {
-
-                      YDEE_Integration: {
-                        $heading: localization.coreLibrary.markup.functionality.inlineJavaScript.
-                            YDEE_Integration.$heading,
-                        $URI: "@All/CoreLibrary/Markup/Functionality/InlineJavaScript/" +
-                            `YDEE_Integration/YDEE_Integration.${ localization.fileNameLocalizationExtensions }`
-                      },
-
-                      functionsAndClasses: {
-
-                        $heading: localization.coreLibrary.markup.functionality.inlineJavaScript.
-                            functionsAndClasses.$heading,
-
-                        $children: {
-
-                          buildEmailLinkHrefAttributeValue: {
-                            $heading: "<code>buildEmailLinkHrefAttributeValue</code>",
-                            $URI: "@All/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
-                                `buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          buildPhoneNumberLinkHrefAttributeValue: {
-                            $heading: "<code>buildPhoneNumberLinkHrefAttributeValue</code>",
-                            $URI: "@All/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
-                                `buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          processObjectTypeParameterOfPugMixin: {
-                            $heading: "<code>processObjectTypeParameterOfPugMixin</code>",
-                            $URI: "@All/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
-                                `processObjectTypeParameterOfPugMixin/processObjectTypeParameterOfPugMixin.${ localization.fileNameLocalizationExtensions }`
-                          }
-
-                          // RoutingEmulator: {
-                          //   $heading: "<code>RoutingEmulator</code>",
-                          //   $URI: "#"
-                          // }
-
-                        }
-
-                      },
-
-                      assets: {
-
-                        $heading: localization.coreLibrary.markup.functionality.inlineJavaScript.assets.$heading,
-
-                        $children: {
-
-                          // textOverflowSafetyTest: {
-                          //   $heading: "<code>textOverflowSafetyTest</code>",
-                          //   $URI: "#"
-                          // },
-
-                          DummyImagesURIs: {
-                            $heading: "<code>DummyImagesURIs</code>",
-                            $URI: "@All/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/" +
-                                `DummyImagesURIs/DummyImagesURIs.${ localization.fileNameLocalizationExtensions }`
-                          }
-
-                        }
-
-                      }
-
-                    }
-
+                  $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.strings.$heading,
+                  $anchor: "STRINGS--SECTION",
+                  get $URI() {
+                    return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
                   },
 
-                  // pugMixins: {
-                  //
-                  //   $heading: localization.coreLibrary.markup.functionality.pugMixins.$heading,
-                  //
-                  //   $children: {
-                  //
-                  //     // dummies: {
-                  //     //   $heading: localization.coreLibrary.markup.functionality.pugMixins.dummies.
-                  //     //       $heading,
-                  //     //   $URI: "#"
-                  //     // },
-                  //
-                  //     // SVG_Icons: {
-                  //     //   $heading: localization.coreLibrary.markup.functionality.pugMixins.SVG_Icons.
-                  //     //       $heading,
-                  //     //   $URI: "#"
-                  //     // }
-                  //
-                  //     // yamatoDaiwaInformationDesign: {
-                  //     //   $heading: localization.coreLibrary.markup.functionality.pugMixins.
-                  //     //       yamatoDaiwaInformationDesign.$heading
-                  //     // }
-                  //
-                  //   }
-                  //
-                  // }
+                  $mustDisplayDirectDecadentSectioning: true,
+                  $sectioning: {
 
-                }
-
-              },
-
-              pagesTemplates: {
-
-                $heading: localization.coreLibrary.markup.functionality.pagesTemplates.$heading,
-                $URI: `@All/CoreLibrary/PagesTemplates/PagesTemplates.${ localization.fileNameLocalizationExtensions }`,
-
-                $children: {
-
-                  RegularWebPage: {
-                    $heading: "<code>RegularWebPage</code>",
-                    $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/RegularWebPage.md"
-                  },
-
-                  StaticPreviewAnywherePage: {
-                    $heading: "<code>StaticPreviewAnywherePage</code>",
-                    $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md",
-                    $sectioning: {
-                      staticPreviewConcept: {
-                        $anchor: "staticPreviewConcept",
-                        get $URI() {
-                          return `${ localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.StaticPreviewAnywherePage.$URI }#${ this.$anchor }`
-                        }
+                    isEmptyString: {
+                      $heading: "<code>isEmptyString</code>",
+                      $anchor: "isEmptyString--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
                       }
-                    }
-                  }
+                    },
 
-                }
-
-              },
-
-              usageOnServerSide: {
-                $heading: localization.coreLibrary.markup.functionality.usageOnServerSide.$heading,
-                $URI: `@All/CoreLibrary/Markup/UsageOnServerSide/UsageOnServerSide.${ localization.fileNameLocalizationExtensions }`
-              }
-
-            }
-
-          },
-
-          styles: {
-
-            $heading: localization.coreLibrary.styles.$heading,
-            $children: {
-
-              assets: {
-
-                $heading: localization.coreLibrary.styles.assets.$heading,
-                $children: {
-
-                  fundamentalConstantsAndEnums: {
-
-                    $heading: localization.coreLibrary.styles.assets.fundamentalConstantsAndEnums.$heading,
-                    $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md",
-
-                    $children: {
-
-                      DataTypes: {
-                        $heading: "<code>DataTypes</code>",
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types"
-                        // $URI: `@All/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/DataTypes/DataTypes.${ localization.fileNameLocalizationExtensions }`
-                      },
-
-                      NARROWEST_SCREEN_WIDTH_UNIT: {
-                        $heading: "<code>NARROWEST_SCREEN_WIDTH_UNIT</code>",
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit---the-narrowest-screen-width-unit"
-                        // $URI: `@All/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/NARROWEST_SCREEN_WIDTH_UNIT/NARROWEST_SCREEN_WIDTH_UNIT.${ localization.fileNameLocalizationExtensions }`
+                    isNonEmptyString: {
+                      $heading: "<code>isNonEmptyString</code>",
+                      $anchor: "isNonEmptyString--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
                       }
-                    }
+                    },
 
-                  },
-
-                  colors: {
-
-                    $heading: localization.coreLibrary.styles.assets.colors.$heading,
-                    $children: {
-
-                      PracticalColorCoordinateSystem: {
-                        $heading: localization.coreLibrary.styles.assets.colors.PracticalColorCoordinateSystem.$heading,
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md"
-                        // $URI: `@All/CoreLibrary/Styles/Assets/Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.${ localization.fileNameLocalizationExtensions }`
-                      },
-
-                      ShadesOfGray__39ColorsW3C_Palette: {
-                        $heading: localization.coreLibrary.styles.assets.colors.ShadesOfGray__39ColorsW3C_Palette.$heading,
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md"
-                        // $URI: `@All/CoreLibrary/Styles/Assets/Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.${ localization.fileNameLocalizationExtensions }`
-                      },
-
-                      TemporaryHighlighting: {
-                        $heading: "<code>TemporaryHighlighting</code>",
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md"
-                        // $URI: `@All/CoreLibrary/Styles/Assets/Colors/TemporaryHighlighting/TemporaryHighlighting.${ localization.fileNameLocalizationExtensions }`
+                    isString: {
+                      $heading: "<code>isString</code>",
+                      $anchor: "isString--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
                       }
-
-                      // YDF_ColorPalette: {
-                      //   $heading: localization.coreLibrary.styles.assets.colors.YDF_ColorPalette.$heading,
-                      //   $URI: `@All/CoreLibrary/Styles/Assets/Colors/_YDF_ColorPalette/YDF_ColorPalette.${ localization.fileNameLocalizationExtensions }`
-                      // }
-
                     }
 
                   }
 
-                }
+                },
 
-              },
+                quantities: {
 
-              kernel: {
-
-                $heading: localization.coreLibrary.styles.kernel.$heading,
-                $children: {
-
-                  // YDF_Configuration: {
-                  //
-                  //   $heading: localization.coreLibrary.styles.kernel.YDF_Configuration.$heading,
-                  //   get $URI() { return `@All/CoreLibrary/Styles/Kernel/YDF_Configuration/YDF_Configuration.${ localization.fileNameLocalizationExtensions }`; },
-                  //   $mustDisplayDirectDecadentSectioning: true,
-                  //
-                  //   $sectioning: {
-                  //
-                  //     fontsStacks: {
-                  //
-                  //       $heading: localization.coreLibrary.styles.kernel.YDF_Configuration.fontsStacks.$heading,
-                  //       $anchor: "FONTS_STACKS--SECTION",
-                  //       get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$URI }#${ this.$anchor }`; },
-                  //
-                  //       $sectioning: {
-                  //
-                  //         mainSansSerif: {
-                  //           $heading: "<code>mainSansSerif</code>",
-                  //           $anchor: "FONT_STACKS-MAIN_SANS_SERIF--SECTION",
-                  //           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.fontsStacks.$URI }#${ this.$anchor }`; }
-                  //         },
-                  //
-                  //         mainSerif: {
-                  //           $heading: "<code>mainSerif</code>",
-                  //           $anchor: "FONT_STACKS-MAIN_SERIF--SECTION",
-                  //           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.fontsStacks.$URI }#${ this.$anchor }`; }
-                  //         },
-                  //
-                  //         mainMonospaced: {
-                  //           $heading: "<code>mainMonospaced</code>",
-                  //           $anchor: "FONT_STACKS-MAIN_MONOSPACED--SECTION",
-                  //           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.fontsStacks.$URI }#${ this.$anchor }`; }
-                  //         }
-                  //       }
-                  //
-                  //     },
-                  //
-                  //     textGeometry: {
-                  //
-                  //       $heading: localization.coreLibrary.styles.kernel.YDF_Configuration.textGeometry.$heading,
-                  //       $anchor: "TEXT_GEOMETRY--SECTION",
-                  //       get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$URI }#${ this.$anchor }`; },
-                  //
-                  //       $sectioning: {
-                  //
-                  //         basicFontSize: {
-                  //           $heading: "<code>basicFontSize</code>",
-                  //           $anchor: "TEXT_GEOMETRY-BASIC_FONT_SIZE--SECTION",
-                  //           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.textGeometry.$URI }#${ this.$anchor }`; }
-                  //         },
-                  //
-                  //         basicLineHeight: {
-                  //           $heading: "<code>basicLineHeight</code>",
-                  //           $anchor: "TEXT_GEOMETRY-BASIC_LINE_HEIGHT--SECTION",
-                  //           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.textGeometry.$URI }#${ this.$anchor }`; }
-                  //         },
-                  //
-                  //         basicLineHeightInMultilineTextBlocks: {
-                  //           $heading: "<code>basicLineHeightInMultilineTextBlocks</code>",
-                  //           $anchor: "TEXT_GEOMETRY-BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS--SECTION",
-                  //           get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$sectioning.textGeometry.$URI }#${ this.$anchor }`; }
-                  //         }
-                  //
-                  //       }
-                  //
-                  //     },
-                  //
-                  //     zIndexes: {
-                  //       $heading: localization.coreLibrary.styles.kernel.YDF_Configuration.zIndexes.$heading,
-                  //       $anchor: "Z_INDEXES--SECTION",
-                  //       get $URI() { return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$URI }#${ this.$anchor }`; }
-                  //     }
-                  //
-                  //   }
-                  //
-                  // },
-
-                  // specificationsSchemas: {
-                  //
-                  //   $heading: localization.coreLibrary.styles.kernel.functions.$heading,
-                  //   $children: {
-                  //
-                  //     bordersSizing: {
-                  //       $heading: "<code>BordersSizingSpecificationSchema</code>",
-                  //       get $URI() { return `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/BordersSizing/BordersSizingSpecificationSchema.${ localization.fileNameLocalizationExtensions }`; }
-                  //     },
-                  //
-                  //     paddings: {
-                  //       $heading: "<code>PaddingsSpecificationSchema</code>",
-                  //       get $URI() { return `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/Paddings/PaddingsSpecificationSchema.${ localization.fileNameLocalizationExtensions }`; }
-                  //     },
-                  //
-                  //     textElementHeightSizing: {
-                  //       $heading: "<code>TextElementHeightSizingSpecificationSchema</code>",
-                  //       get $URI() { return `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/TextElementHeightSizing/TextElementHeightSizingSpecificationSchema.${ localization.fileNameLocalizationExtensions }`; }
-                  //     },
-                  //
-                  //     widthSizing: {
-                  //       $heading: "<code>WidthSizingSpecificationSchema</code>",
-                  //       get $URI() { return `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/WidthSizing/WidthSizingSpecificationSchema.${ localization.fileNameLocalizationExtensions }`; }
-                  //     }
-                  //
-                  //   }
-                  //
-                  // },
-
-                  functions: {
-
-                    $heading: localization.coreLibrary.styles.kernel.functions.$heading,
-                    $children: {
-
-                      typeCheckers: {
-
-                        $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.$heading,
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md",
-                        // get $URI() { return `@All/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.${ localization.fileNameLocalizationExtensions }` },
-
-                        $mustDisplayDirectDecadentSectioning: true,
-                        $sectioning: {
-
-                          strings: {
-
-                            $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.strings.$heading,
-                            $anchor: "STRINGS--SECTION",
-                            get $URI() {
-                              return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                            },
-
-                            $mustDisplayDirectDecadentSectioning: true,
-                            $sectioning: {
-
-                              isEmptyString: {
-                                $heading: "<code>isEmptyString</code>",
-                                $anchor: "isEmptyString--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              },
-
-                              isNonEmptyString: {
-                                $heading: "<code>isNonEmptyString</code>",
-                                $anchor: "isNonEmptyString--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              },
-
-                              isString: {
-                                $heading: "<code>isString</code>",
-                                $anchor: "isString--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              }
-
-                            }
-
-                          },
-
-                          quantities: {
-
-                            $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.quantities.$heading,
-                            $anchor: "QUANTITIES--SECTION",
-                            get $URI() {
-                              return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                            },
-
-                            $mustDisplayDirectDecadentSectioning: true,
-                            $sectioning: {
-
-                              isDimensionalOrDimensionlessQuantity: {
-                                $heading: "<code>isDimensionalOrDimensionlessQuantity</code>",
-                                $anchor: "isDimensionalOrDimensionlessQuantity--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              },
-
-                              isDimensionalQuantity: {
-                                $heading: "<code>isDimensionalQuantity</code>",
-                                $anchor: "isDimensionalQuantity--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              },
-
-                              isDimensionlessQuantity: {
-                                $heading: "<code>isDimensionlessQuantity</code>",
-                                $anchor: "isDimensionlessQuantity--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${this.$anchor}`;
-                                }
-                              },
-
-                              isNaturalNumber: {
-                                $heading: "<code>isNaturalNumber</code>",
-                                $anchor: "isNaturalNumber--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              }
-
-                            }
-
-                          },
-
-                          booleans: {
-
-                            $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.booleans.$heading,
-                            $anchor: "BOOLEANS--SECTION",
-                            get $URI() {
-                              return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                            },
-
-                            $mustDisplayDirectDecadentSectioning: true,
-                            $sectioning: {
-
-                              isBoolean: {
-                                $heading: "<code>isBoolean</code>",
-                                $anchor: "isBoolean--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              },
-
-                              isFalse: {
-                                $heading: "<code>isFalse</code>",
-                                $anchor: "isFalse--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              },
-
-                              isTrue: {
-                                $heading: "<code>isTrue</code>",
-                                $anchor: "isTrue--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              }
-
-                            }
-
-                          },
-
-                          nullables: {
-
-                            $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.nullables.$heading,
-                            $anchor: "BOOLEANS--SECTION",
-                            get $URI() {
-                              return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                            },
-
-                            $mustDisplayDirectDecadentSectioning: true,
-                            $sectioning: {
-
-                              isNotNull: {
-                                $heading: "<code>isNotNull</code>",
-                                $anchor: "isNotNull--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              },
-
-                              isNull: {
-                                $heading: "<code>isNull</code>",
-                                $anchor: "isNull--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              }
-
-                            }
-
-                          },
-
-                          others: {
-
-                            $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.others.$heading,
-                            $anchor: "OTHERS--SECTION",
-                            get $URI() {
-                              return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                            },
-
-                            $mustDisplayDirectDecadentSectioning: true,
-                            $sectioning: {
-
-                              isCalcExpression: {
-                                $heading: "<code>isCalcExpression</code>",
-                                $anchor: "isCalcExpression--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              },
-
-                              isFunction: {
-                                $heading: "<code>isFunction</code>",
-                                $anchor: "isFunction--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              },
-
-                              isIdentifier: {
-                                $heading: "<code>isIdentifier</code>",
-                                $anchor: "isIdentifier--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              },
-
-                              isObject: {
-                                $heading: "<code>isObject</code>",
-                                $anchor: "isObject--SECTION",
-                                get $URI() {
-                                  return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
-                                }
-                              }
-
-                            }
-
-                          }
-
-                        }
-
-                      },
-
-                      // valueTransformers: {
-                      //
-                      //   $heading: "01-Source/Pages/CoreLibrary/Styles/Kernel/Functions/_ValueTransformers/ValueTransformers.english.pug",
-                      //   $URI: `@All/CoreLibrary/Styles/Kernel/Functions/_ValueTransformers/ValueTransformers.${ localization.fileNameLocalizationExtensions }`,
-                      //
-                      //   $sectioning: {
-                      //
-                      //     emptyStringToNull: {
-                      //       $heading: "<code>emptyStringToNull</code>",
-                      //       $anchor: "emptyStringToNull--SECTION",
-                      //       get $URI() {
-                      //         return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.valueTransformers.$URI }#${ this.$anchor }`
-                      //       }
-                      //     },
-                      //     nullToEmptyObject: {
-                      //       $heading: "<code>nullToEmptyObject</code>",
-                      //       $anchor: "nullToEmptyObject--SECTION",
-                      //       get $URI() {
-                      //         return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.valueTransformers.$URI }#${ this.$anchor }`
-                      //       }
-                      //     },
-                      //     nullToEmptyString: {
-                      //       $heading: "<code>nullToEmptyString</code>",
-                      //       $anchor: "nullToEmptyString--SECTION",
-                      //       get $URI() {
-                      //         return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.valueTransformers.$URI }#${ this.$anchor }`
-                      //       }
-                      //     },
-                      //     nullToZero: {
-                      //       $heading: "<code>nullToZero</code>",
-                      //       $anchor: "nullToZero--SECTION",
-                      //       get $URI() {
-                      //         return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.valueTransformers.$URI }#${ this.$anchor }`
-                      //       }
-                      //     }
-                      //
-                      //   }
-                      //
-                      // },
-
-                      strings: {
-
-                        $heading: localization.coreLibrary.styles.kernel.functions.strings.$heading,
-                        $children: {
-
-                          buildString: {
-                            $heading: "<code>buildString</code>",
-                            $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Strings/buildString/buildString.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          capitalizeFirstLatinCharacter: {
-                            $heading: "<code>capitalizeFirstLatinCharacter</code>",
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Strings/_buildString/capitalizeFirstLatinCharacter.${ localization.fileNameLocalizationExtensions }`,
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md"
-                          }
-
-                        }
-
-                      },
-
-                      // quantities: {
-                      //
-                      //   $heading: localization.coreLibrary.styles.kernel.functions.quantities.$heading,
-                      //   $children: {
-                      //
-                      //     appendUnit: {
-                      //       $heading: "<code>appendUnit</code>",
-                      //       get $URI() {
-                      //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
-                      //             `appendUnit/appendUnit.${ localization.fileNameLocalizationExtensions }`;
-                      //       }
-                      //     },
-                      //
-                      //     computeExtraSpaceCausedByLineHeightAtTopOrBottom: {
-                      //       $heading: "<code>computeExtraSpaceCausedByLineHeightAtTopOrBottom<code/>",
-                      //       get $URI() {
-                      //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
-                      //             "computeExtraSpaceCausedByLineHeightAtTopOrBottom/" +
-                      //             "computeExtraSpaceCausedByLineHeightAtTopOrBottom." +
-                      //             `${ localization.fileNameLocalizationExtensions }`;
-                      //       }
-                      //     },
-                      //
-                      //     computeTotalHeightByTextElementHeightSizingSpecification: {
-                      //       $heading: "<code>computeTotalHeightByTextElementHeightSizingSpecification<code/>",
-                      //       get $URI() {
-                      //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
-                      //             `computeTotalHeightByTextElementHeightSizingSpecification/` +
-                      //             `computeTotalHeightByTextElementHeightSizingSpecification.` +
-                      //             `${ localization.fileNameLocalizationExtensions }`;
-                      //       }
-                      //     },
-                      //
-                      //     getLineHeightByFontSizeAndLineSpacing: {
-                      //       $heading: "<code>getLineHeightByFontSizeAndLineSpacing<code/>",
-                      //       get $URI() {
-                      //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
-                      //             "getLineHeightByFontSizeAndLineSpacing/" +
-                      //             `getLineHeightByFontSizeAndLineSpacing.` +
-                      //             `${ localization.fileNameLocalizationExtensions }`;
-                      //       }
-                      //     },
-                      //
-                      //     getLineSpacingByFontSizeAndLineHeight: {
-                      //       $heading: "<code>getLineSpacingByFontSizeAndLineHeight</code>",
-                      //       get $URI() {
-                      //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
-                      //             "getLineSpacingByFontSizeAndLineHeight/" +
-                      //             `getLineSpacingByFontSizeAndLineHeight.` +
-                      //             `${ localization.fileNameLocalizationExtensions }`;
-                      //       }
-                      //     },
-                      //
-                      //     removeUnitFromAmount: {
-                      //       $heading: "<code>removeUnitFromAmount</code>",
-                      //       get $URI() {
-                      //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
-                      //             `removeUnitFromAmount/removeUnitFromAmount.` +
-                      //             `${ localization.fileNameLocalizationExtensions }`;
-                      //       }
-                      //     },
-                      //
-                      //     sum: {
-                      //       $heading: "<code>sum</code>",
-                      //       get $URI() {
-                      //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
-                      //             `$heading/$heading.` +
-                      //             `${ localization.fileNameLocalizationExtensions }`;
-                      //       }
-                      //     }
-                      //
-                      //   }
-                      //
-                      // },
-
-                      objects: {
-
-                        $heading: localization.coreLibrary.styles.kernel.functions.objects.$heading,
-                        $children: {
-
-                          // createObjectWithComputedProperties: {
-                          //   $heading: "<code>createObjectWithComputedProperties</code>",
-                          //   $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/createObjectWithComputedProperties/createObjectWithComputedProperties.${ localization.fileNameLocalizationExtensions }`
-                          // },
-
-                          deeplyCloneAndOverrideObject: {
-                            $heading: "<code>deeplyCloneAndOverrideObject</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/deeplyCloneAndOverrideObject/deeplyCloneAndOverrideObject.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          deeplyCloneObject: {
-                            $heading: "<code>deeplyCloneObject</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/deeplyCloneObject/deeplyCloneObject.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          formatObject: {
-                            $heading: "<code>formatObject</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/formatObject.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/formatObject/formatObject.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          getObjectNonNullValuesCount: {
-                            $heading: "<code>getObjectNonNullValuesCount</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectNonNullValuesCount.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/getObjectNonNullValuesCount/getObjectNonNullValuesCount.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          getObjectValueByDotSeparatedPathSafely: {
-                            $heading: "<code>getObjectValueByDotSeparatedPathSafely</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/getObjectValueByDotSeparatedPathSafely/getObjectValueByDotSeparatedPathSafely.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          iterateObjectSkippingNullValues: {
-                            $heading: "<code>iterateObjectSkippingNullValues</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/iterateObjectSkippingNullValues/iterateObjectSkippingNullValues.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          overrideObject: {
-                            $heading: "<code>overrideObject</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/overrideObject.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/overrideObject/overrideObject.${ localization.fileNameLocalizationExtensions }`
-                          }
-
-                        }
-
-                      },
-
-                      arrays: {
-
-                        $heading: localization.coreLibrary.styles.kernel.functions.arrays.$heading,
-                        $children: {
-
-                          arrayConstructor__POLYFILL: {
-                            $heading: "<code>arrayConstructor__POLYFILL</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/arrayConstructor__POLYFILL.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/arrayConstructor__POLYFILL/arrayConstructor__POLYFILL.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          getFirstNonNullArrayElement: {
-                            $heading: "<code>getFirstNonNullArrayElement</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getFirstNonNullArrayElement.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/getFirstNonNullArrayElement/getFirstNonNullArrayElement.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          getLengthOfPrimitivesArray: {
-                            $heading: "<code>getLengthOfPrimitivesArray</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getLengthOfPrimitivesArray.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/getLengthOfPrimitivesArray/getLengthOfPrimitivesArray.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          hasPrimitivesArraySpecifiedElement: {
-                            $heading: "<code>hasPrimitivesArraySpecifiedElement</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/hasPrimitivesArraySpecifiedElement.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/hasPrimitivesArraySpecifiedElement/hasPrimitivesArraySpecifiedElement.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          iterate2DimensionalArray: {
-                            $heading: "<code>iterate2DimensionalArray</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterate2DimensionalArray.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/iterate2DimensionalArray/iterate2DimensionalArray.${ localization.fileNameLocalizationExtensions }`
-                          },
-
-                          iterateAssociativeArray: {
-                            $heading: "<code>iterateAssociativeArray</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterateAssociativeArray.md"
-                            // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/iterateAssociativeArray/iterateAssociativeArray.${ localization.fileNameLocalizationExtensions }`
-                          }
-
-                        }
-
-                      },
-
-                      // YDF_Arrays: {
-                      //
-                      //   $heading: localization.coreLibrary.styles.kernel.functions.YDF_Arrays.$heading,
-                      //   $children: {
-                      //
-                      //     appendElement: {
-                      //       $heading: "<code>YDF_Array-appendElement</code>",
-                      //       $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/appendElement/YDF_Array-appendElement.${ localization.fileNameLocalizationExtensions }`
-                      //     },
-                      //
-                      //     appendElementsIf: {
-                      //       $heading: "<code>YDF_Array-appendElementsIf</code>",
-                      //       $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/appendElementsIf/YDF_Array-appendElementsIf.${ localization.fileNameLocalizationExtensions }`
-                      //     },
-                      //
-                      //     create: {
-                      //       $heading: "<code>YDF_Array-create</code>",
-                      //       $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/create/YDF_Array-create.${ localization.fileNameLocalizationExtensions }`
-                      //     },
-                      //
-                      //     forEach: {
-                      //       $heading: "<code>YDF_Array-forEach</code>",
-                      //       $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/forEach/YDF_Array-forEach.${ localization.fileNameLocalizationExtensions }`
-                      //     },
-                      //
-                      //     isIncludes: {
-                      //       $heading: "<code>YDF_Array-isIncludes</code>",
-                      //       $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/isIncludes/YDF_Array-isIncludes.${ localization.fileNameLocalizationExtensions }`
-                      //     }
-                      //
-                      //   }
-                      //
-                      // },
-
-                      parametersValidation: {
-
-                        $heading: localization.coreLibrary.styles.kernel.functions.parametersValidation.$heading,
-                        $children: {
-
-                          validateObjectTypeParameter: {
-                            $heading: "<code>validateObjectTypeParameter</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateObjectTypeParameter.md"
-                          }
-
-                        }
-
-                      },
-
-                      other: {
-
-                        $heading: localization.coreLibrary.styles.kernel.functions.other.$heading,
-                        $children: {
-
-                          buildBEM_ClassName: {
-                            $heading: "buildBEM_ClassName",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildBEM_ClassName.md"
-                          },
-
-                          substituteNull: {
-                            $heading: "substituteNull",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/substituteNull.md"
-                          },
-
-                          buildCalcExpression: {
-                            $heading: "buildCalcExpression",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildCalcExpression.md"
-                          },
-
-                          log: {
-                            $heading: "log",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/log.md"
-                          }
-
-                        }
-
-                      }
-
-                    }
-
+                  $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.quantities.$heading,
+                  $anchor: "QUANTITIES--SECTION",
+                  get $URI() {
+                    return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
                   },
 
-                  utilityMixins: {
-
-                    $heading: localization.coreLibrary.styles.kernel.mixins.$heading,
-
-                    $children: {
-
-                      general: {
-
-                        $heading: localization.coreLibrary.styles.kernel.mixins.general.$heading,
-                        $children: {
-
-                          applyIfNotNull: {
-                            $heading: "<code>applyIfNotNull</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/00-GeneralUtils/applyIfNotNull.md"
-                          },
-
-                          applyIfNotZero: {
-                            $heading: "<code>applyIfNotZero</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/00-GeneralUtils/applyIfNotZero.md"
-                          }
-
-                        }
-
-                      },
-
-                      sizing: {
-
-                        $heading: localization.coreLibrary.styles.kernel.mixins.sizing.$heading,
-                        $children: {
-
-                          width: {
-
-                            $heading: localization.coreLibrary.styles.kernel.mixins.sizing.width.$heading,
-
-                            $children: {
-
-                              WidthSizing: {
-                                $heading: "<code>WidthSizing</code>",
-                                $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/WidthSizing.md"
-                              },
-
-                              fillViewportWidthIgnoringParentPaddings: {
-                                $heading: "<code>fillViewportWidthIgnoringParentPaddings</code>",
-                                $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/fillViewportWidthIgnoringParentPaddings.md"
-                              },
-
-                              TableCellWidthSizing: {
-                                $heading: "<code>TableCellWidthSizing</code>",
-                                $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/TableCellWidthSizing.md"
-                              }
-
-                            }
-
-                          },
-
-                          paddings: {
-                            $heading: "<code>Paddings</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/04-Paddings/Paddings.md"
-                          }
-
-                        }
-
-                      },
-
-                      positioning: {
-
-                        $heading: localization.coreLibrary.styles.kernel.mixins.positioning.$heading,
-
-                        $children: {
-
-                          centerHorizontallyWithoutWrapper: {
-                            $heading: "<code>centerHorizontallyWithoutWrapper</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/centerHorizontallyWithoutWrapper.md"
-                          },
-
-                          placeToRight: {
-                            $heading: "<code>placeToRight</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/placeToRight.md"
-
-                          },
-
-                          VerticallyCenteredAbsolutelyPositionedBlock: {
-                            $heading: "<code>VerticallyCenteredAbsolutelyPositionedBlock</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md"
-                          }
-
-                        }
-
-                      },
-
-                      positionalRelationship: {
-
-                        $heading: localization.coreLibrary.styles.kernel.mixins.positionalRelationship.$heading,
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md",
-
-                        $children: {
-
-                          PositionalRelationship: {
-                            $heading: "<code>PositionalRelationship</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#positionalrelationship-mixin"
-                          },
-
-                          retireFrom: {
-                            $heading: "<code>retireFrom</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefrom-mixin"
-                          },
-
-                          pushTargetFromSelf: {
-                            $heading: "<code>pushTargetFromSelf</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#pushtargetfromself-mixin"
-                          },
-
-                          retireFromElementWithSameSelector: {
-                            $heading: "<code>retireFromElementWithSameSelector</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefromelementwithsameselector-mixin"
-                          },
-
-                          whenItGoingFirst: {
-                            $heading: "<code>whenItGoingFirst</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoingfirst-mixin"
-                          },
-
-                          whenItGoingLast: {
-                            $heading: "<code>whenItGoingLast</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoinglast-mixin"
-                          },
-
-                          whenItJustAfter: {
-                            $heading: "<code>whenItJustAfter</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitjustafter"
-                          },
-
-                          whenTargetGoingJustAfterIt: {
-                            $heading: "<code>whenTargetGoingJustAfterIt</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetgoingjustafterit"
-                          },
-
-                          whenTargetWithSameSelectorGoingJustAfterIt: {
-                            $heading: "<code>whenTargetWithSameSelectorGoingJustAfterIt</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit"
-                          }
-
-                        }
-
-                      },
-
-                      layout: {
-
-                        $heading: localization.coreLibrary.styles.kernel.mixins.layout.$heading,
-
-                        $children: {
-
-                          CenteredContentWithComputedHorizontalPaddings: {
-                            $heading: "<code>CenteredContentWithComputedHorizontalPaddings</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/CenteredContentWithComputedHorizontalPaddings.md"
-                          },
-
-                          Centerer: {
-                            $heading: "<code>Centerer</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/Centerer.md"
-                          },
-
-                          fillBodyVertically: {
-                            $heading: "<code>fillBodyVertically</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/fillBodyVertically.md"
-                          },
-
-                          FixedTranslucentDimLayer: {
-                            $heading: "<code>FixedTranslucentDimLayer</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/FixedTranslucentDimLayer.md"
-                          }
-
-                        }
-
-                      },
-
-                      typography: {
-
-                        $heading: localization.coreLibrary.styles.kernel.mixins.typography.$heading,
-
-                        $children: {
-
-                          SingleLineTextElementOverflowSafety: {
-                            $heading: "<code>SingleLineTextElementOverflowSafety</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md"
-                          },
-
-                          MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight: {
-                            $heading: "<code>MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md"
-                          }
-
-                        }
-
-                      },
-
-                      other: {
-
-                        $heading: localization.coreLibrary.styles.kernel.mixins.other.$heading,
-
-                        $children: {
-
-                          provideClippedShadowsAndOutlinesVisibility: {
-                            $heading: "<code>provideClippedShadowsAndOutlinesVisibility</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/provideClippedShadowsAndOutlinesVisibility.md"
-
-                          },
-
-                          Sprite: {
-                            $heading: "<code>Sprite</code>",
-                            $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/Sprite.md"
-                          }
-
-                        }
-
+                  $mustDisplayDirectDecadentSectioning: true,
+                  $sectioning: {
+
+                    isDimensionalOrDimensionlessQuantity: {
+                      $heading: "<code>isDimensionalOrDimensionlessQuantity</code>",
+                      $anchor: "isDimensionalOrDimensionlessQuantity--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
                       }
+                    },
 
-                    }
-
-                  },
-
-                  stylesInitialization: {
-
-                    $heading: localization.coreLibrary.styles.kernel.stylesInitialization.$heading,
-
-                    $children: {
-
-                      CrossBrowserStylesReset: {
-                        $heading: "<code>CrossBrowserStylesReset</code>",
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/CrossBrowserStylesReset.md"
-                      },
-
-                      InitialGlobalCSS_Rules: {
-                        $heading: "<code>InitialGlobalCSS_Rules</code>",
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/InitialGlobalCSS_Rules.md"
-                      },
-
-                      ButtonLikeElementsPrimer: {
-                        $heading: "<code>ButtonLikeElementsPrimer</code>",
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/ButtonLikeElementsPrimer.md"
+                    isDimensionalQuantity: {
+                      $heading: "<code>isDimensionalQuantity</code>",
+                      $anchor: "isDimensionalQuantity--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
                       }
+                    },
 
+                    isDimensionlessQuantity: {
+                      $heading: "<code>isDimensionlessQuantity</code>",
+                      $anchor: "isDimensionlessQuantity--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${this.$anchor}`;
+                      }
+                    },
+
+                    isNaturalNumber: {
+                      $heading: "<code>isNaturalNumber</code>",
+                      $anchor: "isNaturalNumber--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                      }
                     }
 
                   }
 
-                }
+                },
 
-              },
+                booleans: {
 
-              buildInPlugins: {
+                  $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.booleans.$heading,
+                  $anchor: "BOOLEANS--SECTION",
+                  get $URI() {
+                    return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                  },
 
-                $heading: localization.coreLibrary.styles.buildInPlugins.$heading,
+                  $mustDisplayDirectDecadentSectioning: true,
+                  $sectioning: {
 
-                $children: {
-
-                  additionalColorPalettes: {
-
-                    $heading: localization.coreLibrary.styles.buildInPlugins.additionalColorPalettes.$heading,
-
-                    $children: {
-
-                      FlatUI_Colors: {
-                        $heading: "<code>FlatUI_Colors</code>",
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md"
-                      },
-
-                      MaterialDesignColors: {
-                        $heading: "<code>MaterialDesignColors</code>",
-                        $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md"
+                    isBoolean: {
+                      $heading: "<code>isBoolean</code>",
+                      $anchor: "isBoolean--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
                       }
+                    },
 
+                    isFalse: {
+                      $heading: "<code>isFalse</code>",
+                      $anchor: "isFalse--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                      }
+                    },
+
+                    isTrue: {
+                      $heading: "<code>isTrue</code>",
+                      $anchor: "isTrue--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                      }
+                    }
+
+                  }
+
+                },
+
+                nullables: {
+
+                  $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.nullables.$heading,
+                  $anchor: "BOOLEANS--SECTION",
+                  get $URI() {
+                    return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                  },
+
+                  $mustDisplayDirectDecadentSectioning: true,
+                  $sectioning: {
+
+                    isNotNull: {
+                      $heading: "<code>isNotNull</code>",
+                      $anchor: "isNotNull--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                      }
+                    },
+
+                    isNull: {
+                      $heading: "<code>isNull</code>",
+                      $anchor: "isNull--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                      }
+                    }
+
+                  }
+
+                },
+
+                others: {
+
+                  $heading: localization.coreLibrary.styles.kernel.functions.typeCheckers.others.$heading,
+                  $anchor: "OTHERS--SECTION",
+                  get $URI() {
+                    return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                  },
+
+                  $mustDisplayDirectDecadentSectioning: true,
+                  $sectioning: {
+
+                    isCalcExpression: {
+                      $heading: "<code>isCalcExpression</code>",
+                      $anchor: "isCalcExpression--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                      }
+                    },
+
+                    isFunction: {
+                      $heading: "<code>isFunction</code>",
+                      $anchor: "isFunction--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                      }
+                    },
+
+                    isIdentifier: {
+                      $heading: "<code>isIdentifier</code>",
+                      $anchor: "isIdentifier--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                      }
+                    },
+
+                    isObject: {
+                      $heading: "<code>isObject</code>",
+                      $anchor: "isObject--SECTION",
+                      get $URI() {
+                        return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers.$URI }#${ this.$anchor }`;
+                      }
                     }
 
                   }
@@ -1165,264 +318,772 @@
 
               }
 
-            }
+            },
 
-          },
+            // valueTransformers: {
+            //
+            //   $heading: "01-Source/Pages/CoreLibrary/Styles/Kernel/Functions/_ValueTransformers/ValueTransformers.english.pug",
+            //   $URI: `@All/CoreLibrary/Styles/Kernel/Functions/_ValueTransformers/ValueTransformers.${ localization.fileNameLocalizationExtensions }`,
+            //
+            //   $sectioning: {
+            //
+            //     emptyStringToNull: {
+            //       $heading: "<code>emptyStringToNull</code>",
+            //       $anchor: "emptyStringToNull--SECTION",
+            //       get $URI() {
+            //         return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.valueTransformers.$URI }#${ this.$anchor }`
+            //       }
+            //     },
+            //     nullToEmptyObject: {
+            //       $heading: "<code>nullToEmptyObject</code>",
+            //       $anchor: "nullToEmptyObject--SECTION",
+            //       get $URI() {
+            //         return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.valueTransformers.$URI }#${ this.$anchor }`
+            //       }
+            //     },
+            //     nullToEmptyString: {
+            //       $heading: "<code>nullToEmptyString</code>",
+            //       $anchor: "nullToEmptyString--SECTION",
+            //       get $URI() {
+            //         return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.valueTransformers.$URI }#${ this.$anchor }`
+            //       }
+            //     },
+            //     nullToZero: {
+            //       $heading: "<code>nullToZero</code>",
+            //       $anchor: "nullToZero--SECTION",
+            //       get $URI() {
+            //         return `${ localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.valueTransformers.$URI }#${ this.$anchor }`
+            //       }
+            //     }
+            //
+            //   }
+            //
+            // },
 
-          components: {
+            // quantities: {
+            //
+            //   $heading: localization.coreLibrary.styles.kernel.functions.quantities.$heading,
+            //   $children: {
+            //
+            //     appendUnit: {
+            //       $heading: "<code>appendUnit</code>",
+            //       get $URI() {
+            //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
+            //             `appendUnit/appendUnit.${ localization.fileNameLocalizationExtensions }`;
+            //       }
+            //     },
+            //
+            //     computeExtraSpaceCausedByLineHeightAtTopOrBottom: {
+            //       $heading: "<code>computeExtraSpaceCausedByLineHeightAtTopOrBottom<code/>",
+            //       get $URI() {
+            //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
+            //             "computeExtraSpaceCausedByLineHeightAtTopOrBottom/" +
+            //             "computeExtraSpaceCausedByLineHeightAtTopOrBottom." +
+            //             `${ localization.fileNameLocalizationExtensions }`;
+            //       }
+            //     },
+            //
+            //     computeTotalHeightByTextElementHeightSizingSpecification: {
+            //       $heading: "<code>computeTotalHeightByTextElementHeightSizingSpecification<code/>",
+            //       get $URI() {
+            //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
+            //             `computeTotalHeightByTextElementHeightSizingSpecification/` +
+            //             `computeTotalHeightByTextElementHeightSizingSpecification.` +
+            //             `${ localization.fileNameLocalizationExtensions }`;
+            //       }
+            //     },
+            //
+            //     getLineHeightByFontSizeAndLineSpacing: {
+            //       $heading: "<code>getLineHeightByFontSizeAndLineSpacing<code/>",
+            //       get $URI() {
+            //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
+            //             "getLineHeightByFontSizeAndLineSpacing/" +
+            //             `getLineHeightByFontSizeAndLineSpacing.` +
+            //             `${ localization.fileNameLocalizationExtensions }`;
+            //       }
+            //     },
+            //
+            //     getLineSpacingByFontSizeAndLineHeight: {
+            //       $heading: "<code>getLineSpacingByFontSizeAndLineHeight</code>",
+            //       get $URI() {
+            //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
+            //             "getLineSpacingByFontSizeAndLineHeight/" +
+            //             `getLineSpacingByFontSizeAndLineHeight.` +
+            //             `${ localization.fileNameLocalizationExtensions }`;
+            //       }
+            //     },
+            //
+            //     removeUnitFromAmount: {
+            //       $heading: "<code>removeUnitFromAmount</code>",
+            //       get $URI() {
+            //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
+            //             `removeUnitFromAmount/removeUnitFromAmount.` +
+            //             `${ localization.fileNameLocalizationExtensions }`;
+            //       }
+            //     },
+            //
+            //     sum: {
+            //       $heading: "<code>sum</code>",
+            //       get $URI() {
+            //         return "@All/CoreLibrary/Styles/Kernel/Functions/Quantities/" +
+            //             `$heading/$heading.` +
+            //             `${ localization.fileNameLocalizationExtensions }`;
+            //       }
+            //     }
+            //
+            //   }
+            //
+            // },
 
-            $heading: localization.coreLibrary.components.$heading,
-            $URI: `@All/CoreLibrary/Components/Components.${ localization.fileNameLocalizationExtensions }`,
+            objects: {
 
-            $children: {
+              $heading: localization.coreLibrary.styles.kernel.functions.objects.$heading,
+              $children: {
 
-              // AdmonitionBlock: {
-              //   $heading: localization.coreLibrary.components.admonitionBlock.$heading,
-              //   $URI: `@All/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.${ localization.fileNameLocalizationExtensions }`
-              // },
+                // createObjectWithComputedProperties: {
+                //   $heading: "<code>createObjectWithComputedProperties</code>",
+                //   $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/createObjectWithComputedProperties/createObjectWithComputedProperties.${ localization.fileNameLocalizationExtensions }`
+                // },
 
-              // Badge: {
-              //   $heading: "<code>Badge</code>",
-              //   $URI: `@All/CoreLibrary/Components/Children/Badge/Badge.${ localization.fileNameLocalizationExtensions }`
-              // },
+                deeplyCloneAndOverrideObject: {
+                  $heading: "<code>deeplyCloneAndOverrideObject</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/deeplyCloneAndOverrideObject/deeplyCloneAndOverrideObject.${ localization.fileNameLocalizationExtensions }`
+                },
 
-              // controls: {
-              //
-              //   $heading: localization.coreLibrary.components.controls.$heading,
-              //
-              //   $children: {
-              //
-              //     buttons: {
-              //
-              //       $heading: localization.coreLibrary.components.controls.buttons.$heading,
-              //       $children: {
-              //
-              //         plain: {
-              //           $heading: "<code>Button</code>",
-              //           $URI: `@All/CoreLibrary/Components/Children/Controls/Buttons/Plain/Button.${ localization.fileNameLocalizationExtensions }`
-              //         }
-              //
-              //       }
-              //
-              //     }
-              //
-              //     // validatable: {
-              //     //
-              //     //   $heading: "Validatable",
-              //     //   $URI: "@All/CoreLibrary/Components/Controls/Validatable/ValidatableControls.russian"
-              //     //
-              //     // }
-              //
-              //   }
-              //
-              // },
+                deeplyCloneObject: {
+                  $heading: "<code>deeplyCloneObject</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/deeplyCloneObject/deeplyCloneObject.${ localization.fileNameLocalizationExtensions }`
+                },
 
-              OverflowSafeSingleLineLabel: {
-                $heading: "<code>OverflowSafeSingleLineLabel</code>",
-                $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md"
+                formatObject: {
+                  $heading: "<code>formatObject</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/formatObject.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/formatObject/formatObject.${ localization.fileNameLocalizationExtensions }`
+                },
+
+                getObjectNonNullValuesCount: {
+                  $heading: "<code>getObjectNonNullValuesCount</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectNonNullValuesCount.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/getObjectNonNullValuesCount/getObjectNonNullValuesCount.${ localization.fileNameLocalizationExtensions }`
+                },
+
+                getObjectValueByDotSeparatedPathSafely: {
+                  $heading: "<code>getObjectValueByDotSeparatedPathSafely</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/getObjectValueByDotSeparatedPathSafely/getObjectValueByDotSeparatedPathSafely.${ localization.fileNameLocalizationExtensions }`
+                },
+
+                iterateObjectSkippingNullValues: {
+                  $heading: "<code>iterateObjectSkippingNullValues</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/iterateObjectSkippingNullValues/iterateObjectSkippingNullValues.${ localization.fileNameLocalizationExtensions }`
+                },
+
+                overrideObject: {
+                  $heading: "<code>overrideObject</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/overrideObject.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/overrideObject/overrideObject.${ localization.fileNameLocalizationExtensions }`
+                }
+
+              }
+
+            },
+
+            arrays: {
+
+              $heading: localization.coreLibrary.styles.kernel.functions.arrays.$heading,
+              $children: {
+
+                arrayConstructor__POLYFILL: {
+                  $heading: "<code>arrayConstructor__POLYFILL</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/arrayConstructor__POLYFILL.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/arrayConstructor__POLYFILL/arrayConstructor__POLYFILL.${ localization.fileNameLocalizationExtensions }`
+                },
+
+                getFirstNonNullArrayElement: {
+                  $heading: "<code>getFirstNonNullArrayElement</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getFirstNonNullArrayElement.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/getFirstNonNullArrayElement/getFirstNonNullArrayElement.${ localization.fileNameLocalizationExtensions }`
+                },
+
+                getLengthOfPrimitivesArray: {
+                  $heading: "<code>getLengthOfPrimitivesArray</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getLengthOfPrimitivesArray.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/getLengthOfPrimitivesArray/getLengthOfPrimitivesArray.${ localization.fileNameLocalizationExtensions }`
+                },
+
+                hasPrimitivesArraySpecifiedElement: {
+                  $heading: "<code>hasPrimitivesArraySpecifiedElement</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/hasPrimitivesArraySpecifiedElement.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/hasPrimitivesArraySpecifiedElement/hasPrimitivesArraySpecifiedElement.${ localization.fileNameLocalizationExtensions }`
+                },
+
+                iterate2DimensionalArray: {
+                  $heading: "<code>iterate2DimensionalArray</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterate2DimensionalArray.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/iterate2DimensionalArray/iterate2DimensionalArray.${ localization.fileNameLocalizationExtensions }`
+                },
+
+                iterateAssociativeArray: {
+                  $heading: "<code>iterateAssociativeArray</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterateAssociativeArray.md"
+                  // $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/iterateAssociativeArray/iterateAssociativeArray.${ localization.fileNameLocalizationExtensions }`
+                }
+
+              }
+
+            },
+
+            // YDF_Arrays: {
+            //
+            //   $heading: localization.coreLibrary.styles.kernel.functions.YDF_Arrays.$heading,
+            //   $children: {
+            //
+            //     appendElement: {
+            //       $heading: "<code>YDF_Array-appendElement</code>",
+            //       $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/appendElement/YDF_Array-appendElement.${ localization.fileNameLocalizationExtensions }`
+            //     },
+            //
+            //     appendElementsIf: {
+            //       $heading: "<code>YDF_Array-appendElementsIf</code>",
+            //       $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/appendElementsIf/YDF_Array-appendElementsIf.${ localization.fileNameLocalizationExtensions }`
+            //     },
+            //
+            //     create: {
+            //       $heading: "<code>YDF_Array-create</code>",
+            //       $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/create/YDF_Array-create.${ localization.fileNameLocalizationExtensions }`
+            //     },
+            //
+            //     forEach: {
+            //       $heading: "<code>YDF_Array-forEach</code>",
+            //       $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/forEach/YDF_Array-forEach.${ localization.fileNameLocalizationExtensions }`
+            //     },
+            //
+            //     isIncludes: {
+            //       $heading: "<code>YDF_Array-isIncludes</code>",
+            //       $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/isIncludes/YDF_Array-isIncludes.${ localization.fileNameLocalizationExtensions }`
+            //     }
+            //
+            //   }
+            //
+            // },
+
+            parametersValidation: {
+
+              $heading: localization.coreLibrary.styles.kernel.functions.parametersValidation.$heading,
+              $children: {
+
+                validateObjectTypeParameter: {
+                  $heading: "<code>validateObjectTypeParameter</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateObjectTypeParameter.md"
+                }
+
+              }
+
+            },
+
+            other: {
+
+              $heading: localization.coreLibrary.styles.kernel.functions.other.$heading,
+              $children: {
+
+                buildBEM_ClassName: {
+                  $heading: "buildBEM_ClassName",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildBEM_ClassName.md"
+                },
+
+                substituteNull: {
+                  $heading: "substituteNull",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/substituteNull.md"
+                },
+
+                buildCalcExpression: {
+                  $heading: "buildCalcExpression",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildCalcExpression.md"
+                },
+
+                log: {
+                  $heading: "log",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/log.md"
+                }
+
               }
 
             }
-
 
           }
 
-        }
+        },
 
-      },
+        utilityMixins: {
 
-      // frameworksIntegrations: {
-      //
-      //   $heading: localization.frameworksIntegrations.$heading,
-      //
-      //   $children: {
-      //
-      //     vue: {
-      //
-      //       $heading: "Vue",
-      //
-      //       $children: {
-      //
-      //         components: {
-      //
-      //           $heading: localization.coreLibrary.components.$heading,
-      //           $URI: `@All/CoreLibrary/Components/Components.${ localization.fileNameLocalizationExtensions }`,
-      //
-      //           $children: {
-      //
-      //             AdmonitionBlock: {
-      //               $heading: "<code>AdmonitionBlock</code>",
-      //               $URI: `@All/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.${ localization.fileNameLocalizationExtensions }`
-      //             },
-      //
-      //             Badge: {
-      //               $heading: "<code>Badge</code>",
-      //               $URI: `@All/CoreLibrary/Components/Children/Badge/Badge.${localization.fileNameLocalizationExtensions}`
-      //             },
-      //
-      //             controls: {
-      //
-      //               $heading: localization.coreLibrary.components.controls.$heading,
-      //
-      //               $children: {
-      //
-      //                 buttons: {
-      //
-      //                   $heading: localization.coreLibrary.components.controls.buttons.$heading,
-      //                   $children: {
-      //
-      //                     plain: {
-      //                       $heading: "<code>Button</code>",
-      //                       $URI: `@All/CoreLibrary/Components/Children/Controls/Buttons/Plain/Button.${localization.fileNameLocalizationExtensions}`
-      //                     }
-      //
-      //                   }
-      //
-      //                 }
-      //
-      //               }
-      //
-      //             }
-      //
-      //           }
-      //
-      //         }
-      //
-      //       }
-      //
-      //     },
-      //
-      //     react: {
-      //
-      //       $heading: "React",
-      //
-      //       $children: {
-      //
-      //         components: {
-      //
-      //           $heading: localization.coreLibrary.components.$heading,
-      //           $URI: `@All/CoreLibrary/Components/Components.${ localization.fileNameLocalizationExtensions }`,
-      //
-      //           $children: {
-      //
-      //             AdmonitionBlock: {
-      //               $heading: "<code>AdmonitionBlock</code>",
-      //               $URI: `@All/FrameworksIntegrations/React/Components/Children/AdmonitionBlock/AdmonitionBlock-React.${ localization.fileNameLocalizationExtensions }`
-      //             },
-      //
-      //             Badge: {
-      //               $heading: "<code>Badge</code>",
-      //               $URI: `@All/CoreLibrary/Components/Children/Badge/Badge.${localization.fileNameLocalizationExtensions}`
-      //             },
-      //
-      //             controls: {
-      //
-      //               $heading: localization.coreLibrary.components.controls.$heading,
-      //
-      //               $children: {
-      //
-      //                 buttons: {
-      //
-      //                   $heading: localization.coreLibrary.components.controls.buttons.$heading,
-      //                   $children: {
-      //
-      //                     plain: {
-      //                       $heading: "<code>Button</code>",
-      //                       $URI: `@All/CoreLibrary/Components/Children/Controls/Buttons/Plain/Button.${localization.fileNameLocalizationExtensions}`
-      //                     }
-      //
-      //                   }
-      //
-      //                 }
-      //
-      //               }
-      //
-      //             }
-      //
-      //           }
-      //
-      //         }
-      //
-      //       }
-      //
-      //     },
-      //
-      //     blazor: {
-      //
-      //       $heading: "Blazor",
-      //
-      //       $children: {
-      //
-      //         components: {
-      //
-      //           $heading: localization.coreLibrary.components.$heading,
-      //           $URI: `@All/CoreLibrary/Components/Components.${ localization.fileNameLocalizationExtensions }`,
-      //
-      //           $children: {
-      //
-      //             AdmonitionBlock: {
-      //               $heading: "<code>AdmonitionBlock</code>",
-      //               $URI: `@All/FrameworksIntegrations/Blazor/Components/Children/AdmonitionBlock/AdmonitionBlock-Blazor.${ localization.fileNameLocalizationExtensions }`
-      //             },
-      //
-      //             Badge: {
-      //               $heading: "<code>Badge</code>",
-      //               $URI: `@All/CoreLibrary/Components/Children/Badge/Badge.${localization.fileNameLocalizationExtensions}`
-      //             },
-      //
-      //             controls: {
-      //
-      //               $heading: localization.coreLibrary.components.controls.$heading,
-      //
-      //               $children: {
-      //
-      //                 buttons: {
-      //
-      //                   $heading: localization.coreLibrary.components.controls.buttons.$heading,
-      //                   $children: {
-      //
-      //                     plain: {
-      //                       $heading: "<code>Button</code>",
-      //                       $URI: `@All/CoreLibrary/Components/Children/Controls/Buttons/Plain/Button.${localization.fileNameLocalizationExtensions}`
-      //                     }
-      //
-      //                   }
-      //
-      //                 }
-      //
-      //               }
-      //
-      //             }
-      //
-      //           }
-      //
-      //         }
-      //
-      //       }
-      //
-      //     }
-      //
-      //   }
-      //
-      // },
+          $heading: localization.coreLibrary.styles.kernel.mixins.$heading,
 
-      realiseNotes: {
+          $children: {
 
-        $heading: localization.realiseNotes.$heading,
+            general: {
 
-        $children: {
+              $heading: localization.coreLibrary.styles.kernel.mixins.general.$heading,
+              $children: {
 
-          v2d0: {
-            $heading: "2.0",
-            $URI: `@All/RealiseNotes/v2d0/RealiseNotes-v2d0.${ localization.fileNameLocalizationExtensions }`
+                applyIfNotNull: {
+                  $heading: "<code>applyIfNotNull</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/00-GeneralUtils/applyIfNotNull.md"
+                },
+
+                applyIfNotZero: {
+                  $heading: "<code>applyIfNotZero</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/00-GeneralUtils/applyIfNotZero.md"
+                }
+
+              }
+
+            },
+
+            sizing: {
+
+              $heading: localization.coreLibrary.styles.kernel.mixins.sizing.$heading,
+              $children: {
+
+                width: {
+
+                  $heading: localization.coreLibrary.styles.kernel.mixins.sizing.width.$heading,
+
+                  $children: {
+
+                    WidthSizing: {
+                      $heading: "<code>WidthSizing</code>",
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/WidthSizing.md"
+                    },
+
+                    fillViewportWidthIgnoringParentPaddings: {
+                      $heading: "<code>fillViewportWidthIgnoringParentPaddings</code>",
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/fillViewportWidthIgnoringParentPaddings.md"
+                    },
+
+                    TableCellWidthSizing: {
+                      $heading: "<code>TableCellWidthSizing</code>",
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/TableCellWidthSizing.md"
+                    }
+
+                  }
+
+                },
+
+                paddings: {
+                  $heading: "<code>Paddings</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/04-Paddings/Paddings.md"
+                }
+
+              }
+
+            },
+
+            positioning: {
+
+              $heading: localization.coreLibrary.styles.kernel.mixins.positioning.$heading,
+
+              $children: {
+
+                centerHorizontallyWithoutWrapper: {
+                  $heading: "<code>centerHorizontallyWithoutWrapper</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/centerHorizontallyWithoutWrapper.md"
+                },
+
+                placeToRight: {
+                  $heading: "<code>placeToRight</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/placeToRight.md"
+
+                },
+
+                VerticallyCenteredAbsolutelyPositionedBlock: {
+                  $heading: "<code>VerticallyCenteredAbsolutelyPositionedBlock</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md"
+                }
+
+              }
+
+            },
+
+            positionalRelationship: {
+
+              $heading: localization.coreLibrary.styles.kernel.mixins.positionalRelationship.$heading,
+              $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md",
+
+              $children: {
+
+                PositionalRelationship: {
+                  $heading: "<code>PositionalRelationship</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#positionalrelationship-mixin"
+                },
+
+                retireFrom: {
+                  $heading: "<code>retireFrom</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefrom-mixin"
+                },
+
+                pushTargetFromSelf: {
+                  $heading: "<code>pushTargetFromSelf</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#pushtargetfromself-mixin"
+                },
+
+                retireFromElementWithSameSelector: {
+                  $heading: "<code>retireFromElementWithSameSelector</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefromelementwithsameselector-mixin"
+                },
+
+                whenItGoingFirst: {
+                  $heading: "<code>whenItGoingFirst</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoingfirst-mixin"
+                },
+
+                whenItGoingLast: {
+                  $heading: "<code>whenItGoingLast</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoinglast-mixin"
+                },
+
+                whenItJustAfter: {
+                  $heading: "<code>whenItJustAfter</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitjustafter"
+                },
+
+                whenTargetGoingJustAfterIt: {
+                  $heading: "<code>whenTargetGoingJustAfterIt</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetgoingjustafterit"
+                },
+
+                whenTargetWithSameSelectorGoingJustAfterIt: {
+                  $heading: "<code>whenTargetWithSameSelectorGoingJustAfterIt</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit"
+                }
+
+              }
+
+            },
+
+            layout: {
+
+              $heading: localization.coreLibrary.styles.kernel.mixins.layout.$heading,
+
+              $children: {
+
+                CenteredContentWithComputedHorizontalPaddings: {
+                  $heading: "<code>CenteredContentWithComputedHorizontalPaddings</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/CenteredContentWithComputedHorizontalPaddings.md"
+                },
+
+                Centerer: {
+                  $heading: "<code>Centerer</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/Centerer.md"
+                },
+
+                fillBodyVertically: {
+                  $heading: "<code>fillBodyVertically</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/fillBodyVertically.md"
+                },
+
+                FixedTranslucentDimLayer: {
+                  $heading: "<code>FixedTranslucentDimLayer</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/FixedTranslucentDimLayer.md"
+                }
+
+              }
+
+            },
+
+            typography: {
+
+              $heading: localization.coreLibrary.styles.kernel.mixins.typography.$heading,
+
+              $children: {
+
+                SingleLineTextElementOverflowSafety: {
+                  $heading: "<code>SingleLineTextElementOverflowSafety</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md"
+                },
+
+                MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight: {
+                  $heading: "<code>MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md"
+                }
+
+              }
+
+            },
+
+            other: {
+
+              $heading: localization.coreLibrary.styles.kernel.mixins.other.$heading,
+
+              $children: {
+
+                provideClippedShadowsAndOutlinesVisibility: {
+                  $heading: "<code>provideClippedShadowsAndOutlinesVisibility</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/provideClippedShadowsAndOutlinesVisibility.md"
+
+                },
+
+                Sprite: {
+                  $heading: "<code>Sprite</code>",
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/Sprite.md"
+                }
+
+              }
+
+            }
+
+          }
+
+        },
+
+        stylesInitialization: {
+
+          $heading: localization.coreLibrary.styles.kernel.stylesInitialization.$heading,
+
+          $children: {
+
+            CrossBrowserStylesReset: {
+              $heading: "<code>CrossBrowserStylesReset</code>",
+              $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/CrossBrowserStylesReset.md"
+            },
+
+            InitialGlobalCSS_Rules: {
+              $heading: "<code>InitialGlobalCSS_Rules</code>",
+              $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/InitialGlobalCSS_Rules.md"
+            },
+
+            ButtonLikeElementsPrimer: {
+              $heading: "<code>ButtonLikeElementsPrimer</code>",
+              $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/ButtonLikeElementsPrimer.md"
+            }
+
           }
 
         }
 
       }
 
-    };
+    },
 
-    return localizedRouting;
+    buildInPlugins: {
+
+      $heading: localization.coreLibrary.styles.buildInPlugins.$heading,
+
+      $children: {
+
+        additionalColorPalettes: {
+
+          $heading: localization.coreLibrary.styles.buildInPlugins.additionalColorPalettes.$heading,
+
+          $children: {
+
+            FlatUI_Colors: {
+              $heading: "<code>FlatUI_Colors</code>",
+              $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md"
+            },
+
+            MaterialDesignColors: {
+              $heading: "<code>MaterialDesignColors</code>",
+              $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md"
+            }
+
+          }
+
+        }
+
+      }
+
+    }
 
   }
+
+},
+
+components: {
+
+
+
+  $children: {
+
+
+    // Badge: {
+    //   $heading: "<code>Badge</code>",
+    //   $URI: `@All/CoreLibrary/Components/Children/Badge/Badge.${ localization.fileNameLocalizationExtensions }`
+    // },
+
+    controls: {
+
+      $heading: localization.coreLibrary.components.controls.$heading,
+
+      $children: {
+
+        buttons: {
+
+          $heading: localization.coreLibrary.components.controls.buttons.$heading,
+          $children: {
+
+            plain: {
+              $heading: "<code>Button</code>",
+              $URI: `@All/CoreLibrary/Components/Children/Controls/Buttons/Plain/Button.${ localization.fileNameLocalizationExtensions }`
+            }
+
+          }
+
+        }
+
+        // validatable: {
+        //
+        //   $heading: "Validatable",
+        //   $URI: "@All/CoreLibrary/Components/Controls/Validatable/ValidatableControls.russian"
+        //
+        // }
+
+      }
+
+    },
+
+    OverflowSafeSingleLineLabel: {
+      $heading: "<code>OverflowSafeSingleLineLabel</code>",
+      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md"
+    }
+
+  }
+
+
+}
+
+}
+
+},
+
+frameworksIntegrations: {
+
+$heading: localization.frameworksIntegrations.$heading,
+
+$children: {
+
+vue: {
+
+  $heading: "Vue",
+
+  $children: {
+
+    components: {
+
+      $heading: localization.coreLibrary.components.$heading,
+
+      $children: {
+
+        // Badge: {
+        //   $heading: "<code>Badge</code>",
+        //   $URI: `@All/CoreLibrary/Components/Children/Badge/Badge.${localization.fileNameLocalizationExtensions}`
+        // },
+
+        // controls: {
+        //
+        //   $heading: localization.coreLibrary.components.controls.$heading,
+        //
+        //   $children: {
+        //
+        //     buttons: {
+        //
+        //       $heading: localization.coreLibrary.components.controls.buttons.$heading,
+        //       $children: {
+        //
+        //         plain: {
+        //           $heading: "<code>Button</code>",
+        //           $URI: `@All/CoreLibrary/Components/Children/Controls/Buttons/Plain/Button.${localization.fileNameLocalizationExtensions}`
+        //         }
+        //
+        //       }
+        //
+        //     }
+        //
+        //   }
+        //
+        // }
+
+      }
+
+    }
+
+  }
+
+},
+
+react: {
+
+  $heading: "React",
+
+  $children: {
+
+    components: {
+
+      $heading: localization.coreLibrary.components.$heading,
+
+      $children: {
+
+        // Badge: {
+        //   $heading: "<code>Badge</code>",
+        //   $URI: `@All/CoreLibrary/Components/Children/Badge/Badge.${localization.fileNameLocalizationExtensions}`
+        // },
+
+        // controls: {
+        //
+        //   $heading: localization.coreLibrary.components.controls.$heading,
+        //
+        //   $children: {
+        //
+        //     buttons: {
+        //
+        //       $heading: localization.coreLibrary.components.controls.buttons.$heading,
+        //       $children: {
+        //
+        //         plain: {
+        //           $heading: "<code>Button</code>",
+        //           $URI: `@All/CoreLibrary/Components/Children/Controls/Buttons/Plain/Button.${localization.fileNameLocalizationExtensions}`
+        //         }
+        //
+        //       }
+        //
+        //     }
+        //
+        //   }
+        //
+        // }
+
+
+blazor: {
+
+  $heading: "Blazor",
+
+  $children: {
+
+    components: {
+
+      $heading: localization.coreLibrary.components.$heading,
+      $URI: `@All/CoreLibrary/Components/Components.${ localization.fileNameLocalizationExtensions }`,
+
+      $children: {
+
+        // Badge: {
+        //   $heading: "<code>Badge</code>",
+        //   $URI: `@All/CoreLibrary/Components/Children/Badge/Badge.${localization.fileNameLocalizationExtensions}`
+        // },
+
+        // controls: {
+        //
+        //   $heading: localization.coreLibrary.components.controls.$heading,
+        //
+        //   $children: {
+        //
+        //     buttons: {
+        //
+        //       $heading: localization.coreLibrary.components.controls.buttons.$heading,
+        //       $children: {
+        //
+        //         plain: {
+        //           $heading: "<code>Button</code>",
+        //           $URI: `@All/CoreLibrary/Components/Children/Controls/Buttons/Plain/Button.${localization.fileNameLocalizationExtensions}`

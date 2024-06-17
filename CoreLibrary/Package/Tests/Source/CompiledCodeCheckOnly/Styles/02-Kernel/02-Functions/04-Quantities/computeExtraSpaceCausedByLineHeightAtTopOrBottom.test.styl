@@ -33,12 +33,12 @@ testForEquality(
 )
 
 
-// === [ Branch A3 ] Font size and line spacing of same unit
+// === [ Branch A4 ] Font size and line spacing of different units
 testForEquality(
   "With 1rem font size and line spacing equals 4px, the scalar result could not be computed by CSS pre-processor; " +\
       "the calc expression 'calc(1rem * (4px / 2))' will be generated instead",
   computeExtraSpaceCausedByLineHeightAtTopOrBottom({ fontSize: 1rem, lineSpacing: 4px }),
-  "calc(1rem * (4px / 2))"
+  2px
 )
 
 

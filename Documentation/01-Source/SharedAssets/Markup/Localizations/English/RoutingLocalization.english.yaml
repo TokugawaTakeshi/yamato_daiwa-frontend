@@ -1,0 +1,177 @@
+fileNameLocalizationExtensions: "english"
+
+top:
+
+  $heading: "Top"
+  $URI: @All/index
+
+coreLibrary:
+
+  $heading: "Core Library"
+
+  markup:
+
+    $heading: "Pug Markup"
+
+    functionality:
+
+      $heading: "Functionality"
+
+      inlineJavaScript:
+
+        $heading: "Inline JavaScript"
+
+        YDEE_Integration:
+
+          $heading: "Integration with @yamato-daiwa/es-extensions (YDEE)"
+
+        functionsAndClasses:
+
+          $heading: "Functions and Classes"
+
+        assets:
+
+          $heading: "Assets"
+
+      pugMixins:
+
+        $heading: "Pug Mixins"
+
+        dummies:
+
+          $heading: "<code>WideDummy</code> and <code>HighDummy</code>"
+
+        SVG_Icons:
+
+          $heading: "SVG icons"
+
+#        yamatoDaiwaInformationDesign:
+#
+#          $heading: "Yamato Daiwa Information Design"
+
+      pagesTemplates:
+
+        $heading: "Pages Templates"
+
+      usageOnServerSide:
+
+        $heading: "Usage on Server Side"
+
+  styles:
+
+    $heading: "Styles"
+
+    assets:
+
+      $heading: "Assets"
+
+      fundamentalConstantsAndEnums:
+
+        $heading: "Fundamental constants and enumerations"
+
+      colors:
+
+        $heading: "Colors"
+
+        PracticalColorCoordinateSystem:
+
+          $heading: "PCCS palette (<code>PracticalColorCoordinateSystem</code>)"
+
+        ShadesOfGray__39ColorsW3C_Palette:
+
+          $heading: "39 shades of gray palette (<code>ShadesOfGray__39ColorsW3C_Palette</code>)"
+
+        YDF_ColorPalette:
+
+          $heading: "<code>YDF_ColorPalette</code>"
+
+    kernel:
+
+      $heading: "Kernel"
+
+      YDF_Configuration:
+
+        $heading: "Configuration"
+
+        fontsStacks:
+
+          $heading: "Font stacks"
+
+        textGeometry:
+
+          $heading: "Dimensions"
+
+        zIndexes:
+
+          $heading: "Z-Indexes"
+
+      specificationsSchemas:
+
+        $heading: "Specifications schemas"
+
+      functions:
+
+        $heading: "Functions"
+
+        typeCheckers:
+
+          $heading: "Values types checkers"
+
+          strings:
+
+            $heading: "Strings"
+
+          quantities:
+
+            $heading: "Quantities"
+
+          booleans:
+
+            $heading: "Boolean values"
+
+          nullables:
+
+            $heading: "Nullables"
+
+          others:
+
+            $heading: "Others"
+
+        valueTransformers:
+
+          $heading: "Value transformers"
+
+        strings:
+
+          $heading: "Working with strings"
+  components:
+    $heading: "GUI Components"
+    controls:
+      $heading: "Controls"
+      buttons: { $heading: "Buttons" }
+
+frameworksIntegrations:
+
+  $heading: "Frameworks Adaptations"
+
+  vue:
+
+    components:
+
+      $heading: "GUI-компоненты"
+
+  react:
+
+    components:
+
+      $heading: "GUI-компоненты"
+
+  blazor:
+
+    components:
+
+      $heading: "GUI-компоненты"
+
+realiseNotes:
+
+  $heading: "Realise notes"

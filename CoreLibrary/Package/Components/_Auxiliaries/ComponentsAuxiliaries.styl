@@ -50,16 +50,16 @@ applyComponentThemes(compoundParameter, restParameters__MUST_NOT_BE...)
     targetParameter: compoundParameter,
     schema: {
       CSS_Namespace: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: true,
         minimalCharactersCount: 1
       },
       areThemesCSS_ClassesCommon: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       },
       themeIndependentGeometricVariations: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       }
     },
@@ -263,7 +263,7 @@ extractAndValidateObjectProperties(compoundParameter, restParameters__MUST_NOT_B
     targetParameter: compoundParameter,
     schema: {
       targetObjectName: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: true,
         minimalCharactersCount: 1
       }
@@ -384,7 +384,7 @@ validateAndAssignStoredInObjectCSS_Properties(compoundParameter, restParameters_
     targetParameter: compoundParameter,
     schema: {
       targetObjectName: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: true,
         minimalCharactersCount: 1
       }
@@ -435,27 +435,27 @@ applyObjectTypeBoxShadowDefinition(compoundParameter, restParameters__MUST_NOT_B
       targetParameter: compoundParameter,
       schema: {
         inset: {
-          type: DataTypes.boolean,
+          type: DataTypes--YDF.boolean,
           defaultValue: false
         },
         XOffset: {
-          type: DataTypes.dimensionalQuantity,
+          type: DataTypes--YDF.dimensionalQuantity,
           defaultValue: 0
         },
         YOffset: {
-          type: DataTypes.dimensionalQuantity,
+          type: DataTypes--YDF.dimensionalQuantity,
           defaultValue: 0
         },
         blurRadius: {
-          type: DataTypes.dimensionalQuantity,
+          type: DataTypes--YDF.dimensionalQuantity,
           defaultValue: 0
         },
         spreadRadius: {
-          type: DataTypes.dimensionalQuantity,
+          type: DataTypes--YDF.dimensionalQuantity,
           defaultValue: 0
         },
         color: {
-          type: DataTypes.colorDefinition,
+          type: DataTypes--YDF.colorDefinition,
           required: true
         }
       },
@@ -478,18 +478,28 @@ applyObjectTypeUnderlineDefinition(compoundParameter = {}, restParameters__MUST_
     targetParameterNumber: 1,
     targetParameter: compoundParameter,
     schema: {
+      position: {
+        type: DataTypes--YDF.string,
+        required: false,
+        considerIdentifierAsString: true,
+        allowedAlternatives: "none" "underline" "overline" "line-through" "blink"
+      },
       thickness: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
-      type: {
-        type: DataTypes.string,
+      offset: {
+        type: DataTypes--YDF.dimensionalQuantity,
+        required: false
+      },
+      style: {
+        type: DataTypes--YDF.string,
         required: false,
         considerIdentifierAsString: true,
         allowedAlternatives: "solid" "double" "dotted" "dashed" "wavy"
       },
       color: {
-        type: DataTypes.colorDefinition,
+        type: DataTypes--YDF.colorDefinition,
         required: false
       }
     },
@@ -499,8 +509,10 @@ applyObjectTypeUnderlineDefinition(compoundParameter = {}, restParameters__MUST_
   if isNotNull(compoundParameter) && length(keys(compoundParameter)) > 0
 
     applyIfNotNull({
+      text-decoration-line: compoundParameter.position,
+      text-decoration-thickness: compoundParameter.thickness,
+      text-underline-offset: compoundParameter.offset,
       text-decoration-style: compoundParameter.type,
-      text-decoration-thickness: compoundParameter.thickness
       text-decoration-color: compoundParameter.color
     })
 
@@ -513,17 +525,21 @@ applyOutlineObjectTypeDefinition(compoundParameter = {}, restParameters__MUST_NO
     targetParameter: compoundParameter,
     schema: {
       thickness: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
+      offset: {
+        type: DataTypes--YDF.dimensionalQuantity,
+        required: false
+      }
       type: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: false,
         considerIdentifierAsString: true,
         allowedAlternatives: "dotted" "dashed" "solid" "double" "groove" "ridge" "inset" "outset"
       },
       color: {
-        type: DataTypes.colorDefinition,
+        type: DataTypes--YDF.colorDefinition,
         required: false
       }
     },
@@ -535,6 +551,7 @@ applyOutlineObjectTypeDefinition(compoundParameter = {}, restParameters__MUST_NO
 
     applyIfNotNull({
       outline-width: compoundParameter.thickness,
+      outline-offset: compoundParameter.offset,
       outline-style: compoundParameter.type,
       outline-color: compoundParameter.color
     })

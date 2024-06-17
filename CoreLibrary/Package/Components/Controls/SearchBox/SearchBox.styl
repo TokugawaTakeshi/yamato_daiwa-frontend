@@ -5,6 +5,7 @@
     BORDER_RADIUS = 3px
 
     display flex
+    align-items center //* [ Why?! ] With `align-items: stretch` as default, the height of children content could be changed. */
 
     height 32px
     border-radius BORDER_RADIUS
@@ -18,6 +19,7 @@
 
       TextBoxLikeElementsPrimer()
 
+      width 0 //* [ Why?! ] To provide the shrinkage in narrow containers (`min-width: 0` will not work.) */
       border-width 1px
       padding calc(.45rem - 1px) .5rem .45rem
       font-size 1rem

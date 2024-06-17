@@ -77,8 +77,14 @@ provideCodeViewerYDF_Component()
       grid-gap 4px 6px
       align-items center
 
-      border-top-width 1px
-      border-left-width 1px
+      BordersSizing({
+        thickness: {
+          horizontalSymmetric: 1px,
+          top: 1px,
+          bottom: 3px
+        }
+      })
+
       Paddings({
         horizontalSymmetric: 12px,
         verticalSymmetric: 6px
@@ -134,7 +140,8 @@ provideCodeViewerYDF_Component()
         applyTextGeometryWithoutExtraSpaceCausedByLineHeight({
           fontSize: 14px,
           lineSpacing: 4px,
-          mustAllowWordsBreakingAnywhere: true
+          mustAllowWordsBreakingAnywhere: true,
+          mustApplyNegativeMarginsToRootElement: true
         })
 
         color: ShadesOfGray__39ColorsW3C_Palette[14]
@@ -163,6 +170,8 @@ provideCodeViewerYDF_Component()
       &-LanguageValueLabel
 
         font-size 11px
+        text-align left
+
         font-weight bold
         color: ShadesOfGray__39ColorsW3C_Palette[18]
 

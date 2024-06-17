@@ -1,0 +1,51 @@
+extends ../../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../../SharedAssets/Markup/SharedAssets.english.pug
+  include ../../../../../SharedComponents/SharedComponents.english.pug
+
+
+block append Metadata
+
+  -
+
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("RegularWebPageTemplate"),
+        description: ""
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
+
+    RoutingEmulator.setCurrentRoute("localizedRouting.coreLibrary.markup.pagesTemplates.RegularWebPage");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      japanese: "./RegularWebPageTemplate.japanese.html",
+      russian: "./RegularWebPageTemplate.russian.html"
+    });
+
+    const pageTableOfContents = localizedRouting.coreLibrary.$children.
+        markup.$children.
+        pagesTemplates.$children.
+        RegularWebPage.$sectioning;
+
+
+block append HeadScripts
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    h1 RegularWebPageTemplate

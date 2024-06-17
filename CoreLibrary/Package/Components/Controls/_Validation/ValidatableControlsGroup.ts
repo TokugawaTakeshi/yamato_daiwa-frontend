@@ -9,7 +9,11 @@ import { isNotUndefined, Logger, UnexpectedEventError } from "@yamato-daiwa/es-e
 import type { ArbitraryObject } from "@yamato-daiwa/es-extensions";
 
 
-class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown>> {
+class ValidatableControlsGroup<
+  ControlsPayload extends ValidatableControlsGroup.GeneralizedControlsPayload,
+  InputtedValidValues extends { [controlPayloadID: string]: unknown; },
+  ValidData extends ArbitraryObject = InputtedValidValues
+> {
 
   protected static counterForID_Generating: number = -1;
 
@@ -17,10 +21,11 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
   public readonly ID: string;
 
 
-  protected readonly controlsPayload: ValidatableControlsGroup.GeneralizedControlsPayload;
+  protected readonly controlsPayload: ControlsPayload;
+  protected readonly validDataConstructor: (inputtedValidValues: InputtedValidValues) => ValidData;
   protected readonly isEachControlPayloadValid: { [controlPayloadID: string]: boolean; };
   protected readonly areAsynchronousChecksBeingExecutedForEachControlPayload: { [controlPayloadID: string]: boolean; };
-  protected readonly SCROLLABLE_CONTAINER_HTML_ID?: string;
+  protected readonly scrollableContainerHTML_ID?: string;
 
   protected readonly onHasBecomeValidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
   protected readonly onHasBecomeInvalidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
@@ -30,66 +35,11 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
   private _isInvalid: boolean;
 
 
-  /* ━━━  Static methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  public static hasAtLeastOneInvalidPayload(
-    controlsAccess: ValidatableControlsGroup.GeneralizedControlsPayload
-  ): boolean {
-    return (Array.isArray(controlsAccess) ? controlsAccess : Object.values(controlsAccess)).
-        some(
-          (validatableControlPayload: ValidatableControl.Payload<unknown, unknown, InputtedValueValidation>): boolean =>
-              validatableControlPayload.isInvalid
-        );
-  }
-
-  public static pointOutValidationErrors(
-    compoundParameter: Readonly<{
-      controlsPayload: ValidatableControlsGroup.GeneralizedControlsPayload;
-      scrollableContainerHTML_ID?: string;
-    }>
-  ): void {
-
-    const {
-      controlsPayload,
-      scrollableContainerHTML_ID
-    }: Parameters<typeof ValidatableControlsGroup.pointOutValidationErrors>["0"] = compoundParameter;
-
-    let isCurrentInvalidControlPayloadTheFirstInvalidOne: boolean = true;
-
-    for (const validatableControlPayload of Object.values(controlsPayload)) {
-
-      if (validatableControlPayload.isInvalid) {
-
-        const componentInstance: ValidatableControl = validatableControlPayload.getComponentInstance();
-
-        componentInstance.highlightInvalidInput();
-
-        if (isCurrentInvalidControlPayloadTheFirstInvalidOne) {
-
-          componentInstance.focus();
-
-          /* eslint-disable-next-line max-depth -- Here are all conditions are required. */
-          if (isNotUndefined(scrollableContainerHTML_ID)) {
-            getExpectedToBeSingleDOM_Element({ selector: `#${ scrollableContainerHTML_ID }` }).scroll({
-              top: componentInstance.getRootElementOffsetCoordinates().top,
-              behavior: "smooth"
-            });
-          }
-
-          isCurrentInvalidControlPayloadTheFirstInvalidOne = false;
-
-        }
-
-      }
-
-    }
-
-  }
-
-
-  /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public constructor(
     compoundParameter: Readonly<{
-      controlsPayload: ValidatableControlsGroup.GeneralizedControlsPayload;
+      controlsPayload: ControlsPayload;
+      validDataConstructor?: (inputtedValidValues: InputtedValidValues) => ValidData;
       scrollingContainerHTML_ID?: string;
       onHasBecomeValidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
       onHasBecomeInvalidEventHandler?: ValidatableControlsGroup.GeneralizedEventHandler;
@@ -102,6 +52,12 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
     this.ID = `VALIDATABLE_CONTROLS_GROUP-${ ValidatableControlsGroup.counterForID_Generating }`;
 
     this.controlsPayload = compoundParameter.controlsPayload;
+    this.validDataConstructor =
+        compoundParameter.validDataConstructor ??
+        /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
+        * Looks like there is no way to tell typescript that if `validDataConstructor` is not defined, the `ValidData`
+        *   will be even with `InputtedValidValues`. Tried constructor overloading.  */
+        ((inputtedValidValues: InputtedValidValues): ValidData => inputtedValidValues as unknown as ValidData);
 
     this.onHasBecomeValidEventHandler = compoundParameter.onHasBecomeValidEventHandler;
     this.onHasBecomeInvalidEventHandler = compoundParameter.onHasBecomeInvalidEventHandler;
@@ -133,42 +89,76 @@ class ValidatableControlsGroup<ValidData extends ArbitraryObject | Array<unknown
     }
 
     this.isEachControlPayloadValid = isEachControlPayloadValid;
-    this._isInvalid = this.isAtLeastOneControlPayloadInvalid();
     this.areAsynchronousChecksBeingExecutedForEachControlPayload = areAsynchronousChecksBeingExecutedForEachControlPayload;
-    this.SCROLLABLE_CONTAINER_HTML_ID = compoundParameter.scrollingContainerHTML_ID;
+    this.scrollableContainerHTML_ID = compoundParameter.scrollingContainerHTML_ID;
+
+    this._isInvalid = this.isAtLeastOneControlPayloadInvalid();
 
   }
 
 
-  /* ━━━ Public instance methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Public Instance Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public pointOutValidationErrors(): void {
-    ValidatableControlsGroup.pointOutValidationErrors({
-      controlsPayload: this.controlsPayload,
-      scrollableContainerHTML_ID: this.SCROLLABLE_CONTAINER_HTML_ID
-    });
+
+    let isCurrentInvalidControlPayloadTheFirstInvalidOne: boolean = true;
+
+    for (const validatableControlPayload of Object.values(this.controlsPayload)) {
+
+      if (validatableControlPayload.isInvalid) {
+
+        const componentInstance: ValidatableControl = validatableControlPayload.getComponentInstance();
+
+        componentInstance.highlightInvalidInput();
+
+        if (isCurrentInvalidControlPayloadTheFirstInvalidOne) {
+
+          componentInstance.focus();
+
+          /* eslint-disable-next-line max-depth -- Here are all conditions are required. */
+          if (isNotUndefined(this.scrollableContainerHTML_ID)) {
+            getExpectedToBeSingleDOM_Element({ selector: `#${ this.scrollableContainerHTML_ID }` }).scroll({
+              top: componentInstance.getRootElementOffsetCoordinates().top,
+              behavior: "smooth"
+            });
+          }
+
+          isCurrentInvalidControlPayloadTheFirstInvalidOne = false;
+
+        }
+
+      }
+
+    }
+
   }
 
-  public getExpectedToBeValidData(): ValidData {
+  public getExpectedToBeValidInputtedValues(): InputtedValidValues {
 
     if (this._isInvalid) {
       Logger.throwErrorAndLog({
         errorInstance: new UnexpectedEventError("Contrary to expectations, the payload is still invalid."),
         title: UnexpectedEventError.localization.defaultTitle,
-        occurrenceLocation: "validatableControlsGroup.getExpectedToBeValidPayload()"
+        occurrenceLocation: "validatableControlsGroup.getExpectedToBeValidInputtedValues()"
       });
     }
 
+    /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions --
+    *  */
+    return Object.entries(this.controlsPayload).reduce(
+      (
+        validData: ValidatableControlsGroup.PossiblyInvalidData,
+        [ controlKey, controlPayload ]: [ string, ValidatableControlsGroup.GeneralizedControlPayload ]
+      ): ValidatableControlsGroup.PossiblyInvalidData => {
+        validData[controlKey] = controlPayload.getExpectedToBeValidValue();
+        return validData;
+      },
+      {}
+    ) as InputtedValidValues;
 
-    const payload: ArbitraryObject = {};
+  }
 
-    for (const [ key, controlPayload ] of Object.entries(this.controlsPayload)) {
-      payload[key] = controlPayload.getExpectedToBeValidValue();
-    }
-
-
-    /* eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- The validity of data has been guaranteed. */
-    return payload as ValidData;
-
+  public getExpectedToBeValidData(): ValidData {
+    return this.validDataConstructor(this.getExpectedToBeValidInputtedValues());
   }
 
   public getPossiblyInvalidPayload(): ValidatableControlsGroup.PossiblyInvalidData {

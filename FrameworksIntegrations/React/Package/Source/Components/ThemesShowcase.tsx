@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from "react";
+import type { ReactElement } from "react";
 import React from "react";
 
 
@@ -14,125 +14,129 @@ const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
         decorativeVariationLabelPrefix,
         decorativeVariationsWrapperTag: DecorativeVariationsWrapperTag = "ul",
         decorativeVariationsWrapperAdditionalCSS_Classes = [],
-        children
+        decorativeVariationsListItemAdditionalCSS_Classes = [],
+        renderChild
       }: ThemesShowcase.Properties
     ): ReactElement =>
 
-        <ul className="ThemesShowcase--YDF">
-
+        <dl className="ThemesShowcase--YDF">
           {
 
             Object.entries(themes).map(
               ([ themeKey, themeValue ]: [ string, string ]): ReactElement =>
 
-                  <li key={ `THEME-${ themeKey }` }>
+                  <>
 
-                    <span className="ThemesShowcase--YDF-Label">{ `${ themeKeyLabelPrefix }${ themeKey }` }</span>
-
-                    <ul className="ThemesShowcase--YDF-ChildList">
-
-                      {
-
-                        Object.entries(geometricVariations).map(
-                          ([ geometricVariationKey, geometricVariationValue ]: [ string, string ]): ReactElement =>
-
-                              <li key={ `GEOMETRIC_VARIATION-${ themeKey }-${ geometricVariationKey }` }>
-
-                                <span className="ThemesShowcase--YDF-Label">
+                    <dt className="ThemesShowcase--YDF-KeyLabel">{ `${ themeKeyLabelPrefix }${ themeKey }` }</dt>
+                    <dd className="ThemesShowcase--YDF-ValueSection">
+                      <dl className="ThemesShowcase--YDF-ChildList">
+                        {
+                          Object.entries(geometricVariations).map(
+                            ([ geometricVariationKey, geometricVariationValue ]: [ string, string ]): ReactElement => (
+                              <>
+                                <dt className="ThemesShowcase--YDF-KeyLabel">
                                   { `${ geometricVariationLabelPrefix }${ geometricVariationKey }` }
-                                </span>
+                                </dt>
 
-                                <DecorativeVariationsWrapperTag
-                                  className={ decorativeVariationsWrapperAdditionalCSS_Classes.join(" ") }
-                                  key={ `DECORATIVE_VARIATIONS-${ themeKey }-${ geometricVariationKey }` }
-                                >
+                                <dd className="ThemesShowcase--YDF-ValueSection">
 
-                                  {
+                                  <DecorativeVariationsWrapperTag
+                                    className={
+                                      [
+                                        "ThemesShowcase--YDF-ChildList",
+                                        decorativeVariationsWrapperAdditionalCSS_Classes
+                                      ].join(" ")
+                                    }
+                                  >
 
-                                    Object.entries(decorativeVariations).map(
+                                    {
 
-                                        /* eslint-disable-next-line max-nested-callbacks --
-                                         * Maybe it will be better to extract this content to other method, but the parameters
-                                         *   count will be large. */
-                                        (
-                                          [ decorativeVariationKey, decorativeVariationValue ]: [ string, string ]
-                                        ): ReactElement =>
+                                      Object.entries(decorativeVariations).map(
 
-                                            (
-                                              DecorativeVariationsWrapperTag === "ul" ?
+                                          /* eslint-disable-next-line max-nested-callbacks --
+                                           * Maybe it will be better to extract this content to other method, but the
+                                           *   parameters count will be large. */
+                                          (
+                                            [ decorativeVariationKey, decorativeVariationValue ]: [ string, string ]
+                                          ): ReactElement =>
 
-                                                  <li key={ `DECORATIVE_VARIATION-${ themeKey }-${ decorativeVariationKey }` } >
+                                              (
+                                                DecorativeVariationsWrapperTag === "dl" ?
 
-                                                    <span className="ThemesShowcase--YDF-Label">
-                                                      { `${ decorativeVariationLabelPrefix }${ decorativeVariationKey }` }
-                                                    </span>
+                                                    <>
 
-                                                    {
-                                                      children({
-                                                        theme: {
-                                                          key: themeKey,
-                                                          value: themeValue
-                                                        },
-                                                        geometricVariation: {
-                                                          key: geometricVariationKey,
-                                                          value: geometricVariationValue
-                                                        },
-                                                        decorativeVariation: {
-                                                          key: decorativeVariationKey,
-                                                          value: decorativeVariationValue
-                                                        },
-                                                        iterationKey:
-                                                            `DECORATIVE_VARIATION-${ themeKey }-${ decorativeVariationKey }`
-                                                      })
-                                                    }
+                                                      <dt className="ThemesShowcase--YDF-KeyLabel">
+                                                        { `${ decorativeVariationLabelPrefix }${ decorativeVariationKey }` }
+                                                      </dt>
 
-                                                  </li> :
+                                                      <dd
+                                                        className={
+                                                          [
+                                                            "ThemesShowcase--YDF-ValueSection",
+                                                            decorativeVariationsListItemAdditionalCSS_Classes
+                                                          ].join(" ")
+                                                        }
+                                                      >
 
-                                                  <>
-                                                    {
-                                                      children({
-                                                        theme: {
-                                                          key: themeKey,
-                                                          value: themeValue
-                                                        },
-                                                        geometricVariation: {
-                                                          key: geometricVariationKey,
-                                                          value: geometricVariationValue
-                                                        },
-                                                        decorativeVariation: {
-                                                          key: decorativeVariationKey,
-                                                          value: decorativeVariationValue
-                                                        },
-                                                        iterationKey:
-                                                            `DECORATIVE_VARIATION-${ themeKey }-${ decorativeVariationKey }`
-                                                      })
-                                                    }
-                                                  </>
-                                            )
-                                    )
+                                                        {
+                                                          renderChild({
+                                                            theme: {
+                                                              key: themeKey,
+                                                              value: themeValue
+                                                            },
+                                                            geometricVariation: {
+                                                              key: geometricVariationKey,
+                                                              value: geometricVariationValue
+                                                            },
+                                                            decorativeVariation: {
+                                                              key: decorativeVariationKey,
+                                                              value: decorativeVariationValue
+                                                            }
+                                                          })
+                                                        }
 
-                                  }
+                                                      </dd>
 
-                                </DecorativeVariationsWrapperTag>
+                                                    </> :
 
-                              </li>
-                        )
+                                                    renderChild({
+                                                      theme: {
+                                                        key: themeKey,
+                                                        value: themeValue
+                                                      },
+                                                      geometricVariation: {
+                                                        key: geometricVariationKey,
+                                                        value: geometricVariationValue
+                                                      },
+                                                      decorativeVariation: {
+                                                        key: decorativeVariationKey,
+                                                        value: decorativeVariationValue
+                                                      }
+                                                    })
+                                              )
+                                          )
 
-                      }
+                                    }
 
-                    </ul>
+                                  </DecorativeVariationsWrapperTag>
 
-                  </li>
+                                </dd>
+
+                              </>
+                            )
+                          )
+                        }
+                      </dl>
+                    </dd>
+                  </>
               )
-
           }
-
-        </ul>;
+        </dl>;
 
 
 namespace ThemesShowcase {
 
-  export interface Properties {
+  export type Properties = Readonly<{
     themes: Readonly<{ [themeKey: string]: string; }>;
     themeKeyLabelPrefix?: string;
     geometricVariations: Readonly<{ [themeKey: string]: string; }>;
@@ -141,14 +145,14 @@ namespace ThemesShowcase {
     decorativeVariationLabelPrefix?: string;
     decorativeVariationsWrapperTag?: React.ElementType;
     decorativeVariationsWrapperAdditionalCSS_Classes?: ReadonlyArray<string>;
-    children: (properties: ChildrenProperties) => ReactNode;
-  }
+    decorativeVariationsListItemAdditionalCSS_Classes?: ReadonlyArray<string>;
+    renderChild: (dataForChildren: DataForChildren) => React.ReactElement;
+  }>;
 
-  export type ChildrenProperties = Readonly<{
+  export type DataForChildren = Readonly<{
     theme: Readonly<{ key: string; value: string; }>;
     geometricVariation: Readonly<{ key: string; value: string; }>;
     decorativeVariation: Readonly<{ key: string; value: string; }>;
-    iterationKey: string;
   }>;
 
 }

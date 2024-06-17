@@ -5,8 +5,9 @@
 
 
 <!-- Plugin description -->
-<!-- ⚠️ Don't use "kbd" tag because it has no appropriate styles in Jet Brains Marketplace -->
-<!-- ⚠️ Don't use "dl" tag because it has no appropriate styles in Jet Brains Marketplace -->
+
+<!-- ⚠️ Don't use `kbd` tag because it has no appropriate styles in Jet Brains Marketplace -->
+<!-- ⚠️ Don't use `dl` tag because it has no appropriate styles in Jet Brains Marketplace -->
 
 Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templates.html) and
   [files templates](https://www.jetbrains.com/help/idea/using-file-and-code-templates.html) for the
@@ -26,14 +27,32 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 
 #### Mixins
 
-* <kbd>pl</kbd> Live template for [`PageLink` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelink)
-* <kbd>plg</kbd> Live template for [`PagesLinksGroup` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelinksgroup)
+* **pl** — Live template for [`PageLink` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelink)
+* **plg** — Live template for [`PagesLinksGroup` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelinksgroup)
 
 
-#### Components
+#### GUI Components
+
+- **AdmonitionBlock--YDF**, alias: **ab-ydf** — Inserts the examples of 
+  [AdmonitionBlock--YDF](https://frontend.yamato-daiwa.com/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html)
+  component usage.
+
+### Frameworks Adaptations
+
+#### Vue
 
 - **ab-ydf** — Live template for the inserting of invocation of **AdmonitionBlock--YDF** Pug mixin corresponding to the 
-    **AdmonitionBlock** component
+    [**AdmonitionBlock** component](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html)
+- **AdmonitionBlock--YDF**, **ab-ydf** — Autocomplete imitator and its alias respectively for
+  [eponymous component](https://frontend.yamato-daiwa.com/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html).
+##### GUI Components
+
+- **AdmonitionBlock--YDF-V-P**, alias: **ab-ydf-vue-p** — Live template for 
+  [AdmonitionBlock--YDF](FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  component (Pug syntax).
+- **AdmonitionBlock--YDF-V-H**, alias: **ab-ydf-vue-h** — Live template for 
+  [AdmonitionBlock--YDF](FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  component (HTML syntax).
 - **badge-ydf**, **badge-lp-ydf** — Live templates for the inserting of invocation of **Badge--YDF** and 
     **Badge--YDF-LoadingPlaceholder** Pug mixins corresponding to **Badge** component and its loading placeholder 
     respectively  
@@ -271,9 +290,9 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 ## Files templates
 ### Styles customizing 
 
-* **Files and Code Templates/Other/YDF GUI Components/AdmonitionBlock.styl**
-* **Files and Code Templates/Other/YDF GUI Components/Badge.styl**
-
+- [**AdmonitionBlock** component](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html): 
+    `Files and Code Templates/Other/YDF GUI Components/AdmonitionBlock.styl`
+- **Badge** component: `Files and Code Templates/Other/YDF GUI Components/Badge.styl`
 
 ## Installation
 

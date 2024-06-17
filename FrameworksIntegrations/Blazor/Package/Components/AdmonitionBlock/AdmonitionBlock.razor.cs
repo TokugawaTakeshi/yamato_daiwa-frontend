@@ -6,44 +6,50 @@ using YamatoDaiwa.CSharpExtensions;
 namespace YamatoDaiwa.Frontend.Components.AdmonitionBlock;
 
 
-public partial class AdmonitionBlock : 
+public partial class AdmonitionBlock :
     Microsoft.AspNetCore.Components.ComponentBase,
     ISupportsFlexibleExternalCSS_ClassesSpecifyingForRootElement
 {
-  
-  [Microsoft.AspNetCore.Components.Parameter] 
+
+  public static string CSS_NAMESPACE = "AdmonitionBlock--YDF";
+
+
+  [Microsoft.AspNetCore.Components.Parameter]
   public string? title { get; set; }
-  
+
+
+  /* ━━━ Dismissing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   [Microsoft.AspNetCore.Components.Parameter]
-  public bool hasPrependedSVG_Icon { get; set; } = false;
-  
-  
-  /* ━━━ Dismissing button ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  [Microsoft.AspNetCore.Components.Parameter]
-  public bool hasDismissingButton { get; set; } = false;
-  
-  [Microsoft.AspNetCore.Components.Inject] 
+  public bool dismissible { get; set; } = false;
+
+  [Microsoft.AspNetCore.Components.Inject]
   protected Microsoft.JSInterop.IJSRuntime JSRuntime { get; set; } = null!;
-  
+
   private void onClickDismissingButton()
   {
     // JSRuntime.InvokeVoidAsync("CollapsingAnimation.animate", this.rootElement);
   }
   
   
+
+
+
+
+
+
   /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public enum StandardThemes { regular }
-  
+
   protected internal static Type? CustomThemes;
-  
-  public static void defineCustomThemes(Type CustomThemes) 
+
+  public static void defineCustomThemes(Type CustomThemes)
   {
     YDF_ComponentsHelper.ValidateCustomTheme(CustomThemes);
     AdmonitionBlock.CustomThemes = CustomThemes;
   }
-  
+
   protected string _theme = AdmonitionBlock.StandardThemes.regular.ToString();
-  
+
   [Microsoft.AspNetCore.Components.Parameter]
   public object theme
   {
@@ -51,7 +57,7 @@ public partial class AdmonitionBlock :
     set => YDF_ComponentsHelper.
         AssignThemeIfItIsValid<AdmonitionBlock.StandardThemes>(value, AdmonitionBlock.CustomThemes, ref this._theme);
   }
-  
+
   protected internal static bool mustConsiderThemesCSS_ClassesAsCommon = YDF_ComponentsHelper.areThemesCSS_ClassesCommon;
 
   public static void considerThemesAsCommon()
@@ -62,8 +68,8 @@ public partial class AdmonitionBlock :
   [Microsoft.AspNetCore.Components.Parameter]
   public bool areThemesCSS_ClassesCommon { get; set; } =
       YDF_ComponentsHelper.areThemesCSS_ClassesCommon || AdmonitionBlock.mustConsiderThemesCSS_ClassesAsCommon;
-  
-  
+
+
   /* ─── Geometry ─────────────────────────────────────────────────────────────────────────────────────────────────── */
   public enum StandardGeometricVariations
   {
@@ -79,7 +85,7 @@ public partial class AdmonitionBlock :
     AdmonitionBlock.CustomGeometricVariations = CustomGeometricVariations;
 
   }
-  
+
   protected string _geometricVariation = AdmonitionBlock.StandardGeometricVariations.regular.ToString();
 
   [Microsoft.AspNetCore.Components.Parameter]
@@ -90,8 +96,8 @@ public partial class AdmonitionBlock :
       value, AdmonitionBlock.CustomGeometricVariations, ref this._geometricVariation
     );
   }
-  
-  
+
+
   /* ─── Decoration ───────────────────────────────────────────────────────────────────────────────────────────────── */
   public enum StandardDecorativeVariations
   {
@@ -104,11 +110,11 @@ public partial class AdmonitionBlock :
   }
 
   protected internal static Type? CustomDecorativeVariations;
-  
+
   public static void defineNewDecorativeVariations(Type CustomDecorativeVariations) {
     YDF_ComponentsHelper.ValidateCustomDecorativeVariation(CustomDecorativeVariations);
     AdmonitionBlock.CustomDecorativeVariations = CustomDecorativeVariations;
-  }  
+  }
 
   protected string _decorativeVariation = null!;
 
@@ -121,8 +127,8 @@ public partial class AdmonitionBlock :
       value, AdmonitionBlock.CustomDecorativeVariations, ref this._decorativeVariation
     );
   }
-  
-  
+
+
   /* ━━━ CSS classes ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   [Microsoft.AspNetCore.Components.Parameter]
   public string? rootElementModifierCSS_Class { get; set; } = null;
@@ -163,7 +169,7 @@ public partial class AdmonitionBlock :
       ).
 
       StringifyEachElementAndJoin(" ");
-  
+
 
   /* ━━━ Child content ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   [Microsoft.AspNetCore.Components.Parameter]
@@ -177,35 +183,35 @@ public partial class AdmonitionBlock :
   /* ─── Basic ID ─────────────────────────────────────────────────────────────────────────────────────────────────── */
   protected readonly string BASIC_ID = AdmonitionBlock.generateBasicID();
   protected static uint counterForBasicID_Generating = 0;
-  
+
   public static string generateBasicID()
   {
     AdmonitionBlock.counterForBasicID_Generating++;
     return $"ADMONITION_BLOCK--YDF-{ AdmonitionBlock.counterForBasicID_Generating }";
   }
 
-  
+
   /* ─── Root element HTML ID ─────────────────────────────────────────────────────────────────────────────────────── */
   [Microsoft.AspNetCore.Components.Parameter]
   public string? HTML_ID { get; set; } = null;
 
   /* ─── Title HTML ID ────────────────────────────────────────────────────────────────────────────────────────────── */
   protected string TITLE_HTML_ID => $"{ this.BASIC_ID }-TITLE";
-  
-  
+
+
   /* ━━━ Localization ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public abstract class Localization
   {
 
     public abstract DismissingButton dismissingButton { get; }
-    
+
     public struct DismissingButton
     {
       public required string accessibilityGuidance { get; init; }
     }
-    
+
   }
-  
+
   public static Localization localization = new AdmonitionBlockEnglishLocalization();
 
 }

@@ -57,6 +57,10 @@ namespace ValidatableControl {
 
       this.getComponentInstance = compoundParameter.getComponentInstance;
 
+      if (isNotUndefined(compoundParameter.onAnyChangeEventHandler)) {
+        this.setOnValueAnyChangeEventHandlers(compoundParameter.onAnyChangeEventHandler);
+      }
+
       if (isNotUndefined(compoundParameter.onHasBecomeValidEventHandler)) {
         this.setOnHasBecomeValidEventHandler(compoundParameter.onHasBecomeValidEventHandler);
       }
@@ -376,6 +380,7 @@ namespace ValidatableControl {
       initialValue: ValidValue | InvalidValue;
       validation: Validation;
       getComponentInstance: () => ValidatableControl;
+      onAnyChangeEventHandler?: GeneralizedEventHandler | Readonly<{ handler: GeneralizedEventHandler; ID: string; }>;
       onHasBecomeValidEventHandler?: GeneralizedEventHandler | Readonly<{ handler: GeneralizedEventHandler; ID: string; }>;
       onHasBecomeInvalidEventHandler?: GeneralizedEventHandler | Readonly<{ handler: GeneralizedEventHandler; ID: string; }>;
       onAsynchronousValidationStatusChangedEventHandler?:

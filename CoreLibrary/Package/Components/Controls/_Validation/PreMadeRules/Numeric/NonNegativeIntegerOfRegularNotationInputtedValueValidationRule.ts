@@ -17,10 +17,11 @@ class NonNegativeIntegerOfRegularNotationInputtedValueValidationRule implements 
   public constructor(
     compoundParameter:
         InputtedValueValidation.Rule.ConstructorParameter &
-        {
+        Readonly<{
           errorMessageBuilder?: NonNegativeIntegerOfRegularNotationInputtedValueValidationRule.ErrorMessage.Builder;
           errorMessage?: string;
-        }
+          localization?: NonNegativeIntegerOfRegularNotationInputtedValueValidationRule.Localization;
+        }>
   ) {
 
     this.mustFinishValidationIfValueIsInvalid = compoundParameter.mustFinishValidationIfValueIsInvalid ?? false;
@@ -32,7 +33,9 @@ class NonNegativeIntegerOfRegularNotationInputtedValueValidationRule implements 
        * It was proved that "errorMessage" is non-undefined, and it will not change. */
       this.errorMessageBuilder = (): string => compoundParameter.errorMessage as string;
     } else {
-      this.errorMessageBuilder = NonNegativeIntegerOfRegularNotationInputtedValueValidationRule.localization.errorMessageBuilder;
+      this.errorMessageBuilder =
+          compoundParameter.localization?.errorMessageBuilder ??
+          NonNegativeIntegerOfRegularNotationInputtedValueValidationRule.localization.errorMessageBuilder;
     }
 
   }

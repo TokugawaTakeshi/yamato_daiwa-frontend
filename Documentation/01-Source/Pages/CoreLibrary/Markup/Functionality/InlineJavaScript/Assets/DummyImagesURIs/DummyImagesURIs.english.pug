@@ -13,47 +13,46 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "en";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("DummyImagesURIs");
-    HTML_PageMetaData = {
-      description:
-        "Associative array-like object \"DummyImagesURIs\" of \"Yamato Daiwa Frontend\" library (abbreviation: \"YDF\") " +
-          "includes the 64base-encoded images of various sizes and aspect ratios of sides. " +
-        "Intended to be used for testing purposes during providing of correct displaying of images in adaptive layouts.",
-      author: HTML_PAGE_AUTHOR
-    };
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("DummyImagesURIs"),
+        description:
+            "Associative array-like object \"DummyImagesURIs\" of \"Yamato Daiwa Frontend\" library (abbreviation: \"YDF\") " +
+              "includes the 64base-encoded images of various sizes and aspect ratios of sides. " +
+            "Intended to be used for testing purposes during providing of correct displaying of images in adaptive layouts."
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents",
+        "@Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/DummyImagesURIs"
+      ]
+    });
 
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents",
-      "@Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/DummyImagesURIs"
-    ];
-
-    scriptsURIs.endOfBody = [
-      "$CommonLogic",
-      "@Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/DummyImagesURIs"
-    ];
+    if (__IS_PRODUCTION_BUILDING_MODE__) {
+      RegularWebPageTemplate__YDF.addScriptsToEndOfBody(
+        "@Pages/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/DummyImagesURIs"
+      );
+    }
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.functionality.inlineJavaScript.assets.DummyImagesURIs");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      japanese: "./DummyImagesURIs.japanese.html",
-      russian: "./DummyImagesURIs.russian.html"
+      japanese: routing.japanese.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.assets.$children.DummyImagesURIs.$URI,
+      russian: routing.russian.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.assets.$children.DummyImagesURIs.$URI
     });
 
-    const pageTableOfContents = localizedRouting.coreLibrary.$children.
-        markup.$children.
-        functionality.$children.
-        inlineJavaScript.$children.
-        assets.$children.
-        DummyImagesURIs.$sectioning;
+    const {
+      $sectioning: localizedSectioning,
+      $heading: topHeading
+    } = routing.english.coreLibrary.$children.markup.$children.functionality.$children.inlineJavaScript.$children.
+        assets.$children.DummyImagesURIs;
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 
@@ -64,7 +63,7 @@ block append SpecificContent
 
   article
 
-    h1.Article-Heading1 #[code DummyImagesURIs]
+    h1.Article-Heading1!= topHeading
 
     +ThisPageHasNotBeenCheckedByNativeSpeakersYetWarning
 
@@ -124,8 +123,8 @@ block append SpecificContent
     //- ━━━ Problematics ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     +Heading--YDF({
       level: 2,
-      text: pageTableOfContents.problematics.$heading,
-      HTML_ID: pageTableOfContents.problematics.$anchor
+      text: localizedSectioning.problematics.$heading,
+      HTML_ID: localizedSectioning.problematics.$anchor
     }).Article-Heading2
 
     p.Article-Paragraph.
@@ -147,8 +146,8 @@ block append SpecificContent
     //- ━━━ Example ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     +Heading--YDF({
       level: 2,
-      text: pageTableOfContents.example.$heading,
-      HTML_ID: pageTableOfContents.example.$anchor
+      text: localizedSectioning.example.$heading,
+      HTML_ID: localizedSectioning.example.$anchor
     }).Article-Heading2
 
     p.Article-Paragraph.

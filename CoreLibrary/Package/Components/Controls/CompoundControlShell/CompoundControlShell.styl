@@ -398,7 +398,10 @@ provideCompoundControlShellYDF_Component(
 
       &-LoadingIndicator
 
-        setCustomColorForLoadingIndicatorYDF_Component(LoadingIndicator--YDF.Types.variableWidthArcSpinner, YDF_ColorPalette.deepSkyBlue.slightlyDark)
+        LoadingIndicator--YDF-setCustomColor(
+          LoadingIndicator--YDF.Types.variableWidthArcSpinner,
+          YDF_ColorPalette.deepSkyBlue.slightlyDark
+        )
 
         flex-shrink 0
 

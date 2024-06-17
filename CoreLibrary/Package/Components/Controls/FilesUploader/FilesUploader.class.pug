@@ -203,20 +203,21 @@
         }
       },
 
-      noButton: {
+      noFilePickingButton: {
         type: Boolean,
-        required: false
+        defaultValue: false
       },
 
       noDragAndDropArea: {
         type: Boolean,
-        required: false,
+        defaultValue: false,
         customValidators: {
           validationFunction: ({ currentPropertyValue: noDragAndDropArea, rawData__currentObjectDepth }) =>
-              noDragAndDropArea === true && rawData__currentObjectDepth.noButton === true,
+              noDragAndDropArea === false ||
+                  (noDragAndDropArea === true && rawData__currentObjectDepth.noFilePickingButton !== true),
           descriptionForLogging:
-              "\"noDragAndDropArea\" could not have \"true\" value if \"noButton\" is \"true\" because " +
-              "at least one uploading method must be available."
+              "\"noDragAndDropArea\" could not have \"true\" value if \"noFilePickingButton\" is \"true\" because " +
+                "at least one uploading method must be available."
         }
       },
 
@@ -267,14 +268,14 @@
     /* ━━━ State simulations specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     static statesSimulationsSpecification = {
 
-      sampleUploadingStatus: {
+      filesProcessingStatuses: {
         type: Boolean,
         defaultValue: false
       },
 
       singleImagePreview: {
         type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
-        required: false,
+        defaultValue: false,
         alternatives: [
           {
             type: Boolean,
@@ -287,16 +288,9 @@
         ]
       },
 
-      imagesPreviewFlow: {
+      multipleImagesPreview: {
         type: Boolean,
-        required: false,
-        customValidators: {
-          validationFunction: ({ currentPropertyValue: imagesPreviewFlow, rawData__currentObjectDepth }) =>
-                imagesPreviewFlow === true && rawData__currentObjectDepth.noButton === true,
-          descriptionForLogging:
-              "\"noDragAndDropArea\" could not have \"true\" value if \"singleImagePreview\" is \"true\" because " +
-              "because either single or arbitrary count of images uploading must be active."
-        }
+        defaultValue: false
       },
 
       dragOver: {

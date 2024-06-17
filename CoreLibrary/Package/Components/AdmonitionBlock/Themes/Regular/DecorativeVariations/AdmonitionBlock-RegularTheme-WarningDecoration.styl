@@ -44,7 +44,7 @@ AdmonitionBlock-RegularTheme-WarningDecoration--YDF = {
 
   dismissingButton: {
 
-    difaultState: {
+    defaultState: {
 
       iconColor: YDF_ColorPalette.amber.slightlyDark,
       shadow: null,
@@ -55,7 +55,7 @@ AdmonitionBlock-RegularTheme-WarningDecoration--YDF = {
 
     hoverState: {
 
-      iconColor: YDF_ColorPalette.amber.pastelLight,
+      iconColor: YDF_ColorPalette.amber.mediumLight,
       shadow: null,
 
       customDeclarations: null
@@ -63,10 +63,14 @@ AdmonitionBlock-RegularTheme-WarningDecoration--YDF = {
     },
 
 
-    focusState: {
+    focusVisibleState: {
 
-      iconColor: YDF_ColorPalette.amber.pastelLight,
-      shadow: null,
+      iconColor: YDF_ColorPalette.amber.mediumLight,
+      shadow: {
+        blurRadius: 3px,
+        spreadRadius: 1px,
+        color: YDF_ColorPalette.amber.mediumLight
+      },
 
       customDeclarations: null
 
@@ -74,7 +78,7 @@ AdmonitionBlock-RegularTheme-WarningDecoration--YDF = {
 
     activeState: {
 
-      iconColor: YDF_ColorPalette.amber.pastelLight,
+      iconColor: YDF_ColorPalette.amber.light,
       shadow: null,
 
       customDeclarations: null

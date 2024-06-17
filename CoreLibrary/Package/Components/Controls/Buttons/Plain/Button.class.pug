@@ -53,6 +53,7 @@
     static DecorativeVariations = {
       regular: "REGULAR",
       accented: "ACCENTED",
+      danger: "DANGER",
       linkLike: "LINK_LIKE"
     };
 
@@ -72,7 +73,8 @@
       HTML_Type: {
         type: String,
         defaultValue: Button__YDF.HTML_Types.regular,
-        allowedAlternatives: Object.values(Button__YDF.HTML_Types)
+        allowedAlternatives: Object.entries(Button__YDF.HTML_Types).
+            map(([key, value]) => ({ key: `Button__YDF.HTML_Types.${ key }`, value }))
       },
 
       label: {
@@ -81,7 +83,9 @@
           predicate: properties => properties.HTML_Type === Button__YDF.HTML_Types.inputButton ||
             properties.HTML_Type === Button__YDF.HTML_Types.inputSubmit ||
             properties.HTML_Type === Button__YDF.HTML_Types.inputReset,
-          descriptionForLogging: "'HTML_Type' is 'inputButton', 'inputSubmit' or 'inputReset'"
+          descriptionForLogging:
+              "`HTML_Type` property specified with `Button__YDF.HTML_Types.inputButton`, " +
+                "`Button__YDF.HTML_Types.inputSubmit` or `Button__YDF.HTML_Types.inputReset`"
         },
         alternatives: [
           {
@@ -106,6 +110,16 @@
         required: false,
         /* [ Theory ] It could be the "#" */
         minimalCharactersCount: 1
+      },
+
+      mustOpenLinkInNewTab: {
+        type: Boolean,
+        defaultValue: false
+      },
+
+      mustRequestNotFollowLinkForCrawlingToSearchEngine: {
+        type: Boolean,
+        defaultValue: false
       },
 
       disabled: {

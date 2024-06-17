@@ -3,10 +3,18 @@ include ${FILE_NAME_WITHOUT_EXTENSION}.toc.pug
 
 -
 
-  localizedRouting.${ROUTE}.${DS}sectioning = generatePageTableOfContents({
-    level1_1: { ${DS}heading: "Level 1-1" },
-    level1_2: {
-      ${DS}heading: "Level 1-2",
-      level2_1: { ${DS}heading: "Level 2-1" }
-    }
-  });
+  localizedRouting.${ROUTE}.${DS}sectioning = generatePageTableOfContents(
+    (() =>{
+    
+      /* [ Maintainability ] Keep this constant to make able the copying of qualified names in IntelliJ IDEA IDEs. */
+      const localizedStrings = {
+        level1_1: { ${DS}heading: "Level 1-1" },
+        level1_2: {
+          ${DS}heading: "Level 1-2",
+          level2_1: { ${DS}heading: "Level 2-1" }
+        }
+      };
+      
+      return localizedStrings;
+    
+    })())

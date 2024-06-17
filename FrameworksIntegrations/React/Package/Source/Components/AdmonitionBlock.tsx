@@ -36,7 +36,8 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
       children: ReactPropertiesValidation.oneOfType([
         ReactPropertiesValidation.arrayOf(ReactPropertiesValidation.node),
         ReactPropertiesValidation.node
-      ])
+      ]),
+      rootElementAttributes: ReactPropertiesValidation.object
     };
   }
 
@@ -47,7 +48,8 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
       "dismissible" |
       "theme" |
       "areThemesCSS_ClassesCommon" |
-      "geometricVariation"
+      "geometricVariation" |
+      "rootElementAttributes"
     >
   > {
     return {
@@ -55,7 +57,8 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
       dismissible: false,
       theme: AdmonitionBlock.Themes.regular,
       areThemesCSS_ClassesCommon: AdmonitionBlock.areThemesCSS_ClassesCommon,
-      geometricVariation: AdmonitionBlock.GeometricVariations.regular
+      geometricVariation: AdmonitionBlock.GeometricVariations.regular,
+      rootElementAttributes: {}
     };
   }
 
@@ -162,6 +165,7 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
       <div
         role="alert"
         className={ [ AdmonitionBlock.CSS_NAMESPACE, ...this.rootElementModifierCSS_Classes ].join(" ") }
+        { ...this.props.rootElementAttributes }
       >
 
         { this.SVG_Icon }
@@ -232,7 +236,7 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
     }
 
     return null;
-    
+
   }
 
 }
@@ -250,6 +254,7 @@ namespace AdmonitionBlock {
     decorativeVariation: string;
     children?: React.ReactNode;
     className?: string;
+    rootElementAttributes?: Omit<React.HTMLAttributes<HTMLDivElement>, "className">;
   }>;
 
   export type State = Readonly<{

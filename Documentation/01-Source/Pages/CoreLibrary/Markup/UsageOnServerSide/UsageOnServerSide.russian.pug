@@ -11,30 +11,25 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "ru";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("Использование на серверной стороне");
-    HTML_PageMetaData = {
-      description:
-          "Хотя дополнительная функциональность для препроцессора «Pug», представляемая библиотекой " +
-            "«@yamato-daiwa/frontend» (сокращённо: «YDF») предназначена для стадии вёрстки и других случаев, в которых " +
-            "формируется конечный HTML-код до деплоя сайта или веб-приложения на сервер, можно организовать использование " +
-            "этой функциональности и при рендеринге на серверной стороне с использованием шаблона проектирования MCV без " +
-            "потерь в производительности. " +
-          "Решить эту задачу можно несколькими способами, но разработчик YDF предлагает метод двухэтапного преобразования " +
-            "из Pug в HTML с использованием Handlebars в качестве промежуточного кода.",
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("Использование на серверной стороне"),
+        description:
+            "Хотя дополнительная функциональность для препроцессора «Pug», представляемая библиотекой " +
+              "«@yamato-daiwa/frontend» (сокращённо: «YDF») предназначена для стадии вёрстки и других случаев, в которых " +
+              "формируется конечный HTML-код до деплоя сайта или веб-приложения на сервер, можно организовать использование " +
+              "этой функциональности и при рендеринге на серверной стороне с использованием шаблона проектирования MCV без " +
+              "потерь в производительности. " +
+            "Решить эту задачу можно несколькими способами, но разработчик YDF предлагает метод двухэтапного преобразования " +
+              "из Pug в HTML с использованием Handlebars в качестве промежуточного кода."
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.usageOnServerSide");
 
@@ -44,7 +39,7 @@ block append Metadata
     });
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 

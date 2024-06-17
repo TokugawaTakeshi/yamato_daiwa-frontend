@@ -12,7 +12,7 @@ const ExclamationMarkIcon__Triangled__Filled: SVG_IconComponent = ({ className }
     <path
       fill="none"
       stroke="#fff"
-      stroke-miterlimit="10"
+      strokeMiterlimit="10"
       d="M19.77 11.68h.03"
     />
   </svg>

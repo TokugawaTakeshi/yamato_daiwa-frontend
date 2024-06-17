@@ -10,12 +10,14 @@ mixin BlockingLoadingOverlay--YDF(properties, statesSimulations)
     } = properties;
 
     const {
-      mustDisplay = true
+      displaying = false
     } = statesSimulations ?? {};
 
 
-  .BlockingLoadingOverlay--YDF
+  .BlockingLoadingOverlay--YDF(
+    hidden=(displaying ? null : "")
+  )&attributes(attributes)
 
     +LoadingIndicator--YDF({
       type: loadingIndicatorType
-    })
+    }).BlockingLoadingOverlay--YDF-LoadingIndicator

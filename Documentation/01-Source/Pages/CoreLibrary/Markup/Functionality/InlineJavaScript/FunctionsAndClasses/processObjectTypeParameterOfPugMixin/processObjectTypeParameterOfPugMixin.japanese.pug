@@ -43,45 +43,41 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "ja";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("processObjectTypeParameterOfPugMixin");
-    HTML_PageMetaData = {
-      description: MetaDescriptionTemplates.pugFunction({
-        functionName: "processObjectTypeParameterOfPugMixin",
-        whatFunctionDoes: "Pugミックスインのオブジェクト型の引数を処理し、プロパティの妥当性の確認と、規定値の代入を含む。"
-      }),
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("processObjectTypeParameterOfPugMixin"),
+        description: MetaDescriptionTemplates.pugFunction({
+          functionName: "processObjectTypeParameterOfPugMixin",
+          whatFunctionDoes: "Pugミックスインのオブジェクト型の引数を処理し、プロパティの妥当性の確認と、規定値の代入を含む。"
+        })
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute(
       "coreLibrary.markup.functionality.inlineJavaScript.functionsAndClasses.processObjectTypeParameterOfPugMixin"
     );
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./processObjectTypeParameterOfPugMixin.english.html",
-      russian: "./processObjectTypeParameterOfPugMixin.russian.html"
+      english: routing.english.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.functionsAndClasses.$children.processObjectTypeParameterOfPugMixin.$URI,
+      russian: routing.russian.coreLibrary.$children.markup.$children.functionality.$children.
+          inlineJavaScript.$children.functionsAndClasses.$children.processObjectTypeParameterOfPugMixin.$URI
     });
 
-    const pageTableOfContents = localizedRouting.coreLibrary.$children.
-        markup.$children.
-        functionality.$children.
-        inlineJavaScript.$children.
-        functionsAndClasses.$children.
-        processObjectTypeParameterOfPugMixin.$sectioning;
+    const {
+      $sectioning: localizedSectioning,
+      $heading: topHeading
+    } = routing.japanese.coreLibrary.$children.markup.$children.functionality.$children.inlineJavaScript.$children.
+        functionsAndClasses.$children.processObjectTypeParameterOfPugMixin;
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 
@@ -130,8 +126,8 @@ block append SpecificContent
     //- ━━━ 問題の考察 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     +Heading--YDF({
       level: 2,
-      text: pageTableOfContents.problems.$heading,
-      HTML_ID: pageTableOfContents.problems.$anchor
+      text: localizedSectioning.problems.$heading,
+      HTML_ID: localizedSectioning.problems.$anchor
     }).Article-Heading2
 
     p.Article-Paragraph
@@ -212,8 +208,8 @@ block append SpecificContent
     //- ━━━ YDFの解決 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     +Heading--YDF({
       level: 2,
-      text: pageTableOfContents.YDF_Solution.$heading,
-      HTML_ID: pageTableOfContents.YDF_Solution.$anchor
+      text: localizedSectioning.YDF_Solution.$heading,
+      HTML_ID: localizedSectioning.YDF_Solution.$anchor
     }).Article-Heading2
 
     p.Article-Paragraph
@@ -331,15 +327,15 @@ block append SpecificContent
     //- ━━━ 単一引数のプロパティ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     +Heading--YDF({
       level: 2,
-      text: pageTableOfContents.singleParameterProperties.$heading,
-      HTML_ID: pageTableOfContents.singleParameterProperties.$anchor
+      text: localizedSectioning.singleParameterProperties.$heading,
+      HTML_ID: localizedSectioning.singleParameterProperties.$anchor
     }).Article-Heading2
 
     //- ─── `rawParameter`：ミックスイン実行時点のミックスイン引数 ──────────────────────────────────────────────────────────────────
     +Heading--YDF({
       level: 3,
-      innerHTML: pageTableOfContents.singleParameterProperties.$children.rawParameter.$heading,
-      HTML_ID: pageTableOfContents.singleParameterProperties.$children.rawParameter.$anchor
+      innerHTML: localizedSectioning.singleParameterProperties.$children.rawParameter.$heading,
+      HTML_ID: localizedSectioning.singleParameterProperties.$children.rawParameter.$anchor
     }).Article-Heading3
 
     +PropertyMetadata--YDF_DK(compoundParameterPropertiesSpecification.rawParameter)
@@ -398,8 +394,8 @@ block append SpecificContent
     //- ─── `parameterPropertiesSpecification`：単一の引数のプロパティの仕様 ──────────────────────────────────────────────────
     +Heading--YDF({
       level: 3,
-      innerHTML: pageTableOfContents.singleParameterProperties.$children.parameterPropertiesSpecification.$heading,
-      HTML_ID: pageTableOfContents.singleParameterProperties.$children.parameterPropertiesSpecification.$anchor
+      innerHTML: localizedSectioning.singleParameterProperties.$children.parameterPropertiesSpecification.$heading,
+      HTML_ID: localizedSectioning.singleParameterProperties.$children.parameterPropertiesSpecification.$anchor
     }).Article-Heading3
 
     p.Article-Paragraph
@@ -437,8 +433,8 @@ block append SpecificContent
     //- ─── ロギング変数：`parameterNumber`、`parameterName`、`mixinName` ───────────────────────────────────────────────────
     +Heading--YDF({
       level: 3,
-      innerHTML: pageTableOfContents.singleParameterProperties.$children.loggingProperties.$heading,
-      HTML_ID: pageTableOfContents.singleParameterProperties.$children.loggingProperties.$anchor
+      innerHTML: localizedSectioning.singleParameterProperties.$children.loggingProperties.$heading,
+      HTML_ID: localizedSectioning.singleParameterProperties.$children.loggingProperties.$anchor
     }).Article-Heading3
 
     +PropertyMetadata--YDF_DK(compoundParameterPropertiesSpecification.parameterNumber)
@@ -476,7 +472,7 @@ block append SpecificContent
           "@AssociatedWithPages/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/" +
           "processObjectTypeParameterOfPugMixin/Images/processObjectTypeParameterOfPugMixin-LiveTemplate",
       target: "function",
-      relatedTableOfContentsMetadata: pageTableOfContents.IntelliJ_IDEA_IDEs_LiveTemplateUsageGuidance
+      relatedTableOfContentsMetadata: localizedSectioning.IntelliJ_IDEA_IDEs_LiveTemplateUsageGuidance
     })
 
       p.Article-Paragraph
@@ -530,8 +526,8 @@ block append SpecificContent
       //- ━━━ 外部リンク ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     +Heading--YDF({
       level: 2,
-      text: pageTableOfContents.externalLinks.$heading,
-      HTML_ID: pageTableOfContents.externalLinks.$anchor
+      text: localizedSectioning.externalLinks.$heading,
+      HTML_ID: localizedSectioning.externalLinks.$anchor
     }).Article-Heading2
 
     +LinksCardsFlow--YDF

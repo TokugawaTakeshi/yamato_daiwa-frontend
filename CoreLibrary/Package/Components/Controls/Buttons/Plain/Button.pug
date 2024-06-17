@@ -11,7 +11,10 @@ mixin Button--YDF(properties)
 
       label,
       accessibilityGuidance,
+
       URI,
+      mustOpenLinkInNewTab,
+      mustRequestNotFollowLinkForCrawlingToSearchEngine,
 
       disabled,
       toggled,
@@ -143,8 +146,38 @@ mixin Button--YDF(properties)
 
   else if isAnchorTheTagNameOfRootElement
 
+    -
+
+      /** @type { string|undefined } */
+      let targetAttributeValue;
+
+      /** @type { string|undefined } */
+      let relAttributeValue;
+
+      /** @type { Array } */
+      let relationshipsBetweenLinkedResourceAndCurrentDocument = [];
+
+      /* [ Reference ] https://stackoverflow.com/q/57628890/4818123 */
+      /* [ Reference ] https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md */
+      if (mustOpenLinkInNewTab) {
+        relationshipsBetweenLinkedResourceAndCurrentDocument.push("noopener", "noreferrer");
+        targetAttributeValue = "_blank";
+      }
+
+      /** [ Reference ] https://backlinko.com/nofollow-link */
+      /** [ Reference ] https://www.botify.com/learn/basics/what-is-a-nofollow-tag */
+      if (mustRequestNotFollowLinkForCrawlingToSearchEngine) {
+        relationshipsBetweenLinkedResourceAndCurrentDocument.push("nofollow");
+      }
+
+      if (relationshipsBetweenLinkedResourceAndCurrentDocument.length > 0) {
+        relAttributeValue = relationshipsBetweenLinkedResourceAndCurrentDocument.join(" ");
+      }
+
     a&attributes(attributes)(
-      href= disabled ? undefined : URI
+      href=(disabled ? null : URI)
+      target=targetAttributeValue
+      rel=relAttributeValue
       tabindex = disabled && -1
       aria-label= accessibilityGuidance
       aria-disabled= disabled ? "true" : undefined

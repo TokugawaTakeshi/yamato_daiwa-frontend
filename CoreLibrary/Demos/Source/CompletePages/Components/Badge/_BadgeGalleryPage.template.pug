@@ -23,11 +23,13 @@ block append Metadata
       ].join("");
     }
 
-    styleSheetsURIs = [
-      "@Partials/YDF-Demos-Primer",
-      "@Partials/YDF-Demos-CommonRequirements",
-      "@Pages/Components/Badge/BadgeGalleryPage"
-    ];
+    RegularWebPageTemplate__YDF.configure({
+      stylesSheetsURIs: [
+        "@Partials/YDF-Demos-Primer",
+        "@Partials/YDF-Demos-CommonRequirements",
+        "@Pages/Components/Badge/BadgeGalleryPage"
+      ]
+    });
 
 
 block append PageContent

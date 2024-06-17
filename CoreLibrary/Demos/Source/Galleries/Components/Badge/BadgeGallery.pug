@@ -32,19 +32,15 @@ mixin BadgeGallery
       themes: Badge__YDF.Themes,
       geometricVariations: Badge__YDF.GeometricVariations,
       decorativeVariations: Badge__YDF.DecorativeVariations,
-      decorativeVariationsWrapperTag: "dl",
       decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-BadgesTwoColumnsTable" ],
       iterationData: themeShowcaseCurrentIterationData
     })
-
-      dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIterationData.decorativeVariation.key }`
-      dd
-        +Badge--YDF({
-          value: "Value",
-          theme: themeShowcaseCurrentIterationData.theme.value,
-          geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-          decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-        })
+      +Badge--YDF({
+        value: "Value",
+        theme: themeShowcaseCurrentIterationData.theme.value,
+        geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+        decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+      })
 
 
   //- ━━━ Keys and Values ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

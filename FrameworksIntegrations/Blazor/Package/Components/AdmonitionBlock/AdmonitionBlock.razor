@@ -12,23 +12,23 @@
   id=@HTML_ID
 >
 
-  @if (hasPrependedSVG_Icon)
+  @if (hasDefaultSVG_Icon)
   {
     @if (_decorativeVariation == StandardDecorativeVariations.notice.ToString())
     {
       <Pencil__Circled__Filled rootElementModifierCSS_Class="AdmonitionBlock--YDF-SVG_Icon"/>
-    } 
+    }
     else if (_decorativeVariation == StandardDecorativeVariations.error.ToString())
     {
-      <ExclamationMarkIcon__Circled__Filled rootElementModifierCSS_Class="AdmonitionBlock--YDF-SVG_Icon" />  
-    } 
+      <ExclamationMarkIcon__Circled__Filled rootElementModifierCSS_Class="AdmonitionBlock--YDF-SVG_Icon" />
+    }
     else if (_decorativeVariation == StandardDecorativeVariations.warning.ToString())
     {
-      <ExclamationMarkIcon__Triangled__Filled rootElementModifierCSS_Class="AdmonitionBlock--YDF-SVG_Icon"/>     
+      <ExclamationMarkIcon__Triangled__Filled rootElementModifierCSS_Class="AdmonitionBlock--YDF-SVG_Icon"/>
     }
     else if (_decorativeVariation == StandardDecorativeVariations.success.ToString())
     {
-      <Checkmark__Circled__Filled rootElementModifierCSS_Class="AdmonitionBlock--YDF-SVG_Icon"/>    
+      <Checkmark__Circled__Filled rootElementModifierCSS_Class="AdmonitionBlock--YDF-SVG_Icon"/>
     }
     else if (_decorativeVariation == StandardDecorativeVariations.guidance.ToString())
     {
@@ -36,11 +36,11 @@
     }
     else if (_decorativeVariation == StandardDecorativeVariations.question.ToString())
     {
-      <QuestionMark__Circled__Filled rootElementModifierCSS_Class="AdmonitionBlock--YDF-SVG_Icon" />  
-    } 
+      <QuestionMark__Circled__Filled rootElementModifierCSS_Class="AdmonitionBlock--YDF-SVG_Icon" />
+    }
     else if (customSVG_Icon is not null)
     {
-      @customSVG_Icon  
+      @customSVG_Icon
     }
   }
 
@@ -50,18 +50,18 @@
       class="AdmonitionBlock--YDF-Title"
       id=@TITLE_HTML_ID
     >
-      @title  
-    </div>  
+      @title
+    </div>
   }
-  
-  <div 
+
+  <div
     class="AdmonitionBlock--YDF-MainContent"
     aria-labelledby=@(title is not null ? TITLE_HTML_ID : null)
   >
     @ChildContent
   </div>
- 
-  @if (hasDismissingButton)
+
+  @if (dismissible)
   {
     <button
       class="AdmonitionBlock--YDF-DismissingButton"
@@ -70,7 +70,7 @@
       @onclick="onClickDismissingButton"
     >
       <MultiplicationSignIcon__Boxed__Filled rootElementModifierCSS_Class="AdmonitionBlock--YDF-DismissingButton-Icon" />
-    </button>  
+    </button>
   }
-  
+
 </div>

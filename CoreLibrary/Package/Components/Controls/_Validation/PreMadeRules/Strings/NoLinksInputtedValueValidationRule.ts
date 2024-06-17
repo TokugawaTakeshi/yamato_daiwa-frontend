@@ -24,6 +24,7 @@ class NoLinksInputtedValueValidationRule implements InputtedValueValidation.Rule
           regularExpressions?: ReadonlyArray<RegExp>;
           errorMessageBuilder?: NoLinksInputtedValueValidationRule.ErrorMessage.Builder;
           errorMessage?: string;
+          localization?: NoLinksInputtedValueValidationRule.Localization;
         }> = {}
   ) {
 
@@ -45,7 +46,9 @@ class NoLinksInputtedValueValidationRule implements InputtedValueValidation.Rule
        * It was proved that "errorMessage" is non-undefined, and it will not change. */
       this.errorMessageBuilder = (): string => compoundParameter.errorMessage as string;
     } else {
-      this.errorMessageBuilder = NoLinksInputtedValueValidationRule.localization.errorMessageBuilder;
+      this.errorMessageBuilder =
+          compoundParameter.localization?.errorMessageBuilder ??
+          NoLinksInputtedValueValidationRule.localization.errorMessageBuilder;
     }
 
   }

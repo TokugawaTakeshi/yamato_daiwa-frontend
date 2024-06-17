@@ -23,13 +23,16 @@ block append Metadata
       ].join("");
     }
 
-    styleSheetsURIs = [
-      "@Partials/YDF-Demos-Primer",
-      "@Partials/YDF-Demos-CommonRequirements",
-      "@Pages/Components/AdmonitionBlock/AdmonitionBlockGalleryPage"
-    ];
-
-    scriptsURIs.endOfBody = [ "@CompletePages/Components/AdmonitionBlock/AdmonitionBlockGalleryPage" ];
+    RegularWebPageTemplate__YDF.configure({
+      stylesSheetsURIs: [
+        "@Partials/YDF-Demos-Primer",
+        "@Partials/YDF-Demos-CommonRequirements",
+        "@Pages/Components/AdmonitionBlock/AdmonitionBlockGalleryPage"
+      ],
+      scriptsURIs: {
+        atEndOfBody: [ "@CompletePages/Components/AdmonitionBlock/AdmonitionBlockGalleryPage" ]
+      }
+    });
 
 
 block append PageContent

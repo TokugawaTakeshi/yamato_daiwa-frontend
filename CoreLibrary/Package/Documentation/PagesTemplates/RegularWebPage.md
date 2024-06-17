@@ -143,7 +143,7 @@ If your page has AMP version, define `PAGE_AMP_VERSION_URI` variable to be added
 * Define the `scriptsURIs.endOfHead` variable with array of URIs to be added of dedicated `script` tags to the end of
   the head, and `scriptsURIs.endOfBody` - to be added of dedicated `script` tags in the end of the body.
   (If you don't know which is better - google it first because it is the must-knows of the frontend development).
-* If you want to add the stylesheet(s) manually to the end of the body, append them (by `block append`) to block `StylesLinks`.
+* If you want to add the stylesheet(s) manually to the end of the body, append them (by `block append`) to block `Styles`.
 * If you want to add the script(s) manually to the end of the head or body, append them to blocks `HeadScriptsLinks`
   or `EndBodyScriptsLinks` respectively.
 
@@ -199,7 +199,7 @@ If you are not enough of `head` customization functionality, you can append to `
 (while it is a valid HTML5).
 
 
-### `StylesLinks` 
+### `Styles` 
 
 Intended to be included some `link` tags with styles when `styleSheetsURIs` variable doesn't fit for some reason.
 

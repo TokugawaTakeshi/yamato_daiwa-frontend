@@ -1,0 +1,313 @@
+extends ../../../../../../../../node_modules/@yamato-daiwa/programming_documentation/Layouts/TwoColumns/TwoColumnsLayout.pug
+
+
+block append Requirements
+
+  include ../../../../../../../SharedAssets/Markup/SharedAssets.russian.pug
+  include ../../../../../../../SharedComponents/SharedComponents.russian.pug
+  include Data/ButtonComponentPropertiesSpecification.pug
+
+
+block append Metadata
+
+  -
+
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("Button"),
+        description: MetaDescriptionTemplates.components.buttons.plain
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
+
+    RoutingEmulator.setCurrentRoute("localizedRouting.coreLibrary.components.controls.buttons.plain");
+
+    LanguageDropDownList__YDF_DK.setLinks({
+      english: "./Button.english.html",
+      japanese: "./Button.japanese.html"
+    });
+
+
+block append HeadScripts
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
+
+
+block append SpecificContent
+
+  article
+
+    h1.Article-Heading1 #[code Button]
+
+    +WebPageViewer--YDF({
+      URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage.html",
+      title: "Примеры использования компонента «Button» " +
+          "(библиотека: «Yamato Daiwa Frontend», сокращённо: «YDF»). "
+    })
+
+    +Button-Abstract
+
+
+    //- ━━━ Сводка ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    h2.Article-Heading2 Сводка
+
+    +GUI_ComponentSummaryViewer({
+      pugMixinName: "Button--YDF",
+      intelliJ_IDEA_FamilyIDEsLiveTemplateAbbreviation: "btn-ydf",
+      stylusMixinName: "provideButtonYDF_Component",
+      metadataClass: Button__YDF,
+      themesNamesTranslations: {
+        [Button__YDF.Themes.regular]: "Базовая (по умолчанию)"
+      },
+      geometricVariationsTranslations: {
+        [Button__YDF.GeometricVariations.regular]: "Базовая (по умолчанию)",
+        [Button__YDF.GeometricVariations.small]: "Комактная",
+        [Button__YDF.GeometricVariations.linkLike]: "Внешний вид обычной ссылки"
+      },
+      geometricModifiersNamesTranslations: {
+        [Button__YDF.GeometricModifiers.pillShape]: "Максимальное скругление углов",
+        [Button__YDF.GeometricModifiers.squareShape]: "Квадратная форма",
+        [Button__YDF.GeometricModifiers.squareShapeUnlessOverflowed]: "Квадратная форма покуда не переполнена",
+        [Button__YDF.GeometricModifiers.singleLine]: "Всегда одна строка с усечением текста при нехватке ширины",
+        [Button__YDF.GeometricModifiers.noLeftBorderAndRoundings]: "Нет обводки и скруглений слева",
+        [Button__YDF.GeometricModifiers.noRightBorderAndRoundings]: "Нет обводки и скруглений справа"
+      },
+      decorativeVariationsTranslations: {
+        [Button__YDF.DecorativeVariations.regular]: "Базовая (по умолчанию)",
+        [Button__YDF.DecorativeVariations.accented]: "Акцентированная",
+        [Button__YDF.DecorativeVariations.danger]: "Опасное действие",
+        [Button__YDF.DecorativeVariations.linkLike]: "Внешний вид обычной ссылки",
+      },
+      decorativeModifiersNamesTranslations: {
+        [Button__YDF.DecorativeModifiers.bordersDisguising]: "Эффект отсутствия обводки без изменения размеров",
+        [Button__YDF.DecorativeModifiers.noBackground]: "Без заливки",
+      },
+      loadingPlaceholderPugMixinName: "Button--YDF__LoadingPlaceholder"
+    })
+
+
+    //- ━━━ Использование ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    h2.Article-Heading2 Использование
+
+    //- ─── Разметка ───────────────────────────────────────────────────────────────────────────────────────────────────
+    h3.Article-Heading3 Разметка
+
+    //- ─── Подключение в проект ───────────────────────────────────────────────────────────────────────────────────────
+    h4.Article-Heading4 Подключение в проект
+
+    +ComponentMarkupProvidingGuidanceFragment({ pugMixinName: "Button--YDF" })
+
+
+    //- ─── Pug-примесь `Button--YDF` ──────────────────────────────────────────────────────────────────────────────────
+    h4.Article-Heading4 Pug-примесь #[code Button--YDF]
+
+    -
+
+      ButtonComponentPropertiesSpecification.localizedDescriptiveHeading = "Свойства";
+
+      ButtonComponentPropertiesSpecification.propertiesSpecification.HTML_Type.localizedInterpretation = "HTML-тип";
+
+      ButtonComponentPropertiesSpecification.propertiesSpecification.label.localizedInterpretation = "Надпись";
+      ButtonComponentPropertiesSpecification.propertiesSpecification.label.requiredIf.descriptionForLogging =
+          "Свойству `HTML_Type` указано `Button__YDF.HTML_Types.inputButton`, `Button__YDF.HTML_Types.inputSubmit` " +
+            "или `Button__YDF.HTML_Types.inputReset`"
+
+      ButtonComponentPropertiesSpecification.propertiesSpecification.accessibilityGuidance.localizedInterpretation =
+          "Руководство для технологий доступности";
+
+      ButtonComponentPropertiesSpecification.propertiesSpecification.mustOpenLinkInNewTab.localizedInterpretation =
+          "Нужно ли открыть URI на новой вкладке";
+
+      ButtonComponentPropertiesSpecification.propertiesSpecification.mustRequestNotFollowLinkForCrawlingToSearchEngine.
+          localizedInterpretation =
+              "Нужно ли попросить поисковую систему не отдавать рейтинг ресурсу с указанным URI"
+
+    +CallableExpressionScheme--YDF_DK({
+      technicalName: "Button--YDF",
+      parametersSpecification: [
+        {
+          genericTechnicalName: "properties",
+          localizedName: "Свойства",
+          type: "Properties",
+          required: true
+        }
+      ],
+      hiddenReturnValue: true
+    })
+      +ObjectTypeAbstract--YDF_DK(
+        ButtonComponentPropertiesSpecification
+        ).CallableExpressionScheme--YDF_DK-AppendixGridFlow-FullWidthItem
+
+
+    //- ─── Простое использование ──────────────────────────────────────────────────────────────────────────────────────
+    h5.Article-Heading5 Простое использование
+
+    +WebPageViewer--YDF({
+      URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-Minimal.html",
+      title: "Примеры отображения компонента «Button» с минимальными настройками " +
+          "(библиотека: «Yamato Daiwa Frontend», сокращённо: «YDF»). "
+    })
+
+    +CodeViewer--YDF
+      +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
+
+        +CodeViewer-PartialListing--YDF: :code_listing--yda
+          +Button
+        +CodeViewer-Explanation--YDF.
+          Вызывать #[+Term--YDID Pug-примесь] #[+ImportantEntity__Code--YDID Button] без&nbsp;указания
+            #[+Term--YDID свойств] можно, однако согласно требованиям доступности, у кнопки должно быть либо
+            включающее текст дочернее содержимое, либо указан один из следующих #[+Term--YDID аттрибутов]:
+            #[+ImportantEntity__Code--YDID aria-label], #[+ImportantEntity__Code--YDID aria-labelledby],
+            #[+ImportantEntity__Code--YDID title].
+          Поэтому в данном случае хотя выходной #[+Term--YDID HTML-код] будет сгенерирован, использование без
+            свойств или аттрибутов #[+Keyword--YDID не]&nbsp;рекомендуется.
+
+        +CodeViewer-PartialListing--YDF: :code_listing--yda
+          +Button({ label: "Click" })
+        +CodeViewer-Explanation--YDF.
+          Если не&nbsp;указано #[+Term--YDID свойства] #[+ImportantEntity__Code--YDID HTML_Type], то будет сгенерирован
+            #[+Term--YDID тэг] #[+ImportantEntity__Code--YDID button] с #[+Term--YDID аттрибутом]
+            #[+ImportantEntity__Code--YDID type="button"] и текстовым содержимым, указанным через
+            #[+Term--YDID свойство] #[+ImportantEntity__Code--YDID label].
+          Такая кнопка #[+Keyword--YDID никак] #[+Keyword__Contrast--YDID не]&nbsp;взаимодействует с
+            #[+Term--YDID HTML-формой], если таковая имеется в качестве родительского элемента.
+        h3.Article-Heading3 Стили
+
+
+        h3.Article-Heading3 Логика
+
+        //- Должна быть, потому что с переключением в disable не всё однозначно
+
+
+        h2.Article-Heading2 Сборник примеров
+
+        h3.Article-Heading3 Простейший случай
+
+        p.Article-Paragraph.
+          В простейшем случае требуется:
+
+        ol.Article-OrderedList
+          li Определиться с типом кнопки и указать его, если это не тип по умолчанию
+          li Указать текст кнопки через свойство #[+Term--YDID label]
+          li Добавить кнопке обработчик события
+
+        //- Тут будет листинг с табами
+
+        div
+          +Button--YDF({ label: "Teksto 本文" })
+          //- Будет сгенерирован элемент button с аттрибутом type=button.
+          //- Такая кнопка никак не отреагирует на нажатие, пока не добавить ей обработчик события
+
+          +Button--YDF({
+            label: "Teksto 本文",
+            URI: "#"
+          })
+          //- Указанный URI приведёт к тому, что будет сгенерирован тэг a.
+          //- HTML_Type указывать в данном случае не имеет смысла
+
+          +Button--YDF({
+            label: "Teksto 本文",
+            HTML_Type: Button__YDF.HTML_Types.inputButton
+          })
+          //- Будет сгенерирован тэг input.
+          //- По умолчанию, такая кнопка попытается отправить данные формы form, если находится внутри неё.
+
+
+        h3.Article-Heading3 Устойчивость к переполнению текстом
+
+        h3.Article-Heading3 Иконки
+
+        p.Article-Paragraph.
+          Иконка внутри иконки - проблема, универсальное решение которой не может дать не один фреймворк.
+
+        p.Article-Paragraph.
+          Легче всего обращаться со шрифтовыми иконками, но это достоинство перевешивается огромными недостатками:
+
+        p.Article-Paragraph.
+          Что касается SVG-иконок, то наибольшая их проблема - ...
+          Если мы возьмём ...
+          Может показаться, что это хорошо: легко заменить одну на другую.
+          Но размер SVG-холста и размеры элементов внутри него - разные вещи.
+
+        p.Article-Paragraph.
+          В общем случае, если вы хотите чтобы все иконки, которые вы использовали, выглядели красиво, необходимо для
+            каждой геометрической вариации указать размер
+          Сложно и нужно, но ничего лучшего мир веб-разрабоки ещё не предложил.
+
+  //-
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-AppendedSvgIcons.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-BordersDisguisingDecorativeModifier.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-CustomIcons.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-LoadingPlaceholder.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-LoneSvgIcons.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-LongLabels.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-NoBackgroundDecorativeModifier.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-NoLeftBorderAndRoundingsGeometricModifier.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-NoRightBorderAndRoundingsGeometricModifier.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-PillShapeGeometricModifier.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-PrependedSvgIcons.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-SingleLineGeometricModifier.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-SquareShapeGeometricModifier.html",
+          title: "Примеры использования компонента «Button»"
+        })
+
+        +WebPageViewer--YDF({
+          URI: "$Demos:CorePackage/Components/Controls/Buttons/Plain/ButtonGalleryPage-SquareShapeUnlessOverflowedGeometricModifier.html",
+          title: "Примеры использования компонента «Button»"
+        })

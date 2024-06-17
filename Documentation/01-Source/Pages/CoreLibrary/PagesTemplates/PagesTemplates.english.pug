@@ -11,26 +11,20 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "en";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("PagesTemplates");
-    HTML_PageMetaData = {
-      description:
-          "The \"Yamato Daiwa Frontend\" (abbreviation: \"YDF\") library suggesting the Pug template of the Web pages " +
-            "with fre-filled required HTML tags and also frequently used code fragments."
-      ,
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("PagesTemplates"),
+        description:
+            "The \"Yamato Daiwa Frontend\" (abbreviation: \"YDF\") library suggesting the Pug template of the Web pages " +
+              "with fre-filled required HTML tags and also frequently used code fragments."
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute("coreLibrary.pagesTemplates");
 
@@ -40,7 +34,7 @@ block append Metadata
     });
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 

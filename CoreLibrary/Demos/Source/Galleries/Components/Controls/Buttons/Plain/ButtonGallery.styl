@@ -11,19 +11,10 @@
       {block}
 
 
-  &-DecorativeVariationsListItem
-
-    +WideScreensConfiguration()
-
-      retireFromElementWithSameSelector({ y: 12px })
-
-
-    +NarrowScreensConfiguration()
-
-      retireFromElementWithSameSelector({ y: 10px })
-
-
   &-PseudoTable
+
+    margin 0 //* [ Resetting of defaults ]
+
 
     +WideScreensConfiguration()
 
@@ -52,6 +43,17 @@
 
 
     dd
+
+      margin 0 //* [ Resetting of defaults ]
+
+      max-width 100%
+      overflow hidden
+
+
+      >*
+
+        max-width 100%
+
 
       +NarrowScreensConfiguration()
 

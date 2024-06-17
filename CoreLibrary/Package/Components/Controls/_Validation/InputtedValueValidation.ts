@@ -14,7 +14,6 @@ abstract class InputtedValueValidation {
   public readonly hasValueBeenOmitted: InputtedValueValidation.OmittedValueChecker;
 
   protected readonly requiredInputIsMissingValidationErrorMessage: string;
-
   protected readonly staticRules: ReadonlyArray<InputtedValueValidation.Rule>;
   protected readonly contextDependentRules: ReadonlyArray<InputtedValueValidation.Rule>;
   protected readonly asynchronousRules: ReadonlyArray<InputtedValueValidation.AsynchronousRule>;
@@ -244,6 +243,7 @@ namespace InputtedValueValidation {
     contextDependentRules?: ReadonlyArray<Rule>;
     asynchronousRules?: ReadonlyArray<AsynchronousRule>;
     asynchronousValidationsCallback?: AsynchronousChecks.Callback;
+    localization?: Localization;
   }>;
 
 

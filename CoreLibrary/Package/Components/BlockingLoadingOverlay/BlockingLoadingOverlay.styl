@@ -1,4 +1,20 @@
-provideBlockingLoadingOverlayYDF_Component()
+BlockingLoadingOverlay--YDF = {
+
+  defaultProperties: {
+    backgroundColor:  rgba(black, 0.5),
+    loadingIndicatorColor: ShadesOfGray__39ColorsW3C_Palette[6]
+  }
+
+}
+
+
+provideBlockingLoadingOverlayYDF_Component(
+  preset = BlockingLoadingOverlay--YDF.defaultProperties,
+  overrides = {}
+)
+
+  properties = deeplyCloneAndOverrideObject(preset, overrides)
+
 
   .BlockingLoadingOverlay--YDF
 
@@ -14,5 +30,24 @@ provideBlockingLoadingOverlayYDF_Component()
     justify-content center
     align-items center
 
-    background rgba(black, 0.5)
+    background: properties.backgroundColor
     cursor not-allowed
+
+
+    &[hidden]
+
+      display none
+
+
+    &-LoadingIndicator
+
+      LoadingIndicator--YDF-setCustomColor(
+        LoadingIndicator--YDF.Types.variableWidthArcSpinner, properties.loadingIndicatorColor
+      )
+
+
+BlockingLoadingOverlay--YDF-setCustomColorOfInnerLoadingIndicator(type, COLOR)
+
+  .BlockingLoadingOverlay--YDF-LoadingIndicator
+
+    LoadingIndicator--YDF-setCustomColor(type, COLOR)

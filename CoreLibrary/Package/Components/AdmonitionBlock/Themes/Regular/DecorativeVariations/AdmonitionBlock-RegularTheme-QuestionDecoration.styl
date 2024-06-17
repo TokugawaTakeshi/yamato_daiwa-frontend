@@ -45,7 +45,7 @@ AdmonitionBlock-RegularTheme-QuestionDecoration--YDF = {
 
   dismissingButton: {
 
-    difaultState: {
+    defaultState: {
 
       iconColor: YDF_ColorPalette.deepPurple.slightlyDark,
       shadow: null,
@@ -56,7 +56,7 @@ AdmonitionBlock-RegularTheme-QuestionDecoration--YDF = {
 
     hoverState: {
 
-      iconColor: YDF_ColorPalette.deepPurple.pastelLight,
+      iconColor: YDF_ColorPalette.deepPurple.mediumLight,
       shadow: null,
 
       customDeclarations: null
@@ -64,10 +64,14 @@ AdmonitionBlock-RegularTheme-QuestionDecoration--YDF = {
     },
 
 
-    focusState: {
+    focusVisibleState: {
 
-      iconColor: YDF_ColorPalette.deepPurple.pastelLight,
-      shadow: null,
+      iconColor: YDF_ColorPalette.deepPurple.mediumLight,
+      shadow: {
+        blurRadius: 3px,
+        spreadRadius: 1px,
+        color: YDF_ColorPalette.deepPurple.mediumLight
+      },
 
       customDeclarations: null
 
@@ -75,7 +79,7 @@ AdmonitionBlock-RegularTheme-QuestionDecoration--YDF = {
 
     activeState: {
 
-      iconColor: YDF_ColorPalette.deepPurple.pastelLight,
+      iconColor: YDF_ColorPalette.deepPurple.light,
       shadow: null,
 
       customDeclarations: null

@@ -25,13 +25,16 @@ block append Metadata
       ].join("");
     }
 
-    styleSheetsURIs = [
-      "$ExternalStyles/YDF-Demos-Primer.css",
-      "$ExternalStyles/YDF-Demos-CommonRequirements.css",
-      "$ExternalStyles/Components/Controls/Buttons/Plain/ButtonGalleryPage.css"
-    ];
-
-    scriptsURIs.endOfBody = [ "@CompletePages/Components/Controls/Buttons/Plain/ButtonGalleryPage" ];
+    RegularWebPageTemplate__YDF.configure({
+      stylesSheetsURIs: [
+        "$ExternalStyles/YDF-Demos-Primer.css",
+        "$ExternalStyles/YDF-Demos-CommonRequirements.css",
+        "$ExternalStyles/Components/Controls/Buttons/Plain/ButtonGalleryPage.css"
+      ],
+      scriptsURIs: {
+        atEndOfBody: [ "@CompletePages/Components/Controls/Buttons/Plain/ButtonGalleryPage" ]
+      }
+    });
 
 
 block append PageContent

@@ -22,6 +22,7 @@ class NumericMaximumInputtedValueValidationRule implements InputtedValueValidati
           maximalNumericValue: number;
           errorMessageBuilder?: NumericMaximumInputtedValueValidationRule.ErrorMessage.Builder;
           errorMessage?: string;
+          localization?: NumericMaximumInputtedValueValidationRule.Localization;
         }>
   ) {
 
@@ -36,7 +37,9 @@ class NumericMaximumInputtedValueValidationRule implements InputtedValueValidati
        * It was proved that "errorMessage" is non-undefined, and it will not change. */
       this.errorMessageBuilder = (): string => compoundParameter.errorMessage as string;
     } else {
-      this.errorMessageBuilder = NumericMaximumInputtedValueValidationRule.localization.errorMessageBuilder;
+      this.errorMessageBuilder =
+          compoundParameter.localization?.errorMessageBuilder ??
+          NumericMaximumInputtedValueValidationRule.localization.errorMessageBuilder;
     }
 
   }

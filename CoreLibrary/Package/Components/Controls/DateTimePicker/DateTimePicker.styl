@@ -79,15 +79,15 @@ provideDateTimePickerYDF_Component(
     ClickableCellsCommonDecorations()
 
       color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
+      background-color: JQueryUI_BaseTheme.clickableElements.defaultState.background
 
       cursor pointer
 
 
-      @media (hover: hover)
+      &:hover
 
-        &:hover
-
-          background-color: JQueryUI_BaseTheme.clickableElements.hoverState.background
+        color: JQueryUI_BaseTheme.clickableElements.hoverState.fontColor
+        background-color: JQueryUI_BaseTheme.clickableElements.hoverState.background
 
 
       &:focus
@@ -97,12 +97,13 @@ provideDateTimePickerYDF_Component(
 
       &:active
 
+        color: JQueryUI_BaseTheme.clickableElements.activeState.fontColor
         background-color: JQueryUI_BaseTheme.clickableElements.activeState.background
 
 
       &:disabled
 
-        color: ShadesOfGray__39ColorsW3C_Palette[28]
+        color: ShadesOfGray__39ColorsW3C_Palette[24]
         background: ShadesOfGray__39ColorsW3C_Palette[36]
 
         cursor not-allowed
@@ -111,7 +112,7 @@ provideDateTimePickerYDF_Component(
       &__Selected
 
         color: JQueryUI_BaseTheme.clickableElements.activeState.fontColor
-        background: JQueryUI_BaseTheme.clickableElements.activeState.background
+        background-color: JQueryUI_BaseTheme.clickableElements.activeState.background
 
         pointer-events none
 
@@ -132,13 +133,13 @@ provideDateTimePickerYDF_Component(
       border-width 1px
       BorderLeftFilletsRadius(3px)
       padding: calc(.45rem - 2px) .5rem calc(.45rem + 1px)
-      font-size 1rem
 
       border-color #c5c5c5
       border-style solid
       color #454545
 
       cursor pointer
+
 
       &:hover
 
@@ -254,6 +255,8 @@ provideDateTimePickerYDF_Component(
 
 
       td
+
+        padding-top 4px
 
         text-align center
         vertical-align middle

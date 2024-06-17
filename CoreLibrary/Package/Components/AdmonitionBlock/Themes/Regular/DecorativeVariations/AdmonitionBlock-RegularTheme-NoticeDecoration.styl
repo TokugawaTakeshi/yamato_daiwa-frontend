@@ -8,7 +8,7 @@ AdmonitionBlock-RegularTheme-NoticeDecoration--YDF = {
     },
 
     background: {
-      color: JQueryUI_BaseTheme.content.background,
+      color: ShadesOfGray__39ColorsW3C_Palette[37]
       image: null
     },
 
@@ -45,7 +45,7 @@ AdmonitionBlock-RegularTheme-NoticeDecoration--YDF = {
 
   dismissingButton: {
 
-    difaultState: {
+    defaultState: {
 
       iconColor: ShadesOfGray__39ColorsW3C_Palette[16],
       shadow: null,
@@ -64,10 +64,14 @@ AdmonitionBlock-RegularTheme-NoticeDecoration--YDF = {
     },
 
 
-    focusState: {
+    focusVisibleState: {
 
-      iconColor: ShadesOfGray__39ColorsW3C_Palette[22],
-      shadow: null,
+      iconColor: ShadesOfGray__39ColorsW3C_Palette[20],
+      shadow: {
+        blurRadius: 3px,
+        spreadRadius: 1px,
+        color: ShadesOfGray__39ColorsW3C_Palette[20]
+      },
 
       customDeclarations: null
 

@@ -26,6 +26,7 @@ class EmailAddressInputtedValueValidationRule implements InputtedValueValidation
           regularExpression?: RegExp;
           errorMessageBuilder?: EmailAddressInputtedValueValidationRule.ErrorMessage.Builder;
           errorMessage?: string;
+          localization?: EmailAddressInputtedValueValidationRule.Localization;
         }> = {}
   ) {
 
@@ -39,7 +40,9 @@ class EmailAddressInputtedValueValidationRule implements InputtedValueValidation
        * It was proved that "errorMessage" is non-undefined, and it will not change. */
       this.errorMessageBuilder = (): string => compoundParameter.errorMessage as string;
     } else {
-      this.errorMessageBuilder = EmailAddressInputtedValueValidationRule.localization.errorMessageBuilder;
+      this.errorMessageBuilder =
+          compoundParameter.localization?.errorMessageBuilder ??
+          EmailAddressInputtedValueValidationRule.localization.errorMessageBuilder;
     }
 
   }

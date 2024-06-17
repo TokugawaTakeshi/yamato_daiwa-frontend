@@ -1,0 +1,171 @@
+fileNameLocalizationExtensions: "japanese"
+
+top:
+
+  $heading: "トップ"
+  $URI: "@All/Top/TopPage.japanese"
+
+coreLibrary:
+
+  $heading: "主要ライブラリ"
+
+  markup:
+
+    $heading: "Pugマークアック"
+
+    functionality:
+
+      $heading: "機能"
+
+      inlineJavaScript:
+
+        $heading: "内部JavaScript"
+
+        YDEE_Integration:
+
+          $heading: "@yamato-daiwa/es-extensions(YDEE)との結合"
+
+        functionsAndClasses:
+
+          $heading: "関数・クラス"
+
+        assets:
+
+          $heading: "アセット"
+
+      pugMixins:
+
+        $heading: "Pug混入"
+
+        dummies:
+
+          $heading: "<code>WideDummy</code>と<code>HighDummy</code>"
+
+        SVG_Icons:
+
+          $heading: "SVGアイコン"
+
+        yamatoDaiwaInformationDesign:
+
+          $heading: "やまとダイワ情報デザイン"
+
+      pagesTemplates:
+
+        $heading: "ページの原型"
+
+      usageOnServerSide:
+
+        $heading: "サーバ側での利用"
+
+  styles:
+
+    $heading: "スタイル"
+
+    assets:
+
+      $heading: "アセット"
+
+      fundamentalConstantsAndEnums:
+
+        $heading: "基礎定数・列挙"
+
+      colors:
+
+        $heading: "色"
+
+        PracticalColorCoordinateSystem:
+
+          $heading: "PCCSパレット（<code>PracticalColorCoordinateSystem</code>）"
+
+        ShadesOfGray__39ColorsW3C_Palette:
+
+          $heading: "グレースケール39色パレット（<code>ShadesOfGray__39ColorsW3C_Palette</code>）"
+
+        YDF_ColorPalette:
+
+          $heading: "YDFカラーパレット（<code>YDF_ColorPalette</code>）"
+
+    kernel:
+
+      $heading: "基礎機能"
+
+      YDF_Configuration:
+
+        $heading: "設定"
+
+        fontsStacks:
+
+          $heading: "フォントスタック"
+
+        textGeometry:
+
+          $heading: "大小変数"
+
+        zIndexes:
+
+          $heading: "Zインデックス"
+
+      specificationsSchemas:
+
+        $heading: "仕様のスキマ"
+
+      functions:
+
+        $heading: "関数"
+
+        typeCheckers:
+
+          $heading: "値の型を確認"
+
+          strings:
+
+            $heading: "文字列"
+
+          quantities:
+
+            $heading: "量"
+
+          booleans:
+
+            $heading: "真偽値"
+
+          nullables:
+
+            $heading: "空値"
+
+          others:
+
+            $heading: "其の他"
+
+        valueTransformers:
+
+          $heading: "値の変換"
+
+        strings:
+
+          $heading: "文字列弄り"
+frameworksIntegrations:
+
+  $heading: "第三者フレームワークの対応"
+
+  vue:
+
+    components:
+
+      $heading: "GUIコンポーネント"
+
+  react:
+
+    components:
+
+      $heading: "GUIコンポーネント"
+
+  blazor:
+
+    components:
+
+      $heading: "GUIコンポーネント"
+
+realiseNotes:
+
+  $heading: "リリースノート"
