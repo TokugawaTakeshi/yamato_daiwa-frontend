@@ -18,6 +18,7 @@
   [AdmonitionBlock--YDF](FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
   component (HTML syntax).
 
+
 ## [0.0.9]
 
 ### Added
