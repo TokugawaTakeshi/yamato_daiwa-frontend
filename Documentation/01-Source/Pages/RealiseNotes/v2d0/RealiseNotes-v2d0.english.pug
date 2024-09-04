@@ -60,9 +60,9 @@ block append SpecificContent
 
     h4.Article-Heading4 Markup
 
-    h5.Article-Heading5 Pug's inline JavaScript
+    h5.Article-Heading5 Pug's Inline JavaScript
 
-    h6.Article-Heading6 Functions and classes
+    h6.Article-Heading6 Functions and Classes
 
     ul.Article-UnorderedList
 
@@ -158,10 +158,20 @@ block append SpecificContent
         }).Article-Link SVGアイコン
 
 
-    //- h4.Article-Heading4 Styles
+    h4.Article-Heading4 Styles
 
-    //-
-      h5.Article-Heading5 Assets
+    h5.Article-Heading5 Assets
+
+    h5.Article-Heading6 Fundamental Constants and Enumerations
+
+    ul.Article-UnorderedList
+
+      li: +Link--YDF({
+        unendorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/" +
+            "Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/" +
+            "FundamentalConstantsAndEnums.md#smallest_division_of_css_pixel--ydf---the-smallest-division-of-css-pixel"
+      }).Article-Link SMALLEST_DIVISION_OF_CSS_PIXEL--YDF
+
 
       h6.Article-Heading6 Color palettes
 
@@ -215,43 +225,99 @@ block append SpecificContent
               widthSizing.$URI
         }).Article-Link WidthSizingSpecificationSchema--YDF
 
+    h3.Article-Heading3 Breaking Changes
+
+    h4.Article-Heading4 Styles
+
+    h5.Article-Heading5 Assets
+
+    h5.Article-Heading6 Renaming of #[code NARROWEST_SCREEN_WIDTH_UNIT] Constant
+
+    p.Article-Paragraph.
+      #[+Term--YDID Constant] #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT] has been renamed to
+        #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT--YDF].
+
+    dl.Article-DescriptionList
+
+      dt Reason
+      dd.
+        To significantly reduce the probability of name conflict, the #[+ImportantEntity__Code--YDID --YDF]
+          #[+Term--YDID verndor postfix] has been appended.
+
+      dt Changes in your code will required if
+      dd.
+        Your code has explicit usages of #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT]
+          #[+Term--YDID constant].
+
+      dt Migration
+      dd.
+        Using the appropriate functionality of your code editor or IDE, replace all occurrences of
+          #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT] with
+          #[+ImportantEntity__Code--YDID mustThrowErrorIfElementNotFoundOrMatchesAreMultiple]
+          in all #[+Term--YDID Stylus files] of your project.
+        For example, in #[+ImportantEntity--YDID IntelliJ IDEA] family IDEs, such functionality could be invoked
+          by #[+SecondaryEntity__Code--YDID Ctrl + Shift + R] as default.
+
+
+    h6.Article-Heading6 Renaming of #[code DataTypes] Enumeration and Some of its Elements
+
+    ol.Article-OrderedList
+
+      li.
+        #[+ImportantEntity__Code--YDID DataTypes] #[+Term--YDID enumeration] has been renamed to
+          #[+ImportantEntity__Code--YDID DataTypes--YDF].
+
+      li.
+        #[+ImportantEntity__Code--YDID dimensionalAmount] #[+Term--YDID element] has been renamed to
+          #[+ImportantEntity__Code--YDID dimensionalQuantity] and its value to
+          #[+ImportantEntity__Code--YDID "DIMENSIONAL_QUANTITY"].
+
+      li.
+        #[+ImportantEntity__Code--YDID dimensionlessAmount] #[+Term--YDID element] has been renamed to
+          #[+ImportantEntity__Code--YDID dimensionlessQuantity] and its value to
+          #[+ImportantEntity__Code--YDID "DIMENSIONLESS_QUANTITY"].
+
+    dl.Article-DescriptionList
+
+      dt Reason
+      dd
+        ul.Article-UnorderedList
+
+          li.
+            The #[+ImportantEntity__Code--YDID --YDF] #[+Term--YDID vendor postfix] has been appended to
+              #[+Term--YDID enumeration] name to significantly reduce the probability of name conflict.
+
+          li #[+Term--YDID Elements] has been renamed to unify to the canonical scientific terminology.
+
+      dt Changes in your code will required if
+      dd Your code has explicit usages of #[+ImportantEntity__Code--YDID DataTypes] #[+Term--YDID enumeration].
+
+
+      dt Миграция
+      dd
+
+        p.Article-Paragraph.
+          Using the appropriate functionality of your code editor or IDE, in all #[+Term--YDID Stylus files] of your
+            project, replace all occurrences of:
+
+        ul.Article-UnorderedList
+
+          li.
+            #[+ImportantEntity__Code--YDID DataTypes] #[+Term--YDID enumeration] to
+              #[+ImportantEntity__Code--YDID DataTypes--YDF].
+
+          li.
+            #[+ImportantEntity__Code--YDID dimensionalAmount] #[+Term--YDID enumeration element] to
+              #[+ImportantEntity__Code--YDID dimensionalQuantity].
+
+          li.
+            #[+ImportantEntity__Code--YDID dimensionlessAmount] #[+Term--YDID enumeration element] to
+              #[+ImportantEntity__Code--YDID dimensionlessQuantity].
+
+        p.Article-Paragraph.
+          For example, in #[+ImportantEntity--YDID IntelliJ IDEA] family IDEs, such functionality could be invoked
+            by #[+SecondaryEntity__Code--YDID Ctrl + Shift + R] as default.
     //-
-      h3.Article-Heading3 Breaking changes
-
-      h4.Article-Heading4 Styles
-
-      h5.Article-Heading5 Assets
-
-      h6.Article-Heading6 Changing of the elements of #[code DataTypes] enumeration
-
-      p.Article-Paragraph.
-        #[+Term--YDID Element] #[+ImportantEntity__Code--YDID dimensionalAmount] of the
-          #[+ImportantEntity__Code--YDID DataTypes] #[+Term--YDID enumeration] has been renamed to
-          #[+ImportantEntity__Code--YDID dimensionalQuantity], and
-          #[+ImportantEntity__Code--YDID dimensionlessAmount] — to #[+ImportantEntity__Code--YDID dimensionlessQuantity]
-          in all #[+Term--YDID Stylus files].
-
-      dl.Article-DescriptionList
-
-        dt Reason
-        dd The unifying to the canonical scientific terminology
-
-        dt Changes of your code will require if
-        dd.
-          You have accessed to the #[+Term--YDID element] #[+ImportantEntity__Code--YDID dimensionalAmount] and/or
-            #[+ImportantEntity__Code--YDID dimensionlessAmount] of the #[+ImportantEntity__Code--YDID DataTypes]
-            #[+Term--YDID enumeration]
-
-
-        dt Migration
-        dd.
-          Using the appropriate functionality of your code editor or IDE, replace
-            #[+ImportantEntity__Code--YDID DataTypes.dimensionalAmount] with
-            #[+ImportantEntity__Code--YDID DataTypes.dimensionalQuantity], and
-            #[+ImportantEntity__Code--YDID DataTypes.dimensionlessAmount] with
-            #[+ImportantEntity__Code--YDID DataTypes.dimensionlessQuantity].
-          For example, in the IDEs of IntelliJ IDEA family such functionality is available via
-            #[+SecondaryEntity__Code--YDID Ctrl + Shift + R] shortcut.
 
       h6.Article-Heading6 Changed of the properties in #[code TemporaryHighlighting] object
 

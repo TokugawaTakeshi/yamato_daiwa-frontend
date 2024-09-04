@@ -174,7 +174,6 @@ block append SpecificContent
         codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.TypeScript
       }): :code_listing--yda
         <AdmonitionBlock
-          title="Looks like works fine!"
           decorativeVariation=@(AdmonitionBlock.StandardDecorativeVariations.notice)
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -194,6 +193,20 @@ block append SpecificContent
     +PropertyMetadata--YDF_DK(AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.title)
 
     +AdmonitionBlockComponent-TitlePropertyDescription({ framework: SupportedFrameworks.blazor })
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({
+        codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.TypeScript
+      }): :code_listing--yda
+        <AdmonitionBlock
+          title="Titulo"
+          decorativeVariation=@(AdmonitionBlock.StandardDecorativeVariations.notice)
+        >
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat.
+        </AdmonitionBlock>
 
 
     //- ─── SVG-иконки ─────────────────────────────────────────────────────────────────────────────────────────────────

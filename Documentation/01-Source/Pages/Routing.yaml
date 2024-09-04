@@ -107,13 +107,13 @@ coreLibrary:
 
             StaticPreviewAnywherePage:
               $heading: "<code>StaticPreviewAnywherePage</code>"
-              $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md"
-#              $sectioning: {
-#                staticPreviewConcept: {
-#                  $anchor: "staticPreviewConcept",
-#                                        get $URI() {
-#                  return `${ localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.StaticPreviewAnywherePage.$URI }#${ this.$anchor }`
-#                }
+              $URI: `@All/CoreLibrary/PagesTemplates/Children/StaticPreviewAnywherePage/StaticPreviewAnywherePageTemplate.${ fileNameLocalizationExtensions }`
+              $sectioning:
+                $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/PagesTemplates/Children/StaticPreviewAnywherePage/TableOfContents/StaticPreviewAnywherePageTemplate.toc.yaml
+                $localizations:
+                  english: 01-Source/Pages/CoreLibrary/PagesTemplates/Children/StaticPreviewAnywherePage/TableOfContents/StaticPreviewAnywherePageTemplate.toc.english.yaml
+                  japanese: 01-Source/Pages/CoreLibrary/PagesTemplates/Children/StaticPreviewAnywherePage/TableOfContents/StaticPreviewAnywherePageTemplate.toc.japanese.yaml
+                  russian: 01-Source/Pages/CoreLibrary/PagesTemplates/Children/StaticPreviewAnywherePage/TableOfContents/StaticPreviewAnywherePageTemplate.toc.russian.yaml
 
         usageOnServerSide:
           $heading: `coreLibrary.markup.functionality.usageOnServerSide.$heading`

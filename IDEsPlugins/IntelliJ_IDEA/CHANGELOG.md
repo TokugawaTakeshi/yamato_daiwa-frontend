@@ -17,6 +17,17 @@
 - **AdmonitionBlock--YDF-V-H**, alias: **ab-ydf-vue-h** — Live template for 
   [AdmonitionBlock--YDF](FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
   component (HTML syntax).
+- **NARROWEST_SCREEN_WIDTH_UNIT--YDF** — autocomplete imitator type Live template for the [eponymous constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes--ydf---stylus-data-types).
+  Previously added **nswu** one now is the alias of **NARROWEST_SCREEN_WIDTH_UNIT--YDF**. 
+- **DataTypes--YDF** — autocomplete imitator type Live template for the [eponymous constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes--ydf---stylus-data-types).
+  Previously added **dt** one now is the alias of **DataTypes--YDF**.
+- **SMALLEST_DIVISION_OF_CSS_PIXEL--YDF**, alias: **sdocp** — Live template for
+  [`SMALLEST_DIVISION_OF_CSS_PIXEL--YDF`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#smallest_division_of_css_pixel--ydf---the-smallest-division-of-css-pixel)
+
+### Changed
+
+- **nswu** Live Template now adds `NARROWEST_SCREEN_WIDTH_UNIT--YDF` instead of `NARROWEST_SCREEN_WIDTH_UNIT`.
+- **dt** Live Template now adds `DataTypes--YDF` instead of `DataTypes`  
 
 
 ## [0.0.9]

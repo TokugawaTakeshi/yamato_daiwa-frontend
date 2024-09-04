@@ -174,7 +174,7 @@ block append SpecificContent
     +CodeViewer--YDF
 
       +CodeViewer-Listing--YDF({
-        fileLabel: "Pug синтаксис",
+        fileLabel: "Pug-синтаксис",
         codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug
       }): :code_listing--yda
         AdmonitionBlock(
@@ -186,7 +186,7 @@ block append SpecificContent
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
       +CodeViewer-Listing--YDF({
-        fileLabel: "HTML синтаксис",
+        fileLabel: "HTML-синтаксис",
         codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.HTML
       }): :code_listing--yda
         <AdmonitionBlock
@@ -202,7 +202,7 @@ block append SpecificContent
     //- ─── Заголовок (свойство `title`) ───────────────────────────────────────────────────────────────────────────────
     +Heading--YDF({
       level: 4,
-      text: localizedSectioning.AdmonitionBlockClass.$children.examples.$children.title.$heading,
+      innerHTML: localizedSectioning.AdmonitionBlockClass.$children.examples.$children.title.$heading,
       HTML_ID: localizedSectioning.AdmonitionBlockClass.$children.examples.$children.title.$anchor
     }).Article-Heading4
 
@@ -213,7 +213,7 @@ block append SpecificContent
     +CodeViewer--YDF
 
       +CodeViewer-Listing--YDF({
-        fileLabel: "Pug синтаксис",
+        fileLabel: "Pug-синтаксис",
         codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug
       }): :code_listing--yda
         AdmonitionBlock(
@@ -226,7 +226,7 @@ block append SpecificContent
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
       +CodeViewer-Listing--YDF({
-        fileLabel: "HTML синтаксис",
+        fileLabel: "HTML-синтаксис",
         codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.HTML
       }): :code_listing--yda
         <AdmonitionBlock
@@ -247,8 +247,6 @@ block append SpecificContent
       HTML_ID: localizedSectioning.AdmonitionBlockClass.$children.examples.$children.SVG_Icons.$anchor
     }).Article-Heading4
 
-    +PropertyMetadata--YDF_DK(AdmonitionBlockComponentPropertiesSpecification.propertiesSpecification.hasDefaultSVG_Icon)
-
     +WebPageViewer--YDF({
       URI: "$Demos:Vue/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-DefaultSvgIcons.html",
       title: "Примеры отображения компонента «AdmonitionBlock» с иконками " +
@@ -264,7 +262,7 @@ block append SpecificContent
     +CodeViewer--YDF
 
       +CodeViewer-Listing--YDF({
-        fileLabel: "Pug синтаксис",
+        fileLabel: "Pug-синтаксис",
         codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug
       }): :code_listing--yda
         AdmonitionBlock(
@@ -277,7 +275,7 @@ block append SpecificContent
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
       +CodeViewer-Listing--YDF({
-        fileLabel: "HTML синтаксис",
+        fileLabel: "HTML-синтаксис",
         codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.HTML
       }): :code_listing--yda
         <AdmonitionBlock
@@ -291,7 +289,7 @@ block append SpecificContent
         </AdmonitionBlock>
 
     p.Article-Paragraph.
-      Рекомендуемым для большинства случаев вариантом является сочетание заголовков и иконок:
+      #[+Keyword--YDID Наиболее] рекомендуемым вариантом является сочетание заголовков и иконок:
 
     +WebPageViewer--YDF({
       URI: "$Demos:CorePackage/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-TitlesAndSvgIcons.html",
@@ -299,10 +297,8 @@ block append SpecificContent
           "(библиотека: «Yamato Daiwa Frontend Vue», сокращённо: «YDF Vue»). "
     })
 
-    +CodeViewer--YDF
-
-      +CodeViewer-Listing--YDF({
-        fileLabel: "Pug синтаксис",
+    +CodeViewer-Listing--YDF({
+        fileLabel: "Pug-синтаксис",
         codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug
       }): :code_listing--yda
         AdmonitionBlock(
@@ -316,7 +312,7 @@ block append SpecificContent
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
       +CodeViewer-Listing--YDF({
-        fileLabel: "HTML синтаксис",
+        fileLabel: "HTML-синтаксис",
         codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.HTML
       }): :code_listing--yda
         <AdmonitionBlock
@@ -330,23 +326,22 @@ block append SpecificContent
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
         </AdmonitionBlock>
 
-
-    //- ─── Пользовательские иконки ────────────────────────────────────────────────────────────────────────────────────
-    h4.Article-Heading4 Пользовательские иконки
-
     p.Article-Paragraph.
-      Чтобы отобразить иконку, отличную от иконки по умолчанию, следует указать её через #[+Term--YDID слот]
-        #[+ImportantEntity__Code--YDID CustomSVG_Icon]:
+      Используя
+        #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.vue.officialSite.slots }).Article-Link Vue-слоты],
+        можно также указать пользовательскую #[+Term--YDID SVG-иконку], при этом у её #[+Keyword--YDID корневого]
+        #[+Term--YDID элемента] #[+Keyword--YDID должен] быть #[+Term--YDID CSS-класс]
+        #[+ImportantEntity__Code--YDID AdmonitionBlock--YDF-SVG_Icon]:
 
     +CodeViewer--YDF({
-      resultWebViewURI: "$Demos:Vue/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-CustomSvgIcons.html"
+      resultWebViewURI: "$Demos:CorePackage/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-CustomSvgIcons.html"
     })
 
       +CodeViewer-Listing--YDF({
-        fileLabel: "Pug синтаксис",
+        fileLabel: "Pug-синтаксис",
         codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug
       }): :code_listing--yda
-        AdmonitionBlock.AdmonitionBlockGallery-LoneAdmonitionBlock(
+        AdmonitionBlock(
           :decorativeVariation="AdmonitionBlock.DecorativeVariations.warning"
           lang="la"
         )
@@ -357,9 +352,8 @@ block append SpecificContent
 
           template(v-slot:CustomSVG_Icon): ExclamationMarkIcon__Squared.AdmonitionBlock--YDF-SVG_Icon
 
-
       +CodeViewer-Listing--YDF({
-        fileLabel: "HTML синтаксис",
+        fileLabel: "HTML-синтаксис",
         codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.HTML
       }): :code_listing--yda
         <AdmonitionBlock
@@ -372,7 +366,7 @@ block append SpecificContent
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
           <template v-slot:CustomSVG_Icon>
-            <ExclamationMarkIcon__Squared class=".AdmonitionBlock--YDF-SVG_Icon">
+            <ExclamationMarkIcon__Squared class="AdmonitionBlock--YDF-SVG_Icon"/>
           </template>
 
         </AdmonitionBlock>

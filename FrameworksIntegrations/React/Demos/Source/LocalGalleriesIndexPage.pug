@@ -1,4 +1,4 @@
-extends ../node_modules/@yamato-daiwa/frontend/PagesTemplates/StaticPreviewAnywherePage.pug
+extends ../node_modules/@yamato-daiwa/frontend/PagesTemplates/StaticPreviewAnywherePageTemplate.pug
 
 
 block append Metadata
@@ -19,6 +19,8 @@ block append TableOfContents
     URI: "@CompletePages/Components/AdmonitionBlock/AdmonitionBlockGalleryPage",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
+
+  //-
 
     +PageLink({
       label: "Badge",

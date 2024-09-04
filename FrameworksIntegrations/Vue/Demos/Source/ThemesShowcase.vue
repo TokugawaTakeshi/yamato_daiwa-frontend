@@ -27,7 +27,7 @@ dl.ThemesShowcase--YDF
 
               template(
                 v-for="(decorativeVariationValue, decorativeVariationKey) of decorativeVariations"
-                :key="`${ themeKey }-${ decorativeVariationKey }`"
+                :key="`${ themeKey }-${ geometricVariationKey }-${ decorativeVariationKey }`"
               )
 
                 template(

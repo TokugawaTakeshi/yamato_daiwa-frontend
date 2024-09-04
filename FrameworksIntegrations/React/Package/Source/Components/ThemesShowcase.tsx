@@ -12,7 +12,7 @@ const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
         geometricVariationLabelPrefix,
         decorativeVariations,
         decorativeVariationLabelPrefix,
-        decorativeVariationsWrapperTag: DecorativeVariationsWrapperTag = "ul",
+        decorativeVariationsWrapperTag: DecorativeVariationsWrapperTag = "dl",
         decorativeVariationsWrapperAdditionalCSS_Classes = [],
         decorativeVariationsListItemAdditionalCSS_Classes = [],
         renderChild
@@ -25,15 +25,19 @@ const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
             Object.entries(themes).map(
               ([ themeKey, themeValue ]: [ string, string ]): ReactElement =>
 
-                  <>
+                  <React.Fragment key={ themeKey }>
 
-                    <dt className="ThemesShowcase--YDF-KeyLabel">{ `${ themeKeyLabelPrefix }${ themeKey }` }</dt>
+                    <dt className="ThemesShowcase--YDF-KeyLabel" >
+                      { `${ themeKeyLabelPrefix }${ themeKey }` }
+                    </dt>
+
                     <dd className="ThemesShowcase--YDF-ValueSection">
                       <dl className="ThemesShowcase--YDF-ChildList">
                         {
                           Object.entries(geometricVariations).map(
                             ([ geometricVariationKey, geometricVariationValue ]: [ string, string ]): ReactElement => (
-                              <>
+                              <React.Fragment key={ `${ themeKey }-${ geometricVariationKey }` }>
+
                                 <dt className="ThemesShowcase--YDF-KeyLabel">
                                   { `${ geometricVariationLabelPrefix }${ geometricVariationKey }` }
                                 </dt>
@@ -63,7 +67,11 @@ const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
                                               (
                                                 DecorativeVariationsWrapperTag === "dl" ?
 
-                                                    <>
+                                                    <React.Fragment
+                                                      key={
+                                                        `${ themeKey }-${ geometricVariationKey }-${ decorativeVariationKey }`
+                                                      }
+                                                    >
 
                                                       <dt className="ThemesShowcase--YDF-KeyLabel">
                                                         { `${ decorativeVariationLabelPrefix }${ decorativeVariationKey }` }
@@ -97,7 +105,7 @@ const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
 
                                                       </dd>
 
-                                                    </> :
+                                                    </React.Fragment> :
 
                                                     renderChild({
                                                       theme: {
@@ -122,13 +130,13 @@ const ThemesShowcase: React.FC<ThemesShowcase.Properties> =
 
                                 </dd>
 
-                              </>
+                              </React.Fragment>
                             )
                           )
                         }
                       </dl>
                     </dd>
-                  </>
+                  </React.Fragment>
               )
           }
         </dl>;

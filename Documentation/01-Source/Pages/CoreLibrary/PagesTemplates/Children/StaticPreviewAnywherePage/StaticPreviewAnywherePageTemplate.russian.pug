@@ -32,6 +32,11 @@ block append Metadata
       japanese: "./StaticPreviewAnywherePageTemplate.japanese.html"
     });
 
+    const localizedSectioning = localizedRouting.coreLibrary.$children.
+        markup.$children.
+        pagesTemplates.$children.
+        StaticPreviewAnywherePage.$sectioning;
+
 
 block append HeadScripts
 
@@ -44,4 +49,58 @@ block append SpecificContent
 
   article
 
-    h1.Article-Heading1 RegularWebPageTemplate
+    h1.Article-Heading1 StaticPreviewAnywherePageTemplate
+
+    //- ━━━ Концепция статического превью ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    +Heading--YDF({
+      level: 2,
+      text: localizedSectioning.staticPreviewConcept.$heading,
+      HTML_ID: localizedSectioning.staticPreviewConcept.$anchor
+    }).Article-Heading2
+
+    p.Article-Paragraph.
+      #[+DefinableTerm--YDID Статическое превью] — #[+Keyword--YDID этап] разработки #[+Term--YDID веб-сайта] либо
+        #[+Term--YDID приложения с графическим интерфейсом] (даже #[+Keyword--YDID не]&nbsp;обязательно
+        #[+Term--YDID веб-приложения], если технология поддерживает создание
+        #[+Term--YDID графического пользовательского интерфейса] с помощью #[+ImportantEntity--YDID HTML] и
+        #[+ImportantEntity--YDID CSS]) или же их конкретной страницы, на которых разработчик #[+Keyword--YDID полностью]
+        сконцентрирован на #[+Keyword--YDID вёрстке], а #[+Term--YDID JavaScript-динамика] и серверная часть — это задачи
+        #[+Keyword--YDID следующих] этапов.
+      #[+Keyword--YDID Также], #[+Term--YDID cтатическое превью] — #[+Keyword--YDID набор]
+        #[+Keyword__Contrast--YDID выходных] файлов, являющихся результатом одноимённого этапа разработки.
+
+    p.Article-Paragraph.
+      Термин #[+Term--YDID «статическое превью»] #[+Keyword--YDID близок] к #[+Keyword__Contrast--YDID русскоязычному]
+        термину #[+Term--YDID «вёрстка»] #[+Keyphrase--YDID в контексте веб-разработки], однако в
+        англоязычной терминологии #[+Keyword--YDID прямого] перевода термина #[+Term--YDID «вёрстка»]
+        #[+Keyword--YDID нет].
+      Важным же #[+Keyword--YDID отличием] #[+Term--YDID статического превью] от #[+Term__Contrast--YDID вёрстки]
+        является наличие следующих #[+Keyword--YDID требований]:
+
+    ul.Article-UnorderedList
+
+      li.
+        Обеспечение просмотра выходных файлов заказчиками или руководителями
+          #[+Keyphrase--YDID без&nbsp;технических знаний и специализированного программного обеспечения], такого
+          как #[+SecondaryEntity--YDID npm] или #[+SecondaryEntity--YDID Git], при этом
+          изображения и другие мультимедийные файлы #[+Keyword--YDID должны] корректно отображаться в браузере.
+        Проще говоря, должен соблюдаться принцип: «открыл скачанный #[+Term--YDID HTML-файл] в браузере — и всё
+          корректно отображается».
+        Помешать этому может, например, использование #[+Term--YDID укороченных абсолютных путей] в
+          #[+Term__Contrast--YDID HTML-коде].
+
+      li.
+        Должен быть доступ к #[+Keyword--YDID любой] странице #[+Keyphrase--YDID без ограничений], такой как
+          #[+Term--YDID аутентификация] и #[+Term--YDID авторизация].
+        Разумеется, с целью предотвращения утечки секретной информации доступ к #[+Term--YDID статическому превью]
+          должны иметь только лица, имеющие прямое отношение к проекту.
+
+
+    //- ─── Проблематика ───────────────────────────────────────────────────────────────────────────────────────────────
+    h3.Article-Heading3 Проблематика
+
+    p.Article-Paragraph.
+      Не все разработчики практикуют разделение разработки сайта или приложения на вёрстку и реализацию логики
+        (как клиентской, так и серверной).
+      В частности, в современной веб-разработке популярен поход «CSS в JS».
+      Однако, такое параллельное написание разметки, стилей и логики имеет существенные недостатки:

@@ -158,10 +158,20 @@ block append SpecificContent
         }).Article-Link SVGアイコン
 
 
-    //- h4.Article-Heading4 スタイル
+    h4.Article-Heading4 スタイル
 
-    //-
-      h5.Article-Heading5 アセット
+    h5.Article-Heading5 アセット
+
+    h5.Article-Heading6 基礎定数・列挙
+
+    ul.Article-UnorderedList
+
+      li: +Link--YDF({
+        unendorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/" +
+            "Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/" +
+            "FundamentalConstantsAndEnums.md#smallest_division_of_css_pixel--ydf---the-smallest-division-of-css-pixel"
+      }).Article-Link SMALLEST_DIVISION_OF_CSS_PIXEL--YDF
+
 
       h6.Article-Heading6 カラーパレット
 
@@ -215,12 +225,91 @@ block append SpecificContent
               widthSizing.$URI
         }).Article-Link WidthSizingSpecificationSchema--YDF
 
+    h3.Article-Heading3 破壊的変化
+
+    h4.Article-Heading4 スタイル
+
+    h5.Article-Heading5 アセット
+
+    p.Article-Paragraph.
+      #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT]#[+Term--YDID 定数]の名前は
+        #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT--YDF]に変更された。
+
+    dl.Article-DescriptionList
+
+      dt 理由
+      dd 名前コンフリクトの確率を可能な限り減らす為に#[+ImportantEntity__Code--YDID --YDF]と言う#[+Term--YDID ベンダー語尾]が追加された。
+
+      dt 貴方のコードが編集が必要に成る条件
+      dd コードの中に#[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT]が直接使用中。
+
+      dt 対策
+      dd.
+        コードエディター又は結合開発環境の適切な機能を使って、プロジェクト内の全#[+Term--YDID Stylusファイル]ファイルで
+          #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT]を
+          #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT--YDF]に置き換えて下さい。
+        例えば、#[+ImportantEntity--YDID IntelliJ IDEA]ファミリー結合開発環境の場合、当機能を
+          #[+SecondaryEntity__Code--YDID Ctrl + Shift + R]ショートカット（規定）で起動可能。
+
+
+    h6.Article-Heading6 #[code DataTypes]列挙及び此れの一部の要素の名前変更
+
+    ol.Article-OrderedList
+
+      li.
+        #[+ImportantEntity__Code--YDID DataTypes]#[+Term--YDID 列挙]は#[+ImportantEntity__Code--YDID DataTypes--YDF]は
+          に名前変更。
+
+      li.
+        #[+ImportantEntity__Code--YDID dimensionalAmount]#[+Term--YDID 要素]は
+          #[+ImportantEntity__Code--YDID dimensionalQuantity]に名前変更され、此れの値は
+          #[+ImportantEntity__Code--YDID "DIMENSIONAL_QUANTITY"]に成った。
+
+      li.
+        #[+ImportantEntity__Code--YDID dimensionlessAmount]#[+Term--YDID 要素]は
+          #[+ImportantEntity__Code--YDID dimensionlessQuantity]に名前変更され、此れの値は
+          #[+ImportantEntity__Code--YDID "DIMENSIONLESS_QUANTITY"]に成った。
+
+    dl.Article-DescriptionList
+
+      dt 理由
+      dd
+        ul.Article-UnorderedList
+
+          li.
+            #[+ImportantEntity__Code--YDID --YDF]と言う#[+Term--YDID ベンダー語尾]は名前コンフリクトの確率を可能な限り減らす為
+              に追加された。
+
+          li #[+Term--YDID 要素]は正式的科学用語と統一する為に名前変更された。
+
+      dt 貴方のコードが編集が必要に成る条件
+      dd コードの中に#[+ImportantEntity__Code--YDID DataTypes]が直接使用中。
+
+      dt 対策
+      dd
+
+        p.Article-Paragraph.
+          コードエディター又は結合開発環境の適切な機能を使って、プロジェクト内の全#[+Term--YDID Stylusファイル]ファイルで下記の置き換えを
+            実行して下さい。
+
+        ul.Article-UnorderedList
+
+          li.
+            #[+ImportantEntity__Code--YDID DataTypes]#[+Term--YDID 列挙]名を
+              #[+ImportantEntity__Code--YDID DataTypes--YDF]に。
+
+          li.
+            #[+ImportantEntity__Code--YDID dimensionalAmount]#[+Term--YDID 列挙要素]を
+              #[+ImportantEntity__Code--YDID dimensionalQuantity]に.
+
+          li.
+            #[+ImportantEntity__Code--YDID dimensionlessAmount]#[+Term--YDID 列挙要素]を
+              #[+ImportantEntity__Code--YDID dimensionlessQuantity]に.
+
+        p.Article-Paragraph.
+          例えば、#[+ImportantEntity--YDID IntelliJ IDEA]ファミリー結合開発環境の場合、当機能を
+            #[+SecondaryEntity__Code--YDID Ctrl + Shift + R]ショートカット（規定）で起動可能。
     //-
-      h3.Article-Heading3 破壊的変化
-
-      h4.Article-Heading4 スタイル
-
-      h5.Article-Heading5 アセット
 
       h6.Article-Heading6 #[code DataTypes]列挙の名前変更
 

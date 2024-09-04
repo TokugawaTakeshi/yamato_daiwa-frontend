@@ -27,8 +27,8 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 
 #### Mixins
 
-* **pl** — Live template for [`PageLink` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelink)
-* **plg** — Live template for [`PagesLinksGroup` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelinksgroup)
+- **pl** — Live template for [`PageLink` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelink)
+- **plg** — Live template for [`PagesLinksGroup` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelinksgroup)
 
 
 #### GUI Components
@@ -41,10 +41,6 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 
 #### Vue
 
-- **ab-ydf** — Live template for the inserting of invocation of **AdmonitionBlock--YDF** Pug mixin corresponding to the 
-    [**AdmonitionBlock** component](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html)
-- **AdmonitionBlock--YDF**, **ab-ydf** — Autocomplete imitator and its alias respectively for
-  [eponymous component](https://frontend.yamato-daiwa.com/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html).
 ##### GUI Components
 
 - **AdmonitionBlock--YDF-V-P**, alias: **ab-ydf-vue-p** — Live template for 
@@ -53,23 +49,26 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 - **AdmonitionBlock--YDF-V-H**, alias: **ab-ydf-vue-h** — Live template for 
   [AdmonitionBlock--YDF](FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
   component (HTML syntax).
-- **badge-ydf**, **badge-lp-ydf** — Live templates for the inserting of invocation of **Badge--YDF** and 
-    **Badge--YDF-LoadingPlaceholder** Pug mixins corresponding to **Badge** component and its loading placeholder 
-    respectively  
-* **ossll** — Live template for **OverflowSafeSingleLineLabel** component
+
+[//]: # (- **badge-ydf**, **badge-lp-ydf** — Live templates for the inserting of invocation of **Badge--YDF** and )
+[//]: # (    **Badge--YDF-LoadingPlaceholder** Pug mixins corresponding to **Badge** component and its loading placeholder )
+[//]: # (    respectively  )
+[//]: # (* **ossll** — Live template for **OverflowSafeSingleLineLabel** component)
 
 
 ### Styles (Stylus)
+
 #### Assets
-##### Fundamental constants and enumerations
 
-* <kbd>dt</kbd> The Live template for the [`DataTypes` enumeration](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types)
-* <kbd>nswu</kbd> The Live template for the [`NARROWEST_SCREEN_WIDTH_UNIT` constant](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/NARROWEST_SCREEN_WIDTH_UNIT/NARROWEST_SCREEN_WIDTH_UNIT.english.html) 
+##### Fundamental Constants and Enumerations
 
-<!-- * <kbd>dt</kbd> The Live template for the [`DataTypes` enumeration](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/DataTypes/DataTypes.english.html) -->
-<!-- * <kbd>nswu</kbd> The Live template for the [`NARROWEST_SCREEN_WIDTH_UNIT` constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit---the-narrowest-screen-width-unit) -->
-
-
+- **DataTypes--YDF**, alias: **dt** — Live template for 
+  [`DataTypes--YDF` enumeration](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes--ydf---stylus-data-types)
+- **NARROWEST_SCREEN_WIDTH_UNIT--YDF**, alias: **nswu** — The Live template for the 
+  [`NARROWEST_SCREEN_WIDTH_UNIT--YDF` constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit--ydf---the-narrowest-screen-width-unit)
+- **SMALLEST_DIVISION_OF_CSS_PIXEL--YDF**, alias: **sdocp** — Live template for
+  [`SMALLEST_DIVISION_OF_CSS_PIXEL--YDF`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#smallest_division_of_css_pixel--ydf---the-smallest-division-of-css-pixel)
+ 
 ##### Colors
 
 * <kbd>pccs</kbd> The Live template for the [`PracticalColorCoordinateSystem` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md)

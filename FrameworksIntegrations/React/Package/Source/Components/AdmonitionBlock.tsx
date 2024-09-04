@@ -26,7 +26,10 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
   protected static get propTypes(): Readonly<{ [ propertyKey in keyof AdmonitionBlock.Properties ]: unknown }> {
     return {
       title: ReactPropertiesValidation.string,
-      hasDefaultSVG_Icon: ReactPropertiesValidation.bool,
+      SVG_Icon: ReactPropertiesValidation.oneOf([
+        ReactPropertiesValidation.bool,
+        ReactPropertiesValidation.elementType
+      ]),
       dismissible: ReactPropertiesValidation.bool,
       theme: ReactPropertiesValidation.oneOf(Object.values(AdmonitionBlock.Themes)),
       areThemesCSS_ClassesCommon: ReactPropertiesValidation.bool,
@@ -44,7 +47,7 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
   public static get defaultProps(): Required<
     Pick<
       AdmonitionBlock.Properties,
-      "hasDefaultSVG_Icon" |
+      "SVG_Icon" |
       "dismissible" |
       "theme" |
       "areThemesCSS_ClassesCommon" |
@@ -53,7 +56,7 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
     >
   > {
     return {
-      hasDefaultSVG_Icon: false,
+      SVG_Icon: false,
       dismissible: false,
       theme: AdmonitionBlock.Themes.regular,
       areThemesCSS_ClassesCommon: AdmonitionBlock.areThemesCSS_ClassesCommon,
@@ -213,29 +216,43 @@ class AdmonitionBlock extends React.Component<AdmonitionBlock.Properties, Admoni
 
   protected get SVG_Icon(): React.ReactNode {
 
-    switch (this.props.decorativeVariation) {
+    if (this.props.SVG_Icon === true) {
 
-      case AdmonitionBlock.DecorativeVariations.notice:
-          return <PencilIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+      switch (this.props.decorativeVariation) {
 
-      case AdmonitionBlock.DecorativeVariations.error:
-          return <ExclamationMarkIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+        case AdmonitionBlock.DecorativeVariations.notice:
+            return <PencilIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
 
-      case AdmonitionBlock.DecorativeVariations.warning:
-          return <ExclamationMarkIcon__Triangled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+        case AdmonitionBlock.DecorativeVariations.error:
+            return <ExclamationMarkIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
 
-      case AdmonitionBlock.DecorativeVariations.success:
-          return <CheckmarkIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+        case AdmonitionBlock.DecorativeVariations.warning:
+            return <ExclamationMarkIcon__Triangled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
 
-      case AdmonitionBlock.DecorativeVariations.guidance:
-          return <InfoSignIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+        case AdmonitionBlock.DecorativeVariations.success:
+            return <CheckmarkIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
 
-      case AdmonitionBlock.DecorativeVariations.question:
-          return <QuestionMarkIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+        case AdmonitionBlock.DecorativeVariations.guidance:
+            return <InfoSignIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+
+        case AdmonitionBlock.DecorativeVariations.question:
+            return <QuestionMarkIcon__Circled__Filled className="AdmonitionBlock--YDF-SVG_Icon"/>;
+
+        default: return null;
+
+      }
 
     }
 
-    return null;
+
+    if (this.props.SVG_Icon === false) {
+      return null;
+    }
+
+
+    const SVG_Icon: React.ElementType<{ className: string; }> = this.props.SVG_Icon;
+
+    return <SVG_Icon className="AdmonitionBlock--YDF-SVG_Icon"/>;
 
   }
 
@@ -246,7 +263,7 @@ namespace AdmonitionBlock {
 
   export type Properties = Readonly<{
     title?: string;
-    hasDefaultSVG_Icon: boolean;
+    SVG_Icon: boolean | React.ElementType<{ className: string; }>;
     dismissible: boolean;
     theme: string;
     areThemesCSS_ClassesCommon: boolean;

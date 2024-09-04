@@ -158,10 +158,21 @@ block append SpecificContent
         }).Article-Link SVG-иконки
 
 
-    //- h4.Article-Heading4 Стили
+    h4.Article-Heading4 Стили
 
-    //-
-      h5.Article-Heading5 Ассеты
+    h5.Article-Heading5 Ассеты
+
+    h5.Article-Heading6 Фундаментальные переменные и перечисления
+
+    ul.Article-UnorderedList
+
+      li: +Link--YDF({
+        unendorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/" +
+            "Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/" +
+            "FundamentalConstantsAndEnums.md#smallest_division_of_css_pixel--ydf---the-smallest-division-of-css-pixel"
+      }).Article-Link SMALLEST_DIVISION_OF_CSS_PIXEL--YDF
+
+
 
       h6.Article-Heading6 Цветовые палитры
 
@@ -239,40 +250,103 @@ block append SpecificContent
               isFunction.$URI
         }).Article-Link isFunction
 
-    //-
-      h3.Article-Heading3 Критические изменения
 
-      h4.Article-Heading4 Стили
+    h3.Article-Heading3 Критические изменения
 
-      h5.Article-Heading5 Ассеты
+    h4.Article-Heading4 Стили
 
-      h6.Article-Heading6 Изменение элементов перечисления #[code DataTypes]
+    h5.Article-Heading5 Ассеты
 
-      p.Article-Paragraph.
-        #[+Term--YDID Элемент] #[+ImportantEntity__Code--YDID dimensionalAmount] #[+Term--YDID перечисления]
-          #[+ImportantEntity__Code--YDID DataTypes] был переименован в #[+ImportantEntity__Code--YDID dimensionalQuantity],
-          а #[+ImportantEntity__Code--YDID dimensionlessAmount] — в #[+ImportantEntity__Code--YDID dimensionlessQuantity].
+    h5.Article-Heading6 Переименование константы #[code NARROWEST_SCREEN_WIDTH_UNIT]
 
-      dl.Article-DescriptionList
+    p.Article-Paragraph.
+      #[+Term--YDID Константа] #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT] была переименована
+        в #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT--YDF].
 
-        dt Причина
-        dd Приведение к канонической научной терминологии
+    dl.Article-DescriptionList
 
-        dt Понадобится редактирование Вашего кода, если
-        dd.
-          Вы обращались к #[+Term--YDID элементам] #[+ImportantEntity__Code--YDID dimensionalAmount] и/или
-            #[+ImportantEntity__Code--YDID dimensionlessAmount] #[+Term--YDID элементам перечисления]
-            #[+ImportantEntity__Code--YDID DataTypes]
+      dt Причина
+      dd.
+        С целью значительного уменьшения вероятности конфликта имён был добавлен #[+Term--YDID вендорный постфикс]
+          #[+ImportantEntity__Code--YDID --YDF].
 
-        dt Миграция
-        dd.
-          Используя соответствующую функциональнсоть редактора кода или интегрированной среды разработки,
-            замените #[+ImportantEntity__Code--YDID DataTypes.dimensionalAmount] на
-            #[+ImportantEntity__Code--YDID DataTypes.dimensionalQuantity], а
-            #[+ImportantEntity__Code--YDID DataTypes.dimensionlessAmount] — на
-            #[+ImportantEntity__Code--YDID DataTypes.dimensionlessQuantity] во всех #[+Term--YDID Stylus-файлах].
-          Например, в интегрированных средах разработки семейства IntelliJ IDEA такая функциональностью доступна с
-            помощью сочетания клавиш #[+SecondaryEntity__Code--YDID Ctrl + Shift + R].
+      dt Понадобится редактирование Вашего кода, если
+      dd.
+        В Вашем коде есть прямые ссылки на #[+Term--YDID константу]
+          #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT].
+
+      dt Миграция
+      dd.
+        Используя соответствующую функциональнсоть Вашего редактора кода или интегрированной среды разработки,
+          замените #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT] на
+          #[+ImportantEntity__Code--YDID NARROWEST_SCREEN_WIDTH_UNIT--YDF] во всех #[+Term--YDID Stylus-файлах]
+          проекта.
+        Например, в интегрированных средах разработки семейства #[+ImportantEntity--YDID IntelliJ IDEA] такая
+          функциональностью доступна с помощью сочетания клавиш #[+SecondaryEntity__Code--YDID Ctrl + Shift + R]
+          (по умолчанию).
+
+
+    h6.Article-Heading6 Переименование перечисления #[code DataTypes] и некоторых его элементов
+
+    ol.Article-OrderedList
+
+      li.
+        #[+Term--YDID Перечисление] #[+ImportantEntity__Code--YDID DataTypes] было переименовано в
+          #[+ImportantEntity__Code--YDID DataTypes--YDF].
+
+      li.
+        #[+Term--YDID Элемент] #[+ImportantEntity__Code--YDID dimensionalAmount] был переименован в
+          #[+ImportantEntity__Code--YDID dimensionalQuantity], а его значение — в
+          #[+ImportantEntity__Code--YDID "DIMENSIONAL_QUANTITY"].
+
+      li.
+        #[+Term--YDID Элемент] #[+ImportantEntity__Code--YDID dimensionlessAmount] был переименован в
+          #[+ImportantEntity__Code--YDID dimensionlessQuantity], а его значение — в
+          #[+ImportantEntity__Code--YDID "DIMENSIONLESS_QUANTITY"].
+
+    dl.Article-DescriptionList
+
+      dt Причина
+      dd
+        ul.Article-UnorderedList
+
+          li.
+            #[+Term--YDID Вендорный постфикс] #[+ImportantEntity__Code--YDID --YDF] был добавлен к имени
+              #[+Term--YDID перечисления] с целью значительного уменьшения вероятности конфликта имён.
+
+          li #[+Term--YDID Элементы] были переименованы с целью приведения к канонической научной терминологии.
+
+      dt Понадобится редактирование Вашего кода, если
+      dd В Вашем коде есть прямые ссылки на #[+Term--YDID перечисление] #[+ImportantEntity__Code--YDID DataTypes].
+
+
+      dt Миграция
+      dd
+
+        p.Article-Paragraph.
+          Используя соответствующую функциональнсоть Вашего редактора кода или интегрированной среды разработки,
+            замените в всех #[+Term--YDID Stylus-файлах] проекта:
+
+        ul.Article-UnorderedList
+
+          li.
+            Имя #[+Term--YDID перечисления] #[+ImportantEntity__Code--YDID DataTypes] на
+              #[+ImportantEntity__Code--YDID DataTypes--YDF].
+
+          li.
+            #[+Term--YDID Элемент перечисления] #[+ImportantEntity__Code--YDID dimensionalAmount] на
+              #[+ImportantEntity__Code--YDID dimensionalQuantity].
+
+          li.
+            #[+Term--YDID Элемент перечисления] #[+ImportantEntity__Code--YDID dimensionlessAmount] на
+              #[+ImportantEntity__Code--YDID dimensionlessQuantity].
+
+        p.Article-Paragraph.
+          Например, в интегрированных средах разработки семейства #[+ImportantEntity--YDID IntelliJ IDEA] такая
+            функциональностью доступна с помощью сочетания клавиш #[+SecondaryEntity__Code--YDID Ctrl + Shift + R]
+            (по умолчанию).
+
+
 
       h6.Article-Heading6 Изменение свойств в объекте #[code TemporaryHighlighting]
 
