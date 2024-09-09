@@ -59,10 +59,10 @@ block append SpecificContent
     p.Article-Paragraph
       | #[+ImportantEntity--YDID @yamato-daiwa/frontend]と言う#[+Term--YDID npmパッケージ]の#[+Keyword--YDID ルート]ディレクトリに在る
       |   #[+ImportantEntity--YDID Functionality.pug]ファイルを
-      |   #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }).Article-Link 含む]と、
+      |   #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }) 含む]と、
       +Link--YDF({
         endorsedExternalURI: sharedExternalLinks.YamatoDaiwaES_Extensions.top
-      }).Article-Link @yamato-daiwa/es-extensions
+      }) @yamato-daiwa/es-extensions
       |   （略：#[+ImportantEntity--YDID 「YDEE」]）の#[+ImportantEntity--YDID #{ ACTUAL_YDEE_VERSION }]バージョンの全機能
       |   （#[+Term--YDID インターフェース]や#[+Term--YDID タイプアリアス]の様に#[+ImportantEntity--YDID TypeScript]を
       |    #[+ImportantEntity--YDID JavaScript]への変更の際存在しなく成る機能#[+Keyword--YDID 以外]）が利用可能に成る。
@@ -80,7 +80,7 @@ block append SpecificContent
     +AdmonitionBlock--YDF({ decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning, SVG_Icon: true })
       +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
-      }).Article-Link ウェブページの原型
+      }) ウェブページの原型
       |   を使う場合、#[+ImportantEntity__Code--YDID Functionality.pug]ファイルは#[+Keyword--YDID 既に]含めてあり、
       |   #[+Keyword__Contrast--YDID 再び]含む行為は#[+Keyphrase--YDID エラーを発生させる]。
 
@@ -89,7 +89,7 @@ block append SpecificContent
       +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.
             StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI
-      }).Article-Link 静的プレビュー
+      }) 静的プレビュー
       |   作成の段階での簡易な#[+Term--YDID データモキング]。
       |   例えば、下記の様にデータ（意味のない文字列でも此の段階では問題が無い）に満たされている16件のカードのマークアップを早く作成できます。
 
@@ -126,7 +126,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             assets.$children.
             DummyImagesURIs.$URI
-      }).Article-Link DummyImagesURIs
+      }) DummyImagesURIs
       |   #[+Term--YDID 連想配列型]の#[+Term__Contrast--YDID 定数]は#[+ImportantEntity--YDID YDF]の一部。
       | 其の結果、各カードに於いて下記の様なコード#[+Term--YDID HTMLコード]が生成される
       |   (#[+SecondaryEntity__Code--YDID img]#[+Term--YDID タグ]に於いて#[+SecondaryEntity__Code--YDID src]
@@ -163,7 +163,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             functionsAndClasses.$children.
             processObjectTypeParameterOfPugMixin.$URI,
-      }).Article-Link Pug混入の引数の妥当性確認
+      }) Pug混入の引数の妥当性確認
       |   をするのに使われています。
 
     +CodeViewer--YDF
@@ -211,7 +211,7 @@ block append SpecificContent
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.
               StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI
-        }).Article-Link 静的プレビュー
+        }) 静的プレビュー
         |   段階専用ですが、
         +Keyphrase--YDID.
           #[+ImportantEntity--YDID Pug]から#[+ImportantEntity--YDID HTML]への変換がウェブサイト・アプリケーションの納品の
@@ -227,18 +227,20 @@ block append SpecificContent
               inlineJavaScript.$children.
               functionsAndClasses.$children.
               processObjectTypeParameterOfPugMixin.$URI,
-        }).Article-Link Pug混入の引数の妥当性確認
+        }) Pug混入の引数の妥当性確認
         |   （
-        +Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.components.$URI }).Article-Link UI・UXコンポーネント
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.GUI_Components.$URI
+        }) UI・UXコンポーネント
         |   の混入を含む）が動く様に、又は
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
-        }).Article-Link ページの原型
+        }) ページの原型
         |   が使える様に、#[+Keyphrase--YDID パフォーマンスの低下無しで]#[+ImportantEntity--YDID YDEE]結合を使用する方法を下記に示します。
         | 方法としては
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.usageOnServerSide.$URI
-        }).Article-Link 専用説明書
+        }) 専用説明書
         |   が用意してありますが、簡単に説明すると、源#[+Term--YDID Pugコード]を出力#[+Term--YDID HTMLコード]への#[+Keyword--YDID ２段階]
         |   変換を確保しなければいけません。
         | #[+Keyword--YDID １段階目]の際、#[+Keyword--YDID 中間]テンプレートファイルが生成され、#[+Keyword--YDID 各]ファイルが

@@ -1,0 +1,25 @@
+extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/StaticPreviewAnywherePageTemplate.pug
+
+
+block append Metadata
+
+  - RegularWebPageTemplate__YDF.configure({ metadata: { title: "YDF React — Workbenches" } });
+
+
+block append TableOfContents
+
+  h1.AnywherePage-TopHeading= RegularWebPageTemplate__YDF.metadata.title
+
+  h2.AnywherePage-PagesGroupHeading GUI Components
+
+  +PageLink({
+    label: "AdmonitionBlock",
+    URI: "@Workbenches/GUI_Components/AdmonitionBlock/AdmonitionBlock.workbench",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
+  })
+
+  +PageLink({
+    label: "OverflowSafeSingleLineLabel",
+    URI: "@Workbenches/GUI_Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.workbench",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
+  })

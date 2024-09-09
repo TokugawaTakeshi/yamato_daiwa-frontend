@@ -102,11 +102,17 @@ coreLibrary:
           $children:
 
             RegularWebPage:
-              $heading: "<code>RegularWebPage</code>"
+              $heading: "<code>RegularWebPageTemplate</code>"
               $URI: `@All/CoreLibrary/PagesTemplates/Children/RegularWebPage/RegularWebPageTemplate.${ fileNameLocalizationExtensions }`
+              $sectioning:
+                $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/PagesTemplates/Children/RegularWebPage/TableOfContents/RegularWebPageTemplate.toc.yaml
+                $localizations:
+                  english: 01-Source/Pages/CoreLibrary/PagesTemplates/Children/RegularWebPage/TableOfContents/RegularWebPageTemplate.toc.english.yaml
+                  japanese: 01-Source/Pages/CoreLibrary/PagesTemplates/Children/RegularWebPage/TableOfContents/RegularWebPageTemplate.toc.japanese.yaml
+                  russian: 01-Source/Pages/CoreLibrary/PagesTemplates/Children/RegularWebPage/TableOfContents/RegularWebPageTemplate.toc.russian.yaml
 
             StaticPreviewAnywherePage:
-              $heading: "<code>StaticPreviewAnywherePage</code>"
+              $heading: "<code>StaticPreviewAnywherePageTemplate</code>"
               $URI: `@All/CoreLibrary/PagesTemplates/Children/StaticPreviewAnywherePage/StaticPreviewAnywherePageTemplate.${ fileNameLocalizationExtensions }`
               $sectioning:
                 $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/PagesTemplates/Children/StaticPreviewAnywherePage/TableOfContents/StaticPreviewAnywherePageTemplate.toc.yaml
@@ -121,7 +127,7 @@ coreLibrary:
 
     styles:
 
-      $heading: coreLibrary.styles.$heading
+      $heading: `coreLibrary.styles.$heading`
       $children:
 
         assets:
@@ -132,6 +138,15 @@ coreLibrary:
             fundamentalConstantsAndEnums:
 
               $heading: `coreLibrary.styles.assets.fundamentalConstantsAndEnums.$heading`
+
+#              $URI: `@All/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.${ fileNameLocalizationExtensions }`
+#              $sectioning:
+#                $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/TableOfContents/FundamentalConstantsAndEnums.toc.yaml
+#                $localizations:
+#                  english: 01-Source/Pages/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/TableOfContents/FundamentalConstantsAndEnums.toc.english.yaml
+#                  japanese: 01-Source/Pages/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/TableOfContents/FundamentalConstantsAndEnums.toc.japanese.yaml
+#                  russian: 01-Source/Pages/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/TableOfContents/FundamentalConstantsAndEnums.toc.russian.yaml
+
               $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md"
 
               $children:
@@ -152,46 +167,112 @@ coreLibrary:
               $children:
 
                 PracticalColorCoordinateSystem:
+
                   $heading: `coreLibrary.styles.assets.colors.PracticalColorCoordinateSystem.$heading`
+
                   $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md"
-                  # $URI: `@All/CoreLibrary/Styles/Assets/Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.${ fileNameLocalizationExtensions }`
 
-                ShadesOfGray__39ColorsW3C_Palette:
-                  $heading: `coreLibrary.styles.assets.colors.ShadesOfGray__39ColorsW3C_Palette.$heading`
-                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md"
-                  # $URI: `@All/CoreLibrary/Styles/Assets/Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.${ fileNameLocalizationExtensions }`
+#                  $URI: `@All/CoreLibrary/Styles/Assets/Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.${ fileNameLocalizationExtensions }`
+#                  $sectioning:
+#                    $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/PracticalColorCoordinateSystem/TableOfContents/PracticalColorCoordinateSystem.toc.yaml
+#                    $localizations:
+#                      english: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/PracticalColorCoordinateSystem/TableOfContents/PracticalColorCoordinateSystem.toc.english.yaml
+#                      japanese: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/PracticalColorCoordinateSystem/TableOfContents/PracticalColorCoordinateSystem.toc.japanese.yaml
+#                      russian: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/PracticalColorCoordinateSystem/TableOfContents/PracticalColorCoordinateSystem.toc.russian.yaml
 
-                TemporaryHighlighting:
-                  $heading: "<code>TemporaryHighlighting</code>"
+                TemporarySemitransparentHighlighting:
+
+                  $heading: `coreLibrary.styles.assets.colors.TemporarySemitransparentHighlighting.$heading`
+
                   $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md"
-                  # $URI: `@All/CoreLibrary/Styles/Assets/Colors/TemporaryHighlighting/TemporaryHighlighting.${ localization.fileNameLocalizationExtensions }`
 
-#                YDF_ColorPalette:
-#                  $heading: `coreLibrary.styles.assets.colors.YDF_ColorPalette.$heading`
-#                  $URI: `@All/CoreLibrary/Styles/Assets/Colors/_YDF_ColorPalette/YDF_ColorPalette.${ fileNameLocalizationExtensions }`
+#                  $URI: `@All/CoreLibrary/Styles/Assets/Colors/TemporarySemitransparentHighlighting/TemporarySemitransparentHighlighting.${ fileNameLocalizationExtensions }`
+#                  $sectioning:
+#                    $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/TemporarySemitransparentHighlighting/TableOfContents/TemporarySemitransparentHighlighting.toc.yaml
+#                    $localizations:
+#                      english: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/TemporarySemitransparentHighlighting/TableOfContents/TemporarySemitransparentHighlighting.toc.english.yaml
+#                      japanese: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/TemporarySemitransparentHighlighting/TableOfContents/TemporarySemitransparentHighlighting.toc.japanese.yaml
+#                      russian: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/TemporarySemitransparentHighlighting/TableOfContents/TemporarySemitransparentHighlighting.toc.russian.yaml
+
+                W3C_39_ShadesOfGray:
+
+                  $heading: `coreLibrary.styles.assets.colors.W3C_39_ShadesOfGray.$heading`
+
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md"
+
+#                  $URI: `@All/CoreLibrary/Styles/Assets/Colors/W3C_39_ShadesOfGray/W3C_39_ShadesOfGray.${ fileNameLocalizationExtensions }`
+#                  $sectioning:
+#                    $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/W3C_39_ShadesOfGray/TableOfContents/W3C_39_ShadesOfGray.toc.yaml
+#                    $localizations:
+#                      english: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/W3C_39_ShadesOfGray/TableOfContents/W3C_39_ShadesOfGray.toc.english.yaml
+#                      japanese: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/W3C_39_ShadesOfGray/TableOfContents/W3C_39_ShadesOfGray.toc.japanese.yaml
+#                      russian: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/W3C_39_ShadesOfGray/TableOfContents/W3C_39_ShadesOfGray.toc.russian.yaml
+
+                YDF_ColorPalette:
+
+                  $heading: `coreLibrary.styles.assets.colors.YDF_ColorPalette.$heading`
+
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/01-Assets/02-Colors/YDF_ColorPalette.styl"
+
+#                  $URI: `@All/CoreLibrary/Styles/Assets/Colors/YDF_ColorPalette/YDF_ColorPalette.${ fileNameLocalizationExtensions }`
+#                  $sectioning:
+#                    $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/W3C_39_ShadesOfGray/TableOfContents/W3C_39_ShadesOfGray.toc.yaml
+#                    $localizations:
+#                      english: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/W3C_39_ShadesOfGray/TableOfContents/W3C_39_ShadesOfGray.toc.english.yaml
+#                      japanese: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/W3C_39_ShadesOfGray/TableOfContents/W3C_39_ShadesOfGray.toc.japanese.yaml
+#                      russian: 01-Source/Pages/CoreLibrary/Styles/Assets/Colors/W3C_39_ShadesOfGray/TableOfContents/W3C_39_ShadesOfGray.toc.russian.yaml
 
         kernel:
 
           $heading: `coreLibrary.styles.kernel.$heading`
           $children:
 
-            # YDF_Configuration:
+            YDF_Configuration:
+              $heading: "<code>YDF_Configuration</code>"
+              $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/01-Configuration.styl"
 
-            # specificationsSchemas:
+            specificationsSchemas:
+
+              $heading: `coreLibrary.styles.kernel.specificationsSchemas.$heading`
+              $children:
+
+                bordersSizing:
+                  $heading: "<code>BordersSizingSpecificationSchema</code>"
+#                  $URI: `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/BordersSizing/BordersSizingSpecificationSchema.${ fileNameLocalizationExtensions }`
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/02-SpecificationsSchemas/BordersSizingSpecificationSchema.styl"
+
+                paddings:
+                  $heading: "<code>PaddingsSpecificationSchema</code>"
+#                  $URI: `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/Paddings/PaddingsSpecificationSchema.${ fileNameLocalizationExtensions }`
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/02-SpecificationsSchemas/PaddingsSpecificationSchema.styl"
+
+                textElementHeightSizing:
+                  $heading: "<code>TextElementHeightSizingSpecificationSchema</code>"
+#                  $URI: `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/TextElementHeightSizing/TextElementHeightSizingSpecificationSchema.${ fileNameLocalizationExtensions }`
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/02-SpecificationsSchemas/TextElementHeightSizingSpecificationSchema.styl"
+
+                widthSizing:
+                  $heading: "<code>WidthSizingSpecificationSchema</code>"
+#                  $URI: `@All/CoreLibrary/Styles/Kernel/SpecificationsSchemas/WidthSizing/WidthSizingSpecificationSchema.${ fileNameLocalizationExtensions }`
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/02-SpecificationsSchemas/WidthSizingSpecificationSchema.styl"
 
             functions:
 
               $heading: `coreLibrary.styles.kernel.functions.$heading`
               $children:
 
-                # typeCheckers:
+                typeCheckers:
+                  $heading: `coreLibrary.styles.kernel.functions.typeCheckers.$heading`
+#                  $URI: `@All/CoreLibrary/Styles/Kernel/Functions/TypeCheckers/TypeCheckers.${ fileNameLocalizationExtensions }`
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/01-ValueCheckers.md"
 
-                # valueTransformers:
+                valueTransformers:
+                  $heading: `coreLibrary.styles.kernel.functions.valueTransformers.$heading`
+#                  $URI: `@All/CoreLibrary/Styles/Kernel/Functions/_ValueTransformers/ValueTransformers.${ fileNameLocalizationExtensions }`
 
                 strings:
 
                   $heading: `coreLibrary.styles.kernel.functions.strings.$heading`
-
                   $children:
 
                     buildString:
@@ -209,32 +290,425 @@ coreLibrary:
                       $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/03-Strings/capitalizeFirstLatinCharacter.md"
                       # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Strings/_buildString/capitalizeFirstLatinCharacter.${ localization.fileNameLocalizationExtensions }`
 
-                # quantities:
+                quantities:
 
-    components:
+                  $heading: `coreLibrary.styles.kernel.functions.quantities.$heading`
+                  $children:
 
-      $heading: `coreLibrary.components.$heading`
-      $URI: `@All/CoreLibrary/Components/Components.${ fileNameLocalizationExtensions }`
+                    appendUnit:
+                      $heading: "<code>appendUnit</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Quantities/appendUnit/appendUnit.${ fileNameLocalizationExtensions }`
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/03-Functions/04-Quantities/appendUnit.styl"
+
+                    computeExtraSpaceCausedByLineHeightAtTopOrBottom:
+                      $heading: "<code>computeExtraSpaceCausedByLineHeightAtTopOrBottom</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Quantities/computeExtraSpaceCausedByLineHeightAtTopOrBottom/computeExtraSpaceCausedByLineHeightAtTopOrBottom.${ fileNameLocalizationExtensions }`
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/03-Functions/04-Quantities/computeExtraSpaceCausedByLineHeightAtTopOrBottom.styl"
+
+                    computeTotalHeightByTextElementHeightSizingSpecification:
+                      $heading: "<code>computeTotalHeightByTextElementHeightSizingSpecification</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Quantities/computeTotalHeightByTextElementHeightSizingSpecification/computeTotalHeightByTextElementHeightSizingSpecification.${ fileNameLocalizationExtensions }`
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/03-Functions/04-Quantities/computeTotalHeightByTextElementHeightSizingSpecification.styl"
+
+                    getLineHeightByFontSizeAndLineSpacing:
+                      $heading: "<code>getLineHeightByFontSizeAndLineSpacing</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Quantities/getLineHeightByFontSizeAndLineSpacing/getLineHeightByFontSizeAndLineSpacing.${ fileNameLocalizationExtensions }`;
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/03-Functions/04-Quantities/getLineHeightByFontSizeAndLineSpacing.styl"
+
+                    getLineSpacingByFontSizeAndLineHeight:
+                      $heading: "<code>getLineSpacingByFontSizeAndLineHeight</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Quantities/getLineSpacingByFontSizeAndLineHeight/getLineSpacingByFontSizeAndLineHeight.${ fileNameLocalizationExtensions }`;
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/03-Functions/04-Quantities/getLineSpacingByFontSizeAndLineHeight.styl"
+
+                    removeUnitFromAmount:
+                      $heading: "<code>removeUnitFromAmount</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Quantities/removeUnitFromAmount/removeUnitFromAmount.${ fileNameLocalizationExtensions }`;
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/03-Functions/04-Quantities/removeUnitFromAmount.styl"
+
+                objects:
+
+                  $heading: `coreLibrary.styles.kernel.functions.objects.$heading`
+                  $children:
+
+#                    createObjectWithComputedProperties:
+#                      $heading: "<code>createObjectWithComputedProperties</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/createObjectWithComputedProperties/createObjectWithComputedProperties.${ fileNameLocalizationExtensions }`
+
+                    deeplyCloneAndOverrideObject:
+                      $heading: "<code>deeplyCloneAndOverrideObject</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneAndOverrideObject.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/deeplyCloneAndOverrideObject/deeplyCloneAndOverrideObject.${ fileNameLocalizationExtensions }`
+
+                    deeplyCloneObject:
+                      $heading: "<code>deeplyCloneObject</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/deeplyCloneObject.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/deeplyCloneObject/deeplyCloneObject.${ fileNameLocalizationExtensions }`
+
+                    formatObject:
+                      $heading: "<code>formatObject</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/formatObject.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/formatObject/formatObject.${ fileNameLocalizationExtensions }`
+
+                    getObjectNonNullValuesCount:
+                      $heading: "<code>getObjectNonNullValuesCount</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectNonNullValuesCount.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/getObjectNonNullValuesCount/getObjectNonNullValuesCount.${ fileNameLocalizationExtensions }`
+
+                    getObjectValueByDotSeparatedPathSafely:
+                      $heading: "<code>getObjectValueByDotSeparatedPathSafely</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/getObjectValueByDotSeparatedPathSafely.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/getObjectValueByDotSeparatedPathSafely/getObjectValueByDotSeparatedPathSafely.${ fileNameLocalizationExtensions }`
+
+                    iterateObjectSkippingNullValues:
+                      $heading: "<code>iterateObjectSkippingNullValues</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/iterateObjectSkippingNullValues.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/iterateObjectSkippingNullValues/iterateObjectSkippingNullValues.${ fileNameLocalizationExtensions }`
+
+                    overrideObject:
+                      $heading: "<code>overrideObject</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/04-Objects/overrideObject.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Objects/overrideObject/overrideObject.${ fileNameLocalizationExtensions }`
+
+                arrays:
+
+                  $heading: `coreLibrary.styles.kernel.functions.arrays.$heading`
+                  $children:
+
+                    arrayConstructor__POLYFILL:
+                      $heading: "<code>arrayConstructor__POLYFILL</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/arrayConstructor__POLYFILL.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/arrayConstructor__POLYFILL/arrayConstructor__POLYFILL.${ fileNameLocalizationExtensions }`
+
+                    getFirstNonNullArrayElement:
+                      $heading: "<code>getFirstNonNullArrayElement</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getFirstNonNullArrayElement.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/getFirstNonNullArrayElement/getFirstNonNullArrayElement.${ fileNameLocalizationExtensions }`
+
+                    getLengthOfPrimitivesArray:
+                      $heading: "<code>getLengthOfPrimitivesArray</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/getLengthOfPrimitivesArray.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/getLengthOfPrimitivesArray/getLengthOfPrimitivesArray.${ fileNameLocalizationExtensions }`
+
+                    hasPrimitivesArraySpecifiedElement:
+                      $heading: "<code>hasPrimitivesArraySpecifiedElement</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/hasPrimitivesArraySpecifiedElement.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/hasPrimitivesArraySpecifiedElement/hasPrimitivesArraySpecifiedElement.${ fileNameLocalizationExtensions }`
+
+                    iterate2DimensionalArray:
+                      $heading: "<code>iterate2DimensionalArray</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterate2DimensionalArray.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/iterate2DimensionalArray/iterate2DimensionalArray.${ fileNameLocalizationExtensions }`
+
+                    iterateAssociativeArray:
+                      $heading: "<code>iterateAssociativeArray</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/05-Arrays/iterateAssociativeArray.md"
+                      # $URI: `@All/CoreLibrary/Styles/Kernel/Functions/Arrays/iterateAssociativeArray/iterateAssociativeArray.${ fileNameLocalizationExtensions }`
+
+                YDF_Arrays:
+
+                  $heading: `coreLibrary.styles.kernel.functions.YDF_Arrays.$heading`
+                  $children:
+
+                    appendElement:
+                      $heading: "<code>YDF_Array-appendElement</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/appendElement/YDF_Array-appendElement.${ fileNameLocalizationExtensions }`
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/03-Functions/07-YDF_Array/02-YDF_Array-appendElement.styl"
+
+                    appendElementsIf:
+                      $heading: "<code>YDF_Array-appendElementsIf</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/appendElementsIf/YDF_Array-appendElementsIf.${ fileNameLocalizationExtensions }`
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/03-Functions/07-YDF_Array/03-YDF_Array-appendElementsIf.styl"
+
+                    create:
+                      $heading: "<code>YDF_Array-create</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/create/YDF_Array-create.${ fileNameLocalizationExtensions }`
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/03-Functions/07-YDF_Array/01-YDF_Array-create.styl"
+
+                    forEach:
+                      $heading: "<code>YDF_Array-forEach</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/forEach/YDF_Array-forEach.${ fileNameLocalizationExtensions }`
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/03-Functions/07-YDF_Array/04-YDF_Array-forEach.styl"
+
+                    isIncludes:
+                      $heading: "<code>YDF_Array-isIncludes</code>"
+#                      $URI: `@All/CoreLibrary/Styles/Kernel/Functions/YDF_Arrays/isIncludes/YDF_Array-isIncludes.${ fileNameLocalizationExtensions }`
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/02-Kernel/03-Functions/07-YDF_Array/05-YDF_Array-isIncludes.styl"
+
+                parametersValidation:
+
+                  $heading: `coreLibrary.styles.kernel.functions.parametersValidation.$heading`
+                  $children:
+
+                    validateObjectTypeParameter:
+                      $heading: "<code>validateObjectTypeParameter</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/06-ParametersValidation/validateObjectTypeParameter.md"
+
+                other:
+
+                  $heading: `coreLibrary.styles.kernel.functions.other.$heading`
+                  $children:
+
+                    buildBEM_ClassName:
+                      $heading: "<code>buildBEM_ClassName</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildBEM_ClassName.md"
+
+                    substituteNull:
+                      $heading: "<code>substituteNull</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/substituteNull.md"
+
+                    buildCalcExpression:
+                      $heading: "<code>buildCalcExpression</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/buildCalcExpression.md"
+
+                    log:
+                      $heading: "<code>log</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/02-Functions/07-OtherFunctions/log.md"
+
+            utilityMixins:
+
+              $heading: `coreLibrary.styles.kernel.mixins.$heading`
+              $children:
+
+                general:
+
+                  $heading: `coreLibrary.styles.kernel.mixins.general.$heading`
+                  $children:
+
+                    applyIfNotNull:
+                      $heading: "<code>applyIfNotNull</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/00-GeneralUtils/applyIfNotNull.md"
+
+                    applyIfNotZero:
+                      $heading: "<code>applyIfNotZero</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/00-GeneralUtils/applyIfNotZero.md"
+
+                sizing:
+
+                  $heading: `coreLibrary.styles.kernel.mixins.sizing.$heading`
+                  $children:
+
+                    width:
+
+                      $heading: `coreLibrary.styles.kernel.mixins.sizing.width.$heading`
+
+                      $children:
+
+                        WidthSizing:
+                          $heading: "<code>WidthSizing</code>"
+                          $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/WidthSizing.md"
+
+                        fillViewportWidthIgnoringParentPaddings:
+                          $heading: "<code>fillViewportWidthIgnoringParentPaddings</code>"
+                          $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/fillViewportWidthIgnoringParentPaddings.md"
+
+                        TableCellWidthSizing:
+                          $heading: "<code>TableCellWidthSizing</code>"
+                          $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/01-Width/TableCellWidthSizing.md"
+
+                    paddings:
+                      $heading: "<code>Paddings</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/01-Sizing/04-Paddings/Paddings.md"
+
+                positioning:
+
+                  $heading: `coreLibrary.styles.kernel.mixins.positioning.$heading`
+                  $children:
+
+                    centerHorizontallyWithoutWrapper:
+                      $heading: "<code>centerHorizontallyWithoutWrapper</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/centerHorizontallyWithoutWrapper.md"
+
+                    placeToRight:
+                      $heading: "<code>placeToRight</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/placeToRight.md"
+
+                    VerticallyCenteredAbsolutelyPositionedBlock:
+                      $heading: "<code>VerticallyCenteredAbsolutelyPositionedBlock</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/02-Positioning/VerticallyCenteredAbsolutelyPositionedBlock.md"
+
+                positionalRelationship:
+
+                  $heading: `coreLibrary.styles.kernel.mixins.positionalRelationship.$heading`
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md"
+
+                  $children:
+
+                    PositionalRelationship:
+                      $heading: "<code>PositionalRelationship</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#positionalrelationship-mixin"
+
+                    retireFrom:
+                      $heading: "<code>retireFrom</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefrom-mixin"
+
+                    pushTargetFromSelf:
+                      $heading: "<code>pushTargetFromSelf</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#pushtargetfromself-mixin"
+
+                    retireFromElementWithSameSelector:
+                      $heading: "<code>retireFromElementWithSameSelector</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#retirefromelementwithsameselector-mixin"
+
+                    whenItGoingFirst:
+                      $heading: "<code>whenItGoingFirst</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoingfirst-mixin"
+
+                    whenItGoingLast:
+                      $heading: "<code>whenItGoingLast</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitgoinglast-mixin"
+
+                    whenItJustAfter:
+                      $heading: "<code>whenItJustAfter</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whenitjustafter"
+
+                    whenTargetGoingJustAfterIt:
+                      $heading: "<code>whenTargetGoingJustAfterIt</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetgoingjustafterit"
+
+                    whenTargetWithSameSelectorGoingJustAfterIt:
+                      $heading: "<code>whenTargetWithSameSelectorGoingJustAfterIt</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/03-PositionalRelationship.md#whentargetwithsameselectorgoingjustafterit"
+
+                layout:
+
+                  $heading: `coreLibrary.styles.kernel.mixins.layout.$heading`
+                  $children:
+
+                    CenteredContentWithComputedHorizontalPaddings:
+                      $heading: "<code>CenteredContentWithComputedHorizontalPaddings</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/CenteredContentWithComputedHorizontalPaddings.md"
+
+                    Centerer:
+                      $heading: "<code>Centerer</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/Centerer.md"
+
+                    fillBodyVertically:
+                      $heading: "<code>fillBodyVertically</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/fillBodyVertically.md"
+
+                    FixedTranslucentDimLayer:
+                      $heading: "<code>FixedTranslucentDimLayer</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/03-UtilityMixins/05-Layout/FixedTranslucentDimLayer.md"
+
+                typography:
+
+                  $heading: `coreLibrary.styles.kernel.mixins.typography.$heading`
+
+                  $children:
+
+                    SingleLineTextElementOverflowSafety:
+                      $heading: "<code>SingleLineTextElementOverflowSafety</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/SingleLineTextElementOverflowSafety.md"
+
+                    MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight:
+                      $heading: "<code>MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/05-TypographyUtils/MultiLineTextElementOverflowSafetyWithoutExtraSpaceCausedByLineHeight.md"
+
+
+                other:
+
+                  $heading: `coreLibrary.styles.kernel.mixins.other.$heading`
+                  $children:
+
+                    provideClippedShadowsAndOutlinesVisibility:
+                      $heading: "<code>provideClippedShadowsAndOutlinesVisibility</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/provideClippedShadowsAndOutlinesVisibility.md"
+
+                    Sprite:
+                      $heading: "<code>Sprite</code>"
+                      $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/06-RestUtils/Sprite.md"
+
+            stylesInitialization:
+
+              $heading: `coreLibrary.styles.kernel.stylesInitialization.$heading`
+
+              $children:
+
+                CrossBrowserStylesReset:
+                  $heading: "<code>CrossBrowserStylesReset</code>"
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/CrossBrowserStylesReset.md"
+
+                InitialGlobalCSS_Rules:
+                  $heading: "<code>InitialGlobalCSS_Rules</code>"
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/InitialGlobalCSS_Rules.md"
+
+                ButtonLikeElementsPrimer:
+                  $heading: "<code>ButtonLikeElementsPrimer</code>"
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/04-StylesInitialization/ButtonLikeElementsPrimer.md"
+
+        buildInPlugins:
+
+          $heading: `coreLibrary.styles.buildInPlugins.$heading`
+
+          $children:
+
+            additionalColorPalettes:
+
+              $heading: `coreLibrary.styles.buildInPlugins.additionalColorPalettes.$heading`
+
+              $children:
+
+                FlatUI_Colors:
+                  $heading: "<code>FlatUI_Colors</code>"
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md"
+
+                MaterialDesignColors:
+                  $heading: "<code>MaterialDesignColors</code>"
+                  $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md"
+
+    GUI_Components:
+
+      $heading: `coreLibrary.GUI_Components.$heading`
+      $URI: `@All/CoreLibrary/GUI_Components/GUI_Components.${ fileNameLocalizationExtensions }`
 
       $sectioning:
-        $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/Components/TableOfContents/Components.toc.yaml
+        $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/GUI_Components/TableOfContents/GUI_Components.toc.yaml
         $localizations:
-          english: 01-Source/Pages/CoreLibrary/Components/TableOfContents/Components.toc.english.yaml
-          japanese: 01-Source/Pages/CoreLibrary/Components/TableOfContents/Components.toc.japanese.yaml
-          russian: 01-Source/Pages/CoreLibrary/Components/TableOfContents/Components.toc.russian.yaml
+          english: 01-Source/Pages/CoreLibrary/GUI_Components/TableOfContents/GUI_Components.toc.english.yaml
+          japanese: 01-Source/Pages/CoreLibrary/GUI_Components/TableOfContents/GUI_Components.toc.japanese.yaml
+          russian: 01-Source/Pages/CoreLibrary/GUI_Components/TableOfContents/GUI_Components.toc.russian.yaml
 
 
       $children:
 
         AdmonitionBlock:
           $heading: "<code>AdmonitionBlock</code>"
-          $URI: `@All/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.${ fileNameLocalizationExtensions }`
+          $URI: `@All/CoreLibrary/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock.${ fileNameLocalizationExtensions }`
           $sectioning:
-            $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock.toc.yaml
+            $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock.toc.yaml
             $localizations:
-              english: 01-Source/Pages/CoreLibrary/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock.toc.english.yaml
-              japanese: 01-Source/Pages/CoreLibrary/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock.toc.japanese.yaml
-              russian: 01-Source/Pages/CoreLibrary/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock.toc.russian.yaml
+              english: 01-Source/Pages/CoreLibrary/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock.toc.english.yaml
+              japanese: 01-Source/Pages/CoreLibrary/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock.toc.japanese.yaml
+              russian: 01-Source/Pages/CoreLibrary/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock.toc.russian.yaml
+
+        Badge:
+          $heading: "<code>Badge</code>"
+          $URI: `@All/CoreLibrary/GUI_Components/Children/Badge/Badge.${ fileNameLocalizationExtensions }`
+          $sectioning:
+            $specificationFileRelativePath: 01-Source/Pages/CoreLibrary/GUI_Components/Children/Badge/TableOfContents/Badge.toc.yaml
+            $localizations:
+              english: 01-Source/Pages/CoreLibrary/GUI_Components/Children/Badge/TableOfContents/Badge.toc.english.yaml
+              japanese: 01-Source/Pages/CoreLibrary/GUI_Components/Children/Badge/TableOfContents/Badge.toc.japanese.yaml
+              russian: 01-Source/Pages/CoreLibrary/GUI_Components/Children/Badge/TableOfContents/Badge.toc.russian.yaml
+
+        controls:
+
+          $heading: `coreLibrary.GUI_Components.controls.$heading`
+          $children:
+
+            buttons:
+
+              $heading: `coreLibrary.GUI_Components.controls.buttons.$heading`
+              $children:
+
+                plain:
+
+                  $heading: "<code>Button</code>"
+                  $URI: `@All/CoreLibrary/GUI_Components/Children/Controls/Buttons/Plain/Button.${ fileNameLocalizationExtensions }`
+
+        OverflowSafeSingleLineLabel:
+          $heading: "<code>OverflowSafeSingleLineLabel</code>"
+          $URI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md"
 
 frameworksIntegrations:
 
@@ -248,22 +722,54 @@ frameworksIntegrations:
 
       $children:
 
-        components:
+        GUI_Components:
 
-          $heading: `frameworksIntegrations.vue.components.$heading`
+          $heading: `frameworksIntegrations.vue.GUI_Components.$heading`
 
           $children:
 
             AdmonitionBlock:
 
               $heading: "<code>AdmonitionBlock</code>"
-              $URI: `@All/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.${ fileNameLocalizationExtensions }`
+              $URI: `@All/FrameworksIntegrations/Vue/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.${ fileNameLocalizationExtensions }`
               $sectioning:
-                $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Vue.toc.yaml
+                $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Vue.toc.yaml
                 $localizations:
-                  english: 01-Source/Pages/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Vue.toc.english.yaml
-                  japanese: 01-Source/Pages/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Vue.toc.japanese.yaml
-                  russian: 01-Source/Pages/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Vue.toc.russian.yaml
+                  english: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Vue.toc.english.yaml
+                  japanese: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Vue.toc.japanese.yaml
+                  russian: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Vue.toc.russian.yaml
+
+#            Badge:
+#
+#              $heading: "<code>Badge</code>"
+#              $URI: `@All/FrameworksIntegrations/Vue/GUI_Components/Children/Badge/Badge-Vue.${ fileNameLocalizationExtensions }`
+#              $sectioning:
+#                $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/Badge/TableOfContents/Badge-Vue.toc.yaml
+#                $localizations:
+#                  english: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/Badge/TableOfContents/Badge-Vue.toc.english.yaml
+#                  japanese: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/Badge/TableOfContents/Badge-Vue.toc.japanese.yaml
+#                  russian: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/Badge/TableOfContents/Badge-Vue.toc.russian.yaml
+
+#            controls:
+#
+#              $heading: `coreLibrary.GUI_Components.controls.$heading`
+#              $children:
+#
+#                buttons:
+#
+#                  $heading: `coreLibrary.GUI_Components.controls.buttons.$heading`
+#                  $children:
+#
+#                    plain:
+#
+#                      $heading: "<code>Button</code>"
+#                      $URI: `@All/FrameworksIntegrations/Vue/GUI_Components/Children/Button/Button-Vue.${ fileNameLocalizationExtensions }`
+#                      $sectioning:
+#                        $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/Button/TableOfContents/Button-Vue.toc.yaml
+#                        $localizations:
+#                          english: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/Button/TableOfContents/Button-Vue.toc.english.yaml
+#                          japanese: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/Button/TableOfContents/Button-Vue.toc.japanese.yaml
+#                          russian: 01-Source/Pages/FrameworksIntegrations/Vue/GUI_Components/Children/Button/TableOfContents/Button-Vue.toc.russian.yaml
 
     react:
 
@@ -271,21 +777,53 @@ frameworksIntegrations:
 
       $children:
 
-        components:
+        GUI_Components:
 
-          $heading: `frameworksIntegrations.react.components.$heading`
+          $heading: `frameworksIntegrations.react.GUI_Components.$heading`
           $children:
 
             AdmonitionBlock:
 
               $heading: "<code>AdmonitionBlock</code>"
-              $URI: `@All/FrameworksIntegrations/React/Components/Children/AdmonitionBlock/AdmonitionBlock-React.${ fileNameLocalizationExtensions }`
+              $URI: `@All/FrameworksIntegrations/React/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-React.${ fileNameLocalizationExtensions }`
               $sectioning:
-                $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/React/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-React.toc.yaml
+                $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-React.toc.yaml
                 $localizations:
-                  english: 01-Source/Pages/FrameworksIntegrations/React/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-React.toc.english.yaml
-                  japanese: 01-Source/Pages/FrameworksIntegrations/React/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-React.toc.japanese.yaml
-                  russian: 01-Source/Pages/FrameworksIntegrations/React/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-React.toc.russian.yaml
+                  english: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-React.toc.english.yaml
+                  japanese: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-React.toc.japanese.yaml
+                  russian: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-React.toc.russian.yaml
+
+#            Badge:
+#
+#              $heading: "<code>Badge</code>"
+#              $URI: `@All/FrameworksIntegrations/React/GUI_Components/Children/Badge/Badge-React.${ fileNameLocalizationExtensions }`
+#              $sectioning:
+#                $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/Badge/TableOfContents/Badge-React.toc.yaml
+#                $localizations:
+#                  english: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/Badge/TableOfContents/Badge-React.toc.english.yaml
+#                  japanese: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/Badge/TableOfContents/Badge-React.toc.japanese.yaml
+#                  russian: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/Badge/TableOfContents/Badge-React.toc.russian.yaml
+
+#            controls:
+#
+#              $heading: `coreLibrary.GUI_Components.controls.$heading`
+#              $children:
+#
+#                buttons:
+#
+#                  $heading: `coreLibrary.GUI_Components.controls.buttons.$heading`
+#                  $children:
+#
+#                    plain:
+#
+#                      $heading: "<code>Button</code>"
+#                      $URI: `@All/FrameworksIntegrations/React/GUI_Components/Children/Button/Button-React.${ fileNameLocalizationExtensions }`
+#                      $sectioning:
+#                        $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/Button/TableOfContents/Button-React.toc.yaml
+#                        $localizations:
+#                          english: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/Button/TableOfContents/Button-React.toc.english.yaml
+#                          japanese: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/Button/TableOfContents/Button-React.toc.japanese.yaml
+#                          russian: 01-Source/Pages/FrameworksIntegrations/React/GUI_Components/Children/Button/TableOfContents/Button-React.toc.russian.yaml
 
     blazor:
 
@@ -293,21 +831,54 @@ frameworksIntegrations:
 
       $children:
 
-        components:
+        GUI_Components:
 
-          $heading: `frameworksIntegrations.blazor.components.$heading`
+          $heading: `frameworksIntegrations.blazor.GUI_Components.$heading`
           $children:
 
             AdmonitionBlock:
 
               $heading: "<code>AdmonitionBlock</code>"
-              $URI: `@All/FrameworksIntegrations/Blazor/Components/Children/AdmonitionBlock/AdmonitionBlock-Blazor.${ fileNameLocalizationExtensions }`
+              $URI: `@All/FrameworksIntegrations/Blazor/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-Blazor.${ fileNameLocalizationExtensions }`
               $sectioning:
-                $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/Blazor/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Blazor.toc.yaml
+                $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Blazor.toc.yaml
                 $localizations:
-                  english: 01-Source/Pages/FrameworksIntegrations/Blazor/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Blazor.toc.english.yaml
-                  japanese: 01-Source/Pages/FrameworksIntegrations/Blazor/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Blazor.toc.japanese.yaml
-                  russian: 01-Source/Pages/FrameworksIntegrations/Blazor/Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Blazor.toc.russian.yaml
+                  english: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Blazor.toc.english.yaml
+                  japanese: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Blazor.toc.japanese.yaml
+                  russian: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/AdmonitionBlock/TableOfContents/AdmonitionBlock-Blazor.toc.russian.yaml
+
+#            Badge:
+#
+#              $heading: "<code>Badge</code>"
+#              $URI: `@All/FrameworksIntegrations/Blazor/GUI_Components/Children/Badge/Badge-Blazor.${ fileNameLocalizationExtensions }`
+#              $sectioning:
+#                $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/Badge/TableOfContents/Badge-Blazor.toc.yaml
+#                $localizations:
+#                  english: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/Badge/TableOfContents/Badge-Blazor.toc.english.yaml
+#                  japanese: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/Badge/TableOfContents/Badge-Blazor.toc.japanese.yaml
+#                  russian: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/Badge/TableOfContents/Badge-Blazor.toc.russian.yaml
+
+#            controls:
+#
+#              $heading: `coreLibrary.GUI_Components.controls.$heading`
+#              $children:
+#
+#                buttons:
+#
+#                  $heading: `coreLibrary.GUI_Components.controls.buttons.$heading`
+#                  $children:
+#
+#                    plain:
+#
+#                      $heading: "<code>Button</code>"
+#                      $URI: `@All/FrameworksIntegrations/Blazor/GUI_Components/Children/Button/Button-Blazor.${ fileNameLocalizationExtensions }`
+#                      $sectioning:
+#                        $specificationFileRelativePath: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/Button/TableOfContents/Button-Blazor.toc.yaml
+#                        $localizations:
+#                          english: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/Button/TableOfContents/Button-Blazor.toc.english.yaml
+#                          japanese: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/Button/TableOfContents/Button-Blazor.toc.japanese.yaml
+#                          russian: 01-Source/Pages/FrameworksIntegrations/Blazor/GUI_Components/Children/Button/TableOfContents/Button-Blazor.toc.russian.yaml
+
 
 realiseNotes:
 

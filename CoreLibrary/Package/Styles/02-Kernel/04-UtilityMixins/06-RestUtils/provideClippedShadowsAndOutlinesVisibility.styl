@@ -6,58 +6,58 @@ provideClippedShadowsAndOutlinesVisibility(compoundParameter, restParameters__MU
     targetParameter: compoundParameter,
     schema: {
       requiredHorizontalSymmetricSpace: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
       requiredSpaceAtLeft: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false,
         incompatibleWith: "requiredHorizontalSymmetricSpace"
       },
       requiredSpaceAtRight: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false,
         incompatibleWith: "requiredHorizontalSymmetricSpace"
       },
 
       requiredVerticalSymmetricSpace: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
       requiredSpaceAtTop: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false,
         incompatibleWith: "requiredVerticalSymmetricSpace"
       },
       requiredSpaceAtBottom: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false,
         incompatibleWith: "requiredVerticalSymmetricSpace"
       },
 
       noCompensatingNegativeTopMargins: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       },
       noCompensatingNegativeBottomMargins: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       },
       noCompensatingNegativeLeftMargins: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       },
       noCompensatingNegativeRightMargins: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       },
 
       useBeforePseudoElementWithCompensatingNegativeTopMargins: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       },
       useAfterPseudoElementWithCompensatingNegativeBottomMargins: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       }
     },

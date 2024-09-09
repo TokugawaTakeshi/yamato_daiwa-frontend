@@ -3,22 +3,22 @@
 	"name": "@yamato-daiwa/frontend-react-demos",
 	"version": "0.0.0",
 	"dependencies": {
-		"@yamato-daiwa/es-extensions": "1.7.0-alpha.5",
-		"@yamato-daiwa/es-extensions-browserjs": "1.7.0-alpha.1",
+		"@yamato-daiwa/es-extensions": "1.7.0",
+		"@yamato-daiwa/es-extensions-browserjs": "1.7.0",
 		"@yamato-daiwa/frontend": "../../../CoreLibrary/Package",
 		"@yamato-daiwa/frontend-demos": "../../../CoreLibrary/Demos",
 		"@yamato-daiwa/frontend-react": "../Package",
 		"prop-types": "15.8.1",
-		"react": "18.2.0",
-		"react-dom": "18.2.0"
+		"react": "18.3.1",
+		"react-dom": "18.3.1"
 	},
 	"devDependencies": {
-		"@types/react": "18.3.5",
-		"@types/react-dom": "18.3.0",
-		"@yamato-daiwa/automation": "0.4.0",
-		"@yamato-daiwa/style_guides": "0.0.60",
-		"rimraf": "5.0.5",
-		"typescript": "5.3.3"
+		"@types/react": "18.3.11",
+		"@types/react-dom": "18.3.1",
+		"@yamato-daiwa/automation": "../../../../YamatoDaiwaAutomation/MainPackage",
+		"@yamato-daiwa/style_guides": "0.3.0-alpha.11",
+		"rimraf": "6.0.1",
+		"typescript": "5.6.3"
 	},
 	"scripts": {
 		"Watch Local Gallereys": "rimraf LocalGalleriesBuild && yda build --selectiveExecution LocalGalleries --mode LOCAL_DEVELOPMENT",

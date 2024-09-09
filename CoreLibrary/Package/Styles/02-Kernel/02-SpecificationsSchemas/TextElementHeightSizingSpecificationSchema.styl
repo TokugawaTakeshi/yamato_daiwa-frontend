@@ -6,13 +6,13 @@ TextElementHeightSizingTypes--YDF = {
 TextElementHeightSizingSpecificationSchema--YDF = {
 
   type: {
-    type: DataTypes.string,
+    type: DataTypes--YDF.string,
     required: true,
     allowedAlternatives: values(TextElementHeightSizingTypes--YDF)
   },
 
   fixedHeight: {
-    type: DataTypes.dimensionalQuantity,
+    type: DataTypes--YDF.dimensionalQuantity,
     requiredIf: {
       predicate: @(textElementHeightSizingSpecification) {
         return textElementHeightSizingSpecification.type == TextElementHeightSizingTypes--YDF.fixed
@@ -23,34 +23,34 @@ TextElementHeightSizingSpecificationSchema--YDF = {
 
 
   borders: {
-    type: DataTypes.object,
+    type: DataTypes--YDF.object,
     defaultValue: {},
     properties: BordersSizingSpecificationSchema--YDF
   },
 
 
   paddings: {
-    type: DataTypes.object,
+    type: DataTypes--YDF.object,
     defaultValue: {},
     properties: PaddingsSpecificationSchema--YDF
   },
 
   isExplicitPaddingZeroDeclarationRequired: {
-    type: DataTypes.boolean
+    type: DataTypes--YDF.boolean
   },
 
 
   fontSize: {
-    type: DataTypes.dimensionalQuantity,
+    type: DataTypes--YDF.dimensionalQuantity,
     required: true
   },
 
   lineSpacing: {
-    type: DataTypes.dimensionalQuantity
+    type: DataTypes--YDF.dimensionalQuantity
   },
 
   lineHeight: {
-    type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity,
+    type: DataTypes--YDF.dimensionalQuantity DataTypes--YDF.dimensionlessQuantity,
     requiredIf: {
       predicate: @(compoundParameter) { return isNull(compoundParameter.lineSpacing) },
       descriptionForLogging: "The 'lineSpacing' is not specified"
@@ -59,28 +59,28 @@ TextElementHeightSizingSpecificationSchema--YDF = {
   },
 
   fixedLinesCount: {
-    type: DataTypes.dimensionlessQuantity
+    type: DataTypes--YDF.dimensionlessQuantity
     required: false,
     minimalValue: 1
   },
 
   mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0: {
-    type: DataTypes.boolean,
+    type: DataTypes--YDF.boolean,
     defaultValue: true
   },
 
   mustApplyDimensionalLineHeightIfPossible: {
-    type: DataTypes.boolean,
+    type: DataTypes--YDF.boolean,
     defaultValue: false
   },
 
   mustReduceVerticalPaddingsByExtraSpaceCausedByLineHeight: {
-    type: DataTypes.boolean,
+    type: DataTypes--YDF.boolean,
     defaultValue: false
   },
 
   mustFixateHeight: {
-    type: DataTypes.boolean
+    type: DataTypes--YDF.boolean
   }
 
 }

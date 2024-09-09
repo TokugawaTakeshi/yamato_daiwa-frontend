@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>YDF_Demos</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +16,12 @@
     <ProjectReference Include="..\Localizations\Japanese\Japanese.csproj" />
     <ProjectReference Include="..\Localizations\Russian\Russian.csproj" />
     <ProjectReference Include="..\Package\Package.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="GUI_Components\ThemesShowcase\ThemesShowcase.razor.cs">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
   </ItemGroup>
 
 </Project>

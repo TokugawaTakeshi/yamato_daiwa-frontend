@@ -1,0 +1,23 @@
+extends ../../../../../PagesTemplates/RegularWebPageTemplate.pug
+
+
+block append Requirements
+
+  include ../../../../../GUI_Components.pug
+
+
+block append Metadata
+
+  -
+
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: "ImagesCropper Component Development"
+      },
+      stylesSheetsURIs: [ "@StylesAndComponentsTesting/GUI_Components/Controls/ImagesCropper/ImagesCropper.workbench" ]
+    });
+
+
+block append PageContent
+
+  +ImagesCropper--YDF()

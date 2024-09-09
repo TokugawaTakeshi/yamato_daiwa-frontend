@@ -1,0 +1,27 @@
+synopsis:
+
+  $heading: "要約"
+
+usage:
+
+  $heading: "利用"
+
+  markup:
+
+    $heading: "マークアップ"
+
+    includingToProject:
+
+      $heading: "プロジェクトに含む方法"
+
+    pugMixin:
+
+      $heading: "Pug混入の<code>Button--YDF</code>"
+
+      minimalExample:
+
+        $heading: "最低限の例（必須プロパティのみ）"
+
+  logic:
+
+    $heading: "ロジック"

@@ -29,14 +29,18 @@ block append Metadata
     RoutingEmulator.setCurrentRoute("${ROUTE}");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./${FILE_NAME_WITHOUT_EXTENSION}.english.html",
-      japanese: "./${FILE_NAME_WITHOUT_EXTENSION}.japanese.html"
+      english: routing.english.${ROUTE_WITH_CHILDREN}.${DS}URI,
+      japanese: routing.japanese.${ROUTE_WITH_CHILDREN}.${DS}URI
     });
 
-    const pageTableOfContents = localizedRouting.${ROUTE_PATH}.${DS}sectioning;
+    //- TODO Если используется Pug-примесь `+CallableExpressionScheme--YDF_DK` то `pageTopHeading` не нужно    
+    const { 
+      ${DS}sectioning: localizedSectioning,
+      ${DS}heading: pageTopHeading
+    } = localizedRouting.${ROUTE_WITH_CHILDREN};
 
 
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 

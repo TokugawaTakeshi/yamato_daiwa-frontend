@@ -3,12 +3,18 @@ extends ../../../PagesTemplates/StaticPreviewAnywherePageTemplate.pug
 
 block append Metadata
 
-  - HTML_PAGE_TITLE = "XXX Company home page - Static preview";
+  -
+
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: "NNN Company Home Page - Static Preview"
+      }
+    });
 
 
 block append TableOfContents
 
-  h1.AnywherePage-TopHeading= HTML_PAGE_TITLE
+  h1.AnywherePage-TopHeading NNN Company Home Page - Static Preview
 
   h2.AnywherePage-PagesGroupHeading Open pages
 

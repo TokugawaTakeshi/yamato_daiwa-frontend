@@ -4,8 +4,8 @@
 
 ```
 FixedTranslucentDimLayer({
-  ZIndex: DataTypes.unit = ZIndexes.blockingOverlay,
-  backgroundColor: DataTypes.colorDefinition = rgba(black, 0.25)
+  ZIndex: DataTypes--YDF.unit = ZIndexes.blockingOverlay,
+  backgroundColor: DataTypes--YDF.colorDefinition = rgba(black, 0.25)
 })
 ```
 

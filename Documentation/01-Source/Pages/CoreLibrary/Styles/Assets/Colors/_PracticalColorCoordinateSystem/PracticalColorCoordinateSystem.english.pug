@@ -11,34 +11,41 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "en";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("PracticalColorCoordinateSystem");
-    HTML_PageMetaData = {
-      description: "",
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("PracticalColorCoordinateSystem"),
+        description: ""
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute("coreLibrary.styles.assets.colors.PracticalColorCoordinateSystem");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      japanese: "./PracticalColorCoordinateSystem.japanese.html",
-      russian: "./PracticalColorCoordinateSystem.russian.html"
+      japanese: routing.japanese.coreLibrary.$children.styles.$children.assets.$children.colors.$children.PracticalColorCoordinateSystem.$URI,
+      russian: routing.russian.coreLibrary.$children.styles.$children.assets.$children.colors.$children.PracticalColorCoordinateSystem.$URI
     });
+
+    const {
+      $sectioning: localizedSectioning,
+      $heading: pageTopHeading
+    } = localizedRouting.coreLibrary.$children.styles.$children.assets.$children.colors.$children.PracticalColorCoordinateSystem;
+
+
+block append HeadScripts
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
 
 
 block append SpecificContent
 
   article
 
-    h1 PracticalColorCoordinateSystem
+    h1!= pageTopHeading

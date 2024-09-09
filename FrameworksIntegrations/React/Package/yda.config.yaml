@@ -10,15 +10,15 @@ projectBuilding:
 
           ECMA_ScriptLogicProcessing: [ Distributable ]
 
-      Tests:
+      Workbenches:
 
         tasksAndSourceFilesSelection:
 
-          markupProcessing: [ Tests ]
-          stylesProcessing: [ Tests ]
-          ECMA_ScriptLogicProcessing: [ Tests ]
+          markupProcessing: [ Workbenches ]
+          stylesProcessing: [ Workbenches ]
+          ECMA_ScriptLogicProcessing: [ Workbenches ]
 
-        browserLiveReloadingSetupID: Tests
+        browserLiveReloadingSetupID: Workbenches
 
 
   # ━━━ Markup ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -30,16 +30,16 @@ projectBuilding:
 
     entryPointsGroups:
 
-      Tests:
+      Workbenches:
 
-        sourceFilesTopDirectoryRelativePath: Tests/Source
+        sourceFilesTopDirectoryRelativePath: Workbenches/Source
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
           excludeSubdirectoriesWithPrefixes: "_"
 
         buildingModeDependent:
           LOCAL_DEVELOPMENT:
-            outputTopDirectoryRelativePath: Tests/Output
+            outputTopDirectoryRelativePath: Workbenches/Output
 
 
   # ━━━ Styles ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -47,9 +47,9 @@ projectBuilding:
 
     entryPointsGroups:
 
-      Tests:
+      Workbenches:
 
-        sourceFilesTopDirectoryRelativePath: Tests/Source
+        sourceFilesTopDirectoryRelativePath: Workbenches/Source
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
@@ -57,7 +57,7 @@ projectBuilding:
 
         buildingModeDependent:
           LOCAL_DEVELOPMENT:
-            outputTopDirectoryRelativePath: Tests/Output
+            outputTopDirectoryRelativePath: Workbenches/Output
 
 
   # ━━━ ECMAScript Logic Processing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -89,9 +89,9 @@ projectBuilding:
             revisioning: { disable: true }
 
 
-      Tests:
+      Workbenches:
 
-        sourceFilesTopDirectoryRelativePath: Tests/Source
+        sourceFilesTopDirectoryRelativePath: Workbenches/Source
 
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
@@ -102,7 +102,7 @@ projectBuilding:
 
         buildingModeDependent:
           LOCAL_DEVELOPMENT:
-            outputTopDirectoryRelativePath: Tests/Output
+            outputTopDirectoryRelativePath: Workbenches/Output
 
 
   # ━━━ Development Server ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -110,12 +110,12 @@ projectBuilding:
 
     setups:
 
-      Tests:
+      Workbenches:
 
         localServer:
 
-          rootDirectoryRelativePath: Tests/Output
-          customStartingFileNameWithExtension: Tests.html
+          rootDirectoryRelativePath: Workbenches/Output
+          customStartingFileNameWithExtension: Workbenches.html
 
         openInBrowsers: chrome
 

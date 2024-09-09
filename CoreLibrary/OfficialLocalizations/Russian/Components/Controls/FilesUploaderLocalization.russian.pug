@@ -1,9 +1,28 @@
 -
 
   const filesUploaderYDF_ComponentLocalization__russian = {
-    uploadSingleFileByDragAndDropGuidance: "Переместите Ваши файлы сюда",
+
+    processingsStatusesTable: {
+      headers: {
+        fileName: "File Name",
+        status: "Status"
+      }
+    },
+
+    uploadSingleFileByDragAndDropGuidance: "Upload",
+
     buttons: {
-      filePicking: { label: "Выбрать файл" },
-      fileDeleting: { label: "Удалить файл" }
+      filePicking: {
+        buildLabel: ({ areMultipleFileAllowed }) => `Select file${ areMultipleFileAllowed ? "s" : "" }`
+      }
+    },
+
+    singleImagePreviewer: {
+      image: { alternatingText: "Uploaded image preview" },
+      deletingButton: {
+        label: "Delete",
+        accessibilityGuidance: "Delete the image"
+      }
     }
+
   };

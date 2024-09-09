@@ -5,13 +5,13 @@ projectBuilding:
     filesGroups:
             
       Primer:
-        sourceFileRelativePath: node_modules/@yamato-daiwa/frontend-demos/Distributions/Primer.css
+        sourceFileRelativePath: node_modules/@yamato-daiwa/frontend-demos/Distributions/YDF-Demos-Primer.css
         buildingModeDependent:
           PRODUCTION: { outputDirectoryRelativePath: wwwroot/css }
           
           
       CommonRequirements:
-        sourceFileRelativePath: node_modules/@yamato-daiwa/frontend-demos/Distributions/CommonRequirements.css
+        sourceFileRelativePath: node_modules/@yamato-daiwa/frontend-demos/Distributions/YDF-Demos-CommonRequirements.css
         buildingModeDependent:
           PRODUCTION: { outputDirectoryRelativePath: wwwroot/css }
  

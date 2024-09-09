@@ -27,9 +27,14 @@ block append Metadata
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.usageOnServerSide");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./UsageOnServerSide.english.html",
-      russian: "./UsageOnServerSide.russian.html"
+      english: routing.english.coreLibrary.$children.markup.$children.usageOnServerSide.$URI,
+      russian: routing.russian.coreLibrary.$children.markup.$children.usageOnServerSide.$URI
     });
+
+    const {
+      $sectioning: localizedSectioning,
+      $heading: topHeading
+    } = localizedRouting.coreLibrary.$children.markup.$children.usageOnServerSide;
 
 
 block append HeadScripts

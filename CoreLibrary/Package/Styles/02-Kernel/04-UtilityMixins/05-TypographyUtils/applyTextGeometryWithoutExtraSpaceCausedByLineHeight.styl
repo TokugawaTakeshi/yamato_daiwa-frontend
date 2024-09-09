@@ -7,17 +7,17 @@ applyTextGeometryWithoutExtraSpaceCausedByLineHeight(compoundParameter, restPara
     schema: {
 
       fontSize: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: true
       },
 
       lineHeight: {
-        type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity,
+        type: DataTypes--YDF.dimensionalQuantity DataTypes--YDF.dimensionlessQuantity,
         required: false
       },
 
       lineSpacing: {
-        type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity,
+        type: DataTypes--YDF.dimensionalQuantity DataTypes--YDF.dimensionlessQuantity,
         requiredIf: {
           predicate: @(compoundParameter) { return isNull(compoundParameter.lineHeight) },
           descriptionForLogging: "The 'lineHeight' is not specified"
@@ -26,43 +26,43 @@ applyTextGeometryWithoutExtraSpaceCausedByLineHeight(compoundParameter, restPara
       },
 
       mustMakeLineHeightEqualToFontSizeWhenLineSpacingIs0: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: true
       },
 
       mustApplyDimensionalLineHeightIfPossible: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       },
 
       mustApplyNegativeMarginsToRootElement: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       },
 
       paddingsWhichMustBeDecreasedInsteadOfAddingOfNegativeMargins: {
-        type: DataTypes.object,
+        type: DataTypes--YDF.object,
         required: false,
         properties: PaddingsSpecificationSchema--YDF
       },
 
       mustComputeAbsoluteExtraSpaceIfPossible: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       },
 
       mustAllowWordsBreakingAnywhere: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       },
 
       mustTryToProvideHyphenations: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: true
       },
 
       mustSkipFontSizeApplying: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       }
 

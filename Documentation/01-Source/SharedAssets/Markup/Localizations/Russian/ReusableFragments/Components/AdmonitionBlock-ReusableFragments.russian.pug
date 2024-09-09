@@ -2,7 +2,7 @@ mixin AdmonitionBlockComponent-Abstract
 
   p.Article-Paragraph.
     Рамки с текстом использовались ещё задолго до компьютеризации — в книгах и другой печатной продукции.
-    Хотя чаще всего в рамкой выделяют важный текст, иногда рамкой обрамляются заметки, примечания и прочая
+    Хотя чаще всего рамкой выделяют важный текст, иногда рамкой обрамляются заметки, примечания и прочая
       второстепенная информация.
 
   p.Article-Paragraph.
@@ -21,25 +21,25 @@ mixin AdmonitionBlockComponent-Abstract
       В #[+Term--YDID графических пользовательских интерфейсах] (#[+Term--YDID GUI]) рамка с текстом
         приобрела дополнительную функцию, став одним из способов оповещения пользователя.
       В отличие от #[+Term--YDID всплывающих сообщений], отображающихся короткий промежуток времени, рамка с текстом
-        обычно отображается постоянно или до тех пор, пока пока пользователь&nbsp;не скроет её с помощью
+        обычно отображается постоянно или до тех пор, пока пока пользователь&nbsp;не уберёт её с помощью
         соответствующей кнопки (если таковая имеется).
       Рекомендуется также предложить пользователю отреагировать на сообщение, добавив внутрь рамки дополнительные кнопки.
 
   p.Article-Paragraph.
     Использовать рамку с текстом для оповещения пользователя рекомендуется в следующих случаях:
 
-
   dl.Article-DescriptionList
 
     dt Отображение ошибки при #[+Keyword--YDID получении] данных с #[+Term--YDID сервера]
-    dd В этом случае рекомендуется добавить кнопку для повторной попытки получения данных.
+    dd В этом случае рекомендуется добавить кнопку для инициирования повторной попытки получения данных.
 
-    dt Отображение сообщения об отсутствии данных, которые можно отобразить
+    dt Отображение сообщения об отсутствии данных, которые можно показать
     dd.
       Следует подготовить #[+Keyword--YDID отдельные] сообщения для случаев, когда нет&nbsp;данных, удовлетворяющих
         поисковому запросу, и для случая, когда данных нет&nbsp;вообще.
       Предложить пользователю отреагировать на сообщение тоже следует по-разному: в первом случае — подготовить копку
-        для сброса поискового запроса, а во втором — предложить добавить данные, если пользователю это позволено.
+        для сброса поискового запроса, а во втором — предложить добавить данные, если пользователю это позволено
+        авторизованному на данный момент пользователю.
 
     dt Отображение #[+Keyword--YDID коротких] инструкций по использованию сайта или приложения
     dd.
@@ -48,8 +48,8 @@ mixin AdmonitionBlockComponent-Abstract
 
     dt Побуждение пользователей к конкретному действию
     dd.
-      Например, если в Вашем приложении авторизация опциональная, то можно предложить пользователю зарегистрироваться
-        и объяснить, какие преимущества это даст.
+      Например, если на Вашем сайте или приложении регистрация опциональная, то можно предложить пользователю
+        зарегистрироваться и объяснить, какие преимущества это даст.
       Разумеется, в данном случае должны быть ссылки на страницу регистрации и авторизации (для уже загеристрированных
         пользователей).
 
@@ -85,10 +85,10 @@ mixin AdmonitionBlockComponent-MinimalExampleDescription(properties)
       switch (framework) {
 
         case SupportedFrameworks.vue:
-            return "$Demos:Vue/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Minimal.html"
+            return "$Demos:Vue/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Minimal.html"
 
         default:
-            return "$Demos:CorePackage/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Minimal.html"
+            return "$Demos:CorePackage/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Minimal.html"
 
       }
 
@@ -115,7 +115,7 @@ mixin AdmonitionBlockComponent-MinimalExampleDescription(properties)
       |
       +Link--YDF({
         unendorsedExternalURI: sharedExternalLinks.pug.homePage.mixinBlocks
-      }).Article-Link блок Pug-примеси
+      }) блок Pug-примеси
       | :
 
 
@@ -130,10 +130,10 @@ mixin AdmonitionBlockComponent-TitlePropertyDescription(properties)
       switch (framework) {
 
         case SupportedFrameworks.vue:
-            return "$Demos:Vue/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Titles.html"
+            return "$Demos:Vue/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Titles.html"
 
         default:
-            return "$Demos:CorePackage/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Titles.html"
+            return "$Demos:CorePackage/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Titles.html"
 
       }
 
@@ -165,15 +165,11 @@ mixin AdmonitionBlockComponent-TitlePropertyDescription(properties)
 
       when SupportedFrameworks.vue
 
-        +Link--YDF({
-          unendorsedExternalURI: sharedExternalLinks.vue.officialSite.slots
-        }).Article-Link vue-слота
+        +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.vue.officialSite.slots }) vue-слота
 
       default
 
-        +Link--YDF({
-          unendorsedExternalURI: sharedExternalLinks.pug.homePage.mixinBlocks
-        }).Article-Link блока Pug-примеси
+        +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.mixinBlocks }) блока Pug-примеси
 
     | .
 
@@ -189,10 +185,10 @@ mixin AdmonitionBlockComponent-ButtonsUsageCommonDescription(properties)
       switch (framework) {
 
         case SupportedFrameworks.vue:
-            return "$Demos:Vue/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Titles.html"
+            return "$Demos:Vue/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Titles.html"
 
         default:
-            return "$Demos:CorePackage/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-CenteredButton.html"
+            return "$Demos:CorePackage/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage-CenteredButton.html"
 
       }
 
@@ -245,10 +241,10 @@ mixin AdmonitionBlockComponent-DismissingFunctionalityCommonDescription(properti
       switch (framework) {
 
         case SupportedFrameworks.vue:
-            return "$Demos:Vue/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Titles.html"
+            return "$Demos:Vue/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage-Titles.html"
 
         default:
-            return "$Demos:CorePackage/Components/AdmonitionBlock/AdmonitionBlockGalleryPage-DismissingButton.html"
+            return "$Demos:CorePackage/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage-DismissingButton.html"
 
       }
 

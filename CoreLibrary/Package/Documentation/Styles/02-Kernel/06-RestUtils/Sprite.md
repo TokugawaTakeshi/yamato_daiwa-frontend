@@ -4,9 +4,9 @@
 
 ```
 Sprite({
-  spritesMapURL: DataTypes.string;
-  width: DataTypes.unit;
-  height: DataTypes.unit;
+  spritesMapURL: DataTypes--YDF.string;
+  width: DataTypes--YDF.unit;
+  height: DataTypes--YDF.unit;
   positiveX_Coordinate: DataType.unit;
   positiveY_Coordinate: DataType.unit;
 })

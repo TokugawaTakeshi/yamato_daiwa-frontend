@@ -28,7 +28,7 @@ overflow-safe and all hanging symbols like *g* or *h* be fully visible.
 
 ```stylus
 @require "../PATH/TO/node_modules/@yamato-daiwa/frontend/Functionality.styl"
-@require "../PATH/TO/node_modules/@yamato-daiwa/frontend/Components.styl"
+@require "../PATH/TO/node_modules/@yamato-daiwa/frontend/GUI_Components.styl"
 
 
 CrossBrowserStylesReset()
@@ -136,7 +136,7 @@ Make sure that you have required the `Functionlity.styl` and `Components.styl` f
 
 ```stylus
 @require "../../../../Functionality.styl"
-@require "../../../../Components.styl"
+@require "../../../../GUI_Components.styl"
 ```
 
 Note that just these requires will not produce any CSS.
@@ -206,8 +206,8 @@ Check below sources for the details and other solutions;.
 
 ```
 OverflowSafeSingleLineLabel({
-  fontSize: DataTypes.unit;
-  lineHeight?: DataTypes.unit = 1.4
-  displayEllipsis?: DataTypes.boolean = true
+  fontSize: DataTypes--YDF.unit;
+  lineHeight?: DataTypes--YDF.unit = 1.4
+  displayEllipsis?: DataTypes--YDF.boolean = true
 })
 ```

@@ -5,23 +5,23 @@
 ```
 provideClippedShadowsAndOutlinesVisibility({
      
-  requiredHorizontalSymmetricSpace?: DataTypes.unit,
+  requiredHorizontalSymmetricSpace?: DataTypes--YDF.unit,
   // OR
-  requiredSpaceAtLeft?: DataTypes.unit,
-  requiredSpaceAtRight?: DataTypes.unit,
+  requiredSpaceAtLeft?: DataTypes--YDF.unit,
+  requiredSpaceAtRight?: DataTypes--YDF.unit,
   
-  requiredVerticalSymmetricSpace?: DataTypes.unit,
+  requiredVerticalSymmetricSpace?: DataTypes--YDF.unit,
   // OR
-  requiredSpaceAtTop?: DataTypes.unit,
-  requiredSpaceAtBottom?: DataTypes.unit,
+  requiredSpaceAtTop?: DataTypes--YDF.unit,
+  requiredSpaceAtBottom?: DataTypes--YDF.unit,
   
-  noCompensatingNegativeTopMargins?: DataTypes.boolean,
-  noCompensatingNegativeBottomMargins?: DataTypes.boolean,
-  noCompensatingNegativeLeftMargins?: DataTypes.boolean,
-  noCompensatingNegativeRightMargins?: DataTypes.boolean,
+  noCompensatingNegativeTopMargins?: DataTypes--YDF.boolean,
+  noCompensatingNegativeBottomMargins?: DataTypes--YDF.boolean,
+  noCompensatingNegativeLeftMargins?: DataTypes--YDF.boolean,
+  noCompensatingNegativeRightMargins?: DataTypes--YDF.boolean,
   
-  useBeforePseudoElementWithCompensatingNegativeTopMargins?: DataTypes.boolean,
-  useAfterPseudoElementWithCompensatingNegativeBottomMargins?: DataTypes.boolean
+  useBeforePseudoElementWithCompensatingNegativeTopMargins?: DataTypes--YDF.boolean,
+  useAfterPseudoElementWithCompensatingNegativeBottomMargins?: DataTypes--YDF.boolean
 })
 ```
 

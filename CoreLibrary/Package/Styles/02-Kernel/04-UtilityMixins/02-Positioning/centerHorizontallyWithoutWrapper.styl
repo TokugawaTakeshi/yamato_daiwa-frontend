@@ -14,16 +14,16 @@ centerHorizontallyWithoutWrapper(compoundParameter, restParameters__MUST_NOT_BE.
     targetParameter: compoundParameter,
     schema: {
       targetElementType: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: true,
         allowedValues: values(HorizontalCenteringWithoutWrapper.TargetElementTypes)
       },
       maximalWidth: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
       horizontalSpaceBetweenSelfAndParent: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       }
     },

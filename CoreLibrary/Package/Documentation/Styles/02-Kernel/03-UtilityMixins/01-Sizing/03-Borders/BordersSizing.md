@@ -10,30 +10,30 @@ BordersSizing({
 
   thickness: {
   
-    all: DataTypes.dimensionalQuantity;
+    all: DataTypes--YDF.dimensionalQuantity;
 
-    horizontalSymmetric: DataTypes.dimensionalQuantity;,
-    left: DataTypes.dimensionalQuantity;,
-    right: DataTypes.dimensionalQuantity;
+    horizontalSymmetric: DataTypes--YDF.dimensionalQuantity;,
+    left: DataTypes--YDF.dimensionalQuantity;,
+    right: DataTypes--YDF.dimensionalQuantity;
 
-    verticalSymmetric: DataTypes.dimensionalQuantity; 
-    top: DataTypes.dimensionalQuantity;
-    bottom: DataTypes.dimensionalQuantity;
+    verticalSymmetric: DataTypes--YDF.dimensionalQuantity; 
+    top: DataTypes--YDF.dimensionalQuantity;
+    bottom: DataTypes--YDF.dimensionalQuantity;
   },
 
   radius: {
 
-    all: DataTypes.dimensionalQuantity;
+    all: DataTypes--YDF.dimensionalQuantity;
 
-    topLeft: DataTypes.dimensionalQuantity;
-    topRight: DataTypes.dimensionalQuantity;
-    bottomLeft: DataTypes.dimensionalQuantity;
-    bottomRight: DataTypes.dimensionalQuantity;
+    topLeft: DataTypes--YDF.dimensionalQuantity;
+    topRight: DataTypes--YDF.dimensionalQuantity;
+    bottomLeft: DataTypes--YDF.dimensionalQuantity;
+    bottomRight: DataTypes--YDF.dimensionalQuantity;
     
-    leftFillets: DataTypes.dimensionalQuantity;
-    rightFillets: DataTypes.dimensionalQuantity;
-    topFillets: DataTypes.dimensionalQuantity;
-    bottomFillets: DataTypes.dimensionalQuantity;
+    leftFillets: DataTypes--YDF.dimensionalQuantity;
+    rightFillets: DataTypes--YDF.dimensionalQuantity;
+    topFillets: DataTypes--YDF.dimensionalQuantity;
+    bottomFillets: DataTypes--YDF.dimensionalQuantity;
   }
 })
 ```

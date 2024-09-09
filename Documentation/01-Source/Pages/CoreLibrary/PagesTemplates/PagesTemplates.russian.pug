@@ -26,12 +26,17 @@ block append Metadata
       ]
     });
 
-    RoutingEmulator.setCurrentRoute("coreLibrary.pagesTemplates");
+    RoutingEmulator.setCurrentRoute("coreLibrary.markup.pagesTemplates");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./PagesTemplates.english.html",
-      japanese: "./PagesTemplates.japanese.html"
+      english: routing.english.coreLibrary.$children.markup.$children.pagesTemplates.$URI,
+      japanese: routing.japanese.coreLibrary.$children.markup.$children.pagesTemplates.$URI
     });
+
+    const {
+      $sectioning: localizedSectioning,
+      $heading: topHeading
+    } = localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates;
 
 
 block append HeadScripts
@@ -53,7 +58,7 @@ block append SpecificContent
       |
       +Link--YDF({
         unendorsedExternalURI: sharedExternalLinks.pug.homePage.templateInheritance
-      }).Article-Link наследования шаблонов
+      }) наследования шаблонов
       | .
       | В реальных проектах с большим количеством страниц, такое наследование #[+Keyword--YDID обычно]
       |   #[+Keyword__Contrast--YDID многоуровневое].
@@ -94,7 +99,7 @@ block append SpecificContent
       |
       +Link--YDF({
         unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
-      }).Article-Link внутреннего JavaScript
+      }) внутреннего JavaScript
       |
       |   можно ещё и сделать генерацию шаблонного кода.
       | Например, можно лишь указать пути к #[+Term--YDID стилям] и #[+Term--YDID скриптам] через

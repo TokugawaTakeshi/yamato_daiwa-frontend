@@ -1,21 +1,22 @@
-export { default as YDF_ComponentsCoordinator } from "./Components/ComponentsAuxiliaries";
+export { default as YDF_ComponentsCoordinator } from "./GUI_Components/ComponentsAuxiliaries";
 
-/* ━━━ Components ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-export { default as AdmonitionBlock } from "./Components/AdmonitionBlock/AdmonitionBlock.vue";
 
-export { default as Badge } from "./Components/Badge/Badge.vue";
-export { default as BadgeLoadingPlaceholder } from "./Components/Badge/LoadingPlaceholder/Badge-LoadingPlaceholder.vue";
+/* ━━━ GUI Components ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+export { default as AdmonitionBlock } from "./GUI_Components/AdmonitionBlock/AdmonitionBlock.vue";
 
-export { default as Button } from "./Components/Controls/Buttons/Plain/Button.vue";
+export { default as Badge } from "./GUI_Components/Badge/Badge.vue";
+export { default as BadgeLoadingPlaceholder } from "./GUI_Components/Badge/LoadingPlaceholder/Badge-LoadingPlaceholder.vue";
+
+export { default as Button } from "./GUI_Components/Controls/Buttons/Plain/Button.vue";
 export { default as ButtonLoadingPlaceholder } from
-    "./Components/Controls/Buttons/Plain/LoadingPlaceholder/Button-LoadingPlaceholder.vue";
+      "./GUI_Components/Controls/Buttons/Plain/LoadingPlaceholder/Button-LoadingPlaceholder.vue";
 
-/* --- Other -------------------------------------------------------------------------------------------------------- */
-export { default as OverflowSafeSingleLineLabel } from "./Components/OverflowSafeSingleLineLabel.vue";
+export { default as OverflowSafeSingleLineLabel } from "./GUI_Components/OverflowSafeSingleLineLabel.vue";
 
-export { default as ThemesShowcase } from "./Components/ThemesShowcase.vue";
+export { default as ThemesShowcase } from "./GUI_Components/ThemesShowcase.vue";
 
-/* === Icons ======================================================================================================== */
+
+/* ━━━ Icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 export { default as AchievementIcon__Filled } from "./SVG_Icons/Achievement/AchievementIcon__Filled.vue";
 export { default as AchievementIcon__Outlined } from "./SVG_Icons/Achievement/AchievementIcon__Outlined.vue";
 
@@ -202,7 +203,6 @@ export { default as TriangleIcon__Upward__Filled } from
     "./SVG_Icons/Triangle/TriangleIcon__Upward__Filled.vue";
 
 
-/* === Functions ==================================================================================================== */
-/* --- Routing ------------------------------------------------------------------------------------------------------ */
+/* ━━━ Functions ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 export { default as extractVueRouteQueryParameterValueAsArrayOfStrings } from
     "./Functions/Routing/extractVueRouteQueryParameterAsArray";

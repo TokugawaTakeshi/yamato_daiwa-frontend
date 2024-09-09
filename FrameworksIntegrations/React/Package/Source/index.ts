@@ -1,11 +1,10 @@
-/* ━━━ Components ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-export { default as AdmonitionBlock } from "./Components/AdmonitionBlock";
+/* ━━━ GUI Components ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+export { default as AdmonitionBlock } from "./GUI_Components/AdmonitionBlock";
 
-export { default as Button } from "./Components/Controls/Buttons/Plain/Button";
-export { default as ButtonLoadingPlaceholder } from "./Components/Controls/Buttons/Plain/Button-LoadingPlaceholder";
+export { default as Button } from "././GUI_Components/Controls/Buttons/Plain/Button";
+export { default as ButtonLoadingPlaceholder } from "./GUI_Components/Controls/Buttons/Plain/Button-LoadingPlaceholder";
 
-/* ─── Other ────────────────────────────────────────────────────────────────────────────────────────────────────────────────── */
-export { default as ThemesShowcase } from "./Components/ThemesShowcase";
+export { default as ThemesShowcase } from "./GUI_Components/ThemesShowcase";
 
 
 /* ━━━ SVG Icons ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */

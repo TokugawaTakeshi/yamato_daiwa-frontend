@@ -7,17 +7,17 @@ computeExtraSpaceCausedByLineHeightAtTopOrBottom(compoundParameter, restParamete
     schema: {
 
       fontSize: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: true
       },
 
       lineHeight: {
-        type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity,
+        type: DataTypes--YDF.dimensionalQuantity DataTypes--YDF.dimensionlessQuantity,
         required: false
       },
 
       lineSpacing: {
-        type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity,
+        type: DataTypes--YDF.dimensionalQuantity DataTypes--YDF.dimensionlessQuantity,
         requiredIf: {
           predicate: @(compoundParameter) { return isNull(compoundParameter.lineHeight) },
           descriptionForLogging: "The 'lineHeight' is not specified"

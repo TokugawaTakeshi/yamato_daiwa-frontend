@@ -140,14 +140,14 @@ buildBEM_ClassName(compoundParameter, restParameters__MUST_NOT_BE...)
     targetParameter: compoundParameter,
     schema: {
       block: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: true
       },
       element: {
-        type: DataTypes.string
+        type: DataTypes--YDF.string
       },
       modifier: {
-        type: DataTypes.string
+        type: DataTypes--YDF.string
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
@@ -200,12 +200,12 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
     targetParameter: textElementHeightSizingSpecification,
     schema: {
       type: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: true,
         allowedValues: values(TextElementHeightSizingTypes--YDF)
       },  
       fixedHeight: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         requiredIf: {
           predicate: @(textElementHeightSizingSpecification) {
             return textElementHeightSizingSpecification.type == TextElementHeightSizingTypes--YDF.fixed
@@ -263,23 +263,23 @@ buildBEM_ClassName(compoundParameter, restParameters__MUST_NOT_BE...)
     targetParameter: compoundParameter,
     schema: {
       block: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: true
       },
       element: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: false
       },
       modifier: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: false
       },
       elementSeparator: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         defaultValue: BEM_ELEMENT_SEPARATOR
       },
       modifierSeparator: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         defaultValue: BEM_MODIFIER_SEPARATOR
       }
     },
@@ -338,14 +338,14 @@ widthSizing(compoundParameter, restParameters__MUST_NOT_BE...)
     targetParameter: compoundParameter,
     schema: {
       fixedWidth: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         incompatibleWith: "minimalWidth" "maximalWidth"
       },
       minimalWidth: {
-        type: DataTypes.dimensionalQuantity
+        type: DataTypes--YDF.dimensionalQuantity
       },
       maximalWidth: {
-        type: DataTypes.dimensionalQuantity
+        type: DataTypes--YDF.dimensionalQuantity
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
@@ -388,16 +388,16 @@ BordersSizing(parametersObject, restParameters__MUST_NOT_BE...)
     targetParameter: parametersObject,
     schema: {
       thickness: {
-        type: DataTypes.object,
+        type: DataTypes--YDF.object,
         required: false,
         properties: {
           horizontalSymmetric: {
-            type: DataTypes.dimensionalQuantity,
+            type: DataTypes--YDF.dimensionalQuantity,
             required: false,
             incompatibleWith: "thickness.all"
           },
           left: {
-            type: DataTypes.dimensionalQuantity,
+            type: DataTypes--YDF.dimensionalQuantity,
             required: false,
             incompatibleWith: "thickness.all" "thickness.horizontalSymmetric"
           },
@@ -450,15 +450,15 @@ buildBEM_ClassName(compoundParameter, restParameters__MUST_NOT_BE...)
     targetParameter: compoundParameter,
     schema: {
       block: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: true
       },
       element: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: false
       },
       modifier: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: false
       }
     },
@@ -491,7 +491,7 @@ Please check the specification of this property:
 ##### Allow both dimensional and dimensionless amount
 
 It is possible to allow both dimensional and dimensionless amounts (actual for line height definition for example).
-Specify **type** with two values `DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity` _in this sequence_.
+Specify **type** with two values `DataTypes--YDF.dimensionalQuantity DataTypes--YDF.dimensionlessQuantity` _in this sequence_.
 
 ```stylus
 TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MUST_NOT_BE...)
@@ -503,7 +503,7 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
     schema: {
       // ...
       lineHeight: {
-        type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity
+        type: DataTypes--YDF.dimensionalQuantity DataTypes--YDF.dimensionlessQuantity
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
@@ -568,7 +568,7 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
     schema: {
       // ...
       linesCount: {
-        type: DataTypes.dimensionlessQuantity
+        type: DataTypes--YDF.dimensionlessQuantity
         defaultValue: 1,
         minimalValue: 1
       }
@@ -623,7 +623,7 @@ buildBEM_ClassName(compoundParameter, restParameters__MUST_NOT_BE...)
     targetParameter: compoundParameter,
     schema: {
       block: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: true,
         minimalCharactersCount: 1
       }
@@ -673,7 +673,7 @@ TextElementHeightSizing(textElementHeightSizingSpecification, restParameters__MU
     targetParameter: textElementHeightSizingSpecification,
     schema: {
       type: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: true,
         allowedAlternatives: values(TextElementHeightSizingTypes--YDF)
       }

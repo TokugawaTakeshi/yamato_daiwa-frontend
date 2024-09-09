@@ -1,9 +1,28 @@
 -
 
   const filesUploaderYDF_ComponentLocalization__japanese = {
-    uploadSingleFileByDragAndDropGuidance: "ここにファイルをドラッグアンドドロップしてください。",
+
+    processingsStatusesTable: {
+      headers: {
+        fileName: "ファイル名",
+        status: "状態"
+      }
+    },
+
+    uploadSingleFileByDragAndDropGuidance: "",
+
     buttons: {
-      filePicking: { label: "ファイルを選ぶ" },
-      fileDeleting: { label: "ファイルを削除" }
+      filePicking: {
+        buildLabel: ({ areMultipleFileAllowed }) => `ファイルを選ぶ${ areMultipleFileAllowed ? "（複数可）" : "" }`
+      }
+    },
+
+    singleImagePreviewer: {
+      image: { alternatingText: "アップロードする画像のプレビュー" },
+      deletingButton: {
+        label: "削除",
+        accessibilityGuidance: "アップロードする画像を削除"
+      }
     }
+
   };

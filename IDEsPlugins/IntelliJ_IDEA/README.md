@@ -27,9 +27,11 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 
 #### Mixins
 
+[//]: # (=== TODO < Update will required ==============================================================================)
 - **pl** — Live template for [`PageLink` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelink)
 - **plg** — Live template for [`PagesLinksGroup` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelinksgroup)
 
+[//]: # (=== TODO Update will required > =============================================================================)
 
 #### GUI Components
 
@@ -44,17 +46,20 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 ##### GUI Components
 
 - **AdmonitionBlock--YDF-V-P**, alias: **ab-ydf-vue-p** — Live template for 
-  [AdmonitionBlock--YDF](FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
   component (Pug syntax).
 - **AdmonitionBlock--YDF-V-H**, alias: **ab-ydf-vue-h** — Live template for 
-  [AdmonitionBlock--YDF](FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
   component (HTML syntax).
 
-[//]: # (- **badge-ydf**, **badge-lp-ydf** — Live templates for the inserting of invocation of **Badge--YDF** and )
-[//]: # (    **Badge--YDF-LoadingPlaceholder** Pug mixins corresponding to **Badge** component and its loading placeholder )
-[//]: # (    respectively  )
-[//]: # (* **ossll** — Live template for **OverflowSafeSingleLineLabel** component)
 
+#### React
+
+##### GUI Components
+
+- **AdmonitionBlock**, alias: **ab-ydf-react** — Live template for
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/React/Components/Children/AdmonitionBlock/AdmonitionBlock-React.english.html)
+  component.
 
 ### Styles (Stylus)
 
@@ -71,10 +76,16 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
  
 ##### Colors
 
-* <kbd>pccs</kbd> The Live template for the [`PracticalColorCoordinateSystem` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md)
-* <kbd>sogw3c</kbd> The Live template for the [`ShadesOfGray__39ColorsW3C_Palette` array](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md)
-* <kbd>th</kbd>, <kbd>th-bgc</kbd> The Live template for the [`TemporaryHighlighting` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md)   
-* <kbd>ydfcp</kbd> The Live template for the `YDF_ColorPalette` object-type constant 
+- **PracticalColorCoordinateSystem--YDF**, alias: **pccs** — Live template for 
+  [`PracticalColorCoordinateSystem--YDE` two-level object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem.md)
+- **TemporarySemitransparentHighlighting--YDF**, alias: **tsh** — Live template for the 
+  [`TemporarySemitransparentHighlighting--YDF` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporarySemitransparentHighlighting.md)
+  There is also the **bgc-tsh** pasting same content with `background-color` key at once.
+ [//]: # (=== TODO ===================================================================================================)
+- <kbd>sogw3c</kbd> The Live template for the [`ShadesOfGray__39ColorsW3C_Palette` array](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md)
+- <kbd>th</kbd>, <kbd>th-bgc</kbd> The Live template for the [`TemporaryHighlighting` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md)
+- <kbd>ydfcp</kbd> The Live template for the `YDF_ColorPalette` object-type constant
+[//]: # (=== TODO ===================================================================================================)
 * <kbd>fuic</kbd> The Live template for the [`FlatUI_Colors` enumeration](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md)
 * <kbd>mdc</kbd> The Live template for the [`MaterialDesignColors` object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md)
 

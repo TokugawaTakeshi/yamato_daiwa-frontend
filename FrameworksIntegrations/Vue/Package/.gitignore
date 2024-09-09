@@ -1,11 +1,9 @@
-/Distributable/
-/Tests/Output/
+Distributable/
+Workbenches/Output/
 
-/node_modules/
+node_modules/
 
 **/.DS_Store
 
-index.js
-
 # Temporary
-/.yda/
+.yda/

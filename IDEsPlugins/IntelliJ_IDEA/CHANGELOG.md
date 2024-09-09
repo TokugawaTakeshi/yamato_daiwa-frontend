@@ -12,17 +12,27 @@
   usage.
   Previously added **ab-ydf** one now is the alias of **AdmonitionBlock--YDF**. 
 - **AdmonitionBlock--YDF-V-P**, alias: **ab-ydf-vue-p** — Live template for 
-  [AdmonitionBlock--YDF](FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
-  component (Pug syntax).
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  component (Vue framework, Pug syntax).
 - **AdmonitionBlock--YDF-V-H**, alias: **ab-ydf-vue-h** — Live template for 
-  [AdmonitionBlock--YDF](FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
-  component (HTML syntax).
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  component (Vue framework, HTML syntax).
+- **AdmonitionBlock**, alias: **ab-ydf-react** — Live template for
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/React/Components/Children/AdmonitionBlock/AdmonitionBlock-React.english.html)
+  component.
 - **NARROWEST_SCREEN_WIDTH_UNIT--YDF** — autocomplete imitator type Live template for the [eponymous constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes--ydf---stylus-data-types).
   Previously added **nswu** one now is the alias of **NARROWEST_SCREEN_WIDTH_UNIT--YDF**. 
 - **DataTypes--YDF** — autocomplete imitator type Live template for the [eponymous constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes--ydf---stylus-data-types).
   Previously added **dt** one now is the alias of **DataTypes--YDF**.
 - **SMALLEST_DIVISION_OF_CSS_PIXEL--YDF**, alias: **sdocp** — Live template for
   [`SMALLEST_DIVISION_OF_CSS_PIXEL--YDF`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#smallest_division_of_css_pixel--ydf---the-smallest-division-of-css-pixel)
+- **PracticalColorCoordinateSystem--YDF** — Live template for
+  [`PracticalColorCoordinateSystem--YDE` two-level object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem.md).
+  Previously added **pccs** one now it the alias of **PracticalColorCoordinateSystem--YDF**. 
+- **TemporarySemitransparentHighlighting--YDF**, alias: **tsh** — Live template for the
+  [`TemporarySemitransparentHighlighting--YDF` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporarySemitransparentHighlighting.md)
+  There is also the **bgc-tsh** pasting same content with `background-color` key at once.
+
 
 ### Changed
 
@@ -163,7 +173,7 @@
 - <kbd>nswu</kbd> - live template for [**NARROWEST_SCREEN_WIDTH_UNIT**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit---the-narrowest-screen-width-unit) constant
 - <kbd>sogw3c</kbd> - live template for [**ShadesOfGray__W3C_Palette**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md) array
 - <kbd>th</kbd> - live template for [**TemporaryHighlighting**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md) object
-- <kbd>pccs</kbd> - live template for [**PracticalColorCoordinateSystem**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md) object
+- <kbd>pccs</kbd> - live template for [**PracticalColorCoordinateSystem**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem.md) object
 - <kbd>fuic</kbd> - live template for [**FlatUI_Colors**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md) enumeration
 - <kbd>zi</kbd> - live template for [**ZIndexes**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#zindexes) mutable object
 - <kbd>MAIN_SANS_SERIF_FONT_STACK</kbd> - autocomplete imitator for eponymous variable

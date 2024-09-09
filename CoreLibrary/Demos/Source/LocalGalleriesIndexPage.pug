@@ -1,4 +1,4 @@
-extends ../node_modules/@yamato-daiwa/frontend/PagesTemplates/StaticPreviewAnywherePage.pug
+extends ../node_modules/@yamato-daiwa/frontend/PagesTemplates/StaticPreviewAnywherePageTemplate.pug
 
 
 block append Metadata
@@ -12,26 +12,26 @@ block append TableOfContents
 
   +PageLink({
     label: "AdmonitionBlock",
-    URI: "@CompletePages/Components/AdmonitionBlock/AdmonitionBlockGalleryPage",
+    URI: "@CompletePages/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
   })
 
   +PageLink({
     label: "Badge",
-    URI: "@CompletePages/Components/Badge/BadgeGalleryPage",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
+    URI: "@CompletePages/GUI_Components/Badge/BadgeGalleryPage",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 
   //-
     +PageLink({
       label: "LoadingIndicator",
-      URI: "@Demos/Components/LoadingIndicator/LoadingIndicator",
+      URI: "@Demos/GUI_Components/LoadingIndicator/LoadingIndicator",
       progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
     })
 
     +PageLink({
       label: "Snackbar",
-      URI: "@Demos/Components/Snackbar/Snackbar",
+      URI: "@Demos/GUI_Components/Snackbar/Snackbar",
       progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
     })
 
@@ -39,7 +39,7 @@ block append TableOfContents
 
   +PageLink({
     label: "FilesUploader",
-    URI: "@CompletePages/Components/Controls/FilesUploader/FilesUploaderGalleryPage",
+    URI: "@CompletePages/GUI_Components/Controls/FilesUploader/FilesUploaderGalleryPage",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 
@@ -48,7 +48,7 @@ block append TableOfContents
 
   +PageLink({
     label: "Plain",
-    URI: "@CompletePages/Components/Controls/Buttons/Plain/ButtonGalleryPage",
+    URI: "@CompletePages/GUI_Components/Controls/Buttons/Plain/ButtonGalleryPage",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 
@@ -59,7 +59,7 @@ block append TableOfContents
 
     +PageLink({
       label: "TextBox",
-      URI: "@Demos/Components/Controls/TextBox/TextBox",
+      URI: "@Demos/GUI_Components/Controls/TextBox/TextBox",
       progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
     })
 
@@ -68,7 +68,7 @@ block append TableOfContents
 
     +PageLink({
       label: "FilesUploader",
-      URI: "@Demos/Components/Controls/FilesUploader/FilesUploader",
+      URI: "@Demos/GUI_Components/Controls/FilesUploader/FilesUploader",
       progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
     })
 
@@ -98,7 +98,7 @@ block append TableOfContents
 
     +PageLink({
       label: "SingleImageViewer",
-      URI: "@Demos/Components/Viewers/SingleImage/SingleImageViewer",
+      URI: "@Demos/GUI_Components/Viewers/SingleImage/SingleImageViewer",
       progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
     })
 

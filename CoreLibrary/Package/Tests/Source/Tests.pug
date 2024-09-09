@@ -1,14 +1,20 @@
-extends ../../PagesTemplates/StaticPreviewAnywherePage.pug
+extends ../../PagesTemplates/StaticPreviewAnywherePageTemplate.pug
 
 
 block append Metadata
 
-  - HTML_PAGE_TITLE = "Tests";
+  -
+
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: "Tests / Workbenches"
+      }
+    });
 
 
 block append TableOfContents
 
-  h1.AnywherePage-TopHeading= HTML_PAGE_TITLE
+  h1.AnywherePage-TopHeading Tests / Workbenches
 
   +PageLink({
     label: "Typography",
@@ -30,43 +36,43 @@ block append TableOfContents
 
   +PageLink({
     label: "AdmonitionBlock",
-    URI: "@StylesAndComponentsTesting/Components/AdmonitionBlock/AdmonitionBlock.workbench",
+    URI: "@StylesAndComponentsTesting/GUI_Components/AdmonitionBlock/AdmonitionBlock.workbench",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 
   +PageLink({
     label: "ConfirmationModalDialog",
-    URI: "./Components/Controls/ModalDialogs/Confirmation/ConfirmationModalDialog.test.html",
+    URI: "./GUI_Components/Controls/ModalDialogs/Confirmation/ConfirmationModalDialog.test.html",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 
   +PageLink({
     label: "DateTimePicker",
-    URI: "@StylesAndComponentsTesting/Components/Controls/DateTimePicker/DateTimePicker.workbench",
+    URI: "@StylesAndComponentsTesting/GUI_Components/Controls/DateTimePicker/DateTimePicker.workbench",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 
   +PageLink({
-    label: "DropDownList",
-    URI: "./Components/Controls/DropDownList/DropDownList.test.html",
+    label: "ImagesCropper",
+    URI: "./GUI_Components/Controls/ImagesCropper/ImagesCropper.workbench.html",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 
   +PageLink({
     label: "NumberBox",
-    URI: "@StylesAndComponentsTesting/Components/Controls/NumberBox/NumberBox.test",
+    URI: "@StylesAndComponentsTesting/GUI_Components/Controls/NumberBox/NumberBox.test",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 
   +PageLink({
     label: "Pagination",
-    URI: "./Components/Controls/Pagination/Pagination.test.html",
+    URI: "./GUI_Components/Controls/Pagination/Pagination.test.html",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 
   +PageLink({
     label: "RadioButtonsGroup",
-    URI: "@StylesAndComponentsTesting/Components/Controls/RadioButtonsGroup/RadioButtonsGroup.test",
+    URI: "@StylesAndComponentsTesting/GUI_Components/Controls/RadioButtonsGroup/RadioButtonsGroup.test",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
   })
 

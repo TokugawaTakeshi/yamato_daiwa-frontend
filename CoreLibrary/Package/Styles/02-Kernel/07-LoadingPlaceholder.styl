@@ -6,31 +6,31 @@ LoadingPlaceholder(compoundParameter = {}, restParameters__MUST_NOT_BE...)
     targetParameter: compoundParameter,
     schema: {
       width: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
       height: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
       borderRadius: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
       underlayColor: {
-        type: DataTypes.colorDefinition,
+        type: DataTypes--YDF.colorDefinition,
         defaultValue: #E1E7EB
       },
       wavePrimaryColor: {
-        type: DataTypes.colorDefinition,
+        type: DataTypes--YDF.colorDefinition,
         defaultValue: lighten(#E1E7EB, 30%)
       },
       waveSecondaryColor: {
-        type: DataTypes.colorDefinition,
+        type: DataTypes--YDF.colorDefinition,
         defaultValue: lighten(#E1E7EB, 20%)
       },
       useAbsolutePositioning: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: false
       }
     },

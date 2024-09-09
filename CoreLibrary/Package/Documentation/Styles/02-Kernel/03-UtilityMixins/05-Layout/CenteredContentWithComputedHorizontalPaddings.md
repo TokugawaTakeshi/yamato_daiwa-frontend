@@ -4,7 +4,7 @@
 
 ```
 CenteredContentWithComputedHorizontalPaddings({
-  contentWidth: DataTypes.unit
+  contentWidth: DataTypes--YDF.unit
 })
 ```
 

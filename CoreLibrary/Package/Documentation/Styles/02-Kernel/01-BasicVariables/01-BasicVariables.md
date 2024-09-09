@@ -9,10 +9,10 @@ width default values).
 
 | Variable name              | [Type](../../01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types) | Default value description                                                                 |
 |----------------------------|-----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------|
-| MAIN_SANS_SERIF_FONT_STACK | DataTypes.string                                                                                                      | Adopted from [Rebot](https://getbootstrap.com/docs/4.0/content/reboot/#native-font-stack) |
-| MAIN_SERIF_FONT_STACK      | DataTypes.string                                                                                                      | Times New Roman based                                                                     |
-| MAIN_MONOSPACED_FONT_STACK | DataTypes.string                                                                                                      | Lucida Console based                                                                      |
-| MAIN_FONT_STACK            | DataTypes.string                                                                                                      | Refers to **MAIN_SANS_SERIF_FONT_STACK**                                                  |
+| MAIN_SANS_SERIF_FONT_STACK | DataTypes--YDF.string                                                                                                      | Adopted from [Rebot](https://getbootstrap.com/docs/4.0/content/reboot/#native-font-stack) |
+| MAIN_SERIF_FONT_STACK      | DataTypes--YDF.string                                                                                                      | Times New Roman based                                                                     |
+| MAIN_MONOSPACED_FONT_STACK | DataTypes--YDF.string                                                                                                      | Lucida Console based                                                                      |
+| MAIN_FONT_STACK            | DataTypes--YDF.string                                                                                                      | Refers to **MAIN_SANS_SERIF_FONT_STACK**                                                  |
 
 
 ### Dimensions
@@ -23,10 +23,10 @@ and other styles.
 
 | Variable name                              | [Type](../../01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types) | Default value |
 |--------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------|
-| BASIC_FONT_SIZE                            | DataTypes.unit                                                                                                        | `14px`        |
-| BASIC_LINE_HEIGHT                          | DataTypes.unit or DataTypes.unitlessNumber                                                                            | `1`           |
-| BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS   | DataTypes.unit                                                                                                        | `14px`        |
-| BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS | DataTypes.unit or DataTypes.unitlessNumber                                                                            | `1.4`         |
+| BASIC_FONT_SIZE                            | DataTypes--YDF.unit                                                                                                        | `14px`        |
+| BASIC_LINE_HEIGHT                          | DataTypes--YDF.unit or DataTypes--YDF.unitlessNumber                                                                            | `1`           |
+| BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS   | DataTypes--YDF.unit                                                                                                        | `14px`        |
+| BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS | DataTypes--YDF.unit or DataTypes--YDF.unitlessNumber                                                                            | `1.4`         |
 
 
 ## ZIndexes
@@ -60,5 +60,5 @@ and modifier separators could be overwritten.
 
 | Variable name          | [Type](../../01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types) | Default value |
 |------------------------|-----------------------------------------------------------------------------------------------------------------------|---------------|
-| BEM_ELEMENT_SEPARATOR  | DataTypes.string                                                                                                      | `__`          |
-| BEM_MODIFIER_SEPARATOR | DataTypes.string                                                                                                      | `_`           |
+| BEM_ELEMENT_SEPARATOR  | DataTypes--YDF.string                                                                                                      | `__`          |
+| BEM_MODIFIER_SEPARATOR | DataTypes--YDF.string                                                                                                      | `_`           |

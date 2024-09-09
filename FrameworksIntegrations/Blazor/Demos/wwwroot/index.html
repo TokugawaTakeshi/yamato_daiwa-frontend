@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -9,10 +9,17 @@
   <title>Demos</title>
 
   <base href="/" />
-  <link rel="stylesheet" href="css/Primer.css"  />
-  <link rel="stylesheet" href="css/CommonRequirements.css"  />
-  <link rel="stylesheet" href="css/blazor.css" />
-
+  <link href="css/blazor.css" rel="stylesheet" />
+  <link href="css/YDF-Demos-Primer.css" rel="stylesheet" />
+  <link href="css/YDF-Demos-CommonRequirements.css" rel="stylesheet" />
+  <link href="css/AdmonitionBlockGalleryPage.css" rel="stylesheet" />
+  
+  <link 
+    id="PAGE_DEPENDENT_STYLESHEET"
+    href="css/Dummy.css" 
+    rel="stylesheet" 
+  />
+  
 </head>
 
 <body>
@@ -30,9 +37,10 @@
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
   </div>
-  
-  <script src="_framework/blazor.webassembly.js"></script>
 
+  <script src="_framework/blazor.webassembly.js"></script>
+  <script src="scripts.js" type="text/javascript"></script>
+  
 </body>
 
 </html>

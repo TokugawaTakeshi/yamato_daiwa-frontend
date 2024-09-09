@@ -29,14 +29,18 @@ block append Metadata
     RoutingEmulator.setCurrentRoute("${ROUTE}");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./${FILE_NAME_WITHOUT_EXTENSION}.english.html",
-      russian: "./${FILE_NAME_WITHOUT_EXTENSION}.russian.html"
+      english: routing.english.${ROUTE_WITH_CHILDREN}.${DS}URI,
+      russian: routing.russian.${ROUTE_WITH_CHILDREN}.${DS}URI
     });
+    
+    //- TODO `+CallableExpressionScheme--YDF_DK`と言うPugミックスインが使われているなら、`pageTopHeading`無しで良い
+    const { 
+      ${DS}sectioning: localizedSectioning,
+      ${DS}heading: pageTopHeading
+    } = localizedRouting.${ROUTE_WITH_CHILDREN};
 
-    const pageTableOfContents = localizedRouting.${ROUTE_PATH}.${DS}sectioning;
 
-
-block append HeadScriptsLinks
+block append HeadScripts
 
   if __IS_PRODUCTION_BUILDING_MODE__
 

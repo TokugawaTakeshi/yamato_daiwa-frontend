@@ -75,11 +75,15 @@ coreLibrary:
 
         PracticalColorCoordinateSystem:
 
-          $heading: "PCCSパレット（<code>PracticalColorCoordinateSystem</code>）"
+          $heading: "PCCSパレット（<code>PracticalColorCoordinateSystem--YDF</code>）"
 
-        ShadesOfGray__39ColorsW3C_Palette:
+        TemporarySemitransparentHighlighting:
 
-          $heading: "グレースケール39色パレット（<code>ShadesOfGray__39ColorsW3C_Palette</code>）"
+          $heading: "一時的半透明照明（<code>TemporarySemitransparentHighlighting--YDF</code>）"
+
+        W3C_39_ShadesOfGray:
+
+          $heading: "W3Cグレースケール39色パレット（<code>W3C_39_ShadesOfGray--YDF</code>）"
 
         YDF_ColorPalette:
 
@@ -144,25 +148,110 @@ coreLibrary:
         strings:
 
           $heading: "文字列弄り"
+
+        quantities:
+
+          $heading: "量の弄り"
+
+        objects:
+
+          $heading: "オブジェクト弄り"
+
+        arrays:
+
+          $heading: "配列の弄り"
+
+        YDF_Arrays:
+
+          $heading: "YDF配列の弄り"
+
+        parametersValidation:
+
+          $heading: "引数の妥当性確認"
+
+        other:
+
+          $heading: "其の他の関数"
+
+      mixins:
+
+        $heading: "補助混入"
+
+        general:
+
+          $heading: "一般"
+
+        sizing:
+
+          $heading: "大小指定"
+
+          width:
+
+            $heading: "幅"
+
+        positioning:
+
+          $heading: "配置"
+
+        positionalRelationship:
+
+          $heading: "相対配置"
+
+        layout:
+
+          $heading: "構成"
+
+        typography:
+
+          $heading: "タイポグラフィ"
+
+        other:
+
+          $heading: "其の他"
+
+      stylesInitialization:
+
+        $heading: "スタイルの初期化"
+
+    buildInPlugins:
+
+      $heading: "付きプラグイン"
+
+      additionalColorPalettes:
+
+        $heading: "追加カラーパレット"
+
+  GUI_Components:
+
+    $heading: "GUIコンポーネント"
+
+    controls:
+
+      $heading: "操作用"
+
+      buttons:
+
+        $heading: "ボタン"
+
 frameworksIntegrations:
 
   $heading: "第三者フレームワークの対応"
 
   vue:
 
-    components:
+    GUI_Components:
 
       $heading: "GUIコンポーネント"
 
   react:
 
-    components:
+    GUI_Components:
 
       $heading: "GUIコンポーネント"
 
   blazor:
 
-    components:
+    GUI_Components:
 
       $heading: "GUIコンポーネント"
 

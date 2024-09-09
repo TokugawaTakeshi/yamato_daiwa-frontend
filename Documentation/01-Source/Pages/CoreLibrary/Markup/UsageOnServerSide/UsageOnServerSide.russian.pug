@@ -34,9 +34,14 @@ block append Metadata
     RoutingEmulator.setCurrentRoute("coreLibrary.markup.usageOnServerSide");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./UsageOnServerSide.english.html",
-      japanese: "./UsageOnServerSide.japanese.html"
+      english: routing.english.coreLibrary.$children.markup.$children.usageOnServerSide.$URI,
+      japanese: routing.japanese.coreLibrary.$children.markup.$children.usageOnServerSide.$URI
     });
+
+    const {
+      $sectioning: localizedSectioning,
+      $heading: topHeading
+    } = localizedRouting.coreLibrary.$children.markup.$children.usageOnServerSide;
 
 
 block append HeadScripts
@@ -67,16 +72,16 @@ block append SpecificContent
         |
         +Link--YDF({
           unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
-        }).Article-Link JavaScript-кода
+        }) JavaScript-кода
         | и
         |
-        +Link--YDF({ unendorsedExternalURI: "sharedExternalLinks.pug.homePage.mixins" }).Article-Link Pug-примесей
+        +Link--YDF({ unendorsedExternalURI: "sharedExternalLinks.pug.homePage.mixins" }) Pug-примесей
         | .
         | Этот файл так же используют
         |
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
-        }).Article-Link шаблоны страниц
+        }) шаблоны страниц
         | .
         | Ещё больше #[+Term--YDID JavaScript-кода] и #[+Term--YDID Pug-примесей] содержит файл
         |   #[+ImportantEntity--YDID Components.pug], который предоставляет #[+Term--YDID разметку] для
@@ -88,7 +93,7 @@ block append SpecificContent
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.
               $children.StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI,
-        }).Article-Link статического превью
+        }) статического превью
         |   и других случаев, когда #[+ImportantEntity--YDID Pug] в #[+ImportantEntity--YDID HTML] #[+Keyword--YDID заранее]
         |   перед публикацией очередной версии сайта или приложения, такое снижение производительности
         |   #[+Keyword--YDID незначительно].
@@ -154,7 +159,7 @@ block append SpecificContent
         +Link--YDF({
           unendorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/" +
               "Package/Components/Controls/Buttons/Plain/Button.pug"
-        }).Article-Link исходный код
+        }) исходный код
         |   этого #[+Term--YDID компонента] — его немало ввиду того, что кнопка — это гораздо более сложный компонент,
         |   чем кажется из-за обманчивого простого внешнего вида прямоугольника с надписью, иногда закрашенного и
         |   и с закруглёнными краями.
@@ -228,14 +233,14 @@ block append SpecificContent
         dt
           +Link--YDF({
             endorsedExternalURI: "https://www.npmjs.com/package/@yamato-daiwa/automation"
-          }).Article-Link @yamato-daiwa/automation
+          }) @yamato-daiwa/automation
           | (YDA)
         dd Сборщик проектов
 
         dt
           +Link--YDF({
             endorsedExternalURI: "https://www.npmjs.com/package/handlebars-by-pug"
-          }).Article-Link handlebars_by_pug
+          }) handlebars_by_pug
         dd.
           Набор #[+Term--YDID Pug-примесей], которые позволяют легче написать #[+Term--YDID Pug-код] для его последующего
             преобразования в #[+ImportantEntity--YDID Handlebars].
@@ -243,7 +248,7 @@ block append SpecificContent
         dt
           +Link--YDF({
             endorsedExternalURI: "https://www.npmjs.com/package/@yamato-daiwa/handlebars-extensions"
-          }).Article-Link @yamato-daiwa/handlebars-extensions
+          }) @yamato-daiwa/handlebars-extensions
         dd.
           Дополнительные вспомогательнее #[+Term--YDID функции] для Handlebars (Handlebars helpers).
           Некоторые #[+Term--YDID Pug-примеси] из #[+ImportantEntity--YDID handlebars_by_pug] используют эти
@@ -349,7 +354,7 @@ block append SpecificContent
         | Специально для этого, в Pug есть
         +Link--YDF({
           unendorsedExternalURI: sharedExternalLinks.pug.homePage.conditionalRendering
-        }).Article-Link условный рендеринг
+        }) условный рендеринг
         |   , с помощью которого мы можем в том числе генерировать #[+Term--YDID HTML-код] в зависимости от режима сборки:
 
       +CodeViewer--YDF
@@ -548,7 +553,7 @@ block append SpecificContent
           #[+Term--YDID Pug-примеси].
         Как и файл с содержимым страницы, он должен существовать в двух исполнениях: статическом и #[+Term--YDID MVC].
 
-      +CodeViewer--YDF.Article-CodeViewer
+      +CodeViewer--YDF
         +CodeViewer-Listing--YDF({
           codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug,
           fileLabel: "ProductsListPageContent.static.pug"
@@ -580,7 +585,7 @@ block append SpecificContent
         С помощью #[+Term--YDID Pug-примесей] #[+Term__Contrast--YDID npm-пакета] #[+ImportantEntity--YDID handlebars_by_pug]
           этого достичь несложно:
 
-      +CodeViewer--YDF.Article-CodeViewer
+      +CodeViewer--YDF
         +CodeViewer-Listing--YDF({
           codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug,
           fileLabel: "ProductsListPageContent.view.pug"
@@ -600,7 +605,7 @@ block append SpecificContent
       p.Article-Paragraph.
         Бросается в глаза код заголовка #[+SecondaryEntity__Code--YDID h1 {{__ "title"}}] — здесь для подстановки
           значения на нужном языке мира использван пакет
-          #[+Link--YDF({ unendorsedExternalURI: "https://www.npmjs.com/package/handlebars-i18n" }).Article-Link handlebars-i18n]
+          #[+Link--YDF({ unendorsedExternalURI: "https://www.npmjs.com/package/handlebars-i18n" }) handlebars-i18n]
           (вообще, использование сверхкоротких имён наподобие #[+SecondaryEntity__Code--YDID __] — это серьёзный изъян
           в поддерживании кода, но видимо разработчики #[+SecondaryEntity--YDID handlebars-i18n] считают, что их
           все должны знать и тут же узнавать по идентификатору #[+SecondaryEntity__Code--YDID __]).
@@ -611,7 +616,7 @@ block append SpecificContent
         Однако, в случае статического исполнения необходимо явно передать...
 
 
-      +CodeViewer--YDF.Article-CodeViewer
+      +CodeViewer--YDF
         +CodeViewer-Listing--YDF({
           codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug
         }): :html_special_characters_to_html_entities
@@ -645,7 +650,7 @@ block append SpecificContent
                 span ₽
 
 
-      +CodeViewer--YDF.Article-CodeViewer
+      +CodeViewer--YDF
         +CodeViewer-Listing--YDF({
           codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug
         }): :html_special_characters_to_html_entities

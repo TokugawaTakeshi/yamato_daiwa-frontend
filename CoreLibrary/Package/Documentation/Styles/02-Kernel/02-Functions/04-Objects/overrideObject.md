@@ -3,7 +3,7 @@
 [![Official IntelliJ IDEA plugin live template](https://img.shields.io/badge/IntelliJ_IDEA_Live_Template-oo-blue.svg?style=flat)](https://plugins.jetbrains.com/plugin/17677-yamato-daiwa-frontend)
 
 ```
-overrideObject(targetObject: DataTypes.object, overridings: DataTypes.object)
+overrideObject(targetObject: DataTypes--YDF.object, overridings: DataTypes--YDF.object)
 ```
 
 Overrides object herewith unlike native **merge**/**extend** works correctly with nested objects.

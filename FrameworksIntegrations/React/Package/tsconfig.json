@@ -21,6 +21,6 @@
   },
   "include": [
     "./Source/**/*",
-    "./Tests/Source/**/*"
+    "./Workbenches/Source/**/*"
   ]
 }

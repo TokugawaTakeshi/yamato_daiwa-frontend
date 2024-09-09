@@ -15,104 +15,69 @@ The toolkit for the frontend development with [Pug](https://pugjs.org/api/gettin
 npm i @yamato-daiwa/frontend -E
 ```
 
-
-## Documentation
-
-### Get functionality
+## Get Functionality
 
 ```stylus
 @require "RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Functionality.styl"
 ```
 
-Please note that this including will not cause any output CSS rules -  100% of YDF functionality has been provided via variables 
-and mixins.
+Please note that this including will not cause any output CSS rules -  100% of YDF functionality has been provided via 
+  variables and mixins.
 
 
 ### Get components
 
-Again, neither Pug nor Stylus including will not cause any output CSS rules.
+Again, neither Pug nor Stylus including will not cause any output code.
 
 #### Markup (Pug)
 
 ```pug
-include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.pug
+include RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/GUI_Components.pug
 ```
 
 #### Styles
 
 ```stylus
-@require "RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/Components.styl"
+@require "RELATIVE/PATH/TO/node_modules/@yamato-daiwa/frontend/GUI_Components.styl"
 ```
 
 
-### Table of contents
+### Documentation
 
-#### Markup
-##### Inline JavaScript
+#### Pug Markup
+##### Functionality
+###### Inline JavaScript 
 
-* [YDEE integration](https://ydf.yamato-daiwa.com//CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/YDEE_Integration/YDEE_Integration.english.html)
++ [YDEE Integration](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/YDEE_Integration/YDEE_Integration.english.html)
++ Functions and Classes
+  + [`buildEmailLinkHrefAttributeValue`](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildEmailLinkHrefAttributeValue/buildEmailLinkHrefAttributeValue.english.html)
+  + [`buildPhoneNumberLinkHrefAttributeValue`](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/buildPhoneNumberLinkHrefAttributeValue/buildPhoneNumberLinkHrefAttributeValue.english.html)
+  + [`processObjectTypeParameterOfPugMixin`](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/FunctionsAndClasses/processObjectTypeParameterOfPugMixin/processObjectTypeParameterOfPugMixin.english.html)
++ Assets
+  + [`DummyImageURLs`](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/DummyImagesURIs.english.html)
 
+###### Pages Templates 
 
-###### Constants assets
-
-<dl>
-
-  <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Markup/ConstantsAssets/textOverflowSafetyTest/textOverflowSafetyTest.md">textOverflowSafetyTest</a></dt>
-  <dd>The string constant intended to be used for testing of text overflow adaptation.</dd>
-
-  <dt><a href="">DummyImageURLs</a></dt>
-  <dd></dd>
-
-</dl>
-
-
-###### Functions and classes
-
-<dl>
-
-  <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Markup/FunctionsAndClasses/ECMAScriptExtensions.md">Functionality of Yamato-Daiwa ES Extensions</a></dt>
-  <dd>
-    Most of functions and classes from 
-    <a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-ES-Extensions">Yamato Daiwa ES Extensions</a>
-    are available.
-  </dd>
-
-  <dt><a href="#">buildEmailLinkHrefAttributeValue</a></dt>
-  <dd></dd>
-
-  <dt><a href="">buildPhoneNumberLinkHrefAttributeValue</a></dt>
-  <dd></dd>
-
-  <dt><a href="#">MixinParametersValidator</a></dt>
-  <dd></dd>
-
-</dl>
++ [`RegularWebPageTemplate`](https://frontend.yamato-daiwa.com/CoreLibrary/PagesTemplates/Children/RegularWebPage/RegularWebPageTemplate.english.html)
++ [`StaticPreviewAnywherePageTemplate`](https://frontend.yamato-daiwa.com/CoreLibrary/PagesTemplates/Children/StaticPreviewAnywherePage/StaticPreviewAnywherePageTemplate.english.html)
 
 
-#### Pages templates
+###### Other
 
-<dl>
-  <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/RegularWebPage.md">RegularWebPage</a></dt>
-  <dd>The basic HTML5 page with pre-filled required HTML tags.</dd>
-  <dt><a href="https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md">StaticPreviewAnywherePage</a></dt>
-  <dd>The top page for static HTML/CSS implementation stage.</dd>
-</dl>
++ [Usage on Server Side](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/UsageOnServerSide/UsageOnServerSide.english.html)
 
 
 #### Styles
 ##### Assets
 
-* [Fundamental constants and enumerations](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md) 
-
-[//]: # (  * [DataTypes]&#40;https://frontend.yamato-daiwa.com//CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/DataTypes/DataTypes.english.html&#41; enumeration)
-  * [DataTypes](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types) enumeration
-
-[//]: # (  * [NARROWEST_SCREEN_WIDTH_UNIT]&#40;https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/FundamentalConstantsAndEnums/NARROWEST_SCREEN_WIDTH_UNIT/NARROWEST_SCREEN_WIDTH_UNIT.english.html&#41; constant)
-  * [NARROWEST_SCREEN_WIDTH_UNIT](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit---the-narrowest-screen-width-unit) constant
-* Colors
-  * [ShadesOfGray__39ColorsW3C_Palette](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md)  
-  * [TemporaryHighlighting](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md)
-  * [PracticalColorCoordinateSystem](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.md)
++ [Fundamental Constants and Enumerations](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md) 
+  + [`DataTypes--YDF`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes--ydf---stylus-data-types)
+  + [`NARROWEST_SCREEN_WIDTH_UNIT--YDF`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit--ydf---the-narrowest-screen-width-unit)
+  + [`SMALLEST_DIVISION_OF_CSS_PIXEL--YDF`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#smallest_division_of_css_pixel--ydf---the-smallest-division-of-css-pixel)
++ Colors
+  + [`PracticalColorCoordinateSystem--YDF`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem.md)
+  + [`TemporarySemitransparentHighlighting--YDF`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporarySemitransparentHighlighting.md)
+  + [`W3C_39_ShadesOfGray--YDF`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/W3C_39_ShadesOfGray.md)  
 
 ##### Kernel
 ###### Basic variables

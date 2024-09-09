@@ -1,0 +1,73 @@
+//- === Must be defined primarily ======================================================================================
+include Markup/InlineECMAScript/ComponentsDefaultLocalizations.generated.pug
+
+-
+
+  const {
+    admonitionBlockYDF_ComponentLocalization__english,
+    dateTimePickerYDF_ComponentLocalization__english,
+    dropDownListYDF_ComponentLocalization__english,
+    filesUploaderYDF_ComponentLocalization__english,
+    numberBoxYDF_ComponentLocalization__english,
+    paginationYDF_ComponentLocalization__english,
+    snackbarYDF_ComponentLocalization__english
+  } = (
+    //- [ Theory ] `global` is actual for "gulp-pug" with Pug 3, while `globalThis` for `pug-plugin` for Webpack.
+    global ?? globalThis
+  ).__COMPONENTS_DEFAULT_LOCALIZATIONS_EXPORTS__;
+
+include GUI_Components/_Auxiliaries/ComponentsAuxiliaries.pug
+include GUI_Components/Controls/CompoundControlShell/CompoundControlShell.pug
+//- ====================================================================================================================
+
+
+include GUI_Components/Accordion/Accordion.pug
+include GUI_Components/AdmonitionBlock/AdmonitionBlock.pug
+include GUI_Components/Badge/Badge.pug
+include GUI_Components/BlockingLoadingOverlay/BlockingLoadingOverlay.pug
+
+include GUI_Components/Controls/Buttons/Closing/ClosingButton.pug
+include GUI_Components/Controls/Buttons/HamburgerMenu/HamburgerMenuButton.pug
+include GUI_Components/Controls/Buttons/Plain/Button.pug
+
+include GUI_Components/Controls/Chip/Chip.pug
+include GUI_Components/Controls/ComboBox/ComboBox.pug
+include GUI_Components/Controls/DateTimePicker/DateTimePicker.pug
+include GUI_Components/Controls/DropDownList/DropDownList.pug
+include GUI_Components/Controls/FilesUploader/FilesUploader.pug
+include GUI_Components/Controls/ImagesCropper/ImagesCropper.pug
+include GUI_Components/Controls/ModalDialogs/Common/ModalDialog.pug
+include GUI_Components/Controls/ModalDialogs/Confirmation/ConfirmationModalDialog.pug
+include GUI_Components/Controls/NumberBox/NumberBox.pug
+include GUI_Components/Controls/Pagination/Pagination.pug
+include GUI_Components/Controls/RadioButton/RadioButton.pug
+include GUI_Components/Controls/RadioButtonsGroup/RadioButtonsGroup.pug
+include GUI_Components/Controls/SearchBox/SearchBox.pug
+include GUI_Components/Controls/Tabs/Tabs.pug
+include GUI_Components/Controls/TextBox/TextBox.pug
+
+include GUI_Components/InformationSourceReference/InformationSourceReference.pug
+include GUI_Components/LoadingIndicator/LoadingIndicator.pug
+include GUI_Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.pug
+include GUI_Components/Popover/Popover.pug
+
+include GUI_Components/Prototyping/DummyLogoLink/DummyLogoLink.pug
+
+include GUI_Components/Snackbar/Snackbar.pug
+
+include GUI_Components/Testing/ThemesShowcase.pug
+
+include GUI_Components/Typography/ArticleAbstract/ArticleAbstract.pug
+include GUI_Components/Typography/ConsoleOutput/ConsoleOutput.pug
+include GUI_Components/Typography/CodeListing/CodeListing.pug
+include GUI_Components/Typography/Footnote/Footnote.pug
+include GUI_Components/Typography/Heading/Heading.pug
+include GUI_Components/Typography/Blockquote/Blockquote.pug
+include GUI_Components/Typography/ImprovedList/ImprovedList.pug
+include GUI_Components/Typography/Link/Link.pug
+include GUI_Components/Typography/LinksCardsFlow/LinksCardsFlow.pug
+include GUI_Components/Typography/QuestionAndAnswerBox/QuestionAndAnswerBox.pug
+
+include GUI_Components/Viewers/Code/CodeViewer.pug
+include GUI_Components/Viewers/SingleImage/SingleImageViewer.pug
+include GUI_Components/Viewers/WebPageViewer/WebPageViewer.pug

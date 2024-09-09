@@ -6,34 +6,34 @@ pushTargetFromSelf(compoundParameter, restParameters__MUST_NOT_BE...)
     targetParameter: compoundParameter,
     schema: {
       targetElementSelector: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         requiredIf: {
           predicate: @(compoundParameter) { return isNull(compoundParameter.definitions) },
           descriptionForLogging: "The 'definitions' are not specified"
         }
       },
       x: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
       y: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
       usePaddingsInsteadOfMargins: {
-        type: DataTypes.boolean
+        type: DataTypes--YDF.boolean
       },
       definitions: {
-        type: DataTypes.string
+        type: DataTypes--YDF.string
         required: false,
         incompatibleWith: "targetElementSelector" "x" "y" "usePaddingsInsteadOfMargins"
       },
       contextSelector: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: false
       },
       referenceElementSelector: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         defaultValue: selector()
       }
     },

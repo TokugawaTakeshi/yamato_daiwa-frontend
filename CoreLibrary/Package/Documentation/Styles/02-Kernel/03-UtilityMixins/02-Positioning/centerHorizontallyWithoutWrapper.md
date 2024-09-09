@@ -5,8 +5,8 @@
 ```
 centerHorizontallyWithoutWrapper({
   targetElementType: HorizontalCenteringWithoutWrapper.TargetElementTypes,
-  maximalWidth?: DataTypes.unit,
-  horizontalSpaceBetweenSelfAndParent?: DataTypes.unit 
+  maximalWidth?: DataTypes--YDF.unit,
+  horizontalSpaceBetweenSelfAndParent?: DataTypes--YDF.unit 
 })
 
 enum HorizontalCenteringWithoutWrapper.TargetElementTypes {

@@ -4,7 +4,7 @@
 
 ```
 VerticallyCenteredAbsolutelyPositionedBlock({
-  upwardShifting?: DataTypes.unit
+  upwardShifting?: DataTypes--YDF.unit
 })
 ```
 

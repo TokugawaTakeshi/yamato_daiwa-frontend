@@ -8,17 +8,17 @@ mixin ComponentMarkupProvidingGuidanceFragment(properties)
 
   p.Article-Paragraph
     | Разметка данного #[+Term--YDID компонента] поставляется в виде
-    |   #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.mixins }).Article-Link Pug-примеси]
+    |   #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.mixins }) Pug-примеси]
     |   #[+ImportantEntity__Code--YDID #{ pugMixinName }].
     | Способ подключения —
     |
     +Link--YDF({
-      internalURI: localizedRouting.coreLibrary.$children.components.$sectioning.markup.$children.providing.$URI
-    }).Article-Link стандартный
+      internalURI: localizedRouting.coreLibrary.$children.GUI_Components.$sectioning.markup.$children.providing.$URI
+    }) стандартный
     |:
     |   путём
     |
-    +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }).Article-Link включения Pug-файла
+    +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }) включения Pug-файла
     |   #[+ImportantEntity__Code--YDID Components.pug] в Ваш #[+Term--YDID pug-файл], при этом туда же
     |   #[+Keyword--YDID предварительно] #[+Keyword__Contrast--YDID должен] быть включён #[+Term--YDID файл]
     |   #[+ImportantEntity__Code--YDID Functionality.pug] (#[+Keyword--YDID последний] #[+Keyword__Contrast--YDID уже]
@@ -26,7 +26,7 @@ mixin ComponentMarkupProvidingGuidanceFragment(properties)
     |
     +Link--YDF({
       internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
-    }).Article-Link шаблоны страниц
+    }) шаблоны страниц
     |   , #[+Keyword--YDID повторное] включение #[+Keyphrase--YDID приведёт к ошибке]).
 
   +CodeViewer--YDF
@@ -61,11 +61,11 @@ mixin ComponentStylesProvidingGuidanceFragment(properties)
 
   p.Article-Paragraph.
     Данный #[+Term--YDID компонент] поставляется в виде
-      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.stylus.homePage.mixins }).Article-Link Stylus-примеси]
+      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.stylus.homePage.mixins }) Stylus-примеси]
       #[+ImportantEntity__Code--YDID #{ stylusMixinName }].
     Способ подключения -
-      #[+Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.components.$sectioning.providingOfStyles.$URI }).Article-Link стандартный]:
-      путём #[+Link--YDF({ internalURI: sharedExternalLinks.stylus.homePage.includes }).Article-Link включения Stylus-файла]
+      #[+Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.GUI_Components.$sectioning.providingOfStyles.$URI }) стандартный]:
+      путём #[+Link--YDF({ internalURI: sharedExternalLinks.stylus.homePage.includes }) включения Stylus-файла]
       #[+ImportantEntity__Code--YDID Components.styl] в Ваш #[+Term--YDID Stylus-файл], при этом туда же
       #[+Keyword--YDID предварительно] должен быть включён файл #[+ImportantEntity__Code--YDID Functionality.styl].
 
@@ -122,12 +122,12 @@ mixin IntelliJ_IDEA_IDEs_LiveTemplateUsageGuidance(properties)
 
   p.Article-Paragraph.
     Использование
-      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.liveTemplates }).Article-Link Live template-ов]
+      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.liveTemplates }) Live template-ов]
       в семействе #[+Term--YDID интегрированных сред разработки]
-      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.intelliJ_IDEA_FamilyIDEs }).Article-Link IntelliJ IDEA]
+      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.intelliJ_IDEA_FamilyIDEs }) IntelliJ IDEA]
       позволяет вводить код такой так #[+Term--YDID #{ target__pluralForm__accusativeCase }] быстрее.
     Для получения доступа к #[+Term--YDID Live Template-ам] библиотеки #[+ImportantEntity--YDID YDF] потребуется установить
-      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.YDF_Plugin }).Article-Link официальный плагин]
+      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.jetBrains.YDF_Plugin }) официальный плагин]
       этой библиотеки.
 
 

@@ -5,28 +5,28 @@
 ```
 TableCellWidthSizing({
 
-  fixedTotalWidth?: DataTypes.dimensionalQuantity;
+  fixedTotalWidth?: DataTypes--YDF.dimensionalQuantity;
   // OR
-  totalMinimalWidth?: DataTypes.dimensionalQuantity;
-  totalMaximalWidth?: DataTypes.dimensionalQuantity;
+  totalMinimalWidth?: DataTypes--YDF.dimensionalQuantity;
+  totalMaximalWidth?: DataTypes--YDF.dimensionalQuantity;
   
-  fixedContentWidth?: DataTypes.dimensionalQuantity;
+  fixedContentWidth?: DataTypes--YDF.dimensionalQuantity;
   // OR
-  contentMinimalWidth: DataTypes.dimensionalQuantity;
-  contentMaximalWidth: DataTypes.dimensionalQuantity;
+  contentMinimalWidth: DataTypes--YDF.dimensionalQuantity;
+  contentMaximalWidth: DataTypes--YDF.dimensionalQuantity;
   
-  leftOrRightSymmetricBordersWidths?: DataTypes.dimensionalQuantity;
+  leftOrRightSymmetricBordersWidths?: DataTypes--YDF.dimensionalQuantity;
   // OR
-  leftBorderWidth?: DataTypes.dimensionalQuantity;
-  rightBorderWidth?: DataTypes.dimensionalQuantity;
+  leftBorderWidth?: DataTypes--YDF.dimensionalQuantity;
+  rightBorderWidth?: DataTypes--YDF.dimensionalQuantity;
   
-  leftOrRightSymmetricPaddings: DataTypes.dimensionalQuantity;
+  leftOrRightSymmetricPaddings: DataTypes--YDF.dimensionalQuantity;
   // OR
-  leftPadding: DataTypes.dimensionalQuantity;
-  rightPadding: DataTypes.dimensionalQuantity;
+  leftPadding: DataTypes--YDF.dimensionalQuantity;
+  rightPadding: DataTypes--YDF.dimensionalQuantity;
   
-  truncateOnOverflow?: DataTypes.boolean;
-  displayEllipsisOnOverflow?: DataTypes.boolean;
+  truncateOnOverflow?: DataTypes--YDF.boolean;
+  displayEllipsisOnOverflow?: DataTypes--YDF.boolean;
 })
 ```
 

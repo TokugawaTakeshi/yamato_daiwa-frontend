@@ -11,34 +11,43 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "en";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("YDF_ColorPalette");
-    HTML_PageMetaData = {
-      description: "",
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("YDF_ColorPalette"),
+        description: ""
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute("coreLibrary.styles.assets.colors.YDF_ColorPalette");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      japanese: "./YDF_ColorPalette.japanese.html",
-      russian: "./YDF_ColorPalette.russian.html"
+      japanese: routing.japanese.coreLibrary.$children.styles.$children.assets.$children.colors.$children.
+          YDF_ColorPalette.$URI,
+      russian: routing.russian.coreLibrary.$children.styles.$children.assets.$children.colors.$children.
+          YDF_ColorPalette.$URI
     });
+
+    const {
+      $sectioning: localizedSectioning,
+      $heading: pageTopHeading
+    } = localizedRouting.coreLibrary.$children.styles.$children.assets.$children.colors.$children.YDF_ColorPalette;
+
+
+block append HeadScripts
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
 
 
 block append SpecificContent
 
   article
 
-    h1 YDF_ColorPalette
+    h1!= pageTopHeading

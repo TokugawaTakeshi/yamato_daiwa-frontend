@@ -7,59 +7,59 @@ TableCellWidthSizing(compoundParameter, restParameters__MUST_NOT_BE...)
     schema: {
 
       fixedTotalWidth: {
-        type: DataTypes.dimensionalQuantity
+        type: DataTypes--YDF.dimensionalQuantity
       },
       totalMinimalWidth: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         incompatibleWith: "fixedTotalWidth"
       },
       totalMaximalWidth: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         incompatibleWith: "fixedTotalWidth"
       },
 
       fixedContentWidth: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         incompatibleWith: "fixedTotalWidth" "totalMinimalWidth" "totalMaximalWidth"
       },
       contentMinimalWidth: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         incompatibleWith: "fixedTotalWidth" "totalMinimalWidth" "totalMaximalWidth" "fixedContentWidth"
       },
       contentMaximalWidth: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         incompatibleWith: "fixedTotalWidth" "totalMinimalWidth" "totalMaximalWidth" "fixedContentWidth"
       },
 
       leftOrRightSymmetricBordersWidths: {
-        type: DataTypes.dimensionalQuantity
+        type: DataTypes--YDF.dimensionalQuantity
       },
       leftBorderWidth: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         incompatibleWith: "leftOrRightSymmetricBordersWidths"
       },
       rightBorderWidth: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         incompatibleWith: "leftOrRightSymmetricBordersWidths"
       },
 
       leftOrRightSymmetricPaddings: {
-        type: DataTypes.dimensionalQuantity
+        type: DataTypes--YDF.dimensionalQuantity
       },
       leftPadding: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
          incompatibleWith: "leftOrRightSymmetricPaddings"
       },
       rightPadding: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
          incompatibleWith: "leftOrRightSymmetricPaddings"
       },
 
       truncateOnOverflow: {
-        type: DataTypes.boolean
+        type: DataTypes--YDF.boolean
       },
       displayEllipsisOnOverflow: {
-        type: DataTypes.boolean
+        type: DataTypes--YDF.boolean
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE

@@ -19,6 +19,6 @@
   "include": [
     "Project.d.ts",
     "Source/**/*",
-    "Tests/**/*"
+    "Workbenches/**/*"
   ]
 }

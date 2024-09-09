@@ -67,7 +67,7 @@ coreLibrary:
 
       fundamentalConstantsAndEnums:
 
-        $heading: "Fundamental constants and enumerations"
+        $heading: "Fundamental Constants and Enumerations"
 
       colors:
 
@@ -75,11 +75,15 @@ coreLibrary:
 
         PracticalColorCoordinateSystem:
 
-          $heading: "PCCS palette (<code>PracticalColorCoordinateSystem</code>)"
+          $heading: "PCCS Palette (<code>PracticalColorCoordinateSystem--YDF</code>)"
 
-        ShadesOfGray__39ColorsW3C_Palette:
+        TemporarySemitransparentHighlighting:
 
-          $heading: "39 shades of gray palette (<code>ShadesOfGray__39ColorsW3C_Palette</code>)"
+          $heading: "Temporary Semitransparent Highlighting (<code>TemporarySemitransparentHighlighting--YDF</code>)"
+
+        W3C_39_ShadesOfGray:
+
+          $heading: "W3C 39 Shades of Gray Palette (<code>W3C_39_ShadesOfGray--YDF</code>)"
 
         YDF_ColorPalette:
 
@@ -95,7 +99,7 @@ coreLibrary:
 
         fontsStacks:
 
-          $heading: "Font stacks"
+          $heading: "Font Stacks"
 
         textGeometry:
 
@@ -107,7 +111,7 @@ coreLibrary:
 
       specificationsSchemas:
 
-        $heading: "Specifications schemas"
+        $heading: "Specifications Schemas"
 
       functions:
 
@@ -115,7 +119,7 @@ coreLibrary:
 
         typeCheckers:
 
-          $heading: "Values types checkers"
+          $heading: "Values Types Checkers"
 
           strings:
 
@@ -139,16 +143,95 @@ coreLibrary:
 
         valueTransformers:
 
-          $heading: "Value transformers"
+          $heading: "Value Transformers"
 
         strings:
 
-          $heading: "Working with strings"
-  components:
+          $heading: "Working with Strings"
+
+        quantities:
+
+          $heading: "Working with Quantities"
+
+        objects:
+
+          $heading: "Working with Objects"
+
+        arrays:
+
+          $heading: "Working with Arrays"
+
+        YDF_Arrays:
+
+          $heading: "Working with YDF Arrays"
+
+        parametersValidation:
+
+          $heading: "Parameters Validation"
+
+        other:
+
+          $heading: "Other Functions"
+
+      mixins:
+
+        $heading: "Mixins"
+
+        general:
+
+          $heading: "General"
+
+        sizing:
+
+          $heading: "Sizing"
+
+          width:
+
+            $heading: "Width"
+
+        positioning:
+
+          $heading: "Positioning"
+
+        positionalRelationship:
+
+          $heading: "Positional Relationship"
+
+        layout:
+
+          $heading: "Layout"
+
+        typography:
+
+          $heading: "Typography"
+
+        other:
+
+          $heading: "Other"
+
+      stylesInitialization:
+
+        $heading: "Styles Initialization"
+
+    buildInPlugins:
+
+      $heading: "Built-in Plugins"
+
+      additionalColorPalettes:
+
+        $heading: "Additional Color Pallets"
+
+  GUI_Components:
+
     $heading: "GUI Components"
+
     controls:
+
       $heading: "Controls"
-      buttons: { $heading: "Buttons" }
+
+      buttons:
+
+        $heading: "Buttons"
 
 frameworksIntegrations:
 
@@ -156,22 +239,22 @@ frameworksIntegrations:
 
   vue:
 
-    components:
+    GUI_Components:
 
-      $heading: "GUI-компоненты"
+      $heading: "GUI Components"
 
   react:
 
-    components:
+    GUI_Components:
 
-      $heading: "GUI-компоненты"
+      $heading: "GUI Components"
 
   blazor:
 
-    components:
+    GUI_Components:
 
-      $heading: "GUI-компоненты"
+      $heading: "GUI Components"
 
 realiseNotes:
 
-  $heading: "Realise notes"
+  $heading: "Realise Notes"

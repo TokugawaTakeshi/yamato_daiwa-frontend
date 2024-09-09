@@ -13,36 +13,48 @@ public partial class AdmonitionBlock :
 
   public static string CSS_NAMESPACE = "AdmonitionBlock--YDF";
 
-
+  
+  [Microsoft.AspNetCore.Components.Parameter(CaptureUnmatchedValues = true)]
+  public IDictionary<string, object>? rootElementAttributes { get; set; }
+  
+  
   [Microsoft.AspNetCore.Components.Parameter]
   public string? title { get; set; }
 
 
+  /* ━━━ Child Content ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  [Microsoft.AspNetCore.Components.Parameter]
+  public Microsoft.AspNetCore.Components.RenderFragment? ChildContent { get; set; }
+
+  [Microsoft.AspNetCore.Components.Parameter]
+  public Microsoft.AspNetCore.Components.RenderFragment? CustomSVG_Icon { get; set; }
+  
+  [Microsoft.AspNetCore.Components.Parameter]
+  public Microsoft.AspNetCore.Components.RenderFragment? ActionBarContent { get; set; }
+
+  
   /* ━━━ Dismissing ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   [Microsoft.AspNetCore.Components.Parameter]
   public bool dismissible { get; set; } = false;
 
+  protected bool isDisplaying = true;
+  
   [Microsoft.AspNetCore.Components.Inject]
   protected Microsoft.JSInterop.IJSRuntime JSRuntime { get; set; } = null!;
 
   private void onClickDismissingButton()
   {
+    this.isDisplaying = false;
     // JSRuntime.InvokeVoidAsync("CollapsingAnimation.animate", this.rootElement);
   }
+
   
-  
-
-
-
-
-
-
   /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public enum StandardThemes { regular }
 
   protected internal static Type? CustomThemes;
 
-  public static void defineCustomThemes(Type CustomThemes)
+  public static void defineThemes(Type CustomThemes)
   {
     YDF_ComponentsHelper.ValidateCustomTheme(CustomThemes);
     AdmonitionBlock.CustomThemes = CustomThemes;
@@ -79,7 +91,7 @@ public partial class AdmonitionBlock :
 
   protected internal static Type? CustomGeometricVariations;
 
-  public static void defineCustomGeometricVariations(Type CustomGeometricVariations)
+  public static void defineGeometricVariations(Type CustomGeometricVariations)
   {
     YDF_ComponentsHelper.ValidateCustomGeometricVariation(CustomGeometricVariations);
     AdmonitionBlock.CustomGeometricVariations = CustomGeometricVariations;
@@ -111,7 +123,7 @@ public partial class AdmonitionBlock :
 
   protected internal static Type? CustomDecorativeVariations;
 
-  public static void defineNewDecorativeVariations(Type CustomDecorativeVariations) {
+  public static void defineDecorativeVariations(Type CustomDecorativeVariations) {
     YDF_ComponentsHelper.ValidateCustomDecorativeVariation(CustomDecorativeVariations);
     AdmonitionBlock.CustomDecorativeVariations = CustomDecorativeVariations;
   }
@@ -128,8 +140,13 @@ public partial class AdmonitionBlock :
     );
   }
 
+  
+  /* ━━━ SVG Icon ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  [Microsoft.AspNetCore.Components.Parameter]
+  public bool hasDefaultSVG_Icon { get; set; } = false;
 
-  /* ━━━ CSS classes ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  
+  /* ━━━ CSS Classes ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   [Microsoft.AspNetCore.Components.Parameter]
   public string? rootElementModifierCSS_Class { get; set; } = null;
 
@@ -169,35 +186,7 @@ public partial class AdmonitionBlock :
       ).
 
       StringifyEachElementAndJoin(" ");
-
-
-  /* ━━━ Child content ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  [Microsoft.AspNetCore.Components.Parameter]
-  public Microsoft.AspNetCore.Components.RenderFragment? ChildContent { get; set; }
-
-  [Microsoft.AspNetCore.Components.Parameter]
-  public Microsoft.AspNetCore.Components.RenderFragment? customSVG_Icon { get; set; } = null;
-
-
-  /* ━━━ IDs ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  /* ─── Basic ID ─────────────────────────────────────────────────────────────────────────────────────────────────── */
-  protected readonly string BASIC_ID = AdmonitionBlock.generateBasicID();
-  protected static uint counterForBasicID_Generating = 0;
-
-  public static string generateBasicID()
-  {
-    AdmonitionBlock.counterForBasicID_Generating++;
-    return $"ADMONITION_BLOCK--YDF-{ AdmonitionBlock.counterForBasicID_Generating }";
-  }
-
-
-  /* ─── Root element HTML ID ─────────────────────────────────────────────────────────────────────────────────────── */
-  [Microsoft.AspNetCore.Components.Parameter]
-  public string? HTML_ID { get; set; } = null;
-
-  /* ─── Title HTML ID ────────────────────────────────────────────────────────────────────────────────────────────── */
-  protected string TITLE_HTML_ID => $"{ this.BASIC_ID }-TITLE";
-
+  
 
   /* ━━━ Localization ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public abstract class Localization
@@ -213,5 +202,26 @@ public partial class AdmonitionBlock :
   }
 
   public static Localization localization = new AdmonitionBlockEnglishLocalization();
+
+  
+  /* ━━━ IDs ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── Instance ID ──────────────────────────────────────────────────────────────────────────────────────────────── */
+  protected readonly string INSTANCE_ID = AdmonitionBlock.generateInstanceID();
+  protected static uint counterForBasicID_Generating = 0;
+
+  public static string generateInstanceID()
+  {
+    AdmonitionBlock.counterForBasicID_Generating++;
+    return $"ADMONITION_BLOCK--YDF-{ AdmonitionBlock.counterForBasicID_Generating }";
+  }
+
+
+  /* ─── Root Element HTML ID ─────────────────────────────────────────────────────────────────────────────────────── */
+  [Microsoft.AspNetCore.Components.Parameter]
+  public string? HTML_ID { get; set; }
+  
+
+  /* ─── Title HTML ID ────────────────────────────────────────────────────────────────────────────────────────────── */
+  protected string TITLE_HTML_ID => $"{ this.INSTANCE_ID }-TITLE";
 
 }

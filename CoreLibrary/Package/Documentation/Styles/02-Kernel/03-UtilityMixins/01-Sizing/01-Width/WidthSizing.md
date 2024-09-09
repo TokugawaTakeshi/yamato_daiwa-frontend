@@ -4,20 +4,20 @@
 
 ```
 WidtnSizing(parametersObject: {
-  fixedWidth?: DataTypes.dimensionalQuantity;
-  minimalWidth?: DataTypes.dimensionalQuantity;
-  maximalWidth?: DataTypes.dimensionalQuantity;
-  takeMaximumSpaceAsPossible?: DataTypes.boolean;
-  truncateOnOverflow?: DataTypes.boolean;
-  displayEllipsisOnOverflow?: DataTypes.unit;
-  leftOrRightSymmetricBordersWidths?: DataTypes.dimensionalQuantity;
-  leftBorderWidth?: DataTypes.dimensionalQuantity;
-  rightBorderWidth?: DataTypes.dimensionalQuantity;
-  isExplicitBorderNoneDeclarationRequired?: DataTypes.unit;
-  leftOrRightSymmetricPaddings?: DataTypes.dimensionalQuantity;
-  leftPadding?: DataTypes.dimensionalQuantity;
-  rightPadding?: DataTypes.dimensionalQuantity;
-  isExplicitPaddingZeroDeclarationRequired?: DataTypes.boolean;
+  fixedWidth?: DataTypes--YDF.dimensionalQuantity;
+  minimalWidth?: DataTypes--YDF.dimensionalQuantity;
+  maximalWidth?: DataTypes--YDF.dimensionalQuantity;
+  takeMaximumSpaceAsPossible?: DataTypes--YDF.boolean;
+  truncateOnOverflow?: DataTypes--YDF.boolean;
+  displayEllipsisOnOverflow?: DataTypes--YDF.unit;
+  leftOrRightSymmetricBordersWidths?: DataTypes--YDF.dimensionalQuantity;
+  leftBorderWidth?: DataTypes--YDF.dimensionalQuantity;
+  rightBorderWidth?: DataTypes--YDF.dimensionalQuantity;
+  isExplicitBorderNoneDeclarationRequired?: DataTypes--YDF.unit;
+  leftOrRightSymmetricPaddings?: DataTypes--YDF.dimensionalQuantity;
+  leftPadding?: DataTypes--YDF.dimensionalQuantity;
+  rightPadding?: DataTypes--YDF.dimensionalQuantity;
+  isExplicitPaddingZeroDeclarationRequired?: DataTypes--YDF.boolean;
 })
 ```
 

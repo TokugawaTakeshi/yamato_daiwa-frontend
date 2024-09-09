@@ -13,7 +13,7 @@ block append Metadata
 
     RegularWebPageTemplate__YDF.configure({
       metadata: {
-        title: buildHTML_PageTitle("PagesTemplates"),
+        title: buildHTML_PageTitle("Pages Templates"),
         description:
             "The \"Yamato Daiwa Frontend\" (abbreviation: \"YDF\") library suggesting the Pug template of the Web pages " +
               "with fre-filled required HTML tags and also frequently used code fragments."
@@ -26,12 +26,17 @@ block append Metadata
       ]
     });
 
-    RoutingEmulator.setCurrentRoute("coreLibrary.pagesTemplates");
+    RoutingEmulator.setCurrentRoute("coreLibrary.markup.pagesTemplates");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      japanese: "./PagesTemplates.japanese.html",
-      russian: "./PagesTemplates.russian.html"
+      japanese: routing.japanese.coreLibrary.$children.markup.$children.pagesTemplates.$URI,
+      russian: routing.russian.coreLibrary.$children.markup.$children.pagesTemplates.$URI
     });
+
+    const {
+      $sectioning: localizedSectioning,
+      $heading: topHeading
+    } = localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates;
 
 
 block append HeadScripts
@@ -55,7 +60,7 @@ block append SpecificContent
       |
       +Link--YDF({
         unendorsedExternalURI: sharedExternalLinks.pug.homePage.templateInheritance
-      }).Article-Link template inheritance
+      }) template inheritance
       |
       |   functionality.
       | In large projects with big number of the pages, such inheritance is #[+Keyword--YDID usually]
@@ -96,7 +101,7 @@ block append SpecificContent
       |
       +Link--YDF({
         unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
-      }).Article-Link inline JavaScript
+      }) inline JavaScript
       |
       |   we can even generate the template code.
       | For example, we can specify the paths of #[+Term--YDID stylesheets] and #[+Term--YDID scripts] via

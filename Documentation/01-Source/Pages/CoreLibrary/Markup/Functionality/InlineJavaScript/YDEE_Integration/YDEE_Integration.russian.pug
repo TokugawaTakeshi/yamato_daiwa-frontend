@@ -57,14 +57,14 @@ block append SpecificContent
     h1.Article-Heading1!= topHeading
 
     p.Article-Paragraph
-      | После #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }).Article-Link включения]
+      | После #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }) включения]
       |   файла #[+ImportantEntity__Code--YDID Functionality.pug] (находится в #[+Keyword--YDID корневой] директории
       |   #[+Term--YDID npm-пакета] #[+ImportantEntity--YDID @yamato-daiwa/frontend]) становятся доступна вся
       |   функциональность
       |
       +Link--YDF({
         endorsedExternalURI: sharedExternalLinks.YamatoDaiwaES_Extensions.top
-      }).Article-Link библиотеки «@yamato-daiwa/es-extensions»
+      }) библиотеки «@yamato-daiwa/es-extensions»
       |   (сокращённо: #[+ImportantEntity--YDID «YDEE»]) версии #[+ImportantEntity--YDID #{ ACTUAL_YDEE_VERSION }]
       |   #[+Keyword--YDID кроме] той, которая прекращает своё существование после #[+Term--YDID транспайлинга]
       |   #[+ImportantEntity--YDID TypeScript] в #[+ImportantEntity--YDID JavaScript] (#[+Term--YDID интерфейсы],
@@ -87,7 +87,7 @@ block append SpecificContent
       |
       +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
-      }).Article-Link шаблонов страниц
+      }) шаблонов страниц
       |   файл #[+ImportantEntity__Code--YDID Functionality.pug] #[+Keyword--YDID уже] подключён;
       |   #[+Keyword__Contrast--YDID повторное] его подключение #[+Keyphrase--YDID приведёт к ошибке].
 
@@ -97,7 +97,7 @@ block append SpecificContent
       +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.
             StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI
-      }).Article-Link статического превью
+      }) статического превью
       | ).
       | Вот как, например, можно быстро написать разметку 16 карточек товаров с пускай и бессмысленными, но данными:
 
@@ -136,7 +136,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             assets.$children.
             DummyImagesURIs.$URI
-      }).Article-Link DummyImagesURIs
+      }) DummyImagesURIs
       |   типа #[+Term__Contrast--YDID «ассоциативный массив»] является #[+Keyword--YDID частью]
       |   #[+ImportantEntity--YDID YDF].
       | В результате, для каждой карточки будет сгенерирован #[+Term--YDID HTML-код], подобный приведённому ниже
@@ -176,7 +176,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             functionsAndClasses.$children.
             processObjectTypeParameterOfPugMixin.$URI,
-      }).Article-Link валидации параметров Pug-примесей
+      }) валидации параметров Pug-примесей
       | :
 
     +CodeViewer--YDF
@@ -230,7 +230,7 @@ block append SpecificContent
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.
               StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI
-        }).Article-Link статического превью
+        }) статического превью
         |   ), однако
         |
         +Keyphrase--YDID.
@@ -250,21 +250,21 @@ block append SpecificContent
               inlineJavaScript.$children.
               functionsAndClasses.$children.
               processObjectTypeParameterOfPugMixin.$URI
-        }).Article-Link валидация параметров Pug-примесей
+        }) валидация параметров Pug-примесей
         |   (в частности #[+Term--YDID примесей]
         |
-        +Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.components.$URI }).Article-Link GUI компонентов
+        +Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.GUI_Components.$URI }) GUI компонентов
         |   ) или чтобы по-прежнему можно было пользоваться
         |
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
-        }).Article-Link шаблонами страниц
+        }) шаблонами страниц
         |   , но #[+Keyphrase--YDID без потерь в производительности].
         | По этому вопросу было подготовлено
         |
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.usageOnServerSide.$URI
-        }).Article-Link отдельное руководство
+        }) отдельное руководство
         |   , но если кратко, то необходимо организовать #[+Keyword--YDID двухэтапное] преобразование исходного
         |   #[+Term--YDID Pug-кода] в выходной #[+Term--YDID HTML-код].
         | На #[+Keyword--YDID первом] этапе формируются #[+Keyword--YDID промежуточные] файлы-шаблоны,

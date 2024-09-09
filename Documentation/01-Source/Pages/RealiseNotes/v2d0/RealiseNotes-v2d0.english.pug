@@ -72,7 +72,7 @@ block append SpecificContent
             functionality.$children.
             inlineJavaScript.$children.
             YDEE_Integration.$URI
-      }).Article-Link @yamato-daiwa/es-extensions (YDEE) integration
+      }) @yamato-daiwa/es-extensions (YDEE) integration
 
       li: +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.
@@ -81,7 +81,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             functionsAndClasses.$children.
             buildEmailLinkHrefAttributeValue.$URI
-      }).Article-Link buildEmailLinkHrefAttributeValue
+      }) buildEmailLinkHrefAttributeValue
 
       li: +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.
@@ -90,7 +90,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             functionsAndClasses.$children.
             buildPhoneNumberLinkHrefAttributeValue.$URI
-      }).Article-Link buildPhoneNumberLinkHrefAttributeValue
+      }) buildPhoneNumberLinkHrefAttributeValue
 
       li: +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.
@@ -99,7 +99,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             functionsAndClasses.$children.
             processObjectTypeParameterOfPugMixin.$URI
-      }).Article-Link processObjectTypeParameterOfPugMixin
+      }) processObjectTypeParameterOfPugMixin
 
       //-
         li: +Link--YDF({
@@ -109,7 +109,7 @@ block append SpecificContent
               inlineJavaScript.$children.
               functionsAndClasses.$children.
               RoutingEmulator.$URI
-        }).Article-Link RoutingEmulator
+        }) RoutingEmulator
 
 
     h6.Article-Heading6 Assets
@@ -124,7 +124,7 @@ block append SpecificContent
               inlineJavaScript.$children.
               assets.$children.
               textOverflowSafetyTest.$URI
-        }).Article-Link textOverflowSafetyTest
+        }) textOverflowSafetyTest
 
       li: +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.
@@ -133,7 +133,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             assets.$children.
             DummyImagesURIs.$URI
-      }).Article-Link DummyImagesURIs
+      }) DummyImagesURIs
 
 
     //- h5.Article-Heading5 Pug mixins
@@ -147,7 +147,7 @@ block append SpecificContent
               $children.functionality.
               $children.pugMixins.
               $children.dummies.$URI
-        }).Article-Link WideDummy and HighDummy
+        }) WideDummy and HighDummy
 
         li: +Link--YDF({
           internalURI: localizedRouting.coreLibrary.
@@ -155,14 +155,12 @@ block append SpecificContent
               $children.functionality.
               $children.pugMixins.
               $children.SVG_Icons.$URI
-        }).Article-Link SVGアイコン
+        }) SVGアイコン
 
 
     h4.Article-Heading4 Styles
 
     h5.Article-Heading5 Assets
-
-    h5.Article-Heading6 Fundamental Constants and Enumerations
 
     ul.Article-UnorderedList
 
@@ -170,20 +168,12 @@ block append SpecificContent
         unendorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/" +
             "Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/" +
             "FundamentalConstantsAndEnums.md#smallest_division_of_css_pixel--ydf---the-smallest-division-of-css-pixel"
-      }).Article-Link SMALLEST_DIVISION_OF_CSS_PIXEL--YDF
+      }) SMALLEST_DIVISION_OF_CSS_PIXEL--YDF
 
-
-      h6.Article-Heading6 Color palettes
-
-      ul.Article-UnorderedList
-
-        li: +Link--YDF({
-          internalURI: localizedRouting.coreLibrary.$children.
-              styles.$children.
-              assets.$children.
-              colors.$children.
-              YDF_ColorPalette.$URI
-        }).Article-Link YDF_ColorPalette
+      li: +Link--YDF({
+        internalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package" +
+          "/Styles/01-Assets/02-Colors/YDF_ColorPalette.styl"
+      }) YDF_ColorPalette
 
     //-
       h5.Article-Heading5 Core
@@ -199,7 +189,7 @@ block append SpecificContent
               kernel.$children.
               specificationsSchemas.$children.
               bordersSizing.$URI
-        }).Article-Link BordersSizingSpecificationSchema--YDF
+        }) BordersSizingSpecificationSchema--YDF
 
         li: +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.
@@ -207,7 +197,7 @@ block append SpecificContent
               kernel.$children.
               specificationsSchemas.$children.
               paddings.$URI
-        }).Article-Link PaddingsSpecificationSchema--YDF
+        }) PaddingsSpecificationSchema--YDF
 
         li: +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.
@@ -215,7 +205,7 @@ block append SpecificContent
               kernel.$children.
               specificationsSchemas.$children.
               textElementHeightSizing.$URI
-        }).Article-Link TextElementHeightSizingSpecificationSchema--YDF
+        }) TextElementHeightSizingSpecificationSchema--YDF
 
         li: +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.
@@ -223,7 +213,7 @@ block append SpecificContent
               kernel.$children.
               specificationsSchemas.$children.
               widthSizing.$URI
-        }).Article-Link WidthSizingSpecificationSchema--YDF
+        }) WidthSizingSpecificationSchema--YDF
 
     h3.Article-Heading3 Breaking Changes
 
@@ -317,41 +307,73 @@ block append SpecificContent
         p.Article-Paragraph.
           For example, in #[+ImportantEntity--YDID IntelliJ IDEA] family IDEs, such functionality could be invoked
             by #[+SecondaryEntity__Code--YDID Ctrl + Shift + R] as default.
-    //-
 
-      h6.Article-Heading6 Changed of the properties in #[code TemporaryHighlighting] object
 
-      p.Article-Paragraph.
+    h6.Article-Heading6 The renaming of #[code PracticalColorCoordinateSystem] two-level object
+
+    p.Article-Paragraph.
+      To reduce the name conflict probability, #[+Term--YDID vendor postfix] has been added to the #[+Term--YDID objet]
+        #[+ImportantEntity__Code--YDID PracticalColorCoordinateSystem], and not it the
+        #[+ImportantEntity__Code--YDID PracticalColorCoordinateSystem--YDF].
+
+
+    h6.Article-Heading6 Changes two-level object #[code TemporaryHighlighting]
+
+    ul.Article-UnorderedList
+
+      li.
+        Object has been renamed to #[+ImportantEntity__Code--YDID TemporarySemitransparentHighlighting--YDF].
+
+      li.
         Now the ultrashort properties line #[+SecondaryEntity__Code--YDID o25], which meaning could not&nbsp;be understood
-          without the documentation of checking of the output #[+Term--YDID CSS code] has been replaces with meaningful,
+          without the documentation or checking of the output #[+Term--YDID CSS code] has been replaces with meaningful,
           such as #[+SecondaryEntity__Code--YDID opacity25Percent].
 
-      dl.Article-DescriptionList
+    dl.Article-DescriptionList
 
-        dt Reason
-        dd.
-          Basically, all libraries of #[+ImportantEntity--YDID Yamato Daiwa] vendor does&nbsp;not accept the names which
-            meaning could&nbsp;not&nbsp;be understood wihtout the documentation, and now this rule has been applied to
-            #[+ImportantEntity--YDID TemporaryHighlighting] object, which should&nbsp;not be used in the clean copy
-            of the stylesheets.
+      dt Reasons
+      dd
 
-        dt Changes of your code will require if
-        dd.
-          You, contrary to the recommendation to not&nbsp;use this object in the clean copy of stylesheet did it,
-            or you has updated the #[+ImportantEntity--YDID YDF] during the writing of the draft #[+Term--YDID CSS code]
-            where used the #[+ImportantEntity--YDID TemporaryHighlighting] #[+Term--YDID object].
+        ul.Article-UnorderedList
 
-        dt Migration
-        dd
-          | Using the appropriate functionality of your code editor or IDE, execute the following replacements in
-          |   all #[+Term--YDID Stylus files].
-          ul.Article-UnorderedList
-            li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity10Percent]
-            li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity25Percent]
-            li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity50Percent]
-            li #[+ImportantEntity__Code--YDID o10] ➝ #[+ImportantEntity__Code--YDID opacity75Percent]
-          | For example, in the IDEs of IntelliJ IDEA family such functionality is available via
-          |   #[+SecondaryEntity__Code--YDID Ctrl + Shift + R] shortcut.
+          li The «transparent» word has been added to increase the unambiguity.
+
+          li.
+            To #[+Term--YDID vendor postfix] #[+ImportantEntity__Code--YDID --YDF] has been added to the
+              to significantly reduce the name conflict probability.
+
+          li.
+            The #[+Term--YDID properties] of the second level has been renamed because basically #[+Keyword--YDID all]
+              libraries of #[+ImportantEntity--YDID Yamato Daiwa] vendor does&nbsp;#[+Keyword--YDID not] accept the names
+              which meaning could&nbsp;not&nbsp;be understood wihtout the documentation, so now this rule has been
+              applied to #[+ImportantEntity--YDID TemporarySemitransparentHighlighting--YDF] object even though it
+              is&nbsp;#[+Keyword--YDID not]&nbsp;intended to be used in production code.
+
+      dt Changes of your code will require if
+      dd.
+        You, contrary to the recommendation to not&nbsp;use this object in the clean copy of stylesheet did it,
+          or you has updated the #[+ImportantEntity--YDID YDF] during the writing of the draft #[+Term--YDID CSS code]
+          where used the #[+ImportantEntity--YDID TemporaryHighlighting] #[+Term--YDID object].
+
+      dt Migration
+      dd
+
+        p.Article-Paragraph.
+          Using the appropriate functionality of your code editor or IDE, execute the following replacements in
+            all #[+Term--YDID Stylus files].
+
+        ul.Article-UnorderedList
+          li.
+            #[+ImportantEntity__Code--YDID TemporaryHighlighting] ➝
+              #[+ImportantEntity__Code--YDID TemporarySemitransparentHighlighting--YDF]
+          li #[+ImportantEntity__Code--YDID .o10] ➝ #[+ImportantEntity__Code--YDID .opacity10Percent]
+          li #[+ImportantEntity__Code--YDID .o25] ➝ #[+ImportantEntity__Code--YDID .opacity25Percent]
+          li #[+ImportantEntity__Code--YDID .o50] ➝ #[+ImportantEntity__Code--YDID .opacity50Percent]
+          li #[+ImportantEntity__Code--YDID .o75] ➝ #[+ImportantEntity__Code--YDID .opacity75Percent]
 
 
-      h5.Article-Heading5 Replacing of the basic variables to YDF configuration object
+   h6.Article-Heading6 The renaming of #[code ShadesOfGray__39ColorsW3C_Palette] array
+
+    p.Article-Paragraph.
+      The #[+ImportantEntity__Code--YDID ShadesOfGray__39ColorsW3C_Palette] #[+Term--YDID array] has been
+        #[+Keyword--YDID renamed] to #[+ImportantEntity__Code--YDID W3C_39_ShadesOfGray--YDF].

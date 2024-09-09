@@ -63,13 +63,14 @@ block append SpecificContent
 
   article
 
+    //- ━━━ `DummyImagesURIs` ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h1.Article-Heading1!= topHeading
 
     +ThisPageHasNotBeenCheckedByNativeSpeakersYetWarning
 
     p.Article-Paragraph.
       あらゆる大小と幅・高の比率の
-        #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.wikipedia.Base64 }).Article-Link Base64エンコード]
+        #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.wikipedia.Base64 }) Base64エンコード]
         された簡易な画像（事実上単調な背景と幅・高の表記）を含めている#[+Keyword--YDID 連想配列系]の#[+Term--YDID オブジェクト]。
       エンコードの御蔭で、インターネット接続が無くても画像が表示されます。
       こう言った画像をアダプティブレイアウトのテストとして使えば便利で、若しくは直ぐ使える実画像が無い事が多い開発の初期段階に使えば良い。

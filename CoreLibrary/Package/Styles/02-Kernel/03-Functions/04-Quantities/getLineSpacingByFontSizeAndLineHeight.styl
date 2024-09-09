@@ -6,15 +6,15 @@ getLineSpacingByFontSizeAndLineHeight(compoundParameter, restParameters__MUST_NO
     targetParameter: compoundParameter,
     schema: {
       fontSize: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: true
       },
       lineHeight: {
-        type: DataTypes.dimensionalQuantity DataTypes.dimensionlessQuantity,
+        type: DataTypes--YDF.dimensionalQuantity DataTypes--YDF.dimensionlessQuantity,
         required: true
       },
       mustOutputDimensionalQuantityIfPossible: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         required: true
       }
     },

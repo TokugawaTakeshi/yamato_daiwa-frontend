@@ -6,23 +6,23 @@ retireFromElementWithSameSelector(compoundParameter, restParameters__MUST_NOT_BE
     targetParameter: compoundParameter,
     schema: {
       x: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
       y: {
-        type: DataTypes.dimensionalQuantity,
+        type: DataTypes--YDF.dimensionalQuantity,
         required: false
       },
       usePaddingsInsteadOfMargins: {
-        type: DataTypes.boolean
+        type: DataTypes--YDF.boolean
         defaultValue: false
       },
       contextSelector: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         required: false
       },
       referenceElementSelector: {
-        type: DataTypes.string,
+        type: DataTypes--YDF.string,
         defaultValue: selector()
       }
     },

@@ -59,12 +59,12 @@ block append SpecificContent
     p.Article-Paragraph
       | Once the #[+ImportantEntity__Code--YDID Functionality.pug] file (located in the #[+Keyword--YDID root] directory
       |   of the #[+ImportantEntity--YDID @yamato-daiwa/frontend] #[+Term--YDID npm package]) has been
-      |   #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }).Article-Link included],
+      |   #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }) included],
       |   all functionality of version #[+ImportantEntity--YDID #{ ACTUAL_YDEE_VERSION }] of
       |
       +Link--YDF({
         endorsedExternalURI: sharedExternalLinks.YamatoDaiwaES_Extensions.top
-      }).Article-Link @yamato-daiwa/es-extensions
+      }) @yamato-daiwa/es-extensions
       |   (abbreviation: #[+ImportantEntity--YDID "YDEE"]) library becomes available.
       | The #[+Keyword--YDID exception] is such functionality which ceases to exist during the #[+Term--YDID transpiling]
       |   from #[+ImportantEntity--YDID TypeScript] to #[+ImportantEntity--YDID JavaScript], such as
@@ -87,7 +87,7 @@ block append SpecificContent
       |
       +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
-      }).Article-Link page templates
+      }) page templates
       |   please note that #[+ImportantEntity__Code--YDID Functionality.pug] file is #[+Keyword--YDID already] included;
       |   including it #[+Keyword--YDID again] will #[+Keyphrase--YDID cause an error].
 
@@ -97,7 +97,7 @@ block append SpecificContent
       +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.
             StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI
-      }).Article-Link static preview
+      }) static preview
       |   stage.
       | For example, the following code demonstrates how to quickly create 16 item cards with random data:
 
@@ -137,7 +137,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             assets.$children.
             DummyImagesURIs.$URI
-      }).Article-Link DummyImagesURIs
+      }) DummyImagesURIs
       |   is #[+Keyword--YDID part] of #[+ImportantEntity--YDID YDF].
       | As a result, for each card, #[+Term--YDID HTML code] similar to the following will be generated
       |   (avoiding taking up too much space, the #[+SecondaryEntity__Code--YDID src] #[+Term--YDID attribute] of the
@@ -176,7 +176,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             functionsAndClasses.$children.
             processObjectTypeParameterOfPugMixin.$URI,
-      }).Article-Link Pug mixin's parameters validation
+      }) Pug mixin's parameters validation
       | :
 
     +CodeViewer--YDF
@@ -229,7 +229,7 @@ block append SpecificContent
         +Link--YDF({
           internalURI:localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.
               StaticPreviewAnywherePage.$sectioning.staticPreviewConcept.$URI,
-        }).Article-Link static preview
+        }) static preview
         |
         |   stage.
         | However,
@@ -252,23 +252,25 @@ block append SpecificContent
               inlineJavaScript.$children.
               functionsAndClasses.$children.
               processObjectTypeParameterOfPugMixin.$URI,
-        }).Article-Link Pug mixins parameters validation
+        }) Pug mixins parameters validation
         //- [ Pug bug ] No whitespace will be added by Pug after `#[+Term--YDID mixins]`, `&nbsp;` is required.
         |   , including #[+Term--YDID mixins]&nbsp;of the
         |
-        +Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.components.$URI }).Article-Link GUI components
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.GUI_Components.$URI
+        }) GUI components
         |
         |   or to keep using the
         |
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$URI
-        }).Article-Link pages templates
+        }) pages templates
         |   ), but #[+Keyphrase--YDID without performance impact].
         | There is a
         |
         +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.markup.$children.usageOnServerSide.$URI
-        }).Article-Link manual specialized in this problem
+        }) manual specialized in this problem
         |   , but in short it is required to provide #[+Keyword--YDID two-stage] #[+Term--YDID Pug-to-HTML conversion].
         | In the #[+Keyword--YDID first] stage, the #[+Keyword--YDID intermediate] template file is generated,
         |   and these files do&nbsp;#[+Keyword--YDID not]&nbsp;change due to #[+Term--YDID dynamic data]

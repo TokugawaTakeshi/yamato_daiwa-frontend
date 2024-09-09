@@ -14,7 +14,9 @@ block append Metadata
     RegularWebPageTemplate__YDF.configure({
       metadata: {
         title: buildHTML_PageTitle("RegularWebPageTemplate"),
-        description: ""
+        description:
+          "「Yamato Daiwa Frontend」（略：YDF）と言うフロントエンド開発専用のライブラリに「RegularWebPageTemplate」と言うページのPugテンプレート" +
+            "が提供され、「extends」キーワードで継承しただけ妥当なHTMLドキュメントが生成出るが、勿論出力の生成を柔軟に設定出来る。"
       },
       stylesSheetsURIs: [
         "$CommonStyles",
@@ -24,17 +26,17 @@ block append Metadata
       ]
     });
 
-    RoutingEmulator.setCurrentRoute("localizedRouting.coreLibrary.markup.pagesTemplates.RegularWebPage");
+    RoutingEmulator.setCurrentRoute("coreLibrary.markup.pagesTemplates.RegularWebPage");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./RegularWebPageTemplate.english.html",
-      russian: "./RegularWebPageTemplate.russian.html"
+      english: routing.english.coreLibrary.$children.markup.$children.pagesTemplates.$children.RegularWebPage.$URI,
+      russian: routing.russian.coreLibrary.$children.markup.$children.pagesTemplates.$children.RegularWebPage.$URI
     });
 
-    const pageTableOfContents = localizedRouting.coreLibrary.$children.
-        markup.$children.
-        pagesTemplates.$children.
-        RegularWebPage.$sectioning;
+    const {
+      $sectioning: localizedSectioning,
+      $heading: topHeading
+    } = routing.japanese.coreLibrary.$children.markup.$children.pagesTemplates.$children.RegularWebPage;
 
 
 block append HeadScripts
@@ -48,4 +50,726 @@ block append SpecificContent
 
   article
 
-    h1 RegularWebPageTemplate
+    //- ━━━ RegularWebPageTemplate ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    h1.Article-Heading1!= topHeading
+
+    p.Article-Paragraph.
+      #[+Keyphrase--YDID 殆どの場合に推薦の]#[+Term--YDID HTML5ページ]制作専用#[+Term--YDID Pugテンプレート]。
+
+    ul.Article-UnorderedList
+
+      li.
+        当#[+Term--YDID テンプレート]は#[+ImportantEntity--YDID extends]#[+Term--YDID キーワード]で
+          #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.templateInheritance }) 継承される]前提。
+
+      li
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              markup.$children.
+              functionality.$children.
+              inlineJavaScript.$children.
+              YDEE_Integration.$URI
+        }) 「@yamato-daiwa/es-extensions」との結合
+        | を込めて
+        +Link--YDF({
+          unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
+        }) Pug専用JavaScript機能
+        | を保持している#[+ImportantEntity--YDID Functionality.pug]ファイルを含めているので、もう一度
+        |
+        +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }) 含める
+        |
+        | と、#[+Keyphrase--YDID エラーが発生]するのだ。
+
+    p.Article-Paragraph.
+      #[+Term--YDID Pugファイル]を当#[+Term__Contrast--YDID テンプレート]から#[+Term--YDID 継承]だけして、其れ以外コードを一切書かなくても、
+        此れだけで#[+Keyword--YDID 妥当な]#[+Term--YDID HTMLページ]を代表している下記のコードが生成される。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.HTML }): :code_listing--yda
+        <!DOCTYPE html>
+
+          <html lang="en">
+
+          <head>
+            <title>Untitled</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          </head>
+
+          <body></body>
+
+        </html>
+
+    p.Article-Paragraph
+      | #[+ImportantEntity__Code--YDID html]#[+Term--YDID タグ]にとって#[+ImportantEntity__Code--YDID lang]
+      |   #[+Term--YDID 属性]が#[+Keyword--YDID 必須]に成っていると且つ、#[+ImportantEntity__Code--YDID title]#[+Term--YDID タグ]
+      |   が#[+Keyword--YDID 妥当な]#[+Term--YDID HTMLページ]に記載#[+Keyword--YDID されてなければいけない]いけないので、これらが
+      |   #[+Keyword--YDID 規定の]を元に生成された。
+      | 特に日本語のページを作成している場合、此の設定を変えたいだろう。
+      | 其の為、
+      +Link--YDF({
+        unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
+      }) PugプリプロセッサのJavaScriptブロック
+      | から#[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF]と言う#[+Term--YDID JavaScriptクラス]を利用し、
+      |   上記の設定も、上記以外の設定も変えられる。
+
+
+    //- ━━━ `RegularWebPageTemplate__YDF`コンフィグレーションクラス ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    +Heading--YDF({
+      level: 2,
+      innerHTML: localizedSectioning.configurationClass.$heading,
+      HTML_ID: localizedSectioning.configurationClass.$anchor
+    }).Article-Heading2
+
+    p.Article-Paragraph.
+      汎用#[+Term--YDID HTMLコード]生成の設定のに使われる。
+      当#[+Term--YDID クラス]は#[+ImportantEntity__Code--YDID Functionality]と言う
+        #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.block }) Pugブロック]の#[+Keyword--YDID 末尾]
+        以降利用可能に成ってはいるが、#[+Keyword--YDID 殆どの]設定は#[+Term--YDID メタタグ]と関連しているか、意味的にメタデータに成っているので、
+        #[+ImportantEntity__Code--YDID Metadata]#[+Term--YDID ブロック]でアクセスする推薦。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        block append Metadata
+
+          -
+
+            RegularWebPageTemplate__YDF.configure({
+              metadata: {
+                locale: "ja",
+                title: "商品一覧 | 「充溢」オンラインストア"
+              }
+            });
+
+    p.Article-Paragraph.
+      設定するには#[+ImportantEntity__Code--YDID configure]と言う#[+Keyword--YDID 静的な]#[+Term--YDID メソッド]を
+        呼び出し、#[+Keyword--YDID 多層オブジェクト型の]#[+Keyword__Contrast--YDID 単一]#[+Term--YDID 引数]で設定
+        を指定する事。
+
+    dl.Article-DescriptionList
+
+      dt metadata.locale
+      dd.
+        #[+Term--YDID タグ]#[+ImportantEntity__Code--YDID html]と#[+ImportantEntity__Code--YDID lang]#[+Term--YDID 属性]を
+          埋めるのに使われる。
+        #[+Keyphrase--YDID #[+ImportantEntity__Code--YDID html]#[+Term--YDID タグ]の場合]当#[+Term--YDID 属性]は
+          #[+Keyword--YDID 必須]なので、#[+ImportantEntity__Code--YDID "en"]と言う#[+Keyword--YDID 規定の]#[+Term--YDID 値]が
+          用意してあるが、#[+Keyphrase--YDID 英語でないページの場合]別の値に#[+Keyword--YDID 置き換えなければいけない]。
+        実は、#[+ImportantEntity__Code--YDID lang]#[+Term--YDID 属性]の値は#[+Term--YDID 「language tag」]と正式的に呼ばれるが、
+          #[+Term--YDID HTMLタグ]と混同してはならないので、此処で#[+ImportantEntity__Code--YDID locale]と言う名前が付けられた。
+
+      dt metadata.title
+      dd.
+        #[+ImportantEntity__Code--YDID title]#[+Term--YDID タグ]を埋めるのに使われる。
+        当#[+Term--YDID タグ]は#[+Keyword--YDID 必須]なので、#[+ImportantEntity--YDID "Untitled"]と言う#[+Keyword--YDID 規定の]
+          値が用意してある。
+
+      dt metadata.description
+      dd.
+        指定すると、#[+ImportantEntity__Code--YDID name="description"]#[+Term--YDID 属性]付きの
+          #[+ImportantEntity__Code--YDID meta]と言う#[+Term--YDID タグ]が生成され、
+          #[+ImportantEntity__Code--YDID content]#[+Term--YDID 属性]が指定された値に埋められる。
+
+      dt metadata.keywords
+      dd.
+        指定すると、#[+ImportantEntity__Code--YDID name="keywords"]#[+Term--YDID 属性]付きの
+          #[+ImportantEntity__Code--YDID meta]と言う#[+Term--YDID タグ]が生成され、
+          #[+ImportantEntity__Code--YDID content]#[+Term--YDID 属性]が指定された値に埋められる。
+
+      dt metadata.author
+      dd.
+        指定すると、#[+ImportantEntity__Code--YDID name="author"]#[+Term--YDID 属性]付きの
+           #[+ImportantEntity__Code--YDID meta]と言う#[+Term--YDID タグ]が生成され、
+           #[+ImportantEntity__Code--YDID content]#[+Term--YDID 属性]が指定された値に埋められる。
+
+      dt faviconURI
+      dd.
+        指定すると、#[+ImportantEntity__Code--YDID link]#[+Term--YDID タグ]#[+ImportantEntity--YDID ２個]生成され、
+          一個目は#[+Keyword__Contrast--YDID rel="icon"]#[+Term--YDID 属性]が有り、２個目は
+          #[+ImportantEntity__Code--YDID rel="shortcut icon"]#[+Term--YDID 属性]が有あると他に、
+          #[+Keyword--YDID 両方の]#[+ImportantEntity__Code--YDID href]#[+Term--YDID 属性]が指定された値で埋められる。
+        当値はブラウザーのタグで表示される様に成るアイコンファイルに参照している#[+Keyword--YDID 妥当な]#[+ImportantEntity--YDID URI]
+          #[+Keyword--YDID でなくてはならない]。
+
+      dt AMP_VersionURI
+      dd.
+        指定すると#[+ImportantEntity__Code--YDID rel="amphtml"]#[+Term--YDID 属性]付きの#[+ImportantEntity__Code--YDID link]
+          #[+Term--YDID タグ]が追加され、#[+ImportantEntity__Code--YDID href]#[+Term--YDID 属性]が指定された値に埋められる。
+        此の値は同じページの#[+Term--YDID AMP版]への#[+Keyword--YDID 妥当な]#[+ImportantEntity--YDID URI]でなければいけない。
+
+      dt stylesSheetsURIs
+      dd.
+        #[+Term--YDID 配列]で指定すると、此れの#[+Keyword--YDID 各]#[+Term--YDID 要素]にとって
+          #[+ImportantEntity__Code--YDID rel="stylesheet"]#[+Term--YDID 属性]付きの#[+ImportantEntity__Code--YDID link]
+         #[+Term--YDID タグ]が追加され、#[+ImportantEntity__Code--YDID href]#[+Term--YDID 属性]が当要素に埋められる。
+        #[+Keyword--YDID 全]#[+Term--YDID 要素]が#[+Keyword--YDID 文字列]#[+Keyword__Contrast--YDID でなければいけなく]、
+          #[+Term--YDID CSSファイル]への#[+Keyword--YDID 妥当な]#[+ImportantEntity--YDID URI]を代表しなくてはならない。
+
+      //- TODO 「タグの終わり」に関して確認
+      dt scripts.atEndOfHead
+      dd
+
+        p.Article-Paragraph.
+          #[+Term--YDID 配列]で指定すると、此れの#[+Keyword--YDID 各]#[+Term--YDID 要素]にとって
+            #[+ImportantEntity__Code--YDID script]#[+Term--YDID タグ]が#[+ImportantEntity__Code--YDID head]
+            #[+Term--YDID タグ]の終わりぐらいに追加され、#[+ImportantEntity__Code--YDID src]#[+Term--YDID 属性]が
+            #[+Term__Contrast--YDID 要素]に埋められる。
+          #[+Keyword--YDID 全]#[+Term--YDID 要素]が#[+Keyword--YDID 文字列]#[+Keyword__Contrast--YDID でなければいけなく]、
+            #[+Term--YDID JavaScriptファイル]への#[+Keyword--YDID 妥当な]#[+ImportantEntity--YDID URI]を代表しなくてはならない。
+
+        ul.Article-UnorderedList
+
+          li.
+            追加の対策がなければ、#[+ImportantEntity__Code--YDID head]#[+Term--YDID タグ]のに#[+Term--YDID スクリプト]を追加すると、
+              当スクリプトがロードされる限りページの描画が一時停止するので、#[+Keyword--YDID 一般的に]#[+ImportantEntity__Code--YDID head]
+              #[+Term--YDID タグ]の中にはスクリプトを追加する事は#[+Keyword--YDID 非推薦]。
+            然し、分析専用の第三者のスクリプトの様に例外は有る。
+
+          li.
+            此の様に追加された#[+ImportantEntity__Code--YDID script]#[+Term--YDID タグ]は#[+ImportantEntity__Code--YDID src]
+              タグ以外の#[+Term--YDID 属性]は持っていない事に成る。
+            其の他の#[+Term--YDID 属性]が必要な場合、#[+ImportantEntity__Code--YDID script]#[+Term--YDID タグ]
+              #[+ImportantEntity__Code--YDID HeadScripts]と言う
+              #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.block }) Pugブロック]
+              へ手動で追加して下さい。
+
+      dt scripts.atEndOfBody
+      dd
+
+        p.Article-Paragraph.
+          #[+Term--YDID 配列]で指定すると、此れの#[+Keyword--YDID 各]#[+Term--YDID 要素]にとって
+            #[+ImportantEntity__Code--YDID script]#[+Term--YDID タグ]が#[+ImportantEntity__Code--YDID body]
+            #[+Term--YDID タグ]の終わりぐらいに追加され、#[+ImportantEntity__Code--YDID src]#[+Term--YDID 属性]が
+            #[+Term__Contrast--YDID 要素]に埋められる。
+          #[+Keyword--YDID 全]#[+Term--YDID 要素]が#[+Keyword--YDID 文字列]#[+Keyword__Contrast--YDID でなければいけなく]、
+            #[+Term--YDID JavaScriptファイル]への#[+Keyword--YDID 妥当な]#[+ImportantEntity--YDID URI]を代表しなくてはならない。
+
+        ul.Article-UnorderedList
+
+          li 此の様に追加されたスクリプトは描画を#[+Keyword--YDID 妨げない]ので、推薦の方法だ。
+
+          li.
+            此の様に追加された#[+ImportantEntity__Code--YDID script]#[+Term--YDID タグ]は#[+ImportantEntity__Code--YDID src]
+              タグ以外の#[+Term--YDID 属性]は持っていない事に成る。
+            其の他の#[+Term--YDID 属性]が必要な場合、#[+ImportantEntity__Code--YDID script]#[+Term--YDID タグ]
+              #[+ImportantEntity__Code--YDID EndBodyScripts]と言う
+              #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.block }) Pugブロック]
+              へ手動で追加して下さい。
+    p.Article-Paragraph.
+      #[+ImportantEntity__Code--YDID configure]#[+Term--YDID メソッド]を何度も呼び出しても#[+Keyword--YDID 良い]が、
+        以前と同じ#[+Term--YDID プロパティ]を指定すると、#[+Keyword--YDID 上書き]されると、以前と違うプロパティを指定するべき。
+      例えば、貴方とサイト・アプリケーションが単一の（世界の）言語（例えば、日本語）で、ページの作成者も同じなら、下記の様に該当している設定を別のファイルに
+        指定すると良い（例えば、#[+SecondaryEntity--YDID CommonMetadata.pug]）。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        -
+
+          RegularWebPageTemplate__YDF.configure({
+            metadata: {
+              locale: "ja",
+              author: "株式会社ACME"
+            }
+          });
+
+    p.Article-Paragraph.
+      上記の当ファイルをページのファイルに含み、共通では#[+Keyword--YDID なく]、特定のページに該当しているメタデータのみ指定すれば良い。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        block append Metadata
+
+          include CommonMetadata.pug
+
+          -
+
+            RegularWebPageTemplate__YDF.configure({
+              metadata: {
+                title: "サービス"
+                // "locale"且つ"author"は「CommonMetadata.pug」に指定済みなので、もう一度指定する必要は無い。
+              }
+            });
+
+
+    //- ━━━ Pugブロック ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    +Heading--YDF({
+      level: 2,
+      text: localizedSectioning.pugBlocks.$heading,
+      HTML_ID: localizedSectioning.pugBlocks.$anchor
+    }).Article-Heading2
+
+    p.Article-Paragraph.
+      #[+ImportantEntity--YDID Pug]#[+Term--YDID テンプレート]の改善・カスタマイズは
+        #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.block }) Pugブロック]を用いて実行される。
+      #[+ImportantEntity--YDID RegularWebPageTemplate]テンプレートには下記の#[+Term--YDID Pugブロック]が用意済み。
+
+
+    //- ─── `Functionality` ────────────────────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 3,
+      innerHTML: localizedSectioning.pugBlocks.$children.Functionality.$heading,
+      HTML_ID: localizedSectioning.pugBlocks.$children.Functionality.$anchor
+    }).Article-Heading3
+
+    p.Article-Paragrap.
+      #[+Link--YDF({　unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript　}) Pug内のJavaScript]で
+        機能をを書きたい場合、当ブロックを活用すれば良い。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+        block append Functionality
+
+          -
+
+            function sum(...summands) {
+              return summands.reduce((interimSum, summand) => interimSum + summand, 0)
+            }
+
+    p.Article-Paragraph
+      | 当#[+Term--YDID ブロック]に
+      |
+      +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.
+            markup.$children.
+            functionality.$children.
+            inlineJavaScript.$children.
+            YDEE_Integration.$URI
+      }) 「Yamato Daiwa ECMAScript Extensions」ライブラリの機能が含まれているので
+      |
+      | 此のブロックへの参照の際#[+ImportantEntity__Code--YDID append]キーワードを使ったなら、以下#[+Term--YDID ライブラリ]の機能を使っても良い。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+        block append Functionality
+
+          -
+
+            function formatPrice(amount) {
+              return `${ separateEach3DigitsGroupWithComma(amount) }円`;
+            }
+
+    +AdmonitionBlock--YDF({
+      SVG_Icon: true,
+      geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
+    }).
+      当#[+Term--YDID ブロック]には#[+Term__Contrast--YDID マークアップ]を追加しては#[+Keyword--YDID いけない]。
+      仮に追加したとすれば、#[+ImportantEntity__Code--YDID html]#[+Term--YDID タグ]の#[+Keyword--YDID 外]に#[+Term--YDID HTMLコード]
+        が生成される結果、#[+Keyword--YDID 不正の]#[+Term--YDID HTMLファイル]に成るのだ。
+
+
+    //- ─── `Data` ─────────────────────────────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 3,
+      innerHTML: localizedSectioning.pugBlocks.$children.Data.$heading,
+      HTML_ID: localizedSectioning.pugBlocks.$children.Data.$anchor
+    }).Article-Heading3
+
+    p.Article-Paragraph.
+      後ほど#[+Term--YDID マークアップ]の生成の為#[+Keyword--YDID JavaScript型の]データを用意したいなら、当ブロック内に用意すれば良い。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+        block append Data
+
+          -
+
+            const items = Array.from(new Array(16).keys()).map(
+              index => ({
+                ID: index,
+                title: `Item ${ index + 1 }`
+              })
+            );
+
+    +AdmonitionBlock--YDF({
+      SVG_Icon: true,
+      geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
+    }).
+      当#[+Term--YDID ブロック]には#[+Term__Contrast--YDID マークアップ]を追加しては#[+Keyword--YDID いけない]。
+      仮に追加したとすれば、#[+ImportantEntity__Code--YDID html]#[+Term--YDID タグ]の#[+Keyword--YDID 外]に#[+Term--YDID HTMLコード]
+        が生成される結果、#[+Keyword--YDID 不正の]#[+Term--YDID HTMLファイル]に成るのだ。
+
+
+    //- ─── `Requirements` ─────────────────────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 3,
+      innerHTML: localizedSectioning.pugBlocks.$children.Requirements.$heading,
+      HTML_ID: localizedSectioning.pugBlocks.$children.Requirements.$anchor
+    }).Article-Heading3
+
+    p.Article-Paragraph
+      | #[+Term--YDID Pugミックスイン]や何れかの理由で以前の#[+Term--YDID ブロック]で書かなかった
+      +Link--YDF({
+        unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
+      }) Pug内のJavaScriptコード
+      | を追加したいなら、当ブロックに追加すれば良い。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+
+        block append Requirements
+
+          mixin ProductCard(product)
+            .ProductCard
+              h1= product.title
+              p= product.description
+
+    +AdmonitionBlock--YDF({
+      SVG_Icon: true,
+      geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
+    }).
+      #[+Keyphrase--YDID #[+Term--YDID Pugミックスイン]#[+Keyword--YDID 内の]#[+Term--YDID マークアップ]を除き]、当#[+Term--YDID ブロック]
+        には#[+Term__Contrast--YDID マークアップ]を追加しては#[+Keyword--YDID いけない]。
+      仮に追加したとすれば、#[+ImportantEntity__Code--YDID html]#[+Term--YDID タグ]の#[+Keyword--YDID 外]に#[+Term--YDID HTMLコード]
+        が生成される結果、#[+Keyword--YDID 不正の]#[+Term--YDID HTMLファイル]に成るのだ。
+
+
+    //- ─── `Metadata` ─────────────────────────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 3,
+      innerHTML: localizedSectioning.pugBlocks.$children.Metadata.$heading,
+      HTML_ID: localizedSectioning.pugBlocks.$children.Metadata.$anchor
+    }).Article-Heading3
+
+    p.Article-Paragraph.
+      #[+Term--YDID JavaScript変数]で#[+Term--YDID HTMLページ]の#[+Term__Contrast--YDID メタデータ]を定義したい場合、当
+        #[+Term--YDID ブロック]で定義すれば良い。
+      特に、#[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF.configure({})]を此のブロックこそにで呼び出す推薦。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+        block append Metadata
+
+          -
+
+            RegularWebPageTemplate__YDF.configure({
+              metadata: {
+                locale: "ja",
+                author: "株式会社ACME"
+              }
+            });
+
+    +AdmonitionBlock--YDF({
+      SVG_Icon: true,
+      geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
+    }).
+      当#[+Term--YDID ブロック]には#[+Term__Contrast--YDID マークアップ]を追加しては#[+Keyword--YDID いけない]。
+      仮に追加したとすれば、#[+ImportantEntity__Code--YDID html]#[+Term--YDID タグ]の#[+Keyword--YDID 外]に#[+Term--YDID HTMLコード]
+        が生成される結果、#[+Keyword--YDID 不正の]#[+Term--YDID HTMLファイル]に成るのだ。
+
+
+    //- ─── `StatesSimulations` ────────────────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 3,
+      innerHTML: localizedSectioning.pugBlocks.$children.StatesSimulations.$heading,
+      HTML_ID: localizedSectioning.pugBlocks.$children.StatesSimulations.$anchor
+    }).Article-Heading3
+
+    p.Article-Paragraph
+      | 動的なページを作る予定なら、#[+Keyphrase--YDID #[+Term--YDID マークアップ]・#[+Term--YDID スタイル]制作段階では]
+      +Link--YDF({
+        unendorsedExternalURI: sharedExternalLinks.pug.homePage.conditionalRendering
+      }) Pugの条件レンダリング
+      |   を用いて、何れかの要素の有無に応じて表示が崩れていないか、確認出来るのだ。
+      | 特に、様々な状態を条件的に表示出来る。
+      | 例えば、#[+Term--YDID AJAX]で取得されるデータのコレクションを表示させる場合、ページが下記の状態が有る。
+
+    ul.Article-UnorderedList
+      li データが取得中
+      li データ取得エラー
+      li データが無い
+      li データは有るが、検索結果は無い
+      li データが取得され、表示されている。
+
+    p.Article-Paragraph.
+      上記の状態を#[+Keyword--YDID 真偽型の]#[+Term--YDID 変数]の活用（下記の例だと、#[+Term--YDID クラス]を用いた実装であり、
+        #[+SecondaryEntity__Code--YDID statesSimulations]と言う#[+Keyword--YDID 連想配列型の]
+        #[+Term--YDID 静的フィルド]の#[+Keyword--YDID 各]プロパティが特定の状態に該当している）で条件的な表示が作れる。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+        block append Metadata
+
+          -
+
+            class ProductsListPage {
+
+              static statesSimulations: {
+                loading: false,
+                loadingError: false,
+                noData: false,
+                noSearchingResults: false
+              };
+
+            }
+
+        block append PageContent
+
+          main
+
+            h1 製品
+
+            if ProductsListPage.statesSimulations.loading
+
+              //- ロード状態だと、「Loading Placeholder」若しくは「Skeleton Loading」や「Content Placeholder」と呼ぶコンポーネントが良く使われる
+
+            else if ProductsListPage.statesSimulations.loadingError
+
+              //- エラーメッセージ
+
+            else if ProductsListPage.statesSimulations.noData
+
+              //- 製品が未だ無いか、全部売り切れに付いて文言
+
+            else if ProductsListPage.statesSimulations.noSearchingResults
+
+              //- 絞り込みに満たしている項目が無い事に就いて文言
+
+            else
+
+              //- 製品一覧
+
+
+    p.Article-Paragraph
+      | 状態の間に切り替えるには、#[+ImportantEntity--YDID Pug]の再実行が必要。
+      | #[+Keyphrase--YDID JavaScript列挙・サーバー側実装段階の前に]上記の状態を全部ページ毎別けた上で依頼側に提示したい、但し手動で各ページ
+      |   を作る様なルーチンを避けたいなら、
+      |
+      +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.
+            $children.StaticPreviewAnywherePage.$URI,
+      }) 静的プレビュー概念
+      |   及び
+      +Link--YDF({
+        endorsedExternalURI: sharedExternalLinks.YamatoDaiwaAutomation.top,
+      }) Yamato Daiwa Automation
+      |   (略： #[+ImportantEntity--YDID YDA])と言うプロジェクト構成ツールを推薦し、
+      |
+      +Link--YDF({
+        endorsedExternalURI: sharedExternalLinks.YamatoDaiwaAutomation.functionality.staticPreview.
+            resourcesReferencesResolving,
+      }) 此の様な場合専用の機能が有る
+      | 。
+
+
+    +AdmonitionBlock--YDF({
+      SVG_Icon: true,
+      geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
+    }).
+      当#[+Term--YDID ブロック]には#[+Term__Contrast--YDID マークアップ]を追加しては#[+Keyword--YDID いけない]。
+        仮に追加したとすれば、#[+ImportantEntity__Code--YDID html]#[+Term--YDID タグ]の#[+Keyword--YDID 外]に#[+Term--YDID HTMLコード]
+        が生成される結果、#[+Keyword--YDID 不正の]#[+Term--YDID HTMLファイル]に成るのだ。
+
+
+    //- ─── `HeadBegin` ────────────────────────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 3,
+      innerHTML: localizedSectioning.pugBlocks.$children.HeadBegin.$heading,
+      HTML_ID: localizedSectioning.pugBlocks.$children.HeadBegin.$anchor
+    }).Article-Heading3
+
+    +AdmonitionBlock--YDF({
+      SVG_Icon: true,
+      geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.guidance
+    })
+      | 此の#[+Term--YDID ブロック]から初めて、内容は#[+ImportantEntity__Code--YDID html]#[+Term--YDID タグ]の#[+Keyword--YDID 中]
+      |   に追加される。
+      | #[+Keyword--YDID 全ての]#[+Keyword__Contrast--YDID 以前の]ブロックは
+      +Link--YDF({
+        unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
+      }) Pug内のJavaScriptコード
+      |   及び#[+Term--YDID Pugミックイン]専用であり、#[+Term--YDID HTMLコード]には変換されない内容。
+
+    //- TODO 用語確認　タグの始まり
+    p.Article-Paragraph.
+      #[+Term--YDID タグ]#[+ImportantEntity__Code--YDID head]の#[+Keyword--YDID 始まり]（他の子#[+Term--YDID 要素]の前に）追加したい
+        場合、此のブロックを用いると良い。
+
+    p.Article-Paragraph.
+      #[+ImportantEntity__Code--YDID head]に関して子#[+Term--YDID 要素]の順番が影響を与える事はとても少ない
+        （主に#[+Term--YDID スタイル]や#[+Term--YDID スクリプト]の順番に依って表示・振る舞いが変わる事が有る）、#[+Keyword--YDID 一般的には]
+        開始こそへ内容を追加しないといけない場合は滅多に無い。
+
+    +CodeViewer--YDF
+      +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
+
+        +CodeViewer-PartialListing--YDF: :code_listing--yda
+          extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+            // ...
+
+          block append HeadBeging
+
+            link(rel="dns-prefetch" href="//example.com")
+        +CodeViewer-Explanation--YDF.
+          例の為、#[+ImportantEntity__Code--YDID head]#[+Term--YDID タグ]の中に#[+SecondaryEntity__Code--YDID link]
+            #[+Term--YDID タグ]が追加されたが、開始こそへ追加する必要はなかった。
+
+    +AdmonitionBlock--YDF({
+      SVG_Icon: true,
+      geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
+    }).
+      当#[+Term--YDID ブロック]には#[+ImportantEntity__Code--YDID head]#[+Term--YDID タグ]#[+Keyword--YDID 専用]
+        #[+Keyword__Contrast--YDID 以外の]#[+Term--YDID マークアップ]を追加しない事。
+
+
+    //- ─── `Styles` ───────────────────────────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 3,
+      innerHTML: localizedSectioning.pugBlocks.$children.Styles.$heading,
+      HTML_ID: localizedSectioning.pugBlocks.$children.Styles.$anchor
+    }).Article-Heading3
+
+    p.Article-Paragraph.
+      何れかの理由で#[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF.configure({})]でスタイルへのリンクの指定機能が足りないか、
+        #[+ImportantEntity__Code--YDID head]#[+Term--YDID タグ]内で直接#[+Term--YDID スタイル]を書きたいなら、此の#[+Term--YDID ブロック]
+        を使うと良い。
+      特に、コンフィギュレーションの指定に応じて生成された#[+ImportantEntity__Code--YDID link]#[+Term--YDID タグ]は
+        #[+ImportantEntity__Code--YDID rel="stylesheet"]及び#[+ImportantEntity__Code--YDID href]#[+Keyword--YDID 以外]の
+        #[+Term--YDID 属性]が#[+Keyword--YDID 無い]ので、其の他の属性が必要な場合、下記の様に#[+ImportantEntity__Code--YDID Styles]
+        #[+Term--YDID ブロック]に#[+ImportantEntity__Code--YDID link]#[+Term--YDID タグ]を直接宣言すれば良い。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+        block append Styles
+
+          link(
+            rel="stylesheet"
+            href="/path/to/style.css"
+            type="text/css"
+            media="screen"
+            crossorigin="anonymous"
+            integrity="sha384-oqVuAfXRKap7fdgcCY5hULvJ0GhBGDq4IcF3J08z9QY9l03VvH3p0EOTr4N3kR0o"
+          >
+
+    p.Article-Paragraph.
+      此の#[+Term--YDID スタイル]の宣言方法自体はコンフィギュレーション上の指定方法と対立していないが、#[+Term--YDID スタイルのカスケーディング]の際、
+        宣言の順番を考慮してはならない。
+      #[+ImportantEntity--YDID CSS]に於いて優先順位は#[+Keyword--YDID 複数の]因子に依存しているので、順番を変えるだけでは表示が変わるとは
+        言い切れないが、順番は一つの因子として影響が有る事は事実。
+
+    ul.Article-UnorderedList
+
+      li.
+        コンフィギュレーションで宣言されたスタイルの#[+Keyword--YDID 前]にスタイルを宣言するには、#[+ImportantEntity__Code--YDID Styles]
+          #[+Term--YDID ブロック]の改善の際、#[+ImportantEntity__Code--YDID prepend]キーワードを使うと良い。
+
+      li.
+        コンフィギュレーションで宣言されたスタイルの#[+Keyword--YDID 後]にスタイルを宣言するには、#[+ImportantEntity__Code--YDID Styles]
+          #[+Term--YDID ブロック]の改善の際、#[+ImportantEntity__Code--YDID prepend]キーワードを使うと良い。
+
+    +AdmonitionBlock--YDF({
+      SVG_Icon: true,
+      geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
+    }).
+      当#[+Term--YDID ブロック]には#[+ImportantEntity__Code--YDID head]#[+Term--YDID タグ]#[+Keyword--YDID 専用]
+        #[+Keyword__Contrast--YDID 以外の]#[+Term--YDID マークアップ]を追加しない事。
+
+
+    //- ─── `HeadScripts` ──────────────────────────────────────────────────────────────────────────────────────────────
+    +Heading--YDF({
+      level: 3,
+      innerHTML: localizedSectioning.pugBlocks.$children.HeadScripts.$heading,
+      HTML_ID: localizedSectioning.pugBlocks.$children.HeadScripts.$anchor
+    }).Article-Heading3
+
+    p.Article-Paragraph.
+      何れかの理由で#[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF.configure({})]でスクリプトへのリンクの指定機能が足りないか、
+        #[+ImportantEntity__Code--YDID head]#[+Term--YDID タグ]内で直接#[+Term--YDID スクリプト]を書きたいなら、此の#[+Term--YDID ブロック]
+        を使うと良い。
+      特に、コンフィギュレーションの指定に応じて生成された#[+ImportantEntity__Code--YDID script]#[+Term--YDID タグ]は
+        #[+ImportantEntity__Code--YDID src]#[+Keyword--YDID 以外]の#[+Term--YDID 属性]が#[+Keyword--YDID 無い]ので、其の他の
+        属性が必要な場合、下記の様に#[+ImportantEntity__Code--YDID v]#[+Term--YDID ブロック]に#[+ImportantEntity__Code--YDID script]
+        #[+Term--YDID タグ]を直接宣言すれば良い。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+        block append HeadScripts
+
+          script(
+            src="/path/to/index.js"
+            type="module"
+            async
+            defer
+            crossorigin="anonymous"
+            integrity="sha384-oqVuAfXRKap7fdgcCY5hULvJ0GhBGDq4IcF3J08z9QY9l03VvH3p0EOTr4N3kR0o"
+            referrerpolicy="no-referrer"
+            nonce="randomString"
+          )
+
+    //- TODO 用語確認　タグの終わり
+    p.Article-Paragraph.
+      #[+Keyword--YDID 一般的に]、描画に妨げない様に、#[+Term--YDID スクリプト]を#[+ImportantEntity__Code--YDID body]
+        #[+Term--YDID タグ]の終わりの方に追加推薦。
+      然し、#[+ImportantEntity__Code--YDID head]#[+Term--YDID タグ]こそにスクリプトを追加する事が必要な場合が有り、特に
+        #[+ImportantEntity--YDID Google Analytics]の様に第三者の分析・情報収集専用スクリプトの場合。
+
+    +CodeViewer--YDF
+      +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
+        extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+
+        block append HeadScripts
+
+          script(
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-S3L0PQFKMV"
+          )
+
+          script.
+
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+
+            gtag("js", new Date());
+            gtag("config", "G-S3L0PQFKMV");
+
+    p.Article-Paragraph.
+      此の#[+Term--YDID スクリプト]の宣言方法自体はコンフィギュレーション上の指定方法と対立していなく、スクリプトが互い依存していなければ（現代のサイト・
+         アプリケーションだと普通は其の様に成っているが、レガシなサイトやアプリケーションだと、依存している事が多い）、２つの方法を両立しても良い。
+
+    ul.Article-UnorderedList
+
+      li.
+        コンフィギュレーションで宣言されたスクリプトの#[+Keyword--YDID 前]にスタイルを宣言するには、#[+ImportantEntity__Code--YDID HeadScripts]
+          #[+Term--YDID ブロック]の改善の際、#[+ImportantEntity__Code--YDID prepend]キーワードを使うと良い。
+
+      li.
+        コンフィギュレーションで宣言されたスクリプトの#[+Keyword--YDID 後]にスタイルを宣言するには、#[+ImportantEntity__Code--YDID HeadScripts]
+          #[+Term--YDID ブロック]の改善の際、#[+ImportantEntity__Code--YDID prepend]キーワードを使うと良い。
+
+    +AdmonitionBlock--YDF({
+      SVG_Icon: true,
+      geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
+    }).
+      当#[+Term--YDID ブロック]には#[+ImportantEntity__Code--YDID head]#[+Term--YDID タグ]#[+Keyword--YDID 専用]
+        #[+Keyword__Contrast--YDID 以外の]#[+Term--YDID マークアップ]を追加しない事。

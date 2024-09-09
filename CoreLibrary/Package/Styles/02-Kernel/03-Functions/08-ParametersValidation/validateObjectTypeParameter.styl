@@ -155,7 +155,7 @@ validateObjectTypeParameter(namedParameters)
         if (!isNonEmptyString(propertySpecification.type)) {
           error(buildString(
             "No valid type has been specified for the property ${propertyName} - it must be the non-empty string, " +\
-            "the element of 'DataTypes' enumeration, while actual value is ${actualValue}.",
+            "the element of 'DataTypes--YDF' enumeration, while actual value is ${actualValue}.",
             {
               propertyName: propertyName,
               actualValue: propertySpecification.type
@@ -165,7 +165,7 @@ validateObjectTypeParameter(namedParameters)
 
 
         // --- String --------------------------------------------------------------------------------------------------
-        if (propertySpecification.type == DataTypes.string) {
+        if (propertySpecification.type == DataTypes--YDF.string) {
 
           if (isTrue(propertySpecification.considerIdentifierAsString)) {
             propertyValue = "" + propertyValue
@@ -240,13 +240,13 @@ validateObjectTypeParameter(namedParameters)
           }
 
         } else if (
-          propertySpecification.type[0] == DataTypes.dimensionalQuantity ||\
-          propertySpecification.type[0] == DataTypes.dimensionlessQuantity
+          propertySpecification.type[0] == DataTypes--YDF.dimensionalQuantity ||\
+          propertySpecification.type[0] == DataTypes--YDF.dimensionlessQuantity
         ) {
 
           if (
-            propertySpecification.type[0] == DataTypes.dimensionalQuantity &&\
-            propertySpecification.type[1] == DataTypes.dimensionlessQuantity
+            propertySpecification.type[0] == DataTypes--YDF.dimensionalQuantity &&\
+            propertySpecification.type[1] == DataTypes--YDF.dimensionlessQuantity
           ) {
 
             // --- Dimensional or dimensionless amount -----------------------------------------------------------------
@@ -265,7 +265,7 @@ validateObjectTypeParameter(namedParameters)
               }))
             }
 
-          } else if (propertySpecification.type == DataTypes.dimensionalQuantity) {
+          } else if (propertySpecification.type == DataTypes--YDF.dimensionalQuantity) {
 
             // --- Dimensional amount ----------------------------------------------------------------------------------
 
@@ -300,7 +300,7 @@ validateObjectTypeParameter(namedParameters)
               }
             }
 
-          } else if (propertySpecification.type == DataTypes.dimensionlessQuantity) {
+          } else if (propertySpecification.type == DataTypes--YDF.dimensionlessQuantity) {
 
             // --- Dimensionless amount --------------------------------------------------------------------------------
             if (!isDimensionlessQuantity(propertyValue)) {
@@ -366,7 +366,7 @@ validateObjectTypeParameter(namedParameters)
             }))
           }
 
-        } else if (propertySpecification.type == DataTypes.boolean) {
+        } else if (propertySpecification.type == DataTypes--YDF.boolean) {
 
           // --- Boolean -----------------------------------------------------------------------------------------------
 
@@ -383,7 +383,7 @@ validateObjectTypeParameter(namedParameters)
               propertySpecification: propertySpecification
             }))
           }
-        } else if (propertySpecification.type == DataTypes.colorDefinition) {
+        } else if (propertySpecification.type == DataTypes--YDF.colorDefinition) {
 
           // --- Color definition --------------------------------------------------------------------------------------
           if (typeof(propertyValue) != "rgba" && typeof(propertyValue) != "hsla") {
@@ -399,7 +399,7 @@ validateObjectTypeParameter(namedParameters)
               propertySpecification: propertySpecification
             }))
           }
-        } else if (propertySpecification.type == DataTypes.object) {
+        } else if (propertySpecification.type == DataTypes--YDF.object) {
 
           if (!isObject(propertyValue)) {
             error(buildString(

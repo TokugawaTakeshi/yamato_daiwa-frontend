@@ -72,7 +72,7 @@ block append SpecificContent
             functionality.$children.
             inlineJavaScript.$children.
             YDEE_Integration.$URI
-      }).Article-Link @yamato-daiwa/es-extensions (YDEE)との結合
+      }) @yamato-daiwa/es-extensions (YDEE)との結合
 
       li: +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.
@@ -81,7 +81,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             functionsAndClasses.$children.
             buildEmailLinkHrefAttributeValue.$URI
-      }).Article-Link buildEmailLinkHrefAttributeValue
+      }) buildEmailLinkHrefAttributeValue
 
       li: +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.
@@ -90,7 +90,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             functionsAndClasses.$children.
             buildPhoneNumberLinkHrefAttributeValue.$URI
-      }).Article-Link buildPhoneNumberLinkHrefAttributeValue
+      }) buildPhoneNumberLinkHrefAttributeValue
 
       li: +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.
@@ -99,7 +99,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             functionsAndClasses.$children.
             processObjectTypeParameterOfPugMixin.$URI
-      }).Article-Link processObjectTypeParameterOfPugMixin
+      }) processObjectTypeParameterOfPugMixin
 
       //-
         li: +Link--YDF({
@@ -109,7 +109,7 @@ block append SpecificContent
               inlineJavaScript.$children.
               functionsAndClasses.$children.
               RoutingEmulator.$URI
-        }).Article-Link RoutingEmulator
+        }) RoutingEmulator
 
 
     h6.Article-Heading6 アセット
@@ -124,7 +124,7 @@ block append SpecificContent
               inlineJavaScript.$children.
               assets.$children.
               textOverflowSafetyTest.$URI
-        }).Article-Link textOverflowSafetyTest
+        }) textOverflowSafetyTest
 
       li: +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.
@@ -133,7 +133,7 @@ block append SpecificContent
             inlineJavaScript.$children.
             assets.$children.
             DummyImagesURIs.$URI
-      }).Article-Link DummyImagesURIs
+      }) DummyImagesURIs
 
 
     //- h5.Article-Heading5 Pug混入
@@ -147,7 +147,7 @@ block append SpecificContent
               $children.functionality.
               $children.pugMixins.
               $children.dummies.$URI
-        }).Article-Link WideDummy と HighDummy
+        }) WideDummy と HighDummy
 
         li: +Link--YDF({
           internalURI: localizedRouting.coreLibrary.
@@ -155,14 +155,12 @@ block append SpecificContent
               $children.functionality.
               $children.pugMixins.
               $children.SVG_Icons.$URI
-        }).Article-Link SVGアイコン
+        }) SVGアイコン
 
 
     h4.Article-Heading4 スタイル
 
     h5.Article-Heading5 アセット
-
-    h5.Article-Heading6 基礎定数・列挙
 
     ul.Article-UnorderedList
 
@@ -170,20 +168,12 @@ block append SpecificContent
         unendorsedExternalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/" +
             "Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/" +
             "FundamentalConstantsAndEnums.md#smallest_division_of_css_pixel--ydf---the-smallest-division-of-css-pixel"
-      }).Article-Link SMALLEST_DIVISION_OF_CSS_PIXEL--YDF
+      }) SMALLEST_DIVISION_OF_CSS_PIXEL--YDF
 
-
-      h6.Article-Heading6 カラーパレット
-
-      ul.Article-UnorderedList
-
-        li: +Link--YDF({
-          internalURI: localizedRouting.coreLibrary.$children.
-              styles.$children.
-              assets.$children.
-              colors.$children.
-              YDF_ColorPalette.$URI
-        }).Article-Link YDF_ColorPalette
+      li: +Link--YDF({
+        internalURI: "https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package" +
+            "/Styles/01-Assets/02-Colors/YDF_ColorPalette.styl"
+      }) YDF_ColorPalette
 
     //-
       h5.Article-Heading5 コア
@@ -199,7 +189,7 @@ block append SpecificContent
               kernel.$children.
               specificationsSchemas.$children.
               bordersSizing.$URI
-        }).Article-Link BordersSizingSpecificationSchema--YDF
+        }) BordersSizingSpecificationSchema--YDF
 
         li: +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.
@@ -207,7 +197,7 @@ block append SpecificContent
               kernel.$children.
               specificationsSchemas.$children.
               paddings.$URI
-        }).Article-Link PaddingsSpecificationSchema--YDF
+        }) PaddingsSpecificationSchema--YDF
 
         li: +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.
@@ -215,7 +205,7 @@ block append SpecificContent
               kernel.$children.
               specificationsSchemas.$children.
               textElementHeightSizing.$URI
-        }).Article-Link TextElementHeightSizingSpecificationSchema--YDF
+        }) TextElementHeightSizingSpecificationSchema--YDF
 
         li: +Link--YDF({
           internalURI: localizedRouting.coreLibrary.$children.
@@ -223,7 +213,7 @@ block append SpecificContent
               kernel.$children.
               specificationsSchemas.$children.
               widthSizing.$URI
-        }).Article-Link WidthSizingSpecificationSchema--YDF
+        }) WidthSizingSpecificationSchema--YDF
 
     h3.Article-Heading3 破壊的変化
 
@@ -309,52 +299,84 @@ block append SpecificContent
         p.Article-Paragraph.
           例えば、#[+ImportantEntity--YDID IntelliJ IDEA]ファミリー結合開発環境の場合、当機能を
             #[+SecondaryEntity__Code--YDID Ctrl + Shift + R]ショートカット（規定）で起動可能。
-    //-
 
-      h6.Article-Heading6 #[code DataTypes]列挙の名前変更
 
+    h6.Article-Heading6 ２段階の#[code PracticalColorCoordinateSystem]オブジェクトの名前変更
+
+    p.Article-Paragraph.
+      名前コンフリクトの確率を可能な限り減らす為に#[+ImportantEntity__Code--YDID PracticalColorCoordinateSystem]
+        に#[+Term--YDID ベンダー語尾]が追加された結果、当#[+Term--YDID オブジェクト]の名前は
+        #[+ImportantEntity__Code--YDID PracticalColorCoordinateSystem--YDF]に成った。
+
+
+    h6.Article-Heading6 ２段階の#[code TemporaryHighlighting]オブジェクトの名前変更
+
+    ul.Article-UnorderedList
+
+      li.
+        #[+Term--YDID オブジェクト]の名前は#[+ImportantEntity__Code--YDID TemporarySemitransparentHighlighting--YDF]に
+          #[+Keyword--YDID 変更]された。
+
+      li.
+        資料や出力コードを確認しないと意味が分からい、#[+SecondaryEntity__Code--YDID o25]の様に超短名前は充実した
+          #[+SecondaryEntity__Code--YDID opacity25Percent]の様な名前に置き換えられた。
+
+    +AdmonitionBlock--YDF({
+      title: "英語文法関連備考",
+      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.notice,
+      SVG_Icon: true
+    })
       p.Article-Paragraph.
-        #[+ImportantEntity__Code--YDID DataTypes]#[+Term--YDID 列挙]の#[+ImportantEntity__Code--YDID dimensionalAmount]
-          #[+Term--YDID 要素]は#[+ImportantEntity__Code--YDID dimensionalQuantity]に名前変更され、
-          #[+ImportantEntity__Code--YDID dimensionlessAmount]は#[+ImportantEntity__Code--YDID dimensionlessQuantity]に
-          名前が変更された。
+        英語を含めて#[+Term--YDID インド・ヨーロッパ語族]で#[+Keyword--YDID 文法的な]#[+Term--YDID 単数・複数]と言う
+          #[+Term__Contrast--YDID 形態論]が有り、英語が苦手だと言っても、英語はプログラミングにとって独占に成っている限り、
+          エンジニアにとって単数形・複数計の判別が必須能力、さもなくば混乱の原因に成る
+          （※会話力は一切求められていない、話しの対象に成っているのは翻訳力）。
 
-      dl.Article-DescriptionList
+      p.Article-Paragraph
+        | 「percent」に関しては、文法が少し特別。
+        | #[+ImportantEntity--YDID 2以上]#[+Keyword--YDID でも]「percents」ではなく、「percent」に成っている事が多い。
+        +Link--YDF({
+          unendorsedExternalURI: "https://english.stackexchange.com/a/273587/333658"
+        }) 「english.stackexchange.com」
+        |   での説明に依ると、「percent」の最後に「s」の有無は、連想している名詞に依り、「opacity」の様な#[+Term--YDID 不可算名詞]の場合、
+        |   「s」無しでも妥当に成っている。
+        | でも、基本規則を忘れては成らなく、#[+Term--YDID 名詞]を含めている変数名を決める時に「単一なの？其れとも複数なの？」と自分に聞く事。
 
-        dt 理由
-        dd 科学的な用語に画一化
 
-        dt コードの編集が必要に成る条件
-        dd.
-          #[+ImportantEntity__Code--YDID DataTypes]#[+Term--YDID 列挙]の#[+ImportantEntity__Code--YDID dimensionalAmount]か、
-            #[+ImportantEntity__Code--YDID dimensionlessAmount]を使った事がある
+    dl.Article-DescriptionList
 
-        dt 対策
-        dd.
-          コードエディターか、結合開発環境の適切な機能使って、#[+ImportantEntity__Code--YDID DataTypes.dimensionalAmount]を
-            #[+ImportantEntity__Code--YDID DataTypes.dimensionalQuantity]に置き換え、
-            #[+ImportantEntity__Code--YDID DataTypes.dimensionlessAmount]を
-            #[+ImportantEntity__Code--YDID DataTypes.dimensionlessQuantity]に置き換えて下さい。
-          例えば、「IntelliJ IDEA」ファミリー結合開発環境の場合、此の機能をショートカット#[+SecondaryEntity__Code--YDID Ctrl + Shift + R]で
-            起動出来る。
+      dt 理由
+      dd
 
-      +AdmonitionBlock--YDF({
-        title: "英語文法関連備考",
-        decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.notice,
-        SVG_Icon: true
-      })
+        ul.Article-UnorderedList
+
+          li 名前の明確性を高める為に、「semitransparent」（「半透明」）と言う単語が追加された。
+
+          li 名前コンフリクトの確率を可能な限り減らす為に#[+ImportantEntity__Code--YDID --YDF]と言う#[+Term--YDID ベンダー語尾]が追加された。
+
+          li.
+            #[+ImportantEntity--YDID やまとダイワ]は和訳するだけで理解出来ない名前を許可#[+Keyword--YDID していない]事に成り、
+              今回は納品版のコードに有るべきではない#[+ImportantEntity__Code--YDID TemporarySemitransparentHighlighting--YDF]でも、
+
+      dt 貴方のコードが編集が必要に成る条件
+      dd 納品版のコードに使わらない方が良い推薦があっても、使った場合か、下書きコードを書いている間にYDFを更新した
+
+      dt 対策
+      dd
+
         p.Article-Paragraph.
-          日本人に取って文法的な単数・複数が可成り苦手な分野だが、エンジニア達は正しく表現しないと、混乱の原因に成る事が有ります。
+          コードエディターや結合開発環境の専用機能を持ちって、全#[+Term--YDID Stylusファイル]で下記の置き換えを行って下さい。
 
-        p.Article-Paragraph
-          | 「percent」に関しては、文法が少し特別。
-          | #[+ImportantEntity--YDID 2以上]#[+Keyword--YDID でも]「percents」ではなく、「percent」に成っている事が多い。
-          +Link--YDF({
-            unendorsedExternalURI: "https://english.stackexchange.com/a/273587/333658"
-          }).Article-Link 「english.stackexchange.com」
-          |   での説明に依ると、「percent」の最後に「s」の有無は、連想している名詞に依り、「opacity」の様な#[+Term--YDID 不可算名詞]の場合、
-          |   「s」無しでも妥当に成っている。
-          | が、基本規則を忘れては成らなく、#[+Term--YDID 名詞]を含めている変数名を決める時に「単一なの？其れとも複数なの？」と自分に聞く事。
+        ul.Article-UnorderedList
+          li #[+ImportantEntity__Code--YDID TemporaryHighlighting] ➝ #[+ImportantEntity__Code--YDID TemporaryHighlighting--YDF]
+          li #[+ImportantEntity__Code--YDID .o10] ➝ #[+ImportantEntity__Code--YDID .opacity10Percent]
+          li #[+ImportantEntity__Code--YDID .o25] ➝ #[+ImportantEntity__Code--YDID .opacity25Percent]
+          li #[+ImportantEntity__Code--YDID .o50] ➝ #[+ImportantEntity__Code--YDID .opacity50Percent]
+          li #[+ImportantEntity__Code--YDID .o75] ➝ #[+ImportantEntity__Code--YDID .opacity75Percent]
 
 
-      h5.Article-Heading5 基本変数をYDF設定オブジェクトに置き換え
+    h6.Article-Heading6 #[code ShadesOfGray__39ColorsW3C_Palette]配列の名前変更
+
+    p.Article-Paragraph.
+      #[+ImportantEntity__Code--YDID ShadesOfGray__39ColorsW3C_Palette]#[+Term--YDID 配列]は
+        #[+ImportantEntity__Code--YDID W3C_39_ShadesOfGray--YDF]に#[+Keyword--YDID 名前変更]された。

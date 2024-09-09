@@ -12,7 +12,7 @@ export {
   createArrayOfNaturalNumbers,
   cropArray,
   getArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne,
-  getIndexesOfArrayElementsWhichSatisfiesThePredicate,
+  getIndexesOfSatisfiesThePredicateArrayElements,
   getIndexOfArrayElementSatisfiesThePredicateIfSuchElementIsExactlyOne,
   getLastElementOfArray,
   moveArrayElementTo1Position,
@@ -20,6 +20,7 @@ export {
   removeArrayElementsByPredicates,
   replaceArrayElementsByIndexesImmutably,
   replaceArrayElementsByPredicates,
+  swapArrayElements,
   twoDimensionalizeArray,
 
 
@@ -46,7 +47,7 @@ export {
   MONTHS_COUNT_IN_YEAR,
   MonthsNames,
   SECONDS_COUNT_IN_MINUTE,
-  CHARACTERS_COUNT_IN_DATE_PART_OF_ISO8601_STRING,
+  MAXIMAL_CHARACTERS_COUNT_IN_DATE_PART_OF_ISO8601_STRING,
   CHARACTERS_COUNT_IN_FULL_ISO8601_STRING,
   EMAIL_ADDRESS_VALID_PATTERN,
   MAXIMAL_CHARACTERS_COUNT_OF_EMAIL_ADDRESS,
@@ -247,6 +248,7 @@ export {
   insertSubstring,
   insertSubstringIf,
   isIPv4AddressLiesInRange,
+  isStringIncludingAtLeastOneOfSubstrings,
   removeAllSpecifiedCharacters,
   removeLastCharacter,
   removeNonDigitsCharacters,
@@ -283,10 +285,10 @@ export {
   /* ─── Numbers ──────────────────────────────────────────────────────────────────────────────────────────────────── */
   isDecimalFractionOfAnySign,
   isNaturalNumber,
+  isNaturalNumberOrZero,
   isNegativeDecimalFraction,
   isNegativeInteger,
   isNegativeIntegerOrZero,
-  isNonNegativeInteger,
   isNumber,
   isPositiveDecimalFraction,
 

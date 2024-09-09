@@ -4,10 +4,10 @@
 
 ```
 SingleLineTextElementOverflowSafety({
-  displayEllipsis?: DataTypes.boolean;
-  supportCrossAxisCenteredFlexChild?: DataTypes.boolean;
-  lineHeight?: DataTypes.dimensionalQuantity | DataTypes.dimensionlessQuantity;
-  verticalSymmetricPaddings?: DataTypes.dimensionalQuantity;
+  displayEllipsis?: DataTypes--YDF.boolean;
+  supportCrossAxisCenteredFlexChild?: DataTypes--YDF.boolean;
+  lineHeight?: DataTypes--YDF.dimensionalQuantity | DataTypes--YDF.dimensionlessQuantity;
+  verticalSymmetricPaddings?: DataTypes--YDF.dimensionalQuantity;
 })
 ```
 

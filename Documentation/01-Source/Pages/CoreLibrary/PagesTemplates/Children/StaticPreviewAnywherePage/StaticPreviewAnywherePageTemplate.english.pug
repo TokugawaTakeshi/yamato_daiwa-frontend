@@ -24,12 +24,17 @@ block append Metadata
       ]
     });
 
-    RoutingEmulator.setCurrentRoute("localizedRouting.coreLibrary.markup.pagesTemplates.StaticPreviewAnywherePage");
+    RoutingEmulator.setCurrentRoute("coreLibrary.markup.pagesTemplates.StaticPreviewAnywherePage");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      japanese: "./StaticPreviewAnywherePageTemplate.japanese.html",
-      russian: "./StaticPreviewAnywherePageTemplate.russian.html"
+      japanese: routing.japanese.coreLibrary.$children.markup.$children.pagesTemplates.$children.StaticPreviewAnywherePage.$URI,
+      russian: routing.russian.coreLibrary.$children.markup.$children.pagesTemplates.$children.StaticPreviewAnywherePage.$URI
     });
+
+    const {
+      $sectioning: localizedSectioning,
+      $heading: topHeading
+    } = localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates.$children.StaticPreviewAnywherePage;
 
 
 block append HeadScripts

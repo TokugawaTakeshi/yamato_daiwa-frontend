@@ -2,7 +2,6 @@
 @require "06-Typography/02-Subheadings.styl"
 @require "06-Typography/03-ParagraphLikeBlocks.styl"
 @require "06-Typography/04-Lists.styl"
-@require "06-Typography/05-InlineElements.styl"
 
 
 YDF_TypographyDefaultDefinitions = {
@@ -177,12 +176,6 @@ YDF_TypographyDefaultDefinitions = {
         paragraph: { whenItJustBefore: 0.8rem, whenItJustAfter: 1.2rem },
         unorderedList: { whenItJustBefore: 12px }
       }
-    }),
-
-    link: deeplyCloneAndOverrideObject(LinkDefaultProperties--YDF, {
-      class: "Link",
-      mixin: Link--YDF,
-      skip: false
     })
   }
 }

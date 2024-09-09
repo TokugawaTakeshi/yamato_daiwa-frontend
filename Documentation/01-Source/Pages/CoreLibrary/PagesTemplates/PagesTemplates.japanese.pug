@@ -26,12 +26,17 @@ block append Metadata
       ]
     });
 
-    RoutingEmulator.setCurrentRoute("coreLibrary.pagesTemplates");
+    RoutingEmulator.setCurrentRoute("coreLibrary.markup.pagesTemplates");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./PagesTemplates.english.html",
-      russian: "./PagesTemplates.russian.html"
+      english: routing.english.coreLibrary.$children.markup.$children.pagesTemplates.$URI,
+      russian: routing.russian.coreLibrary.$children.markup.$children.pagesTemplates.$URI
     });
+
+    const {
+      $sectioning: localizedSectioning,
+      $heading: topHeading
+    } = localizedRouting.coreLibrary.$children.markup.$children.pagesTemplates;
 
 
 block append HeadScripts
@@ -55,7 +60,7 @@ block append SpecificContent
       |
       +Link--YDF({
         unendorsedExternalURI: sharedExternalLinks.pug.homePage.templateInheritance
-      }).Article-Link テンプレートの継承
+      }) テンプレートの継承
       | と言う機能が有る。
       | 実際のプロジェクトだと、ページ数が多く、上記の#[+Term--YDID 継承]が#[+Keyword--YDID 多層]。
 
@@ -92,7 +97,7 @@ block append SpecificContent
       | 更に、
       +Link--YDF({
         unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
-      }).Article-Link 内部JavaScript
+      }) 内部JavaScript
       |
       |   を使い、コードを生成する事でも出来る。
       | 例えば、#[+Term--YDID スタイルシート]や#[+Term--YDID スクリプト]へのパスを#[+Term--YDID 定数化し]、親のテンプレートが当#[+Term--YDID 定数]
