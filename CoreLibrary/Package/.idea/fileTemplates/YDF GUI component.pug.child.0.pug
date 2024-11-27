@@ -2,22 +2,43 @@
 
   class ${NAME}__YDF {
 
+    /**
+     * @type { string }
+     * @public
+     * @readonly
+     */
     static CSS_NAMESPACE = "${NAME}--YDF";
 
 
     /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+    /**
+     * @type { { [themeName: string]: string } }
+     * @public
+     * @description If you want to define new themes, do it only via `defineThemes` static method.
+     */
     static Themes = { regular: "REGULAR" };
 
     // == < If no children components: =================================================================================
+    /**
+     * @param { Array<string> } themesNames
+     * @return { typeof ${NAME}__YDF }
+     */
     static defineThemes(themesNames) {
       return ComponentsAuxiliaries.defineNewThemes(themesNames, ${NAME}__YDF);
     }
     // === < Or, if any children components: ===========================================================================
-    /* [ Pitfall ] The classes of other components may not be declared yet, initialization on demand required. */
-    /** @type { { [ childComponentName: string ]: { [ownThemeValue: string]: string } } | null } */
+    /* [ Pitfall ] The classes of other components may not be declared yet thus initialization on demand required. */
+    /**
+     * @type { { [ childComponentName: string ]: { [ownThemeValue: string]: string } } | null }
+     * @private
+     * */
     static _selfAndChildrenComponentsThemesCorrespondence = null;
 
-    /** @type { { [ childComponentName: string ]: { [ownThemeValue: string]: string } } } */
+    /**
+     * @type { { [ childComponentName: string ]: { [ownThemeValue: string]: string } } }
+     * @public
+     * */
     static get selfAndChildrenComponentsThemesCorrespondence() {
       return ${NAME}__YDF._selfAndChildrenComponentsThemesCorrespondence ?? (
         ${NAME}__YDF._selfAndChildrenComponentsThemesCorrespondence = {
@@ -31,6 +52,7 @@
      * @param {
      *   { [ ownThemeKey: string ]: { [ childrenComponentKey: string ]: string; } }
      * } ownAndCorrespondingCompoundControlShellThemesDefinition
+     * @returns { typeof ${NAME}__YDF }
      * @example
      * ${NAME}__YDF.defineThemes({
      *   redmond: {
@@ -42,6 +64,7 @@
      *     button: Button__YDF.Themes.cupertino
      *   }
      * });
+     * @public
      */
     static defineThemes(ownAndCorrespondingCompoundControlShellThemesDefinition) {
       return ComponentsAuxiliaries.defineThemesAndSetCorrespondenceWithOnesOfChildrenComponents(
@@ -49,9 +72,16 @@
       );
     }
     // === > ===========================================================================================================
-
+    /**
+     * @type { boolean } [areThemesCSS_ClassesCommon=ComponentsAuxiliaries.areComponentsThemesCommon]
+     * @private
+     * */
     static areThemesCSS_ClassesCommon = ComponentsAuxiliaries.areComponentsThemesCommon;
 
+    /**
+     * @returns { typeof ${NAME}__YDF }
+     * @public
+     * */
     static considerThemesAsCommon() {
       ${NAME}__YDF.areThemesCSS_ClassesCommon = true;
       return ${NAME}__YDF;
@@ -59,17 +89,27 @@
 
 
     /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
+
+    /**
+     * @type { { [geometricVariationName: string]: string } }
+     * @public
+     * @description If you want to define new geometric variations, do it only via `defineGeometricVariations` static method.
+     */
     static GeometricVariations = {
       regular: "REGULAR",
       small: "SMALL"
     };
 
     // == < If no children components: =================================================================================
-    static defineGeometricVariations(themesNames) {
-      return ComponentsAuxiliaries.defineNewThemes(themesNames, ${NAME}__YDF);
+    /**
+     * @param { Array<string> } geometricVariationsNames
+     * @return { typeof ${NAME}__YDF }
+     */
+    static defineGeometricVariations(geometricVariationsNames) {
+      return ComponentsAuxiliaries.defineGeometricVariations(geometricVariationsNames, ${NAME}__YDF);
     }
     // === < Or, if any children components: ===========================================================================
-    /* [ Pitfall ] The classes of other components may not be declared yet, initialization on demand required. */
+    /* [ Pitfall ] The classes of other components may not be declared yet thus initialization on demand required. */
     /** @type { { [ childComponentName: string ]: { [ownGeometricVariationValue: string]: string } } | null } */
     static _selfAndChildrenComponentsGeometricVariationsCorrespondence = null;
 
@@ -96,6 +136,15 @@
     }
     // === > ===========================================================================================================
 
+    /**
+     * @type {
+     *   Readonly<{
+     *     bordersDisguising: string;
+     *     noBackground: string;
+     *   }>
+     * }
+     * @readonly
+     */
     static GeometricModifiers = {
       pillShape: "PILL_SHAPE",
       squareShape: "SQUARE_SHAPE"
@@ -103,6 +152,12 @@
 
 
     /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
+
+    /**
+     * @type { { [decorativeVariationsName: string]: string } }
+     * @public
+     * @description If you want to define new decorative variations, do it only via `defineDecorativeVariations` static method.
+     */
     static DecorativeVariations = {
       regular: "REGULAR",
       accented: "ACCENTED",
@@ -112,8 +167,12 @@
     static DecorativeVariations = { regular: "REGULAR" };  */
 
     // == < If no children components: =================================================================================
+    /**
+     * @param { Array<string> } decorativeVariationsNames
+     * @return { typeof ${NAME}__YDF }
+     */
     static defineDecorativeVariations(decorativeVariationsNames) {
-      return ComponentsAuxiliaries.defineNewDecorativeVariations(decorativeVariationsNames, Button__YDF);
+      return ComponentsAuxiliaries.defineDecorativeVariations(decorativeVariationsNames, Button__YDF);
     }
     // === < Or, if any children components: ===========================================================================
     /* [ Pitfall ] The classes of other components may not be declared yet, initialization on demand required. */
@@ -141,6 +200,15 @@
     }
     // === > ===========================================================================================================
 
+    /**
+     * @type {
+     *   Readonly<{
+     *     bordersDisguising: string;
+     *     noBackground: string;
+     *   }>
+     * }
+     * @readonly
+     */
     static DecorativeModifiers = {
       bordersDisguising: "BORDERS_DISGUISING",
       noBackground: "NO_BACKGROUND"
@@ -148,6 +216,12 @@
 
 
     /* ━━━ Properties Specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+    /**
+     * @type { RawObjectDataProcessor.PropertiesSpecification }
+     * @public
+     * @readonly
+     * */
     static propertiesSpecification = {
 
       HTML_Type: {
@@ -298,12 +372,30 @@
             map(([ key, value ]) => ({ key: `${NAME}__YDF.GeometricVariations.$DS{ key }`, value }))
       },
 
+      geometricModifiers: {
+        type: Array,
+        defaultValue: [],
+        element: {
+          type: String,
+          allowedAlternatives: Object.values(${NAME}YDF.GeometricModifiers)
+        }
+      },
+
       decorativeVariation: {
         type: String,
         required: true,
         allowedAlternatives: Object.
             entries(${NAME}__YDF.DecorativeVariations).
             map(([ key, value ]) => ({ key: `${NAME}__YDF.DecorativeVariations.$DS{ key }`, value }))
+      },
+
+      decorativeModifiers: {
+        type: Array,
+        defaultValue: [],
+        element: {
+          type: String,
+          allowedAlternatives: Object.values(${NAME}__YDF.DecorativeModifiers)
+        }
       }
 
     };
@@ -327,18 +419,32 @@
     };
 
 
-    /* ━━━ Routines ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    /* ─── ID generating ──────────────────────────────────────────────────────────────────────────────────────────── */
-    static counterForID_Generating = 0;
-
-    static generateComponentID() {
-      ${NAME}__YDF.counterForID_Generating++;
-      // TODO Change the part before `--` to SCREAMING_SNAKE_CASE | TODO Delete this comment
-      return `${NAME}--YDF-${ ${NAME}__YDF.counterForID_Generating }`;
-    }
-
-
     /* ━━━ Localization ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /**
+     * @type { ${NAME}Localization }
+     * @public
+     * @static
+     * */
     static localization = ${NAME}YDF_ComponentLocalization__english; // TODO Change first letter to lowercase | TODO Delete this comment
+
+
+    /* ━━━ ID Generating ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /**
+     * @type { number } Integers Only
+     * @private
+     * @static
+     * */
+    static counterForInstancesIDs_Generating = 0;
+
+    /**
+     * @returns { string } Generated ID
+     * @public
+     * @static
+     * */
+    static generateInstanceID() {
+      ${NAME}__YDF.counterForInstancesIDs_Generating++;
+      // TODO Change the part before `--` to SCREAMING_SNAKE_CASE | TODO Delete this comment
+      return `${NAME}--YDF-${ ${NAME}__YDF.counterForInstancesIDs_Generating }`;
+    }
 
   }

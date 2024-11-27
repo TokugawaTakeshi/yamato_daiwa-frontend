@@ -58,7 +58,7 @@ export default class CompoundControlShell {
   protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_ANIMATION_DURATION_PER_ONE_ITEM__SECONDS: number = 0.2;
 
 
-  /* ─── Initialization on demand ─────────────────────────────────────────────────────────────────────────────────── */
+  /* ─── Initialization on Demand ─────────────────────────────────────────────────────────────────────────────────── */
   protected static dynamicParts: DocumentFragment | null = null;
 
   protected static validationErrorsMessagesCollapsableList: HTMLElement;
@@ -70,7 +70,7 @@ export default class CompoundControlShell {
   protected static asynchronousValidationsStatusesCollapsableListInProgressMalfunctionStateEmptyItem: Element;
 
 
-  /* ━━━ Instance fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Instance Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public readonly rootElement: HTMLElement;
 
   protected readonly validationErrorsMessagesCollapsableListMountingPoint: Element;
@@ -93,7 +93,7 @@ export default class CompoundControlShell {
   });
 
 
-  /* ─── Must be changed only via setter or constructor ───────────────────────────────────────────────────────────── */
+  /* ─── Must be Changed Only via Setters or Constructor ──────────────────────────────────────────────────────────── */
   protected _mustDisplayErrorsMessagesIfAny: boolean;
   protected _validationErrorsMessages: ReadonlyArray<string> = [];
 
@@ -373,7 +373,7 @@ export default class CompoundControlShell {
   ): void {
     CollapsingAnimation.animate({
       animatedElement: this.validationErrorsMessagesCollapsableList,
-      replaceWithOnComplete: this.validationErrorsMessagesCollapsableListMountingPoint,
+      mustReplaceWithOnComplete: this.validationErrorsMessagesCollapsableListMountingPoint,
       duration__seconds: CompoundControlShell.ERRORS_LIST_COLLAPSING_ANIMATION_DURATION__SECONDS,
       ...mustClearValidationErrorsMessagesCollapsableListOnceAnimated ? {
         callback: this.updateValidationErrorsMessagesCollapsableList.bind(this)

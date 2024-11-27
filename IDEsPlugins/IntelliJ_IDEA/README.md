@@ -81,18 +81,19 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 - **TemporarySemitransparentHighlighting--YDF**, alias: **tsh** — Live template for the 
   [`TemporarySemitransparentHighlighting--YDF` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporarySemitransparentHighlighting.md)
   There is also the **bgc-tsh** pasting same content with `background-color` key at once.
+- **W3C_39_ShadesOfGray--YDF**, alias: **sogw3c** — Live template for the
+  [`W3C_39_ShadesOfGray--YDF` array](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/W3C_39_ShadesOfGray.md)
+- **YDF_ColorPalette**, alias: **ydfcp** — Live template for the
+  [`YDF_ColorPalette` object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/01-Assets/02-Colors/YDF_ColorPalette.styl).
+  The related ones which allows to input some value of `YDF_ColorPalette` along with CSS properties:
+  - `c-ydfcp` — with `color` property
+  - `bgc-ydfcs` — with `background-color` property
+  - `bgi-ydfcp` — with `background-image` property (in this case, the value of gradient group must be inputted)
+  
  [//]: # (=== TODO ===================================================================================================)
-- <kbd>sogw3c</kbd> The Live template for the [`ShadesOfGray__39ColorsW3C_Palette` array](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md)
-- <kbd>th</kbd>, <kbd>th-bgc</kbd> The Live template for the [`TemporaryHighlighting` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md)
-- <kbd>ydfcp</kbd> The Live template for the `YDF_ColorPalette` object-type constant
-[//]: # (=== TODO ===================================================================================================)
+
 * <kbd>fuic</kbd> The Live template for the [`FlatUI_Colors` enumeration](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md)
 * <kbd>mdc</kbd> The Live template for the [`MaterialDesignColors` object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md)
-
-<!-- * <kbd>pccs</kbd> The Live template for the [`PracticalColorCoordinateSystem` object-type constant](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Assets/Colors/PracticalColorCoordinateSystem/PracticalColorCoordinateSystem.english.html) -->
-<!-- * <kbd>sogw3c</kbd> The Live template for the [`ShadesOfGray__39ColorsW3C_Palette` array](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.english.html) -->
-<!-- * <kbd>th</kbd>, <kbd>th-bgc</kbd> The Live template for the [`TemporaryHighlighting` object-type constant](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Colors/TemporaryHighlighting/TemporaryHighlighting.english.html) -->
-<!-- * <kbd>ydfcp</kbd> The Live template for the [`YDF_ColorPalette` object-type constant](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Assets/Colors/YDF_ColorPalette/YDF_ColorPalette.english.html) -->
 
 
 #### Kernel

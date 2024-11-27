@@ -7,23 +7,46 @@ mixin Button--YDF(properties)
 
     const {
 
+      /** @var { Array<Button__YDF.HTML_Types> } [ HTML_Type = Button__YDF.HTML_Types.regular ] */
       HTML_Type,
 
+      /** @var { string | number | undefined } label */
       label,
+
+      /** @var { string | undefined } accessibilityGuidance */
       accessibilityGuidance,
 
+      /** @var { string | undefined } URI */
       URI,
+
+      /** @var { boolean } [ mustOpenLinkInNewTab = false ] */
       mustOpenLinkInNewTab,
+
+      /** @var { boolean } [ mustRequestNotFollowLinkForCrawlingToSearchEngine = false ] */
       mustRequestNotFollowLinkForCrawlingToSearchEngine,
 
+      /** @var { boolean } [ disabled = false ] */
       disabled,
+
+      /** @var { boolean } [ toggled = false ] */
       toggled,
 
+      /** @var { string } [ theme = Button__YDF.Themes.regular ] */
       theme,
+
+      /** @var { boolean } [ areThemesCSS_ClassesCommon = Button__YDF.areThemesCSS_ClassesCommon ] */
       areThemesCSS_ClassesCommon,
+
+      /** @var { string } [ geometricVariation = Button__YDF.GeometricVariations.regular ] */
       geometricVariation,
+
+      /** @var { Array<Button__YDF.GeometricModifiers> } [ geometricModifiers = [] ] */
       geometricModifiers,
+
+      /** @var { string } [ decorativeVariation = Button__YDF.DecorativeVariations.regular ] */
       decorativeVariation,
+
+      /** @var { Array<Button__YDF.DecorativeModifiers> } [ decorativeModifiers = [] ] */
       decorativeModifiers
 
     } = processObjectTypeParameterOfPugMixin({
@@ -34,10 +57,16 @@ mixin Button--YDF(properties)
       mixinName: Button__YDF.CSS_NAMESPACE
     });
 
+    /** @type boolean */
     let isButtonTheTagNameOfRootElement = false;
+
+    /** @type boolean */
     let isInputTheTagNameOfRootElement = false;
+
+    /** @type boolean */
     let isAnchorTheTagNameOfRootElement = false;
 
+    /** @type string */
     let typeAttributeValueOfButtonOrInputElement;
 
 
@@ -94,6 +123,7 @@ mixin Button--YDF(properties)
 
     }
 
+    /** @type { Array<string> } */
     const commonCSS_Classes = [
 
       Button__YDF.CSS_NAMESPACE,
@@ -148,24 +178,24 @@ mixin Button--YDF(properties)
 
     -
 
-      /** @type { string|undefined } */
+      /** @var { string | undefined } */
       let targetAttributeValue;
 
-      /** @type { string|undefined } */
+      /** @var { string | undefined } */
       let relAttributeValue;
 
-      /** @type { Array } */
+      /** @type { Array<string> } */
       let relationshipsBetweenLinkedResourceAndCurrentDocument = [];
 
-      /* [ Reference ] https://stackoverflow.com/q/57628890/4818123 */
-      /* [ Reference ] https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md */
+      /** @see https://stackoverflow.com/q/57628890/4818123 */
+      /** @see https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-target-blank.md */
       if (mustOpenLinkInNewTab) {
         relationshipsBetweenLinkedResourceAndCurrentDocument.push("noopener", "noreferrer");
         targetAttributeValue = "_blank";
       }
 
-      /** [ Reference ] https://backlinko.com/nofollow-link */
-      /** [ Reference ] https://www.botify.com/learn/basics/what-is-a-nofollow-tag */
+      /** @see https://backlinko.com/nofollow-link */
+      /** @see https://www.botify.com/learn/basics/what-is-a-nofollow-tag */
       if (mustRequestNotFollowLinkForCrawlingToSearchEngine) {
         relationshipsBetweenLinkedResourceAndCurrentDocument.push("nofollow");
       }
@@ -209,10 +239,19 @@ mixin Button--YDF-LoadingPlaceholder(properties)
   -
 
     const {
+
+      /** @var { string } [ theme = Button__YDF.Themes.regular ] */
       theme,
+
+      /** @var { boolean } [ areThemesCSS_ClassesCommon = Button__YDF.areThemesCSS_ClassesCommon ] */
       areThemesCSS_ClassesCommon,
+
+      /** @var { string } [ geometricVariation = Button__YDF.GeometricVariations.regular ] */
       geometricVariation,
+
+      /** @var { Array<Button__YDF.GeometricModifiers> } [ geometricModifiers = [] ] */
       geometricModifiers
+
     } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
@@ -226,6 +265,7 @@ mixin Button--YDF-LoadingPlaceholder(properties)
       mixinName: `${ Button__YDF.CSS_NAMESPACE }-LoadingPlaceholder`
     });
 
+    /** @type { Array<string> } */
     const rootElementModifierCSS_Classes = [
 
       ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({

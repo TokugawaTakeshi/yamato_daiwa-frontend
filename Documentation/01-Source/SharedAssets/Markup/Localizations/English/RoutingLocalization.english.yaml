@@ -95,7 +95,7 @@ coreLibrary:
 
       YDF_Configuration:
 
-        $heading: "Configuration"
+        $heading: "<code>YDF_Configuration</code> — YDF Styles Configuration"
 
         fontsStacks:
 
@@ -233,9 +233,9 @@ coreLibrary:
 
         $heading: "Buttons"
 
-frameworksIntegrations:
+adaptationsToJavaScriptFrameworks:
 
-  $heading: "Frameworks Adaptations"
+  $heading: "Adaptations to JavaScript Frameworks"
 
   vue:
 

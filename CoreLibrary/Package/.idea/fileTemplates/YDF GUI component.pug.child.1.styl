@@ -57,48 +57,48 @@ provide${NAME}YDF_Component(
     targetParameter: options,
     schema: {
       themeIndependentStylesOnly: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: ${NAME}--YDF.defaultOptions.themeIndependentStylesOnly
       },
       areThemesCSS_ClassesCommon: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: ${NAME}--YDF.defaultOptions.externalThemes
       },
       loadingPlaceholder: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: ${NAME}--YDF.defaultOptions.loadingPlaceholder
       },
       themeIndependentGeometricVariations: {
-        type: DataTypes.boolean,
+        type: DataTypes--YDF.boolean,
         defaultValue: ${NAME}--YDF.defaultOptions.themeIndependentGeometricVariations
       },
       geometricModifiers: {
-        type: DataTypes.object,
+        type: DataTypes--YDF.object,
         properties: {
           pillShape: {
-            type: DataTypes.boolean,
+            type: DataTypes--YDF.boolean,
             defaultValue: ${NAME}--YDF.defaultOptions.geometricModifiers.pillShape
           },
           squareShape: {
-            type: DataTypes.boolean,
+            type: DataTypes--YDF.boolean,
             defaultValue: ${NAME}--YDF.defaultOptions.geometricModifiers.squareShape
           },
           singleLine: {
-            type: DataTypes.boolean,
+            type: DataTypes--YDF.boolean,
             defaultValue: ${NAME}--YDF.defaultOptions.geometricModifiers.singleLine
           }
         },
         defaultValue: ${NAME}--YDF.defaultOptions.geometricModifiers
       },
       decorativeModifiers: {
-        type: DataTypes.object,
+        type: DataTypes--YDF.object,
         properties: {
           bordersDisguising: {
-            type: DataTypes.boolean,
+            type: DataTypes--YDF.boolean,
             defaultValue: ${NAME}--YDF.defaultOptions.decorativeModifiers.bordersDisguising
           }
         },
-        defaultValue: ${NAME}--YDF.defaultOptions.decorativeModifiers.bordersDisguising
+        defaultValue: ${NAME}--YDF.defaultOptions.decorativeModifiers
       }
     },
     followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
@@ -128,7 +128,7 @@ provide${NAME}YDF_Component(
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
-        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
           min-width: {
             dotSeparatedPath: "rootElement.minimalWidth",
@@ -144,7 +144,7 @@ provide${NAME}YDF_Component(
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
-        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
           height: {
             dotSeparatedPath: "childElement.height",
@@ -168,7 +168,7 @@ provide${NAME}YDF_Component(
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
-        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
           background-color: { dotSeparatedPath: "rootElement.background.color", required: false }
         }
@@ -179,7 +179,7 @@ provide${NAME}YDF_Component(
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
-        targetObjectName: VARIATION_DATA_FOR_LOGGING,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
         assigments: {
           color: { dotSeparatedPath: "childElement.text.color", required: false }
         }

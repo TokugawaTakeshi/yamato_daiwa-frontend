@@ -72,7 +72,7 @@ class ValidatableControlsGroup<
 
       isEachControlPayloadValid[controlPayload.ID] = !controlPayload.isInvalid;
 
-      controlPayload.setOnValueAnyChangeEventHandlers({
+      controlPayload.setOnValueAnyChangeEventHandler({
         ID: `ON_VALUE_ANY_CHANGE_EVENT_HANDLER--VALIDATABLE-CONTROL_GROUP-${ this.ID }--CONTROL-${ controlPayload.ID }`,
         handler: (): void => { this.onAnyChangeOfSpecificControlEventHandler(controlPayload); }
       });

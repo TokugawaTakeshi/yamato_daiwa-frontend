@@ -51,10 +51,4 @@ block append SpecificContent
     //- ━━━ グラフィック・ユーザー・インターフェース・コンポーネント ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h1.Article-Heading1= topHeading
 
-    +AdmonitionBlock--YDF({
-      title: "準備中",
-      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.guidance,
-      SVG_Icon: true
-    })
-      | 恐れ入りますが、当ページは未だ準備中でございます。
-      | アルファ版の期間無い用意を終わらせる予定です。
+    +PageNotReadyApology--YDPD({ currentState: PageNotReadyApology__YDPD.States.initialTextNotWritten })

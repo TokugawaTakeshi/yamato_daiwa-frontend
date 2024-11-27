@@ -2,171 +2,139 @@ Link-RegularTheme-RegularDecoration--YDF = {
 
   defaultState: {
 
-    rootElement: {
-
-      text: {
-        color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor,
-        underline: null
-      },
-
-      background: {
-        color: JQueryUI_BaseTheme.clickableElements.defaultState.background,
-        image: null
-      },
-
-      borders: {
+    text: {
+      color: JQueryUI_BaseTheme.clickableElements.activeState.borderColor,
+      underline: {
+        position: underline,
+        thickness: 1px,
+        offset: 3px,
         style: solid,
-        color: JQueryUI_BaseTheme.clickableElements.defaultState.borderColor
-      },
-
-      outline: null,
-      shadow: null,
-
-      customDeclarations: null
-
+        color: JQueryUI_BaseTheme.clickableElements.activeState.borderColor
+      }
     },
 
-    SVG_Icon: {
-      color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor,
-      customDeclarations: null
-    }
+    background: {
+      color: null,
+      image: null
+    },
+
+    borders: {
+      style: null,
+      color: null
+    },
+
+    outline: null,
+    shadow: null,
+
+    customDeclarations: null
 
   },
 
   hoverState: {
 
-    rootElement: {
-
-      text: {
-        color: JQueryUI_BaseTheme.clickableElements.hoverState.fontColor,
-        underline: null
-      },
-
-      background: {
-        color: JQueryUI_BaseTheme.clickableElements.hoverState.background,
-        image: null
-      },
-
-      borders: {
-        style: null,
-        color: JQueryUI_BaseTheme.clickableElements.hoverState.borderColor
-      },
-
-      outline: null,
-      shadow: null,
-
-      customDeclarations: null
-
+    text: {
+      color: JQueryUI_BaseTheme.clickableElements.activeState.background,
+      underline: {
+        color: rgba(JQueryUI_BaseTheme.clickableElements.activeState.background, 0.75)
+      }
     },
 
-    SVG_Icon: {
-      color: JQueryUI_BaseTheme.clickableElements.hoverState.fontColor,
-      customDeclarations: null
-    }
+    background: {
+      color: null,
+      image: null
+    },
+
+    borders: {
+      style: null,
+      color: null
+    },
+
+    outline: null,
+    shadow: null,
+
+    customDeclarations: null
 
   },
 
   focusVisibleState: {
 
-    rootElement: {
-
-      text: {
-        color: null,
-        underline: null
-      },
-
-      background: {
-        color: null,
-        image: null
-      },
-
-      borders: {
-        style: null,
-        color: null
-      },
-
-      outline: null,
-
-      shadow: {
-        blurRadius: 3px,
-        spreadRadius: 1px,
-        color: #007fff
-      },
-
-      customDeclarations: null
-
+    text: {
+      color: null,
+      underline: null
     },
 
-    SVG_Icon: {
+    background: {
       color: null,
-      customDeclarations: null
-    }
+      image: null
+    },
+
+    borders: {
+      style: null,
+      color: null
+    },
+
+    outline: {
+      thickness: 2px,
+      type: solid,
+      color: #007fff,
+      offset: 3px
+    },
+
+    shadow: null,
+
+    customDeclarations: null
 
   },
 
   activeState: {
 
-    rootElement: {
-
-      text: {
-        color: JQueryUI_BaseTheme.clickableElements.activeState.fontColor,
-        underline: null
-      },
-
-      background: {
-        color: JQueryUI_BaseTheme.clickableElements.activeState.background,
-        image: null
-      },
-
-      borders: {
-        style: null,
-        color: JQueryUI_BaseTheme.clickableElements.activeState.borderColor
-      },
-
-      outline: null,
-      shadow: null,
-
-      customDeclarations: null
-
+    text: {
+      color: alpha(JQueryUI_BaseTheme.clickableElements.activeState.borderColor, 0.75),
+      underline: {
+        type: solid,
+        thickness: 1px,
+        color: alpha(JQueryUI_BaseTheme.clickableElements.activeState.borderColor, 0.75)
+      }
     },
 
-    SVG_Icon: {
-      color: JQueryUI_BaseTheme.clickableElements.activeState.fontColor,
-      customDeclarations: null
-    }
+    background: {
+      color: null,
+      image: null
+    },
+
+    borders: {
+      style: null,
+      color: null
+    },
+
+    outline: null,
+    shadow: null,
+
+    customDeclarations: null
 
   },
 
   disabledState: {
 
-    rootElement: {
-
-      text: {
-        color: ShadesOfGray__39ColorsW3C_Palette[24],
-        underline: null
-      },
-
-      background: {
-        color: ShadesOfGray__39ColorsW3C_Palette[36],
-        image: null
-      },
-
-      borders: {
-        style: null,
-        color: ShadesOfGray__39ColorsW3C_Palette[32]
-      },
-
-      outline: null,
-      shadow: null,
-
-      customDeclarations: null
-
+    text: {
+      color: W3C_39_ShadesOfGray--YDF[24],
+      underline: null
     },
 
-    SVG_Icon: {
-      color: ShadesOfGray__39ColorsW3C_Palette[24],
-      customDeclarations: null
-    }
+    background: {
+      color: W3C_39_ShadesOfGray--YDF[36],
+      image: null
+    },
+
+    borders: {
+      style: null,
+      color: W3C_39_ShadesOfGray--YDF[32]
+    },
+
+    outline: null,
+    shadow: null,
+
+    customDeclarations: null
 
   }
 

@@ -32,12 +32,25 @@
 - **TemporarySemitransparentHighlighting--YDF**, alias: **tsh** — Live template for the
   [`TemporarySemitransparentHighlighting--YDF` object-type constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporarySemitransparentHighlighting.md)
   There is also the **bgc-tsh** pasting same content with `background-color` key at once.
-
+- **W3C_39_ShadesOfGray--YDF** — Live template for the
+  [`W3C_39_ShadesOfGray--YDF` array](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/W3C_39_ShadesOfGray.md)
+  Previously added **sogw3c** one now is the alias of **DataTypes--YDF**.
+- **YDF_ColorPalette** — autocomplete imitator type Live template for the [`YDF_ColorPalette` object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/01-Assets/02-Colors/YDF_ColorPalette.styl).
+  Previously added **ydfcp** one now is the alias of **YDF_ColorPalette**.
+  Also, the following related ones which allows to input some value of `YDF_ColorPalette` along with CSS properties has been added:
+  - `c-ydfcp` — with `color` property
+  - `bgc-ydfcs` — with `background-color` property
+  - `bgi-ydfcp` — with `background-image` property (in this case, the value of gradient group must be inputted)
 
 ### Changed
 
 - **nswu** Live Template now adds `NARROWEST_SCREEN_WIDTH_UNIT--YDF` instead of `NARROWEST_SCREEN_WIDTH_UNIT`.
-- **dt** Live Template now adds `DataTypes--YDF` instead of `DataTypes`  
+- **dt** Live Template now adds `DataTypes--YDF` instead of `DataTypes`
+- **sogw3c** Live template now adds `W3C_39_ShadesOfGray--YDF` instead of `ShadesOfGray__W3C_Palette`
+
+### Removed
+
+- **th** Live Template has been replaced with **TemporarySemitransparentHighlighting--YDF**, **tsh**, and **bgc-tsh**.
 
 
 ## [0.0.9]
@@ -108,7 +121,6 @@
 
 ### Added
 
-- **ydfcp** - Live template for the **YDF_ColorPalette** object-type constant
 - **th-bgc** - same as **th**, but in the position of the value of `background-color` property
 
 ### Changed
@@ -171,9 +183,9 @@
 - <kbd>plg</kbd> - live template for [**PagesLinksGroup**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelinksgroup) mixin usage
 - <kbd>dt</kbd> - live template for [**DataTypes**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes---stylus-data-types) enumeration
 - <kbd>nswu</kbd> - live template for [**NARROWEST_SCREEN_WIDTH_UNIT**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit---the-narrowest-screen-width-unit) constant
-- <kbd>sogw3c</kbd> - live template for [**ShadesOfGray__W3C_Palette**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/ShadesOfGray__39ColorsW3C_Palette/ShadesOfGray__39ColorsW3C_Palette.md) array
-- <kbd>th</kbd> - live template for [**TemporaryHighlighting**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporaryHighlighting/TemporaryHighlighting.md) object
-- <kbd>pccs</kbd> - live template for [**PracticalColorCoordinateSystem**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem.md) object
+- <kbd>sogw3c</kbd> - live template for [**ShadesOfGray__W3C_Palette**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/W3C_39_ShadesOfGray.md) array
+- <kbd>th</kbd> - live template for [**TemporaryHighlighting**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/TemporarySemitransparentHighlighting.md) object
+- <kbd>pccs</kbd> - live template for [**PracticalColorCoordinateSystem**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/PracticalColorCoordinateSystem.md) object
 - <kbd>fuic</kbd> - live template for [**FlatUI_Colors**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md) enumeration
 - <kbd>zi</kbd> - live template for [**ZIndexes**](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/02-Kernel/01-BasicVariables/01-BasicVariables.md#zindexes) mutable object
 - <kbd>MAIN_SANS_SERIF_FONT_STACK</kbd> - autocomplete imitator for eponymous variable

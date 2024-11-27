@@ -49,6 +49,8 @@ Button--YDF = {
       singleLine: true,
       noLeftBorderAndRoundings: true,
       noRightBorderAndRoundings: true,
+      noTopBorderAndRoundings: true,
+      noBottomBorderAndRoundings: true,
       noRoundings: true
     },
     decorativeModifiers: {
@@ -116,6 +118,14 @@ provideButtonYDF_Component(
           noRightBorderAndRoundings: {
             type: DataTypes--YDF.boolean,
             defaultValue: Button--YDF.defaultOptions.geometricModifiers.noRightBorderAndRoundings
+          },
+          noTopBorderAndRoundings: {
+            type: DataTypes--YDF.boolean,
+            defaultValue: Button--YDF.defaultOptions.geometricModifiers.noTopBorderAndRoundings
+          },
+          noBottomBorderAndRoundings: {
+            type: DataTypes--YDF.boolean,
+            defaultValue: Button--YDF.defaultOptions.geometricModifiers.noBottomBorderAndRoundings
           }
         },
         defaultValue: Button--YDF.defaultOptions.geometricModifiers
@@ -567,6 +577,22 @@ provideButtonYDF_Component(
 
         border-right none
         BorderRightFilletsRadius(0)
+
+
+    if options.geometricModifiers.noTopBorderAndRoundings
+
+      .Button--YDF__NoTopBorderAndRoundingsGeometricModifier
+
+        border-top none
+        BorderTopFilletsRadius(0)
+
+
+    if options.geometricModifiers.noBottomBorderAndRoundings
+
+      .Button--YDF__NoBottomBorderAndRoundingsGeometricModifier
+
+        border-bottom none
+        BorderBottomFilletsRadius(0)
 
 
     if options.geometricModifiers.squareShape

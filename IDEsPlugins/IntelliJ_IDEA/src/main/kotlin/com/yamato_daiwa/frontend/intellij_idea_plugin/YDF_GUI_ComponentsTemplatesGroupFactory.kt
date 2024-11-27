@@ -7,6 +7,7 @@ import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptorFactory
 
 
 class YDF_GUI_ComponentsTemplatesGroupFactory : FileTemplateGroupDescriptorFactory {
+
   override fun getFileTemplatesDescriptor(): FileTemplateGroupDescriptor {
 
     val groupDescriptor = FileTemplateGroupDescriptor("YDF GUI Components", AllIcons.Nodes.Folder)
@@ -18,4 +19,5 @@ class YDF_GUI_ComponentsTemplatesGroupFactory : FileTemplateGroupDescriptorFacto
     return groupDescriptor
 
   }
+
 }

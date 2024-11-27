@@ -15,7 +15,7 @@ import CompoundControlShell from "../CompoundControlShell/CompoundControlShell";
 import {
   isString,
   isNumber,
-  isNonNegativeInteger,
+  isNaturalNumberOrZero,
   isNotUndefined,
   Logger,
   UnexpectedEventError,
@@ -23,7 +23,8 @@ import {
 } from "@yamato-daiwa/es-extensions";
 import {
   getExpectedToBeSingleDOM_Element,
-  addInputEventHandler,
+  InputEventListener,
+  FocusOutEventListener,
   resolveContextDOM_ElementPolymorphicSpecification
 } from "@yamato-daiwa/es-extensions-browserjs";
 
@@ -36,18 +37,22 @@ class TextBox<
 
   /* ━━━ Static Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   /* ─── Accessing to DOM ─────────────────────────────────────────────────────────────────────────────────────────── */
-  protected static readonly ROOT_ELEMENT_SELECTOR: string = ".TextBox--YDF";
+  public static readonly ROOT_ELEMENT_SELECTOR: string = ".TextBox--YDF";
   protected static readonly NATIVE_INPUT_ACCEPTING_ELEMENT_SELECTOR: string = ".TextBox--YDF-InputOrTextAreaElement";
   protected static readonly INVALID_VALUE_STATE_CSS_CLASS: string = "TextBox--YDF__InvalidInputState";
 
 
   /* ━━━ Instance Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  public readonly INSTANCE_ID: string = TextBox.generateInstanceID();
+
   public readonly payload: ValidatableControl.Payload<ValidValue, InvalidValue, Validation>;
+
+  public get rootElement(): HTMLElement {
+    return this.shellComponent.rootElement;
+  }
 
   protected readonly rawInputTypeTransformer: (rawInput: string) => ValidValue | InvalidValue;
   protected readonly validityHighlightingActivationMode: TextBox.ValidityHighlightingActivationModes;
-
-  protected readonly ID: string = TextBox.generateSelfID();
 
 
   /* ─── DOM ──────────────────────────────────────────────────────────────────────────────────────────────────────── */
@@ -55,10 +60,16 @@ class TextBox<
   protected readonly nativeInputAcceptingElement: HTMLInputElement | HTMLTextAreaElement;
 
 
+  /* ─── Events ───────────────────────────────────────────────────────────────────────────────────────────────────── */
+  protected inputEventListener: InputEventListener;
+  protected focusOutEventListener: FocusOutEventListener;
+  protected readonly onFocusOutExternalEventHandler?: () => void;
+
+
   /* ─── Reactivity ───────────────────────────────────────────────────────────────────────────────────────────────── */
   /* eslint-disable no-underscore-dangle -- [ CONVENTION ]
    * The instance fields begins from the underscore MUST be changed only via setters. */
-  protected _mustHighlightInvalidInputIfAnyValidationErrorsMessages: boolean = false;
+  protected _mustHighlightInvalidInputIfAnyValidationErrorsMessages: boolean;
 
   protected get $mustHighlightInvalidInputIfAnyValidationErrorsMessages(): boolean {
     return this._mustHighlightInvalidInputIfAnyValidationErrorsMessages;
@@ -90,6 +101,7 @@ class TextBox<
     this.shellComponent.$mustDisplayErrorsMessagesIfAny = false;
 
   }
+  /* eslint-enable no-underscore-dangle */
 
 
   /* ━━━ Public Static Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -118,8 +130,7 @@ class TextBox<
       rootElement: "selector" in initializationProperties.rootElement ?
           getExpectedToBeSingleDOM_Element({
             selector: initializationProperties.rootElement.selector,
-            contextElement: initializationProperties.contextElement,
-            expectedDOM_ElementSubtype: HTMLButtonElement
+            contextElement: initializationProperties.contextElement
           }) :
           initializationProperties.rootElement
     });
@@ -161,7 +172,8 @@ class TextBox<
   }
 
 
-  /* ━━━ Interface implementation ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ━━━ Public Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── Interface Implementation ─────────────────────────────────────────────────────────────────────────────────── */
   public highlightInvalidInput(): this {
     this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages = true;
     return this;
@@ -182,6 +194,14 @@ class TextBox<
   public resetValidityHighlightingStateToInitial(): void {
     this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages =
         this.validityHighlightingActivationMode === TextBox.ValidityHighlightingActivationModes.immediate;
+  }
+
+
+  /* ─── Other ────────────────────────────────────────────────────────────────────────────────────────────────────── */
+  public unmountAndUtilize(): void {
+    this.rootElement.remove();
+    this.inputEventListener.utilize();
+    this.focusOutEventListener.utilize();
   }
 
 
@@ -283,30 +303,40 @@ class TextBox<
       validation: initializationProperties.validation,
       onHasBecomeValidEventHandler: {
         handler: this.onPayloadHasBecomeValidEventHandler.bind(this),
-        ID: TextBox.generateOnPayloadHasBecomeValidEventHandlerID(this.ID)
+        ID: TextBox.generateOnPayloadHasBecomeValidEventHandlerID(this.INSTANCE_ID)
       },
       onHasBecomeInvalidEventHandler: {
         handler: this.onPayloadHasBecomeInvalidEventHandler.bind(this),
-        ID: TextBox.generateOnPayloadHasBecomeInvalidEventHandlerID(this.ID)
+        ID: TextBox.generateOnPayloadHasBecomeInvalidEventHandlerID(this.INSTANCE_ID)
       },
       onAsynchronousValidationStatusChangedEventHandler: {
         handler: this.onPayloadAsynchronousValidationStatusChangedEventHandler.bind(this),
-        ID: TextBox.generateOnAsynchronousValidationStatusChangedEventHandlerID(this.ID)
+        ID: TextBox.generateOnAsynchronousValidationStatusChangedEventHandlerID(this.INSTANCE_ID)
       }
     });
 
     this.validityHighlightingActivationMode = initializationProperties.validityHighlightingActivationMode;
     this.shellComponent.$validationErrorsMessages = this.payload.validationErrorsMessages;
 
+    /* eslint-disable no-underscore-dangle -- [ CONVENTION ]
+     * The instance fields begins from the underscore MUST be changed only via setters. */
     this._mustHighlightInvalidInputIfAnyValidationErrorsMessages =
         this.validityHighlightingActivationMode === TextBox.ValidityHighlightingActivationModes.immediate;
+    /* eslint-enable no-underscore-dangle */
 
-    addInputEventHandler({
+    this.inputEventListener = new InputEventListener({
       targetElement: this.nativeInputAcceptingElement,
-      handler: this.onInputEventListener.bind(this)
+      handler: this.onInput.bind(this)
     });
 
-    this.nativeInputAcceptingElement.addEventListener("blur", this.onFocusOutEventListener.bind(this));
+    this.focusOutEventListener = new FocusOutEventListener({
+      targetElement: this.nativeInputAcceptingElement,
+      handler: this.onFocusOut.bind(this)
+    });
+
+    if (isNotUndefined(initializationProperties.onFocusLostEventHandler)) {
+      this.onFocusOutExternalEventHandler = initializationProperties.onFocusLostEventHandler;
+    }
 
     this.initializeHTML_AttributesOfNativeInputAcceptingElement(initializationProperties.invalidInputPrevention);
 
@@ -364,7 +394,7 @@ class TextBox<
 
   }
 
-  protected onInputEventListener(): void {
+  protected onInput(): void {
 
     this.payload.$setValue({
       newValue: this.rawInputTypeTransformer(this.nativeInputAcceptingElement.value),
@@ -382,8 +412,9 @@ class TextBox<
 
   }
 
-  protected onFocusOutEventListener(): void {
+  protected onFocusOut(): void {
     this.$mustHighlightInvalidInputIfAnyValidationErrorsMessages = true;
+    this.onFocusOutExternalEventHandler?.();
   }
 
 
@@ -399,25 +430,25 @@ class TextBox<
     }
 
 
-    if (isNonNegativeInteger(invalidInputPrevention?.minimalCharactersCount)) {
+    if (isNaturalNumberOrZero(invalidInputPrevention?.minimalCharactersCount)) {
       this.nativeInputAcceptingElement.setAttribute(
         "minlength", String(invalidInputPrevention.minimalCharactersCount)
       );
     }
 
-    if (isNonNegativeInteger(invalidInputPrevention?.maximalCharactersCount)) {
+    if (isNaturalNumberOrZero(invalidInputPrevention?.maximalCharactersCount)) {
       this.nativeInputAcceptingElement.setAttribute(
-          "maxlength", String(invalidInputPrevention.maximalCharactersCount)
+        "maxlength", String(invalidInputPrevention.maximalCharactersCount)
       );
     }
 
-    if (isNonNegativeInteger(invalidInputPrevention?.minimalNumericValue)) {
+    if (isNaturalNumberOrZero(invalidInputPrevention?.minimalNumericValue)) {
       this.nativeInputAcceptingElement.setAttribute(
         "min", String(invalidInputPrevention.minimalNumericValue)
       );
     }
 
-    if (isNonNegativeInteger(invalidInputPrevention?.maximalNumericValue)) {
+    if (isNaturalNumberOrZero(invalidInputPrevention?.maximalNumericValue)) {
       this.nativeInputAcceptingElement.setAttribute(
         "max", String(invalidInputPrevention.maximalNumericValue)
       );
@@ -430,7 +461,7 @@ class TextBox<
   /* ─── IDs generating ───────────────────────────────────────────────────────────────────────────────────────────── */
   protected static counterForSelfID_Generating: number = 0;
 
-  protected static generateSelfID(): string {
+  protected static generateInstanceID(): string {
     TextBox.counterForSelfID_Generating++;
     return `TEXT_BOX--YDF-${ TextBox.counterForSelfID_Generating }`;
   }
@@ -486,6 +517,7 @@ namespace TextBox {
           invalidInputPrevention?: InvalidInputPrevention;
           validation: Validation;
           validityHighlightingActivationMode: ValidityHighlightingActivationModes;
+          onFocusLostEventHandler?: () => void;
         }>;
 
     export type RootElementDefinition = Readonly<

@@ -4,6 +4,8 @@ export { dateTimePickerYDF_ComponentLocalization__english } from
     "../../../GUI_Components/Controls/DateTimePicker/DateTimePickerLocalization.english";
 export { filesUploaderYDF_ComponentLocalization__english } from
     "../../../GUI_Components/Controls/FilesUploader/FilesUploaderLocalization.english";
+export { imagesCropperYDF_ComponentLocalization__english } from
+    "../../../GUI_Components/Controls/ImagesCropper/ImagesCropperLocalization.english";
 export { numberBoxYDF_ComponentLocalization__english } from
     "../../../GUI_Components/Controls/NumberBox/NumberBoxLocalization.english";
 export { paginationYDF_ComponentLocalization__english } from

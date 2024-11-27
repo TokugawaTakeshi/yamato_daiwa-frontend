@@ -7,14 +7,14 @@ block append Metadata
 
     RegularWebPageTemplate__YDF.configure({
       metadata: {
-        title: "Tests / Workbenches"
+        title: "Tests"
       }
     });
 
 
 block append TableOfContents
 
-  h1.AnywherePage-TopHeading Tests / Workbenches
+  h1.AnywherePage-TopHeading Tests
 
   +PageLink({
     label: "Typography",
@@ -23,22 +23,7 @@ block append TableOfContents
   })
 
 
-  h2.AnywherePage-PagesGroupHeading Assets
-
-  +PageLink({
-    label: "YDF Color palette",
-    URI: "./Assets/Colors/YDF_ColorPalette.test.html",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-  })
-
-
   h2.AnywherePage-PagesGroupHeading Components
-
-  +PageLink({
-    label: "AdmonitionBlock",
-    URI: "@StylesAndComponentsTesting/GUI_Components/AdmonitionBlock/AdmonitionBlock.workbench",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-  })
 
   +PageLink({
     label: "ConfirmationModalDialog",
@@ -80,13 +65,4 @@ block append TableOfContents
     label: "Snackbar",
     URI: "Components/Snackbar/Snackbar.test.html",
     progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-  })
-
-
-  h2.AnywherePage-PagesGroupHeading Pages templates
-
-  +PageLink({
-    label: "StaticPreviewAnywherePageDemo",
-    URI: "./PagesTemplates/StaticPreviewAnywherePageDemo.test.html",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
   })

@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "Build YDF Exports": "yda --mode PRODUCTION"
+  },
+  "dependencies": {
+    "@yamato-daiwa/frontend": "2.0.0-beta.3"
+  },
+  "devDependencies": {
+    "@yamato-daiwa/automation": "0.5.0"
+  }
+}

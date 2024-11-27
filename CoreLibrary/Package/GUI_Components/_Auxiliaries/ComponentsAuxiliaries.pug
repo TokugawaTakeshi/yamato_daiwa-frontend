@@ -18,12 +18,19 @@
 
       validationErrorsMessages: {
         type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
-        defaultValue: [],
-        type: Array,
-          element: {
-          type: String,
-          minimalCharactersCount: 1
-        }
+        defaultValue: false,
+        alternatives: [
+          {
+            type: Array,
+            element: {
+              type: String,
+              minimalCharactersCount: 1
+            }
+          },
+          {
+            type: Boolean
+          }
+        ]
       },
 
       asynchronousValidationsStatuses: {

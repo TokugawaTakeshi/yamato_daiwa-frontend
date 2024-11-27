@@ -1,6 +1,6 @@
 {
 	"name": "@yamato-daiwa/frontend",
-	"version": "2.0.0-beta.1",
+	"version": "2.0.0-beta.4",
 	"description": "Toolkit for the frontend development with Pug and Stylus pre-processors.",
 	"keywords": [
 		"frontend",
@@ -22,19 +22,19 @@
 		"email": "tokugawa.takesi@gmail.com"
 	},
 	"files": [
-		"Components",
-		"!Components/**/*.ts",
-		"!Components/**/*.template.pug",
+		"GUI_Components",
+		"!GUI_Components/**/*.ts",
+		"!GUI_Components/**/*.template.pug",
 		"LogicDistributable",
 		"Markup",
 		"!Markup/Source",
 		"PagesTemplates",
 		"!PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.styl",
 		"Styles",
-		"Components.pug",
-		"Components.styl",
 		"Functionality.pug",
-		"Functionality.styl"
+		"Functionality.styl",
+		"GUI_Components.pug",
+		"GUI_Components.styl"
 	],
 	"module": "./LogicDistributable/index.js",
 	"types": "./LogicDistributable/index.d.ts",
@@ -59,6 +59,7 @@
 		"Production Building of Logic": "rimraf LogicDistributable && yda build --selectiveExecution Logic --mode PRODUCTION && tsc --project tsconfig.declarations.json --declaration --emitDeclarationOnly --outDir LogicDistributable",
 		"Incremental Building of Anywhere Page Template Styles": "yda build --selectiveExecution StaticPreviewAnywherePage --mode LOCAL_DEVELOPMENT",
 		"Tests": "yda build --selectiveExecution StylesAndComponentsTesting --mode LOCAL_DEVELOPMENT",
+		"Lauch Workbenches": "yda build --selectiveExecution Workbenches --mode LOCAL_DEVELOPMENT",
 		"Realize Alpha": "npm publish --tag alpha",
 		"Realize Beta": "npm publish --tag beta",
 		"Realize RC": "npm publish --tag rc"

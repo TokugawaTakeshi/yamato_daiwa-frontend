@@ -9,8 +9,8 @@ import addOnLeftClickOutOfElementEventHandler from "./addOnLeftClickOutOfElement
 /* [ Convention ] The field's names begins from "$" intended to be changed via setter for the reactivity. */
 export default class LanguageDropDownList {
 
-  /* === Fields ===================================================================================================== */
-  /* --- Static constants ------------------------------------------------------------------------------------------- */
+  /* ━━━ Static Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── DOM Access ───────────────────────────────────────────────────────────────────────────────────────────────── */
   protected static CURRENTLY_SELECTED_OPTION_CSS_CLASS_SELECTOR: string =
       ".LanguageDropDownList--YDF_DK-CurrentlySelectedOption";
   protected static LIST_BOX_ELEMENT_CSS_CLASS_SELECTOR: string =
@@ -25,22 +25,25 @@ export default class LanguageDropDownList {
   protected static readonly FLAG_IMAGE_ID_DATA_ATTRIBUTE_KEY: string = "data-target_image_id";
 
 
-  /* --- DOM elements ----------------------------------------------------------------------------------------------- */
+  /* ━━━ Instance Fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── DOM Access ───────────────────────────────────────────────────────────────────────────────────────────────── */
   protected readonly rootElement: Element;
   protected readonly currentlySelectedOptionElement: Element;
   protected readonly listBoxElement: Element;
 
-  /* --- Pseudo reactive -------------------------------------------------------------------------------------------- */
-  protected $isListBoxDisplaying: boolean = false;
+  /* ─── Must be Changed Only Via Setters ─────────────────────────────────────────────────────────────────────────── */
+  /* eslint-disable no-underscore-dangle -- [ CONVENTION ]
+   * The instance files begins from the underscore MUST be initialized via constructor and changed only via setters. */
+  protected _isListBoxDisplaying: boolean = false;
 
 
-  /* === Public static methods ====================================================================================== */
+  /* ━━━ Public Static Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   public static pickBySelector(targetLanguageDropDownListSelector: string): LanguageDropDownList {
     return new LanguageDropDownList(targetLanguageDropDownListSelector);
   }
 
 
-  /* === Constructor ================================================================================================ */
+  /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   protected constructor(targetLanguageDropDownListSelector: string) {
 
     this.rootElement = getExpectedToBeSingleDOM_Element({ selector: targetLanguageDropDownListSelector });
@@ -71,8 +74,8 @@ export default class LanguageDropDownList {
   }
 
 
-  /* === Non-static protected methods =============================================================================== */
-  /* --- Initialization --------------------------------------------------------------------------------------------- */
+  /* ━━━ Non-static protected methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* ─── Initialization ───────────────────────────────────────────────────────────────────────────────────────────── */
   protected prepareFlagsImages(): void {
 
     const flagsImagesHoldingTemplateElement: HTMLTemplateElement = getExpectedToBeSingleDOM_Element({
@@ -101,7 +104,17 @@ export default class LanguageDropDownList {
         flagPlaceholderElement.replaceWith(
           index === 1 ?
               flagSVG_ImageElement :
-              cloneDOM_Element({ targetElement: flagSVG_ImageElement, mustCopyAllChildren: true })
+              ((): Element => {
+
+                const clonedFlagSVG_ImageElement: Element =
+                    cloneDOM_Element({ targetElement: flagSVG_ImageElement, mustCopyAllChildren: true });
+
+                clonedFlagSVG_ImageElement.removeAttribute("id");
+
+                return clonedFlagSVG_ImageElement;
+
+              })()
+
         );
       }
 
@@ -112,29 +125,29 @@ export default class LanguageDropDownList {
   }
 
 
-  /* --- Events handlers -------------------------------------------------------------------------------------------- */
+  /* ─── Events Handlers ──────────────────────────────────────────────────────────────────────────────────────────── */
   protected onClickCurrentlySelectedView(): void {
-    this.isSelectedViewDisplaying = true;
+    this.$isListBoxDisplaying = true;
   }
 
   protected onClickOutOfSelf(): void {
-    this.isSelectedViewDisplaying = false;
+    this.$isListBoxDisplaying = false;
   }
 
 
-  /* --- Pseudo reactive -------------------------------------------------------------------------------------------- */
-  protected get isSelectedViewDisplaying(): boolean {
-    return this.$isListBoxDisplaying;
+  /* ─── Reactivity ───────────────────────────────────────────────────────────────────────────────────────────────── */
+  protected get $isListBoxDisplaying(): boolean {
+    return this._isListBoxDisplaying;
   }
 
-  protected set isSelectedViewDisplaying(value: boolean) {
+  protected set $isListBoxDisplaying(value: boolean) {
 
-    if (value === this.$isListBoxDisplaying) {
+    if (value === this._isListBoxDisplaying) {
       return;
     }
 
 
-    this.$isListBoxDisplaying = value;
+    this._isListBoxDisplaying = value;
     this.listBoxElement.setAttribute("aria-expanded", String(value));
     this.listBoxElement.classList.toggle("LanguageDropDownList--YDF_DK-ListBox__Hidden");
 

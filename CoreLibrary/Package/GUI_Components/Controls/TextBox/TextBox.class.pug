@@ -2,8 +2,27 @@
 
   class TextBox__YDF {
 
+    /**
+     * @type { string }
+     * @public
+     * @readonly
+     */
     static CSS_NAMESPACE = "TextBox--YDF";
 
+    /**
+     * @type {
+     *   Readonly<{
+     *     regular: string;
+     *     email: string;
+     *     number: string;
+     *     password: string;
+     *     phoneNumber: string;
+     *     URI: string;
+     *     hidden: string;
+     *   }>
+     * }
+     * @readonly
+     */
     static HTML_Types = {
       regular: "text",
       email: "email",
@@ -16,9 +35,15 @@
 
 
     /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+    /**
+     * @type { { [themeName: string]: string } }
+     * @public
+     * @description If you want to define new themes, do it only via `defineThemes` static method.
+     */
     static Themes = { regular: "REGULAR" };
 
-    /* [ Pitfall ] The classes of other components may not be declared yet, initialization on demand required. */
+    /* [ Pitfall ] The classes of other components may not be declared yet thus initialization on demand required. */
     /** @type { { [ childComponentName: string ]: { [ownThemeValue: string]: string } } | null } */
     static _selfAndChildrenComponentsThemesCorrespondence = null;
 

@@ -79,6 +79,7 @@ class Button {
   protected constructor(properties: Button.InitializationProperties) {
 
     let rootElement: HTMLButtonElement | HTMLInputElement | HTMLAnchorElement;
+
     if (
       properties.targetElement instanceof HTMLButtonElement ||
       properties.targetElement instanceof HTMLInputElement ||

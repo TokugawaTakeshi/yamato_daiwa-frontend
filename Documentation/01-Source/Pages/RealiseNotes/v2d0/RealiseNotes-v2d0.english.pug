@@ -372,8 +372,190 @@ block append SpecificContent
           li #[+ImportantEntity__Code--YDID .o75] ➝ #[+ImportantEntity__Code--YDID .opacity75Percent]
 
 
-   h6.Article-Heading6 The renaming of #[code ShadesOfGray__39ColorsW3C_Palette] array
+    h6.Article-Heading6 The renaming of #[code ShadesOfGray__39ColorsW3C_Palette] array
 
     p.Article-Paragraph.
       The #[+ImportantEntity__Code--YDID ShadesOfGray__39ColorsW3C_Palette] #[+Term--YDID array] has been
         #[+Keyword--YDID renamed] to #[+ImportantEntity__Code--YDID W3C_39_ShadesOfGray--YDF].
+
+
+    h5.Article-Heading5 Core
+    h6.Article-Heading6 Replacing of the Basic Variables with Configuration Object
+
+    p.Article-Paragraph
+      | The following #[+Term--YDID basic variables] (as they has been called in #[+ImportantEntity--YDID 1.X] versions)
+      |   has been replaced with
+      |
+      +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$URI
+      }) YDF_Configuration object
+      |   or deleted for the following reasons.
+
+    dl.Article-DescriptionList
+
+      dt MAIN_FONT_STACK
+      dd
+        | Replaced with
+        |
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              fontsStacks.$children.
+              main.$URI
+        }) YDF_Configuration.fontsStacks.main
+
+      dt MAIN_SANS_SERIF_FONT_STACK
+      dd
+        | Replaced with
+        |
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              fontsStacks.$children.
+              mainSansSerif.$URI
+        }) YDF_Configuration.fontsStacks.mainSansSerif
+
+      dt MAIN_SERIF_FONT_STACK
+      dd
+        | Replaced with
+        |
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              fontsStacks.$children.
+              mainSerif.$URI
+        }) YDF_Configuration.fontsStacks.mainSerif
+
+      dt MAIN_MONOSPACED_FONT_STACK
+      dd
+        | Replaced with
+        |
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              fontsStacks.$children.
+              mainMonospaced.$URI
+        }) YDF_Configuration.fontsStacks.mainMonospaced
+
+      dt BASIC_FONT_SIZE
+      dd
+        | Replaced with
+        |
+        +Link--YDF({
+          endorsedExternalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              textGeometry.$children.
+              basicFontSize.$URI
+        }) YDF_Configuration.textGeometry.basicFontSize
+
+      dt BASIC_LINE_HEIGHT
+      dd
+        | Replaced with
+        |
+        +Link--YDF({
+          endorsedExternalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              textGeometry.$children.
+              basicLineHeight.$URI
+        }) YDF_Configuration.textGeometry.basicLineHeight
+
+
+      dt BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS
+      dd
+        | Replaced with
+        |
+        +Link--YDF({
+          endorsedExternalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              textGeometry.$children.
+              basicLineHeightInMultilineTextBlocks.$URI
+        }) YDF_Configuration.textGeometry.basicLineHeightInMultilineTextBlocks
+
+      dt BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS
+      dd.
+        Deleted because there is no&nbsp;need inside #[+ImportantEntity--YDID YDF] in new font size only for the
+          multiline elements in addition to
+          #[+ImportantEntity__Code--YDID YDF_Configuration.textGeometry.basicFontSize]
+
+      dt BEM_ELEMENT_SEPARATOR
+      dd Deleted because not&nbsp; using in #[+ImportantEntity--YDID YDF] anymore
+
+      dt BEM_MODIFIER_SEPARATOR
+      dd Deleted because not&nbsp; using in #[+ImportantEntity--YDID YDF] anymore
+
+      dt ZIndexes
+      dd
+        | Replaced with
+        |
+        +Link--YDF({
+          endorsedExternalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              zIndexes.$URI
+        }) YDF_Configuration.zIndexes
+
+    dl.Article-DescriptionList
+
+      dt Why has been replaced to configuration object
+      dd
+
+        p.Article-Paragraph.
+          The #[+Term--YDID variables] had too common names and nothing has indicated that they are coming from
+            #[+ImportantEntity--YDID YDF].
+          To solve the last these problems, it was possible to append the #[+Term--YDID vendor postfix] to
+            #[+Term--YDID variables] (for example, #[+SecondaryEntity__Code--YDID MAIN_SANS_SERIF_FONT_STACK] could
+            become to #[+SecondaryEntity__Code--YDID MAIN_SANS_SERIF_FONT_STACK--YDF] this way), but the
+            #[+Term--YDID object-type variable] is better for the storing of configuration.
+
+      dt Changes of your code will require if
+      dd You have #[+Keyword--YDID directly] used one or more of mentioned above #[+Term--YDID variables]
+
+      dt Migration
+      dd
+
+        ul.Article-UnorderedList
+
+          li.
+            If you want to continue to use the #[+Term--YDID basic variables] with same names as previously, define
+              them yourself with desired values.
+
+          li.
+            If you have #[+Keyword--YDID overridden] the #[+Term--YDID basic variables] then it is
+              #[+Keyword--YDID required] to #[+Keyword--YDID override] the
+              #[+ImportantEntity__Code--YDID YDF_Configuration] object #[+Keyword--YDID instead].
+
+          li.
+            If you are fine with usage of the #[+ImportantEntity__Code--YDID YDF_Configuration] object
+              #[+Keyword--YDID instead] of the of the #[+Term--YDID basic variables], then replace the references
+              to these #[+Term--YDID variables] with the accessing to the corresponding #[+Term--YDID properties] of the
+              #[+ImportantEntity__Code--YDID YDF_Configuration] object.
+            But please note that this #[+Term--YDID object] as it is clear from its name is intended for the
+              configuration of the #[+ImportantEntity--YDID YDF] functionality and this library is just the utility
+              in your project.
+            So, if you have the unique design, then the settings related with this design recommended to define
+              #[+Keyword--YDID independently] on #[+ImportantEntity--YDID YDF], and let
+              #[+ImportantEntity__Code--YDID YDF_Configuration] #[+Term--YDID object properties] refers to the settings
+              of your design.

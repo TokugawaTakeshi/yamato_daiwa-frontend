@@ -9,6 +9,18 @@ block Functionality
 
     class RegularWebPageTemplate__YDF {
 
+      /**
+       * @type {
+       *   {
+       *     locale: string;
+       *     title: string;
+       *     description: string | null;
+       *     keywords: string | null;
+       *     author: string | null;
+       *   }
+       * }
+       * @private
+       */
       static metadata = {
 
         /* [ Is it the official term ? ]
@@ -24,15 +36,60 @@ block Functionality
 
       };
 
+      /**
+       * @type { string | undefined }
+       * @private
+       */
       static faviconURI;
+
+      /**
+       * @type { string | undefined }
+       * @private
+       */
       static AMP_VersionURI;
 
+      /**
+       * @type Array<string>
+       * @private
+       */
       static stylesSheetsURIs = [];
+
+      /**
+       * @type {
+       *   {
+       *     atEndOfHead: Array<string>;
+       *     atEndOfBody: Array<string>;
+       *   }
+       * }
+       * @private
+       */
       static scriptsURIs = {
         atEndOfHead: [],
         atEndOfBody: []
       };
 
+      /**
+       * @param {
+       *   Readonly<{
+       *     metadata: {
+       *       locale?: string;
+       *       title?: string;
+       *       description?: string | null;
+       *       keywords?: string | null;
+       *       author?: string | null;
+       *     };
+       *     faviconURI?: string;
+       *     AMP_VersionURI?: string;
+       *     stylesSheetsURIs?: Array<string>;
+       *     scriptsURIs: {
+       *       atEndOfHead?: Array<string>;
+       *       atEndOfBody: Array<string>;
+       *     }
+       *   }>
+       * }
+       * @returns { typeof RegularWebPageTemplate__YDF }
+       * @public
+       */
       static configure(
         {
           metadata: {
@@ -72,6 +129,11 @@ block Functionality
 
       }
 
+      /**
+       * @param { ...Array<string> } scriptsURIs
+       * @returns { typeof RegularWebPageTemplate__YDF }
+       * @public
+       */
       static addScriptsToEndOfBody(...scriptsURIs) {
         RegularWebPageTemplate__YDF.scriptsURIs.atEndOfBody.push(...scriptsURIs);
         return RegularWebPageTemplate__YDF;

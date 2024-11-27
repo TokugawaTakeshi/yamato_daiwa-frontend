@@ -21,6 +21,14 @@ projectBuilding:
 
         browserLiveReloadingSetupID: StylesAndComponentsTesting
 
+      Workbenches:
+
+        tasksAndSourceFilesSelection:
+          markupProcessing: [ Workbenches ]
+          stylesProcessing: [ Workbenches ]
+
+        browserLiveReloadingSetupID: Workbenches
+
       StaticPreviewAnywherePage:
         tasksAndSourceFilesSelection:
           stylesProcessing: [ StaticPreviewAnywherePage ]
@@ -44,10 +52,18 @@ projectBuilding:
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
           excludeSubdirectoriesWithPrefixes: "_"
-        accessibilityInspection: { disable: true } # TODO Assets/Colors/YDF_ColorPalette.test.pugを除外するだけで良い
         buildingModeDependent:
           LOCAL_DEVELOPMENT:
             outputTopDirectoryRelativePath: Tests/Build
+
+      Workbenches:
+        sourceFilesTopDirectoryRelativePath: Workbenches/Source
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Workbenches/Build
 
 
   # === Styles =========================================================================================================
@@ -67,6 +83,18 @@ projectBuilding:
         buildingModeDependent:
           LOCAL_DEVELOPMENT:
             outputTopDirectoryRelativePath: Tests/Build
+
+      Workbenches:
+
+        sourceFilesTopDirectoryRelativePath: Workbenches/Source
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Workbenches/Build
 
       OutputCheck:
 
@@ -174,5 +202,14 @@ projectBuilding:
 
           rootDirectoryRelativePath: Tests/Build
           customStartingFileNameWithExtension: Tests.html
+
+        openInBrowsers: chrome
+
+      Workbenches:
+
+        localServer:
+
+          rootDirectoryRelativePath: Workbenches/Build
+          customStartingFileNameWithExtension: Workbenches.html
 
         openInBrowsers: chrome

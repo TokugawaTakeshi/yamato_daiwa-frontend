@@ -95,7 +95,7 @@ coreLibrary:
 
       YDF_Configuration:
 
-        $heading: "設定"
+        $heading: "<code>YDF_Configuration</code> YDFスタイルの設定"
 
         fontsStacks:
 
@@ -233,9 +233,9 @@ coreLibrary:
 
         $heading: "ボタン"
 
-frameworksIntegrations:
+adaptationsToJavaScriptFrameworks:
 
-  $heading: "第三者フレームワークの対応"
+  $heading: "JavaScriptフレームワークの対応"
 
   vue:
 

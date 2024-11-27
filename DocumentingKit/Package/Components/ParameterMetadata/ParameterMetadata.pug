@@ -16,22 +16,22 @@ mixin ParameterMetadata--YDF_DK(parameterSpecification)
     if parameterSpecification.required === true
 
       +Badge--YDF({
-        value: ParameterMetadata__YDF_DK.localization.requirementLabels.required,
-        decoration: Badge__YDF.DecorativeVariations.veryCatchyPastel
+        valueLabel: ParameterMetadata__YDF_DK.localization.requirementLabels.required,
+        decorativeVariation: Badge__YDF.DecorativeVariations.veryCatchyPastel
       }).ParameterMetadata--YDF_DK-RequirementBadge
 
     else if parameterSpecification.required === false
 
       +Badge--YDF({
-        value: ParameterMetadata__YDF_DK.localization.requirementLabels.optional,
-        decoration: Badge__YDF.DecorativeVariations.calmingPastel
+        valueLabel: ParameterMetadata__YDF_DK.localization.requirementLabels.optional,
+        decorativeVariation: Badge__YDF.DecorativeVariations.calmingPastel
       }).ParameterMetadata--YDF_DK-RequirementBadge
 
-    else if typeof argumentSpecification.defaultValue !== "undefined"
+    else if isNotUndefined(parameterSpecification.defaultValue)
 
       +Badge--YDF({
-        value: ParameterMetadata__YDF_DK.localization.requirementLabels.hasDefaultValue,
-        decoration: Badge__YDF.DecorativeVariations.neutralPastel
+        valueLabel: ParameterMetadata__YDF_DK.localization.requirementLabels.hasDefaultValue,
+        decorativeVariation: Badge__YDF.DecorativeVariations.neutralPastel
       }).ParameterMetadata--YDF_DK-RequirementBadge
 
 

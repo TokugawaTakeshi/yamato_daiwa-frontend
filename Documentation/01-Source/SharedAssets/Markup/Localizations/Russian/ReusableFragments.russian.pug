@@ -59,15 +59,18 @@ mixin ComponentStylesProvidingGuidanceFragment(properties)
       stylusMixinName = `provide${ componentName }YDF_Component`
     } = properties
 
-  p.Article-Paragraph.
-    Данный #[+Term--YDID компонент] поставляется в виде
-      #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.stylus.homePage.mixins }) Stylus-примеси]
-      #[+ImportantEntity__Code--YDID #{ stylusMixinName }].
-    Способ подключения -
-      #[+Link--YDF({ internalURI: localizedRouting.coreLibrary.$children.GUI_Components.$sectioning.providingOfStyles.$URI }) стандартный]:
-      путём #[+Link--YDF({ internalURI: sharedExternalLinks.stylus.homePage.includes }) включения Stylus-файла]
-      #[+ImportantEntity__Code--YDID Components.styl] в Ваш #[+Term--YDID Stylus-файл], при этом туда же
-      #[+Keyword--YDID предварительно] должен быть включён файл #[+ImportantEntity__Code--YDID Functionality.styl].
+  p.Article-Paragraph
+    | Данный #[+Term--YDID компонент] поставляется в виде
+    |   #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.stylus.homePage.mixins }) Stylus-примеси]
+    |   #[+ImportantEntity__Code--YDID #{ stylusMixinName }].
+    | Способ подключения —
+    |
+    +Link--YDF({
+      internalURI: localizedRouting.coreLibrary.$children.GUI_Components.$sectioning.providingOfStyles.$URI
+    }) стандартный:
+    |   путём #[+Link--YDF({ internalURI: sharedExternalLinks.stylus.homePage.includes }) включения Stylus-файла]
+    |   #[+ImportantEntity__Code--YDID Components.styl] в Ваш #[+Term--YDID Stylus-файл], при этом туда же
+    |   #[+Keyword--YDID предварительно] должен быть включён файл #[+ImportantEntity__Code--YDID Functionality.styl].
 
   +CodeViewer--YDF
     +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Stylus })

@@ -56,6 +56,8 @@ block append SpecificContent
     //- ━━━ @yamato-daiwa/es-extensions(YDEE)との結合 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h1.Article-Heading1!= topHeading
 
+    +PageNotReadyApology--YDPD({ currentState: PageNotReadyApology__YDPD.States.notCheckedByNativeSpeakers })
+
     p.Article-Paragraph
       | #[+ImportantEntity--YDID @yamato-daiwa/frontend]と言う#[+Term--YDID npmパッケージ]の#[+Keyword--YDID ルート]ディレクトリに在る
       |   #[+ImportantEntity--YDID Functionality.pug]ファイルを

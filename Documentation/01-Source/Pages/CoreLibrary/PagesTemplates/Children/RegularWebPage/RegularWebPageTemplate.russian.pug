@@ -56,7 +56,7 @@ block append SpecificContent
 
     p.Article-Paragraph.
       Основной #[+Term--YDID Pug-шаблон] для создания #[+Keyword--YDID валидных] #[+Term--YDID HTML5-страниц],
-        #[+Keyphrase--YDID рекомендованный для большинстве случаев].
+        #[+Keyphrase--YDID рекомендованный для большинства случаев].
 
     ul.Article-UnorderedList
 
@@ -70,7 +70,9 @@ block append SpecificContent
         | с помощью #[+Term--YDID ключевого слова] #[+ImportantEntity--YDID extends].
 
       li
-        | Включает в себя файл #[+ImportantEntity--YDID Functionality.pug] с дополнительной
+        +Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.includes }) Включает
+        |
+        | в себя файл #[+ImportantEntity--YDID Functionality.pug] с дополнительной
         |
         +Link--YDF({
           unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
@@ -92,9 +94,9 @@ block append SpecificContent
         | этого файла #[+Keyphrase--YDID приведёт к ошибке].
 
     p.Article-Paragraph.
-      Если только #[+Term--YDID унаследовать] #[+Term__Contrast--YDID Pug-файл] от этого #[+Term--YDID шаблона],
-        #[+Keyphrase--YDID но при этом не&nbsp;добавлять никакого кода], то на выходе #[+Keyword--YDID уже] будет код,
-        представляющий #[+Keyword--YDID валидную] #[+Term--YDID HTML-страницу]:
+      Если #[+Keyword--YDID только] #[+Term--YDID унаследовать] #[+Term__Contrast--YDID Pug-файл] от этого
+        #[+Term--YDID шаблона], #[+Keyphrase--YDID но при этом не&nbsp;добавлять никакого кода], то на выходе
+        #[+Keyword--YDID уже] будет код, представляющий #[+Keyword--YDID валидную] #[+Term--YDID HTML-документ]:
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.HTML }): :code_listing--yda
@@ -116,9 +118,11 @@ block append SpecificContent
       | Поскольку #[+Term--YDID аттрибут] #[+ImportantEntity__Code--YDID lang] у #[+Term--YDID тэга]
       |   #[+ImportantEntity__Code--YDID html] и #[+Term--YDID тэг] #[+ImportantEntity__Code--YDID title] являются
       |   #[+Keyword--YDID обязательными], то они были сгенерированы в соответствии с настройками по умолчанию.
-      | Вероятно всего, Вам потребуется их изменить, особенно если у Вас русскоязычная страница.
+      | Скорее всего, Вам потребуется их изменить, особенно если у Вас страница на русском или отличном от английского
+      |   языке.
       | Всё это и многое другое можно сделать с помощью #[+Term--YDID JavaScript-класса] конфигурации
-      |   #[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF], к которому можно обратиться из
+      |   #[+Link--YDF({ anchor: localizedSectioning.configurationClass.$anchor }) RegularWebPageTemplate__YDF], к
+      |  которому можно обратиться из
       |
       +Link--YDF({
         unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
@@ -137,10 +141,12 @@ block append SpecificContent
       Позволяет настроить генерацию типового #[+Term--YDID HTML-кода].
       Данный #[+Term--YDID класс] доступен начиная с конца
         #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.block }) Pug-блока]
-        #[+ImportantEntity__Code--YDID Functionality], но #[+Keyword--YDID рекомендуется] обращаться
-        к этому #[+Term--YDID классу] в #[+Term--YDID блоке] #[+ImportantEntity__Code--YDID Metadata], поскольку
-        #[+Keyword--YDID большинство] настроек либо связаны в #[+Term--YDID meta-тэгами], либо по своей сути являются
-        #[+Term--YDID метаданными]:
+        #[+Link--YDF({ anchor: localizedSectioning.pugBlocks.$children.Functionality.$anchor }) Functionality], но
+        #[+Keyword--YDID рекомендуется] обращаться к этому #[+Term--YDID классу] в #[+Term--YDID Pug-блоке]
+        #[+Link--YDF({ anchor: localizedSectioning.pugBlocks.$children.Metadata.$anchor }) Metadata], поскольку
+        #[+Keyword--YDID большинство] настроек либо связаны с
+        #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.mdn.HTML.metaTags }) meta-тэгами], либо по своей
+        сути являются #[+Term--YDID метаданными]:
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
@@ -171,83 +177,83 @@ block append SpecificContent
           умолчанию — #[+ImportantEntity__Code--YDID "en"], которое #[+Keyword--YDID необходимо] заменить на другое
           #[+Keyphrase--YDID для неанглоязычных страниц].
         Примечательно, но значение #[+Term--YDID аттрибута] #[+ImportantEntity__Code--YDID lang] официально называется
-          #[+Term--YDID «language tag»], что запутывает, потому данное свойство и было названо
+          #[+Term--YDID «language tag»], что запутывает, потому данное #[+Term--YDID свойство] и было названо
           #[+ImportantEntity__Code--YDID locale].
 
       dt metadata.title
       dd.
         Используется для заполнения #[+Term--YDID тэга] #[+ImportantEntity__Code--YDID title].
-        Поскольку данный #[+Term--YDID тэг] #[+Term--YDID обязателен], то имеется значение по умолчанию —
+        Поскольку это #[+Term--YDID тэг] #[+Keyword--YDID обязателен], то имеется значение по умолчанию —
           #[+ImportantEntity--YDID "Untitled"].
 
       dt metadata.description
       dd.
         Если определено, то будет добавлен #[+Term--YDID тэг] #[+ImportantEntity__Code--YDID meta] c
           #[+Term--YDID аттрибутами] #[+ImportantEntity__Code--YDID name="description"] и
-          #[+ImportantEntity__Code--YDID content], #[+Keyword--YDID последний] из которых который будет заполнен
+          #[+ImportantEntity__Code--YDID content], #[+Keyword--YDID последний] из которых будет заполнен
           указанным значением.
 
       dt metadata.keywords
       dd.
         Если определено, то будет добавлен #[+Term--YDID тэг] #[+ImportantEntity__Code--YDID meta] c
           #[+Term--YDID аттрибутами] #[+ImportantEntity__Code--YDID name="keywords"] и
-          #[+ImportantEntity__Code--YDID content], #[+Keyword--YDID последний] из которых который будет заполнен
+          #[+ImportantEntity__Code--YDID content], #[+Keyword--YDID последний] из которых будет заполнен
           указанным значением.
 
       dt metadata.author
       dd.
-        Если указано, то будет добавлен #[+Term--YDID тэг] #[+ImportantEntity__Code--YDID meta] c
+        Если определено, то будет добавлен #[+Term--YDID тэг] #[+ImportantEntity__Code--YDID meta] c
           #[+Term--YDID аттрибутами] #[+ImportantEntity__Code--YDID name="author"] и
-          #[+ImportantEntity__Code--YDID content], #[+Keyword--YDID последний] из которых который будет заполнен
+          #[+ImportantEntity__Code--YDID content], #[+Keyword--YDID последний] из которых удет заполнен
           указанным значением.
 
       dt faviconURI
       dd.
         Если определено, то будут добавлены #[+ImportantEntity--YDID 2] #[+Term--YDID тэга]
           #[+ImportantEntity__Code--YDID link], один из которых имеет #[+Term--YDID аттрибут]
-          #[+Keyword__Contrast--YDID rel="icon"], другой — #[+ImportantEntity__Code--YDID rel="shortcut icon"],
-          а указанным значением у #[+Keyword--YDID обоих] будет заполнен #[+Term--YDID аттрибут]
-          #[+ImportantEntity__Code--YDID href].
+          #[+ImportantEntity__Code--YDID rel="icon"], другой — #[+ImportantEntity__Code--YDID rel="shortcut icon"],
+          при этом у #[+Keyword--YDID обоих] будет заполнен #[+Term--YDID аттрибут] #[+ImportantEntity__Code--YDID href]
+          указанным значением.
         Это значение #[+Keyword--YDID должно] быть #[+Keyword--YDID валидным] #[+ImportantEntity--YDID URI], ссылающимся
           на файл иконки для отображения на вкладке браузера.
 
       dt AMP_VersionURI
       dd.
-        Если указано, то будет добавлен #[+Term--YDID тэг] #[+ImportantEntity__Code--YDID link] c
+        Если определено, то будет добавлен #[+Term--YDID тэг] #[+ImportantEntity__Code--YDID link] c
           #[+Term--YDID аттрибутами] #[+ImportantEntity__Code--YDID rel="amphtml"] и
-          #[+ImportantEntity__Code--YDID href], #[+Keyword--YDID последний] из которых который будет заполнен
-          указанным значением.
+          #[+ImportantEntity__Code--YDID href], #[+Keyword--YDID последний] из которых будет заполнен указанным
+          значением.
         Это значение #[+Keyword--YDID должно] быть #[+Keyword--YDID валидным] #[+ImportantEntity--YDID URI], ссылающимся
-          на #[+Term--YDID AMP-версию] страницы.
+          на #[+Term--YDID AMP-версию] #[+Keyphrase--YDID этой же] страницы.
 
       dt stylesSheetsURIs
       dd.
         Если указан #[+Term--YDID массив], то #[+Keyphrase--YDID для каждого] его #[+Term--YDID элемента] будет добавлен
           #[+Term--YDID тэг] #[+ImportantEntity__Code--YDID link] с #[+Term--YDID аттрибутами]
           #[+ImportantEntity__Code--YDID rel="stylesheet"] и #[+ImportantEntity__Code--YDID href],
-          #[+Keyword--YDID последний] из которых который будет заполнен #[+Term--YDID элементом массива].
+          #[+Keyword--YDID последний] из которых будет заполнен #[+Term--YDID элементом массива].
         #[+Keyword--YDID Каждый] из этих #[+Term--YDID элементов] #[+Keyword--YDID должен] иметь
-          #[+Keyword--YDID строчный] #[+Term--YDID тип] и являться #[+Keyword--YDID валидным] #[+Term--YDID URI],
-          ссылающимся на #[+Term--YDID CSS-файл].
+          #[+Keyword--YDID строчный] #[+Term--YDID тип] и являться #[+Keyword--YDID валидным]
+          #[+ImportantEntity--YDID URI], ссылающимся на #[+Term--YDID CSS-файл].
 
       dt scripts.atEndOfHead
       dd
 
         p.Article-Paragraph.
-          Если указан #[+Term--YDID массив], #[+Keyphrase--YDID для каждого] его #[+Term--YDID элемента] в конец
-            #[+Term--YDID тэга] #[+ImportantEntity__Code--YDID head] будет добавлен #[+Term--YDID тэг]
-            #[+ImportantEntity__Code--YDID script] с #[+Term--YDID аттрибутом] #[+ImportantEntity__Code--YDID src],
-            значение которого будет заполнено #[+Term--YDID элементом массива].
+          Если указан #[+Term--YDID массив], то #[+Keyphrase--YDID для каждого] его #[+Term--YDID элемента] в
+            #[+Keyword--YDID конец] #[+Term--YDID тэга] #[+ImportantEntity__Code--YDID head] будет добавлен
+            #[+Term--YDID тэг] #[+ImportantEntity__Code--YDID script] с #[+Term--YDID аттрибутом]
+            #[+ImportantEntity__Code--YDID src], значение которого будет заполнено #[+Term--YDID элементом массива].
           #[+Keyword--YDID Каждый] из этих #[+Term--YDID элементов] #[+Keyword--YDID должен] иметь
             #[+Keyword--YDID строчный] #[+Term--YDID тип] и являться #[+Keyword--YDID валидным] #[+Term--YDID URI],
-            ссылающимся на #[+Term--YDID JS-файл].
+            ссылающимся на #[+Term--YDID JavaScript-файл].
 
         ul.Article-UnorderedList
 
           li.
             #[+Keyword--YDID Обычно] добавлять скрипты в конец #[+Term--YDID тэга] #[+Keyword__Contrast--YDID head]
-              #[+Keyword--YDID не]&nbsp;#[+Keyword--YDID рекомендуется], поскольку без дополнительных мер отрисовка
-              страницы будет приостановлена до тех пор, пока скрипты не&nbsp;будут загружены.
+              #[+Keyword--YDID не]&nbsp;рекомендуется, поскольку без дополнительных мер отрисовка
+              страницы будет #[+Keyword--YDID приостановлена] до тех пор, пока скрипты не&nbsp;будут загружены.
             Исключением являются такие случаи, сторонние скрипты для аналитики.
 
           li.
@@ -255,42 +261,42 @@ block append SpecificContent
               #[+Keyword--YDID не]&nbsp;будут иметь #[+Keyword--YDID никаких] #[+Term--YDID аттрибутов], кроме
               #[+ImportantEntity__Code--YDID src].
             Если Вам нужно, чтобы были какие-либо другие #[+Term--YDID аттрибуты], то добавьте #[+Term--YDID тэг]
-              #[+ImportantEntity__Code--YDID script] скрипт вручную в с
-              использованием #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.block }) Pug-блока]
+              #[+ImportantEntity__Code--YDID script] скрипт вручную в с　использованием
+              #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.block }) Pug-блока]
               #[+ImportantEntity__Code--YDID HeadScripts].
 
       dt scripts.atEndOfBody
       dd
 
         p.Article-Paragraph.
-          Если указан #[+Term--YDID массив], #[+Keyphrase--YDID для каждого] его #[+Term--YDID элемента] в
+          Если указан #[+Term--YDID массив], то #[+Keyphrase--YDID для каждого] его #[+Term--YDID элемента] в
             #[+Keyword--YDID конец] #[+Term--YDID тэга] #[+ImportantEntity__Code--YDID body] будет добавлен
             #[+Term--YDID тэг] #[+ImportantEntity__Code--YDID script] с #[+Term--YDID аттрибутом]
             #[+ImportantEntity__Code--YDID src], значение которого будет заполнено #[+Term--YDID элементом массива].
           #[+Keyword--YDID Каждый] из этих #[+Term--YDID элементов] #[+Keyword--YDID должен] иметь
             #[+Keyword--YDID строчный] #[+Term--YDID тип] и являться #[+Keyword--YDID валидным] #[+Term--YDID URI],
-            ссылающимся на #[+Term--YDID JS-файл].
+            ссылающимся на #[+Term--YDID JavaScript-файл].
 
         ul.Article-UnorderedList
 
           li.
-            Именно таким образом рекомендуется добавлять скрипты, поскольку их загрузка #[+Keyword--YDID не]&nbsp;будет
-              задерживать отрисовку страницы.
+            Именно таким образом рекомендуется добавлять #[+Keyword--YDID скрипты], поскольку их загрузка
+              #[+Keyword--YDID не]&nbsp;будет　задерживать отрисовку страницы.
 
           li.
             Добавленные таким образом #[+Term--YDID тэги] #[+ImportantEntity__Code--YDID script]
               #[+Keyword--YDID не]&nbsp;будут иметь #[+Keyword--YDID никаких] #[+Term--YDID аттрибутов], кроме
               #[+ImportantEntity__Code--YDID src].
-            Если Вам нужно, чтобы были какие-либо другие #[+Term--YDID аттрибуты], то добавьте скрипт вручную в с
-              использованием
+            Если Вам нужно, чтобы были какие-либо другие #[+Term--YDID аттрибуты], то добавьте #[+Term--YDID тэг]
+              #[+ImportantEntity__Code--YDID script] скрипт вручную в с　использованием
               #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.block }) Pug-блока]
               #[+ImportantEntity__Code--YDID EndBodyScripts].
 
     p.Article-Paragraph.
       #[+Term--YDID Метод] #[+ImportantEntity__Code--YDID configure] #[+Keyword--YDID можно] вызывать
-        #[+Keyword__Contrast--YDID многократно], но ввиду того, что повторное указание
+        #[+Keyword__Contrast--YDID многократно], но ввиду того, что #[+Keyword--YDID повторное] указание
         #[+Keyphrase--YDID одних и тех же] свойств приведёт к #[+Keyword--YDID перезаписи] прежних значений,
-        повторно вызывать этот #[+Term--YDID метод] имеет смысл с указанием #[+Keyword--YDID разных]
+        повторно вызывать этот #[+Term--YDID метод] имеет смысл с указанием #[+Keyword--YDID других]
         #[+Term--YDID свойств].
       Например, если у Вас на всём сайте или приложении один язык (допустим, русский), а автор всех страниц один и тот
         же, то имеет смысл прописать эти настройки один раз в отельном файле (скажем,
@@ -309,7 +315,7 @@ block append SpecificContent
 
     p.Article-Paragraph.
       Затем этот файл можно подключать в файлы страниц и далее уже указывать #[+Keyword--YDID только] особые
-        метаданные для конкретной страницы:
+        #[+Term--YDID метаданные] для конкретной страницы:
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
@@ -338,6 +344,7 @@ block append SpecificContent
       Модификация шаблонов в #[+ImportantEntity--YDID Pug] осуществляется через
         #[+Link--YDF({ unendorsedExternalURI: sharedExternalLinks.pug.homePage.block }) Pug-блоки].
       В шаблоне #[+ImportantEntity--YDID RegularWebPageTemplate] объявлены нижеследующие #[+Term--YDID Pug-блоки].
+
 
     //- ─── `Functionality` ────────────────────────────────────────────────────────────────────────────────────────────
     +Heading--YDF({
@@ -368,7 +375,7 @@ block append SpecificContent
             }
 
     p.Article-Paragraph
-      | Поскольку в этот #[+Term--YDID блок] подключена функциональность
+      | Поскольку в этот #[+Term--YDID блок] подключена функциональность библиотеки
       |
       +Link--YDF({
         internalURI: localizedRouting.coreLibrary.$children.
@@ -376,10 +383,14 @@ block append SpecificContent
             functionality.$children.
             inlineJavaScript.$children.
             YDEE_Integration.$URI
-      }) библиотеки «Yamato Daiwa ECMAScript Extensions»
+      }) «Yamato Daiwa ECMAScript Extensions»
       |
-      | то #[+Keyphrase--YDID начиная с этого блока] Вы можете ей пользоваться, если при ссылке на #[+Term--YDID блок]
-      |   использовали #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID append]:
+      | то #[+Keyphrase--YDID начиная с этого блока] Вы можете ей пользоваться,
+      |
+      +Keyphrase--YDID.
+        если при ссылке на #[+Term--YDID блок] указали #[+Term--YDID ключевое слово]
+          #[+ImportantEntity__Code--YDID append]
+      | :
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
@@ -399,9 +410,9 @@ block append SpecificContent
       geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
       decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
     }).
-      Не добавляете в этот блок никакой #[+Term--YDID разметки], так как #[+Term--YDID HTML-код] сгенерируется
-        #[+Keyword--YDID вне] #[+Term--YDID тэга] #[+Term--YDID html], в результате чего #[+Term--YDID HTML-документ]
-        станет #[+Keyword--YDID невалидным].
+      Не добавляете в этот #[+Term--YDID блок] #[+Keyword--YDID никакой] #[+Term--YDID разметки], так как
+        #[+Term--YDID HTML-код] сгенерируется #[+Keyword--YDID вне] #[+Term--YDID тэга] #[+Term--YDID html], в
+        результате чего #[+Term--YDID HTML-документ] станет #[+Keyword--YDID невалидным].
 
 
     //- ─── `Data` ─────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -413,7 +424,7 @@ block append SpecificContent
 
     p.Article-Paragraph.
       Используйте этот #[+Term--YDID блок], если хотите сгенерировать какие-либо данные, чтобы потом использовать
-        их при генерации #[+Term--YDID разметки].
+        их для генерации #[+Term--YDID разметки].
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
@@ -427,7 +438,7 @@ block append SpecificContent
             const items = Array.from(new Array(16).keys()).map(
               index => ({
                 ID: index,
-                title: `Item ${ index + 1 }`
+                title: `Пункт номер ${ index + 1 }`
               })
             );
 
@@ -436,9 +447,9 @@ block append SpecificContent
       geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
       decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
     }).
-      Не добавляете в этот блок никакой #[+Term--YDID разметки], так как #[+Term--YDID HTML-код] сгенерируется
-        #[+Keyword--YDID вне] #[+Term--YDID тэга] #[+Term--YDID html], в результате чего #[+Term--YDID HTML-документ]
-        станет #[+Keyword--YDID невалидным].
+      Не добавляете в этот #[+Term--YDID блок] #[+Keyword--YDID никакой] #[+Term--YDID разметки], так как
+        #[+Term--YDID HTML-код] сгенерируется #[+Keyword--YDID вне] #[+Term--YDID тэга] #[+Term--YDID html], в
+        результате чего #[+Term--YDID HTML-документ] станет #[+Keyword--YDID невалидным].
 
 
     //- ─── `Requirements` ─────────────────────────────────────────────────────────────────────────────────────────────
@@ -451,10 +462,12 @@ block append SpecificContent
     p.Article-Paragraph
       | Используйте этот #[+Term--YDID блок] для подключения #[+Term--YDID Pug-файлов], содержащих
       |   #[+Term--YDID Pug-примеси] либо
+      |
       +Link--YDF({
         unendorsedExternalURI: sharedExternalLinks.pug.homePage.inlineJavaScript
       }) внутренний JavaScript-код
-      |   , для которого по какой-либо причине не&nbsp;подходят предыдущие #[+Term--YDID блоки].
+      |   , для которого по какой-либо причине #[+Keyword--YDID не]&nbsp;подходят #[+Keyword--YDID предыдущие]
+      |   #[+Term--YDID блоки].
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
@@ -473,9 +486,9 @@ block append SpecificContent
       geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
       decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
     }).
-      Не добавляете в этот блок никакой #[+Term--YDID разметки] #[+Keyphrase--YDID не&nbsp;обёрнутой в Pug-примеси],
-        так как #[+Term--YDID HTML-код] сгенерируется #[+Keyword--YDID вне] #[+Term--YDID тэга] #[+Term--YDID html],
-        в результате чего #[+Term--YDID HTML-документ] станет #[+Keyword--YDID невалидным].
+      Не добавляете в этот #[+Term--YDID блок] #[+Keyphrase--YDID не&nbsp;обёрнутой в Pug-примеси] #[+Term--YDID разметки],
+        так как #[+Term--YDID HTML-код] сгенерируется #[+Keyword--YDID вне] #[+Term--YDID тэга] #[+Term--YDID html], в
+        результате чего #[+Term--YDID HTML-документ] станет #[+Keyword--YDID невалидным].
 
 
     //- ─── `Metadata` ─────────────────────────────────────────────────────────────────────────────────────────────────
@@ -486,10 +499,11 @@ block append SpecificContent
     }).Article-Heading3
 
     p.Article-Paragraph.
-      Используйте этот блок, если хотите определить #[+Term--YDID метаданные] #[+Term__Contrast--YDID HTML-страницы]
-        через #[+Term--YDID JavaScript-переменные].
-      В частности, рекомендуется вызывать #[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF.configure({})]
-        именно здесь.
+      Используйте этот #[+Term--YDID блок], если хотите определить #[+Term--YDID метаданные]
+        #[+Term__Contrast--YDID HTML-страницы] через #[+Term--YDID JavaScript-переменные].
+      В частности, #[+Keyword--YDID рекомендуется] вызывать
+        #[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF.configure({})]
+        #[+Keyword--YDID именно] #[+Keyword__Contrast--YDID здесь].
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
@@ -511,9 +525,9 @@ block append SpecificContent
       geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
       decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
     }).
-      Не добавляете в этот блок никакой #[+Term--YDID разметки], так как #[+Term--YDID HTML-код] сгенерируется
-        #[+Keyword--YDID вне] #[+Term--YDID тэга] #[+Term--YDID html], в результате чего #[+Term--YDID HTML-документ]
-        станет #[+Keyword--YDID невалидным].
+      Не добавляете в этот #[+Term--YDID блок] #[+Keyword--YDID никакой] #[+Term--YDID разметки], так как
+        #[+Term--YDID HTML-код] сгенерируется #[+Keyword--YDID вне] #[+Term--YDID тэга] #[+Term--YDID html], в
+        результате чего #[+Term--YDID HTML-документ] станет #[+Keyword--YDID невалидным].
 
 
     //- ─── `StatesSimulations` ────────────────────────────────────────────────────────────────────────────────────────
@@ -545,9 +559,9 @@ block append SpecificContent
 
     p.Article-Paragraph.
       Все эти состояния можно определить в виде #[+Term--YDID булевских переменных] (в примере ниже это реализовано
-        в виде #[+Term--YDID класса] с #[+Term--YDID полем] #[+SecondaryEntity__Code--YDID statesSimulations],
-        #[+Term--YDID свойствам] которого соответствует то или иное состояние) и организовать их условное
-        отображение:
+        в виде #[+Term--YDID класса] со #[+Keyword--YDID статическим] #[+Term--YDID полем] #[+Keyword--YDID объектного]
+        #[+Term--YDID типа] #[+SecondaryEntity__Code--YDID statesSimulations], #[+Term--YDID свойствам] которого
+        соответствует то или иное состояние) и организовать их условное отображение:
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
@@ -577,8 +591,8 @@ block append SpecificContent
             if ProductsListPage.statesSimulations.loading
 
               //-
-                Для состояния загрузки подойдёт компонент, называемый «Loading Placeholder» (он же «Skeleton Loading»
-                  или «Content Placeholder»)
+                Для состояния загрузки подойдёт компонент, называемый «Loading Placeholder»
+                  (он же «Skeleton Loading» или «Content Placeholder»)
 
             else if ProductsListPage.statesSimulations.loadingError
 
@@ -590,18 +604,18 @@ block append SpecificContent
 
             else if ProductsListPage.statesSimulations.noSearchingResults
 
-              //- Сообщение о том, что по запросу ничего не найдено
+              //- Сообщение о том, что по введённому поисковому запросу ничего не найдено
 
             else
 
               //- Список товаров
 
-
     p.Article-Paragraph
       | Для того, чтобы переключиться между состояниями, необходимо перезапустить #[+ImportantEntity--YDID Pug].
-      | Если же Вы хотите показать заказчику все эти состояния в виде #[+Keyword--YDID отдельных] страниц
+      | Однако если Вы хотите показать заказчику все эти состояния в виде #[+Keyword--YDID отдельных] страниц
       |   #[+Keyphrase--YDID до реализации #[+Term--YDID JavaScript-динамики] и серверной части], при этом
-      |   минимизировать количество рутинной работы (в частности, избежать ручного создания файлов для каждого состояния),
+      |   минимизировать количество рутинной работы (в частности, #[+Keyword--YDID избежать]
+      |   #[+Keyword__Contrast--YDID ручного] создания файлов #[+Keyphrase--YDID для каждого состояния]),
       |  то обратите внимание на
       |
       +Link--YDF({
@@ -618,19 +632,18 @@ block append SpecificContent
       |
       +Link--YDF({
         endorsedExternalURI: sharedExternalLinks.YamatoDaiwaAutomation.functionality.staticPreview.
-            resourcesReferencesResolving,
+            resourcesPointersResolving,
       }) функциональность специально для таких случаев
       | .
-
 
     +AdmonitionBlock--YDF({
       SVG_Icon: true,
       geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
       decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.warning
     }).
-      Не добавляете в этот блок никакой #[+Term--YDID разметки] #[+Keyphrase--YDID не&nbsp;обёрнутой в Pug-примеси],
-        так как #[+Term--YDID HTML-код] сгенерируется #[+Keyword--YDID вне] #[+Term--YDID тэга] #[+Term--YDID html],
-        в результате чего #[+Term--YDID HTML-документ] станет #[+Keyword--YDID невалидным].
+      Не добавляете в этот #[+Term--YDID блок] #[+Keyword--YDID никакой] #[+Term--YDID разметки], так как
+        #[+Term--YDID HTML-код] сгенерируется #[+Keyword--YDID вне] #[+Term--YDID тэга] #[+Term--YDID html], в
+        результате чего #[+Term--YDID HTML-документ] станет #[+Keyword--YDID невалидным].
 
 
     //- ─── `HeadBegin` ────────────────────────────────────────────────────────────────────────────────────────────────
@@ -657,15 +670,16 @@ block append SpecificContent
       | и #[+Term--YDID Pug-примесей], что #[+Keyword--YDID не]&nbsp;даёт выходного #[+Term--YDID HTML-кода].
 
     p.Article-Paragraph.
-      Используйте этот #[+Term--YDID блок], если хотите что-то добавить в #[+Keyword--YDID начало] #[+Term--YDID тэга]
-        #[+ImportantEntity__Code--YDID head] (#[+Keyword--YDID перед] #[+Keyword__Contrast--YDID другими]
-        #[+Keyword--YDID дочерними] элементами).
+      Используйте этот #[+Term--YDID блок], если хотите что-нибудь добавить в #[+Keyword--YDID начало]
+        #[+Term--YDID тэга] #[+ImportantEntity__Code--YDID head] (#[+Keyword--YDID перед]
+        #[+Keyword__Contrast--YDID другими] #[+Keyword--YDID дочерними] элементами).
 
     p.Article-Paragraph.
       Поскольку последовательность #[+Keyword--YDID дочерних] по отношению #[+ImportantEntity__Code--YDID head]
-        #[+Term--YDID тэгов] значение имеет #[+Keyword--YDID редко] (в основном это порядок подключения стилей
-        и скриптов), то #[+Keyword--YDID обычно] добавлять что-то именно в начало нужды тоже&nbsp;#[+Keyword--YDID нет],
-        поэтому данный #[+Term--YDID блок] пригодится разве что только в каких-нибудь особых случаях.
+        #[+Term--YDID тэгов] значение имеет #[+Keyword--YDID редко] (в основном это порядок подключения
+        #[+Term--YDID стилей] и #[+Term--YDID скриптов]), то #[+Keyword--YDID обычно] добавлять что-то именно в начало
+        нужды тоже&nbsp;#[+Keyword--YDID нет], поэтому данный #[+Term--YDID блок] пригодится разве что только в
+        каких-нибудь особых случаях.
 
     +CodeViewer--YDF
       +CodeViewer-TabPanel--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug })
@@ -679,9 +693,9 @@ block append SpecificContent
 
             link(rel="dns-prefetch" href="//example.com")
         +CodeViewer-Explanation--YDF.
-          Для примера, добавлен #[+Term--YDID тэг] #[+SecondaryEntity__Code--YDID link] в начало #[+Term--YDID тэга]
+          Для примера добавлен #[+Term--YDID тэг] #[+SecondaryEntity__Code--YDID link] в начало #[+Term--YDID тэга]
             #[+ImportantEntity__Code--YDID head], однако необходимости добавлять его именно в начало
-          #[+ImportantEntity__Code--YDID head] причины #[+Keyword--YDID не]&nbsp;было.
+            #[+ImportantEntity__Code--YDID head] причины #[+Keyword--YDID не]&nbsp;было.
 
     +AdmonitionBlock--YDF({
       SVG_Icon: true,
@@ -700,15 +714,16 @@ block append SpecificContent
     }).Article-Heading3
 
     p.Article-Paragraph.
-      Используйте этот #[+Term--YDID блок], если Вас по какой-либо причине Вас не&nbsp;устраивает указание ссылок на
+      Используйте этот #[+Term--YDID блок], если Вас по какой-либо причине не&nbsp;устраивает указание ссылок на
         #[+Term--YDID стили] через конфигурацию
         (#[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF.configure({})]) или же Вы хотите объявить
         #[+Term--YDID стили] прямо в #[+Term--YDID тэге] #[+ImportantEntity__Code--YDID head].
-      В частности, #[+Term--YDID тэги] #[+ImportantEntity__Code--YDID link], которые будут сгенерированы при указанных
-        в конфигурации ссылках на #[+Term--YDID стили], #[+Keyword--YDID не]&nbsp;имеют никаких #[+Term--YDID аттрибутов]
-        #[+Keyword--YDID кроме] #[+ImportantEntity__Code--YDID href] и #[+ImportantEntity__Code--YDID rel="stylesheet"],
-        соответственно если нужны какие-то другие #[+Term--YDID аттрибуты], то добавьте #[+Term--YDID тэги]
-        #[+ImportantEntity__Code--YDID link] в #[+Term--YDID блок] #[+ImportantEntity__Code--YDID Styles] вручную:
+      В частности, поскольку #[+Term--YDID тэги] #[+ImportantEntity__Code--YDID link], которые будут сгенерированы при
+        указанных в конфигурации ссылках на #[+Term--YDID стили] #[+Keyword--YDID не]&nbsp;имеют никаких
+        #[+Term--YDID аттрибутов] #[+Keyword--YDID кроме] #[+ImportantEntity__Code--YDID href] и
+        #[+ImportantEntity__Code--YDID rel="stylesheet"], то если нужны какие-то другие #[+Term--YDID аттрибуты], то
+        добавьте #[+Term--YDID тэги] #[+ImportantEntity__Code--YDID link] в #[+Term--YDID блок]
+        #[+ImportantEntity__Code--YDID Styles] вручную:
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
@@ -723,7 +738,7 @@ block append SpecificContent
             media="screen"
             crossorigin="anonymous"
             integrity="sha384-oqVuAfXRKap7fdgcCY5hULvJ0GhBGDq4IcF3J08z9QY9l03VvH3p0EOTr4N3kR0o"
-          >
+          )
 
     p.Article-Paragraph.
       Данный способ указания #[+Term--YDID стилей] #[+Keyword--YDID не]&nbsp;конфликтует с указанием таковых через
@@ -731,17 +746,18 @@ block append SpecificContent
         последовательность, в которой #[+Term--YDID CSS-правила] объявлены на странице.
       Поскольку приоритет в #[+ImportantEntity--YDID CSS] зависит от #[+Keyword--YDID нескольких] факторов,
         то нельзя однозначно сказать, что только лишь последовательность объявления #[+Term--YDID CSS-правил] изменит
-        отображение, тем не&nbsp;менее, последовательность — один из факторов, влияющий на конечное отображение.
+        отображение, тем не&nbsp;менее, последовательность — #[+Keyphrase--YDID один из факторов], влияющий на конечное
+        отображение.
 
     ul.Article-UnorderedList
 
       li.
-        Используйте #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID prepend] при модификации
+        Укажите #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID prepend] при использовании
           #[+Term--YDID блока] #[+ImportantEntity__Code--YDID Styles], чтобы добавить #[+Term--YDID стили]
           #[+Keyword--YDID перед] теми, что указаны через конфигурацию.
 
       li.
-        Используйте #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID append] при модификации
+        Укажите #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID append] при использовании
           #[+Term--YDID блока] #[+ImportantEntity__Code--YDID Styles], чтобы добавить #[+Term--YDID стили]
           #[+Keyword--YDID после] тех, что указаны через конфигурацию.
 
@@ -762,14 +778,14 @@ block append SpecificContent
     }).Article-Heading3
 
     p.Article-Paragraph.
-      Используйте этот #[+Term--YDID блок], если Вас по какой-либо причине Вас не&nbsp;устраивает указание ссылок на
+      Используйте этот #[+Term--YDID блок], если Вас по какой-либо причине не&nbsp;устраивает указание ссылок на
         #[+Term--YDID скрипты] через конфигурацию
-        (#[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF.configure()]), или же Вы хотите объявить скрипты
-        прямо в #[+Term--YDID тэге] #[+ImportantEntity__Code--YDID head].
-      В частности, #[+Term--YDID тэги] #[+ImportantEntity__Code--YDID script], которые будут сгенерированы при указанных
-        в конфигурации ссылках на #[+Term--YDID скрипты], #[+Keyword--YDID не]&nbsp;имеют никаких
+        (#[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF.configure({})]) или же Вы хотите объявить
+        #[+Term--YDID скрипты] прямо в #[+Term--YDID тэге] #[+ImportantEntity__Code--YDID head].
+      В частности, поскольку #[+Term--YDID тэги] #[+ImportantEntity__Code--YDID script], которые будут сгенерированы при
+        указанных в конфигурации ссылках на #[+Term--YDID скрипты], #[+Keyword--YDID не]&nbsp;имеют никаких
         #[+Term--YDID аттрибутов] #[+Keyword--YDID кроме] #[+ImportantEntity__Code--YDID src],
-        соответственно если нужны какие-то другие #[+Term--YDID аттрибуты], то добавьте #[+Term--YDID тэги]
+        то если нужны какие-то другие #[+Term--YDID аттрибуты], то добавьте #[+Term--YDID тэги]
         #[+ImportantEntity__Code--YDID script] в блок #[+ImportantEntity__Code--YDID HeadScripts] вручную:
 
     +CodeViewer--YDF
@@ -792,10 +808,10 @@ block append SpecificContent
     p.Article-Paragraph.
       #[+Keyword--YDID Обычно], #[+Term--YDID скрипты] рекомендуется добавлять в #[+Keyword--YDID конец]
         #[+Term--YDID тэга] #[+ImportantEntity__Code--YDID body], поскольку #[+Term--YDID скрипты], указанные ранее,
-        могут #[+Keyword--YDID замедлить] отрисовку (рендеринг) страницы.
+        могут #[+Keyword--YDID замедлить] отрисовку (#[+Term--YDID рендеринг]) страницы.
       Однако в некоторых случаях #[+Term--YDID скрипты] требуется добавлять именно в #[+Term--YDID тэг]
         #[+ImportantEntity__Code--YDID head], в особенности если эти сторонние скрипты для аналитики,
-        такие как #[+ImportantEntity--YDID Google Analytics]:
+        такие как #[+SecondaryEntity--YDID Google Analytics]:
 
     +CodeViewer--YDF
       +CodeViewer-Listing--YDF({ codeLanguage: CodeViewer__YDF.SupportedCodesLanguages.Pug }): :code_listing--yda
@@ -805,7 +821,7 @@ block append SpecificContent
 
           script(
             async
-            src="https://www.googletagmanager.com/gtag/js?id=G-S3L0PQFKMV"
+            src="https://www.googletagmanager.com/gtag/js?id=G-F3D8Is3NGR4S56G4EBS"
           )
 
           script.
@@ -821,19 +837,19 @@ block append SpecificContent
 
     p.Article-Paragraph.
       Данный способ указания #[+Term--YDID скриптов] #[+Keyword--YDID не]&nbsp;конфликтует с указанием таковых через
-        конфигурацию, и если #[+Term--YDID скрипты] независимы друг от друга (#[+Keyphrase--YDID в современности] это
-        #[+Keyphrase--YDID чаще всего] так, чего нельзя сказать про устаревшие сайты и приложения), то можно
-        использовать оба способа.
+        конфигурацию, и #[+Keyphrase--YDID если #[+Term--YDID скрипты] независимы друг от друга]
+        (#[+Keyphrase--YDID в современности] это #[+Keyphrase--YDID чаще всего] так, чего нельзя сказать про устаревшие
+        сайты и приложения), то можно использовать оба способа.
 
     ul.Article-UnorderedList
 
       li.
-        Используйте #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID prepend] при использовании
+        Укажите #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID prepend] при использовании
           #[+Term--YDID блока] #[+ImportantEntity__Code--YDID HeadScripts], чтобы добавить #[+Term--YDID скрипты]
           #[+Keyword--YDID перед] теми, что указаны через конфигурацию.
 
       li.
-        Используйте #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID append] при использовании
+        Укажите #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID append] при использовании
           #[+Term--YDID блока] #[+ImportantEntity__Code--YDID HeadScripts], чтобы добавить #[+Term--YDID скрипты]
           #[+Keyword--YDID после] тех, что указаны через конфигурацию.
 
@@ -857,9 +873,9 @@ block append SpecificContent
       SVG_Icon: true,
       geometricVariation: AdmonitionBlock__YDF.GeometricVariations.stickyNoteLike,
       decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.guidance
-    })
-      | Начиная с этого #[+Term--YDID блока], содержимое будет добавлено #[+Keyword--YDID внутрь] #[+Term--YDID тэга]
-      |   #[+ImportantEntity__Code--YDID body].
+    }).
+      Начиная с этого #[+Term--YDID блока], содержимое будет добавлено #[+Keyword--YDID внутрь] #[+Term--YDID тэга]
+        #[+ImportantEntity__Code--YDID body].
 
     p.Article-Paragraph.
       Добавьте внутрь этого #[+Term--YDID блока] #[+Keyword--YDID видимое] содержимое страницы.
@@ -893,10 +909,10 @@ block append SpecificContent
     }).Article-Heading3
 
     p.Article-Paragraph.
-      Согласно некоторым методологиям, фиксированно позиционированные элементы, такие как
+      Согласно некоторым методологиям, элементы с #[+Term--YDID фиксированным позиционированием], такие как
         #[+Term--YDID модальные диалоги], принято помещать #[+Keyword--YDID после] #[+Keyword__Contrast--YDID всех]
-        #[+Keyword--YDID остальных] элементов, но, разумеется, внутри #[+Term--YDID тэга]
-        #[+ImportantEntity__Code--YDID body].
+        #[+Keyword--YDID остальных] элементов (но, разумеется, внутри #[+Term--YDID тэга]
+        #[+ImportantEntity__Code--YDID body]).
       Если Вы придерживаетесь такой рекомендации, то используйте #[+Term--YDID блок]
         #[+ImportantEntity__Code--YDID EndBodyContent] — содержимое этого #[+Term--YDID блока] будет идти
         #[+Keyword--YDID сразу] после содержимого #[+ImportantEntity__Code--YDID PageContent].
@@ -922,15 +938,14 @@ block append SpecificContent
     }).Article-Heading3
 
     p.Article-Paragraph.
-
-      Используйте этот #[+Term--YDID блок], если Вас по какой-либо причине Вас не&nbsp;устраивает указание ссылок на
+      Используйте этот #[+Term--YDID блок], если Вас по какой-либо причине не&nbsp;устраивает указание ссылок на
         #[+Term--YDID скрипты] через конфигурацию
-        (#[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF.configure()]), или же Вы хотите написать скрипт
-          прямо в #[+Term--YDID тэге] #[+ImportantEntity__Code--YDID body].
-      В частности, #[+Term--YDID тэги] #[+ImportantEntity__Code--YDID script], которые будут сгенерированы при указанных
-        в конфигурации ссылках на #[+Term--YDID скрипты], #[+Keyword--YDID не]&nbsp;имеют никаких
+        (#[+ImportantEntity__Code--YDID RegularWebPageTemplate__YDF.configure({})]) или же Вы хотите объявить
+          #[+Term--YDID скрипты] прямо в #[+Term--YDID тэге] #[+ImportantEntity__Code--YDID body].
+      В частности, поскольку #[+Term--YDID тэги] #[+ImportantEntity__Code--YDID script], которые будут сгенерированы при
+        указанных в конфигурации ссылках на #[+Term--YDID скрипты], #[+Keyword--YDID не]&nbsp;имеют никаких
         #[+Term--YDID аттрибутов] #[+Keyword--YDID кроме] #[+ImportantEntity__Code--YDID src],
-        соответственно если нужны какие-то другие #[+Term--YDID аттрибуты], то добавьте #[+Term--YDID тэги]
+        то если нужны какие-то другие #[+Term--YDID аттрибуты], то добавьте #[+Term--YDID тэги]
         #[+ImportantEntity__Code--YDID script] в блок #[+ImportantEntity__Code--YDID EndBodyScripts] вручную:
 
     +CodeViewer--YDF
@@ -951,19 +966,19 @@ block append SpecificContent
 
     p.Article-Paragraph.
       Данный способ указания #[+Term--YDID скриптов] #[+Keyword--YDID не]&nbsp;конфликтует с указанием таковых через
-        конфигурацию, и если #[+Term--YDID скрипты] независимы друг от друга (#[+Keyphrase--YDID в современности] это
-        #[+Keyphrase--YDID чаще всего] так, чего нельзя сказать про устаревшие сайты и приложения), то можно
-        использовать оба способа.
+        конфигурацию, и #[+Keyphrase--YDID если #[+Term--YDID скрипты] независимы друг от друга]
+        (#[+Keyphrase--YDID в современности] это #[+Keyphrase--YDID чаще всего] так, чего нельзя сказать про устаревшие
+        сайты и приложения), то можно использовать оба способа.
 
     ul.Article-UnorderedList
 
       li.
-        Используйте #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID prepend] при использовании
+        Укажите #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID prepend] при использовании
           #[+Term--YDID блока] #[+ImportantEntity__Code--YDID EndBodyScripts], чтобы добавить #[+Term--YDID скрипты]
           #[+Keyword--YDID перед] теми, что указаны через конфигурацию.
 
       li.
-        Используйте #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID append] при использовании
+        Укажите #[+Term--YDID ключевое слово] #[+ImportantEntity__Code--YDID append] при использовании
           #[+Term--YDID блока] #[+ImportantEntity__Code--YDID EndBodyScripts], чтобы добавить #[+Term--YDID скрипты]
           #[+Keyword--YDID после] тех, что указаны через конфигурацию.
 
@@ -991,11 +1006,11 @@ block append SpecificContent
     })
 
       p.Article-Paragraph.
-        Обычно файлы с общей для нескольких страниц #[+Term--YDID разметкой], от которых осуществляются наследование
+        Обычно файлы с общей для нескольких страниц #[+Term--YDID разметкой] от которых осуществляются наследование
           конкретных страниц, в англоязычных источниках называют #[+Term--YDID layout-ами], и хотя «layout» переводится как
           «раскладка»/«компоновка», по-русски эти файлы называют #[+Term--YDID «шаблонами»].
         И англоязычный термин #[+Term--YDID «layout»], и русскоязычный термин #[+Term--YDID «шаблон»] являются
-          #[+Keyword--YDID многозначиными], потому может возникнуть путаница.
+          #[+Keyword--YDID многозначиными], потому может возникнуть путаница следует быть осторожным при их употреблении.
 
       ul.Article-UnorderedList
 
@@ -1014,7 +1029,7 @@ block append SpecificContent
             интерфейсы, даже если это не&nbsp;имеющие прямого отношения к веб-разработке
             #[+SecondaryEntity--YDID Windows Presentation Foundation] или #[+SecondaryEntity--YDID JavaFX]).
           Аналогично русскому языку, для уменьшения неоднозначности можно использовать термин
-            #[+Term--YDID «page layout»].
+            #[+Term--YDID «page layout»] по отношению к #[+Term--YDID шаблонам страниц].
 
     p.Article-Paragraph.
       Ниже представлен пример #[+Term--YDID шаблона страниц], включающий в себя #[+Term--YDID разметку] одноколоночного

@@ -1,0 +1,43 @@
+extends ../../PagesTemplates/StaticPreviewAnywherePageTemplate.pug
+
+
+block append Metadata
+
+  -
+
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: "Workbenches"
+      }
+    });
+
+
+block append TableOfContents
+
+  h1.AnywherePage-TopHeading Workbenches
+
+  h2.AnywherePage-PagesGroupHeading Assets
+
+  +PageLink({
+    label: "YDF Color Palette",
+    URI: "@Workbenches/Assets/Colors/YDF_ColorPalette.workbench",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+
+  h2.AnywherePage-PagesGroupHeading GUI Components
+
+  +PageLink({
+    label: "AdmonitionBlock",
+    URI: "@Workbenches/GUI_Components/AdmonitionBlock/AdmonitionBlock.workbench",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+  })
+
+
+  h2.AnywherePage-PagesGroupHeading Pages Templates
+
+  +PageLink({
+    label: "Static Preview Anywhere Page",
+    URI: "@Workbenches/PagesTemplates/StaticPreviewAnywherePage.workbench.pug",
+    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
+  })

@@ -25,6 +25,7 @@
     <defaultLiveTemplates file="liveTemplates/Yamato Daiwa Frontend - Vue_TypeScript.xml"/>
 
     <fileTemplateGroup implementation="com.yamato_daiwa.frontend.intellij_idea_plugin.YDF_GUI_ComponentsTemplatesGroupFactory"/>
+    <fileTemplateGroup implementation="com.yamato_daiwa.frontend.intellij_idea_plugin.PagesTemplatesTemplatesGroupFactory"/>
 
   </extensions>
 

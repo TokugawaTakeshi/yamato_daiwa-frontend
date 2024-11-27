@@ -7,17 +7,32 @@ mixin Badge--YDF(properties)
 
     const {
 
-      key,
-      value,
+      /** @var { string | undefined } */
+      keyLabel,
 
+      /** @var { string } */
+      valueLabel,
+
+      /** @var { string } [ theme = Badge__YDF.Themes.regular ] */
       theme,
+
+      /** @var { boolean } [ areThemesCSS_ClassesCommon = Badge__YDF.areThemesCSS_ClassesCommon ] */
       areThemesCSS_ClassesCommon,
+
+      /** @var { string } [ geometricVariation = Badge__YDF.GeometricVariations.regular ] */
       geometricVariation,
+
+      /** @var { Array<Badge__YDF.GeometricModifiers> } [ geometricModifiers = [] ] */
       geometricModifiers,
+
+      /** @var { string } */
       decorativeVariation,
+
+      /** @var { Array<Badge__YDF.DecorativeModifiers> } [ decorativeModifiers = [] ] */
       decorativeModifiers,
 
-      rootElementTag = "span"
+      /** @var { string } [ rootElementTag = "span" ] */
+      rootElementTag
 
     } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
@@ -27,6 +42,7 @@ mixin Badge--YDF(properties)
       mixinName: Badge__YDF.CSS_NAMESPACE
     })
 
+    /** @var { Array<string> } */
     const rootElementModifierCSS_Classes = [
 
       ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
@@ -62,11 +78,11 @@ mixin Badge--YDF(properties)
       block
 
 
-    if key
+    if keyLabel
 
-      span.Badge--YDF-Key= key
+      span.Badge--YDF-KeyLabel= keyLabel
 
-    span.Badge--YDF-Value= value
+    span.Badge--YDF-ValueLabel= valueLabel
 
 
 mixin Badge--YDF-LoadingPlaceholder(properties)
@@ -74,10 +90,19 @@ mixin Badge--YDF-LoadingPlaceholder(properties)
   -
 
     const {
+
+      /** @type { string } [ theme = Badge__YDF.Themes.regular ] */
       theme,
+
+      /** @type { boolean } [ areThemesCSS_ClassesCommon = Badge__YDF.areThemesCSS_ClassesCommon ] */
       areThemesCSS_ClassesCommon,
+
+      /** @type { string } [ geometricVariation = Badge__YDF.GeometricVariations.regular ] */
       geometricVariation,
+
+      /** @type { Array<Badge__YDF.GeometricModifiers> } [ geometricModifiers = [] ] */
       geometricModifiers
+
     } = processObjectTypeParameterOfPugMixin({
       rawParameter: properties,
       parameterNumber: 1,
@@ -91,6 +116,7 @@ mixin Badge--YDF-LoadingPlaceholder(properties)
       mixinName: `${ Badge__YDF.CSS_NAMESPACE }-LoadingPlaceholder`
     })
 
+    /** @type { Array<string> } */
     const rootElementModifierCSS_Classes = [
 
       ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({

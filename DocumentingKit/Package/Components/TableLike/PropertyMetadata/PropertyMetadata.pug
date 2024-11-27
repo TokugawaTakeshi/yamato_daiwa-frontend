@@ -3,7 +3,13 @@ include PropertyMetadata.class.pug
 
 mixin PropertyMetadata--YDF_DK(propertySpecification)
 
-  mixin ValueTypeRow(type)
+  mixin ValueMetadataRows(propertySpecification)
+
+    -
+
+      const {
+        type
+      } = propertySpecification;
 
     dt.PropertyMetadata--YDF_DK-Key= PropertyMetadata__YDF_DK.localization.type
     dd.PropertyMetadata--YDF_DK-Value(

@@ -57,13 +57,7 @@ block append SpecificContent
 
     h1.Article-Heading1 Использование не серверной стороне
 
-    +AdmonitionBlock--YDF({
-      title: "Документация ещё не готова",
-      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.guidance,
-      SVG_Icon: true
-    })
-      | Документация для этой функциональности пока не готова к публикации, однако её планируется завершить до начала
-      |   выпуска бета-версий.
+    +PageNotReadyApology--YDPD({ currentState: PageNotReadyApology__YDPD.States.initialTextNotWritten })
 
     //-
       p.Article-Paragraph

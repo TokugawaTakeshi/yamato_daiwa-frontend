@@ -1,16 +1,13 @@
-mixin ConfirmationModalDialog--YDF(properties, statesSimulations)
+mixin ConfirmationModalDialog--YDF(properties)
 
   -
 
-    properties = properties ?? {};
-    statesSimulations = statesSimulations ?? {};
-
     const {
-      title,
-      question,
+      title = "",
+      question = "",
       confirmationButtonLabel = "Yes",
       cancellationButtonLabel = "No"
-    } = properties
+    } = properties ?? {};
 
 
   +ModalDialog--YDF(
@@ -27,19 +24,19 @@ mixin ConfirmationModalDialog--YDF(properties, statesSimulations)
 
     else
 
-      .ConfirmationModalDialog--YDF-Question= question
+      p.ConfirmationModalDialog--YDF-Question= question
 
     .ConfirmationModalDialog--YDF-ActionBar
 
       +Button--YDF(
         {
           label: confirmationButtonLabel,
-          decorativeVariation: Button__YDF.DecorativeVariations.accented
+          decorativeVariation: Button__YDF.DecorativeVariations.danger
         }
-      )
+      ).ConfirmationModalDialog--YDF-ConfirmationButton
 
       +Button--YDF(
         {
           label: cancellationButtonLabel
         }
-      )
+      ).ConfirmationModalDialog--YDF-CancellingButton

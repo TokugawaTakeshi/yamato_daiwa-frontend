@@ -1,0 +1,265 @@
+extends ../../../PagesTemplates/StaticPreviewAnywherePageTemplate.pug
+
+
+block append Metadata
+
+  -
+
+    RegularWebPageTemplate__YDF.configure({
+      stylesSheetsURIs: [ "@Workbenches/PagesTemplates/StaticPreviewAnywherePage.workbench.styl" ]
+    });
+
+    NewClass.configure({
+      metadata: {
+        title: "NNN Company Home Page - Static Preview"
+      },
+      topHeading: "NNN Company Home Page - Static Preview",
+      tableOfContents: [
+        {
+
+          heading: "Open pages",
+
+          pages: [
+            {
+              label: "Top page",
+              URI: "Open/TopPage.html",
+              progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationWaiting
+            }
+          ],
+
+          sections: [
+
+            {
+
+              heading: "About",
+
+              pages: [
+
+                {
+                  label: "Profile",
+                  URI: "Open/About/ProfilePage.html",
+                  progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
+                },
+
+                {
+                  label: "History",
+                  URI: "Open/About/HistoryPage.html",
+                  progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementWaiting
+                },
+
+                {
+                  label: "President's greeting",
+                  URI: "Open/About/President_sGreetingPage.html",
+                  progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementInProgress
+                }
+
+              ]
+
+            },
+
+            {
+
+              heading: "Blog",
+
+              pages: [
+
+                {
+
+                  label: "Posts List",
+                  links: [
+                    { label: "Normal displaying", URI: "Open/Blog/PostsListPage.html" },
+                    { label: "No posts yet", URI: "Open/Blog/PostsListPage-NoPosts.html" }
+                  ],
+                  progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingInProgress
+
+                },
+
+                {
+
+                  label: "One State, Multiple Languages",
+
+                  links: [
+                    { label: "English", URI: "#" },
+                    { label: "Japanese", URI: "#" }
+                  ]
+
+                },
+
+                {
+
+                  label: "Multiple States, Multiple Languages",
+
+                  stateDependentVariations: [
+
+                    {
+
+                      label: "Bla",
+                      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingInProgress,
+
+                      localizations: [
+                        { language: "English", URI: "#" },
+                        { language: "Japanese", URI: "#" }
+                      ]
+
+                    }
+
+                  ]
+
+                }
+
+              ]
+
+            }
+
+          ]
+
+        }
+      ]
+    })
+
+
+block append TableOfContents
+
+  if NewClass.topHeading
+
+    h1.AnywherePage-TopHeading= NewClass.topHeading
+
+  nav
+
+    each element in NewClass.tableOfContents
+
+      if element.heading
+
+        h2.AnywherePage-PagesGroupHeading= element.heading
+
+      if element.pages
+
+        ul.TempNS-CardsFlow
+
+          each page in element.pages
+
+            li.TempNS-CardsFlow-Item
+
+              span.TempNS-Badge In Progress
+
+              if page.URI
+
+                a(
+                  href=page.URI
+                )= page.label
+
+      if element.sections
+
+        each section in element.sections
+
+          h3.AnywherePage-PagesSubgroupHeading= section.heading
+
+          if section.pages
+
+            ul.TempNS-CardsFlow
+
+              each page in section.pages
+
+                li.TempNS-CardsFlow-Item
+
+                  span.TempNS-Badge In Progress
+
+                  if page.URI
+
+                    a(
+                      href=page.URI
+                    )= page.label
+
+                  else if page.links
+
+                  each link in page.links
+                    span= page.label
+
+                    ul
+
+                      each link in page.links
+
+                        li
+
+                          a(
+                            href=link.URI
+                          )= link.label
+
+
+                    if link.localizations
+
+                      table
+
+                        tbody
+
+                          each localization in link.localizations
+
+                            tr
+
+                              td
+
+                                a(
+                                  href= localization.URI
+                                )= localization.language
+
+                    else
+
+                      a(
+                        href= link.URI
+                      )= link.label
+
+
+  //-
+
+
+    h3.AnywherePage-PagesSubgroupHeading Blog
+
+    +PageLinksGroup({
+      title: "Posts list",
+      linksData: [
+        { label: "Normal displaying", URI: "Open/Blog/PostsListPage.html" },
+        { label: "No posts yet", URI: "Open/Blog/PostsListPage-NoPosts.html" }
+      ],
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.improvementInProgress
+    })
+
+    +PageLink({
+      label: "Post sample",
+      URI: "Open/Blog/PostSamplePage.html",
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.fixingInProgress
+    })
+
+    h3.AnywherePage-PagesSubgroupHeading Inquiry
+
+    +PageLink({
+      label: "Inquiry form",
+      URI: "Open/InquiryPage.html",
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.customerEvaluationWaiting
+    })
+
+
+    h2.AnywherePage-PagesGroupHeading Admin panel
+
+    +PageLink({
+      label: "Post editing",
+      URI: "Admin/Blog/PostEditingPage.html",
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.specificationClarification
+    })
+
+    +PageLinksGroup({
+      title: "Analytics",
+      linksData: [
+        { label: "Normal displaying", URI: "Admin/Analytics/AnalyticsPage.html" },
+        { label: "No data yet", URI: "AdminPanel/Analytics/AnalyticsPage-NoData.html" }
+      ],
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.reviewWaiting
+    })
+
+    +PageLinksGroup({
+      title: "Inquiries list",
+      linksData: [
+        { label: "Normal displaying", URI: "Admin/Inquiries/InquiriesListPage.html" },
+        { label: "No data yet", URI: "Admin/Inquiries/InquiriesListPage-NoData.html" }
+      ],
+      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
+    })

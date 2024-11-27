@@ -41,7 +41,7 @@ providePropertyMetadataYDF_DK_Component()
       })
 
       font-weight bold
-      color: ShadesOfGray__39ColorsW3C_Palette[12]
+      color: W3C_39_ShadesOfGray--YDF[12]
 
 
       +WideContainersConfiguration()
@@ -58,7 +58,7 @@ providePropertyMetadataYDF_DK_Component()
         mustAllowWordsBreakingAnywhere: true
       })
 
-      color: ShadesOfGray__39ColorsW3C_Palette[12]
+      color: W3C_39_ShadesOfGray--YDF[12]
 
 
       +NarrowContainersConfiguration()
@@ -84,3 +84,16 @@ providePropertyMetadataYDF_DK_Component()
       li+li
 
         margin-top 4px
+
+
+    &-PolymorphicPropertyVariantsList
+
+      >li + li
+
+        border-top-width 1px
+        padding-top 8px
+
+        border-top-style solid
+        border-top-color lightgray
+
+        margin-top 8px

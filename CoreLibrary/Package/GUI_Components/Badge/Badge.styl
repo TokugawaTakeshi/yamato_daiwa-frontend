@@ -1,4 +1,5 @@
 @require "Themes/Regular/GeometricVariations/Badge-RegularTheme-RegularGeometry.styl"
+@require "Themes/Regular/GeometricVariations/Badge-RegularTheme-SmallGeometry.styl"
 
 @require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-VeryCatchyBrightDecoration.styl"
 @require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-CatchyBrightDecoration.styl"
@@ -29,7 +30,8 @@ Badge--YDF = {
         componentIndependentCSS_Class: "RegularTheme--YDF"
 
         geometricVariations: {
-          regular: Badge-RegularTheme-RegularGeometry--YDF
+          regular: Badge-RegularTheme-RegularGeometry--YDF,
+          small: Badge-RegularTheme-SmallGeometry--YDF
         },
 
         decorativeVariations: {
@@ -269,7 +271,7 @@ provideBadgeYDF_Component(
       applyMixinStoredInObjectIfItIsNotNull(variation.SVG_Icon.customDeclarations)
 
 
-    .Badge--YDF-Key
+    .Badge--YDF-KeyLabel
 
       // [ Approach ] The margins are reserved by `applyTextGeometryWithoutExtraSpaceCausedByLineHeight`.
       validateAndAssignStoredInObjectCSS_Properties({
@@ -349,7 +351,7 @@ provideBadgeYDF_Component(
 
       if options.geometricModifiers.singleLine
 
-        /{CONTEXT_SELECTOR}:not(.Badge--YDF__SingleLineGeometricModifier) .Badge--YDF-Key
+        /{CONTEXT_SELECTOR}:not(.Badge--YDF__SingleLineGeometricModifier) .Badge--YDF-KeyLabel
 
           MultilineKeyLabelStyles(mustSkipFontSizeApplying: true)
 
@@ -357,7 +359,7 @@ provideBadgeYDF_Component(
     retireFrom({
       targetElementSelector: ".Badge--YDF-SVG_Icon",
       contextSelector: CONTEXT_SELECTOR,
-      referenceElementSelector: ".Badge--YDF-Key",
+      referenceElementSelector: ".Badge--YDF-KeyLabel",
       x: extractAndValidateObjectProperties({
         targetObject: variation,
         targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
@@ -368,7 +370,7 @@ provideBadgeYDF_Component(
     })
 
 
-    .Badge--YDF-Value
+    .Badge--YDF-ValueLabel
 
       // [ Approach ] The margins are reserved by `applyTextGeometryWithoutExtraSpaceCausedByLineHeight`.
       applyIfNotNull({
@@ -419,12 +421,12 @@ provideBadgeYDF_Component(
 
       if options.geometricModifiers.singleLine
 
-        /{CONTEXT_SELECTOR}.Badge--YDF__SingleLineGeometricModifier .Badge--YDF-Value
+        /{CONTEXT_SELECTOR}.Badge--YDF__SingleLineGeometricModifier .Badge--YDF-ValueLabel
 
           font-size: cachedValidReusables.valueLabelTextSize
 
 
-        /{CONTEXT_SELECTOR}:not(.Badge--YDF__SingleLineGeometricModifier) .Badge--YDF-Value
+        /{CONTEXT_SELECTOR}:not(.Badge--YDF__SingleLineGeometricModifier) .Badge--YDF-ValueLabel
 
           MultilineValueLabelStyles()
 
@@ -438,14 +440,14 @@ provideBadgeYDF_Component(
               extracts: { spacingAfterSVG_Icon: { dotSeparatedPath: "valueLabel.spacing.afterSVG_Icon", required: true } }
             }).spacingAfterSVG_Icon
           })\
-          (".Badge--YDF-Key" {
+          (".Badge--YDF-KeyLabel" {
             x: extractAndValidateObjectProperties({
               targetObject: variation,
               targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
               extracts: { spacingAfterKeyLabel: { dotSeparatedPath: "valueLabel.spacing.afterKeyLabel", required: true } }
             }).spacingAfterKeyLabel
           }),
-      referenceElementSelector: ".Badge--YDF-Value",
+      referenceElementSelector: ".Badge--YDF-ValueLabel",
       contextSelector: selector()
     })
 
@@ -482,7 +484,7 @@ provideBadgeYDF_Component(
 
     if options.geometricModifiers.singleLine
 
-      .Badge--YDF-Key
+      .Badge--YDF-KeyLabel
 
         /.Badge--YDF__SingleLineGeometricModifier &
 
@@ -494,7 +496,7 @@ provideBadgeYDF_Component(
           word-break break-all
 
 
-      .Badge--YDF-Value
+      .Badge--YDF-ValueLabel
 
         /.Badge--YDF__SingleLineGeometricModifier &
 
@@ -544,7 +546,7 @@ provideBadgeYDF_Component(
       applyMixinStoredInObjectIfItIsNotNull(variation.SVG_Icon.customDeclarations)
 
 
-    .Badge--YDF-Key
+    .Badge--YDF-KeyLabel
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,
@@ -558,7 +560,7 @@ provideBadgeYDF_Component(
       applyMixinStoredInObjectIfItIsNotNull(variation.keyLabel.customDeclarations)
 
 
-    .Badge--YDF-Value
+    .Badge--YDF-ValueLabel
 
       validateAndAssignStoredInObjectCSS_Properties({
         targetObject: variation,

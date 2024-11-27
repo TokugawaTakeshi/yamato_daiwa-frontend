@@ -1,12 +1,12 @@
-//- TODO Correct the relative path 
-extends ../../../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPage.pug
+//- TODO Correct the relative path
+extends ../../../../node_modules/@yamato-daiwa/frontend/PagesTemplates/RegularWebPageTemplate.pug
 
 
 block append Requirements
 
   //- TODO Correct the relative paths
-  include ../../../../node_modules/@yamato-daiwa/frontend/Components.pug
-  include ../../../Galleries/Components/${COMPONENT_NAME}/${COMPONENT_NAME}Gallery.pug
+  include ../../../../node_modules/@yamato-daiwa/frontend/GUI_Components.pug
+  include ../../../Galleries/GUI_Components/${COMPONENT_NAME}/${COMPONENT_NAME}Gallery.pug
 
 
 block append Metadata
@@ -25,14 +25,16 @@ block append Metadata
       ].join("");
     }
 
-    styleSheetsURIs = [
-      "@Partials/YDF-Demos-Primer",
-      "@Partials/YDF-Demos-CommonRequirements",
-      "@Pages/Components/${COMPONENT_NAME}/${COMPONENT_NAME}GalleryPage" // TODO Correct the path
-    ];
-
-    // TODO Correct the path
-    scriptsURIs.endOfBody = [ "@CompletePages/Components/${COMPONENT_NAME}/${COMPONENT_NAME}GalleryPage" ];
+    RegularWebPageTemplate__YDF.configure({
+      stylesSheetsURIs: [
+        "@Partials/YDF-Demos-Primer",
+        "@Partials/YDF-Demos-CommonRequirements",
+        "@Pages/GUI_Components/${COMPONENT_NAME}/${COMPONENT_NAME}GalleryPage" // TODO Correct the path
+      ],
+      scriptsURIs: {
+        atEndOfBody: [ "@CompletePages/GUI_Components/${COMPONENT_NAME}/${COMPONENT_NAME}GalleryPage" ]
+      }
+    });
 
 
 block append PageContent

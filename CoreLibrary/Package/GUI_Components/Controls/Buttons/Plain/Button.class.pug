@@ -2,8 +2,25 @@
 
   class Button__YDF {
 
+    /**
+     * @type { string }
+     * @public
+     * @readonly
+     */
     static CSS_NAMESPACE = "Button--YDF";
 
+    /**
+     * @type {
+     *   Readonly<{
+     *     regular: string;
+     *     submit: string;
+     *     inputButton: string;
+     *     inputSubmit: string;
+     *     inputReset: string;
+     *   }>
+     * }
+     * @readonly
+     */
     static HTML_Types = {
       regular: "BUTTON",
       submit: "SUBMIT",
@@ -14,14 +31,33 @@
 
 
     /* ━━━ Theming ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+    /**
+     * @type { { [themeName: string]: string } }
+     * @public
+     * @description If you want to define new themes, do it only via `defineThemes` static method.
+     */
     static Themes = { regular: "REGULAR" };
 
+    /**
+     * @param { Array<string> } themesNames
+     * @return { typeof Badge__YDF }
+     * @public
+     */
     static defineThemes(themesNames) {
       return ComponentsAuxiliaries.defineThemes(themesNames, Button__YDF);
     }
 
+    /**
+     * @type { boolean } [ areThemesCSS_ClassesCommon = ComponentsAuxiliaries.areComponentsThemesCommon ]
+     * @private
+     * */
     static areThemesCSS_ClassesCommon = ComponentsAuxiliaries.areComponentsThemesCommon;
 
+    /**
+     * @returns { typeof Badge__YDF }
+     * @public
+     * */
     static considerThemesAsCommon() {
       Button__YDF.areThemesCSS_ClassesCommon = true;
       return Button__YDF;
@@ -29,16 +65,40 @@
 
 
     /* ─── Geometry ───────────────────────────────────────────────────────────────────────────────────────────────── */
+
+    /**
+     * @type { { [geometricVariationName: string]: string } }
+     * @public
+     * @description If you want to define new geometric variations, do it only via `defineGeometricVariations` static method.
+     */
     static GeometricVariations = {
       regular: "REGULAR",
       small: "SMALL",
       linkLike: "LINK_LIKE"
     };
 
+    /**
+     * @param { Array<string> } geometricVariationsNames
+     * @return { typeof Badge__YDF }
+     */
     static defineGeometricVariations(geometricVariationsNames) {
       return ComponentsAuxiliaries.defineGeometricVariations(geometricVariationsNames, Button__YDF);
     }
 
+    /**
+     * @type {
+     *   Readonly<{
+     *     pillShape: string;
+     *     squareShape: string;
+     *     squareShapeUnlessOverflowed: string;
+     *     singleLine: string;
+     *     noLeftBorderAndRoundings: string;
+     *     noRightBorderAndRoundings: string;
+     *     noRoundings: string;
+     *   }>
+     * }
+     * @readonly
+     */
     static GeometricModifiers = {
       pillShape: "PILL_SHAPE",
       squareShape: "SQUARE_SHAPE",
@@ -51,6 +111,12 @@
 
 
     /* ─── Decoration ─────────────────────────────────────────────────────────────────────────────────────────────── */
+
+    /**
+     * @type { { [decorativeVariationsName: string]: string } }
+     * @public
+     * @description If you want to define new decorative variations, do it only via `defineDecorativeVariations` static method.
+     */
     static DecorativeVariations = {
       regular: "REGULAR",
       accented: "ACCENTED",
@@ -58,17 +124,37 @@
       linkLike: "LINK_LIKE"
     };
 
+    /**
+     * @param { Array<string> } decorativeVariationsNames
+     * @return { typeof Badge__YDF }
+     */
     static defineDecorativeVariations(decorativeVariationsNames) {
       return ComponentsAuxiliaries.defineDecorativeVariations(decorativeVariationsNames, Button__YDF);
     }
 
+    /**
+     * @type {
+     *   Readonly<{
+     *     bordersDisguising: string;
+     *     noBackground: string;
+     *   }>
+     * }
+     * @readonly
+     */
     static DecorativeModifiers = {
       bordersDisguising: "BORDERS_DISGUISING",
-      noBackground: "NO_BACKGROUND"
+      noBackground: "NO_BACKGROUND",
+      noBackgroundInDefaultState: "NO_BACKGROUND_IN_DEFAULT_STATE"
     };
 
 
     /* ━━━ Properties specification ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+    /**
+     * @type { RawObjectDataProcessor.PropertiesSpecification }
+     * @public
+     * @readonly
+     * */
     static propertiesSpecification = {
 
       HTML_Type: {
@@ -81,9 +167,10 @@
       label: {
         type: RawObjectDataProcessor.ValuesTypesIDs.oneOf,
         requiredIf: {
-          predicate: properties => properties.HTML_Type === Button__YDF.HTML_Types.inputButton ||
-            properties.HTML_Type === Button__YDF.HTML_Types.inputSubmit ||
-            properties.HTML_Type === Button__YDF.HTML_Types.inputReset,
+          predicate: properties =>
+              properties.HTML_Type === Button__YDF.HTML_Types.inputButton ||
+              properties.HTML_Type === Button__YDF.HTML_Types.inputSubmit ||
+              properties.HTML_Type === Button__YDF.HTML_Types.inputReset,
           descriptionForLogging:
               "`HTML_Type` property specified with `Button__YDF.HTML_Types.inputButton`, " +
                 "`Button__YDF.HTML_Types.inputSubmit` or `Button__YDF.HTML_Types.inputReset`"
@@ -180,6 +267,6 @@
         }
       }
 
-    }
+    };
 
   }

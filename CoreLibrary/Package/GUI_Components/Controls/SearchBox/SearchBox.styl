@@ -9,8 +9,6 @@
 
     border-radius BORDER_RADIUS
 
-    background-color: TemporaryHighlighting.red.o25
-
     position relative
 
 
@@ -33,21 +31,20 @@
       })
 
       width 0 //* [ Why?! ] To provide the shrinkage in narrow containers (`min-width: 0` will not work.) */
+
       border-width 1px
       Paddings({ horizontalSymmetric: 1rem })
-      font-size 1rem
-      line-height 1
 
       border-style solid
       border-color #c5c5c5
-      color #454545;
+      color #454545
 
       flex-grow 1
 
 
       &::placeholder
 
-        color: ShadesOfGray__39ColorsW3C_Palette[24]
+        color: W3C_39_ShadesOfGray--YDF[24]
 
 
     &-Tooltip
@@ -61,7 +58,7 @@
       font-size 13px
       line-height 17px
 
-      color: ShadesOfGray__39ColorsW3C_Palette[26]
+      color: W3C_39_ShadesOfGray--YDF[26]
       background-color white
       box-shadow 0 3px 10px rgba(black, 0.3)
 

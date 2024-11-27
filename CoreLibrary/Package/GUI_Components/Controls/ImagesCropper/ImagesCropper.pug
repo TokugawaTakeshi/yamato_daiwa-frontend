@@ -1,3 +1,6 @@
+include ImagesCropper.class.pug
+
+
 mixin ImagesCropper--YDF(properties, statesSimulations)
 
   -
@@ -22,10 +25,10 @@ mixin ImagesCropper--YDF(properties, statesSimulations)
 
       img.ImagesCropper--YDF-Image(
         src="/dummy_image.jpg"
-        alt="Image to crop"
+        alt= ImagesCropper__YDF.localization.imageToCrop.alternatingText
       )
 
     +Button--YDF({
-      label: "Done",
+      label: ImagesCropper__YDF.localization.buttons.completion.label,
       decorativeVariation: Button__YDF.DecorativeVariations.accented
     }).ImagesCropper--YDF-Button

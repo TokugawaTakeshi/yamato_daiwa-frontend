@@ -26,11 +26,24 @@ mixin ${NAME}--YDF(properties, statesSimulations)
       coreElementHTML_ID,
       labelElementHTML_ID,
 
+      /** @var { string } [ theme = ${NAME}__YDF.Themes.regular ] */
       theme,
+
+      /** @var { boolean } [ areThemesCSS_ClassesCommon = ${NAME}__YDF.areThemesCSS_ClassesCommon ] */
       areThemesCSS_ClassesCommon,
+
+      /** @var { string } [ geometricVariation = ${NAME}__YDF.GeometricVariations.regular ] */
       geometricVariation,
+
+      /** @var { Array<string> } [ geometricModifiers = [] ] */
       geometricModifiers,
+
+      // TODO Delete one
+      /** @var { string } */
+      /** @var { string } [ geometricVariation = ${NAME}__YDF.DecorativeVariations.regular ] */
       decorativeVariation,
+
+      /** @var { Array<string> } [ decorativeModifiers = [] ] */
       decorativeModifiers
 
     } = processObjectTypeParameterOfPugMixin({
@@ -54,6 +67,7 @@ mixin ${NAME}--YDF(properties, statesSimulations)
       mixinName: ${NAME}__YDF.CSS_NAMESPACE
     });
 
+    /** @var { Array<string> } */
     const rootElementModifierCSS_Classes = [
 
       ...disabled ? [ `${ ${NAME}__YDF.CSS_NAMESPACE }__DisabledState` ] : [],

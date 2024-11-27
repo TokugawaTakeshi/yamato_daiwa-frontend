@@ -5,19 +5,16 @@ mixin ModalDialog--YDF(properties, statesSimulations)
 
   -
 
-    properties = properties ?? {}
-    statesSimulations = statesSimulations ?? {}
-
     const {
       type,
       title,
       bodyAdditionalCSS_Classes,
-      noDismissingButton = false,
-    } = properties
+      noDismissingButton = false
+    } = properties ?? {};
 
     const {
-      mustDisplay = true
-    } = statesSimulations
+      displaying = false
+    } = statesSimulations ?? {};
 
     const rootElementModifierCSS_Classes = [];
 
@@ -41,29 +38,24 @@ mixin ModalDialog--YDF(properties, statesSimulations)
 
   //- [ Reference ] https://www.w3.org/WAI/ARIA/apg/example-index/dialog-modal/dialog
 
-  if mustDisplay
+  .ModalDialog--YDF(
+    role="dialog"
+    tabindex="-1"
+    hidden=(displaying ? null : "")
+    class= rootElementModifierCSS_Classes
+  )&attributes(attributes)
 
-    .ModalDialog--YDF(
-      role="dialog"
-      tabindex="-1"
-      class= rootElementModifierCSS_Classes
-    )&attributes(attributes)
+    .ModalDialog--YDF-Body(
+      role="document"
+      class=bodyAdditionalCSS_Classes
+    )
 
-      .ModalDialog--YDF-Body(
-        role="document"
-        class=bodyAdditionalCSS_Classes
-      )
+      .ModalDialog--YDF-Header
 
-        if title || !noDismissingButton
+        .ModalDialog--YDF-Title= title
 
-          .ModalDialog--YDF-Header
+        if !noDismissingButton
 
-            if title
+          +ClosingButton--YDF.ModalDialog--YDF-DismissingButton
 
-              .ModalDialog--YDF-Title= title
-
-            if !noDismissingButton
-
-              +ClosingButton--YDF.ModalDialog--YDF-DismissingButton
-
-        block
+      block

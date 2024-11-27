@@ -7,13 +7,32 @@ mixin AdmonitionBlock--YDF(properties)
 
     const {
 
+      /** @var { string | undefined } */
       title,
+
+      /** @var {
+       *    {
+       *      innerElementID: string;
+       *      SVG_ElementAttributes: { [attibuteName: string]: string };
+       *    } |
+       *    undefined
+       *  }
+       * */
       SVG_Icon,
+
+      /** @var { boolean } [ dismissible = false ]  */
       dismissible,
 
+      /** @var { string } [ theme = AdmonitionBlock__YDF.Themes.regular ] */
       theme,
+
+      /** @var { boolean } [ areThemesCSS_ClassesCommon = AdmonitionBlock__YDF.areThemesCSS_ClassesCommon ] */
       areThemesCSS_ClassesCommon,
+
+      /** @var { string } [ geometricVariation = AdmonitionBlock__YDF.GeometricVariations.regular ] */
       geometricVariation,
+
+      /** @var { string } */
       decorativeVariation
 
     } = processObjectTypeParameterOfPugMixin({
@@ -24,6 +43,7 @@ mixin AdmonitionBlock--YDF(properties)
       mixinName: AdmonitionBlock__YDF.CSS_NAMESPACE
     });
 
+    /** @type { Array<string> } */
     const rootElementModifierCSS_Classes = [
 
       ...ComponentsAuxiliaries.addThemeCSS_ClassToArrayIfMust({
@@ -47,7 +67,10 @@ mixin AdmonitionBlock--YDF(properties)
 
     ];
 
+    /** @type { string | undefined } */
     let INSTANCE_ID;
+
+    /** @type { string | undefined } */
     let TITLE_HTML_ID;
 
     if (title) {

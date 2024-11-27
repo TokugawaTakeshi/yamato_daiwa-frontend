@@ -95,7 +95,7 @@ coreLibrary:
 
       YDF_Configuration:
 
-        $heading: "Конфигурация"
+        $heading: "<code>YDF_Configuration</code> — Конфигурация стилей YDF"
 
         fontsStacks:
 
@@ -233,9 +233,9 @@ coreLibrary:
 
           $heading: "Кнопки"
 
-frameworksIntegrations:
+adaptationsToJavaScriptFrameworks:
 
-  $heading: "Адаптации сторонних фреймворков"
+  $heading: "Адаптации для JavaScript-фреймворков"
 
   vue:
 

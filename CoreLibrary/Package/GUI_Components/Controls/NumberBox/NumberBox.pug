@@ -4,6 +4,7 @@ include NumberBox.class.pug
 //- [ Reference ] https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role
 //- [ Reference ] https://www.w3.org/WAI/ARIA/apg/patterns/spinbutton/
 //- [ Reference ] https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/
+//- [ Reference ] https://mui.com/base-ui/react-number-input/?srsltid=AfmBOooWipxvbIVUgd6ZjoNc7yPpFZBdzuvoRgfkvKXqGXmiM5ofLGww
 mixin NumberBox--YDF(properties, statesSimulations)
 
   -
@@ -12,32 +13,70 @@ mixin NumberBox--YDF(properties, statesSimulations)
 
     const {
 
+      /** @var { string | undefined } */
       label,
+
+      /** @var { string | undefined } */
       accessibilityGuidance,
+
+      /** @var { string | undefined } */
       externalLabelHTML_ID,
+
+      /** @var { string | undefined } */
       guidance,
+
+      /** @var { string | undefined } */
       placeholder,
 
+      /** @var { number | string } [ initialValue = 0 ] Could be something like "{{ foo }}" in the MVC case. */
       initialValue,
 
+      /** @var { boolean } [ disabled = false ] */
       disabled,
+
+      /** @var { boolean } [ readonly = false ] */
       readonly,
 
+      /** @var { boolean } [ readonly = false ] */
       required,
+
+      /** @var { boolean } [ mustDisplayAppropriateBadgeIfInputIsRequired = false ] */
       mustDisplayAppropriateBadgeIfInputIsRequired,
+
+      /** @var { boolean } [ mustDisplayAppropriateBadgeIfInputIsOptional = false ] */
       mustDisplayAppropriateBadgeIfInputIsOptional,
+
+      /** @var { boolean } [ mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge = false ] */
       mustAddInvisibleBadgeForHeightEqualizingWhenNoBadge,
+
+      /** @var { number } [ step = 1 ] */
       step,
+
+      /** @var { number } [ minimalValue = -Number.MIN_SAFE_INTEGER ] */
       minimalValue,
+
+      /** @var { number } [ maximalValue = -Number.MAX_SAFE_INTEGER ] */
       maximalValue,
 
+      /** @var { string | undefined } */
       nativeInputElementHTML_ID,
+
+      /** @var { string | undefined } */
       labelElementHTML_ID,
 
+      /** @var { string } [ theme = NumberBox__YDF.Themes.regular ] */
       theme,
+
+      /** @var { boolean } [ areThemesCSS_ClassesCommon = NumberBox__YDF.areThemesCSS_ClassesCommon ] */
       areThemesCSS_ClassesCommon,
+
+      /** @var { string } [ geometricVariation = NumberBox__YDF.GeometricVariations.regular ] */
       geometricVariation,
+
+      /** @var { NumberBox__YDF.Orientations } [ geometricVariation = NumberBox__YDF.Orientations.horizontal ] */
       orientation,
+
+      /** @var { string } [ decorativeVariation = NumberBox__YDF.DecorativeVariations.regular ] */
       decorativeVariation
 
     } = processObjectTypeParameterOfPugMixin({
@@ -49,10 +88,19 @@ mixin NumberBox--YDF(properties, statesSimulations)
     });
 
     const {
+
+      /** @var { boolean } [ invalidInputHighlightingIfAnyValidationErrorsMessages = false ] */
       invalidInputHighlightingIfAnyValidationErrorsMessages,
+
+      /** @var { boolean } [ validValueHighlightingIfNoValidationErrorsMessages = false ] */
       validValueHighlightingIfNoValidationErrorsMessages,
+
+      /** @var { Array<string> | boolean } [ validationErrorsMessages = false ] */
       validationErrorsMessages,
+
+      /** @var { Array<{ ID: string; message: string; }> | boolean } [ asynchronousValidationsStatuses = false ] */
       asynchronousValidationsStatuses
+
     } = processObjectTypeParameterOfPugMixin({
       rawParameter: statesSimulations,
       parameterNumber: 2,
@@ -62,10 +110,12 @@ mixin NumberBox--YDF(properties, statesSimulations)
     });
 
     /* [ Theory ] In negative value case, the minus sign must be respected. */
+    /* @type { number } */
     const maximalCharactersCount = Math.max(
       (String(minimalValue)).length + (minimalValue < 0 ? 1 : 0), String(maximalValue).length
     );
 
+    /* @type { Array<string> } */
     const rootElementModifierCSS_Classes = [
 
       ...disabled ? [ `${ NumberBox__YDF.CSS_NAMESPACE }__DisabledState` ] : [],
@@ -130,6 +180,7 @@ mixin NumberBox--YDF(properties, statesSimulations)
 
     +Button--YDF({
       HTML_Type: Button__YDF.HTML_Types.regular,
+      label: "▲",
       accessibilityGuidance: NumberBox__YDF.localization.buttons.incrementing.generateAccessibilityGuidance({ step }),
       disabled: disabled || readonly,
       theme: NumberBox__YDF.selfAndChildrenComponentsThemesCorrespondence.button[theme],
@@ -143,7 +194,7 @@ mixin NumberBox--YDF(properties, statesSimulations)
     ) ▴
 
     input.NumberBox--YDF-NativeInput(
-      type="text"
+      type="number"
       autocomplete="off"
       spellcheck="false"
       value=initialValue
@@ -165,10 +216,10 @@ mixin NumberBox--YDF(properties, statesSimulations)
       disabled: disabled || readonly,
       theme: NumberBox__YDF.selfAndChildrenComponentsThemesCorrespondence.button[theme],
       geometricVariation: NumberBox__YDF.selfAndChildrenComponentsGeometricVariationsCorrespondence.button[geometricVariation],
-      geometricModifiers: [ Button__YDF.GeometricModifiers.squareShape ],
+      geometricModifiers: [ Button__YDF.GeometricModifiers.noTopBorderAndRoundings ],
       decorativeVariation: NumberBox__YDF.selfAndChildrenComponentsDecorativeVariationsCorrespondence.button[decorativeVariation]
     }).NumberBox--YDF-Button(
       aria-controls=nativeInputElementHTML_ID
       tabindex="-1"
       data-button-decrementing
-    ) ▾
+    )

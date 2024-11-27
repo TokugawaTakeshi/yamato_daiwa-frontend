@@ -15,7 +15,6 @@ mixin BadgeGallery
     const todayDate__localized__stringified = new Date().toLocaleDateString();
 
 
-
   h1.Heading1(
     class=(BadgeGalleryOptions.mustVisuallyHideTopHeading ? "YDF_Gallery-InvisibleHeading": [])
   ) Badge Component Demos
@@ -32,216 +31,198 @@ mixin BadgeGallery
       themes: Badge__YDF.Themes,
       geometricVariations: Badge__YDF.GeometricVariations,
       decorativeVariations: Badge__YDF.DecorativeVariations,
-      decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-BadgesTwoColumnsTable" ],
+      decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-TwoColumnsTable" ],
       iterationData: themeShowcaseCurrentIterationData
     })
       +Badge--YDF({
-        value: "Value",
+        valueLabel: "Value",
         theme: themeShowcaseCurrentIterationData.theme.value,
         geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
         decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
       })
 
-  //-
-    //- ━━━ Keys and Values ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.keysAndValues]
 
-      h2.Heading2(
+  //- ━━━ Keys and Values ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.keysAndValues]
+
+    h2.Heading2(
+      class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+    ) Keys and Values
+
+    +ThemesShowcase--YDF({
+      themes: Badge__YDF.Themes,
+      geometricVariations: Badge__YDF.GeometricVariations,
+      decorativeVariations: Badge__YDF.DecorativeVariations,
+      decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-TwoColumnsTable" ],
+      iterationData: themeShowcaseCurrentIterationData
+    })
+      +Badge--YDF({
+        keyLabel: "Key",
+        valueLabel: "Value",
+        theme: themeShowcaseCurrentIterationData.theme.value,
+        geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+        decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+      })
+
+
+  //- ━━━ Long Labels ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.longLabels]
+
+    h2.Heading2(
+      class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+    ) Long Labels
+
+    .BadgeGallery-LinearFlow.BadgeGallery-LinearFlow__LimitedChildrenMaximalWidth
+
+      +Badge--YDF({
+        keyLabel: textOverflowSafetyTest,
+        valueLabel: textOverflowSafetyTest,
+        decorativeVariation: Badge__YDF.DecorativeVariations.achromaticPastel
+      })
+
+
+  //- ━━━ Icons, Keys and Values ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.iconsAndKeysAndValues]
+
+    h2.Heading2(
+      class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+    ) Icons, Keys and Values
+
+    +ThemesShowcase--YDF({
+      themes: Badge__YDF.Themes,
+      geometricVariations: Badge__YDF.GeometricVariations,
+      decorativeVariations: Badge__YDF.DecorativeVariations,
+      decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-TwoColumnsTable" ],
+      iterationData: themeShowcaseCurrentIterationData
+    })
+      +Badge--YDF({
+        keyLabel: "Date",
+        valueLabel: todayDate__localized__stringified,
+        theme: themeShowcaseCurrentIterationData.theme.value,
+        geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+        decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+      }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
+
+
+  //- ━━━ Icons and Values ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.iconsAndValues]
+
+    h2.Heading2(
+      class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+    ) Icons and Values
+
+    +ThemesShowcase--YDF({
+      themes: Badge__YDF.Themes,
+      geometricVariations: Badge__YDF.GeometricVariations,
+      decorativeVariations: Badge__YDF.DecorativeVariations,
+      decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-TwoColumnsTable" ],
+      iterationData: themeShowcaseCurrentIterationData
+    })
+      +Badge--YDF({
+        valueLabel: todayDate__localized__stringified,
+        theme: themeShowcaseCurrentIterationData.theme.value,
+        geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+        decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+      }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon(aria-label="Date")
+
+
+  //- ━━━ Geometric Modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  if BadgeGalleryOptions.mustRenderGeometricModifiersSection
+
+    h2.Heading2(
+      class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+    ) Geometric Modifiers
+
+    //- ─── Pill Shape ─────────────────────────────────────────────────────────────────────────────────────────────────
+    if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.pillShapeGeometricModifier]
+
+      h3.Heading3(
         class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-      ) Keys and Values
+      ) Pill Shape
 
       +ThemesShowcase--YDF({
         themes: Badge__YDF.Themes,
         geometricVariations: Badge__YDF.GeometricVariations,
         decorativeVariations: Badge__YDF.DecorativeVariations,
-        decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-BadgesTwoColumnsTable" ],
+        decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-TwoColumnsTable" ],
         iterationData: themeShowcaseCurrentIterationData
       })
-
-        dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIterationData.decorativeVariation.key }`
-        dd
-          +Badge--YDF({
-            key: "Key",
-            value: "Value",
-            theme: themeShowcaseCurrentIterationData.theme.value,
-            geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-            decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-          })
+        +Badge--YDF({
+          valueLabel: todayDate__localized__stringified,
+          geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+          geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ],
+          decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
+        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon(aria-label="Date")
 
 
-    //- ━━━ Long Labels ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.longLabels]
+    //- ─── Single Line ────────────────────────────────────────────────────────────────────────────────────────────────
+    if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.singleLineGeometricModifier]
 
-      h2.Heading2(
+      h3.Heading3(
         class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-      ) Long Labels
+      ) Single Line
 
-      .BadgeGallery-BadgesFlow.BadgeGallery-BadgesFlow__LimitedChildrenMaximalWidth
+      .BadgeGallery-LinearFlow.BadgeGallery-LinearFlow__LimitedChildrenMaximalWidth
 
         +Badge--YDF({
-          key: textOverflowSafetyTest,
-          value: textOverflowSafetyTest,
+          keyLabel: textOverflowSafetyTest,
+          valueLabel: textOverflowSafetyTest,
+          geometricModifiers: [ Badge__YDF.GeometricModifiers.singleLine ],
           decorativeVariation: Badge__YDF.DecorativeVariations.achromaticPastel
         })
 
 
-    //- ━━━ Icons, Keys and Values ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.iconsAndKeysAndValues]
+  //- ━━━ Decorative Modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  if BadgeGalleryOptions.mustRenderDecorativeModifiersSection
 
-      h2.Heading2(
+    h2.Heading2(
+      class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
+    ) Decorative Modifiers
+
+
+    //- ─── Borders Disguising ─────────────────────────────────────────────────────────────────────────────────────────
+    if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.bordersDisguisingDecorativeModifier]
+
+      h3.Heading3(
         class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-      ) Icons, Keys and Values
+      ) Borders Disguising
 
       +ThemesShowcase--YDF({
         themes: Badge__YDF.Themes,
         geometricVariations: Badge__YDF.GeometricVariations,
         decorativeVariations: Badge__YDF.DecorativeVariations,
-        decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-BadgesTwoColumnsTable" ],
+        decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-TwoColumnsTable" ],
         iterationData: themeShowcaseCurrentIterationData
       })
-
-        dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIterationData.decorativeVariation.key }`
-        dd
-          +Badge--YDF({
-            key: "Date",
-            value: todayDate__localized__stringified,
-            theme: themeShowcaseCurrentIterationData.theme.value,
-            geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-            decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
+        +Badge--YDF({
+          valueLabel: todayDate__localized__stringified,
+          geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+          decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value,
+          decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ]
+        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon(aria-label="Date")
 
 
-    //- ━━━ Icons and Values ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.iconsAndValues]
+    //- ─── No Background ──────────────────────────────────────────────────────────────────────────────────────────────
+    if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.noBackgroundDecorativeModifier]
 
-      h2.Heading2(
+      h3.Heading3(
         class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-      ) Icons and Values
+      ) No Background
 
       +ThemesShowcase--YDF({
         themes: Badge__YDF.Themes,
         geometricVariations: Badge__YDF.GeometricVariations,
         decorativeVariations: Badge__YDF.DecorativeVariations,
-        decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-BadgesTwoColumnsTable" ],
+        skipDecorativeVariationIf: iterationData => iterationData.decorativeVariation.key.includes("Bright"),
+        decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-TwoColumnsTable" ],
         iterationData: themeShowcaseCurrentIterationData
       })
-
-        dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIterationData.decorativeVariation.key }`
-        dd
-          +Badge--YDF({
-            value: todayDate__localized__stringified,
-            theme: themeShowcaseCurrentIterationData.theme.value,
-            geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-            decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-          }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
-
-
-    //- ━━━ Geometric Modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    if BadgeGalleryOptions.mustRenderGeometricModifiersSection
-
-      h2.Heading2(
-        class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-      ) Geometric Modifiers
-
-      //- ─── Pill Shape ─────────────────────────────────────────────────────────────────────────────────────────────────
-      if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.pillShapeGeometricModifier]
-
-        h3.Heading3(
-          class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-        ) Pill Shape
-
-        +ThemesShowcase--YDF({
-          themes: Badge__YDF.Themes,
-          geometricVariations: Badge__YDF.GeometricVariations,
-          decorativeVariations: Badge__YDF.DecorativeVariations,
-          decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-BadgesTwoColumnsTable" ],
-          iterationData: themeShowcaseCurrentIterationData
-        })
-
-          dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIterationData.decorativeVariation.key }`
-          dd
-            +Badge--YDF({
-              value: "Value",
-              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-              geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ],
-              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value
-            }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
-
-
-      //- ─── Single Line ────────────────────────────────────────────────────────────────────────────────────────────────
-      if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.singleLineGeometricModifier]
-
-        h3.Heading3(
-          class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-        ) Single Line
-
-        .BadgeGallery-BadgesFlow.BadgeGallery-BadgesFlow__LimitedChildrenMaximalWidth
-
-          +Badge--YDF({
-            key: textOverflowSafetyTest,
-            value: textOverflowSafetyTest,
-            geometricModifiers: [ Badge__YDF.GeometricModifiers.singleLine ],
-            decorativeVariation: Badge__YDF.DecorativeVariations.achromaticPastel
-          })
-
-
-    //- ━━━ Decorative Modifiers ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-    if BadgeGalleryOptions.mustRenderDecorativeModifiersSection
-
-      h2.Heading2(
-        class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-      ) Decorative Modifiers
-
-
-      //- ─── Borders Disguising ─────────────────────────────────────────────────────────────────────────────────────────
-      if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.bordersDisguisingDecorativeModifier]
-
-        h3.Heading3(
-          class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-        ) Borders Disguising
-
-        +ThemesShowcase--YDF({
-          themes: Badge__YDF.Themes,
-          geometricVariations: Badge__YDF.GeometricVariations,
-          decorativeVariations: Badge__YDF.DecorativeVariations,
-          decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-BadgesTwoColumnsTable" ],
-          iterationData: themeShowcaseCurrentIterationData
-        })
-
-          dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIterationData.decorativeVariation.key }`
-          dd
-            +Badge--YDF({
-              value: "Value",
-              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value,
-              decorativeModifiers: [ Badge__YDF.DecorativeModifiers.bordersDisguising ]
-            }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
-
-
-      //- ─── No Background ──────────────────────────────────────────────────────────────────────────────────────────────
-      if BadgeGalleryOptions.partialsRenderingFlags[BadgeGalleryOptions.Partials.noBackgroundDecorativeModifier]
-
-        h3.Heading3(
-          class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
-        ) No Background
-
-        +ThemesShowcase--YDF({
-          themes: Badge__YDF.Themes,
-          geometricVariations: Badge__YDF.GeometricVariations,
-          decorativeVariations: Badge__YDF.DecorativeVariations,
-          skipDecorativeVariationIf: iterationData => iterationData.decorativeVariation.key.includes("Bright"),
-          decorativeVariationsWrapperAdditionalCSS_Classes: [ "BadgeGallery-BadgesTwoColumnsTable" ],
-          iterationData: themeShowcaseCurrentIterationData
-        })
-
-          dt=`Badge__YDF.DecorativeVariations.${ themeShowcaseCurrentIterationData.decorativeVariation.key }`
-          dd
-            +Badge--YDF({
-              value: "Value",
-              geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
-              decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value,
-              decorativeModifiers: [ Badge__YDF.DecorativeModifiers.noBackground ]
-            }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon
+        +Badge--YDF({
+          valueLabel: todayDate__localized__stringified,
+          geometricVariation: themeShowcaseCurrentIterationData.geometricVariation.value,
+          decorativeVariation: themeShowcaseCurrentIterationData.decorativeVariation.value,
+          decorativeModifiers: [ Badge__YDF.DecorativeModifiers.noBackground ]
+        }): +Calendar--YDF_Icon.Badge--YDF-SVG_Icon(aria-label="Date")
 
 
     //- ━━━ Loading Placeholder ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -251,7 +232,7 @@ mixin BadgeGallery
         class=(BadgeGalleryOptions.mustVisuallyHideAllHeadings ? "YDF_Gallery-InvisibleHeading" : [])
       ) Loading Placeholder
 
-      .BadgeGallery-BadgesFlow
+      .BadgeGallery-LinearFlow
 
         each geometricVariation in Object.values(Badge__YDF.GeometricVariations)
 

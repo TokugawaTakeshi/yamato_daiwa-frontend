@@ -50,13 +50,7 @@ block append SpecificContent
 
     h1.Article-Heading1 Usage on server side
 
-    +AdmonitionBlock--YDF({
-      title: "This page is under construction",
-      decorativeVariation: AdmonitionBlock__YDF.DecorativeVariations.guidance,
-      SVG_Icon: true
-    })
-      | Apologies, but this page is currently being worked on.
-      | Rest assured, it will be completed during the alpha versions.
+    +PageNotReadyApology--YDPD({ currentState: PageNotReadyApology__YDPD.States.initialTextNotWritten })
 
     //-
       p.Article-Paragraph

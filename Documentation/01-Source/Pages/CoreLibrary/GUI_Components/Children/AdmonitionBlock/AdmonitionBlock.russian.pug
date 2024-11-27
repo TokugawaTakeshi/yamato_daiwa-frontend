@@ -52,6 +52,8 @@ block append SpecificContent
     //- ━━━ AdmonitionBlock ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h1.Article-Heading1!= topHeading
 
+    +PageNotReadyApology--YDPD({ currentState: PageNotReadyApology__YDPD.States.initialTextNotWritten })
+
     +WebPageViewer--YDF({
       URI: "$Demos:CorePackage/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage.html",
       title: "Примеры использования компонента «AdmonitionBlock» " +
@@ -218,6 +220,7 @@ block append SpecificContent
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 
+    //- TODO < Фреймворки (ещё не завершены!) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     //- ─── SVG-иконка (свойство `SVG_Icon`) ───────────────────────────────────────────────────────────────────────────
     +Heading--YDF({
       level: 5,
@@ -368,8 +371,7 @@ block append SpecificContent
             Короткий ответ: #[+Keyword--YDID никак] — из-за того самого зазора, о котором выше шла речь.
             Придётся либо модифицировать #[+Term--YDID SVG-код] иконок с целью сделать им один и тот же зазор
               (или убрать его), либо регулировать внешнюю геометрию каждой иконки индивидуальными #[+Term--YDID стилями].
-
-
+    //- TODO > Фреймворки (ещё не завершены!) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
     //- ─── Кнопки ─────────────────────────────────────────────────────────────────────────────────────────────────────
     +Heading--YDF({

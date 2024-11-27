@@ -380,3 +380,164 @@ block append SpecificContent
     p.Article-Paragraph.
       #[+ImportantEntity__Code--YDID ShadesOfGray__39ColorsW3C_Palette]#[+Term--YDID 配列]は
         #[+ImportantEntity__Code--YDID W3C_39_ShadesOfGray--YDF]に#[+Keyword--YDID 名前変更]された。
+
+
+    h5.Article-Heading5 コア
+    h6.Article-Heading6 コアの変数をコンフィグレーションオブジェクトへの置き換え
+
+    p.Article-Paragraph
+      | 次の#[+Term--YDID 基本変数]（バージョン#[+ImportantEntity--YDID 1.X]には此の様に呼ばれていた）は
+      +Link--YDF({
+        internalURI: localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.YDF_Configuration.$URI
+      }) YDF_Configurationコンフィグレーションオブジェクト
+      | に置き換えられたが、下記の理由で削除された。
+
+    dl.Article-DescriptionList
+
+      dt MAIN_FONT_STACK
+      dd
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              fontsStacks.$children.
+              main.$URI
+        }) YDF_Configuration.fontsStacks.main
+        | に置き換え済み
+
+      dt MAIN_SANS_SERIF_FONT_STACK
+      dd
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              fontsStacks.$children.
+              mainSansSerif.$URI
+        }) YDF_Configuration.fontsStacks.mainSansSerif
+        | に置き換え済み
+
+      dt MAIN_SERIF_FONT_STACK
+      dd
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              fontsStacks.$children.
+              mainSerif.$URI
+        }) YDF_Configuration.fontsStacks.mainSerif
+        | に置き換え済み
+
+      dt MAIN_MONOSPACED_FONT_STACK
+      dd
+        +Link--YDF({
+          internalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              fontsStacks.$children.
+              mainMonospaced.$URI
+        }) YDF_Configuration.fontsStacks.mainMonospaced
+        | に置き換え済み
+
+
+      dt BASIC_FONT_SIZE
+      dd
+        +Link--YDF({
+          endorsedExternalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              textGeometry.$children.
+              basicFontSize.$URI
+        }) YDF_Configuration.textGeometry.basicFontSize
+        | に置き換え済み
+
+      dt BASIC_LINE_HEIGHT
+      dd
+        +Link--YDF({
+          endorsedExternalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              textGeometry.$children.
+              basicLineHeight.$URI
+        }) YDF_Configuration.textGeometry.basicLineHeight
+        | に置き換え済み
+
+
+      dt BASIC_LINE_HEIGHT_IN_MULTILINE_TEXT_BLOCKS
+      dd
+        +Link--YDF({
+          endorsedExternalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              textGeometry.$children.
+              basicLineHeightInMultilineTextBlocks.$URI
+        }) YDF_Configuration.textGeometry.basicLineHeightInMultilineTextBlocks
+        | に置き換え済み
+
+      dt BASIC_FONT_SIZE_IN_MULTILINE_TEXT_BLOCKS
+      dd.
+        #[+ImportantEntity--YDID YDF]#[+Keyword--YDID 内]には
+          #[+ImportantEntity__Code--YDID YDF_Configuration.textGeometry.basicFontSize]に加えて複数行の本文系予想には
+          追加の活字大小を定義する必要は無い事になったので削除された。
+
+      dt BEM_ELEMENT_SEPARATOR
+      dd #[+ImportantEntity--YDID YDF]#[+Keyword--YDID 内]には使用されなく成ったので削除された
+
+      dt BEM_MODIFIER_SEPARATOR
+      dd #[+ImportantEntity--YDID YDF]#[+Keyword--YDID 内]には使用されなく成ったので削除された
+
+      dt ZIndexes
+      dd
+        +Link--YDF({
+          endorsedExternalURI: localizedRouting.coreLibrary.$children.
+              styles.$children.
+              kernel.$children.
+              YDF_Configuration.$sectioning.
+              properties.$children.
+              zIndexes.$URI
+        }) YDF_Configuration.zIndexes
+        | に置き換え済み
+
+    dl.Article-DescriptionList
+
+      dt コンフィグレーションオブジェクトへの置き換え理由
+      dd.
+        #[+Term--YDID 変数名]が非常に意味も広いし、#[+ImportantEntity--YDID YDF]から来る事には何も指していたなかった。
+        二つ目の問題だけだと、ベンターポストフィックスを追加されば（例えば、#[+SecondaryEntity__Code--YDID MAIN_SANS_SERIF_FONT_STACK]を
+          #[+SecondaryEntity__Code--YDID MAIN_SANS_SERIF_FONT_STACK--YDF]にする）解決だが、コンフィグレーションの保管には
+          #[+Keyword--YDID 単一の]#[+Term--YDID オブジェクト]の方が良い。
+
+      dt 貴方のコードが編集が必要に成る条件
+      dd 上記の#[+Term--YDID 変数]の中から少なくとも一件を#[+Keyword--YDID 直接]利用されているまま
+
+      dt 対策
+      dd
+
+        ul.Article-UnorderedList
+
+          li #[+Term--YDID 基本変数]を以前の名前の儘で続けたい場合、望ましい値で自力で定義すると良い。
+
+          li.
+            以前#[+Term--YDID 基本変数]の値を変えた事が有ったら、代わりに#[+ImportantEntity__Code--YDID YDF_Configuration]
+              #[+Term--YDID コンフィグレーションオブジェクト]の該当している#[+Term--YDID プロパティ]を上書きすれば良い。
+
+          li.
+            #[+ImportantEntity__Code--YDID YDF_Configuration]を今迄の#[+Term--YDID 基本変数]の代わりに使っても良いなら、
+              #[+Term--YDID 基本変数]がアクセスされる全ヵ所で#[+ImportantEntity__Code--YDID YDF_Configuration]
+              #[+Term--YDID コンフィグレーションオブジェクト]の該当している#[+Term--YDID プロパティ]に置き換えれば良い。
+            とは言え、「#[+ImportantEntity--YDID YDF]」が入っている名前から分かる通り、当ライブラリは貴方のプロジェクトで補助手段に過ぎない。
+            それで、特殊なデザインの場合、此れの設定を#[+ImportantEntity--YDID YDF]と#[+Keyword--YDID 別当に]定義するべきで、
+              #[+ImportantEntity__Code--YDID YDF_Configuration]のプロパティを当設定に参照させれば良い。

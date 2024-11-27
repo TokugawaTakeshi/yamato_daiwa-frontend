@@ -43,12 +43,15 @@ abstract class InputtedValueValidation {
 
   public validate(
     rawValue: unknown,
-    options: Readonly<{
-      mustPostponeAsynchronousValidation: boolean;
+    {
+      mustPostponeAsynchronousValidation = false,
+      asynchronousChecksCallback,
+      messagesOfExternallyDetectedValidationErrors = []
+    }: Readonly<{
+      mustPostponeAsynchronousValidation?: boolean;
       asynchronousChecksCallback?: InputtedValueValidation.AsynchronousChecks.Callback;
-    }> = {
-      mustPostponeAsynchronousValidation: false
-    }
+      messagesOfExternallyDetectedValidationErrors?: ReadonlyArray<string>;
+    }> = {}
   ): InputtedValueValidation.Result {
 
     const isInputRequired: boolean = this.isInputRequired();
@@ -63,7 +66,7 @@ abstract class InputtedValueValidation {
     }
 
 
-    const validationErrorsMessages: Array<string> = [];
+    const validationErrorsMessages: Array<string> = [ ...messagesOfExternallyDetectedValidationErrors ];
 
     for (const staticValidationRule of this.staticRules) {
 
@@ -115,8 +118,8 @@ abstract class InputtedValueValidation {
 
     const validationResult: InputtedValueValidation.Result = { isValid: true };
 
-    if (!options.mustPostponeAsynchronousValidation) {
-      this.executeAsynchronousChecksIfAny(rawValue, validationResult, options.asynchronousChecksCallback);
+    if (!mustPostponeAsynchronousValidation) {
+      this.executeAsynchronousChecksIfAny(rawValue, validationResult, asynchronousChecksCallback);
     }
 
 
