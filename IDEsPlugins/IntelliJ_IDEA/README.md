@@ -25,31 +25,27 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 - **dius** — Autocomplete imitator for [`DummyImagesURIs` enumeration](https://frontend.yamato-daiwa.com/CoreLibrary/Markup/Functionality/InlineJavaScript/Assets/DummyImagesURIs/DummyImagesURIs.english.html) 
 
 
-#### Mixins
-
-[//]: # (=== TODO < Update will required ==============================================================================)
-- **pl** — Live template for [`PageLink` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelink)
-- **plg** — Live template for [`PagesLinksGroup` mixin](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/PagesTemplates/StaticPreviewAnywherePage/StaticPreviewAnywherePage.md#pagelinksgroup)
-
-[//]: # (=== TODO Update will required > =============================================================================)
-
 #### GUI Components
 
-- **AdmonitionBlock--YDF**, alias: **ab-ydf** — Inserts the examples of 
-  [AdmonitionBlock--YDF](https://frontend.yamato-daiwa.com/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html)
-  component usage.
+- **AdmonitionBlock--YDF**, alias: **ab-ydf** — 
+  [AdmonitionBlock--YDF](https://frontend.yamato-daiwa.com/CoreLibrary/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock.english.html)
+  component.
+- **Badge--YDF**  —
+  [Badge--YDF](https://frontend.yamato-daiwa.com/CoreLibrary/GUI_Components/Children/Badge/Badge.english.html)
+  component. The loading placeholder version **Badge--YDF-LoadingPlaceholder** is also available.
 
-### Frameworks Adaptations
+
+### Adaptations to JavaScript frameworks
 
 #### Vue
 
 ##### GUI Components
 
 - **AdmonitionBlock--YDF-V-P**, alias: **ab-ydf-vue-p** — Live template for 
-  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/AdaptationsToJavaScriptFrameworks/Vue/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
   component (Pug syntax).
 - **AdmonitionBlock--YDF-V-H**, alias: **ab-ydf-vue-h** — Live template for 
-  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/AdaptationsToJavaScriptFrameworks/Vue/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
   component (HTML syntax).
 
 
@@ -58,7 +54,7 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
 ##### GUI Components
 
 - **AdmonitionBlock**, alias: **ab-ydf-react** — Live template for
-  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/React/Components/Children/AdmonitionBlock/AdmonitionBlock-React.english.html)
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/AdaptationsToJavaScriptFrameworks/React/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-React.english.html)
   component.
 
 ### Styles (Stylus)
@@ -89,28 +85,31 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
   - `c-ydfcp` — with `color` property
   - `bgc-ydfcs` — with `background-color` property
   - `bgi-ydfcp` — with `background-image` property (in this case, the value of gradient group must be inputted)
-  
- [//]: # (=== TODO ===================================================================================================)
 
-* <kbd>fuic</kbd> The Live template for the [`FlatUI_Colors` enumeration](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md)
-* <kbd>mdc</kbd> The Live template for the [`MaterialDesignColors` object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md)
+[//]: # (* <kbd>fuic</kbd> The Live template for the [`FlatUI_Colors` enumeration]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/FlatUI/FlatUI_ColorsPalette.md&#41;)
+[//]: # (* <kbd>mdc</kbd> The Live template for the [`MaterialDesignColors` object]&#40;https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Styles/03-BuildInPlugins/ColorPalettes/MaterialDesign/MaterialDesignColorsPalette.md&#41;)
 
 
 #### Kernel
 ##### Configuration
 
-- **fs** — accessing to selected value of `YDF_Configuration.fontsStacks` associative array
-- **tg** — accessing to selected value of `YDF_Configuration.textGeometry` associative array
-- **oydfc** — overriding of `YDF_Configuration` object
-- **ydfc** — autocomplete for `YDF_Configuration` object
-- **zi** — accessing to selected value of `YDF_Configuration.zIndexes` associative array
+- **YDF_Configuration**, alias: **ydfc** — autocomplete for 
+  [`YDF_Configuration` object](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/YDF_Configuration/YDF_Configuration.english.html).
+  To access to properties of the second level immideatly after Live template expanding, the following Live templates 
+  available:
+  - **ydfc-fs** — accessing to selected value of [`YDF_Configuration.fontsStacks` associative array](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/YDF_Configuration/YDF_Configuration.english.html#PROPERTIES-FONTS_STACKS--SECTION) 
+  - **ydfc-tg** — accessing to selected value of [`YDF_Configuration.textGeometry` object](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/YDF_Configuration/YDF_Configuration.english.html#PROPERTIES-TEXT_GEOMETRY--SECTION)
+  - **ydfc-z** — accessing to selected value of [`YDF_Configuration.zIndexes` associative array](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/YDF_Configuration/YDF_Configuration.english.html#PROPERTIES-Z_INDEXES--SECTION)
+- **oydfc** — YDF configuration overriding
+
+[//]: # (=== TODO ===================================================================================================)
 
 ##### Specification schemas
 
-- **BordersSizingSpecificationSchema--YDF** — autocomplete imitator type Live Template for eponymous object
-- **PaddingsSpecificationSchema--YDF** — autocomplete imitator type Live Template for eponymous object
-- **TextElementHeightSizingSpecificationSchema--YDF** — autocomplete imitator type Live Template for eponymous object
-- **WidthSizingSpecificationSchema--YDF** — autocomplete imitator type Live Template for eponymous object
+- **BordersSizingSpecificationSchema--YDF** — autocomplete imitator type Live template for eponymous object
+- **PaddingsSpecificationSchema--YDF** — autocomplete imitator type Live template for eponymous object
+- **TextElementHeightSizingSpecificationSchema--YDF** — autocomplete imitator type Live template for eponymous object
+- **WidthSizingSpecificationSchema--YDF** — autocomplete imitator type Live template for eponymous object
 
 ##### Functions
 ###### Type checkers
@@ -296,14 +295,21 @@ Adds the [live templates](https://www.jetbrains.com/help/idea/using-live-templat
   * <kbd>badge-ydf-vue</kbd>, <kbd>badge-lp-ydf-vue</kbd> - live templates for the Vue adaptation **Badge** component and its loading placeholder respectively
   * <kbd>ossll</kbd> - live template for Vue adaptation of **OverflowSafeSingleLineLabel** component
 
+
+## Files Templates
+### Web Pages
+
+- **PugEntryPointExtendedFromRegularWebPageTemplate** — Pug entry point extended from the 
+  [Regular WebPage Template](https://frontend.yamato-daiwa.com/CoreLibrary/PagesTemplates/Children/RegularWebPage/RegularWebPageTemplate.english.html).
+
+### Styles customizing
+
+- [**AdmonitionBlock** component](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html):
+  `Files and Code Templates/Other/YDF GUI Components/AdmonitionBlock.styl`
+- **Badge** component: `Files and Code Templates/Other/YDF GUI Components/Badge.styl`
+
 <!-- Plugin description end -->
 
-## Files templates
-### Styles customizing 
-
-- [**AdmonitionBlock** component](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html): 
-    `Files and Code Templates/Other/YDF GUI Components/AdmonitionBlock.styl`
-- **Badge** component: `Files and Code Templates/Other/YDF GUI Components/Badge.styl`
 
 ## Installation
 

@@ -1,0 +1,23 @@
+<templateSet group="Yamato Daiwa Frontend - React">
+  <template name="ab-ydf-react" value="AdmonitionBlock&#10;  title=&quot;Title&quot; { /* TODO Edit if the title is required otherwise remove */ }&#10;  SVG_Icon={ true } { /* TODO Remove if default icon is not required */ }&#10;  SVG_Icon={ CustomIcon } { /* TODO Edit if the custom icon is required otherwise remove */ }&#10;  actionBarContent={&#10;    /* TODO Edit if the action bar is required otherwise remove */&#10;    &lt;&gt;&#10;      &lt;Button label=&quot;Action 1&quot;/&gt;&#10;      &lt;Button label=&quot;Action 2&quot;/&gt;&#10;    &lt;/&gt;&#10;  }&#10;  dismissible={ true } { /* TODO Remove if the dismissing is not required */ }&#10;  theme={ AdmonitionBlock.Themes.regular } { /* TODO Remove if theme is only one, default or common */ }&#10;  areThemesCSS_ClassesCommon={ true } { /* TODO Remove if false or has been set to `true` globally */ }&#10;  geometricVariation={ AdmonitionBlock.GeometricVariations.$GEOMETRIC_VARIATION$ } { /* TODO Remove if the geometric variation is `regular` (default) */ }&#10;  decorativeVariation={ AdmonitionBlock.DecorativeVariations.$DECORATIVE_VARIATION$ }&#10;&gt;&#10;&#10;  { /* TODO Add the specific content */ }&#10;&#10;  { /* TODO Edit if the centered button is required otherwise remove */ }&#10;  &lt;Button&#10;    className=&quot;AdmonitionBlock--YDF-CenteredButton&quot;&#10;    label=&quot;Action 1&quot;&#10;  /&gt;&#10;&#10;&lt;/AdmonitionBlock&gt;" description="AdmonitionBlock (YDF Component, React)" toReformat="false" toShortenFQNames="true">
+    <variable name="DECORATIVE_VARIATION" expression="enum(&quot;notice&quot;, &quot;error&quot;, &quot;warning&quot;, &quot;success&quot;, &quot;guidance&quot;, &quot;question&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="GEOMETRIC_VARIATION" expression="enum(&quot;regular&quot;, &quot;stickyNoteLike&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JSX_HTML" value="true" />
+      <option name="TS_CLASS" value="false" />
+      <option name="TS_DOT_PROPERTY_ACCESS" value="false" />
+      <option name="TS_EXPRESSION" value="false" />
+      <option name="TS_STATEMENT" value="false" />
+      <option name="TS_TOP_LEVEL_STATEMENT" value="false" />
+      <option name="TypeScript" value="true" />
+    </context>
+  </template>
+  <template name="AdmonitionBlock" value="AdmonitionBlock&#10;  title=&quot;Title&quot; { /* TODO Edit if the title is required otherwise remove */ }&#10;  SVG_Icon={ true } { /* TODO Remove if default icon is not required */ }&#10;  SVG_Icon={ CustomIcon } { /* TODO Edit if the custom icon is required otherwise remove */ }&#10;  actionBarContent={&#10;    /* TODO Edit if the action bar is required otherwise remove */&#10;    &lt;&gt;&#10;      &lt;Button label=&quot;Action 1&quot;/&gt;&#10;      &lt;Button label=&quot;Action 2&quot;/&gt;&#10;    &lt;/&gt;&#10;  }&#10;  dismissible={ true } { /* TODO Remove if the dismissing is not required */ }&#10;  theme={ AdmonitionBlock.Themes.regular } { /* TODO Remove if theme is only one, default or common */ }&#10;  areThemesCSS_ClassesCommon={ true } { /* TODO Remove if false or has been set to `true` globally */ }&#10;  geometricVariation={ AdmonitionBlock.GeometricVariations.$GEOMETRIC_VARIATION$ } { /* TODO Remove if the geometric variation is `regular` (default) */ }&#10;  decorativeVariation={ AdmonitionBlock.DecorativeVariations.$DECORATIVE_VARIATION$ }&#10;&gt;&#10;&#10;  { /* TODO Add the specific content */ }&#10;&#10;  { /* TODO Edit if the centered button is required otherwise remove */ }&#10;  &lt;Button&#10;    className=&quot;AdmonitionBlock--YDF-CenteredButton&quot;&#10;    label=&quot;Action 1&quot;&#10;  /&gt;&#10;&#10;&lt;/AdmonitionBlock&gt;" description="AdmonitionBlock (YDF Component, React)" toReformat="false" toShortenFQNames="true">
+    <variable name="DECORATIVE_VARIATION" expression="enum(&quot;notice&quot;, &quot;error&quot;, &quot;warning&quot;, &quot;success&quot;, &quot;guidance&quot;, &quot;question&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="GEOMETRIC_VARIATION" expression="enum(&quot;regular&quot;, &quot;stickyNoteLike&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JSX_HTML" value="true" />
+      <option name="TSX_HTML" value="true" />
+    </context>
+  </template>
+</templateSet>

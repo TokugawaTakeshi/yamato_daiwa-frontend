@@ -21,6 +21,7 @@
   <extensions defaultExtensionNs="com.intellij">
 
     <defaultLiveTemplates file="liveTemplates/Yamato Daiwa Frontend - Pug.xml"/>
+    <defaultLiveTemplates file="liveTemplates/Yamato Daiwa Frontend - React.xml"/>
     <defaultLiveTemplates file="liveTemplates/Yamato Daiwa Frontend - Stylus.xml"/>
     <defaultLiveTemplates file="liveTemplates/Yamato Daiwa Frontend - Vue_TypeScript.xml"/>
 

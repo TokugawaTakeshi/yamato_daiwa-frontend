@@ -1,5 +1,5 @@
 <templateSet group="Yamato Daiwa Frontend - Stylus">
-  <template name="nswu" value="NARROWEST_SCREEN_WIDTH_UNIT" description="`NARROWEST_SCREEN_WIDTH_UNIT` constant (320px)" toReformat="false" toShortenFQNames="true">
+  <template name="nswu" value="NARROWEST_SCREEN_WIDTH_UNIT--YDF" description="`NARROWEST_SCREEN_WIDTH_UNIT--YDF` constant (320px)" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
@@ -194,7 +194,7 @@
       <option name="CSS_DECLARATION_BLOCK" value="true" />
     </context>
   </template>
-  <template name="sogw3c" value="W3C_39_ShadesOfGray--YDF[$NUMBER$]&#10;// Please note that valid number of element must be from 0 to 38 (not 39)" description="`ShadesOfGray__39ColorsW3C_Palette` array" toReformat="false" toShortenFQNames="true">
+  <template name="sogw3c" value="W3C_39_ShadesOfGray--YDF[$NUMBER$]&#10;// Please note that valid number of element must be from 0 to 38 (not 39)" description="`W3C_39_ShadesOfGray--YDF` array" toReformat="false" toShortenFQNames="true">
     <variable name="NUMBER" expression="enum(&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;,&quot;13&quot;,&quot;14&quot;,&quot;15&quot;,&quot;16&quot;,&quot;17&quot;,&quot;18&quot;,&quot;19&quot;,&quot;20&quot;,&quot;21&quot;,&quot;22&quot;,&quot;23&quot;,&quot;24&quot;,&quot;25&quot;,&quot;26&quot;,&quot;27&quot;,&quot;28&quot;,&quot;29&quot;,&quot;30&quot;,&quot;31&quot;,&quot;32&quot;,&quot;33&quot;,&quot;34&quot;,&quot;35&quot;,&quot;36&quot;,&quot;37&quot;,&quot;38&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
@@ -211,7 +211,7 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="dt" value="DataTypes.$TYPE$" description="`DataTypes` enumeration" toReformat="false" toShortenFQNames="true">
+  <template name="dt" value="DataTypes--YDF.$TYPE$" description="`DataTypes--YDF` enumeration" toReformat="false" toShortenFQNames="true">
     <variable name="TYPE" expression="enum(&quot;dimensionalQuantity&quot;, &quot;dimensionlessQuantity&quot;, &quot;string&quot;, &quot;boolean&quot;, &quot;object&quot;, &quot;colorDefinition&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
@@ -220,7 +220,7 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="th" value="TemporaryHighlighting.$TONE$.$OPACITY$&#10;// * Available tones: red, orange, yellow, green, cyan, blue, magenta, purple&#10;// * Available opacity values: opacity10Percent, opacity25Percent, opacity50Percent, opacity75Percent" description="`TemporaryHighlighting` object" toReformat="false" toShortenFQNames="true">
+  <template name="TemporarySemitransparentHighlighting--YDF" value="TemporarySemitransparentHighlighting--YDF.$TONE$.$OPACITY$&#10;// * Available tones: red, orange, yellow, green, cyan, blue, magenta, purple&#10;// * Available opacity values: opacity10Percent, opacity25Percent, opacity50Percent, opacity75Percent" description="`TemporarySemitransparentHighlighting--YDF` object" toReformat="false" toShortenFQNames="true">
     <variable name="TONE" expression="enum(&quot;red&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;green&quot;, &quot;cyan&quot;, &quot;blue&quot;, &quot;magenta&quot;, &quot;purple&quot;)" defaultValue="" alwaysStopAt="true" />
     <variable name="OPACITY" expression="enum(&quot;opacity10Percent&quot;, &quot;opacity25Percent&quot;, &quot;opacity50Percent&quot;, &quot;opacity75Percent&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
@@ -228,7 +228,7 @@
       <option name="CSS_DECLARATION_BLOCK" value="false" />
     </context>
   </template>
-  <template name="pccs" value="PracticalColorCoordinateSystem.$TONE$.$COLOR$&#10;&#10;// * Available tones: &quot;vivid&quot;, &quot;bright&quot;, &quot;strong&quot;, &quot;deep&quot;, &quot;light&quot;, &quot;soft&quot;, &quot;dull&quot;, &quot;dark&quot;, &quot;pale&quot;, &quot;lightGrayish&quot;, &#10;//       &quot;grayish&quot;, &quot;darkGrayish&quot;, &quot;white&quot;, &quot;lightGray8_5&quot;, &quot;lightGray7_5&quot;, &quot;mediumGray6_5&quot;, &quot;mediumGray5_5&quot;, &quot;mediumGray4_5&quot;, &#10;//       &quot;darkGray3_5&quot;, &quot;darkGray2_5&quot;, &quot;black&quot;&#10;// * Available colors: &quot;purplishRed1&quot;, &quot;red2&quot;, &quot;yellowishRed3&quot;, &quot;reddishOrange4&quot;, &quot;orange5&quot;, &quot;yellowishOrange6&quot;, &#10;//       &quot;reddishYellow7&quot;, &quot;yellow8&quot;, &quot;greenishYellow9&quot;, &quot;yellowGreen10&quot;, &quot;yellowishGreen11&quot;, &quot;green12&quot;, &quot;bluishGreen13&quot;, &#10;//       &quot;blueGreen14&quot;, &quot;blueGreen15&quot;, &quot;geenishBlue16&quot;, &quot;blue17&quot;, &quot;blue18&quot;, &quot;purplishBlue19&quot;, &quot;violet20&quot;, &quot;bluishPurple21&quot;,&#10;//       &quot;purple22&quot;, &quot;reddishPurple23&quot;, &quot;redPurple24&quot; (except white, lightGray8_5, etc. until black!) &#10;" description="`PracticalColorCoordinateSystem` object" toReformat="false" toShortenFQNames="true">
+  <template name="pccs" value="PracticalColorCoordinateSystem--YDF.$TONE$.$COLOR$&#10;&#10;// * Available tones: &quot;vivid&quot;, &quot;bright&quot;, &quot;strong&quot;, &quot;deep&quot;, &quot;light&quot;, &quot;soft&quot;, &quot;dull&quot;, &quot;dark&quot;, &quot;pale&quot;, &quot;lightGrayish&quot;, &#10;//       &quot;grayish&quot;, &quot;darkGrayish&quot;, &quot;white&quot;, &quot;lightGray8_5&quot;, &quot;lightGray7_5&quot;, &quot;mediumGray6_5&quot;, &quot;mediumGray5_5&quot;, &quot;mediumGray4_5&quot;, &#10;//       &quot;darkGray3_5&quot;, &quot;darkGray2_5&quot;, &quot;black&quot;&#10;// * Available colors: &quot;purplishRed1&quot;, &quot;red2&quot;, &quot;yellowishRed3&quot;, &quot;reddishOrange4&quot;, &quot;orange5&quot;, &quot;yellowishOrange6&quot;, &#10;//       &quot;reddishYellow7&quot;, &quot;yellow8&quot;, &quot;greenishYellow9&quot;, &quot;yellowGreen10&quot;, &quot;yellowishGreen11&quot;, &quot;green12&quot;, &quot;bluishGreen13&quot;, &#10;//       &quot;blueGreen14&quot;, &quot;blueGreen15&quot;, &quot;geenishBlue16&quot;, &quot;blue17&quot;, &quot;blue18&quot;, &quot;purplishBlue19&quot;, &quot;violet20&quot;, &quot;bluishPurple21&quot;,&#10;//       &quot;purple22&quot;, &quot;reddishPurple23&quot;, &quot;redPurple24&quot; (except white, lightGray8_5, etc. until black!) &#10;" description="`PracticalColorCoordinateSystem--YDF` object" toReformat="false" toShortenFQNames="true">
     <variable name="TONE" expression="enum(&quot;vivid&quot;, &quot;bright&quot;, &quot;strong&quot;, &quot;deep&quot;, &quot;light&quot;, &quot;soft&quot;, &quot;dull&quot;, &quot;dark&quot;, &quot;pale&quot;, &quot;lightGrayish&quot;, &quot;grayish&quot;, &quot;darkGrayish&quot;, &quot;white&quot;, &quot;lightGray8_5&quot;, &quot;lightGray7_5&quot;, &quot;mediumGray6_5&quot;, &quot;mediumGray5_5&quot;, &quot;mediumGray4_5&quot;, &quot;darkGray3_5&quot;, &quot;darkGray2_5&quot;, &quot;black&quot;)" defaultValue="" alwaysStopAt="true" />
     <variable name="COLOR" expression="enum(&quot;purplishRed1&quot;, &quot;red2&quot;, &quot;yellowishRed3&quot;, &quot;reddishOrange4&quot;, &quot;orange5&quot;, &quot;yellowishOrange6&quot;, &quot;reddishYellow7&quot;, &quot;yellow8&quot;, &quot;greenishYellow9&quot;, &quot;yellowGreen10&quot;, &quot;yellowishGreen11&quot;, &quot;green12&quot;, &quot;bluishGreen13&quot;, &quot;blueGreen14&quot;, &quot;blueGreen15&quot;, &quot;geenishBlue16&quot;, &quot;blue17&quot;, &quot;blue18&quot;, &quot;purplishBlue19&quot;, &quot;violet20&quot;, &quot;bluishPurple21&quot;, &quot;purple22&quot;, &quot;reddishPurple23&quot;, &quot;redPurple24&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
@@ -337,7 +337,7 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="zi" value="YDF_Configuration.zIndexes.$LAYER$" description="`ZIndexes` object" toReformat="false" toShortenFQNames="true">
+  <template name="ydfc-z" value="YDF_Configuration.zIndexes.$LAYER$" description="`ZIndexes` object" toReformat="false" toShortenFQNames="true">
     <variable name="LAYER" expression="enum(&quot;lowermostLayer&quot;, &quot;drawers&quot;, &quot;floatingBelowModalsComponents&quot;, &quot;modalsUnderlay&quot;, &quot;floatingAboveModalsComponents&quot;, &quot;blockingOverlay&quot;, &quot;floatingNotifications&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
@@ -660,23 +660,15 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="th-bgc" value="background-color: TemporaryHighlighting.$TONE$.$OPACITY$&#10;// * Available tones: red, orange, yellow, green, cyan, blue, magenta, purple&#10;// * Available opacity values: opacity10Percent, opacity25Percent, opacity50Percent, opacity75Percent" description="`background-color` property with specific value of `TemporaryHighlighting` object" toReformat="false" toShortenFQNames="true">
-    <variable name="TONE" expression="enum(&quot;red&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;green&quot;, &quot;cyan&quot;, &quot;blue&quot;, &quot;magenta&quot;, &quot;purple&quot;)" defaultValue="" alwaysStopAt="true" />
-    <variable name="OPACITY" expression="enum(&quot;opacity10Percent&quot;, &quot;opacity25Percent&quot;, &quot;opacity50Percent&quot;, &quot;opacity75Percent&quot;)" defaultValue="" alwaysStopAt="true" />
-    <context>
-      <option name="CSS" value="true" />
-      <option name="CSS_DECLARATION_BLOCK" value="false" />
-    </context>
-  </template>
-  <template name="fs" value="YDF_Configuration.fontsStacks.$FONTS_STACK$" description="The element of `YDF_Configuration.fontsStacks` associative array" toReformat="false" toShortenFQNames="true">
-    <variable name="FONTS_STACK" expression="enum(&quot;mainSansSerif&quot;, &quot;mainSerif&quot;, &quot;mainMonospaced&quot;)" defaultValue="" alwaysStopAt="true" />
+  <template name="ydfc-fs" value="YDF_Configuration.fontsStacks.$FONTS_STACK$" description="The element of `YDF_Configuration.fontsStacks` associative array" toReformat="false" toShortenFQNames="true">
+    <variable name="FONTS_STACK" expression="enum(&quot;main&quot;, &quot;mainSansSerif&quot;, &quot;mainSerif&quot;, &quot;mainMonospaced&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
       <option name="CSS_DECLARATION_BLOCK" value="false" />
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="tg" value="YDF_Configuration.textGeometry.$PROPERTY$" description="The element of `YDF_Configuration.textGeometry` associative array" toReformat="false" toShortenFQNames="true">
+  <template name="ydfc-tg" value="YDF_Configuration.textGeometry.$PROPERTY$" description="The element of `YDF_Configuration.textGeometry` associative array" toReformat="false" toShortenFQNames="true">
     <variable name="PROPERTY" expression="enum(&quot;basicFontSize&quot;, &quot;basicLineHeight&quot;, &quot;basicLineHeightInMultilineTextBlocks&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
@@ -684,12 +676,13 @@
       <option name="CSS_RULESET_LIST" value="false" />
     </context>
   </template>
-  <template name="oydfc" value="// TODO Either replace or delete the following values from the 2nd parameter&#10;overrideObject(&#10;&#9;YDF_Configuration, &#10;&#9;{$END$&#10;&#10;&#9;&#9;fontsStacks: {&#10;&#10;&#9;&#9;&#9;mainSansSerif: unquote(\&#10;&#9;&#9;&#9;&#9;&quot;system-ui,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;-apple-system,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;BlinkMacSystemFont,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Segoe UI,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Roboto,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Helvetica Neue,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Arial,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Noto Sans,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Liberation Sans,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;sans-serif,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Apple Color Emoji,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Segoe UI Emoji,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Segoe UI Symbol,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Noto Color Emoji&quot;&#10;&#9;&#9;&#9;),&#10;&#10;&#9;&#9;&#9;mainSerif: unquote(&#10;&#9;&#9;&#9;&#9;&quot;TimesNewRoman,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Times New Roman,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Times,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Baskerville,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Georgia,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;serif&quot;&#10;&#9;&#9;&#9;),&#10;&#10;&#9;&#9;&#9;mainMonospaced: unquote(&#10;&#9;&#9;&#9;&#9;&quot;Lucida Console,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Lucida Sans Typewriter,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;monaco,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Bitstream Vera Sans Mono,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;monospace&quot;&#10;&#9;&#9;&#9;)&#10;&#10;&#9;&#9;},&#10;&#10;&#9;&#9;textGeometry: {&#10;&#9;&#9;&#9;basicFontSize: 14px,&#10;&#9;&#9;&#9;basicLineHeight: 1,&#10;&#9;&#9;&#9;basicLineHeightInMultilineTextBlocks: 1.4&#10;&#9;&#9;},&#10;&#10;&#9;&#9;zIndexes: {&#10;&#9;&#9;&#9;lowermostLayer: 0,&#10;&#9;&#9;&#9;drawers: 10,&#10;&#9;&#9;&#9;floatingBelowModalsComponents: 20,&#10;&#9;&#9;&#9;modalsUnderlay: 30,&#10;&#9;&#9;&#9;floatingAboveModalsComponents: 40,&#10;&#9;&#9;&#9;blockingOverlay: 50,&#10;&#9;&#9;&#9;floatingNotifications: 60&#10;&#9;&#9;}&#10;&#10;&#9;}&#10;)" description="Override the `YDF_Configuration` object" toReformat="false" toShortenFQNames="true">
+  <template name="oydfc" value="// TODO For each propery, either set another value or delete to keep the default one &#10;overrideObject(&#10;&#9;YDF_Configuration, &#10;&#9;{$END$&#10;&#10;&#9;&#9;fontsStacks: {&#10;&#10;      main: unquote(\&#10;        &quot;system-ui,&quot; +\&#10;        &quot;-apple-system,&quot; +\&#10;        &quot;BlinkMacSystemFont,&quot; +\&#10;        &quot;Segoe UI,&quot; +\&#10;        &quot;Roboto,&quot; +\&#10;        &quot;Helvetica Neue,&quot; +\&#10;        &quot;Arial,&quot; +\&#10;        &quot;Noto Sans,&quot; +\&#10;        &quot;Liberation Sans,&quot; +\&#10;        &quot;sans-serif,&quot; +\&#10;        &quot;Apple Color Emoji,&quot; +\&#10;        &quot;Segoe UI Emoji,&quot; +\&#10;        &quot;Segoe UI Symbol,&quot; +\&#10;        &quot;Noto Color Emoji&quot;&#10;      ),&#10;&#10;&#9;&#9;&#9;mainSansSerif: unquote(\&#10;&#9;&#9;&#9;&#9;&quot;system-ui,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;-apple-system,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;BlinkMacSystemFont,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Segoe UI,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Roboto,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Helvetica Neue,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Arial,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Noto Sans,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Liberation Sans,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;sans-serif,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Apple Color Emoji,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Segoe UI Emoji,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Segoe UI Symbol,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Noto Color Emoji&quot;&#10;&#9;&#9;&#9;),&#10;&#10;&#9;&#9;&#9;mainSerif: unquote(&#10;&#9;&#9;&#9;&#9;&quot;TimesNewRoman,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Times New Roman,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Times,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Baskerville,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Georgia,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;serif&quot;&#10;&#9;&#9;&#9;),&#10;&#10;&#9;&#9;&#9;mainMonospaced: unquote(&#10;&#9;&#9;&#9;&#9;&quot;Lucida Console,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Lucida Sans Typewriter,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;monaco,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;Bitstream Vera Sans Mono,&quot; +\&#10;&#9;&#9;&#9;&#9;&quot;monospace&quot;&#10;&#9;&#9;&#9;)&#10;&#10;&#9;&#9;},&#10;&#10;&#9;&#9;textGeometry: {&#10;&#9;&#9;&#9;basicFontSize: 14px,&#10;&#9;&#9;&#9;basicLineHeight: 1,&#10;&#9;&#9;&#9;basicLineHeightInMultilineTextBlocks: 1.4&#10;&#9;&#9;},&#10;&#10;&#9;&#9;zIndexes: {&#10;&#9;&#9;&#9;lowermostLayer: 0,&#10;&#9;&#9;&#9;drawers: 10,&#10;&#9;&#9;&#9;floatingBelowModalsComponents: 20,&#10;&#9;&#9;&#9;modalsUnderlay: 30,&#10;&#9;&#9;&#9;floatingAboveModalsComponents: 40,&#10;&#9;&#9;&#9;blockingOverlay: 50,&#10;&#9;&#9;&#9;floatingNotifications: 60&#10;&#9;&#9;}&#10;&#10;&#9;}&#10;)" description="Override the `YDF_Configuration` object" toReformat="false" toShortenFQNames="true">
     <context>
       <option name="CSS_RULESET_LIST" value="true" />
     </context>
   </template>
-  <template name="ydfc" value="YDF_Configuration" description="`YDF_Configuration` object" toReformat="false" toShortenFQNames="true">
+  <template name="ydfc" value="YDF_Configuration.$GROUP$.$END$&#10;&#10;/*&#10;&#10; + fontsStacks&#10;   + main&#10;   + mainSansSerif&#10;   + mainSerif&#10;   + mainMonospaced&#10;&#10; + textGeometry&#10;   + basicFontSize&#10;   + basicLineHeight&#10;   + basicLineHeightInMultilineTextBlocks&#10;   &#10; + zIndexes&#10;   + lowermostLayer&#10;   + drawers&#10;   + floatingBelowModalsComponents&#10;   + modalsUnderlay&#10;   + floatingAboveModalsComponents&#10;   + blockingOverlay&#10;   + floatingNotifications&#10;&#10;*/" description="`YDF_Configuration` object" toReformat="false" toShortenFQNames="true">
+    <variable name="GROUP" expression="enum(&quot;fontsStacks&quot;, &quot;textGeometry&quot;, &quot;zIndexes&quot;)" defaultValue="" alwaysStopAt="true" />
     <context>
       <option name="CSS" value="true" />
     </context>
@@ -766,6 +759,110 @@
       <option name="CSS_DECLARATION_BLOCK" value="false" />
       <option name="CSS_PROPERTY_VALUE" value="false" />
       <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="ensc" value="+ExtraNarrowScreensConfiguration()&#10;&#10;  $END$" description="`ExtraNarrowScreensConfiguration` media query" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="NARROWEST_SCREEN_WIDTH_UNIT--YDF" value="NARROWEST_SCREEN_WIDTH_UNIT--YDF" description="`NARROWEST_SCREEN_WIDTH_UNIT--YDF` constant (320px)" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="DataTypes--YDF" value="DataTypes--YDF.$TYPE$" description="`DataTypes--YDF` enumeration" toReformat="false" toShortenFQNames="true">
+    <variable name="TYPE" expression="enum(&quot;dimensionalQuantity&quot;, &quot;dimensionlessQuantity&quot;, &quot;string&quot;, &quot;boolean&quot;, &quot;object&quot;, &quot;colorDefinition&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="SMALLEST_DIVISION_OF_CSS_PIXEL--YDF" value="SMALLEST_DIVISION_OF_CSS_PIXEL--YDF" description="`SMALLEST_DIVISION_OF_CSS_PIXEL--YDF` constant (0.02)" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="sdocp" value="SMALLEST_DIVISION_OF_CSS_PIXEL--YDF" description="`SMALLEST_DIVISION_OF_CSS_PIXEL--YDF` constant (0.02)" toReformat="false" toShortenFQNames="true">
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="PracticalColorCoordinateSystem--YDF" value="PracticalColorCoordinateSystem--YDF.$TONE$.$COLOR$&#10;&#10;// * Available tones: &quot;vivid&quot;, &quot;bright&quot;, &quot;strong&quot;, &quot;deep&quot;, &quot;light&quot;, &quot;soft&quot;, &quot;dull&quot;, &quot;dark&quot;, &quot;pale&quot;, &quot;lightGrayish&quot;, &#10;//       &quot;grayish&quot;, &quot;darkGrayish&quot;, &quot;white&quot;, &quot;lightGray8_5&quot;, &quot;lightGray7_5&quot;, &quot;mediumGray6_5&quot;, &quot;mediumGray5_5&quot;, &quot;mediumGray4_5&quot;, &#10;//       &quot;darkGray3_5&quot;, &quot;darkGray2_5&quot;, &quot;black&quot;&#10;// * Available colors: &quot;purplishRed1&quot;, &quot;red2&quot;, &quot;yellowishRed3&quot;, &quot;reddishOrange4&quot;, &quot;orange5&quot;, &quot;yellowishOrange6&quot;, &#10;//       &quot;reddishYellow7&quot;, &quot;yellow8&quot;, &quot;greenishYellow9&quot;, &quot;yellowGreen10&quot;, &quot;yellowishGreen11&quot;, &quot;green12&quot;, &quot;bluishGreen13&quot;, &#10;//       &quot;blueGreen14&quot;, &quot;blueGreen15&quot;, &quot;geenishBlue16&quot;, &quot;blue17&quot;, &quot;blue18&quot;, &quot;purplishBlue19&quot;, &quot;violet20&quot;, &quot;bluishPurple21&quot;,&#10;//       &quot;purple22&quot;, &quot;reddishPurple23&quot;, &quot;redPurple24&quot; (except white, lightGray8_5, etc. until black!) &#10;" description="`PracticalColorCoordinateSystem--YDF` object" toReformat="false" toShortenFQNames="true">
+    <variable name="TONE" expression="enum(&quot;vivid&quot;, &quot;bright&quot;, &quot;strong&quot;, &quot;deep&quot;, &quot;light&quot;, &quot;soft&quot;, &quot;dull&quot;, &quot;dark&quot;, &quot;pale&quot;, &quot;lightGrayish&quot;, &quot;grayish&quot;, &quot;darkGrayish&quot;, &quot;white&quot;, &quot;lightGray8_5&quot;, &quot;lightGray7_5&quot;, &quot;mediumGray6_5&quot;, &quot;mediumGray5_5&quot;, &quot;mediumGray4_5&quot;, &quot;darkGray3_5&quot;, &quot;darkGray2_5&quot;, &quot;black&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="COLOR" expression="enum(&quot;purplishRed1&quot;, &quot;red2&quot;, &quot;yellowishRed3&quot;, &quot;reddishOrange4&quot;, &quot;orange5&quot;, &quot;yellowishOrange6&quot;, &quot;reddishYellow7&quot;, &quot;yellow8&quot;, &quot;greenishYellow9&quot;, &quot;yellowGreen10&quot;, &quot;yellowishGreen11&quot;, &quot;green12&quot;, &quot;bluishGreen13&quot;, &quot;blueGreen14&quot;, &quot;blueGreen15&quot;, &quot;geenishBlue16&quot;, &quot;blue17&quot;, &quot;blue18&quot;, &quot;purplishBlue19&quot;, &quot;violet20&quot;, &quot;bluishPurple21&quot;, &quot;purple22&quot;, &quot;reddishPurple23&quot;, &quot;redPurple24&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="tsh" value="TemporarySemitransparentHighlighting--YDF.$TONE$.$OPACITY$&#10;// * Available tones: red, orange, yellow, green, cyan, blue, magenta, purple&#10;// * Available opacity values: opacity10Percent, opacity25Percent, opacity50Percent, opacity75Percent" description="`TemporarySemitransparentHighlighting--YDF` object" toReformat="false" toShortenFQNames="true">
+    <variable name="TONE" expression="enum(&quot;red&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;green&quot;, &quot;cyan&quot;, &quot;blue&quot;, &quot;magenta&quot;, &quot;purple&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="OPACITY" expression="enum(&quot;opacity10Percent&quot;, &quot;opacity25Percent&quot;, &quot;opacity50Percent&quot;, &quot;opacity75Percent&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+    </context>
+  </template>
+  <template name="bgc-tsh" value="background-color: TemporarySemitransparentHighlighting--YDF.$TONE$.$OPACITY$&#10;// * Available tones: red, orange, yellow, green, cyan, blue, magenta, purple&#10;// * Available opacity values: opacity10Percent, opacity25Percent, opacity50Percent, opacity75Percent" description="`background-color` property with value of `TemporarySemitransparentHighlighting--YDF` type" toReformat="false" toShortenFQNames="true">
+    <variable name="TONE" expression="enum(&quot;red&quot;, &quot;orange&quot;, &quot;yellow&quot;, &quot;green&quot;, &quot;cyan&quot;, &quot;blue&quot;, &quot;magenta&quot;, &quot;purple&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="OPACITY" expression="enum(&quot;opacity10Percent&quot;, &quot;opacity25Percent&quot;, &quot;opacity50Percent&quot;, &quot;opacity75Percent&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="W3C_39_ShadesOfGray--YDF" value="W3C_39_ShadesOfGray--YDF[$NUMBER$]&#10;// Please note that valid number of element must be from 0 to 38 (not 39)" description="`W3C_39_ShadesOfGray--YDF` array" toReformat="false" toShortenFQNames="true">
+    <variable name="NUMBER" expression="enum(&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;,&quot;13&quot;,&quot;14&quot;,&quot;15&quot;,&quot;16&quot;,&quot;17&quot;,&quot;18&quot;,&quot;19&quot;,&quot;20&quot;,&quot;21&quot;,&quot;22&quot;,&quot;23&quot;,&quot;24&quot;,&quot;25&quot;,&quot;26&quot;,&quot;27&quot;,&quot;28&quot;,&quot;29&quot;,&quot;30&quot;,&quot;31&quot;,&quot;32&quot;,&quot;33&quot;,&quot;34&quot;,&quot;35&quot;,&quot;36&quot;,&quot;37&quot;,&quot;38&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="YDF_ColorPalette" value="YDF_ColorPalette.$HUE$.$LIGHTNESS$&#10;&#10;// Hues:&#10;// red deepOrange orange amber deepYellow yellow youngFoliage green mint cyan skyBlue deepSkyBlue blue indigo deepPurple&#10;// purple magenta pink deepPink&#10;&#10;// Lightnesses:&#10;// dark mediumDark slightlyDark    bright      &#10;// slightlyLight mediumLight light pastelBright pastelSlightlyLight pastelMediumLight pastelLight faded&#10;// pastelGradient lightGradient darkGradient glossyGradient" description="`YDF_ColorPalette` object" toReformat="false" toShortenFQNames="true">
+    <variable name="HUE" expression="enum(&quot;red&quot;, &quot;deepOrange&quot;, &quot;orange&quot;, &quot;amber&quot;, &quot;deepYellow&quot;, &quot;yellow&quot;, &quot;youngFoliage&quot;, &quot;green&quot;, &quot;mint&quot;, &quot;cyan&quot;, &quot;skyBlue&quot;, &quot;deepSkyBlue&quot;, &quot;blue&quot;, &quot;indigo&quot;, &quot;deepPurple&quot;, &quot;purple&quot;, &quot;magenta&quot;, &quot;pink&quot;, &quot;deepPink&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="LIGHTNESS" expression="enum(&quot;dark&quot;, &quot;mediumDark&quot;, &quot;slightlyDark&quot;, &quot;bright&quot;, &quot;slightlyLight&quot;, &quot;mediumLight&quot;, &quot;light&quot;, &quot;pastelBright&quot;, &quot;pastelSlightlyLight&quot;, &quot;pastelMediumLight&quot;, &quot;pastelLight&quot;, &quot;faded&quot;, &quot;pastelGradient&quot;, &quot;lightGradient&quot;, &quot;darkGradient&quot;, &quot;glossyGradient&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+    </context>
+  </template>
+  <template name="c-ydfcp" value="color: YDF_ColorPalette.$HUE$.$LIGHTNESS$&#10;&#10;// Hues:&#10;// red deepOrange orange amber deepYellow yellow youngFoliage green mint cyan skyBlue deepSkyBlue blue indigo deepPurple&#10;// purple magenta pink deepPink&#10;&#10;// Lightnesses:&#10;// dark mediumDark slightlyDark    bright      &#10;// slightlyLight mediumLight light pastelBright pastelSlightlyLight pastelMediumLight pastelLight faded&#10;// pastelGradient lightGradient darkGradient glossyGradient" description="`color` property with value of `YDF_ColorPalette` type" toReformat="false" toShortenFQNames="true">
+    <variable name="HUE" expression="enum(&quot;red&quot;, &quot;deepOrange&quot;, &quot;orange&quot;, &quot;amber&quot;, &quot;deepYellow&quot;, &quot;yellow&quot;, &quot;youngFoliage&quot;, &quot;green&quot;, &quot;mint&quot;, &quot;cyan&quot;, &quot;skyBlue&quot;, &quot;deepSkyBlue&quot;, &quot;blue&quot;, &quot;indigo&quot;, &quot;deepPurple&quot;, &quot;purple&quot;, &quot;magenta&quot;, &quot;pink&quot;, &quot;deepPink&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="LIGHTNESS" expression="enum(&quot;dark&quot;, &quot;mediumDark&quot;, &quot;slightlyDark&quot;, &quot;bright&quot;, &quot;slightlyLight&quot;, &quot;mediumLight&quot;, &quot;light&quot;, &quot;pastelBright&quot;, &quot;pastelSlightlyLight&quot;, &quot;pastelMediumLight&quot;, &quot;pastelLight&quot;, &quot;faded&quot;, &quot;pastelGradient&quot;, &quot;lightGradient&quot;, &quot;darkGradient&quot;, &quot;glossyGradient&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="bgc-ydfcs" value="backgroud-color: YDF_ColorPalette.$HUE$.$LIGHTNESS$&#10;&#10;// Hues:&#10;// red deepOrange orange amber deepYellow yellow youngFoliage green mint cyan skyBlue deepSkyBlue blue indigo deepPurple&#10;// purple magenta pink deepPink&#10;&#10;// Lightnesses:&#10;// dark mediumDark slightlyDark    bright      &#10;// slightlyLight mediumLight light pastelBright pastelSlightlyLight pastelMediumLight pastelLight faded&#10;// pastelGradient lightGradient darkGradient glossyGradient" description="`backgroud-color` property with value of `YDF_ColorPalette` type" toReformat="false" toShortenFQNames="true">
+    <variable name="HUE" expression="enum(&quot;red&quot;, &quot;deepOrange&quot;, &quot;orange&quot;, &quot;amber&quot;, &quot;deepYellow&quot;, &quot;yellow&quot;, &quot;youngFoliage&quot;, &quot;green&quot;, &quot;mint&quot;, &quot;cyan&quot;, &quot;skyBlue&quot;, &quot;deepSkyBlue&quot;, &quot;blue&quot;, &quot;indigo&quot;, &quot;deepPurple&quot;, &quot;purple&quot;, &quot;magenta&quot;, &quot;pink&quot;, &quot;deepPink&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="LIGHTNESS" expression="enum(&quot;dark&quot;, &quot;mediumDark&quot;, &quot;slightlyDark&quot;, &quot;bright&quot;, &quot;slightlyLight&quot;, &quot;mediumLight&quot;, &quot;light&quot;, &quot;pastelBright&quot;, &quot;pastelSlightlyLight&quot;, &quot;pastelMediumLight&quot;, &quot;pastelLight&quot;, &quot;faded&quot;, &quot;pastelGradient&quot;, &quot;lightGradient&quot;, &quot;darkGradient&quot;, &quot;glossyGradient&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="bgi-ydfcp" value="backgroud-image: appendDirectionToLinearGradientColorStopsExpression--YDF($DIRECTION$, YDF_ColorPalette.$HUE$.$GRADIENT_TYPE$)&#10;&#10;// Hues:&#10;// red deepOrange orange amber deepYellow yellow youngFoliage green mint cyan skyBlue deepSkyBlue blue indigo deepPurple&#10;// purple magenta pink deepPink&#10;&#10;// Gradient types:&#10;// pastelGradient lightGradient darkGradient glossyGradient" description="`backgroud-image` property with gradient value of `YDF_ColorPalette` type" toReformat="false" toShortenFQNames="true">
+    <variable name="DIRECTION" expression="enum(&quot;to top&quot;, &quot;to bottom&quot;, &quot;to left&quot;, &quot;to right&quot;, &quot;Ndeg&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="HUE" expression="enum(&quot;red&quot;, &quot;deepOrange&quot;, &quot;orange&quot;, &quot;amber&quot;, &quot;deepYellow&quot;, &quot;yellow&quot;, &quot;youngFoliage&quot;, &quot;green&quot;, &quot;mint&quot;, &quot;cyan&quot;, &quot;skyBlue&quot;, &quot;deepSkyBlue&quot;, &quot;blue&quot;, &quot;indigo&quot;, &quot;deepPurple&quot;, &quot;purple&quot;, &quot;magenta&quot;, &quot;pink&quot;, &quot;deepPink&quot;)" defaultValue="" alwaysStopAt="true" />
+    <variable name="GRADIENT_TYPE" expression="enum(&quot;pastelGradient&quot;, &quot;lightGradient&quot;, &quot;darkGradient&quot;, &quot;glossyGradient&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS_DECLARATION_BLOCK" value="true" />
+    </context>
+  </template>
+  <template name="YDF_Configuration" value="YDF_Configuration.$GROUP$.$END$&#10;&#10;/*&#10;&#10; + fontsStacks&#10;   + main&#10;   + mainSansSerif&#10;   + mainSerif&#10;   + mainMonospaced&#10;&#10; + textGeometry&#10;   + basicFontSize&#10;   + basicLineHeight&#10;   + basicLineHeightInMultilineTextBlocks&#10;   &#10; + zIndexes&#10;   + lowermostLayer&#10;   + drawers&#10;   + floatingBelowModalsComponents&#10;   + modalsUnderlay&#10;   + floatingAboveModalsComponents&#10;   + blockingOverlay&#10;   + floatingNotifications&#10;&#10;*/" description="`YDF_Configuration` object" toReformat="false" toShortenFQNames="true">
+    <variable name="GROUP" expression="enum(&quot;fontsStacks&quot;, &quot;textGeometry&quot;, &quot;zIndexes&quot;)" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="CSS" value="true" />
     </context>
   </template>
 </templateSet>

@@ -58,7 +58,7 @@ namespace ValidatableControl {
       this.getComponentInstance = compoundParameter.getComponentInstance;
 
       if (isNotUndefined(compoundParameter.onAnyChangeEventHandler)) {
-        this.setOnValueAnyChangeEventHandlers(compoundParameter.onAnyChangeEventHandler);
+        this.setOnValueAnyChangeEventHandler(compoundParameter.onAnyChangeEventHandler);
       }
 
       if (isNotUndefined(compoundParameter.onHasBecomeValidEventHandler)) {

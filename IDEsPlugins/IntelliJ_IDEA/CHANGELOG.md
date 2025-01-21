@@ -7,20 +7,23 @@
 
 ### Added
 
+- Support IntelliJ platform **2024.2-2025.1**.
+- **PugEntryPointExtendedFromRegularWebPageTemplate** — Pug entry point extended from the
+  [Regular WebPage Template](https://frontend.yamato-daiwa.com/CoreLibrary/PagesTemplates/Children/RegularWebPage/RegularWebPageTemplate.english.html).
 - **AdmonitionBlock--YDF** — Live template inserting the examples of 
-  [**AdmonitionBlock** component](https://frontend.yamato-daiwa.com/CoreLibrary/Components/Children/AdmonitionBlock/AdmonitionBlock.english.html) 
+  [**AdmonitionBlock** component](https://frontend.yamato-daiwa.com/AdaptationsToJavaScriptFrameworks/React/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-React.english.html) 
   usage.
   Previously added **ab-ydf** one now is the alias of **AdmonitionBlock--YDF**. 
 - **AdmonitionBlock--YDF-V-P**, alias: **ab-ydf-vue-p** — Live template for 
-  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/AdaptationsToJavaScriptFrameworks/Vue/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
   component (Vue framework, Pug syntax).
 - **AdmonitionBlock--YDF-V-H**, alias: **ab-ydf-vue-h** — Live template for 
-  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/Vue/Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/AdaptationsToJavaScriptFrameworks/Vue/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-Vue.english.html)
   component (Vue framework, HTML syntax).
 - **AdmonitionBlock**, alias: **ab-ydf-react** — Live template for
-  [AdmonitionBlock](https://frontend.yamato-daiwa.com/FrameworksIntegrations/React/Components/Children/AdmonitionBlock/AdmonitionBlock-React.english.html)
+  [AdmonitionBlock](https://frontend.yamato-daiwa.com/AdaptationsToJavaScriptFrameworks/React/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-React.english.html)
   component.
-- **NARROWEST_SCREEN_WIDTH_UNIT--YDF** — autocomplete imitator type Live template for the [eponymous constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes--ydf---stylus-data-types).
+- **NARROWEST_SCREEN_WIDTH_UNIT--YDF** — autocomplete imitator type Live template for the [eponymous constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#narrowest_screen_width_unit--ydf---the-narrowest-screen-width-unit).
   Previously added **nswu** one now is the alias of **NARROWEST_SCREEN_WIDTH_UNIT--YDF**. 
 - **DataTypes--YDF** — autocomplete imitator type Live template for the [eponymous constant](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/01-FundamentalConstantsAndEnums/FundamentalConstantsAndEnums.md#datatypes--ydf---stylus-data-types).
   Previously added **dt** one now is the alias of **DataTypes--YDF**.
@@ -35,23 +38,34 @@
 - **W3C_39_ShadesOfGray--YDF** — Live template for the
   [`W3C_39_ShadesOfGray--YDF` array](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Documentation/Styles/01-Assets/02-Colors/W3C_39_ShadesOfGray.md)
   Previously added **sogw3c** one now is the alias of **DataTypes--YDF**.
-- **YDF_ColorPalette** — autocomplete imitator type Live template for the [`YDF_ColorPalette` object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/01-Assets/02-Colors/YDF_ColorPalette.styl).
+- **YDF_ColorPalette** — autocomplete imitator type Live template for the 
+  [`YDF_ColorPalette` object](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/%40v2.0/CoreLibrary/Package/Styles/01-Assets/02-Colors/YDF_ColorPalette.styl).
   Previously added **ydfcp** one now is the alias of **YDF_ColorPalette**.
   Also, the following related ones which allows to input some value of `YDF_ColorPalette` along with CSS properties has been added:
   - `c-ydfcp` — with `color` property
   - `bgc-ydfcs` — with `background-color` property
   - `bgi-ydfcp` — with `background-image` property (in this case, the value of gradient group must be inputted)
+- **YDF_Configuration**, alias: **ydfc** — autocomplete for `YDF_Configuration` object. Related ones:
+  - **ydfc-fs** — accessing to selected value of [`YDF_Configuration.fontsStacks` associative array](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/YDF_Configuration/YDF_Configuration.english.html#PROPERTIES-FONTS_STACKS--SECTION)
+  - **ydfc-tg** — accessing to selected value of [`YDF_Configuration.textGeometry` object](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/YDF_Configuration/YDF_Configuration.english.html#PROPERTIES-TEXT_GEOMETRY--SECTION)
+  - **ydfc-z** — accessing to selected value of [`YDF_Configuration.zIndexes` associative array](https://frontend.yamato-daiwa.com/CoreLibrary/Styles/Kernel/YDF_Configuration/YDF_Configuration.english.html#PROPERTIES-Z_INDEXES--SECTION)
+  - **oydfc** — YDF configuration overriding
 
 ### Changed
 
-- **nswu** Live Template now adds `NARROWEST_SCREEN_WIDTH_UNIT--YDF` instead of `NARROWEST_SCREEN_WIDTH_UNIT`.
-- **dt** Live Template now adds `DataTypes--YDF` instead of `DataTypes`
+- **nswu** Live template now adds `NARROWEST_SCREEN_WIDTH_UNIT--YDF` instead of `NARROWEST_SCREEN_WIDTH_UNIT`.
+- **dt** Live template now adds `DataTypes--YDF` instead of `DataTypes`
 - **sogw3c** Live template now adds `W3C_39_ShadesOfGray--YDF` instead of `ShadesOfGray__W3C_Palette`
+- **badge-ydf** and **badge-lp-ydf** Live templates has been renamed to **Badge--YDF** and **Badge--YDF-LoadingPlaceholder**
+- **badge-ydf** and **badge-lp-ydf** Live templates has been renamed to **Badge--YDF** and **Badge--YDF-LoadingPlaceholder**
+   respectively.
 
 ### Removed
 
-- **th** Live Template has been replaced with **TemporarySemitransparentHighlighting--YDF**, **tsh**, and **bgc-tsh**.
-
+- Drop support for IntelliJ platform of **2023.X** versions.
+- **th** Live template has been replaced with **TemporarySemitransparentHighlighting--YDF**, **tsh**, and **bgc-tsh**.
+- **pl** and **plg** Live templates has been removed because of changed API of 
+  [`StaticPreviewAnywherePageTemplate`](https://frontend.yamato-daiwa.com/CoreLibrary/PagesTemplates/Children/StaticPreviewAnywherePage/StaticPreviewAnywherePageTemplate.english.html)
 
 ## [0.0.9]
 
@@ -86,15 +100,15 @@
 
 ### Added
 
-- **BordersSizingSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
+- **BordersSizingSpecificationSchema--YDF** - autocomplete imitator type Live template for eponymous object
 - **fs** - accessing to selected value of `YDF_Configuration.fontsStacks` associative array
 - **isIdentifier** autocomplete imitator type Live template for the eponymous function
 - **isObject** autocomplete imitator type Live template for the eponymous function
 - **oydfc** - overriding of `YDF_Configuration` object
-- **PaddingsSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
+- **PaddingsSpecificationSchema--YDF** - autocomplete imitator type Live template for eponymous object
 - **tg** - accessing to selected value of `YDF_Configuration.textGeometry` associative array
-- **TextElementHeightSizingSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
-- **WidthSizingSpecificationSchema--YDF** - autocomplete imitator type Live Template for eponymous object
+- **TextElementHeightSizingSpecificationSchema--YDF** - autocomplete imitator type Live template for eponymous object
+- **WidthSizingSpecificationSchema--YDF** - autocomplete imitator type Live template for eponymous object
 - **ydfc** - autocomplete for `YDF_Configuration` object
 
 
