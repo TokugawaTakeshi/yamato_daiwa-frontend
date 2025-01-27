@@ -1,0 +1,40 @@
+include ../../../Functionality.pug
+include ../../../GUI_Components.pug
+
+//include ../../../Markup/Assets/SVG_Icons/ExclamationMark/ExclamationMarkIcon__Circled__Filled.pug
+//include ../../../Markup/Assets/SVG_Icons/Checkmark/CheckmarkIcon__Circled__Filled.pug
+//include ../../../Markup/Assets/SVG_Icons/MultiplicationSign/MultiplicationSignIcon__Boxed__Filled.pug
+
+.DateTimePicker--YDF-Dialog(
+  role="dialog"
+  aria-modal="true"
+  data-locale="DEFAULT"
+)
+
+  .DateTimePicker--YDF-TopActionBar
+
+    table.DateTimePicker--YDF-DaysMatrix
+
+      thead
+        tr
+          th.DateTimePicker--YDF-DayTitleCell.DateTimePicker--YDF-DayTitleCell__Holiday(scope="col") SUN
+          th.DateTimePicker--YDF-DayTitleCell(scope="col") MON
+          th.DateTimePicker--YDF-DayTitleCell(scope="col") TUE
+          th.DateTimePicker--YDF-DayTitleCell(scope="col") WED
+          th.DateTimePicker--YDF-DayTitleCell(scope="col") THR
+          th.DateTimePicker--YDF-DayTitleCell(scope="col") FRI
+          th.DateTimePicker--YDF-DayTitleCell.DateTimePicker--YDF-DayTitleCell__Holiday(scope="col") SAT
+
+      tbody
+
+        each week in createArrayOfNaturalNumbers({ elementsCount: 6 })
+
+          tr
+
+            each day in createArrayOfNaturalNumbers({ elementsCount: 7 })
+
+              td
+
+                button.DateTimePicker--YDF-SelectDayButton(
+                  type="button"
+                ) 0

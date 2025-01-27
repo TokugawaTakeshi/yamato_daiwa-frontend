@@ -1,0 +1,202 @@
+// TODO Import variations
+@require "Themes/Regular/GeometricVariations/MenuList-RegularTheme-RegularGeometry.styl"
+@require "Themes/Regular/DecorativeVariations/MenuList-RegularTheme-RegularDecoration.styl"
+
+
+MenuList--YDF = {
+
+  componentIndependentCSS_Class: "RegularTheme--YDF",
+
+  defaultProperties: {
+
+    themes: {
+      regular: {
+
+        geometricVariations: {
+          regular: MenuList-RegularTheme-RegularGeometry--YDF
+        },
+
+        decorativeVariations: {
+          regular: MenuList-RegularTheme-RegularDecoration--YDF
+        }
+
+      }
+    }
+  },
+
+  defaultOptions: {
+    themeIndependentStylesOnly: false,
+    areThemesCSS_ClassesCommon: false,
+    loadingPlaceholder: true,
+    themeIndependentGeometricVariations: true,
+    geometricModifiers: {
+      pillShape: true,
+      squareShape: true,
+      singleLine: true
+    },
+    decorativeModifiers: {
+      bordersDisguising: true
+    }
+  }
+
+}
+
+
+provideMenuListYDF_Component(
+  preset = MenuList--YDF.defaultProperties,
+  overridings = {},
+  options = MenuList--YDF.defaultOptions,
+  restParameters__MUST_NOT_BE...
+)
+
+  properties = deeplyCloneAndOverrideObject(preset, overridings)
+
+  validateObjectTypeParameter({
+    mixinOrFunctionName: "provideMenuListYDF_Component",
+    targetParameterNumber: 3,
+    targetParameter: options,
+    schema: {
+      themeIndependentStylesOnly: {
+        type: DataTypes--YDF.boolean,
+        defaultValue: MenuList--YDF.defaultOptions.themeIndependentStylesOnly
+      },
+      areThemesCSS_ClassesCommon: {
+        type: DataTypes--YDF.boolean,
+        defaultValue: MenuList--YDF.defaultOptions.externalThemes
+      },
+      loadingPlaceholder: {
+        type: DataTypes--YDF.boolean,
+        defaultValue: MenuList--YDF.defaultOptions.loadingPlaceholder
+      },
+      themeIndependentGeometricVariations: {
+        type: DataTypes--YDF.boolean,
+        defaultValue: MenuList--YDF.defaultOptions.themeIndependentGeometricVariations
+      },
+      geometricModifiers: {
+        type: DataTypes--YDF.object,
+        properties: {
+          pillShape: {
+            type: DataTypes--YDF.boolean,
+            defaultValue: MenuList--YDF.defaultOptions.geometricModifiers.pillShape
+          },
+          squareShape: {
+            type: DataTypes--YDF.boolean,
+            defaultValue: MenuList--YDF.defaultOptions.geometricModifiers.squareShape
+          },
+          singleLine: {
+            type: DataTypes--YDF.boolean,
+            defaultValue: MenuList--YDF.defaultOptions.geometricModifiers.singleLine
+          }
+        },
+        defaultValue: MenuList--YDF.defaultOptions.geometricModifiers
+      },
+      decorativeModifiers: {
+        type: DataTypes--YDF.object,
+        properties: {
+          bordersDisguising: {
+            type: DataTypes--YDF.boolean,
+            defaultValue: MenuList--YDF.defaultOptions.decorativeModifiers.bordersDisguising
+          }
+        },
+        defaultValue: MenuList--YDF.defaultOptions.decorativeModifiers
+      }
+    },
+    followingParametersWhichMustNotBe: restParameters__MUST_NOT_BE
+  })
+
+
+  // ━━━ Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  applyBasicRules()
+
+    .MenuList--YDF
+
+      display flex
+      flex-direction column
+
+
+      &-Button
+
+        min-width 6rem
+
+
+  // ─── Geometry ──────────────────────────────────────────────────────────────────────────────────────────────────────
+  applyGeometricVariation(themeName, variationName, variation)
+
+    VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
+      "MenuList.${ themeName }Theme.${ variationName }Geometry",
+      { themeName: themeName, variationName: variationName }
+    )
+
+    CONTEXT_SELECTOR = selector() == "&" ? null : selector()
+
+    +provideDefaultSelectorWhenRootAndApply(ROOT_ELEMENT_SELECTOR)
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          min-width: {
+            dotSeparatedPath: "rootElement.minimalWidth",
+            required: false
+          }
+        }
+      })
+
+      applyMixinStoredInObjectIfItIsNotNull(variation.rootElement.customDeclarations)
+
+
+    .MenuList--YDF-ChildElement
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          height: {
+            dotSeparatedPath: "childElement.height",
+            required: false
+          }
+        }
+      })
+
+
+  // ─── Decoration ────────────────────────────────────────────────────────────────────────────────────────────────────
+  applyDecorativeVariation(themeName, variationName, variation)
+
+    VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING = buildString(
+      "MenuList.${ themeName }Theme.${ variationName }Decoration",
+      { themeName: themeName, variationName: variationName }
+    )
+
+    CONTEXT_SELECTOR = selector() == "&" ? null : selector()
+
+    +provideDefaultSelectorWhenRootAndApply(".MenuList--YDF")
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          background-color: { dotSeparatedPath: "rootElement.background.color", required: false }
+        }
+      })
+
+
+    .MenuList--YDF-ChildElement
+
+      validateAndAssignStoredInObjectCSS_Properties({
+        targetObject: variation,
+        targetObjectName: VARIATION_FULLY_QUALIFIED_NAME_FOR_LOGGING,
+        assigments: {
+          color: { dotSeparatedPath: "childElement.text.color", required: false }
+        }
+      })
+
+
+  // ━━━ Applying ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  applyBasicRules()
+
+  applyComponentThemes({
+    CSS_Namespace: "MenuList--YDF",
+    themes: properties.themes,
+    applyGeometricVariation: applyGeometricVariation,
+    applyDecorativeVariation: applyDecorativeVariation
+  })

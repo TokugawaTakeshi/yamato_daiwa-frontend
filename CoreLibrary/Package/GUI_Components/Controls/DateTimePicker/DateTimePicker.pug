@@ -96,6 +96,42 @@ mixin DateTimePicker--YDF(properties, statesSimulations, initialValueFormatter)
       firstDayOfWeek__numerationFrom0ForSunday: 0
     });
 
+    const toggleAccessibilityGuidance = expanded ?
+        DateTimePicker__YDF.localization.expandingToggle.collapsedState.accessibilityGuidance :
+        DateTimePicker__YDF.localization.expandingToggle.expandedState.accessibilityGuidance;
+
+    const isInitialValueRepresentsValidDateAndPossiblyTime =
+        isNotUndefined(value) && new Date(value).toString() !== "Invalid Date";
+
+    /** @type { string | undefined } */
+    let valueAttributeForInputElement;
+
+    /** @type { string | undefined } */
+    let formattedLocalDateAndPossiblyTime;
+
+    if (isInitialValueRepresentsValidDateAndPossiblyTime) {
+
+      switch (mode) {
+
+        case DateTimePicker__YDF.Modes.dateWithTime: {
+
+          valueAttributeForInputElement = new Date(value).toISOString().slice(0, 10);
+          formattedLocalDateAndPossiblyTime = new Date(value).toLocaleString();
+
+          break;
+        }
+
+        case DateTimePicker__YDF.Modes.dateOnly: {
+
+          valueAttributeForInputElement = new Date(value).toISOString().slice(0, 10);
+          formattedLocalDateAndPossiblyTime = new Date(value).toLocaleDateString();
+
+        }
+
+      }
+
+    }
+
 
   +CompoundControlShell--YDF(
     {
@@ -126,12 +162,14 @@ mixin DateTimePicker--YDF(properties, statesSimulations, initialValueFormatter)
     }
   ).DateTimePicker--YDF&attributes(attributes)(class=rootElementModifierCSS_Classes)
 
-    -
-      const toggleAccessibilityGuidance = expanded ?
-          DateTimePicker__YDF.localization.expandingToggle.collapsedState.accessibilityGuidance :
-          DateTimePicker__YDF.localization.expandingToggle.expandedState.accessibilityGuidance;
+    input.DateTimePicker--YDF-NativeInputElement(
+      type=(mode === DateTimePicker__YDF.Modes.dateWithTime ? "datetime-local" : "date")
+      value=valueAttributeForInputElement
+      aria-label=accessibilityGuidance
+      aria-labelledby=externalLabelHTML_ID
+    )
 
-    button.DateTimePicker--YDF-SelectedDateTimeDisplaying(
+    button.DateTimePicker--YDF-IndicatorButton(
       type="button"
       aria-label=toggleAccessibilityGuidance
     )
@@ -140,20 +178,20 @@ mixin DateTimePicker--YDF(properties, statesSimulations, initialValueFormatter)
 
         when DateTimePicker__YDF.Modes.dateWithTime
 
-          +Calendar__Time--YDF_Icon.DateTimePicker--YDF-SelectedDateTimeDisplaying-Icon
+          +Calendar__Time--YDF_Icon.DateTimePicker--YDF-IndicatorButton-Icon
 
         default
 
-          +Calendar__Date--YDF_Icon.DateTimePicker--YDF-SelectedDateTimeDisplaying-Icon
+          +Calendar__Date--YDF_Icon.DateTimePicker--YDF-IndicatorButton-Icon
 
-      span.DateTimePicker--YDF-SelectedDateTimeDisplaying-Label
-        if isNotUndefined(value)
+      span.DateTimePicker--YDF-IndicatorButton-Label
+
+        if isInitialValueRepresentsValidDateAndPossiblyTime
+
           if isNotUndefined(initialValueFormatter)
             | #{ initialValueFormatter(value) }
-          else if mode === DateTimePicker__YDF.Modes.dateWithTime
-            | #{ new Date(value).toLocaleString() }
-          else if mode === DateTimePicker__YDF.Modes.dateOnly
-            | #{ new Date(value).toLocaleDateString() }
+          else
+            | #{ formattedLocalDateAndPossiblyTime }
 
     if expanded
 
@@ -288,3 +326,5 @@ mixin DateTimePicker--YDF(properties, statesSimulations, initialValueFormatter)
                 button.DateTimePicker--YDF-SelectYearButton(
                   type="button"
                 )= index
+
+    template.DateTimePicker--YDF-DialogMountingPoint

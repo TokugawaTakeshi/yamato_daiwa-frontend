@@ -3,8 +3,143 @@ extends RegularWebPageTemplate.pug
 
 block append Functionality
 
+  include ../GUI_Components.pug
+
   -
 
+    /**
+     * @typedef {
+     *   {
+     *     heading?: string;
+     *     pages: Array<Page>;
+     *     sections: Array<Section>;
+     *   }
+     * } TableOfContentsElement
+     *
+     * @typedef {
+     *   {
+     *     {
+     *       title: string;
+     *       progressStatus: string;
+     *     } &
+     *     (
+     *       { URI: string } |
+     *       { linksList: Array<{ label: string; URI: string; }>; } |
+     *       {
+     *         linksTable: Array<{
+     *           rowLabel: string;
+     *           progressStatus: string;
+     *           columns: Array<{ label: string; URI: string; }>;
+     *         }>
+     *       }
+     *     )
+     *   }
+     * } Page
+     *
+     * @typedef {
+     *   {
+     *     heading: string;
+     *     pages: Array<Page>;
+     *     sections: Array<Section>
+     *   }
+     * } Section
+     *
+     */
+
+    class StaticPreviewAnywherePage__YDF {
+
+      /**
+       * @type { string | undefined }
+       * @private
+       */
+      static topHeading;
+
+      /**
+       * @type Array<TableOfContentsElement>
+       * @private
+       */
+      static tableOfContents = [];
+
+      /**
+       * @public
+       * @type {
+       *   Readonly<{
+       *     waitingForImplementation: string;
+       *     implementationInProgress: string;
+       *     improvementWaiting: string;
+       *     improvementInProgress: string;
+       *     fixingWaiting: string;
+       *     fixingInProgress: string;
+       *     specificationClarification: string;
+       *     reviewWaiting: string;
+       *     customerEvaluationWaiting: string;
+       *     accepted: string;
+       *   }>
+       * }
+       * @readonly
+       */
+      static PageDevelopmentProgressStatuses = {
+
+        waitingForImplementation: "WAITING_FOR_IMPLEMENTATION",
+        implementationInProgress: "IMPLEMENTATION_IN_PROGRESS",
+
+        improvementWaiting: "IMPROVEMENT_WAITING",
+        improvementInProgress: "IMPROVEMENT_IN_PROGRESS",
+
+        fixingWaiting: "FIXING_WAITING",
+        fixingInProgress: "FIXING_IN_PROGRESS",
+
+        specificationClarification: "SPECIFICATION_CLARIFICATION",
+
+        reviewWaiting: "REVIEW_WAITING",
+        customerEvaluationWaiting: "CUSTOMER_EVALUATION_WAITING",
+
+        accepted: "ACCEPTED"
+
+      }
+
+      /**
+       * @param {
+       *   Readonly<{
+       *     topHeading: string;
+       *     tableOfContents: Array<TableOfContentsElement>
+       *     metadata: {
+       *       locale?: string;
+       *       title?: string;
+       *       description?: string | null;
+       *       keywords?: string | null;
+       *       author?: string | null;
+       *     };
+       *     faviconURI?: string;
+       *     AMP_VersionURI?: string;
+       *     stylesSheetsURIs?: Array<string>;
+       *     scriptsURIs: {
+       *       atEndOfHead?: Array<string>;
+       *       atEndOfBody: Array<string>;
+       *     }
+       *   }>
+       * } options
+       * @returns { typeof RegularWebPageTemplate__YDF }
+       * @public
+       */
+      static configure(
+        {
+          topHeading,
+          tableOfContents,
+          ...regularWebPageTemplateOptions
+        }
+      ) {
+
+        RegularWebPageTemplate__YDF.configure(regularWebPageTemplateOptions);
+
+        StaticPreviewAnywherePage__YDF.topHeading = topHeading;
+        StaticPreviewAnywherePage__YDF.tableOfContents = tableOfContents;
+
+      }
+
+    }
+
+    /** @deprecated */
     const StaticPreviewAnywherePage = {
 
       PageDevelopmentProgressStatuses: {
@@ -68,6 +203,84 @@ block append Functionality
   - StaticPreviewAnywherePage.setLocalization(StaticPreviewAnywherePageLocalization__English);
 
 
+  mixin RegularWebPageTemplate-Link--YDF(properties)
+
+    +Link--YDF({ internalURI: properties.URI })= properties.title || properties.label
+
+
+  mixin RegularWebPageTemplate-LinksList--YDF(links)
+
+    ul
+
+      each link in links
+
+        li
+
+          +Link--YDF({ internalURI: link.URI })= link.label
+
+  mixin RegularWebPageTemplate-Card--YDF(page)
+
+    li.StaticPreviewAnywherePage--YDF-CardsFlow-Item
+
+      +Badge--YDF({
+        valueLabel: "In Progress",
+        geometricModifiers: [ Badge__YDF.GeometricModifiers.pillShape ],
+        decorativeVariation: Badge__YDF.DecorativeVariations.calmingBright
+      })
+
+      if page.URI
+
+        +RegularWebPageTemplate-Link--YDF(page)
+
+      else if page.linksList
+
+        span= page.title
+
+        ul
+
+          each link in page.linksList
+
+            li
+
+              +Link--YDF({ internalURI: link.URI })= link.label
+
+      else if page.linksTable
+
+        table
+
+          tbody
+
+            each stateDependentVariation in page.linksTable
+
+              tr
+
+                th= stateDependentVariation.rowLabel
+
+                each column in stateDependentVariation.columns
+
+                  td
+
+                    +RegularWebPageTemplate-Link--YDF(column)
+
+  mixin RegularWebPageTemplate-SectionsFlow--YDF(sections)
+
+    each section in sections
+
+      h3.AnywherePage-PagesSubgroupHeading= section.heading
+
+      if section.pages
+
+        ul.StaticPreviewAnywherePage--YDF-CardsFlow
+
+          each page in section.pages
+
+            +RegularWebPageTemplate-Card--YDF(page)
+
+      if section.sections
+
+        +RegularWebPageTemplate-SectionsFlow--YDF(section.sections)
+
+
   //- --- Single page link ---------------------------------------------------------------------------------------------
   mixin PageLink(parametersObject)
 
@@ -107,3 +320,27 @@ block append PageContent
   .AnywherePage
 
     block TableOfContents
+
+    if StaticPreviewAnywherePage__YDF.topHeading
+
+      h1.AnywherePage-TopHeading= StaticPreviewAnywherePage__YDF.topHeading
+
+    nav.StaticPreviewAnywherePage--YDF-Navigation
+
+      each element in StaticPreviewAnywherePage__YDF.tableOfContents
+
+        if element.heading
+
+          h2.AnywherePage-PagesGroupHeading= element.heading
+
+        if element.pages
+
+          ul.StaticPreviewAnywherePage--YDF-CardsFlow
+
+            each page in element.pages
+
+              +RegularWebPageTemplate-Card--YDF(page)
+
+        if element.sections
+
+          +RegularWebPageTemplate-SectionsFlow--YDF(element.sections)

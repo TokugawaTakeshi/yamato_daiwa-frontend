@@ -11,34 +11,44 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "ja";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("TextElementHeightSizingSpecificationSchema");
-    HTML_PageMetaData = {
-      description: "",
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("TextElementHeightSizingSpecificationSchema"),
+        description: ""
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     RoutingEmulator.setCurrentRoute("coreLibrary.styles.kernel.specificationsSchemas.textElementHeightSizing");
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./TextElementHeightSizingSpecificationSchema.english.html",
-      russian: "./TextElementHeightSizingSpecificationSchema.russian.html"
+      english: routing.english.coreLibrary.$children.styles.$children.kernel.$children.specificationsSchemas.$children.
+          textElementHeightSizing.$URI,
+      russian: routing.russian.coreLibrary.$children.styles.$children.kernel.$children.specificationsSchemas.$children.
+          textElementHeightSizing.$URI
     });
+
+    const {
+      $sectioning: localizedSectioning,
+      $heading: pageTopHeading
+    } = localizedRouting.coreLibrary.$children.styles.$children.kernel.$children.specificationsSchemas.
+        $children.textElementHeightSizing;
+
+
+block append HeadScripts
+
+  if __IS_PRODUCTION_BUILDING_MODE__
+
+    +GoogleAnalyticsScript
 
 
 block append SpecificContent
 
   article
 
-    h1 #[code TextElementHeightSizingSpecificationSchema]
+    h1!= pageTopHeading

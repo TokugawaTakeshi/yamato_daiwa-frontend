@@ -5,9 +5,9 @@ const maximalCharactersCountInputtedValueValidationRuleLocalization__japanese:
     MaximalCharactersCountInputtedValueValidationRule.Localization =
     {
       errorMessageBuilder: (
-        templateVariables: MaximalCharactersCountInputtedValueValidationRule.ErrorMessage.TemplateVariables
+        { maximalCharactersCount }: MaximalCharactersCountInputtedValueValidationRule.ErrorMessage.TemplateVariables
       ): string =>
-          `入力文字数が多すぎます、最大${ templateVariables.maximalCharactersCount }文字以下で入力してください。`
+          `入力文字数が多すぎます、最大${ maximalCharactersCount }文字以下で入力してください。`
     };
 
 

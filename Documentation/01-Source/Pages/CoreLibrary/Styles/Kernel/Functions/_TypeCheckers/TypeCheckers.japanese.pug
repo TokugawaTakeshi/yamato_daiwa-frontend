@@ -11,44 +11,37 @@ block append Metadata
 
   -
 
-    HTML_PAGE_LANGUAGE = "ja";
-    HTML_PAGE_TITLE = buildHTML_PageTitle("ValueCheckers");
-    HTML_PageMetaData = {
-      description: "",
-      author: HTML_PAGE_AUTHOR
-    };
-
-    FAVICON_URI = "@MustBeInPublicRoot/favicon";
-
-    styleSheetsURIs = [
-      "$CommonStyles",
-      "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
-      "$PreMadesStyles",
-      "@CustomizedExternalComponents"
-    ];
-
-    scriptsURIs.endOfBody = [ "$CommonLogic" ];
-
-    RoutingEmulator.setCurrentRoute("coreLibrary.styles.kernel.functions.typeCheckers");
+    RegularWebPageTemplate__YDF.configure({
+      metadata: {
+        title: buildHTML_PageTitle("Value Checkers"),
+        description: ""
+      },
+      stylesSheetsURIs: [
+        "$CommonStyles",
+        "$LayoutsStyles/TwoColumns/TwoColumnsLayout.css",
+        "$PreMadesStyles",
+        "@CustomizedExternalComponents"
+      ]
+    });
 
     LanguageDropDownList__YDF_DK.setLinks({
-      english: "./TypeCheckers.english.html",
-      russian: "./TypeCheckers.russian.html"
+      english: routing.english.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.
+          typeCheckers.$URI,
+      russian: routing.russian.coreLibrary.$children.styles.$children.kernel.$children.functions.$children.
+          typeCheckers.$URI
     });
+
+    const {
+      $sectioning: localizedSectioning,
+      $heading: pageTopHeading
+    } = coreLibrary.$children.styles.$children.kernel.$children.functions.$children.typeCheckers;
 
 
 block append SpecificContent
 
   article
 
-    -
-      const sectioning = localizedRouting.coreLibrary.$children.
-          styles.$children.
-          kernel.$children.
-          functions.$children.
-          typeCheckers.$sectioning;
-
-    h1.Article-Heading1 値型の確認
+    h1.Article-Heading1!= pageTopHeading
 
     //- ━━━ 文字列 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
     h2.Article-Heading2(

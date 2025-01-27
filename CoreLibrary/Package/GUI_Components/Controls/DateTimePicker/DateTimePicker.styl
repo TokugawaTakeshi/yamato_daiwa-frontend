@@ -76,6 +76,11 @@ provideDateTimePickerYDF_Component(
     min-width 120px
 
 
+    &-NativeInputElement
+
+      display none
+
+
     ClickableCellsCommonDecorations()
 
       color: JQueryUI_BaseTheme.clickableElements.defaultState.fontColor
@@ -122,7 +127,7 @@ provideDateTimePickerYDF_Component(
       border-top 1px solid #ebebeb
 
 
-    &-SelectedDateTimeDisplaying
+    &-IndicatorButton
 
       ButtonLikeElementsPrimer()
 
@@ -204,6 +209,11 @@ provideDateTimePickerYDF_Component(
 
       background-color white
       box-shadow 0 3px 10px rgba(black, 0.1)
+
+
+      &[hidden]
+
+        display none
 
 
     &-TopActionBar

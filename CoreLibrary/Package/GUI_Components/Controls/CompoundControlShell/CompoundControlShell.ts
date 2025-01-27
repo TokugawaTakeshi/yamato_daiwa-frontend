@@ -13,12 +13,14 @@ import type InputtedValueValidation from "../_Validation/InputtedValueValidation
 import {
   getExpectedToBeSingleDOM_Element,
   cloneDOM_Element,
-  createDOM_ElementFromHTML_Code
+  createDOM_ElementFromHTML_Code,
+  resolveContextDOM_ElementPolymorphicSpecification
 } from "@yamato-daiwa/es-extensions-browserjs";
 import {
   Logger,
   InvalidParameterValueError,
   isNull,
+  isNotNull,
   isUndefined
 } from "@yamato-daiwa/es-extensions";
 
@@ -27,7 +29,7 @@ export default class CompoundControlShell {
 
   /* ━━━ Static fields ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   /* ─── Accessing to DOM ─────────────────────────────────────────────────────────────────────────────────────────── */
-  protected static readonly ROOT_ELEMENT_CLASS: string = "CompoundControlShell--YDF";
+  protected static readonly ROOT_ELEMENT_CSS_CLASS: string = "CompoundControlShell--YDF";
 
   /* [ Theory ] Nested components wrapped by `CompoundControlShell` is completely normal scenario which mut be
    *   respected during picking of DOM elements. */
@@ -52,7 +54,7 @@ export default class CompoundControlShell {
       ".CompoundControlShell--YDF-AsynchronousValidationsStatusesList-Item__MalfunctionState";
 
 
-  /* ─── Others constants ─────────────────────────────────────────────────────────────────────────────────────────── */
+  /* ─── Others Constants ─────────────────────────────────────────────────────────────────────────────────────────── */
   protected static readonly ERRORS_LIST_EXPANDING_ANIMATION_DURATION_PER_ONE_ERROR_MESSAGE__SECONDS: number = 0.2;
   protected static readonly ERRORS_LIST_COLLAPSING_ANIMATION_DURATION__SECONDS: number = 0.2;
   protected static readonly ASYNCHRONOUS_VALIDATIONS_STATUSES_LIST_ANIMATION_DURATION_PER_ONE_ITEM__SECONDS: number = 0.2;
@@ -95,20 +97,26 @@ export default class CompoundControlShell {
 
   /* ─── Must be Changed Only via Setters or Constructor ──────────────────────────────────────────────────────────── */
   protected _mustDisplayErrorsMessagesIfAny: boolean;
-  protected _validationErrorsMessages: ReadonlyArray<string> = [];
+  protected _validationErrorsMessages: ReadonlyArray<string>;
 
 
-  /* ━━━ Public static methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  public static pickOne(
-    properties: Readonly<
+  /* ━━━ Public Static Methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  public static initializeOne(
+    initializationProperties: Readonly<
       (
         {
-          selector: string;
+          rootElement: Readonly<{ selector: string; }>;
           contextElement?: ParentNode | Readonly<{ selector: string; }>;
         } |
-        { rootElement: Element; }
+        {
+          rootElement: Element;
+          contextElement?: never;
+        }
       ) &
-      { mustDisplayErrorsMessagesIfAny: boolean; }
+      {
+        mustDisplayErrorsMessagesIfAny: boolean;
+        initialValidationErrorsMessages?: ReadonlyArray<string>;
+      }
     >
   ): CompoundControlShell {
 
@@ -116,58 +124,49 @@ export default class CompoundControlShell {
       CompoundControlShell.initializeCommonDOM_Parts();
     }
 
-    let rootElement: HTMLElement;
 
-    if ("rootElement" in properties) {
-
-      if (!(properties.rootElement instanceof HTMLElement)) {
-
-        Logger.throwErrorAndLog({
-          errorInstance: new InvalidParameterValueError({
-            parameterNumber: 1,
-            parameterName: "properties",
-            messageSpecificPart:
-                "Specified root element is definitely not the root element of \"CompoundControlShell\" component " +
-                  "because it even not the instance of \"HTMLElement\"."
-          }),
-          title: InvalidParameterValueError.localization.defaultTitle,
-          occurrenceLocation: "CompoundControlShell.pickOne(properties)"
+    const contextElement: Element | ParentNode | null = resolveContextDOM_ElementPolymorphicSpecification(
+      initializationProperties.contextElement
+    );
+    const rootElement: Element = initializationProperties.rootElement instanceof Element ?
+        initializationProperties.rootElement :
+        getExpectedToBeSingleDOM_Element({
+          selector: initializationProperties.rootElement.selector,
+          ...isNotNull(contextElement) ? { contextElement } : null
         });
 
-      }
-
-      rootElement = properties.rootElement;
-
-    } else {
-
-      rootElement = getExpectedToBeSingleDOM_Element({
-        selector: properties.selector,
-        contextElement: properties.contextElement,
-        expectedDOM_ElementSubtype: HTMLElement
-      });
-
-    }
-
-    if (!rootElement.classList.contains(CompoundControlShell.ROOT_ELEMENT_CLASS)) {
-
+    if (!(rootElement instanceof HTMLElement)) {
       Logger.throwErrorAndLog({
         errorInstance: new InvalidParameterValueError({
           parameterNumber: 1,
-          parameterName: "properties",
+          parameterName: "initializationProperties",
           messageSpecificPart:
-              "Specified root element is definitely not the root element of \"CompoundControlShell\" component " +
-                "because it has not the CSS class which must be."
+              "The root element passed directly or via selector must be the instance of HTMLElement while actually " +
+                "it does not."
         }),
         title: InvalidParameterValueError.localization.defaultTitle,
-        occurrenceLocation: "CompoundControlShell.pickOne(properties)"
+        occurrenceLocation: "CompoundControlShell.initializeOne(initializationProperties)"
       });
-
     }
 
+    if (!rootElement.classList.contains(CompoundControlShell.ROOT_ELEMENT_CSS_CLASS)) {
+      Logger.throwErrorAndLog({
+        errorInstance: new InvalidParameterValueError({
+          parameterNumber: 1,
+          parameterName: "initializationProperties",
+          messageSpecificPart:
+              "The root element passed directly or via selector must have the namespace CSS class " +
+                `"${ CompoundControlShell.ROOT_ELEMENT_CSS_CLASS }" while actually it have no.`
+        }),
+        title: InvalidParameterValueError.localization.defaultTitle,
+        occurrenceLocation: "CompoundControlShell.initializeOne(initializationProperties)"
+      });
+    }
 
     return new CompoundControlShell({
       rootElement,
-      mustDisplayErrorsMessagesIfAny: properties.mustDisplayErrorsMessagesIfAny
+      mustDisplayErrorsMessagesIfAny: initializationProperties.mustDisplayErrorsMessagesIfAny,
+      initialValidationErrorsMessages: initializationProperties.initialValidationErrorsMessages
     });
 
   }
@@ -175,15 +174,21 @@ export default class CompoundControlShell {
 
   /* ━━━ Constructor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
   private constructor(
-    initializationProperties: Readonly<{
+    {
+      rootElement,
+      mustDisplayErrorsMessagesIfAny,
+      initialValidationErrorsMessages
+    }: Readonly<{
       rootElement: HTMLElement;
       mustDisplayErrorsMessagesIfAny: boolean;
+      initialValidationErrorsMessages?: ReadonlyArray<string>;
     }>
   ) {
 
-    this.rootElement = initializationProperties.rootElement;
+    this.rootElement = rootElement;
 
-    this._mustDisplayErrorsMessagesIfAny = initializationProperties.mustDisplayErrorsMessagesIfAny;
+    this._mustDisplayErrorsMessagesIfAny = mustDisplayErrorsMessagesIfAny;
+    this._validationErrorsMessages = initialValidationErrorsMessages ?? [];
 
     this.validationErrorsMessagesCollapsableListMountingPoint = getExpectedToBeSingleDOM_Element({
       selector: CompoundControlShell.VALIDATION_ERRORS_MESSAGES_LIST_MOUNTING_POINT_SELECTOR,
