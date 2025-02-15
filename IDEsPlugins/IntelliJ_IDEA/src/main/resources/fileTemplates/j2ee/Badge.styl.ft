@@ -121,6 +121,94 @@ provideBadgeYDF_Component(
 
             }
 
+          },
+
+          small: {
+
+            rootElement: {
+
+              borders: specifyBordersSizing({
+                thickness: { all: 1px },
+                radius: { all: 0.2em }
+              }),
+
+              modifiers: {
+                pillShape: {
+                  borderRadiusToValueTextSizeRatio: 2  // [ Non-null property ]
+                }
+              },
+
+              loadingPlaceholder: {
+                minimalWidth: 10px // [ Non nullable ! ]
+              },
+
+              customDeclarations: null
+
+            },
+
+            SVG_Icon: {
+
+              // [ Conditional requirement ] At least one of `width` or `height` must be non-null
+              width: null,
+              height: 0.5em,
+
+              spacing: {
+                verticalSymmetric: null,
+                top: null,
+                bottom: null,
+                left: 0.2em
+              },
+
+              customDeclarations: null
+
+            },
+
+            keyLabel: {
+
+              text: {
+
+                size: 0.6em, // [ Non nullable ! ]
+
+                // [ Conditional requirement ] Either `lineSpacing` or `lineHeight` must non-null but not both
+                lineSpacing: 0.1em, // [ Non nullable ! ]
+                lineHeight: null // [ Non nullable ! ]
+
+              },
+
+              spacing: {
+                verticalSymmetric: 0.1em,
+                top: null,
+                bottom: null,
+                leftWhenGoingFirst: 0.8em, // [ Non nullable ! ]
+                afterSVG_Icon: 0.4em // [ Non nullable ! ]
+              },
+
+              customDeclarations: null
+
+            },
+
+            valueLabel: {
+
+              text: {
+                size: 0.6em,
+                lineSpacing: 0.2em,
+                lineHeight: null
+              },
+
+              spacing: {
+                verticalSymmetric: 0.1em,
+                top: null,
+                bottom: null,
+                leftWhenGoingFirst: 0.4em, // [ Non nullable ! ]
+                afterSVG_Icon: 0.6em, // [ Non nullable ! ]
+                afterKeyLabel: 0.4em, // [ Non nullable ! ]
+                right: 0.4em // [ Non nullable ! ]
+              },
+
+              customDeclarations: null
+
+            }
+
           }
 
         },
@@ -237,6 +325,7 @@ provideBadgeYDF_Component(
 // TODO Define the geometric variations (like `Badge-RegularTheme-RegularGeometry`) and the decorative
 //  variations (like `Badge-RegularTheme-VeryCatchyBrightDecoration`) in the separate files then include them here.
 @require "Themes/Regular/GeometricVariations/Badge-RegularTheme-RegularGeometry.styl"
+@require "Themes/Regular/GeometricVariations/Badge-RegularTheme-SmallGeometry.styl"
 
 @require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-VeryCatchyBrightDecoration.styl"
 @require "Themes/Regular/DecorativeVariations/Bright/Badge-RegularTheme-CatchyBrightDecoration.styl"
@@ -265,6 +354,7 @@ provideBadgeYDF_Component(
 
         geometricVariations: {
           regular: Badge-RegularTheme-RegularGeometry
+          small: Badge-RegularTheme-SmallGeometry
         },
 
         decorativeVariations: {

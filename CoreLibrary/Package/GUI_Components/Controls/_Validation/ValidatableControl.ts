@@ -135,44 +135,60 @@ namespace ValidatableControl {
 
     /* ━━━ Public methods ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     /* ─── Event handlers ─────────────────────────────────────────────────────────────────────────────────────────── */
-    public setOnValueAnyChangeEventHandlers(
+    public setOnValueAnyChangeEventHandler(
       polymorphicParameter: Payload.GeneralizedEventHandler | Readonly<{ handler: Payload.GeneralizedEventHandler; ID: string; }>
-    ): void {
+    ): this {
+
       this.onAnyChangeEventHandlers.set(
         "handler" in polymorphicParameter ? polymorphicParameter.ID : Payload.generateOnAnyChangeEventHandlerID(),
         "handler" in polymorphicParameter ? polymorphicParameter.handler : polymorphicParameter
       );
+
+      return this;
+
     }
 
     public setOnHasBecomeValidEventHandler(
       polymorphicParameter: Payload.GeneralizedEventHandler | Readonly<{ handler: Payload.GeneralizedEventHandler; ID: string; }>
-    ): void {
+    ): this {
+
       this.onHasBecomeValidEventHandlers.set(
         "handler" in polymorphicParameter ? polymorphicParameter.ID : Payload.generateOnHasBecomeValidEventHandlerID(),
         "handler" in polymorphicParameter ? polymorphicParameter.handler : polymorphicParameter
       );
+
+      return this;
+
     }
 
     public setOnHasBecomeInvalidEventHandler(
       polymorphicParameter: Payload.GeneralizedEventHandler | Readonly<{ handler: Payload.GeneralizedEventHandler; ID: string; }>
-    ): void {
+    ): this {
+
       this.onHasBecomeInvalidEventHandlers.set(
         "handler" in polymorphicParameter ? polymorphicParameter.ID : Payload.generateOnHasBecomeInvalidEventHandlerID(),
         "handler" in polymorphicParameter ? polymorphicParameter.handler : polymorphicParameter
       );
+
+      return this;
+
     }
 
     public setOnAsynchronousValidationStatusChangedEventHandler(
       polymorphicParameter:
           Payload.OnAsynchronousValidationStatusChangedEventHandler |
           Readonly<{ handler: Payload.OnAsynchronousValidationStatusChangedEventHandler; ID: string; }>
-    ): void {
+    ): this {
+
       this.onAsynchronousValidationStatusChangedEventHandlers.set(
         "handler" in polymorphicParameter ?
             polymorphicParameter.ID :
             Payload.generateOnAsynchronousValidationStatusChangedEventHandlerID(),
         "handler" in polymorphicParameter ? polymorphicParameter.handler : polymorphicParameter
       );
+
+      return this;
+
     }
 
 

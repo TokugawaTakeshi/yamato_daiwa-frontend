@@ -10,10 +10,10 @@ Please get the styles from the [core npm package](https://www.npmjs.com/package/
 ## Documentation
 ### GUI Components
 
-* [AdmonitionBlock](https://frontend.yamato-daiwa.com/)
-* [Badge](https://frontend.yamato-daiwa.com/)
+* [AdmonitionBlock](https://frontend.yamato-daiwa.com/AdaptationsToJavaScriptFrameworks/Blazor/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-Blazor.english.html)
+* [Badge](https://frontend.yamato-daiwa.com/AdaptationsToJavaScriptFrameworks/Blazor/GUI_Components/Children/Badge/Badge-Blazor.english.html)
 
 
 ### Controls
 
-* [Button](https://frontend.yamato-daiwa.com/)
+* [Button](https://frontend.yamato-daiwa.com/AdaptationsToJavaScriptFrameworks/Blazor/GUI_Components/Children/Controls/Buttons/Plain/Button-Blazor.english.html)

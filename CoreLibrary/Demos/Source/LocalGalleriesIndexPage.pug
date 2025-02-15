@@ -3,119 +3,95 @@ extends ../node_modules/@yamato-daiwa/frontend/PagesTemplates/StaticPreviewAnywh
 
 block append Metadata
 
-  - RegularWebPageTemplate__YDF.metadata.title = "Tests";
+  -
 
+    StaticPreviewAnywherePage__YDF.configure({
 
-block append TableOfContents
+      metadata: {
+        title: "Tests"
+      },
 
-  h1.AnywherePage-TopHeading= RegularWebPageTemplate__YDF.metadata.title
+      topHeading: "Workbenches",
 
-  +PageLink({
-    label: "AdmonitionBlock",
-    URI: "@CompletePages/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
-  })
+      tableOfContents: [
 
-  +PageLink({
-    label: "Badge",
-    URI: "@CompletePages/GUI_Components/Badge/BadgeGalleryPage",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-  })
+        {
 
-  //-
-    +PageLink({
-      label: "LoadingIndicator",
-      URI: "@Demos/GUI_Components/LoadingIndicator/LoadingIndicator",
-      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-    })
+          heading: "GUI Components",
 
-    +PageLink({
-      label: "Snackbar",
-      URI: "@Demos/GUI_Components/Snackbar/Snackbar",
-      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-    })
+          pages: [
 
-  h2.AnywherePage-PagesGroupHeading Controls
+            {
+              title: "AdmonitionBlock",
+              URI: "@CompletePages/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage",
+              progressStatus: StaticPreviewAnywherePage__YDF.PageDevelopmentProgressStatuses.accepted
+            },
 
-  +PageLink({
-    label: "FilesUploader",
-    URI: "@CompletePages/GUI_Components/Controls/FilesUploader/FilesUploaderGalleryPage",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-  })
+            {
+              title: "Badge",
+              URI: "@CompletePages/GUI_Components/Badge/BadgeGalleryPage",
+              progressStatus: StaticPreviewAnywherePage__YDF.PageDevelopmentProgressStatuses.accepted
+            }
 
+          ],
 
-  h3.AnywherePage-PagesSubgroupHeading Buttons
+          sections: [
 
-  +PageLink({
-    label: "Plain",
-    URI: "@CompletePages/GUI_Components/Controls/Buttons/Plain/ButtonGalleryPage",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-  })
+            {
 
+              heading: "Controls",
 
-  h2.AnywherePage-PagesGroupHeading Typography
+              pages: [
 
-  +PageLink({
-    label: "Table",
-    URI: "@CompletePages/GUI_Components/Typography/Table/TableGalleryPage.pug",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-  })
+                {
+                  title: "FilesUploader",
+                  URI: "@CompletePages/GUI_Components/Controls/FilesUploader/FilesUploaderGalleryPage",
+                  progressStatus: StaticPreviewAnywherePage__YDF.PageDevelopmentProgressStatuses.implementationInProgress
+                }
 
+              ],
 
-  //-
+              sections: [
 
-    h3.AnywherePage-PagesSubgroupHeading Inputting
+                {
 
-    +PageLink({
-      label: "TextBox",
-      URI: "@Demos/GUI_Components/Controls/TextBox/TextBox",
-      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-    })
+                  heading: "Buttons",
 
+                  pages: [
 
-    h3.AnywherePage-PagesSubgroupHeading Other
+                    {
+                      title: "Buttons",
+                      URI: "@CompletePages/GUI_Components/Controls/Buttons/Plain/ButtonGalleryPage",
+                      progressStatus: StaticPreviewAnywherePage__YDF.PageDevelopmentProgressStatuses.implementationInProgress
+                    }
 
-    +PageLink({
-      label: "FilesUploader",
-      URI: "@Demos/GUI_Components/Controls/FilesUploader/FilesUploader",
-      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-    })
+                  ]
 
+                }
 
-    h2.AnywherePage-PagesGroupHeading Controls groups
+              ]
 
-    +PageLink({
-      label: "Simple integrated",
-      URI: "@Demos/Assemblies/ControlsGroups/Simple/Integrated/SimpleIntegratedControlsGroupDemo",
-      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-    })
+            }
 
-    +PageLink({
-      label: "Simple discrete",
-      URI: "@Demos/Assemblies/ControlsGroups/Simple/Discrete/SimpleDiscreteControlsGroupDemo",
-      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-    })
+          ]
 
-    +PageLink({
-      label: "Basic integrated",
-      URI: "@Demos/Assemblies/ControlsGroups/Basic/Integrated/BasicIntegratedControlsGroup",
-      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-    })
+        },
 
+        {
 
-    h2.AnywherePage-PagesGroupHeading Viewers
+          heading: "Typography",
 
-    +PageLink({
-      label: "SingleImageViewer",
-      URI: "@Demos/GUI_Components/Viewers/SingleImage/SingleImageViewer",
-      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-    })
+          pages: [
 
+            {
+              title: "Table",
+              URI: "@CompletePages/GUI_Components/Typography/Table/TableGalleryPage",
+              progressStatus: StaticPreviewAnywherePage__YDF.PageDevelopmentProgressStatuses.accepted
+            }
 
-    h2.AnywherePage-PagesGroupHeading Other
+          ]
 
-    +PageLink({
-      label: "External themes switching",
-      URI: "@Demos/ExternalThemesSwitching/ExternalThemesSwitching.pug",
-      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-    })
+        }
+
+      ]
+    });

@@ -1,34 +1,21 @@
-# Yamato Daiwa Frontend 〔React〕
+# Yamato Daiwa Frontend — React
 
-The adaptation of [Yamato-Daiwa FrontEnd](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend) for [React](https://react.dev/).
+The adaptation of [Yamato Daiwa Frontend](https://www.npmjs.com/package/@yamato-daiwa/frontend) toolkit for the frontend
+  development to [React framework](https://react.dev/).
+
+This adaptation package provides only React-specific functionality.
+The [core package](https://www.npmjs.com/package/@yamato-daiwa/frontend) is still required (the peer dependency) to
+get the styles.
 
 
 ## Installation
 
 ```bash
-npm i @yamato-daiwa/frontend-react @yamato-daiwa/frontend -E
-```
-
-## Usage
-
-You can import everything what you need from the root of library.
-
-```typescript
-import { OverflowSafeSingleLineLabel } from "@yamato-daiwa/frontend-react";
+npm i @yamato-daiwa/frontend-react @yamato-daiwa/frontend@2.0.0-beta.6
 ```
 
 
-## Available functionality
+## Documentation
+### GUI Components
 
-### Components
-
-Please note that `@yamato-daiwa/frontend-react` suggests only the logic for the React components *without styles*.
-To enable the styles, get them from `@yamato-daiwa/frontend` and setup according core package documentation.
-
-* [`OverflowSafeSingleLineLabel`](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md)
-
-
-| Component name              | Basic documentation                                                                                                                                                                                 | Vue 3.x example |
-|-----------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
-| OverflowSafeSingleLineLabel | [Basic documentation](https://github.com/TokugawaTakeshi/Yamato-Daiwa-Frontend/blob/master/CoreLibrary/Package/Documentation/Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.md) |                 |
-|                             |                                                                                                                                                                                                     |                 |
++ [AdmonitionBlock](https://frontend.yamato-daiwa.com/AdaptationsToJavaScriptFrameworks/React/GUI_Components/Children/AdmonitionBlock/AdmonitionBlock-React.english.html)

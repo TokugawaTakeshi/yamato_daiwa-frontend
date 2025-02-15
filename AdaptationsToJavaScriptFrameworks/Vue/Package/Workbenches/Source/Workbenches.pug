@@ -3,23 +3,39 @@ extends ../../node_modules/@yamato-daiwa/frontend/PagesTemplates/StaticPreviewAn
 
 block append Metadata
 
-  - RegularWebPageTemplate__YDF.configure({ metadata: { title: "YDF Vue — Workbenches" } });
+  -
 
+    StaticPreviewAnywherePage__YDF.configure({
 
-block append TableOfContents
+      metadata: {
+        title: "YDF Vue — Workbenches"
+      },
 
-  h1.AnywherePage-TopHeading= RegularWebPageTemplate__YDF.metadata.title
+      topHeading: "YDF Vue — Workbenches",
 
-  h2.AnywherePage-PagesGroupHeading GUI Components
+      tableOfContents: [
 
-  +PageLink({
-    label: "AdmonitionBlock",
-    URI: "@Workbenches/GUI_Components/AdmonitionBlock/AdmonitionBlock.workbench",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
-  })
+        {
 
-  +PageLink({
-    label: "OverflowSafeSingleLineLabel",
-    URI: "@Workbenches/GUI_Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.workbench",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.accepted
-  })
+          heading: "GUI Components",
+
+          pages: [
+
+            {
+              title: "AdmonitionBlock",
+              URI: "@Workbenches/GUI_Components/AdmonitionBlock/AdmonitionBlock.workbench",
+              progressStatus: StaticPreviewAnywherePage__YDF.PageDevelopmentProgressStatuses.accepted
+            },
+
+            {
+              title: "OverflowSafeSingleLineLabel",
+              URI: "@Workbenches/GUI_Components/OverflowSafeSingleLineLabel/OverflowSafeSingleLineLabel.workbench",
+              progressStatus: StaticPreviewAnywherePage__YDF.PageDevelopmentProgressStatuses.accepted
+            }
+
+          ]
+
+        }
+
+      ]
+    });

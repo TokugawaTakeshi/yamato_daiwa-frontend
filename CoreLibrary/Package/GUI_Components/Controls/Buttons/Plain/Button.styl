@@ -51,7 +51,8 @@ Button--YDF = {
       noRightBorderAndRoundings: true,
       noTopBorderAndRoundings: true,
       noBottomBorderAndRoundings: true,
-      noRoundings: true
+      noRoundings: true,
+      horizontallyShrinkable: true
     },
     decorativeModifiers: {
       bordersDisguising: true,
@@ -126,6 +127,10 @@ provideButtonYDF_Component(
           noBottomBorderAndRoundings: {
             type: DataTypes--YDF.boolean,
             defaultValue: Button--YDF.defaultOptions.geometricModifiers.noBottomBorderAndRoundings
+          },
+          horizontallyShrinkable: {
+            type: DataTypes--YDF.boolean,
+            defaultValue: Button--YDF.defaultOptions.geometricModifiers.horizontallyShrinkable
           }
         },
         defaultValue: Button--YDF.defaultOptions.geometricModifiers
@@ -643,6 +648,20 @@ provideButtonYDF_Component(
       .Button--YDF__NoRoundingsGeometricModifier
 
         border-radius 0
+
+
+    if options.geometricModifiers.horizontallyShrinkable
+
+      .Button--YDF__HorizontallyShrinkableGeometricModifier
+
+        min-width 0
+
+
+        .Button--YDF-Label,
+        .Button--YDF-SVG_Icon
+
+          margin-left 0 !important
+          margin-right 0 !important
 
 
   // ─── Decoration ────────────────────────────────────────────────────────────────────────────────────────────────────

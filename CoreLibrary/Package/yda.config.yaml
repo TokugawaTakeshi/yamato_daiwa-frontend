@@ -26,6 +26,7 @@ projectBuilding:
         tasksAndSourceFilesSelection:
           markupProcessing: [ Workbenches ]
           stylesProcessing: [ Workbenches ]
+          ECMA_ScriptLogicProcessing: [ Workbenches ]
 
         browserLiveReloadingSetupID: Workbenches
 
@@ -184,11 +185,25 @@ projectBuilding:
         partialsRecognition:
           excludeFilesWithPrefixes: "_"
           excludeSubdirectoriesWithPrefixes: "_"
-          excludeSubdirectoriesWithNames: [ "CompiledCodeCheckOnly" ]
 
         buildingModeDependent:
           LOCAL_DEVELOPMENT:
             outputTopDirectoryRelativePath: Tests/Build
+
+      Workbenches:
+
+        sourceFilesTopDirectoryRelativePath: Workbenches/Source
+
+        targetRuntime:
+          type: BROWSER
+
+        partialsRecognition:
+          excludeFilesWithPrefixes: "_"
+          excludeSubdirectoriesWithPrefixes: "_"
+
+        buildingModeDependent:
+          LOCAL_DEVELOPMENT:
+            outputTopDirectoryRelativePath: Workbenches/Build
 
 
   # === Development server =============================================================================================

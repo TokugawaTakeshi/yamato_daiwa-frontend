@@ -5,38 +5,31 @@ block append Metadata
 
   -
 
-    RegularWebPageTemplate__YDF.configure({
+    StaticPreviewAnywherePage__YDF.configure({
+
       metadata: {
         title: "YDF React — Demos"
-      }
+      },
+
+      topHeading: "YDF React — Demos",
+
+      tableOfContents: [
+
+        {
+
+          heading: "GUI Components",
+
+          pages: [
+
+            {
+              title: "AdmonitionBlock",
+              URI: "@CompletePages/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage",
+              progressStatus: StaticPreviewAnywherePage__YDF.PageDevelopmentProgressStatuses.accepted
+            }
+
+          ]
+
+        }
+
+      ]
     });
-
-
-block append TableOfContents
-
-  h1.AnywherePage-TopHeading YDF React — Demos
-
-  h2.AnywherePage-PagesGroupHeading Components
-
-  +PageLink({
-    label: "AdmonitionBlock",
-    URI: "@CompletePages/GUI_Components/AdmonitionBlock/AdmonitionBlockGalleryPage",
-    progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-  })
-
-  //-
-
-    +PageLink({
-      label: "Badge",
-      URI: "@CompletePages/GUI_Components/Badge/BadgeGalleryPage",
-      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-    })
-
-  //-
-    h3.AnywherePage-PagesSubgroupHeading Controls
-
-    +PageLink({
-      label: "Button",
-      URI: "@CompletePages/GUI_Components/Controls/Buttons/Plain/ButtonGalleryPage.pug",
-      progressStatus: StaticPreviewAnywherePage.PageDevelopmentProgressStatuses.implementationInProgress
-    })

@@ -22,7 +22,7 @@
 	"module": "./Distributable/index.js",
 	"types": "./Distributable/index.d.ts",
 	"peerDependencies": {
-		"@yamato-daiwa/frontend": ">=2.0.0-alpha.3",
+		"@yamato-daiwa/frontend": "2.0.0-alpha.6",
 		"vue": "~3.2.0",
 		"vue-router": "~4.3.0"
 	},
@@ -33,7 +33,7 @@
 	},
 	"devDependencies": {
 		"@yamato-daiwa/automation": "0.5.0",
-		"@yamato-daiwa/frontend": "../../../CoreLibrary/Package",
+		"@yamato-daiwa/frontend": "2.0.0-alpha.6",
 		"@yamato-daiwa/style_guides": "0.3.2",
 		"rimraf": "6.0.1",
 		"typescript": "5.6.3",
@@ -41,7 +41,7 @@
 		"vue-router": "4.4.5"
 	},
 	"scripts": {
-		"Rebuild Dirtributable": "yda build --selectiveExecution Distributable --mode PRODUCTION & npm run \"Generate TypeScript Types\"",
+		"Rebuild Distributable": "yda build --selectiveExecution Distributable --mode PRODUCTION & npm run \"Generate TypeScript Types\"",
 		"Generate TypeScript Types": "tsc --project tsconfig.declarations.json --declaration --emitDeclarationOnly --outDir Distributable",
 		"Start Workbenches": "rimraf Workbenches/Output & yda build --selectiveExecution Workbenches --mode LOCAL_DEVELOPMENT",
 		"Lint": "eslint ."
