@@ -1,4 +1,4 @@
-import type NoLinksInputtedValueValidationRule from "../../../../../../../Package/Components/Controls/_Validation/PreMadeRules/Strings/NoLinksInputtedValueValidationRule";
+import type { NoLinksInputtedValueValidationRule } from "@yamato-daiwa/frontend";
 
 
 const NoLinksInputtedValueValidationRuleLocalization__russian:

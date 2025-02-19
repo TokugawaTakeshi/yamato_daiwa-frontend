@@ -1,5 +1,15 @@
-export { default as emailAddressInputtedValueValidationRuleLocalization__english } from
-    "./Components/Controls/_Validation/PreMadeRules/Strings/EmailAddressInputtedValueValidationRuleLocalization.english";
+/* ━━━ Officially Realized ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+export { admonitionBlockYDF_ComponentLocalization__japanese } from "./GUI_Components/AdmonitionBlockLocalization.japanese";
+
+
+/* ━━━ Alpha / Beta ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+export { numericMaximumInputtedValueValidationRuleLocalization__japanese } from
+    "./Components/Controls/_Validation/PreMadeRules/Numeric/NumericMaximumInputtedValueValidationRuleLocalization.japanese";
+export { numericMinimumInputtedValueValidationRuleLocalization__japanese } from
+    "./Components/Controls/_Validation/PreMadeRules/Numeric/NumericMinimumInputtedValueValidationRuleLocalization.japanese";
+
+export { default as emailAddressInputtedValueValidationRuleLocalization__japanese } from
+    "./Components/Controls/_Validation/PreMadeRules/Strings/EmailAddressInputtedValueValidationRuleLocalization.japanese";
 
 export { default as JapanesePhoneNumberInputtedValueValidationRule } from
     "./Components/Controls/_Validation/PreMadeRules/Strings/JapanesePhoneNumberInputtedValueValidationRule";
@@ -9,7 +19,7 @@ export { default as japanesePhoneNumberInputtedValueValidationRuleLocalization__
 export { default as maximalCharactersCountInputtedValueValidationRuleLocalization__japanese } from
     "./Components/Controls/_Validation/PreMadeRules/Strings/MaximalCharactersCountInputtedValueValidationRuleLocalization.japanese";
 export { default as minimalCharactersCountInputtedValueValidationRuleLocalization__japanese } from
-    "./Components/Controls/_Validation/PreMadeRules/Strings/MinimalCharactersCountInputtedValueValidationRuleLocalization.english";
+    "./Components/Controls/_Validation/PreMadeRules/Strings/MinimalCharactersCountInputtedValueValidationRuleLocalization.japanese";
 
 export { default as MinimalKanjiOrKanaCharactersCountInputtedValueValidationRule } from
     "./Components/Controls/_Validation/PreMadeRules/Strings/MinimalKanjiOrKanaCharactersCountInputtedValueValidationRule";

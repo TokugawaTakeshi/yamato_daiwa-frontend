@@ -1,6 +1,6 @@
 import type { EmailAddressInputtedValueValidation } from "@yamato-daiwa/frontend";
-import emailAddressInputtedValueValidationRuleLocalization__english from
-    "../../PreMadeRules/Strings/EmailAddressInputtedValueValidationRuleLocalization.english";
+import emailAddressInputtedValueValidationRuleLocalization__japanese from
+    "../../PreMadeRules/Strings/EmailAddressInputtedValueValidationRuleLocalization.japanese";
 
 
 const emailAddressInputtedValueValidationLocalization__japanese: EmailAddressInputtedValueValidation.Localization = {
@@ -10,7 +10,10 @@ const emailAddressInputtedValueValidationLocalization__japanese: EmailAddressInp
   minimalCharactersCountValidationErrorMessageBuilder: (): string =>
       "入力されたメールアドレスは「文字数が少なすぎる」可能性があります。正しいメールアドレスかどうかご確認ください。",
 
-  invalidEmailAddressErrorMessageBuilder: emailAddressInputtedValueValidationRuleLocalization__english.errorMessageBuilder
+  maximalCharactersCountValidationErrorMessageBuilder: (): string =>
+      "入力されたメールアドレスは「文字数が多すぎる」可能性があります。正しいメールアドレスかどうかご確認ください。",
+
+  invalidEmailAddressErrorMessageBuilder: emailAddressInputtedValueValidationRuleLocalization__japanese.errorMessageBuilder
 
 };
 

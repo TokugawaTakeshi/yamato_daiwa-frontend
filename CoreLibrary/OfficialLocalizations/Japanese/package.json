@@ -1,8 +1,7 @@
 {
-  "private": true,
   "name": "@yamato-daiwa/frontend-localization-japanese",
   "version": "0.0.0",
-  "description": "The Japanese localization for '@yamato-daiwa/frontend' package.",
+  "description": "The Japanese localization for \"@yamato-daiwa/frontend\" package.",
   "keywords": [
     "frontend",
     "pug",
@@ -11,8 +10,8 @@
     "japanese"
   ],
   "author": {
-    "name": "Takeshi Tokugawa",
-    "email": "tokugawa.takesi@gmail.com"
+    "name": "Yamato Daiwa Co., Ltd.",
+    "email": "ee-info@yamato-daiwa.com"
   },
   "license": "MIT",
   "repository": {
@@ -21,20 +20,24 @@
   },
   "bugs": {
     "url": "https://github.com/TokugawaTakeshi/yamato_daiwa-frontend/issues",
-    "email": "tokugawa.takesi@gmail.com"
+    "email": "ee-info@yamato-daiwa.com"
   },
   "module": "./LogicDistributable/index.js",
   "types": "./LogicDistributable/index.d.ts",
+  "peerDependencies": {
+    "@yamato-daiwa/frontend": "2.0.0-beta.6"
+  },
   "dependencies": {
-    "@yamato-daiwa/es-extensions": "../../../../YamatoDaiwaES_Extensions/CoreLibrary/Package",
+    "@yamato-daiwa/es-extensions": "1.8.0-alpha.10",
     "fundamental-constants-japan": "0.0.1"
   },
   "devDependencies": {
-    "@yamato-daiwa/frontend": "../../Package",
-    "@yamato-daiwa/style_guides": "0.0.59"
+    "@yamato-daiwa/frontend": "2.0.0-beta.6",
+    "@yamato-daiwa/style_guides": "0.6.2",
+    "rimraf": "6.0.1"
   },
   "scripts": {
-    "Rebuild distributable": "rimraf LogicDistributable & tsc",
-    "Lint": "eslint ."
+    "Production Building of Logic": "rimraf LogicDistributable && tsc",
+    "Linting": "eslint ."
   }
 }

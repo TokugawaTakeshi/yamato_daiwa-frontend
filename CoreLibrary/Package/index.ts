@@ -68,6 +68,9 @@ export { default as EmailAddressInputtedValueValidationRule } from
     "./GUI_Components/Controls/_Validation/PreMadeRules/Strings/EmailAddressInputtedValueValidationRule";
 export { default as emailAddressInputtedValueValidationRuleLocalization__english } from
     "./GUI_Components/Controls/_Validation/PreMadeRules/Strings/EmailAddressInputtedValueValidationRuleLocalization.english";
+export { default as LinkValidationRule } from "./GUI_Components/Controls/_Validation/PreMadeRules/Strings/LinkValidationRule";
+export { default as linkValidationRuleLocalization__english } from
+    "./GUI_Components/Controls/_Validation/PreMadeRules/Strings/LinkValidationRuleLocalization.english";
 export { default as MinimalCharactersCountInputtedValueValidationRule } from
     "./GUI_Components/Controls/_Validation/PreMadeRules/Strings/MinimalCharactersCountInputtedValueValidationRule";
 export { default as minimalCharactersCountInputtedValueValidationRuleLocalization__english } from
